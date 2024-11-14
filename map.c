@@ -39,7 +39,7 @@ Map *map_creation(Map *map)
     return map;
 }
 
-Map *free_map(Map *map)
+Map *map_free(Map *map)
 {
     for (int i = 0; i < map->height; i++)
     {
@@ -49,7 +49,7 @@ Map *free_map(Map *map)
     return map;
 }
 
-Map *reset_map(Map *map, int value)
+Map *map_reset(Map *map, int value)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -61,7 +61,7 @@ Map *reset_map(Map *map, int value)
     return map;
 }
 
-void print_map(Map *map)
+void map_print(Map *map)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -87,9 +87,9 @@ void map_display(SDL_Renderer *renderer, Map *map)
     }
 }
 
-void set_map(int screen_width, int screen_height, int *square_size, int *map_width, int *map_height)
+void map_set(int screen_width, int screen_height, int *square_size, int *map_width, int *map_height)
 {
-    
+
 }
 
 #endif

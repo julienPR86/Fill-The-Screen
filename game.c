@@ -42,13 +42,13 @@ int main(int argc, char **argv)
     int map_height = 0;
     int map_width = 0;
     int square_size = 0;
-    set_map(WIDTH, HEIGHT, &square_size, &map_width, &map_height);
+    map_set(WIDTH, HEIGHT, &square_size, &map_width, &map_height);
     map->height = map_height;
     map->width = map_width;
     map->square_size = square_size;
     map->map = NULL;
     map_creation(map);
-    reset_map(map, 1);
+    map_reset(map, 1);
     map->map[0][0] = 3; //player position
 
     srand(time(NULL));
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
     if (NULL == player)
     {
         fprintf(stderr, "Memory allocation error\n");
-        free_map(map);
+        map_free(map);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
@@ -141,7 +141,7 @@ int main(int argc, char **argv)
     }
     free(player);
     printf("free player ok\n");
-    free_map(map);
+    map_free(map);
     free(map);
     printf("free map ok\n");
     SDL_DestroyRenderer(renderer);
