@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     }
     map->height = 16;
     map->width = 32;
-    map->square_size = map_set(WIDTH, HEIGHT, map->width, map->height);;
+    map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);;
     map->map = NULL;
     map_creation(map);
     map_reset(map, 1);

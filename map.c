@@ -87,7 +87,7 @@ void map_display(SDL_Renderer *renderer, Map *map)
     }
 }
 
-int get_square_size(int screen_width, int screen_height, int map_width, int map_height)
+int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height)
 {
     if (screen_width/map_width > screen_height/map_height)
     {
