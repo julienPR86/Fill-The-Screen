@@ -39,9 +39,13 @@ int main(int argc, char **argv)
         SDL_Quit();
         return 1;
     }
-    map->height = 10;
-    map->width = 10;
-    map->square_size = 50;
+    int map_height = 0;
+    int map_width = 0;
+    int square_size = 0;
+    set_map(WIDTH, HEIGHT, &square_size, &map_width, &map_height);
+    map->height = map_height;
+    map->width = map_width;
+    map->square_size = square_size;
     map->map = NULL;
     map_creation(map);
     reset_map(map, 1);

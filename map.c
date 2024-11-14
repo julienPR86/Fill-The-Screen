@@ -87,4 +87,9 @@ void map_display(SDL_Renderer *renderer, Map *map)
     }
 }
 
+void set_map(int screen_width, int screen_height, int *square_size, int *map_width, int *map_height)
+{
+    
+}
+
 #endif
