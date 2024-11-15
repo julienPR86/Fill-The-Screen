@@ -56,6 +56,8 @@ int main(int argc, char **argv)
                 }
             }
         }
+        SDL_Delay(1.0/FPS*1000);
+        SDL_RenderPresent(renderer);
     }
     quit(window, renderer);
     printf("end ok\n");
