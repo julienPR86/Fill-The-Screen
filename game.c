@@ -5,34 +5,14 @@
 #include "player.c"
 #include "map.c"
 
+#ifndef GAME
+#define GAME
+
 void quit(SDL_Window *window, SDL_Renderer *renderer);
 void restart(Map *map, Player *player);
 
-int main(int argc, char **argv)
+int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT, int FPS)
 {
-    int WIDTH = 1080, HEIGHT = 720, XOFFSET = 0, YOFFSET = 0, FPS = 60;
-    if (0 != SDL_Init(SDL_INIT_EVERYTHING))
-    {
-        fprintf(stderr, "Could not initialize SDL : %s\n", SDL_GetError());
-        SDL_Quit();
-        return 1;
-    }
-    SDL_Window *window = SDL_CreateWindow("Fill The Screen", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
-    if (NULL == window)
-    {
-        fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
-        SDL_Quit();
-        return 1;
-    }
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (NULL == renderer)
-    {
-        fprintf(stderr, "Could not create the renderer : %s\n", SDL_GetError());
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    }
-
     Map *map = malloc(sizeof(Map));
     if (NULL == map)
     {
@@ -43,15 +23,15 @@ int main(int argc, char **argv)
         return 1;
     }
     map->height = 22;
-    map->width = 32;
+    map->width = 33;
     map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
     map->map = NULL;
     map_creation(map);
     map_reset(map, 1);
     map->map[0][0] = 3; //player position
 
-    YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
-    XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
+    int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
+    int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
     srand(time(NULL));
 
@@ -152,16 +132,7 @@ int main(int argc, char **argv)
     map_free(map);
     free(map);
     printf("free map ok\n");
-    quit(window, renderer);
-    printf("end ok\n");
     return 0;
-}
-
-void quit(SDL_Window *window, SDL_Renderer *renderer)
-{
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
 }
 
 void restart(Map *map, Player *player)
@@ -170,3 +141,4 @@ void restart(Map *map, Player *player)
     map->map[0][0] = 3;
     player_reset(player);
 }
+#endif
