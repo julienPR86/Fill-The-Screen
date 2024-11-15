@@ -40,19 +40,23 @@ int main(int argc, char **argv)
     int running = 1;
     while (running)
     {
-        if (SDL_QUIT == event.type)
+        while (SDL_PollEvent(&event))
         {
-            running = 0;
-        }
-        if (SDL_KEYDOWN == event.type)
-        {
-            if (SDLK_RETURN == event.key.keysym.sym)
+            if (SDL_QUIT == event.type)
             {
-                if (start_game(window, renderer, WIDTH, HEIGHT, FPS))
+                running = 0;
+            }
+            if (SDL_KEYDOWN == event.type)
+            {
+                if (SDLK_RETURN == event.key.keysym.sym)
                 {
-                    fprintf(stderr, "Could not run the game\n");
-                    running = 0;
-                    break;
+                    int output = start_game(window, renderer, WIDTH, HEIGHT, FPS);
+                    if (output)
+                    {
+                        fprintf(stderr, "Could not run the game\n");
+                        running = 0;
+                        break;
+                    }
                 }
             }
         }
