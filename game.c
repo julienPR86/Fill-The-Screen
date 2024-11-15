@@ -5,6 +5,7 @@
 #include "player.c"
 #include "map.c"
 
+void quit(SDL_Window *window, SDL_Renderer *renderer);
 void restart(Map *map, Player *player);
 
 int main(int argc, char **argv)
@@ -56,9 +57,7 @@ int main(int argc, char **argv)
     {
         fprintf(stderr, "Memory allocation error\n");
         map_free(map);
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
+        quit(window, renderer);
         return 1;
     }
     player->x = 0;
@@ -146,11 +145,16 @@ int main(int argc, char **argv)
     map_free(map);
     free(map);
     printf("free map ok\n");
+    quit(window, renderer);
+    printf("end ok\n");
+    return 0;
+}
+
+void quit(SDL_Window *window, SDL_Renderer *renderer)
+{
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    printf("end ok\n");
-    return 0;
 }
 
 void restart(Map *map, Player *player)

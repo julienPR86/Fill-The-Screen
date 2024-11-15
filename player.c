@@ -37,7 +37,7 @@ int player_move(Player *player, Map *map, int x, int y)
     return 0;
 }
 
-player_reset(Player *player)
+void player_reset(Player *player)
 {
     player->x = 0;
     player->y + 0;
