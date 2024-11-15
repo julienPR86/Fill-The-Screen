@@ -100,4 +100,19 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
     return 0;
 }
 
+int map_is_filled(Map *map)
+{
+    for (int y = 0; y < map->height; y++)
+    {
+        for (int x = 0; x < map->width; x++)
+        {
+            if (map->map[y][x] == 1)
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 #endif

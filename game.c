@@ -139,6 +139,10 @@ int main(int argc, char **argv)
             direction_timer = 0;
         }
         map_display(renderer, map, XOFFSET, YOFFSET);
+        if (map_is_filled(map))
+        {
+            restart(map, player);
+        }
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
