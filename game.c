@@ -17,7 +17,7 @@ int main(int argc, char **argv)
         SDL_Quit();
         return 1;
     }
-    SDL_Window *window = SDL_CreateWindow("Simulation", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("Fill The Screen", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     if (NULL == window)
     {
         fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
@@ -42,8 +42,8 @@ int main(int argc, char **argv)
         SDL_Quit();
         return 1;
     }
-    map->height = 12;
-    map->width = 64;
+    map->height = 22;
+    map->width = 32;
     map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
     map->map = NULL;
     map_creation(map);
