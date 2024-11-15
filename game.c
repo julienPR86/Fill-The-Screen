@@ -8,7 +8,6 @@
 #ifndef GAME
 #define GAME
 
-void quit(SDL_Window *window, SDL_Renderer *renderer);
 void restart(Map *map, Player *player);
 
 int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT, int FPS)
@@ -17,10 +16,7 @@ int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT
     if (NULL == map)
     {
         fprintf(stderr, "Memory allocation error\n");
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
+        return -1;
     }
     map->height = 22;
     map->width = 33;
@@ -40,8 +36,7 @@ int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT
     {
         fprintf(stderr, "Memory allocation error\n");
         map_free(map);
-        quit(window, renderer);
-        return 1;
+        return -1;
     }
     player->x = 0;
     player->y = 0;
@@ -67,7 +62,7 @@ int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT
         {
             if (SDL_QUIT == event.type)
             {
-                running = 0;
+                return 1;
             }
             if (SDL_KEYDOWN == event.type)
             {

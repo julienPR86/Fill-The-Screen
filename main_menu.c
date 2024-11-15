@@ -7,6 +7,8 @@
 #ifndef MENU
 #define MENU
 
+void quit(SDL_Window *, SDL_Renderer *);
+
 int WIDTH = 1080, HEIGHT = 720, FPS = 60;
 SDL_Window *window;
 SDL_Renderer *renderer;
@@ -51,11 +53,15 @@ int main(int argc, char **argv)
                 if (SDLK_RETURN == event.key.keysym.sym)
                 {
                     int output = start_game(window, renderer, WIDTH, HEIGHT, FPS);
-                    if (output)
+                    if (output < 0)
                     {
                         fprintf(stderr, "Could not run the game\n");
                         running = 0;
                         break;
+                    }
+                    else if (output > 0)
+                    {
+                        running = 0;
                     }
                 }
             }
@@ -73,6 +79,7 @@ void quit(SDL_Window *window, SDL_Renderer *renderer)
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    printf("quit ok\n");
 }
 
 #endif
