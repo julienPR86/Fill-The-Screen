@@ -40,7 +40,7 @@ int player_move(Player *player, Map *map, int x, int y)
 void player_reset(Player *player)
 {
     player->x = 0;
-    player->y + 0;
+    player->y = 0;
     player->moves = 0;
 }
 
