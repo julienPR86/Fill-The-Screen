@@ -157,7 +157,5 @@ void restart(Map *map, Player *player)
 {
     map_reset(map, 1);
     map->map[0][0] = 3;
-    player->x = 0;
-    player->y = 0;
-    player->moves = 0;
+    player_reset(player);
 }
