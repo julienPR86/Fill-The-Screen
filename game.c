@@ -10,7 +10,7 @@ void restart(Map *map, Player *player);
 
 int main(int argc, char **argv)
 {
-    int WIDTH = 1080, HEIGHT = 720, FPS = 60;
+    int WIDTH = 1080, HEIGHT = 720, XOFFSET = 0, YOFFSET = 0, FPS = 60;
     if (0 != SDL_Init(SDL_INIT_EVERYTHING))
     {
         fprintf(stderr, "Could not initialize SDL : %s\n", SDL_GetError());
@@ -49,6 +49,9 @@ int main(int argc, char **argv)
     map_creation(map);
     map_reset(map, 1);
     map->map[0][0] = 3; //player position
+
+    YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
+    XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
     srand(time(NULL));
 
@@ -135,7 +138,7 @@ int main(int argc, char **argv)
         {
             direction_timer = 0;
         }
-        map_display(renderer, map);
+        map_display(renderer, map, XOFFSET, YOFFSET);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);

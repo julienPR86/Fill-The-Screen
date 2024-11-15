@@ -73,7 +73,7 @@ void map_print(Map *map)
     }
 }
 
-void map_display(SDL_Renderer *renderer, Map *map)
+void map_display(SDL_Renderer *renderer, Map *map, int offset_x, int offset_y)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -81,7 +81,7 @@ void map_display(SDL_Renderer *renderer, Map *map)
         {
             SDL_Color color = colors[map->map[y][x]];
             SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-            SDL_Rect rect = {x*map->square_size, y*map->square_size, map->square_size, map->square_size};
+            SDL_Rect rect = {x*map->square_size+offset_x, y*map->square_size+offset_y, map->square_size, map->square_size};
             SDL_RenderFillRect(renderer, &rect);
         }
     }
