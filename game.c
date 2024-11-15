@@ -5,6 +5,8 @@
 #include "player.c"
 #include "map.c"
 
+void restart(Map *map, Player *player);
+
 int main(int argc, char **argv)
 {
     int WIDTH = 1080, HEIGHT = 720, FPS = 60;
@@ -39,9 +41,9 @@ int main(int argc, char **argv)
         SDL_Quit();
         return 1;
     }
-    map->height = 16;
-    map->width = 32;
-    map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);;
+    map->height = 12;
+    map->width = 64;
+    map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
     map->map = NULL;
     map_creation(map);
     map_reset(map, 1);
@@ -123,6 +125,10 @@ int main(int argc, char **argv)
                         direction_timer = map->height;
                     }
                 }
+                if (SDLK_r == event.key.keysym.sym)
+                {
+                    restart(map, player);
+                }
             }
         }
 
@@ -145,4 +151,13 @@ int main(int argc, char **argv)
     SDL_Quit();
     printf("end ok\n");
     return 0;
+}
+
+void restart(Map *map, Player *player)
+{
+    map_reset(map, 1);
+    map->map[0][0] = 3;
+    player->x = 0;
+    player->y = 0;
+    player->moves = 0;
 }
