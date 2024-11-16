@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <SDL2/SDL.h>
-#include "const.c"
+#include "consts.c"
 #include "player.c"
 #include "map.c"
 

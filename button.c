@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "const.c"
+#include "consts.c"
 
 #ifndef BUTTON
 #define BUTTON
