@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <SDL2/SDL.h>
+#include "const.c"
 #include "player.c"
 #include "map.c"
 
@@ -10,7 +11,7 @@
 
 void restart(Map *map, Player *player);
 
-int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT, int FPS)
+int start_game()
 {
     Map *map = malloc(sizeof(Map));
     if (NULL == map)

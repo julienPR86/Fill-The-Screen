@@ -2,16 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <SDL2/SDL.h>
+#include "const.c"
 #include "game.c"
 
-#ifndef MENU
-#define MENU
+#ifndef MAIN_MENU
+#define MAIN_MENU
 
 void quit(SDL_Window *, SDL_Renderer *);
-
-int WIDTH = 1080, HEIGHT = 720, FPS = 60;
-SDL_Window *window;
-SDL_Renderer *renderer;
 
 int main(int argc, char **argv)
 {
@@ -37,24 +34,24 @@ int main(int argc, char **argv)
         return 1;
     }
 
-
     SDL_Event event;
     int running = 1;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, 255,255,255,255); 
+        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
         SDL_RenderClear(renderer);//background
         while (SDL_PollEvent(&event))
         {
             if (SDL_QUIT == event.type)
             {
                 running = 0;
+                break;
             }
             if (SDL_KEYDOWN == event.type)
             {
                 if (SDLK_RETURN == event.key.keysym.sym)
                 {
-                    int output = start_game(window, renderer, WIDTH, HEIGHT, FPS);
+                    int output = start_game();
                     if (output < 0)
                     {
                         fprintf(stderr, "Could not run the game\n");
