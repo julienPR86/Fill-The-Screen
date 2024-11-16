@@ -42,6 +42,8 @@ int main(int argc, char **argv)
     int running = 1;
     while (running)
     {
+        SDL_SetRenderDrawColor(renderer, 255,255,255,255); 
+        SDL_RenderClear(renderer);//background
         while (SDL_PollEvent(&event))
         {
             if (SDL_QUIT == event.type)

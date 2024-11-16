@@ -50,6 +50,8 @@ int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT
     int running = 1;
     while (running)
     {
+        SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+        SDL_RenderClear(renderer);//background
         if (direction_timer)
         {
             direction_timer--;
