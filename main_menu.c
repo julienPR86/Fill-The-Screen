@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    Button button = {10,10,100,25, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
+    Button button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
 
     int running = 1;
     while (running)
@@ -49,22 +49,6 @@ int main(int argc, char **argv)
             {
                 running = 0;
                 break;
-            }
-            if (SDL_KEYDOWN == event.type)
-            {
-                if (SDLK_RETURN == event.key.keysym.sym)
-                {
-                    int output = start_game();
-                    if (output < 0)
-                    {
-                        fprintf(stderr, "Could not run the game\n");
-                    }
-                    else if (output > 0)
-                    {
-                        running = 0;
-                        break;
-                    }
-                }
             }
             if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
             {

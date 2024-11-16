@@ -11,6 +11,7 @@ typedef struct
     int y;
     int width;
     int height;
+    int clicked;
     SDL_Color color_on_click;
     SDL_Color color_out;
     SDL_Color color;
@@ -23,13 +24,23 @@ Button *button_update(Button *button)
 {
     int x, y;
     SDL_GetMouseState(&x, &y);
-    if (button_collision(button, x, y) && mouse_button_pressed == 1)
+    if (button_collision(button, x, y))
     {
-        button->color = button->color_on_click;
+        if (mouse_button_pressed == 1)
+        {
+            button->color = button->color_on_click;
+            button->clicked = 1;
+        }
+        else if (mouse_button_pressed == 0 && button->clicked)
+        {
+            button->clicked = 0;
+            button->command();
+        }
     }
     else
     {
-        button->color = button->color_out;    
+        if (button->clicked){button->clicked = 0;}
+        button->color = button->color_out;
     }
     return button;
 }
