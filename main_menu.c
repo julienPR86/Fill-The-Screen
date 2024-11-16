@@ -9,7 +9,7 @@
 #ifndef MAIN_MENU
 #define MAIN_MENU
 
-void quit(SDL_Window *, SDL_Renderer *);
+void quit();
 
 int main(int argc, char **argv)
 {
@@ -35,7 +35,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    Button button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
+    Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
+    Button quit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&quit)};
 
     int running = 1;
     while (running)
@@ -63,30 +64,38 @@ int main(int argc, char **argv)
             }
         }
 
-        button_update(&button);
-        button_render(&button);
+        button_update(&play_button);
+        button_render(&play_button);
 
-        if (OUTPUT_START_GAME == 1)
+        button_update(&quit_button);
+        button_render(&quit_button);
+
+        switch (OUTPUT_START_GAME)
         {
-            running = 0;
-            break;
+            case 1:
+                running = 0;
+                break;
+            case -1:
+                fprintf(stderr, "Could not run the game\n");
+                OUTPUT_START_GAME = 0;
         }
-        else if (OUTPUT_START_GAME == -1)
+        switch (OUTPUT_QUIT_GAME)
         {
-            fprintf(stderr, "Could not run the game\n");
-            OUTPUT_START_GAME = 0;
+            case 1:
+                running = 0;
+                return 0;
         }
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     quit(window, renderer);
-    printf("end ok\n");
     return 0;
 }
 
-void quit(SDL_Window *window, SDL_Renderer *renderer)
+void quit()
 {
+    OUTPUT_QUIT_GAME = 1;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
