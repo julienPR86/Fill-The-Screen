@@ -20,7 +20,7 @@ typedef struct
 
 int button_collision(Button *button, int x, int y);
 
-Button *button_update(Button *button)
+void button_update(Button *button)
 {
     int x, y;
     SDL_GetMouseState(&x, &y);
@@ -36,13 +36,18 @@ Button *button_update(Button *button)
             button->clicked = 0;
             button->command();
         }
+        else
+        {
+            button->color = button->color_out;
+        }
+
     }
     else
     {
         if (button->clicked){button->clicked = 0;}
         button->color = button->color_out;
     }
-    return button;
+    return;
 }
 
 void button_render(Button *button)

@@ -66,6 +66,17 @@ int main(int argc, char **argv)
         button_update(&button);
         button_render(&button);
 
+        if (OUTPUT_START_GAME == 1)
+        {
+            running = 0;
+            break;
+        }
+        else if (OUTPUT_START_GAME == -1)
+        {
+            fprintf(stderr, "Could not run the game\n");
+            OUTPUT_START_GAME = 0;
+        }
+
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }

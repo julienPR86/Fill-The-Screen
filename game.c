@@ -11,13 +11,14 @@
 
 void restart(Map *map, Player *player);
 
-int start_game()
+void start_game()
 {
     Map *map = malloc(sizeof(Map));
     if (NULL == map)
     {
         fprintf(stderr, "Memory allocation error\n");
-        return -1;
+        OUTPUT_START_GAME = -1;
+        return;
     }
     map->height = 22;
     map->width = 33;
@@ -36,7 +37,8 @@ int start_game()
         fprintf(stderr, "Memory allocation error\n");
         map_free(map);
         free(map);
-        return -1;
+        OUTPUT_START_GAME = -1;
+        return;
     }
     player->x = 0;
     player->y = 0;
@@ -52,7 +54,7 @@ int start_game()
     {
         SDL_SetRenderDrawColor(renderer, 0,0,0,255);
         SDL_RenderClear(renderer);//background
-                
+
         if (direction_timer)
         {
             direction_timer--;
@@ -71,7 +73,8 @@ int start_game()
                 map_free(map);
                 free(map);
                 printf("free map ok\n");
-                return 1;
+                OUTPUT_START_GAME = 1;
+                return;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -136,7 +139,8 @@ int start_game()
     map_free(map);
     free(map);
     printf("free map ok\n");
-    return 0;
+    OUTPUT_START_GAME = 0;
+    return;
 }
 
 void restart(Map *map, Player *player)

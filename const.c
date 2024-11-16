@@ -12,4 +12,6 @@ SDL_Event event;
 
 int mouse_button_pressed;
 
+int OUTPUT_START_GAME = 0;
+
 #endif
