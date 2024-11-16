@@ -57,11 +57,11 @@ int main(int argc, char **argv)
                     {
                         fprintf(stderr, "Could not run the game\n");
                         running = 0;
-                        break;
                     }
                     else if (output > 0)
                     {
                         running = 0;
+                        break;
                     }
                 }
             }

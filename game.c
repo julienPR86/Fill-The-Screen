@@ -62,6 +62,11 @@ int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT
         {
             if (SDL_QUIT == event.type)
             {
+                free(player);
+                printf("free player ok\n");
+                map_free(map);
+                free(map);
+                printf("free map ok\n");
                 return 1;
             }
             if (SDL_KEYDOWN == event.type)
