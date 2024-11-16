@@ -78,42 +78,34 @@ void start_game()
             }
             if (SDL_KEYDOWN == event.type)
             {
-                if (SDLK_d == event.key.keysym.sym)
+                if (!direction_timer)
                 {
-                    if (!direction_timer)
+                    if (SDLK_d == event.key.keysym.sym)
                     {
                         direction[0] = 1;
                         direction[1] = 0;
                         direction_timer = map->width;
                     }
-                }
-                if (SDLK_q == event.key.keysym.sym)
-                {
-                    if (!direction_timer)
+                    if (SDLK_q == event.key.keysym.sym)
                     {
                         direction[0] = -1;
                         direction[1] = 0;
                         direction_timer = map->width;
                     }
-                }
-                if (SDLK_z == event.key.keysym.sym)
-                {
-                    if (!direction_timer)
+                    if (SDLK_z == event.key.keysym.sym)
                     {
                         direction[0] = 0;
                         direction[1] = -1;
                         direction_timer = map->height;
                     }
-                }
-                if (SDLK_s == event.key.keysym.sym)
-                {
-                    if (!direction_timer)
+                    if (SDLK_s == event.key.keysym.sym)
                     {
                         direction[0] = 0;
                         direction[1] = 1;
                         direction_timer = map->height;
                     }
                 }
+                
                 if (SDLK_r == event.key.keysym.sym)
                 {
                     restart(map, player);

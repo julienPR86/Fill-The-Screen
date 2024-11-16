@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include <SDL2/SDL.h>
 #include "consts.c"
 #include "button.c"
@@ -81,6 +79,7 @@ int main(int argc, char **argv)
             case -1:
                 fprintf(stderr, "Could not run the game\n");
                 OUTPUT_START_GAME = 0;
+                break;
         }
         switch (OUTPUT_QUIT_GAME)
         {
