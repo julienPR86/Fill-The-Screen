@@ -14,6 +14,7 @@ typedef struct
     SDL_Color color_on_click;
     SDL_Color color_out;
     SDL_Color color;
+    void (*command)();
 } Button;
 
 int button_collision(Button *button, int x, int y);

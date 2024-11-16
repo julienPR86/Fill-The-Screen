@@ -35,13 +35,14 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    Button button = {10,10,100,25, {255,128,0,255},{255,0,0,255}, {255,0,0,255}};
+    Button button = {10,10,100,25, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
 
     int running = 1;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, 255,255,255,255);
         SDL_RenderClear(renderer);//background
+
         while (SDL_PollEvent(&event))
         {
             if (SDL_QUIT == event.type)
@@ -69,9 +70,12 @@ int main(int argc, char **argv)
             {
                 mouse_button_pressed = event.button.button;
             }
-            else
+            if (SDL_MOUSEBUTTONUP == event.type)
             {
-                mouse_button_pressed = 0;
+                if (event.button.button == mouse_button_pressed)
+                {
+                    mouse_button_pressed = 0;
+                }
             }
         }
 

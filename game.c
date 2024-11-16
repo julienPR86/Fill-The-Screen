@@ -52,6 +52,7 @@ int start_game()
     {
         SDL_SetRenderDrawColor(renderer, 0,0,0,255);
         SDL_RenderClear(renderer);//background
+                
         if (direction_timer)
         {
             direction_timer--;
