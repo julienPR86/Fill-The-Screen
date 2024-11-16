@@ -47,7 +47,6 @@ int start_game()
     int direction[2] = {0,0};
     int direction_timer = 0;
 
-    SDL_Event event;
     int running = 1;
     while (running)
     {

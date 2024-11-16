@@ -8,5 +8,6 @@ int HEIGHT = 720;
 int FPS = 60;
 SDL_Window *window;
 SDL_Renderer *renderer;
+SDL_Event event;
 
 #endif

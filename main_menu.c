@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 
     Button button = {10,10,100,25, {255,128,0,255},{255,0,0,255}, {255,0,0,255}};
 
-    SDL_Event event;
     int running = 1;
     while (running)
     {
