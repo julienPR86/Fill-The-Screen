@@ -3,6 +3,7 @@
 #include <time.h>
 #include <SDL2/SDL.h>
 #include "const.c"
+#include "button.c"
 #include "game.c"
 
 #ifndef MAIN_MENU
@@ -34,6 +35,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
+    Button button = {10,10,100,25, {255,128,0,255},{255,0,0,255}, {255,0,0,255}};
+
     SDL_Event event;
     int running = 1;
     while (running)
@@ -64,6 +67,10 @@ int main(int argc, char **argv)
                 }
             }
         }
+
+        button_update(&button);
+        button_render(&button);
+
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
