@@ -22,7 +22,7 @@ Button *button_update(Button *button)
 {
     int x, y;
     SDL_GetMouseState(&x, &y);
-    if (button_collision(button, x, y) && mouse_pressed == 1)
+    if (button_collision(button, x, y) && mouse_button_pressed == 1)
     {
         button->color = button->color_on_click;
     }

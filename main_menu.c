@@ -65,6 +65,14 @@ int main(int argc, char **argv)
                     }
                 }
             }
+            if (SDL_MOUSEBUTTONDOWN == event.type)
+            {
+                mouse_button_pressed = event.button.button;
+            }
+            else
+            {
+                mouse_button_pressed = 0;
+            }
         }
 
         button_update(&button);
