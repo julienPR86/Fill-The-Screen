@@ -38,6 +38,8 @@ int main(int argc, char **argv)
     Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
     Button quit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&quit)};
 
+    Button buttons[] = {play_button, quit_button};
+
     int running = 1;
     while (running)
     {
@@ -64,11 +66,12 @@ int main(int argc, char **argv)
             }
         }
 
-        button_update(&play_button);
-        button_render(&play_button);
-
-        button_update(&quit_button);
-        button_render(&quit_button);
+        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+        {
+            Button *button = &buttons[i];
+            button_update(button);
+            button_render(button);
+        }
 
         switch (OUTPUT_START_GAME)
         {
