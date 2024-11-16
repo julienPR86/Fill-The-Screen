@@ -5,15 +5,20 @@
 #include "consts.c"
 #include "player.c"
 #include "map.c"
+#include "pause_menu.c"
 
 #ifndef GAME
 #define GAME
 
 void restart(Map *map, Player *player);
+void quit_game();
+
+Map *map;
+Player *player;
 
 void start_game()
 {
-    Map *map = malloc(sizeof(Map));
+    map = malloc(sizeof(Map));
     if (NULL == map)
     {
         fprintf(stderr, "Memory allocation error\n");
@@ -31,7 +36,7 @@ void start_game()
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
     int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
-    Player *player = (Player *)malloc(sizeof(Player));
+    player = (Player *)malloc(sizeof(Player));
     if (NULL == player)
     {
         fprintf(stderr, "Memory allocation error\n");
@@ -68,11 +73,7 @@ void start_game()
         {
             if (SDL_QUIT == event.type)
             {
-                free(player);
-                printf("free player ok\n");
-                map_free(map);
-                free(map);
-                printf("free map ok\n");
+                quit_game();
                 OUTPUT_START_GAME = 1;
                 return;
             }
@@ -110,7 +111,20 @@ void start_game()
                 {
                     restart(map, player);
                 }
+
+                if (SDLK_ESCAPE == event.key.keysym.sym)
+                {
+                    pause_menu();
+                }
             }
+        }
+
+        switch (OUTPUT_PAUSE_MENU)
+        {
+            case 1:
+                quit_game();
+                OUTPUT_START_GAME = 1;
+                return;
         }
 
         if (player_move(player, map, direction[0], direction[1]))
@@ -126,11 +140,7 @@ void start_game()
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    free(player);
-    printf("free player ok\n");
-    map_free(map);
-    free(map);
-    printf("free map ok\n");
+    quit_game();
     OUTPUT_START_GAME = 0;
     return;
 }
@@ -140,5 +150,14 @@ void restart(Map *map, Player *player)
     map_reset(map, 1);
     map->map[0][0] = 3;
     player_reset(player);
+}
+
+void quit_game()
+{
+    free(player);
+    printf("free player ok\n");
+    map_free(map);
+    free(map);
+    printf("free map ok\n");
 }
 #endif

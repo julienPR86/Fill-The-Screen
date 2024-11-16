@@ -4,7 +4,7 @@
 #ifndef PAUSE_MENU
 #define PAUSE_MENU
 
-void pause()
+void pause_menu()
 {
     int running = 1;
     while (running)
@@ -16,8 +16,16 @@ void pause()
         {
             if (SDL_QUIT == event.type)
             {
-                running = 0;
-                break;
+                OUTPUT_PAUSE_MENU = 1;
+                return;
+            }
+            if (SDL_KEYDOWN == event.type)
+            {
+                if (SDLK_ESCAPE == event.key.keysym.sym)
+                {
+                    running = 0;
+                    break;
+                }
             }
         }
         SDL_Delay(1.0/FPS*1000);

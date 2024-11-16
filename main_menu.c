@@ -81,13 +81,12 @@ int main(int argc, char **argv)
                 OUTPUT_START_GAME = 0;
                 break;
         }
-        switch (OUTPUT_QUIT_GAME)
+        switch (OUTPUT_QUIT)
         {
             case 1:
                 running = 0;
                 return 0;
         }
-
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
@@ -97,7 +96,7 @@ int main(int argc, char **argv)
 
 void quit()
 {
-    OUTPUT_QUIT_GAME = 1;
+    OUTPUT_QUIT = 1;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

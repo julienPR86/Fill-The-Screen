@@ -13,6 +13,7 @@ SDL_Event event;
 int mouse_button_pressed;
 
 int OUTPUT_START_GAME = 0;
-int OUTPUT_QUIT_GAME = 0;
+int OUTPUT_QUIT = 0;
+int OUTPUT_PAUSE_MENU = 0;
 
 #endif
