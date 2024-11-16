@@ -56,7 +56,6 @@ int main(int argc, char **argv)
                     if (output < 0)
                     {
                         fprintf(stderr, "Could not run the game\n");
-                        running = 0;
                     }
                     else if (output > 0)
                     {

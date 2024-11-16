@@ -29,18 +29,19 @@ int start_game(SDL_Window *window, SDL_Renderer *renderer, int WIDTH, int HEIGHT
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
     int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
-    srand(time(NULL));
-
     Player *player = (Player *)malloc(sizeof(Player));
     if (NULL == player)
     {
         fprintf(stderr, "Memory allocation error\n");
         map_free(map);
+        free(map);
         return -1;
     }
     player->x = 0;
     player->y = 0;
     player->moves = 0;
+
+    srand(time(NULL));
 
     int direction[2] = {0,0};
     int direction_timer = 0;
