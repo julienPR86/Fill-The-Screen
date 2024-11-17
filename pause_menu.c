@@ -5,15 +5,17 @@
 #ifndef PAUSE_MENU
 #define PAUSE_MENU
 
+int OUTPUT_BUTTONS_PAUSE_MENU = 0;
+
 void back();
-void restart();
+void _restart();
 void main_menu();
 
 void pause_menu()
 {
 
     Button back_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&back)};
-    Button restart_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&restart)};
+    Button restart_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&_restart)};
     Button main_menu_button = {10,90,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&main_menu)};
 
     Button buttons[] = {back_button, restart_button, main_menu_button};
@@ -39,6 +41,17 @@ void pause_menu()
                     break;
                 }
             }
+            if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
+            {
+                mouse_button_pressed = event.button.button;
+            }
+            if (SDL_MOUSEBUTTONUP == event.type)
+            {
+                if (event.button.button == mouse_button_pressed)
+                {
+                    mouse_button_pressed = 0;
+                }
+            }
         }
 
         for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
@@ -46,6 +59,18 @@ void pause_menu()
             Button *button = &buttons[i];
             button_update(button);
             button_render(button);
+        }
+
+        switch (OUTPUT_BUTTONS_PAUSE_MENU)
+        {
+            case 1:
+                OUTPUT_BUTTONS_PAUSE_MENU = 0;
+                running = 0;
+                break;
+            case 2:
+                OUTPUT_BUTTONS_PAUSE_MENU = 0;
+                running = 0;
+                return;
         }
 
         SDL_Delay(1.0/FPS*1000);
@@ -57,17 +82,19 @@ void pause_menu()
 
 void back()
 {
-
+    OUTPUT_BUTTONS_PAUSE_MENU = 1;
 }
 
-void restart()
+void _restart()
 {
-
+    OUTPUT_BUTTONS_PAUSE_MENU = 2;
+    OUTPUT_PAUSE_MENU = 2;
 }
 
 void main_menu()
 {
-
+    OUTPUT_BUTTONS_PAUSE_MENU = 2;
+    OUTPUT_PAUSE_MENU = 3;
 }
 
 #endif

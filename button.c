@@ -34,13 +34,13 @@ void button_update(Button *button)
         else if (mouse_button_pressed == 0 && button->clicked)
         {
             button->clicked = 0;
+            button->color = button->color_out;
             button->command();
         }
         else
         {
             button->color = button->color_out;
         }
-
     }
     else
     {

@@ -10,7 +10,7 @@
 #ifndef GAME
 #define GAME
 
-void restart(Map *map, Player *player);
+void restart();
 void quit_game();
 
 Map *map;
@@ -125,6 +125,15 @@ void start_game()
                 quit_game();
                 OUTPUT_GAME = 1;
                 return;
+            case 2:
+                OUTPUT_PAUSE_MENU = 0;
+                restart();
+                break;
+            case 3:
+                running = 0;
+                OUTPUT_GAME = 0;
+                OUTPUT_PAUSE_MENU = 0;
+                return;
         }
 
         if (player_move(player, map, direction[0], direction[1]))
@@ -145,7 +154,7 @@ void start_game()
     return;
 }
 
-void restart(Map *map, Player *player)
+void restart()
 {
     map_reset(map, 1);
     map->map[0][0] = 3;
