@@ -71,14 +71,14 @@ int main(int argc, char **argv)
             button_render(button);
         }
 
-        switch (OUTPUT_START_GAME)
+        switch (OUTPUT_GAME)
         {
             case 1:
                 running = 0;
                 break;
             case -1:
                 fprintf(stderr, "Could not run the game\n");
-                OUTPUT_START_GAME = 0;
+                OUTPUT_GAME = 0;
                 break;
         }
         switch (OUTPUT_QUIT)

@@ -22,7 +22,7 @@ void start_game()
     if (NULL == map)
     {
         fprintf(stderr, "Memory allocation error\n");
-        OUTPUT_START_GAME = -1;
+        OUTPUT_GAME = -1;
         return;
     }
     map->height = 22;
@@ -42,7 +42,7 @@ void start_game()
         fprintf(stderr, "Memory allocation error\n");
         map_free(map);
         free(map);
-        OUTPUT_START_GAME = -1;
+        OUTPUT_GAME = -1;
         return;
     }
     player->x = 0;
@@ -74,7 +74,7 @@ void start_game()
             if (SDL_QUIT == event.type)
             {
                 quit_game();
-                OUTPUT_START_GAME = 1;
+                OUTPUT_GAME = 1;
                 return;
             }
             if (SDL_KEYDOWN == event.type)
@@ -123,7 +123,7 @@ void start_game()
         {
             case 1:
                 quit_game();
-                OUTPUT_START_GAME = 1;
+                OUTPUT_GAME = 1;
                 return;
         }
 
@@ -141,7 +141,7 @@ void start_game()
         SDL_RenderPresent(renderer);
     }
     quit_game();
-    OUTPUT_START_GAME = 0;
+    OUTPUT_GAME = 0;
     return;
 }
 
