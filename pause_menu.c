@@ -5,7 +5,7 @@
 #ifndef PAUSE_MENU
 #define PAUSE_MENU
 
-int OUTPUT_BUTTONS_PAUSE_MENU = 0;
+int running;
 
 void back();
 void _restart();
@@ -20,7 +20,7 @@ void pause_menu()
 
     Button buttons[] = {back_button, restart_button, main_menu_button};
 
-    int running = 1;
+    running = 1;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, 255,255,255,255);
@@ -61,39 +61,27 @@ void pause_menu()
             button_render(button);
         }
 
-        switch (OUTPUT_BUTTONS_PAUSE_MENU)
-        {
-            case 1:
-                OUTPUT_BUTTONS_PAUSE_MENU = 0;
-                running = 0;
-                break;
-            case 2:
-                OUTPUT_BUTTONS_PAUSE_MENU = 0;
-                running = 0;
-                return;
-        }
-
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    OUTPUT_PAUSE_MENU = 0;
     return;
 }
 
 void back()
 {
-    OUTPUT_BUTTONS_PAUSE_MENU = 1;
+    running = 0;
+    OUTPUT_PAUSE_MENU = 0;
 }
 
 void _restart()
 {
-    OUTPUT_BUTTONS_PAUSE_MENU = 2;
+    running = 0;
     OUTPUT_PAUSE_MENU = 2;
 }
 
 void main_menu()
 {
-    OUTPUT_BUTTONS_PAUSE_MENU = 2;
+    running = 0;
     OUTPUT_PAUSE_MENU = 3;
 }
 

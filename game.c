@@ -131,9 +131,8 @@ void start_game()
                 break;
             case 3:
                 running = 0;
-                OUTPUT_GAME = 0;
                 OUTPUT_PAUSE_MENU = 0;
-                return;
+                break;
         }
 
         if (player_move(player, map, direction[0], direction[1]))
