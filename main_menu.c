@@ -68,8 +68,8 @@ int main(int argc, char **argv)
         case 0:
             break;
         case 1:
-            running = 0;
-            break;
+            quit(window, renderer);
+            return 0;
         case -1:
             fprintf(stderr, "Could not run the game\n");
             break;

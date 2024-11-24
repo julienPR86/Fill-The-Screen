@@ -119,8 +119,8 @@ int start_game()
                             restart();
                             break;
                         case 3:
-                            running = 0;
-                            break;
+                            quit_game();
+                            return 0;
                     }
                 }
             }
