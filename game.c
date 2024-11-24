@@ -46,11 +46,11 @@ int start_game()
     player->x = 0;
     player->y = 0;
     player->moves = 0;
+    player->remaining_moves = 0;
 
     srand(time(NULL));
 
     int direction[2] = {0,0};
-    int direction_timer = 0;
 
     int running = 1, out;
     while (running)
@@ -58,11 +58,7 @@ int start_game()
         SDL_SetRenderDrawColor(renderer, 0,0,0,255);
         SDL_RenderClear(renderer);//background
 
-        if (direction_timer)
-        {
-            direction_timer--;
-        }
-        else
+        if (!player->remaining_moves)
         {
             direction[0] = 0;
             direction[1] = 0;
@@ -76,31 +72,31 @@ int start_game()
             }
             if (SDL_KEYDOWN == event.type)
             {
-                if (!direction_timer)
+                if (!player->remaining_moves)
                 {
                     if (SDLK_d == event.key.keysym.sym)
                     {
                         direction[0] = 1;
                         direction[1] = 0;
-                        direction_timer = map->width;
+                        player->remaining_moves = map->width;
                     }
                     if (SDLK_q == event.key.keysym.sym)
                     {
                         direction[0] = -1;
                         direction[1] = 0;
-                        direction_timer = map->width;
+                        player->remaining_moves = map->width;
                     }
                     if (SDLK_z == event.key.keysym.sym)
                     {
                         direction[0] = 0;
                         direction[1] = -1;
-                        direction_timer = map->height;
+                        player->remaining_moves = map->height;
                     }
                     if (SDLK_s == event.key.keysym.sym)
                     {
                         direction[0] = 0;
                         direction[1] = 1;
-                        direction_timer = map->height;
+                        player->remaining_moves = map->height;
                     }
                 }
                 
@@ -130,10 +126,7 @@ int start_game()
             }
         }
 
-        if (player_move(player, map, direction[0], direction[1]))
-        {
-            direction_timer = 0;
-        }
+        player_move(player, map, direction[0], direction[1]);
         map_display(renderer, map, XOFFSET, YOFFSET);
         if (map_is_filled(map))
         {
