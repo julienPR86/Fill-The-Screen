@@ -7,7 +7,7 @@
 #ifndef MAIN_MENU
 #define MAIN_MENU
 
-void quit();
+int quit();
 
 int main(int argc, char **argv)
 {
@@ -36,9 +36,7 @@ int main(int argc, char **argv)
     Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
     Button quit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&quit)};
 
-    Button buttons[] = {play_button, quit_button};
-
-    int running = 1;
+    int running = 1, out;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, 255,255,255,255);
@@ -64,29 +62,28 @@ int main(int argc, char **argv)
             }
         }
 
-        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+        out = button_update(&play_button);
+        switch (out)
         {
-            Button *button = &buttons[i];
-            button_update(button);
-            button_render(button);
+        case 0:
+            break;
+        case 1:
+            running = 0;
+            break;
+        case -1:
+            fprintf(stderr, "Could not run the game\n");
+            break;
         }
+        button_render(&play_button);
 
-        switch (OUTPUT_GAME)
+        out = button_update(&quit_button);
+        switch (out)
         {
-            case 1:
-                running = 0;
-                break;
-            case -1:
-                fprintf(stderr, "Could not run the game\n");
-                OUTPUT_GAME = 0;
-                break;
+        case 0:
+            return 0;
         }
-        switch (OUTPUT_QUIT)
-        {
-            case 1:
-                running = 0;
-                return 0;
-        }
+        button_render(&quit_button);
+
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
@@ -94,13 +91,13 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void quit()
+int quit()
 {
-    OUTPUT_QUIT = 1;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
     printf("quit ok\n");
+    return 0;
 }
 
 #endif

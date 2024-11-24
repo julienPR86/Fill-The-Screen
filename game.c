@@ -10,20 +10,19 @@
 #ifndef GAME
 #define GAME
 
-void restart();
-void quit_game();
+int restart();
+int quit_game();
 
 Map *map;
 Player *player;
 
-void start_game()
+int start_game()
 {
     map = malloc(sizeof(Map));
     if (NULL == map)
     {
         fprintf(stderr, "Memory allocation error\n");
-        OUTPUT_GAME = -1;
-        return;
+        return -1;
     }
     map->height = 22;
     map->width = 33;
@@ -42,8 +41,7 @@ void start_game()
         fprintf(stderr, "Memory allocation error\n");
         map_free(map);
         free(map);
-        OUTPUT_GAME = -1;
-        return;
+        return -1;
     }
     player->x = 0;
     player->y = 0;
@@ -54,7 +52,7 @@ void start_game()
     int direction[2] = {0,0};
     int direction_timer = 0;
 
-    int running = 1;
+    int running = 1, out;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, 0,0,0,255);
@@ -74,8 +72,7 @@ void start_game()
             if (SDL_QUIT == event.type)
             {
                 quit_game();
-                OUTPUT_GAME = 1;
-                return;
+                return 1;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -114,25 +111,23 @@ void start_game()
 
                 if (SDLK_ESCAPE == event.key.keysym.sym)
                 {
-                    pause_menu();
+                    out = pause_menu();
+                    switch (out)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            quit_game();
+                            return 1;
+                        case 2:
+                            restart();
+                            break;
+                        case 3:
+                            running = 0;
+                            break;
+                    }
                 }
             }
-        }
-
-        switch (OUTPUT_PAUSE_MENU)
-        {
-            case 1:
-                quit_game();
-                OUTPUT_GAME = 1;
-                return;
-            case 2:
-                OUTPUT_PAUSE_MENU = 0;
-                restart();
-                break;
-            case 3:
-                running = 0;
-                OUTPUT_PAUSE_MENU = 0;
-                break;
         }
 
         if (player_move(player, map, direction[0], direction[1]))
@@ -149,23 +144,24 @@ void start_game()
         SDL_RenderPresent(renderer);
     }
     quit_game();
-    OUTPUT_GAME = 0;
-    return;
+    return 0;
 }
 
-void restart()
+int restart()
 {
     map_reset(map, 1);
     map->map[0][0] = 3;
     player_reset(player);
+    return 0;
 }
 
-void quit_game()
+int quit_game()
 {
     free(player);
     printf("free player ok\n");
     map_free(map);
     free(map);
     printf("free map ok\n");
+    return 0;
 }
 #endif

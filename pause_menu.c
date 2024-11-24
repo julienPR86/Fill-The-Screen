@@ -5,22 +5,18 @@
 #ifndef PAUSE_MENU
 #define PAUSE_MENU
 
-int running;
+int back();
+int _restart();
+int main_menu();
 
-void back();
-void _restart();
-void main_menu();
-
-void pause_menu()
+int pause_menu()
 {
 
     Button back_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&back)};
     Button restart_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&_restart)};
     Button main_menu_button = {10,90,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&main_menu)};
 
-    Button buttons[] = {back_button, restart_button, main_menu_button};
-
-    running = 1;
+    int running = 1, out;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, 255,255,255,255);
@@ -30,8 +26,7 @@ void pause_menu()
         {
             if (SDL_QUIT == event.type)
             {
-                OUTPUT_PAUSE_MENU = 1;
-                return;
+                return 1;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -54,35 +49,50 @@ void pause_menu()
             }
         }
 
-        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+        out = button_update(&back_button);
+        switch (out)
         {
-            Button *button = &buttons[i];
-            button_update(button);
-            button_render(button);
+            case 0:
+                running = 0;
+                break;
         }
+        button_render(&back_button);
+
+        out = button_update(&restart_button);
+        switch (out)
+        {
+            case 0:
+                return 2;
+        }
+        button_render(&restart_button);
+
+        out = button_update(&main_menu_button);
+        switch (out)
+        {
+            case 0:
+                return 3;
+        }
+        button_render(&main_menu_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    return;
+    return 0;
 }
 
-void back()
+int back()
 {
-    running = 0;
-    OUTPUT_PAUSE_MENU = 0;
+    return 0;
 }
 
-void _restart()
+int _restart()
 {
-    running = 0;
-    OUTPUT_PAUSE_MENU = 2;
+    return 0;
 }
 
-void main_menu()
+int main_menu()
 {
-    running = 0;
-    OUTPUT_PAUSE_MENU = 3;
+    return 0;
 }
 
 #endif
