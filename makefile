@@ -13,4 +13,4 @@ $(OBJ): $(SRC)
 	$(CC) -c $(SRC)
 
 clean:
-	rm "$(OBJ)"	
+	rm $(OBJ)
