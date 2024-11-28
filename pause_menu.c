@@ -11,7 +11,6 @@ int main_menu();
 
 int pause_menu()
 {
-
     Button back_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&back)};
     Button restart_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&_restart)};
     Button main_menu_button = {10,90,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&main_menu)};
