@@ -1,5 +1,7 @@
-#ignore the .exe file
+#ignore executable file
 *.exe
-#vscode exentions
+#ignore obj files
+*.o
+#vscode extensions
 *.vs
 *.vscode
