@@ -1,16 +1,14 @@
 CC = gcc
 CFLAGS = -lmingw32 -lSDL2main -lSDL2
-SRC = main_menu.c
-OBJ = main_menu.o
-EXEC = game.exe
+EXEC = main
 
-all : $(EXEC) clean
+all : $(EXEC)
 
-$(EXEC): $(OBJ)
-	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS)
+$(EXEC) : main.o button.o game.o init.o map.o pause_menu.o player.o
+	$(CC) -o $(EXEC) main.o button.o game.o init.o map.o pause_menu.o player.o $(CFLAGS)
 
-$(OBJ): $(SRC)
-	$(CC) -c $(SRC)
+%.o : scripts/%.c
+	$(CC) -c $<
 
 clean:
-	rm $(OBJ)
+	rm -f *.o
