@@ -1,0 +1,85 @@
+#include "main.h"
+
+int main(int argc, char **argv)
+{
+    if (init())
+    {
+        fprintf(stderr, "Could not initialised the game\n");
+        return 1;
+    }
+    if (map_init())
+    {
+        fprintf(stderr, "Could not initialised the map\n");
+        exit_game();
+        return 1;
+    }
+    if (player_init())
+    {
+        fprintf(stderr, "Could not initialised the player\n");
+        exit_game();
+        return 1;
+    }
+
+    Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
+    Button exit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&exit_game)};
+
+    int running = 1, out;
+    while (running)
+    {
+        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+        SDL_RenderClear(renderer);//background
+
+        while (SDL_PollEvent(&event))
+        {
+            if (SDL_QUIT == event.type)
+            {
+                running = 0;
+                break;
+            }
+            if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
+            {
+                mouse_button_pressed = event.button.button;
+            }
+            if (SDL_MOUSEBUTTONUP == event.type)
+            {
+                if (event.button.button == mouse_button_pressed)
+                {
+                    mouse_button_pressed = 0;
+                }
+            }
+        }
+
+        out = button_update(&play_button);
+        switch (out)
+        {
+            case 0:
+                break;
+            case 1:
+                exit_game();
+                return 0;
+        }
+        button_render(&play_button);
+
+        out = button_update(&exit_button);
+        switch (out)
+        {
+            case 0:
+                return 0;
+        }
+        button_render(&exit_button);
+
+        SDL_Delay(1.0/FPS*1000);
+        SDL_RenderPresent(renderer);
+    }
+    exit_game();
+    return 0;
+}
+
+int exit_game()
+{
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    printf("exit ok\n");
+    return 0;
+}
