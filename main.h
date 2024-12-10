@@ -6,6 +6,17 @@
 #include <time.h>
 #include <SDL2/SDL.h>
 
+enum Returns
+{
+    RETURN_NULL,
+    RETURN_EXIT_MAIN,
+    RETURN_EXIT_GAME,
+    RETURN_EXIT_PAUSE_MENU,
+    RETURN_BACK_GAME,
+    RETURN_RESTART_GAME,
+    RETURN_BACK_MAIN_MENU,
+};
+
 typedef struct
 {
     int x;
@@ -53,10 +64,10 @@ int init();
 int map_init();
 int player_init();
 
-int exit_game();
+int exit_main();
 
 int restart();
-int start_game();
+int game();
 int quit_game();
 
 Map *map_creation(Map *map);
