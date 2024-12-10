@@ -16,7 +16,7 @@ int pause_menu()
         {
             if (SDL_QUIT == event.type)
             {
-                return 1;
+                return RETURN_EXIT_MAIN;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -42,7 +42,7 @@ int pause_menu()
         out = button_update(&back_button);
         switch (out)
         {
-            case 0:
+            case RETURN_NULL:
                 running = 0;
                 break;
         }
@@ -51,36 +51,36 @@ int pause_menu()
         out = button_update(&restart_button);
         switch (out)
         {
-            case 0:
-                return 2;
+            case RETURN_NULL:
+                return RETURN_RESTART_GAME;
         }
         button_render(&restart_button);
 
         out = button_update(&main_menu_button);
         switch (out)
         {
-            case 0:
-                return 3;
+            case RETURN_NULL:
+                return RETURN_BACK_MAIN_MENU;
         }
         button_render(&main_menu_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    return 0;
+    return RETURN_EXIT_PAUSE_MENU;
 }
 
 int back()
 {
-    return 0;
+    return RETURN_NULL;
 }
 
 int _restart()
 {
-    return 0;
+    return RETURN_NULL;
 }
 
 int main_menu()
 {
-    return 0;
+    return RETURN_NULL;
 }
