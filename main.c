@@ -5,23 +5,11 @@ int main(int argc, char **argv)
     if (init())
     {
         fprintf(stderr, "Could not initialised the game\n");
-        return 1;
-    }
-    if (map_init())
-    {
-        fprintf(stderr, "Could not initialised the map\n");
-        exit_game();
-        return 1;
-    }
-    if (player_init())
-    {
-        fprintf(stderr, "Could not initialised the player\n");
-        exit_game();
-        return 1;
+        return -1;
     }
 
-    Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&start_game)};
-    Button exit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&exit_game)};
+    Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&game)};
+    Button exit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&exit_main)};
 
     int running = 1, out;
     while (running)
@@ -52,34 +40,34 @@ int main(int argc, char **argv)
         out = button_update(&play_button);
         switch (out)
         {
-            case 0:
+            case RETURN_EXIT_GAME:
                 break;
-            case 1:
-                exit_game();
-                return 0;
+            case RETURN_EXIT_MAIN:
+                exit_main();
+                return RETURN_NULL;
         }
         button_render(&play_button);
 
         out = button_update(&exit_button);
         switch (out)
         {
-            case 0:
-                return 0;
+            case RETURN_EXIT_MAIN:
+                return RETURN_NULL;
         }
         button_render(&exit_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    exit_game();
-    return 0;
+    exit_main();
+    return RETURN_NULL;
 }
 
-int exit_game()
+int exit_main()
 {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
     printf("exit ok\n");
-    return 0;
+    return RETURN_EXIT_MAIN;
 }

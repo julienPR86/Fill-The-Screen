@@ -1,7 +1,19 @@
 #include "../main.h"
 
-int start_game()
+int game()
 {
+    if (map_init())
+    {
+        fprintf(stderr, "Could not initialised the map\n");
+        exit_main();
+        return -1;
+    }
+    if (player_init())
+    {
+        fprintf(stderr, "Could not initialised the player\n");
+        exit_main();
+        return -1;
+    }
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
     int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
@@ -25,7 +37,7 @@ int start_game()
             if (SDL_QUIT == event.type)
             {
                 quit_game();
-                return 1;
+                return RETURN_EXIT_MAIN;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -67,17 +79,18 @@ int start_game()
                     out = pause_menu();
                     switch (out)
                     {
-                        case 0:
+                        case RETURN_EXIT_PAUSE_MENU:
                             break;
-                        case 1:
+                        case RETURN_EXIT_MAIN:
                             quit_game();
-                            return 1;
-                        case 2:
+                            return RETURN_EXIT_MAIN;
+                        case RETURN_RESTART_GAME:
                             restart();
                             break;
-                        case 3:
+                        case RETURN_BACK_MAIN_MENU:
+                            restart();
                             quit_game();
-                            return 0;
+                            return RETURN_EXIT_GAME;
                     }
                 }
             }
@@ -94,7 +107,7 @@ int start_game()
         SDL_RenderPresent(renderer);
     }
     quit_game();
-    return 0;
+    return RETURN_EXIT_GAME;
 }
 
 int restart()
@@ -102,15 +115,17 @@ int restart()
     map_reset(map, 1);
     map->map[0][0] = 3;
     player_reset(player);
-    return 0;
+    return RETURN_NULL;
 }
 
 int quit_game()
 {
     free(player);
+    player = NULL;
     printf("free player ok\n");
     map_free(map);
     free(map);
+    map = NULL;
     printf("free map ok\n");
-    return 0;
+    return RETURN_NULL;
 }
