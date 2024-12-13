@@ -115,7 +115,7 @@ int restart()
     map_reset(map, 1);
     map->map[0][0] = 3;
     player_reset(player);
-    return RETURN_NULL;
+    return RETURN_;
 }
 
 int quit_game()
@@ -127,5 +127,5 @@ int quit_game()
     free(map);
     map = NULL;
     printf("free map ok\n");
-    return RETURN_NULL;
+    return RETURN_;
 }

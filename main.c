@@ -44,7 +44,7 @@ int main(int argc, char **argv)
                 break;
             case RETURN_EXIT_MAIN:
                 exit_main();
-                return RETURN_NULL;
+                return RETURN_;
         }
         button_render(&play_button);
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
         switch (out)
         {
             case RETURN_EXIT_MAIN:
-                return RETURN_NULL;
+                return RETURN_;
         }
         button_render(&exit_button);
 
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
         SDL_RenderPresent(renderer);
     }
     exit_main();
-    return RETURN_NULL;
+    return RETURN_;
 }
 
 int exit_main()

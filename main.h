@@ -8,7 +8,7 @@
 
 enum Returns
 {
-    RETURN_NULL,
+    RETURN_,
     RETURN_EXIT_MAIN,
     RETURN_EXIT_GAME,
     RETURN_EXIT_PAUSE_MENU,
