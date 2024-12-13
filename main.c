@@ -8,8 +8,8 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    Button play_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&game)};
-    Button exit_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&exit_main)};
+    Button play_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), (void (*))(&game)};
+    Button exit_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), (void (*))(&exit_main)};
 
     int running = 1, out;
     while (running)

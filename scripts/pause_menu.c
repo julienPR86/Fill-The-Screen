@@ -2,9 +2,9 @@
 
 int pause_menu()
 {
-    Button back_button = {10,10,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&back)};
-    Button restart_button = {10,50,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&_restart)};
-    Button main_menu_button = {10,90,100,25,0, {255,128,0,255},{255,0,0,255}, {255,0,0,255}, (void (*))(&main_menu)};
+    Button back_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_back/button_back_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_back/button_back_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_back/button_back_unpressed.bmp"), (void (*))(&back)};
+    Button restart_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), (void (*))(&_restart)};
+    Button main_menu_button = {10,90,100,25,0, SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), (void (*))(&main_menu)};
 
     int running = 1, out;
     while (running)

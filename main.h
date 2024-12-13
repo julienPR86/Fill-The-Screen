@@ -40,9 +40,9 @@ typedef struct
     int width;
     int height;
     int clicked;
-    SDL_Color color_on_click;
-    SDL_Color color_out;
-    SDL_Color color;
+    SDL_Surface *img_unpressed;
+    SDL_Surface *img_pressed;
+    SDL_Surface *img;
     int (*command)();
 } Button;
 
