@@ -42,7 +42,7 @@ int pause_menu()
         out = button_update(&back_button);
         switch (out)
         {
-            case RETURN_:
+            case RETURN:
                 running = 0;
                 break;
         }
@@ -51,7 +51,7 @@ int pause_menu()
         out = button_update(&restart_button);
         switch (out)
         {
-            case RETURN_:
+            case RETURN:
                 return RETURN_RESTART_GAME;
         }
         button_render(&restart_button);
@@ -59,7 +59,7 @@ int pause_menu()
         out = button_update(&main_menu_button);
         switch (out)
         {
-            case RETURN_:
+            case RETURN:
                 return RETURN_BACK_MAIN_MENU;
         }
         button_render(&main_menu_button);
@@ -72,15 +72,15 @@ int pause_menu()
 
 int back()
 {
-    return RETURN_;
+    return RETURN;
 }
 
 int _restart()
 {
-    return RETURN_;
+    return RETURN;
 }
 
 int main_menu()
 {
-    return RETURN_;
+    return RETURN;
 }

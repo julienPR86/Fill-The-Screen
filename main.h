@@ -8,8 +8,9 @@
 
 enum Returns
 {
-    RETURN_,
+    RETURN,
     RETURN_EXIT_MAIN,
+    RETURN_EXIT_GAME_MODE_MENU,
     RETURN_EXIT_GAME,
     RETURN_EXIT_PAUSE_MENU,
     RETURN_BACK_GAME,
@@ -89,6 +90,8 @@ int main_menu();
 int button_update(Button *button);
 void button_render(Button *button);
 int button_collision(Button *button, int x, int y);
+
+int mode_choice();
 
 
 #endif

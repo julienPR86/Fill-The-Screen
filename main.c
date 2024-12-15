@@ -8,7 +8,7 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    Button play_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), (void (*))(&game)};
+    Button play_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), (void (*))(&mode_choice)};
     Button exit_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), (void (*))(&exit_main)};
 
     int running = 1, out;
@@ -40,11 +40,11 @@ int main(int argc, char **argv)
         out = button_update(&play_button);
         switch (out)
         {
-            case RETURN_EXIT_GAME:
+            case RETURN_EXIT_GAME_MODE_MENU:
                 break;
             case RETURN_EXIT_MAIN:
                 exit_main();
-                return RETURN_;
+                return RETURN;
         }
         button_render(&play_button);
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
         switch (out)
         {
             case RETURN_EXIT_MAIN:
-                return RETURN_;
+                return RETURN;
         }
         button_render(&exit_button);
 
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
         SDL_RenderPresent(renderer);
     }
     exit_main();
-    return RETURN_;
+    return RETURN;
 }
 
 int exit_main()

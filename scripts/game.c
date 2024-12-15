@@ -5,15 +5,17 @@ int game()
     if (map_init())
     {
         fprintf(stderr, "Could not initialised the map\n");
-        exit_main();
         return -1;
     }
     if (player_init())
     {
         fprintf(stderr, "Could not initialised the player\n");
-        exit_main();
+        map_free(map);
+        free(map);
+        map = NULL;
         return -1;
     }
+    
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
     int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
@@ -115,7 +117,7 @@ int restart()
     map_reset(map, 1);
     map->map[0][0] = 3;
     player_reset(player);
-    return RETURN_;
+    return RETURN;
 }
 
 int quit_game()
@@ -127,5 +129,5 @@ int quit_game()
     free(map);
     map = NULL;
     printf("free map ok\n");
-    return RETURN_;
+    return RETURN;
 }
