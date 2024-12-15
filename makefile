@@ -10,7 +10,7 @@ $(EXEC) : $(OBJ)
 	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS)
 
 $(TMP)main.o : main.c
-	$(CC) -o $(TMP)main.o -c main.c
+	$(CC) -o $@ -c $<
 
 $(TMP)%.o : scripts/%.c
 	$(CC) -o $@ -c $<
