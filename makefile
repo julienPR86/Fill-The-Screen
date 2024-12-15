@@ -1,15 +1,19 @@
 CC = gcc
 CFLAGS = -lmingw32 -lSDL2main -lSDL2
 EXEC = main
-OBJ = main.o button.o game.o init.o map.o pause_menu.o player.o game_mode.o
+OBJ = $(TMP)main.o $(TMP)button.o $(TMP)game.o $(TMP)init.o $(TMP)map.o $(TMP)pause_menu.o $(TMP)player.o $(TMP)game_mode.o
+TMP = tmp/
 
 all : $(EXEC)
 
 $(EXEC) : $(OBJ)
 	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS)
 
-%.o : scripts/%.c
-	$(CC) -c $<
+$(TMP)main.o : main.c
+	$(CC) -o $(TMP)main.o -c main.c
+
+$(TMP)%.o : scripts/%.c
+	$(CC) -o $@ -c $<
 
 clean:
-	rm -f *.o
+	rm -f $(TMP)*.o

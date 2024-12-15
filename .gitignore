@@ -2,6 +2,7 @@
 *.exe
 #ignore obj files
 *.o
+tmp/*.o
 #vscode extensions
 *.vs
 *.vscode
