@@ -3,7 +3,7 @@
 int WIDTH = 1080;
 int HEIGHT = 720;
 int FPS = 60;
-SDL_Color colors[4] = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}};
+SDL_Color colors[5] = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}};
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
@@ -40,7 +40,7 @@ int init()
     return RETURN_ZERO;
 }
 
-int map_init()
+int map_init(int mode)
 {
     map = malloc(sizeof(Map));
     if (NULL == map)
@@ -54,6 +54,18 @@ int map_init()
     map->map = NULL;
     map_creation(map);
     map_reset(map, 1);
+    switch (mode)
+    {
+        case DISCOVERY_MODE:
+            map_random(map, 4);
+            map_print(map);
+            break;
+        case CONSTRAINT_MODE:
+            map_random(map, 0);
+            break;
+        default:
+            break;
+    }
     map->map[0][0] = 3; //basic player position
     return RETURN_ZERO;
 }

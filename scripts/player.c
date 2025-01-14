@@ -2,6 +2,7 @@
 
 int player_move(int x, int y, int mode)
 {
+    static int previous_state = 3;
     if (x ^ y && player->remaining_moves)
     {
         if (player->x+x >= map->width || player->x+x < 0 || !map->map[player->y][player->x + x] ||
@@ -16,17 +17,28 @@ int player_move(int x, int y, int mode)
         }
         else
         {
-            map->map[player->y][player->x] = 2;
+            if (DISCOVERY_MODE == mode)
+            {
+                if (previous_state == 4)
+                {
+                    map->map[player->y][player->x] = 0;
+                }
+                else
+                {
+                    map->map[player->y][player->x] = 2;
+                }
+            }
+            else
+            {
+                map->map[player->y][player->x] = 2;
+            }
         }
-
         player->x += x;
         player->y += y;
+        previous_state = map->map[player->y][player->x];
         map->map[player->y][player->x] = 3;
         player->moves++;
-        if (player->remaining_moves)
-        {
-            player->remaining_moves --;
-        }
+        player->remaining_moves--;
     }
     return 0;
 }

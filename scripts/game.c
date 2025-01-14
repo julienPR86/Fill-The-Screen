@@ -2,7 +2,7 @@
 
 int game(int mode)
 {
-    if (map_init())
+    if (map_init(mode))
     {
         fprintf(stderr, "Could not initialised the map\n");
         return RETURN_FAILURE;
@@ -73,7 +73,7 @@ int game(int mode)
                 
                 if (SDLK_r == event.key.keysym.sym)
                 {
-                    restart();
+                    restart(mode);
                 }
 
                 if (SDLK_ESCAPE == event.key.keysym.sym)
@@ -86,7 +86,7 @@ int game(int mode)
                         case RETURN_TO_GAME:
                             break;
                         case RETURN_RESTART_GAME:
-                            restart();
+                            restart(mode);
                             break;
                         case RETURN_TO_MAIN_MENU:
                             quit_game();
@@ -104,7 +104,7 @@ int game(int mode)
         map_display(XOFFSET, YOFFSET);
         if (map_is_filled(map))
         {
-            restart();
+            restart(mode);
         }
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
@@ -113,9 +113,20 @@ int game(int mode)
     return RETURN_TO_MAIN_MENU;
 }
 
-int restart()
+int restart(int mode)
 {
     map_reset(map, 1);
+    switch (mode)
+    {
+        case DISCOVERY_MODE:
+            map_random(map, 4);
+            break;
+        case CONSTRAINT_MODE:
+            map_random(map, 0);
+            break;
+        default:
+            break;
+    }
     map->map[0][0] = 3;
     player_reset(player);
     return RETURN_ZERO;

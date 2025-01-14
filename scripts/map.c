@@ -46,6 +46,21 @@ Map *map_reset(Map *map, int value)
     return map;
 }
 
+Map *map_random(Map *map, int value)
+{
+    for (int y = 0; y < map->height; y++)
+    {
+        for (int x = 0; x < map->width; x++)
+        {
+            if (!(rand() % 6))
+            {
+                map->map[y][x] = value;
+            }
+        }
+    }
+    return map;
+}
+
 void map_print(Map *map)
 {
     for (int y = 0; y < map->height; y++)
