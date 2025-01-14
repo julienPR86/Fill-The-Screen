@@ -10,7 +10,7 @@ int player_move(int x, int y, int mode)
             player->remaining_moves = 0;
             return 1;
         }
-        if (!(rand() % 6))
+        if (!(DISCOVERY_MODE == mode || CONSTRAINT_MODE == mode) && !(rand() % 6))
         {
             map->map[player->y][player->x] = 0;
         }
