@@ -5,14 +5,14 @@ int HEIGHT = 720;
 int FPS = 60;
 SDL_Color colors[4] = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}};
 
-SDL_Window *window;
-SDL_Renderer *renderer;
+SDL_Window *window = NULL;
+SDL_Renderer *renderer = NULL;
 SDL_Event event;
 
-int mouse_button_pressed;
+int mouse_button_pressed = 0;
 
-Player *player;
-Map *map;
+Player *player = NULL;
+Map *map = NULL;
 
 int init()
 {
