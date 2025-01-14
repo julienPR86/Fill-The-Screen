@@ -2,14 +2,14 @@
 
 int main(int argc, char **argv)
 {
-    if (init())
+    if (RETURN_FAILURE == init())
     {
         fprintf(stderr, "Could not initialised the game\n");
-        return -1;
+        return RETURN_FAILURE;
     }
 
-    Button play_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), (void (*))(&mode_choice)};
-    Button exit_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), (void (*))(&exit_main)};
+    Button play_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), &mode_choice};
+    Button exit_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), &exit_main};
 
     int running = 1, out;
     while (running)
@@ -40,19 +40,23 @@ int main(int argc, char **argv)
         out = button_update(&play_button);
         switch (out)
         {
-            case RETURN_EXIT_GAME_MODE_MENU:
-                break;
-            case RETURN_EXIT_MAIN:
+            case RETURN_EXIT_FULL_GAME:
                 exit_main();
-                return RETURN;
+                return RETURN_ZERO;
+            case RETURN_TO_MAIN_MENU:
+                break;
+            default:
+                break;
         }
         button_render(&play_button);
 
         out = button_update(&exit_button);
         switch (out)
         {
-            case RETURN_EXIT_MAIN:
-                return RETURN;
+            case RETURN_EXIT_FULL_GAME:
+                return RETURN_ZERO;
+            default:
+                break;
         }
         button_render(&exit_button);
 
@@ -60,7 +64,7 @@ int main(int argc, char **argv)
         SDL_RenderPresent(renderer);
     }
     exit_main();
-    return RETURN;
+    return RETURN_ZERO;
 }
 
 int exit_main()
@@ -69,5 +73,5 @@ int exit_main()
     SDL_DestroyWindow(window);
     SDL_Quit();
     printf("exit ok\n");
-    return RETURN_EXIT_MAIN;
+    return RETURN_EXIT_FULL_GAME;
 }
