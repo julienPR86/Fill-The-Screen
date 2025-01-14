@@ -2,9 +2,9 @@
 
 int pause_menu()
 {
-    Button back_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_back/button_back_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_back/button_back_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_back/button_back_unpressed.bmp"), (void (*))(&back)};
-    Button restart_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), (void (*))(&_restart)};
-    Button main_menu_button = {10,90,100,25,0, SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), (void (*))(&main_menu)};
+    Button back_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_back/button_back_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_back/button_back_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_back/button_back_unpressed.bmp"), &back};
+    Button restart_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), &_restart};
+    Button main_menu_button = {10,90,100,25,0, SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), &main_menu};
 
     int running = 1, out;
     while (running)
@@ -16,7 +16,7 @@ int pause_menu()
         {
             if (SDL_QUIT == event.type)
             {
-                return RETURN_EXIT_MAIN;
+                return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -42,8 +42,9 @@ int pause_menu()
         out = button_update(&back_button);
         switch (out)
         {
-            case RETURN:
-                running = 0;
+            case RETURN_TO_GAME:
+                return RETURN_TO_GAME;
+            default:
                 break;
         }
         button_render(&back_button);
@@ -51,36 +52,40 @@ int pause_menu()
         out = button_update(&restart_button);
         switch (out)
         {
-            case RETURN:
+            case RETURN_RESTART_GAME:
                 return RETURN_RESTART_GAME;
+            default:
+                break;
         }
         button_render(&restart_button);
 
         out = button_update(&main_menu_button);
         switch (out)
         {
-            case RETURN:
-                return RETURN_BACK_MAIN_MENU;
+            case RETURN_TO_MAIN_MENU:
+                return RETURN_TO_MAIN_MENU;
+            default:
+                break;
         }
         button_render(&main_menu_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    return RETURN_EXIT_PAUSE_MENU;
+    return RETURN_ZERO;
 }
 
 int back()
 {
-    return RETURN;
+    return RETURN_TO_GAME;
 }
 
 int _restart()
 {
-    return RETURN;
+    return RETURN_RESTART_GAME;
 }
 
 int main_menu()
 {
-    return RETURN;
+    return RETURN_TO_MAIN_MENU;
 }
