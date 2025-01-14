@@ -35,7 +35,7 @@ void button_render(Button *button)
     SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
     SDL_Texture *img = SDL_CreateTextureFromSurface(renderer, button->img);
     SDL_RenderCopy(renderer, img, NULL, &button_rect);
-
+    return;
 }
 
 int button_collision(Button *button, int x, int y)
