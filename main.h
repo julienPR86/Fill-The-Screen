@@ -6,6 +6,9 @@
 #include <time.h>
 #include <SDL2/SDL.h>
 
+#define true 1
+#define false 0
+
 enum Returns
 {
     RETURN_ZERO,

@@ -95,9 +95,9 @@ int map_is_filled(Map *map)
         {
             if (map->map[y][x] == 1)
             {
-                return 0;
+                return false;
             }
         }
     }
-    return 1;
+    return true;
 }

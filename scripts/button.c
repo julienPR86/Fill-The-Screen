@@ -42,7 +42,7 @@ int button_collision(Button *button, int x, int y)
 {
     if (x >= button->x && x <= button->x+button->width && y >= button->y && y <= button->y+button->height)
     {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
