@@ -56,6 +56,7 @@ void map_print(Map *map)
         }
         printf("\n");
     }
+    return;
 }
 
 void map_display(int offset_x, int offset_y)
@@ -70,6 +71,7 @@ void map_display(int offset_x, int offset_y)
             SDL_RenderFillRect(renderer, &rect);
         }
     }
+    return;
 }
 
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height)
@@ -82,7 +84,7 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
     {
         return screen_height/map_height;
     }
-    return 0;
+    return RETURN_ZERO;
 }
 
 int map_is_filled(Map *map)
