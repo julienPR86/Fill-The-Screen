@@ -2,19 +2,6 @@
 
 int game(int mode)
 {
-    switch (mode)
-    {
-        case FILL_MODE:
-            break;
-        case DISCOVERY_MODE:
-            break;
-        case CONSTRAINT_MODE:
-            break;
-        case FREE_MODE:
-            break;
-        default:
-            break;
-    }
     if (map_init())
     {
         fprintf(stderr, "Could not initialised the map\n");
