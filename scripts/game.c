@@ -1,11 +1,22 @@
 #include "../main.h"
 
-int game()
+int game(int mode)
 {
+    switch (mode)
+    {
+        case FILL_MODE:
+            break;
+        case DISCOVERY_MODE:
+            break;
+        case FREE_MODE:
+            break;
+        default:
+            break;
+    }
     if (map_init())
     {
         fprintf(stderr, "Could not initialised the map\n");
-        return -1;
+        return RETURN_FAILURE;
     }
     if (player_init())
     {
@@ -13,7 +24,7 @@ int game()
         map_free(map);
         free(map);
         map = NULL;
-        return -1;
+        return RETURN_FAILURE;
     }
     
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
@@ -39,7 +50,7 @@ int game()
             if (SDL_QUIT == event.type)
             {
                 quit_game();
-                return RETURN_EXIT_MAIN;
+                return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
             {
@@ -81,35 +92,36 @@ int game()
                     out = pause_menu();
                     switch (out)
                     {
-                        case RETURN_EXIT_PAUSE_MENU:
+                        case RETURN_ZERO:
                             break;
-                        case RETURN_EXIT_MAIN:
-                            quit_game();
-                            return RETURN_EXIT_MAIN;
+                        case RETURN_TO_GAME:
+                            break;
                         case RETURN_RESTART_GAME:
                             restart();
                             break;
-                        case RETURN_BACK_MAIN_MENU:
-                            restart();
+                        case RETURN_TO_MAIN_MENU:
                             quit_game();
-                            return RETURN_EXIT_GAME;
+                            return RETURN_TO_MAIN_MENU;
+                        case RETURN_EXIT_FULL_GAME:
+                            quit_game();
+                            return RETURN_EXIT_FULL_GAME;
+                        default:
+                            break;
                     }
                 }
             }
         }
-
         player_move(direction[0], direction[1]);
         map_display(XOFFSET, YOFFSET);
         if (map_is_filled(map))
         {
             restart();
         }
-
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     quit_game();
-    return RETURN_EXIT_GAME;
+    return RETURN_TO_MAIN_MENU;
 }
 
 int restart()
@@ -117,7 +129,7 @@ int restart()
     map_reset(map, 1);
     map->map[0][0] = 3;
     player_reset(player);
-    return RETURN;
+    return RETURN_ZERO;
 }
 
 int quit_game()
@@ -129,5 +141,5 @@ int quit_game()
     free(map);
     map = NULL;
     printf("free map ok\n");
-    return RETURN;
+    return RETURN_ZERO;
 }
