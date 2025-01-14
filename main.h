@@ -8,14 +8,20 @@
 
 enum Returns
 {
-    RETURN,
-    RETURN_EXIT_MAIN,
-    RETURN_EXIT_GAME_MODE_MENU,
-    RETURN_EXIT_GAME,
-    RETURN_EXIT_PAUSE_MENU,
-    RETURN_BACK_GAME,
+    RETURN_ZERO,
+    RETURN_FAILURE,
+    RETURN_EXIT_FULL_GAME,
+    RETURN_TO_MAIN_MENU,
+    RETURN_TO_GAMEMODE_CHOICE,
+    RETURN_TO_GAME,
     RETURN_RESTART_GAME,
-    RETURN_BACK_MAIN_MENU,
+};
+
+enum GameMods
+{
+    FILL_MODE,
+    DISCOVERY_MODE,
+    FREE_MODE,
 };
 
 typedef struct
@@ -68,7 +74,7 @@ int player_init();
 int exit_main();
 
 int restart();
-int game();
+int game(int mode);
 int quit_game();
 
 Map *map_creation(Map *map);
@@ -92,6 +98,8 @@ void button_render(Button *button);
 int button_collision(Button *button, int x, int y);
 
 int mode_choice();
-
+int fill_mode();
+int discovery_mode();
+int free_mode();
 
 #endif
