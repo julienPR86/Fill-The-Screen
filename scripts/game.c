@@ -56,7 +56,7 @@ int game(int mode)
             }
             if (SDL_KEYDOWN == event.type)
             {
-                if (!player->remaining_moves)
+                if (!player->remaining_moves || FREE_MODE == mode)
                 {
                     if (SDLK_d == event.key.keysym.sym)
                     {
@@ -113,7 +113,7 @@ int game(int mode)
                 }
             }
         }
-        player_move(direction[0], direction[1]);
+        player_move(direction[0], direction[1], mode);
         map_display(XOFFSET, YOFFSET);
         if (map_is_filled(map))
         {

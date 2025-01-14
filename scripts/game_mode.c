@@ -2,7 +2,6 @@
 
 int mode_choice()
 {
-
     Button fill_mode_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_fill_mode/button_fill_mode_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_fill_mode/button_fill_mode_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_fill_mode/button_fill_mode_unpressed.bmp"), &fill_mode};
     Button discovery_mode_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_discovery_mode/button_discovery_mode_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_discovery_mode/button_discovery_mode_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_discovery_mode/button_discovery_mode_unpressed.bmp"), &discovery_mode};
     Button constraint_mode_button = {10,100,100,25,0, SDL_LoadBMP("ressources/buttons/button_constraint_mode/button_constraint_mode_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_constraint_mode/button_constraint_mode_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_constraint_mode/button_constraint_mode_unpressed.bmp"), &constraint_mode};

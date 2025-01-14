@@ -1,6 +1,6 @@
 #include "../main.h"
 
-int player_move(int x, int y)
+int player_move(int x, int y, int mode)
 {
     if (x ^ y && player->remaining_moves)
     {
