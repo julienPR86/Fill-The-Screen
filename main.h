@@ -24,6 +24,7 @@ enum GameMods
 {
     FILL_MODE,
     DISCOVERY_MODE,
+    CONSTRAINT_MODE,
     FREE_MODE,
 };
 
@@ -102,6 +103,7 @@ int button_collision(Button *button, int x, int y);
 
 int mode_choice();
 int fill_mode();
+int constraint_mode();
 int discovery_mode();
 int free_mode();
 

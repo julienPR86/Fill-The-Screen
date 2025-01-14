@@ -8,6 +8,8 @@ int game(int mode)
             break;
         case DISCOVERY_MODE:
             break;
+        case CONSTRAINT_MODE:
+            break;
         case FREE_MODE:
             break;
         default:

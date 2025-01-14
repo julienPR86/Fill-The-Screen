@@ -98,6 +98,11 @@ int discovery_mode()
     return game(DISCOVERY_MODE);
 }
 
+int constraint_mode()
+{
+    return game(DISCOVERY_MODE);
+}
+
 int free_mode()
 {
     return game(FREE_MODE);
