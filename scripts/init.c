@@ -3,6 +3,7 @@
 int WIDTH = 1080;
 int HEIGHT = 720;
 int FPS = 60;
+int probability = 6;
 SDL_Color colors[5] = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}};
 
 SDL_Window *window = NULL;
@@ -58,7 +59,6 @@ int map_init(int mode)
     {
         case DISCOVERY_MODE:
             map_random(map, 4);
-            map_print(map);
             break;
         case CONSTRAINT_MODE:
             map_random(map, 0);

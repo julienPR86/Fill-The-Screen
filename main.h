@@ -60,6 +60,7 @@ typedef struct
 extern int WIDTH;
 extern int HEIGHT;
 extern int FPS;
+extern int probability;
 
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;

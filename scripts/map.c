@@ -52,7 +52,7 @@ Map *map_random(Map *map, int value)
     {
         for (int x = 0; x < map->width; x++)
         {
-            if (!(rand() % 6))
+            if (!(rand() % probability))
             {
                 map->map[y][x] = value;
             }
