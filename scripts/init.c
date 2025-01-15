@@ -38,6 +38,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
+    srand(time(NULL));
     return RETURN_ZERO;
 }
 

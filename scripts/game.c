@@ -19,8 +19,6 @@ int game(int mode)
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
     int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
 
-    srand(time(NULL));
-
     int direction[2] = {0,0};
 
     int running = 1, out;
