@@ -38,7 +38,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    srand(time(NULL));
+    srand(time(NULL)*(WIDTH/HEIGHT));
     return RETURN_ZERO;
 }
 

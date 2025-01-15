@@ -43,55 +43,56 @@ int game(int mode)
             {
                 if (!player->remaining_moves || FREE_MODE == mode)
                 {
-                    if (SDLK_d == event.key.keysym.sym)
+                    switch (event.key.keysym.sym)
                     {
-                        direction[0] = 1;
-                        direction[1] = 0;
-                        player->remaining_moves = map->width;
-                    }
-                    if (SDLK_q == event.key.keysym.sym)
-                    {
-                        direction[0] = -1;
-                        direction[1] = 0;
-                        player->remaining_moves = map->width;
-                    }
-                    if (SDLK_z == event.key.keysym.sym)
-                    {
-                        direction[0] = 0;
-                        direction[1] = -1;
-                        player->remaining_moves = map->height;
-                    }
-                    if (SDLK_s == event.key.keysym.sym)
-                    {
-                        direction[0] = 0;
-                        direction[1] = 1;
-                        player->remaining_moves = map->height;
-                    }
-                }
-                
-                if (SDLK_r == event.key.keysym.sym)
-                {
-                    restart(mode);
-                }
-
-                if (SDLK_ESCAPE == event.key.keysym.sym)
-                {
-                    out = pause_menu();
-                    switch (out)
-                    {
-                        case RETURN_ZERO:
+                        case SDLK_RIGHT:
+                        case SDLK_d:
+                            direction[0] = 1;
+                            direction[1] = 0;
+                            player->remaining_moves = map->width;
                             break;
-                        case RETURN_TO_GAME:
+                        case SDLK_LEFT:
+                        case SDLK_q:
+                            direction[0] = -1;
+                            direction[1] = 0;
+                            player->remaining_moves = map->width;
                             break;
-                        case RETURN_RESTART_GAME:
+                        case SDLK_UP:
+                        case SDLK_z:
+                            direction[0] = 0;
+                            direction[1] = -1;
+                            player->remaining_moves = map->height;
+                            break;
+                        case SDLK_DOWN:
+                        case SDLK_s:
+                            direction[0] = 0;
+                            direction[1] = 1;
+                            player->remaining_moves = map->width;
+                            break;
+                        case SDLK_ESCAPE:
+                            out = pause_menu();
+                            switch (out)
+                            {
+                                case RETURN_ZERO:
+                                    break;
+                                case RETURN_TO_GAME:
+                                    break;
+                                case RETURN_RESTART_GAME:
+                                    restart(mode);
+                                    break;
+                                case RETURN_TO_MAIN_MENU:
+                                    quit_game();
+                                    return RETURN_TO_MAIN_MENU;
+                                case RETURN_EXIT_FULL_GAME:
+                                    quit_game();
+                                    return RETURN_EXIT_FULL_GAME;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case SDLK_r:
                             restart(mode);
                             break;
-                        case RETURN_TO_MAIN_MENU:
-                            quit_game();
-                            return RETURN_TO_MAIN_MENU;
-                        case RETURN_EXIT_FULL_GAME:
-                            quit_game();
-                            return RETURN_EXIT_FULL_GAME;
                         default:
                             break;
                     }
@@ -100,7 +101,7 @@ int game(int mode)
         }
         player_move(direction[0], direction[1], mode);
         map_display(XOFFSET, YOFFSET);
-        if (map_is_filled(map))
+        if (!player->remaining_moves && map_is_filled(map))
         {
             restart(mode);
         }

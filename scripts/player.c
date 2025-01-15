@@ -11,27 +11,18 @@ int player_move(int x, int y, int mode)
             player->remaining_moves = 0;
             return 1;
         }
-        if (!(DISCOVERY_MODE == mode || CONSTRAINT_MODE == mode) && !(rand() % probability))
+
+        if (DISCOVERY_MODE == mode && previous_state == 4)
+        {
+            map->map[player->y][player->x] = 0;
+        }
+        else if (!(DISCOVERY_MODE == mode || CONSTRAINT_MODE == mode) && !(rand() % probability))
         {
             map->map[player->y][player->x] = 0;
         }
         else
         {
-            if (DISCOVERY_MODE == mode)
-            {
-                if (previous_state == 4)
-                {
-                    map->map[player->y][player->x] = 0;
-                }
-                else
-                {
-                    map->map[player->y][player->x] = 2;
-                }
-            }
-            else
-            {
-                map->map[player->y][player->x] = 2;
-            }
+            map->map[player->y][player->x] = 2;
         }
         player->x += x;
         player->y += y;
