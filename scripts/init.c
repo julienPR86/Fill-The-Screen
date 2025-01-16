@@ -56,14 +56,14 @@ int map_init(int mode)
     map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
     map->map = NULL;
     map_creation(map);
-    map_reset(map, 1);
+    map_reset(map, EMPTY_SQUARE);
     switch (mode)
     {
         case DISCOVERY_MODE:
-            map_random(map, 4);
+            map_random(map, FAKE_SQUARE);
             break;
         case CONSTRAINT_MODE:
-            map_random(map, 0);
+            map_random(map, COLLISION_SQUARE);
             break;
         default:
             break;

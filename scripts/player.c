@@ -5,29 +5,29 @@ int player_move(int x, int y, int mode)
     static int previous_state = 3;
     if (x ^ y && player->remaining_moves)
     {
-        if (player->x+x >= map->width || player->x+x < 0 || !map->map[player->y][player->x + x] ||
-            player->y+y >= map->height || player->y+y < 0 || !map->map[player->y + y][player->x])
+        if (player->x+x >= map->width || player->x+x < 0 || map->map[player->y][player->x + x] == COLLISION_SQUARE ||
+            player->y+y >= map->height || player->y+y < 0 || map->map[player->y + y][player->x] == COLLISION_SQUARE)
         {
             player->remaining_moves = 0;
             return 1;
         }
 
-        if (DISCOVERY_MODE == mode && previous_state == 4)
+        if (DISCOVERY_MODE == mode && previous_state == FAKE_SQUARE)
         {
-            map->map[player->y][player->x] = 0;
+            map->map[player->y][player->x] = COLLISION_SQUARE;
         }
         else if (!(DISCOVERY_MODE == mode || CONSTRAINT_MODE == mode) && !(rand() % probability))
         {
-            map->map[player->y][player->x] = 0;
+            map->map[player->y][player->x] = COLLISION_SQUARE;
         }
         else
         {
-            map->map[player->y][player->x] = 2;
+            map->map[player->y][player->x] = LINE_SQUARE;
         }
         player->x += x;
         player->y += y;
         previous_state = map->map[player->y][player->x];
-        map->map[player->y][player->x] = 3;
+        map->map[player->y][player->x] = PLAYER_SQUARE;
         player->moves++;
         player->remaining_moves--;
     }

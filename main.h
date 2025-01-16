@@ -28,6 +28,15 @@ enum GameMods
     FREE_MODE,
 };
 
+enum SquareStats
+{
+    COLLISION_SQUARE,
+    EMPTY_SQUARE,
+    LINE_SQUARE,
+    PLAYER_SQUARE,
+    FAKE_SQUARE,
+};
+
 typedef struct Player
 {
     int x;

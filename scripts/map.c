@@ -108,7 +108,7 @@ int map_is_filled(Map *map)
     {
         for (int x = 0; x < map->width; x++)
         {
-            if (map->map[y][x] == 1)
+            if (map->map[y][x] == EMPTY_SQUARE)
             {
                 return false;
             }

@@ -114,19 +114,19 @@ int game(int mode)
 
 int restart(int mode)
 {
-    map_reset(map, 1);
+    map_reset(map, EMPTY_SQUARE);
     switch (mode)
     {
         case DISCOVERY_MODE:
-            map_random(map, 4);
+            map_random(map, FAKE_SQUARE);
             break;
         case CONSTRAINT_MODE:
-            map_random(map, 0);
+            map_random(map, COLLISION_SQUARE);
             break;
         default:
             break;
     }
-    map->map[0][0] = 3;
+    map->map[0][0] = PLAYER_SQUARE;
     player_reset(player);
     return RETURN_ZERO;
 }
