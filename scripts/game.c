@@ -108,7 +108,20 @@ int game(int mode)
         map_display(XOFFSET, YOFFSET);
         if (!player->remaining_moves && map_is_filled(map))
         {
-            restart(mode);
+            out = end_game();
+            switch (out)
+            {
+                case RETURN_ZERO:
+                    break;
+                case RETURN_RESTART_GAME:
+                    restart(mode);
+                    break;
+                case RETURN_TO_MAIN_MENU:
+                    quit_game();
+                    return RETURN_TO_MAIN_MENU;
+                default:
+                    break;
+            }
         }
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
