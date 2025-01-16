@@ -1,8 +1,8 @@
 #include "../main.h"
 
-int game(int mode)
+int game()
 {
-    if (map_init(mode))
+    if (map_init())
     {
         fprintf(stderr, "Could not initialised the map\n");
         return RETURN_FAILURE;
@@ -42,7 +42,7 @@ int game(int mode)
             }
             if (SDL_KEYDOWN == event.type)
             {
-                if (!player->remaining_moves || FREE_MODE == mode)
+                if (!player->remaining_moves || FREE_MODE == game_mode)
                 {
                     switch (event.key.keysym.sym)
                     {
@@ -93,7 +93,7 @@ int game(int mode)
                             case RETURN_TO_GAME:
                                 break;
                             case RETURN_RESTART_GAME:
-                                restart(mode);
+                                restart();
                                 break;
                             case RETURN_TO_MAIN_MENU:
                                 quit_game();
@@ -106,7 +106,7 @@ int game(int mode)
                         }
                         break;
                     case SDLK_r:
-                        restart(mode);
+                        restart();
                         break;
                     case SDLK_e:
                         end = 1;
@@ -116,7 +116,7 @@ int game(int mode)
                 }
             }
         }
-        player_move(direction[0], direction[1], mode);
+        player_move(direction[0], direction[1]);
         map_display(XOFFSET, YOFFSET);
         if (!player->remaining_moves && map_is_filled(map) || end)
         {
@@ -127,7 +127,7 @@ int game(int mode)
                 case RETURN_ZERO:
                     break;
                 case RETURN_RESTART_GAME:
-                    restart(mode);
+                    restart();
                     break;
                 case RETURN_TO_MAIN_MENU:
                     quit_game();
@@ -143,10 +143,10 @@ int game(int mode)
     return RETURN_TO_MAIN_MENU;
 }
 
-int restart(int mode)
+int restart()
 {
     map_reset(map, EMPTY_SQUARE);
-    switch (mode)
+    switch (game_mode)
     {
         case DISCOVERY_MODE:
             map_random(map, FAKE_SQUARE);
@@ -171,5 +171,6 @@ int quit_game()
     free(map);
     map = NULL;
     printf("free map ok\n");
+    game_mode = NO_ACTIVE_MODE;
     return RETURN_ZERO;
 }

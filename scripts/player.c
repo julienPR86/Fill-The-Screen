@@ -1,6 +1,6 @@
 #include "../main.h"
 
-int player_move(int x, int y, int mode)
+int player_move(int x, int y)
 {
     static int previous_state = 3;
     if (x ^ y && player->remaining_moves)
@@ -16,11 +16,11 @@ int player_move(int x, int y, int mode)
             return 1;
         }
 
-        if (DISCOVERY_MODE == mode && previous_state == FAKE_SQUARE)
+        if (DISCOVERY_MODE == game_mode && previous_state == FAKE_SQUARE)
         {
             map->map[player->y][player->x] = COLLISION_SQUARE;
         }
-        else if (!(DISCOVERY_MODE == mode || CONSTRAINT_MODE == mode) && !(rand() % probability))
+        else if (!(DISCOVERY_MODE == game_mode || CONSTRAINT_MODE == game_mode) && !(rand() % probability))
         {
             map->map[player->y][player->x] = COLLISION_SQUARE;
         }

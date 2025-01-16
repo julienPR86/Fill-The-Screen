@@ -14,6 +14,8 @@ Theme current = basic;
 
 int mouse_button_pressed = 0;
 
+int game_mode = NO_ACTIVE_MODE;
+
 Player *player = NULL;
 Map *map = NULL;
 
@@ -44,7 +46,7 @@ int init()
     return RETURN_ZERO;
 }
 
-int map_init(int mode)
+int map_init()
 {
     map = malloc(sizeof(Map));
     if (NULL == map)
@@ -58,7 +60,7 @@ int map_init(int mode)
     map->map = NULL;
     map_creation(map);
     map_reset(map, EMPTY_SQUARE);
-    switch (mode)
+    switch (game_mode)
     {
         case DISCOVERY_MODE:
             map_random(map, FAKE_SQUARE);

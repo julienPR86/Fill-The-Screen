@@ -104,20 +104,24 @@ int mode_choice()
 
 int fill_mode()
 {
-    return game(FILL_MODE);
+    game_mode = FILL_MODE;
+    return game();
 }
 
 int discovery_mode()
 {
-    return game(DISCOVERY_MODE);
+    game_mode = DISCOVERY_MODE;
+    return game();
 }
 
 int constraint_mode()
 {
-    return game(CONSTRAINT_MODE);
+    game_mode = CONSTRAINT_MODE;
+    return game();
 }
 
 int free_mode()
 {
-    return game(FREE_MODE);
+    game_mode = FREE_MODE;
+    return game();
 }

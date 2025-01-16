@@ -22,6 +22,7 @@ enum Returns
 
 enum GameMods
 {
+    NO_ACTIVE_MODE,
     FILL_MODE,
     DISCOVERY_MODE,
     CONSTRAINT_MODE,
@@ -86,6 +87,8 @@ extern SDL_Event event;
 
 extern int mouse_button_pressed;
 
+extern int game_mode;
+
 extern Player *player;
 extern Map *map;
 
@@ -93,13 +96,13 @@ extern Theme current;
 extern const Theme basic;
 
 int init();
-int map_init(int mode);
+int map_init();
 int player_init();
 
 int exit_main();
 
-int restart(int mode);
-int game(int mode);
+int restart();
+int game();
 int quit_game();
 
 Map *map_creation(Map *map);
@@ -111,7 +114,7 @@ void map_display(int offset_x, int offset_y);
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height);
 int map_is_filled(Map *map);
 
-int player_move(int x, int y, int mode);
+int player_move(int x, int y);
 void player_reset(Player *player);
 
 int pause_menu();
