@@ -88,7 +88,8 @@ extern int mouse_button_pressed;
 extern Player *player;
 extern Map *map;
 
-extern Theme basic;
+extern Theme current;
+extern const Theme basic;
 
 int init();
 int map_init(int mode);

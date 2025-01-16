@@ -9,7 +9,7 @@ int pause_menu()
     int running = 1, out;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, basic.menu_background.r,basic.menu_background.g,basic.menu_background.b,basic.menu_background.a);
+        SDL_SetRenderDrawColor(renderer, current.menu_background.r,current.menu_background.g,current.menu_background.b,current.menu_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))
