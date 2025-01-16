@@ -10,7 +10,7 @@ int mode_choice()
     int running = 1, out;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+        SDL_SetRenderDrawColor(renderer, basic.game_mode_background.r,basic.game_mode_background.g,basic.game_mode_background.b,basic.game_mode_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))

@@ -28,7 +28,7 @@ enum GameMods
     FREE_MODE,
 };
 
-typedef struct
+typedef struct Player
 {
     int x;
     int y;
@@ -44,7 +44,15 @@ typedef struct
     int **map;
 } Map;
 
-typedef struct
+typedef struct Theme
+{
+    SDL_Color menu_background;
+    SDL_Color game_mode_background;
+    SDL_Color game_background;
+    SDL_Color colors[5];
+} Theme;
+
+typedef struct Button
 {
     int x;
     int y;
@@ -70,7 +78,8 @@ extern int mouse_button_pressed;
 
 extern Player *player;
 extern Map *map;
-extern SDL_Color colors[5];
+
+extern Theme basic;
 
 int init();
 int map_init(int mode);

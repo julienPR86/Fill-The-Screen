@@ -80,7 +80,7 @@ void map_display(int offset_x, int offset_y)
     {
         for (int x = 0; x < map->width; x++)
         {
-            SDL_Color color = colors[map->map[y][x]];
+            SDL_Color color = basic.colors[map->map[y][x]];
             SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
             SDL_Rect rect = {x*map->square_size+offset_x, y*map->square_size+offset_y, map->square_size, map->square_size};
             SDL_RenderFillRect(renderer, &rect);

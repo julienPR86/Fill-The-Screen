@@ -24,7 +24,7 @@ int game(int mode)
     int running = 1, out;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+        SDL_SetRenderDrawColor(renderer, basic.game_background.r,basic.game_background.g,basic.game_background.b,basic.game_background.a);
         SDL_RenderClear(renderer);//background
 
         if (!player->remaining_moves)

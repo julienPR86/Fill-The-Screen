@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     int running = 1, out;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+        SDL_SetRenderDrawColor(renderer, basic.menu_background.r,basic.menu_background.g,basic.menu_background.b,basic.menu_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))

@@ -4,11 +4,12 @@ int WIDTH = 1080;
 int HEIGHT = 720;
 int FPS = 60;
 int probability = 6;
-SDL_Color colors[5] = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}};
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
+
+Theme basic = {{255, 255, 255, 255}, {240, 240, 240, 255}, {0, 0, 0, 255}, {{0, 0, 0, 255}, {255, 255, 255, 255}, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 255, 255, 255}}};
 
 int mouse_button_pressed = 0;
 
