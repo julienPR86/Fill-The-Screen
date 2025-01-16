@@ -128,4 +128,7 @@ int constraint_mode();
 int discovery_mode();
 int free_mode();
 
+int end_game();
+float fill_percent(Map *map);
+
 #endif

@@ -21,7 +21,7 @@ int game(int mode)
 
     int direction[2] = {0,0};
 
-    int running = 1, out;
+    int running = 1, out, end = 0;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, current.game_background.r,current.game_background.g,current.game_background.b,current.game_background.a);
@@ -99,6 +99,9 @@ int game(int mode)
                     case SDLK_r:
                         restart(mode);
                         break;
+                    case SDLK_e:
+                        end = 1;
+                        break;
                     default:
                         break;
                 }
@@ -106,8 +109,9 @@ int game(int mode)
         }
         player_move(direction[0], direction[1], mode);
         map_display(XOFFSET, YOFFSET);
-        if (!player->remaining_moves && map_is_filled(map))
+        if (!player->remaining_moves && map_is_filled(map) || end)
         {
+            end = 0;
             out = end_game();
             switch (out)
             {
