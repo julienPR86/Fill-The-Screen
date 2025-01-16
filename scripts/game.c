@@ -32,6 +32,7 @@ int game(int mode)
             direction[0] = 0;
             direction[1] = 0;
         }
+        player->frame_move = 0;
         while (SDL_PollEvent(&event))
         {
             if (SDL_QUIT == event.type)
@@ -50,24 +51,32 @@ int game(int mode)
                             direction[0] = 1;
                             direction[1] = 0;
                             player->remaining_moves = map->width;
+                            player->moves++;
+                            player->frame_move = 1;
                             break;
                         case SDLK_LEFT:
                         case SDLK_q:
                             direction[0] = -1;
                             direction[1] = 0;
                             player->remaining_moves = map->width;
+                            player->moves++;
+                            player->frame_move = 1;
                             break;
                         case SDLK_UP:
                         case SDLK_z:
                             direction[0] = 0;
                             direction[1] = -1;
                             player->remaining_moves = map->height;
+                            player->moves++;
+                            player->frame_move = 1;
                             break;
                         case SDLK_DOWN:
                         case SDLK_s:
                             direction[0] = 0;
                             direction[1] = 1;
                             player->remaining_moves = map->width;
+                            player->moves++;
+                            player->frame_move = 1;
                             break;
                         default:
                             break;

@@ -43,6 +43,7 @@ typedef struct Player
     int y;
     int moves;
     int remaining_moves;
+    int frame_move;
 } Player;
 
 typedef struct

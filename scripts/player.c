@@ -8,6 +8,10 @@ int player_move(int x, int y, int mode)
         if (player->x+x >= map->width || player->x+x < 0 || map->map[player->y][player->x + x] == COLLISION_SQUARE ||
             player->y+y >= map->height || player->y+y < 0 || map->map[player->y + y][player->x] == COLLISION_SQUARE)
         {
+            if (player->frame_move)
+            {
+                player->moves--;
+            }
             player->remaining_moves = 0;
             return 1;
         }
@@ -28,7 +32,6 @@ int player_move(int x, int y, int mode)
         player->y += y;
         previous_state = map->map[player->y][player->x];
         map->map[player->y][player->x] = PLAYER_SQUARE;
-        player->moves++;
         player->remaining_moves--;
     }
     return 0;
