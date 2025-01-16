@@ -69,33 +69,38 @@ int game(int mode)
                             direction[1] = 1;
                             player->remaining_moves = map->width;
                             break;
-                        case SDLK_ESCAPE:
-                            out = pause_menu();
-                            switch (out)
-                            {
-                                case RETURN_ZERO:
-                                    break;
-                                case RETURN_TO_GAME:
-                                    break;
-                                case RETURN_RESTART_GAME:
-                                    restart(mode);
-                                    break;
-                                case RETURN_TO_MAIN_MENU:
-                                    quit_game();
-                                    return RETURN_TO_MAIN_MENU;
-                                case RETURN_EXIT_FULL_GAME:
-                                    quit_game();
-                                    return RETURN_EXIT_FULL_GAME;
-                                default:
-                                    break;
-                            }
-                            break;
-                        case SDLK_r:
-                            restart(mode);
-                            break;
                         default:
                             break;
                     }
+                }
+                switch (event.key.keysym.sym)
+                {
+                    case SDLK_ESCAPE:
+                        out = pause_menu();
+                        switch (out)
+                        {
+                            case RETURN_ZERO:
+                                break;
+                            case RETURN_TO_GAME:
+                                break;
+                            case RETURN_RESTART_GAME:
+                                restart(mode);
+                                break;
+                            case RETURN_TO_MAIN_MENU:
+                                quit_game();
+                                return RETURN_TO_MAIN_MENU;
+                            case RETURN_EXIT_FULL_GAME:
+                                quit_game();
+                                return RETURN_EXIT_FULL_GAME;
+                            default:
+                                break;
+                        }
+                        break;
+                    case SDLK_r:
+                        restart(mode);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
