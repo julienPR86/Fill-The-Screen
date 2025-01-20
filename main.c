@@ -8,8 +8,8 @@ int main(int argc, char **argv)
         return RETURN_FAILURE;
     }
 
-    Button play_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_play/button_play_unpressed.bmp"), &mode_choice};
-    Button exit_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_exit/button_exit_unpressed.bmp"), &exit_main};
+    Button play_button = {10,10,100,25,0, current.button_color[0],current.button_color[1], &mode_choice};
+    Button exit_button = {10,50,100,25,0, current.button_color[0],current.button_color[1], &exit_main};
 
     int running = 1, out;
     while (running)

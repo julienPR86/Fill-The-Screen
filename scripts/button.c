@@ -8,24 +8,20 @@ int button_update(Button *button)
     {
         if (mouse_button_pressed == 1)
         {
-            button->img = button->img_pressed;
             button->clicked = 1;
         }
         else if (mouse_button_pressed == 0 && button->clicked)
         {
             button->clicked = 0;
-            button->img = button->img_unpressed;
             out = button->command();
         }
         else
         {
-            button->img = button->img_unpressed;
         }
     }
     else
     {
         if (button->clicked){button->clicked = 0;}
-        button->img = button->img_unpressed;
     }
     return out;
 }
@@ -33,8 +29,11 @@ int button_update(Button *button)
 void button_render(Button *button)
 {
     SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
-    SDL_Texture *img = SDL_CreateTextureFromSurface(renderer, button->img);
-    SDL_RenderCopy(renderer, img, NULL, &button_rect);
+    if (button->clicked)
+        SDL_SetRenderDrawColor(renderer, button->pressed_color.r, button->pressed_color.g, button->pressed_color.b, button->pressed_color.a);
+    else
+        SDL_SetRenderDrawColor(renderer, button->unpressed_color.r, button->unpressed_color.g, button->unpressed_color.b, button->unpressed_color.a);
+    SDL_RenderFillRect(renderer, &button_rect);
     return;
 }
 

@@ -60,7 +60,8 @@ typedef struct Theme
     SDL_Color menu_background;
     SDL_Color game_mode_background;
     SDL_Color game_background;
-    SDL_Color colors[5];
+    SDL_Color game_colors[5];
+    SDL_Color button_color[3];
 } Theme;
 
 typedef struct Button
@@ -70,9 +71,8 @@ typedef struct Button
     int width;
     int height;
     int clicked;
-    SDL_Surface *img_unpressed;
-    SDL_Surface *img_pressed;
-    SDL_Surface *img;
+    SDL_Color unpressed_color;
+    SDL_Color pressed_color;
     int (*command)();
 } Button;
 

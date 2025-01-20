@@ -5,8 +5,8 @@ int end_game()
     printf("moves : %d\n", player->moves);
     printf("fill : %f%%\n", fill_percent(map));
 
-    Button restart_button = {10,10,100,25,0, SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_restart/button_restart_unpressed.bmp"), &restart};
-    Button main_menu_button = {10,50,100,25,0, SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_pressed.bmp"), SDL_LoadBMP("ressources/buttons/button_main_menu/button_main_menu_unpressed.bmp"), &main_menu};
+    Button restart_button = {10,10,100,25,0, current.button_color[0],current.button_color[1], &restart};
+    Button main_menu_button = {10,50,100,25,0, current.button_color[0],current.button_color[1], &main_menu};
     
     int running = 1, out;
     while (running)
