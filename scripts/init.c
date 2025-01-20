@@ -5,12 +5,15 @@ int HEIGHT = 720;
 int FPS = 60;
 int probability = 6;
 
+int CENTER_X;
+int CENTER_Y;
+
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
 
 const Theme basic = {{255, 255, 255, 255}, {240, 240, 240, 255}, {0, 0, 0, 255}, {{0, 0, 0, 255}, {255, 255, 255, 255}, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 255, 255, 255}}};
-Theme current = basic;
+Theme current;
 
 int mouse_button_pressed = 0;
 
@@ -42,6 +45,9 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
+    current = basic;
+    CENTER_X = WIDTH/2;
+    CENTER_Y = HEIGHT/2;
     srand(time(NULL)*(WIDTH/HEIGHT));
     return RETURN_ZERO;
 }

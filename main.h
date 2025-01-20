@@ -81,6 +81,9 @@ extern int HEIGHT;
 extern int FPS;
 extern int probability;
 
+extern int CENTER_X;
+extern int CENTER_Y; 
+
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Event event;
