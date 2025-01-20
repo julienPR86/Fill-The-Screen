@@ -59,8 +59,12 @@ int main(int argc, char **argv)
 
 int exit_main()
 {
+    TTF_CloseFont(font);
+    font = NULL;
     SDL_DestroyRenderer(renderer);
+    renderer = NULL;
     SDL_DestroyWindow(window);
+    window = NULL;
     TTF_Quit();
     SDL_Quit();
     printf("exit ok\n");
