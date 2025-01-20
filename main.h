@@ -102,6 +102,7 @@ int init();
 int map_init();
 int player_init();
 
+void mouse_pressed(SDL_Event event);
 int exit_main();
 
 int game();
