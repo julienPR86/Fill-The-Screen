@@ -12,15 +12,18 @@ SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
 
-const Theme basic = {{255, 255, 255, 255}, {240, 240, 240, 255}, {0, 0, 0, 255}, {{0, 0, 0, 255}, {255, 255, 255, 255}, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 255, 255, 255}}, {{255, 0, 0, 255}, {255, 128, 0, 255}, {0, 0, 0, 255}}};
-Theme current;
-
 int mouse_button_pressed = 0;
 
 int game_mode = NO_ACTIVE_MODE;
 
 Player *player = NULL;
 Map *map = NULL;
+
+const Theme basic = {{255, 255, 255, 255}, {240, 240, 240, 255}, {0, 0, 0, 255}, {{0, 0, 0, 255}, {255, 255, 255, 255}, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 255, 255, 255}}, {{255, 0, 0, 255}, {255, 128, 0, 255}, {0, 0, 0, 255}}};
+Theme current;
+
+TTF_Font *font;
+int font_size = 20;
 
 int init()
 {
@@ -41,6 +44,7 @@ int init()
     if (NULL == window)
     {
         fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
+        TTF_Quit();
         SDL_Quit();
         return RETURN_FAILURE;
     }
@@ -49,6 +53,7 @@ int init()
     {
         fprintf(stderr, "Could not create the renderer : %s\n", SDL_GetError());
         SDL_DestroyWindow(window);
+        TTF_Quit();
         SDL_Quit();
         return RETURN_FAILURE;
     }
@@ -56,6 +61,16 @@ int init()
     CENTER_X = WIDTH/2;
     CENTER_Y = HEIGHT/2;
     srand(time(NULL)*(WIDTH/HEIGHT));
+    font = TTF_OpenFont("", 0);
+    if (NULL == font)
+    {
+        fprintf(stderr, "Cound not initialised the font : %s\n", TTF_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        TTF_Quit();
+        SDL_Quit();
+        return RETURN_FAILURE;
+    }
     return RETURN_ZERO;
 }
 

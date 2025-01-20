@@ -99,6 +99,9 @@ extern Map *map;
 extern Theme current;
 extern const Theme basic;
 
+extern TTF_Font *font;
+extern int font_size;
+
 int init();
 int map_init();
 int player_init();

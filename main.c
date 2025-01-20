@@ -61,6 +61,7 @@ int exit_main()
 {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    TTF_Quit();
     SDL_Quit();
     printf("exit ok\n");
     return RETURN_EXIT_FULL_GAME;
