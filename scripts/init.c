@@ -30,6 +30,13 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
+    if (0 != TTF_Init())
+    {
+        fprintf(stderr, "Could not initialize TTF : %s\n", TTF_GetError());
+        TTF_Quit();
+        SDL_Quit();
+        return RETURN_FAILURE;
+    }
     window = SDL_CreateWindow("Fill The Screen", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     if (NULL == window)
     {
