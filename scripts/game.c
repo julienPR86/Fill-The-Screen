@@ -132,6 +132,9 @@ int game()
                 case RETURN_TO_MAIN_MENU:
                     quit_game();
                     return RETURN_TO_MAIN_MENU;
+                case RETURN_EXIT_FULL_GAME:
+                    quit_game();
+                    return RETURN_EXIT_FULL_GAME;
                 default:
                     break;
             }
