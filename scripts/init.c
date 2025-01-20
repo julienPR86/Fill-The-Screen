@@ -19,11 +19,15 @@ int game_mode = NO_ACTIVE_MODE;
 Player *player = NULL;
 Map *map = NULL;
 
-const Theme basic = {{255, 255, 255, 255}, {240, 240, 240, 255}, {0, 0, 0, 255}, {{0, 0, 0, 255}, {255, 255, 255, 255}, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 255, 255, 255}}, {{255, 0, 0, 255}, {255, 128, 0, 255}, {0, 0, 0, 255}}};
+const Theme basic = {{255, 255, 255, 255}, 
+                     {240, 240, 240, 255}, 
+                     {0, 0, 0, 255}, 
+                     {{0, 0, 0, 255}, {255, 255, 255, 255}, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 255, 255, 255}}, 
+                     {{255, 0, 0, 255}, {255, 128, 0, 255}, {0, 0, 0, 255}}};
 Theme current;
 
 TTF_Font *font;
-int font_size = 20;
+int font_size = 100;
 
 int init()
 {
@@ -61,7 +65,7 @@ int init()
     CENTER_X = WIDTH/2;
     CENTER_Y = HEIGHT/2;
     srand(time(NULL)*(WIDTH/HEIGHT));
-    font = TTF_OpenFont("", 0);
+    font = TTF_OpenFont("font/Roboto-Light.ttf", font_size);
     if (NULL == font)
     {
         fprintf(stderr, "Cound not initialised the font : %s\n", TTF_GetError());
