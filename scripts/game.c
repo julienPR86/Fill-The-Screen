@@ -37,7 +37,7 @@ int game()
         {
             if (SDL_QUIT == event.type)
             {
-                quit_game();
+                game_quit();
                 return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
@@ -93,20 +93,20 @@ int game()
                             case RETURN_TO_GAME:
                                 break;
                             case RETURN_RESTART_GAME:
-                                restart();
+                                game_restart();
                                 break;
                             case RETURN_TO_MAIN_MENU:
-                                quit_game();
+                                game_quit();
                                 return RETURN_TO_MAIN_MENU;
                             case RETURN_EXIT_FULL_GAME:
-                                quit_game();
+                                game_quit();
                                 return RETURN_EXIT_FULL_GAME;
                             default:
                                 break;
                         }
                         break;
                     case SDLK_r:
-                        restart();
+                        game_restart();
                         break;
                     case SDLK_e:
                         end = 1;
@@ -127,13 +127,13 @@ int game()
                 case RETURN_ZERO:
                     break;
                 case RETURN_RESTART_GAME:
-                    restart();
+                    game_restart();
                     break;
                 case RETURN_TO_MAIN_MENU:
-                    quit_game();
+                    game_quit();
                     return RETURN_TO_MAIN_MENU;
                 case RETURN_EXIT_FULL_GAME:
-                    quit_game();
+                    game_quit();
                     return RETURN_EXIT_FULL_GAME;
                 default:
                     break;
@@ -142,11 +142,11 @@ int game()
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    quit_game();
+    game_quit();
     return RETURN_TO_MAIN_MENU;
 }
 
-int restart()
+int game_restart()
 {
     map_reset(map, EMPTY_SQUARE);
     switch (game_mode)
@@ -165,7 +165,7 @@ int restart()
     return RETURN_ZERO;
 }
 
-int quit_game()
+int game_quit()
 {
     free(player);
     player = NULL;

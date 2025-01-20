@@ -101,9 +101,9 @@ int player_init();
 
 int exit_main();
 
-int restart();
 int game();
-int quit_game();
+int game_restart();
+int game_quit();
 
 Map *map_creation(Map *map);
 Map *map_free(Map *map);
@@ -119,7 +119,7 @@ void player_reset(Player *player);
 
 int pause_menu();
 int back();
-int _restart();
+int restart();
 int main_menu();
 
 int button_update(Button *button);
