@@ -8,6 +8,8 @@ int end_game()
     Button restart_button = {10, 10, 100, 25, 1, "Restart", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {10, 50, 100, 25, 1, "Main menu", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
+    Button buttons[] = {restart_button, main_menu_button};
+
     int running = true, out;
     while (running)
     {
@@ -23,25 +25,20 @@ int end_game()
             mouse_pressed(event);
         }
 
-        out = button_update(&restart_button);
-        switch (out)
+        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
         {
-            case RETURN_RESTART_GAME:
-                return RETURN_RESTART_GAME;
-            default:
-                break;
+            out = button_update(&buttons[i]);
+            switch (out)
+            {
+                case RETURN_RESTART_GAME:
+                    return RETURN_RESTART_GAME;
+                case RETURN_TO_MAIN_MENU:
+                    return RETURN_TO_MAIN_MENU;
+                default:
+                    break;
+            }
+            button_render(&buttons[i]);
         }
-        button_render(&restart_button);
-
-        out = button_update(&main_menu_button);
-        switch (out)
-        {
-            case RETURN_TO_MAIN_MENU:
-                return RETURN_TO_MAIN_MENU;
-            default:
-                break;
-        }
-        button_render(&main_menu_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
