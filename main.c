@@ -8,13 +8,13 @@ int main(int argc, char **argv)
         return RETURN_FAILURE;
     }
 
-    Button play_button = {10, 10, 100, 25, 0, "PLAY", 0, current.button_color[0], current.button_color[1], &mode_choice};
-    Button exit_button = {10, 50 ,100, 25, 0, "QUIT", 0, current.button_color[0], current.button_color[1], &exit_main};
+    Button play_button = {10, 10, 100, 25, 0, "PLAY", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
+    Button exit_button = {10, 50 ,100, 25, 0, "QUIT", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_main};
 
     int running = true, out;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, current.menu_background.r,current.menu_background.g,current.menu_background.b,current.menu_background.a);
+        SDL_SetRenderDrawColor(renderer, current.main_colors.menu_background.r,current.main_colors.menu_background.g,current.main_colors.menu_background.b,current.main_colors.menu_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))
