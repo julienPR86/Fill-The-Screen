@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     return RETURN_ZERO;
 }
 
-int exit_full_game()
+void exit_full_game()
 {
     TTF_CloseFont(font);
     font = NULL;
@@ -65,5 +65,5 @@ int exit_full_game()
     TTF_Quit();
     SDL_Quit();
     printf("exit ok\n");
-    return RETURN_ZERO;
+    return;
 }
