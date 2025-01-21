@@ -28,12 +28,15 @@ int button_update(Button *button)
 
 void button_render(Button *button)
 {
+    SDL_Color color;
     SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
     if (button->clicked)
-        SDL_SetRenderDrawColor(renderer, button->pressed_color.r, button->pressed_color.g, button->pressed_color.b, button->pressed_color.a);
+        color = button->fg;
     else
-        SDL_SetRenderDrawColor(renderer, button->unpressed_color.r, button->unpressed_color.g, button->unpressed_color.b, button->unpressed_color.a);
+        color = button->bg;
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
+    display_text(button->text, button->x, button->y, button->width, button->height, button->text_bg, color);
     return;
 }
 
@@ -46,17 +49,12 @@ int button_collision(Button *button, int x, int y)
     return false;
 }
 
-void mouse_pressed(SDL_Event event)
+void display_text(char *text, int x, int y, int w, int h, SDL_Color bg, SDL_Color fg)
 {
-    if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
-    {
-        mouse_button_pressed = event.button.button;
-    }
-    if (SDL_MOUSEBUTTONUP == event.type)
-    {
-        if (event.button.button == mouse_button_pressed)
-        {
-            mouse_button_pressed = 0;
-        }
-    }
+    SDL_Surface *text_surface = TTF_RenderText_Shaded(font, text, bg, fg);
+    SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
+    SDL_FreeSurface(text_surface);
+    SDL_Rect rect = {x, y, w, h};
+    SDL_RenderCopy(renderer, text_texture, NULL, &rect);
+    return;
 }
