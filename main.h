@@ -101,6 +101,8 @@ typedef struct Button
     int width;
     int height;
     int outline;
+    int padx;
+    int pady;
     char *text;
     int clicked;
     TTF_Font *font;

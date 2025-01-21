@@ -30,8 +30,8 @@ void button_render(Button *button)
 {
     SDL_Color color;
     color = button->outline_color;
-    SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
-    SDL_Rect outline_rect = {button->x-button->outline, button->y-button->outline, button->width+button->outline*2, button->height+button->outline*2};
+    SDL_Rect button_rect = {button->x-button->padx, button->y-button->pady, button->width+button->padx*2, button->height+button->pady*2};
+    SDL_Rect outline_rect = {button->x-button->outline-button->padx, button->y-button->outline-button->pady, button->width+button->outline*2+button->padx*2, button->height+button->outline*2+button->pady*2};
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
