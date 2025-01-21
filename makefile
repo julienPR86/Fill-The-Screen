@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -Wall -Werror -Wextra
 EXEC = main
-OBJ = $(TMP)main.o $(TMP)ui.o $(TMP)game.o $(TMP)init.o $(TMP)map.o $(TMP)pause_menu.o $(TMP)player.o $(TMP)game_mode.o $(TMP)end_game.o
+OBJ = $(TMP)main.o $(TMP)ui.o $(TMP)game.o $(TMP)init.o $(TMP)map.o $(TMP)pause_menu.o $(TMP)player.o $(TMP)game_mode.o $(TMP)end_game.o $(TMP)utils.o
 TMP = tmp/
 
 all : $(EXEC)
