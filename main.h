@@ -56,13 +56,26 @@ typedef struct
     int **map;
 } Map;
 
-typedef struct Theme
+typedef struct MainColors
 {
     SDL_Color menu_background;
     SDL_Color game_mode_background;
     SDL_Color game_background;
+    SDL_Color pause_menu_background;
+    SDL_Color end_game_background;
+} MainColors;
+
+typedef struct TextColors
+{
+    SDL_Color background;
+    SDL_Color foreground;
+} TextColors;
+
+typedef struct Theme
+{
+    MainColors main_colors;
+    TextColors text_colors;
     SDL_Color game_colors[5];
-    SDL_Color button_color[3];
 } Theme;
 
 typedef struct Button
@@ -74,10 +87,11 @@ typedef struct Button
     int outline;
     char *text;
     int clicked;
-    SDL_Color unpressed_color;
-    SDL_Color pressed_color;
-    SDL_Color outline_color;
-    SDL_Color text_color;
+    SDL_Color bg;
+    SDL_Color fg;
+    SDL_Color text_bg;
+    SDL_Color text_fg;
+    SDL_Color outline;
     int (*command)();
 } Button;
 
@@ -110,7 +124,6 @@ int init();
 int map_init();
 int player_init();
 
-void mouse_pressed(SDL_Event event);
 int exit_main();
 
 int game();
@@ -137,6 +150,7 @@ int main_menu();
 int button_update(Button *button);
 void button_render(Button *button);
 int button_collision(Button *button, int x, int y);
+void display_text(char *text, int x, int y, int w, int h, SDL_Color bg, SDL_Color fg);
 
 int mode_choice();
 int fill_mode();
@@ -146,5 +160,7 @@ int free_mode();
 
 int end_game();
 float fill_percent(Map *map);
+
+void mouse_pressed(SDL_Event event);
 
 #endif
