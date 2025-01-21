@@ -90,8 +90,7 @@ typedef struct Button
     SDL_Color bg;
     SDL_Color fg;
     SDL_Color text_bg;
-    SDL_Color text_fg;
-    SDL_Color outline;
+    SDL_Color outline_color;
     int (*command)();
 } Button;
 
