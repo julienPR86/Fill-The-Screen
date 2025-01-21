@@ -8,6 +8,8 @@ int main(int argc, char **argv)
         return RETURN_FAILURE;
     }
 
+    Label title = {500, 100, 500, 100, 0, "Fill The Screen", {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+
     Button play_button = {10, 10, 100, 25, 1, "PLAY", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
     Button exit_button = {10, 50 ,100, 25, 1, "QUIT", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
@@ -47,6 +49,8 @@ int main(int argc, char **argv)
             button_render(&buttons[i]);
         }
 
+        label_render(&title);
+
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
@@ -56,8 +60,10 @@ int main(int argc, char **argv)
 
 void exit_full_game()
 {
-    TTF_CloseFont(font);
-    font = NULL;
+    TTF_CloseFont(roboto_regular);
+    roboto_regular = NULL;
+    TTF_CloseFont(roboto_light);
+    roboto_light = NULL;
     SDL_DestroyRenderer(renderer);
     renderer = NULL;
     SDL_DestroyWindow(window);

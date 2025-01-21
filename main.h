@@ -87,8 +87,7 @@ typedef struct Label
     int outline;
     char *text;
     SDL_Color bg;
-    SDL_Color fg;
-    SDL_Color text_bg;
+    SDL_Color text_color;
     SDL_Color outline_color;
 } Label;
 
@@ -103,7 +102,7 @@ typedef struct Button
     int clicked;
     SDL_Color bg;
     SDL_Color fg;
-    SDL_Color text_bg;
+    SDL_Color text_color;
     SDL_Color outline_color;
     int (*command)();
 } Button;
@@ -112,9 +111,6 @@ extern int WIDTH;
 extern int HEIGHT;
 extern int FPS;
 extern int probability;
-
-extern int CENTER_X;
-extern int CENTER_Y; 
 
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;
@@ -130,7 +126,8 @@ extern Map *map;
 extern Theme current;
 extern const Theme basic;
 
-extern TTF_Font *font;
+extern TTF_Font *roboto_light;
+extern TTF_Font *roboto_regular;
 extern int font_size;
 
 int init();
@@ -163,6 +160,7 @@ int main_menu();
 
 int button_update(Button *button);
 void button_render(Button *button);
+void label_render(Label *label);
 void display_text(char *text, int x, int y, int w, int h, SDL_Color bg, SDL_Color fg);
 
 int mode_choice();

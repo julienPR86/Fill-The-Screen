@@ -5,9 +5,6 @@ int HEIGHT = 720;
 int FPS = 60;
 int probability = 6;
 
-int CENTER_X;
-int CENTER_Y;
-
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
@@ -24,8 +21,9 @@ const Theme basic = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {255,25
                      {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
 Theme current;
 
-TTF_Font *font;
-int font_size = 100;
+TTF_Font *roboto_regular;
+TTF_Font *roboto_light;
+int font_size = 300;
 
 int init()
 {
@@ -60,13 +58,22 @@ int init()
         return RETURN_FAILURE;
     }
     current = basic;
-    CENTER_X = WIDTH/2;
-    CENTER_Y = HEIGHT/2;
     srand(time(NULL)*(WIDTH/HEIGHT));
-    font = TTF_OpenFont("font/Roboto-Light.ttf", font_size);
-    if (NULL == font)
+    roboto_regular = TTF_OpenFont("font/Roboto-regular.ttf", font_size);
+    if (NULL == roboto_regular)
     {
         fprintf(stderr, "Cound not initialised the font : %s\n", TTF_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        TTF_Quit();
+        SDL_Quit();
+        return RETURN_FAILURE;
+    }
+    roboto_light = TTF_OpenFont("font/Roboto-light.ttf", font_size);
+    if (NULL == roboto_light)
+    {
+        fprintf(stderr, "Cound not initialised the font : %s\n", TTF_GetError());
+        TTF_CloseFont(roboto_regular);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         TTF_Quit();
