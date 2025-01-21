@@ -78,6 +78,20 @@ typedef struct Theme
     SDL_Color game_colors[5];
 } Theme;
 
+typedef struct Label
+{
+    int x;
+    int y;
+    int width;
+    int height;
+    int outline;
+    char *text;
+    SDL_Color bg;
+    SDL_Color fg;
+    SDL_Color text_bg;
+    SDL_Color outline_color;
+} Label;
+
 typedef struct Button
 {
     int x;
