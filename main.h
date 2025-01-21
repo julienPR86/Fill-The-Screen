@@ -124,7 +124,7 @@ int map_init();
 int player_init();
 
 int exit_game();
-int exit_full_game();
+void exit_full_game();
 
 int game();
 int game_restart();
@@ -149,7 +149,6 @@ int main_menu();
 
 int button_update(Button *button);
 void button_render(Button *button);
-int button_collision(Button *button, int x, int y);
 void display_text(char *text, int x, int y, int w, int h, SDL_Color bg, SDL_Color fg);
 
 int mode_choice();
@@ -162,5 +161,6 @@ int end_game();
 float fill_percent(Map *map);
 
 void mouse_pressed(SDL_Event event);
+int button_collision(Button *button, int x, int y);
 
 #endif
