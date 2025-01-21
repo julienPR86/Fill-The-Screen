@@ -5,8 +5,8 @@ int end_game()
     printf("moves : %d\n", player->moves);
     printf("fill : %f%%\n", fill_percent(map));
 
-    Button restart_button = {10, 10, 100, 25, 0, "Restart", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {10, 50, 100, 25, 0, "Main menu", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Button restart_button = {10, 10, 100, 25, 1, "Restart", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
+    Button main_menu_button = {10, 50, 100, 25, 1, "Main menu", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
     int running = true, out;
     while (running)

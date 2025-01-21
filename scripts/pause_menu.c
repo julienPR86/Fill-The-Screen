@@ -2,9 +2,9 @@
 
 int pause_menu()
 {
-    Button back_button = {10, 10, 100, 25, 0, "back", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &back};
-    Button restart_button = {10, 50, 100, 25, 0, "Restart", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {10, 90, 100, 25, 0, "Main menu", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Button back_button = {10, 10, 100, 25, 1, "back", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &back};
+    Button restart_button = {10, 50, 100, 25, 1, "Restart", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
+    Button main_menu_button = {10, 90, 100, 25, 1, "Main menu", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
 
     int running = true, out;
     while (running)
