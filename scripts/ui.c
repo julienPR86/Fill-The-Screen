@@ -15,13 +15,13 @@ int button_update(Button *button)
             button->clicked = 0;
             out = button->command();
         }
-        else
-        {
-        }
     }
     else
     {
-        if (button->clicked){button->clicked = 0;}
+        if (button->clicked)
+        {
+            button->clicked = 0;
+        }
     }
     return out;
 }
@@ -29,14 +29,22 @@ int button_update(Button *button)
 void button_render(Button *button)
 {
     SDL_Color color;
+    color = button->outline_color;
     SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
+    SDL_Rect button_outline_rect = {button->x-button->outline, button->y-button->outline, button->width+button->outline*2, button->height+button->outline*2};
+    
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_RenderFillRect(renderer, &button_outline_rect);
+
     if (button->clicked)
         color = button->fg;
     else
         color = button->bg;
+    
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
     display_text(button->text, button->x, button->y, button->width, button->height, button->text_bg, color);
+    
     return;
 }
 
