@@ -31,10 +31,10 @@ void button_render(Button *button)
     SDL_Color color;
     color = button->outline_color;
     SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
-    SDL_Rect button_outline_rect = {button->x-button->outline, button->y-button->outline, button->width+button->outline*2, button->height+button->outline*2};
+    SDL_Rect outline_rect = {button->x-button->outline, button->y-button->outline, button->width+button->outline*2, button->height+button->outline*2};
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderFillRect(renderer, &button_outline_rect);
+    SDL_RenderFillRect(renderer, &outline_rect);
 
     if (button->clicked)
         color = button->fg;
@@ -43,8 +43,24 @@ void button_render(Button *button)
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
-    display_text(button->text, button->x, button->y, button->width, button->height, button->text_bg, color);
+    display_text(button->text, button->x, button->y, button->width, button->height, button->text_color, color);
     
+    return;
+}
+
+void label_render(Label *label)
+{
+    SDL_Color color;
+    color = label->outline_color;
+    SDL_Rect label_rect = {label->x, label->y, label->width, label->height};
+    SDL_Rect outline_rect = {label->x-label->outline, label->y-label->outline, label->width+label->outline*2, label->height+label->outline*2};
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_RenderFillRect(renderer, &outline_rect);
+
+    color = label->bg;
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_RenderFillRect(renderer, &label_rect);
+    display_text(label->text, label->x, label->y, label->width, label->height, label->text_color, color);
     return;
 }
 
