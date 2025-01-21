@@ -8,10 +8,10 @@ int main(int argc, char **argv)
         return RETURN_FAILURE;
     }
 
-    Button play_button = {10,10,100,25,0, current.button_color[0],current.button_color[1], &mode_choice};
-    Button exit_button = {10,50,100,25,0, current.button_color[0],current.button_color[1], &exit_main};
+    Button play_button = {10, 10, 100, 25, 0, "PLAY", 0, current.button_color[0], current.button_color[1], &mode_choice};
+    Button exit_button = {10, 50 ,100, 25, 0, "QUIT", 0, current.button_color[0], current.button_color[1], &exit_main};
 
-    int running = 1, out;
+    int running = true, out;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, current.menu_background.r,current.menu_background.g,current.menu_background.b,current.menu_background.a);
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
         {
             if (SDL_QUIT == event.type)
             {
-                running = 0;
+                running = false;
                 break;
             }
             mouse_pressed(event);
@@ -30,6 +30,8 @@ int main(int argc, char **argv)
         out = button_update(&play_button);
         switch (out)
         {
+            case RETURN_ZERO:
+                break;
             case RETURN_EXIT_FULL_GAME:
                 exit_main();
                 return RETURN_ZERO;

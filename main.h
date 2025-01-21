@@ -71,9 +71,13 @@ typedef struct Button
     int y;
     int width;
     int height;
+    int outline;
+    char *text;
     int clicked;
     SDL_Color unpressed_color;
     SDL_Color pressed_color;
+    SDL_Color outline_color;
+    SDL_Color text_color;
     int (*command)();
 } Button;
 

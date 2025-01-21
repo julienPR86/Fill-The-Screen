@@ -2,11 +2,11 @@
 
 int pause_menu()
 {
-    Button back_button = {10,10,100,25,0, current.button_color[0],current.button_color[1], &back};
-    Button restart_button = {10,50,100,25,0, current.button_color[0],current.button_color[1], &restart};
-    Button main_menu_button = {10,90,100,25,0, current.button_color[0],current.button_color[1], &main_menu};
+    Button back_button = {10, 10, 100, 25, 0, "back", 0, current.button_color[0],current.button_color[1], &back};
+    Button restart_button = {10, 50, 100, 25, 0, "Restart", 0, current.button_color[0],current.button_color[1], &restart};
+    Button main_menu_button = {10, 90, 100, 25, 0, "Main menu", 0, current.button_color[0],current.button_color[1], &main_menu};
 
-    int running = 1, out;
+    int running = true, out;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, current.menu_background.r,current.menu_background.g,current.menu_background.b,current.menu_background.a);
@@ -22,7 +22,7 @@ int pause_menu()
             {
                 if (SDLK_ESCAPE == event.key.keysym.sym)
                 {
-                    running = 0;
+                    running = false;
                     break;
                 }
             }

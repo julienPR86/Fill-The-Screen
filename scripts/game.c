@@ -21,7 +21,7 @@ int game()
 
     int direction[2] = {0,0};
 
-    int running = 1, out, end = 0;
+    int running = true, out, end = false;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, current.game_background.r,current.game_background.g,current.game_background.b,current.game_background.a);
@@ -120,7 +120,7 @@ int game()
         map_display(XOFFSET, YOFFSET);
         if (!player->remaining_moves && map_is_filled(map) || end)
         {
-            end = 0;
+            end = false;
             out = end_game();
             switch (out)
             {

@@ -5,10 +5,10 @@ int end_game()
     printf("moves : %d\n", player->moves);
     printf("fill : %f%%\n", fill_percent(map));
 
-    Button restart_button = {10,10,100,25,0, current.button_color[0],current.button_color[1], &restart};
-    Button main_menu_button = {10,50,100,25,0, current.button_color[0],current.button_color[1], &main_menu};
+    Button restart_button = {10, 10, 100, 25, 0, "Restart", 0, current.button_color[0], current.button_color[1], &restart};
+    Button main_menu_button = {10, 50, 100, 25, 0, "Main menu", 0, current.button_color[0], current.button_color[1], &main_menu};
     
-    int running = 1, out;
+    int running = true, out;
     while (running)
     {
         SDL_SetRenderDrawColor(renderer, current.menu_background.r, current.menu_background.g, current.menu_background.b, current.menu_background.a);
