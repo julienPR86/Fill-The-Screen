@@ -40,15 +40,6 @@ void button_render(Button *button)
     return;
 }
 
-int button_collision(Button *button, int x, int y)
-{
-    if (x >= button->x && x <= button->x+button->width && y >= button->y && y <= button->y+button->height)
-    {
-        return true;
-    }
-    return false;
-}
-
 void display_text(char *text, int x, int y, int w, int h, SDL_Color bg, SDL_Color fg)
 {
     SDL_Surface *text_surface = TTF_RenderText_Shaded(font, text, bg, fg);
