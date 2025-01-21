@@ -7,6 +7,8 @@ int mode_choice()
     Button constraint_mode_button = {10, 100, 100, 25, 1, "Constraint mode", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
     Button free_mode_button = {10, 150, 100, 25, 1, "Free mode", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
 
+    Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
+
     int running = true, out;
     while (running)
     {
@@ -30,61 +32,22 @@ int mode_choice()
             mouse_pressed(event);
         }
 
-        out = button_update(&fill_mode_button);
-        switch (out)
+        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
         {
-            case RETURN_FAILURE:
-                break;
-            case RETURN_EXIT_FULL_GAME:
-                return RETURN_EXIT_FULL_GAME;
-            case RETURN_TO_MAIN_MENU:
-                return RETURN_TO_MAIN_MENU;
-            default:
-                break;
+            out = button_update(&buttons[i]);
+            switch (out)
+            {
+                case RETURN_FAILURE:
+                    break;
+                case RETURN_EXIT_FULL_GAME:
+                    return RETURN_EXIT_FULL_GAME;
+                case RETURN_TO_MAIN_MENU:
+                    return RETURN_TO_MAIN_MENU;
+                default:
+                    break;
+            }
+            button_render(&buttons[i]);
         }
-        button_render(&fill_mode_button);
-
-        out = button_update(&discovery_mode_button);
-        switch (out)
-        {
-            case RETURN_FAILURE:
-                break;
-            case RETURN_EXIT_FULL_GAME:
-                return RETURN_EXIT_FULL_GAME;
-            case RETURN_TO_MAIN_MENU:
-                return RETURN_TO_MAIN_MENU;
-            default:
-                break;
-        }
-        button_render(&discovery_mode_button);
-
-        out = button_update(&constraint_mode_button);
-        switch (out)
-        {
-            case RETURN_FAILURE:
-                break;
-            case RETURN_EXIT_FULL_GAME:
-                return RETURN_EXIT_FULL_GAME;
-            case RETURN_TO_MAIN_MENU:
-                return RETURN_TO_MAIN_MENU;
-            default:
-                break;
-        }
-        button_render(&constraint_mode_button);
-
-        out = button_update(&free_mode_button);
-        switch (out)
-        {
-            case RETURN_FAILURE:
-                break;
-            case RETURN_EXIT_FULL_GAME:
-                return RETURN_EXIT_FULL_GAME;
-            case RETURN_TO_MAIN_MENU:
-                return RETURN_TO_MAIN_MENU;
-            default:
-                break;
-        }
-        button_render(&free_mode_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
