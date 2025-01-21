@@ -9,7 +9,9 @@ int main(int argc, char **argv)
     }
 
     Button play_button = {10, 10, 100, 25, 1, "PLAY", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
-    Button exit_button = {10, 50 ,100, 25, 1, "QUIT", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_main};
+    Button exit_button = {10, 50 ,100, 25, 1, "QUIT", 0, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
+
+    Button buttons[] = {play_button, exit_button};
 
     int running = true, out;
     while (running)
@@ -27,39 +29,32 @@ int main(int argc, char **argv)
             mouse_pressed(event);
         }
 
-        out = button_update(&play_button);
-        switch (out)
+        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
         {
-            case RETURN_ZERO:
-                break;
-            case RETURN_EXIT_FULL_GAME:
-                exit_main();
-                return RETURN_ZERO;
-            case RETURN_TO_MAIN_MENU:
-                break;
-            default:
-                break;
+            out = button_update(&buttons[i]);
+            switch (out)
+            {
+                case RETURN_ZERO:
+                    break;
+                case RETURN_TO_MAIN_MENU:
+                    break;
+                case RETURN_EXIT_FULL_GAME:
+                    exit_full_game();
+                    return RETURN_ZERO;
+                default:
+                    break;
+            }
+            button_render(&buttons[i]);
         }
-        button_render(&play_button);
-
-        out = button_update(&exit_button);
-        switch (out)
-        {
-            case RETURN_EXIT_FULL_GAME:
-                return RETURN_ZERO;
-            default:
-                break;
-        }
-        button_render(&exit_button);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
-    exit_main();
+    exit_full_game();
     return RETURN_ZERO;
 }
 
-int exit_main()
+int exit_full_game()
 {
     TTF_CloseFont(font);
     font = NULL;
@@ -70,5 +65,5 @@ int exit_main()
     TTF_Quit();
     SDL_Quit();
     printf("exit ok\n");
-    return RETURN_EXIT_FULL_GAME;
+    return RETURN_ZERO;
 }
