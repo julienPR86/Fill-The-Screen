@@ -2,10 +2,10 @@
 
 int mode_choice()
 {
-    Button fill_mode_button = {10, 10, 100, 25, 1, "Fill mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &fill_mode};
-    Button discovery_mode_button = {10, 50, 100, 25, 1, "Discovery mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &discovery_mode};
-    Button constraint_mode_button = {10, 100, 100, 25, 1, "Constraint mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
-    Button free_mode_button = {10, 150, 100, 25, 1, "Free mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
+    Button fill_mode_button = {100, CENTER(HEIGHT, 50), 150, 50, 1, "Fill mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &fill_mode};
+    Button discovery_mode_button = {270, CENTER(HEIGHT, 50), 150, 50, 1, "Discovery mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &discovery_mode};
+    Button constraint_mode_button = {430, CENTER(HEIGHT, 50), 150, 50, 1, "Constraint mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
+    Button free_mode_button = {590, CENTER(HEIGHT, 50), 150, 50, 1, "Free mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
 
     Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
 

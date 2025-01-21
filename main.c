@@ -8,10 +8,10 @@ int main(int argc, char **argv)
         return RETURN_FAILURE;
     }
 
-    Label title = {500, 100, 500, 100, 0, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label title = {CENTER(WIDTH, 500), 0, 500, 100, 0, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
 
-    Button play_button = {10, 10, 100, 25, 1, "PLAY", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
-    Button exit_button = {10, 50 ,100, 25, 1, "QUIT", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
+    Button play_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50), 150, 50, 1, "PLAY", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
+    Button exit_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+60, 150, 50, 1, "QUIT", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
     Button buttons[] = {play_button, exit_button};
 
