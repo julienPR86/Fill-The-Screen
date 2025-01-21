@@ -5,8 +5,8 @@ int end_game()
     printf("moves : %d\n", player->moves);
     printf("fill : %f%%\n", fill_percent(map));
 
-    Button restart_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50), 150, 50, 1, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+60, 150, 50, 1, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Button restart_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50), 150, 50, 1, 10, 2, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
+    Button main_menu_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+66, 150, 50, 1, 10, 2, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
     Button buttons[] = {restart_button, main_menu_button};
 
