@@ -86,6 +86,7 @@ typedef struct Label
     int height;
     int outline;
     char *text;
+    TTF_Font *font;
     SDL_Color bg;
     SDL_Color text_color;
     SDL_Color outline_color;
@@ -100,6 +101,7 @@ typedef struct Button
     int outline;
     char *text;
     int clicked;
+    TTF_Font *font;
     SDL_Color bg;
     SDL_Color fg;
     SDL_Color text_color;
