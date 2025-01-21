@@ -10,6 +10,8 @@
 #define true 1
 #define false 0
 
+#define CENTER(len1, len2) ((len1 - len2)/2)
+
 enum Returns
 {
     RETURN_ZERO,
