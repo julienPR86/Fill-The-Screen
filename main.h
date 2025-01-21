@@ -123,7 +123,8 @@ int init();
 int map_init();
 int player_init();
 
-int exit_main();
+int exit_game();
+int exit_full_game();
 
 int game();
 int game_restart();

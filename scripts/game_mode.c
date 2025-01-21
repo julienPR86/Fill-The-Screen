@@ -91,27 +91,3 @@ int mode_choice()
     }
     return RETURN_ZERO;
 }
-
-int fill_mode()
-{
-    game_mode = FILL_MODE;
-    return game();
-}
-
-int discovery_mode()
-{
-    game_mode = DISCOVERY_MODE;
-    return game();
-}
-
-int constraint_mode()
-{
-    game_mode = CONSTRAINT_MODE;
-    return game();
-}
-
-int free_mode()
-{
-    game_mode = FREE_MODE;
-    return game();
-}

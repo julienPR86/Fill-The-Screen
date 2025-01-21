@@ -64,18 +64,3 @@ int pause_menu()
     }
     return RETURN_ZERO;
 }
-
-int back()
-{
-    return RETURN_TO_GAME;
-}
-
-int restart()
-{
-    return RETURN_RESTART_GAME;
-}
-
-int main_menu()
-{
-    return RETURN_TO_MAIN_MENU;
-}
