@@ -67,18 +67,22 @@ int end_game()
 
 float fill_percent(Map *map)
 {
-    int count = 0;
+    int count = fill_squares(map);
     float result = 0;
+    result = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
+    return result;
+}
+
+int fill_squares(Map *map)
+{
+    int count = 0;
     for (int y = 0; y < map->height; y++)
     {
         for (int x = 0; x < map->width; x++)
         {
             if (map->map[y][x] == EMPTY_SQUARE)
-            {
                 count++;
-            }
         }
     }
-    result = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
-    return result;
+    return count;
 }
