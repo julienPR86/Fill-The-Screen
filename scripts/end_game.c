@@ -3,13 +3,15 @@
 int end_game()
 {
     int moves = player->moves;
+    int square_ratio = fill_squares(map)/moves;
     float percent = fill_percent(map);
 
     char percent_text[50];
     snprintf(percent_text, sizeof(percent_text), "You filled %.2f%% of the map", percent);
-
     char moves_text[50];
     snprintf(moves_text, sizeof(moves_text), "You made %d moves", moves);
+    char square_ration_text[50];
+    snprintf(square_ration_text, sizeof(square_ration_text), "You made %d moves", square_ratio);
 
     Label title = {CENTER(WIDTH, 500), 0, 500, 83, 0, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
     Label congrats = {CENTER(WIDTH, 600), 0, 600, 100, 0, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
