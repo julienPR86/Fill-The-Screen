@@ -3,20 +3,23 @@
 int end_game()
 {
     int moves = player->moves;
-    int square_ratio = fill_squares(map)/moves;
+    float square_ratio = 0;
+    if (moves)
+        square_ratio = (float)(map->height*map->width-fill_squares(map))/moves;
     float percent = fill_percent(map);
 
     char percent_text[50];
     snprintf(percent_text, sizeof(percent_text), "You filled %.2f%% of the map", percent);
     char moves_text[50];
     snprintf(moves_text, sizeof(moves_text), "You made %d moves", moves);
-    char square_ration_text[50];
-    snprintf(square_ration_text, sizeof(square_ration_text), "You made %d moves", square_ratio);
+    char square_ratio_text[50];
+    snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
     Label title = {CENTER(WIDTH, 500), 0, 500, 83, 0, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
     Label congrats = {CENTER(WIDTH, 600), 0, 600, 100, 0, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
-    Label percent_label = {CENTER(WIDTH, 400), 200, 400, 50, 0, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
-    Label moves_label = {CENTER(WIDTH, 300), 260, 300, 50, 0, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label percent_label = {CENTER(WIDTH, 400), 150, 400, 50, 0, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label moves_label = {CENTER(WIDTH, 250), 200, 250, 50, 0, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label square_ratio_label = {CENTER(WIDTH, 500), 250, 500, 50, 0, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
     
     Button restart_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50), 150, 50, 1, 10, 2, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+66, 150, 50, 1, 10, 2, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
@@ -60,6 +63,7 @@ int end_game()
         
         label_render(&percent_label);
         label_render(&moves_label);
+        label_render(&square_ratio_label);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
