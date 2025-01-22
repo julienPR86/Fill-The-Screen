@@ -2,9 +2,20 @@
 
 int end_game()
 {
-    printf("moves : %d\n", player->moves);
-    printf("fill : %f%%\n", fill_percent(map));
+    int moves = player->moves;
+    float percent = fill_percent(map);
 
+    char percent_text[50];
+    snprintf(percent_text, sizeof(percent_text), "You filled %.2f%% of the map", percent);
+
+    char moves_text[50];
+    snprintf(moves_text, sizeof(moves_text), "You made %d moves", moves);
+
+    Label title = {CENTER(WIDTH, 500), 0, 500, 83, 0, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label congrats = {CENTER(WIDTH, 600), 0, 600, 100, 0, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label percent_label = {CENTER(WIDTH, 400), 200, 400, 50, 0, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label moves_label = {CENTER(WIDTH, 300), 260, 300, 50, 0, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    
     Button restart_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50), 150, 50, 1, 10, 2, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+66, 150, 50, 1, 10, 2, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
@@ -39,6 +50,14 @@ int end_game()
             }
             button_render(&buttons[i]);
         }
+
+        if (percent >= 100.0)
+            label_render(&congrats);
+        else
+            label_render(&title);
+        
+        label_render(&percent_label);
+        label_render(&moves_label);
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
