@@ -43,7 +43,10 @@ void button_render(Button *button)
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
-    display_text(button->text, button->x+button->padx, button->y+button->pady, 0.1, button->font, button->text_color, color);
+
+    int w, h;
+    TTF_SizeText(button->font, button->text, &w, &h);
+    display_text(button->text, button->x+(button->width-w*0.1)/2+button->padx, button->y+(button->height-h*0.1)/2+button->pady, 0.1, button->font, button->text_color, color);
     
     return;
 }

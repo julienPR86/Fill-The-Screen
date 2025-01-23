@@ -17,12 +17,12 @@ int end_game()
 
     Label title = {10, 0, 500, 83, 0, 0.3, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
     Label congrats = {10, 0, 600, 100, 0, 0.3, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
-    Label percent_label = {10, 150, 400, 50, 0, 0.2, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
-    Label moves_label = {10, 200, 250, 50, 0, 0.2, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
-    Label square_ratio_label = {10, 250, 500, 50, 0, 0.2, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label percent_label = {10, 150, 400, 50, 0, 0.1, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label moves_label = {10, 200, 250, 50, 0, 0.1, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label square_ratio_label = {10, 250, 500, 50, 0, 0.1, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
     
-    Button restart_button = {10, HEIGHT/2, 150, 50, 1, 10, 2, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 10, 2, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
+    Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
     Button buttons[] = {restart_button, main_menu_button};
 

@@ -5,10 +5,10 @@ int mode_choice()
     Label title = {10, 0, 600, 100, 0, 0.3, "Game mode Choice", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
     Label back_label = {20, HEIGHT-50, 280, 40, 0, 0.1, "Press Escape to go back", roboto_light, {255,255,255,255}, {250,40,0,255}, {0,0,0,255}};
 
-    Button fill_mode_button = {20, HEIGHT/2-99, 150, 50, 1, 10, 2, "Fill mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &fill_mode};
-    Button discovery_mode_button = {20, HEIGHT/2-33, 150, 50, 1, 10, 2, "Discovery mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &discovery_mode};
-    Button constraint_mode_button = {20, HEIGHT/2+33, 150, 50, 1, 10, 2, "Constraint mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
-    Button free_mode_button = {20, HEIGHT/2+99, 150, 50, 1, 10, 2, "Free mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
+    Button fill_mode_button = {20, HEIGHT/2-99, 150, 50, 1, 0, 0, "Fill mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &fill_mode};
+    Button discovery_mode_button = {20, HEIGHT/2-33, 150, 50, 1, 0, 0, "Discovery mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &discovery_mode};
+    Button constraint_mode_button = {20, HEIGHT/2+33, 150, 50, 1, 0, 0, "Constraint mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
+    Button free_mode_button = {20, HEIGHT/2+99, 150, 50, 1, 0, 0, "Free mode", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
 
     Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
 
