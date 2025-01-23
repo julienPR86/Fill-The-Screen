@@ -53,17 +53,7 @@ void button_render(Button *button)
 
 void label_render(Label *label)
 {
-    SDL_Color color;
-    color = label->outline_color;
-    SDL_Rect label_rect = {label->x, label->y, label->width, label->height};
-    SDL_Rect outline_rect = {label->x-label->outline, label->y-label->outline, label->width+label->outline*2, label->height+label->outline*2};
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderFillRect(renderer, &outline_rect);
-
-    color = label->bg;
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderFillRect(renderer, &label_rect);
-    display_text(label->text, label->x, label->y, label->scale, label->font, label->text_color, color);
+    display_text(label->text, label->x, label->y, label->scale, label->font, label->text_color, label->bg);
     return;
 }
 

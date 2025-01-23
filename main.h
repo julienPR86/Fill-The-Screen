@@ -10,6 +10,9 @@
 #define true 1
 #define false 0
 
+#define MAX(a, b) ((a > b) ? a : b)
+#define MIN(a, b) ((a < b) ? a : b)
+
 enum Returns
 {
     RETURN_ZERO,
@@ -82,15 +85,11 @@ typedef struct Label
 {
     int x;
     int y;
-    int width;
-    int height;
-    int outline;
     float scale;
     char *text;
     TTF_Font *font;
     SDL_Color bg;
     SDL_Color text_color;
-    SDL_Color outline_color;
 } Label;
 
 typedef struct Button
