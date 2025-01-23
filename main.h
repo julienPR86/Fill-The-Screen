@@ -87,6 +87,7 @@ typedef struct Label
     int width;
     int height;
     int outline;
+    float scale;
     char *text;
     TTF_Font *font;
     SDL_Color bg;
@@ -167,7 +168,7 @@ int main_menu();
 int button_update(Button *button);
 void button_render(Button *button);
 void label_render(Label *label);
-void display_text(char *text, int x, int y, int w, int h, TTF_Font *font, SDL_Color bg, SDL_Color fg);
+void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Color bg, SDL_Color fg);
 
 int mode_choice();
 int fill_mode();

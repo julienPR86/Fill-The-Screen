@@ -43,7 +43,7 @@ void button_render(Button *button)
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
-    display_text(button->text, button->x, button->y, button->width, button->height, button->font, button->text_color, color);
+    display_text(button->text, button->x, button->y, 0.1, button->font, button->text_color, color);
     
     return;
 }
@@ -60,16 +60,18 @@ void label_render(Label *label)
     color = label->bg;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &label_rect);
-    display_text(label->text, label->x, label->y, label->width, label->height, label->font, label->text_color, color);
+    display_text(label->text, label->x, label->y, label->scale, label->font, label->text_color, color);
     return;
 }
 
-void display_text(char *text, int x, int y, int w, int h, TTF_Font *font, SDL_Color bg, SDL_Color fg)
+void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Color bg, SDL_Color fg)
 {
     SDL_Surface *text_surface = TTF_RenderText_Shaded(font, text, bg, fg);
     SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
     SDL_FreeSurface(text_surface);
-    SDL_Rect rect = {x, y, w, h};
+    int w, h;
+    TTF_SizeText(font, text, &w, &h);
+    SDL_Rect rect = {x, y, w*scale, h*scale};
     SDL_RenderCopy(renderer, text_texture, NULL, &rect);
     return;
 }
