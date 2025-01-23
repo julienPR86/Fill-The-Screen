@@ -23,3 +23,12 @@ int button_collision(Button *button, int x, int y)
     }
     return false;
 }
+
+int get_button_height(Button *button)
+{
+    return button->height+button->outline;
+}
+int get_button_width(Button *button)
+{
+    return button->width+button->outline;
+}

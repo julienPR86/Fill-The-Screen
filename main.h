@@ -180,5 +180,7 @@ int fill_squares(Map *map);
 
 void mouse_pressed(SDL_Event event);
 int button_collision(Button *button, int x, int y);
+int get_button_height(Button *button);
+int get_button_width(Button *button);
 
 #endif
