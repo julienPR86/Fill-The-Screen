@@ -30,8 +30,8 @@ void button_render(Button *button)
 {
     SDL_Color color;
     color = button->outline_color;
-    SDL_Rect button_rect = {button->x-button->padx, button->y-button->pady, button->width+button->padx*2, button->height+button->pady*2};
-    SDL_Rect outline_rect = {button->x-button->outline-button->padx, button->y-button->outline-button->pady, button->width+button->outline*2+button->padx*2, button->height+button->outline*2+button->pady*2};
+    SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
+    SDL_Rect outline_rect = {button->x-button->outline, button->y-button->outline, button->width+button->outline*2, button->height+button->outline*2};
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
@@ -43,7 +43,7 @@ void button_render(Button *button)
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
-    display_text(button->text, button->x, button->y, 0.1, button->font, button->text_color, color);
+    display_text(button->text, button->x+button->padx, button->y+button->pady, 0.1, button->font, button->text_color, color);
     
     return;
 }
@@ -66,12 +66,12 @@ void label_render(Label *label)
 
 void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Color bg, SDL_Color fg)
 {
-    SDL_Surface *text_surface = TTF_RenderText_Shaded(font, text, bg, fg);
-    SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
-    SDL_FreeSurface(text_surface);
     int w, h;
     TTF_SizeText(font, text, &w, &h);
     SDL_Rect rect = {x, y, w*scale, h*scale};
+    SDL_Surface *text_surface = TTF_RenderText_Shaded(font, text, bg, fg);
+    SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
+    SDL_FreeSurface(text_surface);
     SDL_RenderCopy(renderer, text_texture, NULL, &rect);
     return;
 }

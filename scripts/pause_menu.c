@@ -2,11 +2,11 @@
 
 int pause_menu()
 {
-    Label title = {CENTER(WIDTH, 500), 0, 500, 83, 0, 0.3, "Game Paused", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
+    Label title = {10, 0, 500, 83, 0, 0.3, "Game Paused", roboto_regular, {255,255,255,255}, {255,40,0,255}, {0,0,0,255}};
 
-    Button back_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50), 150, 50, 1, 10, 2, "back", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &back};
-    Button restart_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+66, 150, 50, 1, 10, 2, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {CENTER(WIDTH, 150), CENTER(HEIGHT, 50)+132, 150, 50, 1, 10, 2, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Button back_button = {10, HEIGHT/2, 150, 50, 1, 10, 2, "back", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &back};
+    Button restart_button = {10, HEIGHT/2+66, 150, 50, 1, 10, 2, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
+    Button main_menu_button = {10, HEIGHT/2+132, 150, 50, 1, 10, 2, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
 
     Button buttons[] = {back_button, restart_button, main_menu_button};
 
