@@ -101,8 +101,10 @@ typedef struct Button
     int outline;
     int padx;
     int pady;
-    char *text;
+    int centered_x;
+    int centered_y;
     int state;
+    char *text;
     TTF_Font *font;
     SDL_Color bg;
     SDL_Color fg;

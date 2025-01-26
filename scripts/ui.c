@@ -51,9 +51,9 @@ void button_render(Button *button)
     SDL_RenderFillRect(renderer, &button_rect);
 
     int w, h;
+    float text_scale = 0.1;
     TTF_SizeText(button->font, button->text, &w, &h);
-    display_text(button->text, button->x+(button->width-w*0.1)/2+button->padx, button->y+(button->height-h*0.1)/2+button->pady, 0.1, button->font, button->text_color, color);
-    
+    display_text(button->text, button->x+(button->width-w*text_scale)/2+button->padx, button->y+(button->height-h*text_scale)/2+button->pady, text_scale, button->font, button->text_color, color);
     return;
 }
 
