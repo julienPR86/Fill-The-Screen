@@ -75,16 +75,9 @@ typedef struct MainColors
     SDL_Color end_game_background;
 } MainColors;
 
-typedef struct TextColors
-{
-    SDL_Color background;
-    SDL_Color foreground;
-} TextColors;
-
 typedef struct Theme
 {
     MainColors main_colors;
-    TextColors text_colors;
     SDL_Color game_colors[5];
 } Theme;
 
