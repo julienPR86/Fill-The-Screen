@@ -21,8 +21,8 @@ int end_game()
     Label moves_label = {10, 200, 0.1, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}};
     Label square_ratio_label = {10, 250, 0.1, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}};
     
-    Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {200,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {200,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, "Restart", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
+    Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, "Main menu", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
     Button buttons[] = {restart_button, main_menu_button};
 
