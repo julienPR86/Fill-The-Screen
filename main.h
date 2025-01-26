@@ -106,6 +106,7 @@ typedef struct Button
     TTF_Font *font;
     SDL_Color bg;
     SDL_Color fg;
+    SDL_Color hover;
     SDL_Color text_color;
     SDL_Color outline_color;
     int (*command)();

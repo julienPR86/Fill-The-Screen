@@ -10,8 +10,8 @@ int main(int argc, char **argv)
 
     Label title = {20, 10, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}};
 
-    Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, "PLAY", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
-    Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, "QUIT", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
+    Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, "PLAY", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {200,0,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
+    Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, "QUIT", 0, roboto_light, {255,0,0,255}, {255,128,0,255}, {200,0,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
     Button buttons[] = {play_button, exit_button};
 
