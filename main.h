@@ -102,7 +102,7 @@ typedef struct Button
     int padx;
     int pady;
     char *text;
-    int clicked;
+    int state;
     TTF_Font *font;
     SDL_Color bg;
     SDL_Color fg;

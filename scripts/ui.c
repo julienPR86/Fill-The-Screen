@@ -8,19 +8,19 @@ int button_update(Button *button)
     {
         if (mouse_button_pressed == 1)
         {
-            button->clicked = 1;
+            button->state = 1;
         }
-        else if (mouse_button_pressed == 0 && button->clicked)
+        else if (mouse_button_pressed == 0 && button->state)
         {
-            button->clicked = 0;
+            button->state = 0;
             out = button->command();
         }
     }
     else
     {
-        if (button->clicked)
+        if (button->state)
         {
-            button->clicked = 0;
+            button->state = 0;
         }
     }
     return out;
@@ -36,7 +36,7 @@ void button_render(Button *button)
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
 
-    if (button->clicked)
+    if (button->state)
         color = button->fg;
     else
         color = button->bg;
