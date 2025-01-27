@@ -102,6 +102,22 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
     return RETURN_ZERO;
 }
 
+int map_get_squares_number(Map *map, int type)
+{
+    int count = 0;
+    for (int y = 0; y < map->height; y++)
+    {
+        for (int x = 0; x < map->width; x++)
+        {
+            if (map->map[y][x] == type)
+            {
+                count++;;
+            }
+        }
+    }
+    return count;
+}
+
 int map_is_filled(Map *map)
 {
     for (int y = 0; y < map->height; y++)

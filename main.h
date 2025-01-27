@@ -155,6 +155,7 @@ Map *map_random(Map *map, int value);
 void map_print(Map *map);
 void map_display(int offset_x, int offset_y);
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height);
+int map_get_squares_number(Map *map, int type);
 int map_is_filled(Map *map);
 
 int player_move(int x, int y);
