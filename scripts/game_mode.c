@@ -10,6 +10,7 @@ int mode_choice()
     Button constraint_mode_button = {10, HEIGHT/2+33, 300, 50, 1, 0, 0, false, false, NORMAL, "Constraint mode", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
     Button free_mode_button = {10, HEIGHT/2+99, 200, 50, 1, 0, 0, false, false, NORMAL, "Free mode", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
 
+    Label labels[] = {title, back_label};
     Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
 
     int running = true, out;
@@ -52,8 +53,10 @@ int mode_choice()
             button_render(&buttons[i]);
         }
 
-        label_render(&title);
-        label_render(&back_label);
+        for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
+        {
+            label_render(&labels[i]);
+        }
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);

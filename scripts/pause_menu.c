@@ -8,6 +8,7 @@ int pause_menu()
     Button restart_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, false, false, NORMAL, "Restart", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {10, HEIGHT/2+132, 150, 50, 1, 0, 0, false, false, NORMAL, "Main menu", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
 
+    Label labels[] = {title};
     Button buttons[] = {back_button, restart_button, main_menu_button};
 
     int running = true, out;
@@ -50,7 +51,10 @@ int pause_menu()
             button_render(&buttons[i]);
         }
 
-        label_render(&title);
+        for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
+        {
+            label_render(&labels[i]);
+        }
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);

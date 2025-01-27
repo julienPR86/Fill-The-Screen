@@ -24,6 +24,7 @@ int end_game()
     Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, false, false, NORMAL, "Restart", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, false, false, NORMAL, "Main menu", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
+    Label labels[] = {percent_label, moves_label, square_ratio_label};
     Button buttons[] = {restart_button, main_menu_button};
 
     int running = true, out;
@@ -61,9 +62,10 @@ int end_game()
         else
             label_render(&title);
         
-        label_render(&percent_label);
-        label_render(&moves_label);
-        label_render(&square_ratio_label);
+        for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
+        {
+            label_render(&labels[i]);
+        }
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);

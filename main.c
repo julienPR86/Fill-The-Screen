@@ -13,6 +13,7 @@ int main(int argc, char **argv)
     Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, true, true, NORMAL, "PLAY", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
     Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, false, false, NORMAL, "QUIT", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
+    Label labels[] = {title};
     Button buttons[] = {play_button, exit_button};
 
     int running = true, out;
@@ -49,7 +50,10 @@ int main(int argc, char **argv)
             button_render(&buttons[i]);
         }
 
-        label_render(&title);
+        for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
+        {
+            label_render(&labels[i]);
+        }
 
         SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
