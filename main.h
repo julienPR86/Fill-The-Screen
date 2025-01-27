@@ -179,7 +179,6 @@ int free_mode();
 
 int end_game();
 float fill_percent(Map *map);
-int fill_squares(Map *map);
 
 void mouse_pressed(SDL_Event event);
 int button_collision(Button *button, int x, int y);

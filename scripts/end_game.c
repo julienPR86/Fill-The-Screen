@@ -5,7 +5,12 @@ int end_game()
     int moves = player->moves;
     float square_ratio = 0;
     if (moves)
-        square_ratio = (float)(map->height*map->width-fill_squares(map))/moves;
+    {
+        if (CONSTRAINT_MODE == game_mode)
+            square_ratio = (float)(map->height*map->width-(map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, COLLISION_SQUARE)))/moves;
+        else
+            square_ratio = (float)(map->height*map->width-map_get_squares_number(map, EMPTY_SQUARE))/moves;
+    }
     float percent = fill_percent(map);
 
     char percent_text[50];
@@ -75,22 +80,8 @@ int end_game()
 
 float fill_percent(Map *map)
 {
-    int count = fill_squares(map);
+    int count = map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, COLLISION_SQUARE);
     float result = 0;
     result = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
     return result;
-}
-
-int fill_squares(Map *map)
-{
-    int count = 0;
-    for (int y = 0; y < map->height; y++)
-    {
-        for (int x = 0; x < map->width; x++)
-        {
-            if (map->map[y][x] == EMPTY_SQUARE)
-                count++;
-        }
-    }
-    return count;
 }
