@@ -17,6 +17,7 @@ int pause_menu()
     {
         delta_time = (SDL_GetTicks64() - last_time) * 0.001;
         last_time = SDL_GetTicks64();
+        FPS = get_fps();
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.pause_menu_background.r,current.main_colors.pause_menu_background.g,current.main_colors.pause_menu_background.b,current.main_colors.pause_menu_background.a);
         SDL_RenderClear(renderer);//background
