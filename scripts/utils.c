@@ -1,5 +1,14 @@
 #include "../main.h"
 
+int get_fps()
+{
+    if (delta_time != 0)
+    {
+        return (int)(1/delta_time);
+    }
+    return MAX_FPS;
+}
+
 void mouse_pressed(SDL_Event event)
 {
     if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
