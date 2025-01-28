@@ -3,6 +3,7 @@
 int WIDTH = 1080;
 int HEIGHT = 720;
 int FPS = 60;
+double delta_time;
 int probability = 6;
 
 SDL_Window *window = NULL;
@@ -56,8 +57,6 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    current = basic;
-    srand(time(NULL)*(WIDTH/HEIGHT));
     roboto_regular = TTF_OpenFont("font/Roboto-regular.ttf", font_size);
     if (NULL == roboto_regular)
     {
@@ -79,6 +78,8 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
+    current = basic;
+    srand(time(NULL)*(WIDTH/HEIGHT));
     return RETURN_ZERO;
 }
 

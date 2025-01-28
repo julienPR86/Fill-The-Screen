@@ -14,8 +14,12 @@ int mode_choice()
     Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
 
     int running = true, out;
+    Uint64 last_time = SDL_GetTicks64();
     while (running)
     {
+        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
+        last_time = SDL_GetTicks64();
+        
         SDL_SetRenderDrawColor(renderer, current.main_colors.game_mode_background.r,current.main_colors.game_mode_background.g,current.main_colors.game_mode_background.b,current.main_colors.game_mode_background.a);
         SDL_RenderClear(renderer);//background
 
@@ -58,7 +62,6 @@ int mode_choice()
             label_render(&labels[i]);
         }
 
-        SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     return RETURN_ZERO;

@@ -17,8 +17,12 @@ int main(int argc, char **argv)
     Button buttons[] = {play_button, exit_button};
 
     int running = true, out;
+    Uint64 last_time = SDL_GetTicks64();
     while (running)
     {
+        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
+        last_time = SDL_GetTicks64();
+        
         SDL_SetRenderDrawColor(renderer, current.main_colors.menu_background.r,current.main_colors.menu_background.g,current.main_colors.menu_background.b,current.main_colors.menu_background.a);
         SDL_RenderClear(renderer);//background
 
@@ -55,7 +59,6 @@ int main(int argc, char **argv)
             label_render(&labels[i]);
         }
 
-        SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     exit_full_game();
@@ -64,9 +67,9 @@ int main(int argc, char **argv)
 
 void exit_full_game()
 {
-    TTF_CloseFont(roboto_regular);
-    roboto_regular = NULL;
     TTF_CloseFont(roboto_light);
+    roboto_regular = NULL;
+    TTF_CloseFont(roboto_regular);
     roboto_light = NULL;
     SDL_DestroyRenderer(renderer);
     renderer = NULL;

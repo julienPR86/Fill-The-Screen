@@ -12,8 +12,12 @@ int pause_menu()
     Button buttons[] = {back_button, restart_button, main_menu_button};
 
     int running = true, out;
+    Uint64 last_time = SDL_GetTicks64();
     while (running)
     {
+        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
+        last_time = SDL_GetTicks64();
+        
         SDL_SetRenderDrawColor(renderer, current.main_colors.pause_menu_background.r,current.main_colors.pause_menu_background.g,current.main_colors.pause_menu_background.b,current.main_colors.pause_menu_background.a);
         SDL_RenderClear(renderer);//background
 
@@ -56,7 +60,6 @@ int pause_menu()
             label_render(&labels[i]);
         }
 
-        SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     return RETURN_ZERO;

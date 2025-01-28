@@ -22,8 +22,12 @@ int game()
     int direction[2] = {0,0};
 
     int running = true, out, end = false;
+    Uint64 last_time = SDL_GetTicks64();
     while (running)
     {
+        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
+        last_time = SDL_GetTicks64();
+
         SDL_SetRenderDrawColor(renderer, current.main_colors.game_background.r,current.main_colors.game_background.g,current.main_colors.game_background.b,current.main_colors.game_background.a);
         SDL_RenderClear(renderer);//background
 
@@ -139,7 +143,6 @@ int game()
                     break;
             }
         }
-        SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     game_quit();

@@ -117,6 +117,7 @@ typedef struct Button
 extern int WIDTH;
 extern int HEIGHT;
 extern int FPS;
+extern double delta_time;
 extern int probability;
 
 extern SDL_Window *window;

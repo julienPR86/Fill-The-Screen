@@ -33,8 +33,12 @@ int end_game()
     Button buttons[] = {restart_button, main_menu_button};
 
     int running = true, out;
+    Uint64 last_time = SDL_GetTicks64();
     while (running)
     {
+        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
+        last_time = SDL_GetTicks64();
+        
         SDL_SetRenderDrawColor(renderer, current.main_colors.end_game_background.r, current.main_colors.end_game_background.g, current.main_colors.end_game_background.b, current.main_colors.end_game_background.a);
         SDL_RenderClear(renderer);//background
 
@@ -72,7 +76,6 @@ int end_game()
             label_render(&labels[i]);
         }
 
-        SDL_Delay(1.0/FPS*1000);
         SDL_RenderPresent(renderer);
     }
     return RETURN_TO_MAIN_MENU;
