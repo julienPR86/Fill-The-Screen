@@ -51,8 +51,8 @@ enum ButtonStates
 
 typedef struct Player
 {
-    int x;
-    int y;
+    float x;
+    float y;
     int moves;
     int remaining_moves;
     int frame_move;
@@ -117,6 +117,7 @@ typedef struct Button
 extern int WIDTH;
 extern int HEIGHT;
 extern int FPS;
+extern int MAX_FPS;
 extern double delta_time;
 extern int probability;
 
