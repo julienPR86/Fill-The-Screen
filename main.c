@@ -23,6 +23,7 @@ int main(int argc, char **argv)
         delta_time = (SDL_GetTicks64() - last_time) * 0.001;
         last_time = SDL_GetTicks64();
         FPS = get_fps();
+        printf("%d\n", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.menu_background.r,current.main_colors.menu_background.g,current.main_colors.menu_background.b,current.main_colors.menu_background.a);
         SDL_RenderClear(renderer);//background
@@ -69,9 +70,9 @@ int main(int argc, char **argv)
 void exit_full_game()
 {
     TTF_CloseFont(roboto_light);
-    roboto_regular = NULL;
-    TTF_CloseFont(roboto_regular);
     roboto_light = NULL;
+    TTF_CloseFont(roboto_regular);
+    roboto_regular = NULL;
     SDL_DestroyRenderer(renderer);
     renderer = NULL;
     SDL_DestroyWindow(window);

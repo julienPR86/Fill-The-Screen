@@ -20,6 +20,7 @@ int mode_choice()
         delta_time = (SDL_GetTicks64() - last_time) * 0.001;
         last_time = SDL_GetTicks64();
         FPS = get_fps();
+        printf("%d\n", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.game_mode_background.r,current.main_colors.game_mode_background.g,current.main_colors.game_mode_background.b,current.main_colors.game_mode_background.a);
         SDL_RenderClear(renderer);//background
@@ -35,7 +36,6 @@ int mode_choice()
                 if (SDLK_ESCAPE == event.key.keysym.sym)
                 {
                     running = false;
-                    break;
                 }
             }
             mouse_pressed(event);

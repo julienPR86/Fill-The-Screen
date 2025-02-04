@@ -72,5 +72,6 @@ void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Col
     SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
     SDL_FreeSurface(text_surface);
     SDL_RenderCopy(renderer, text_texture, NULL, &rect);
+    SDL_DestroyTexture(text_texture);
     return;
 }
