@@ -8,7 +8,7 @@ int pause_menu()
     Button restart_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, false, false, NORMAL, "Restart", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {10, HEIGHT/2+132, 150, 50, 1, 0, 0, false, false, NORMAL, "Main menu", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
 
-    Label labels[] = {title};
+    Label labels[] = {title, FPS_label};
     Button buttons[] = {back_button, restart_button, main_menu_button};
 
     int running = true, out;
@@ -18,6 +18,7 @@ int pause_menu()
         delta_time = (SDL_GetTicks64() - last_time) * 0.001;
         last_time = SDL_GetTicks64();
         FPS = get_fps();
+        snprintf(FPS_text, 5, "%d", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.pause_menu_background.r,current.main_colors.pause_menu_background.g,current.main_colors.pause_menu_background.b,current.main_colors.pause_menu_background.a);
         SDL_RenderClear(renderer);//background

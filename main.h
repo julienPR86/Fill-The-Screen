@@ -13,6 +13,8 @@
 #define MAX(a, b) ((a > b) ? a : b)
 #define MIN(a, b) ((a < b) ? a : b)
 
+
+
 enum Returns
 {
     RETURN_ZERO,
@@ -48,6 +50,8 @@ enum ButtonStates
     CLICKED,
     HOVERED,
 };
+
+
 
 typedef struct Player
 {
@@ -114,6 +118,8 @@ typedef struct Button
     int (*command)();
 } Button;
 
+
+
 extern int WIDTH;
 extern int HEIGHT;
 extern int FPS;
@@ -138,6 +144,12 @@ extern const Theme basic;
 extern TTF_Font *roboto_light;
 extern TTF_Font *roboto_regular;
 extern int font_size;
+
+
+extern char *FPS_text;
+extern Label FPS_label;
+
+
 
 int init();
 int map_init();

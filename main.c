@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, true, true, NORMAL, "PLAY", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
     Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, false, false, NORMAL, "QUIT", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
-    Label labels[] = {title};
+    Label labels[] = {title, FPS_label};
     Button buttons[] = {play_button, exit_button};
 
     int running = true, out;
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         delta_time = (SDL_GetTicks64() - last_time) * 0.001;
         last_time = SDL_GetTicks64();
         FPS = get_fps();
-        printf("%d\n", FPS);
+        snprintf(FPS_text, 5, "%d", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.menu_background.r,current.main_colors.menu_background.g,current.main_colors.menu_background.b,current.main_colors.menu_background.a);
         SDL_RenderClear(renderer);//background
@@ -69,6 +69,8 @@ int main(int argc, char **argv)
 
 void exit_full_game()
 {
+    free(FPS_text);
+
     TTF_CloseFont(roboto_light);
     roboto_light = NULL;
     TTF_CloseFont(roboto_regular);

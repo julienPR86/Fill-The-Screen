@@ -29,7 +29,7 @@ int end_game()
     Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, false, false, NORMAL, "Restart", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
     Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, false, false, NORMAL, "Main menu", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
     
-    Label labels[] = {percent_label, moves_label, square_ratio_label};
+    Label labels[] = {percent_label, moves_label, square_ratio_label, FPS_label};
     Button buttons[] = {restart_button, main_menu_button};
 
     int running = true, out;
@@ -39,7 +39,7 @@ int end_game()
         delta_time = (SDL_GetTicks64() - last_time) * 0.001;
         last_time = SDL_GetTicks64();
         FPS = get_fps();
-        printf("%d\n", FPS);
+        snprintf(FPS_text, 5, "%d", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.end_game_background.r, current.main_colors.end_game_background.g, current.main_colors.end_game_background.b, current.main_colors.end_game_background.a);
         SDL_RenderClear(renderer);//background

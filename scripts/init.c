@@ -7,13 +7,11 @@ int MAX_FPS = 60;
 double delta_time;
 int probability = 6;
 
+
+
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
-
-int mouse_button_pressed = 0;
-
-int game_mode = NO_ACTIVE_MODE;
 
 Player *player = NULL;
 Map *map = NULL;
@@ -22,9 +20,19 @@ const Theme basic = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {255,25
                      {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
 Theme current;
 
+int mouse_button_pressed = 0;
+int game_mode = NO_ACTIVE_MODE;
+
 TTF_Font *roboto_regular;
 TTF_Font *roboto_light;
 int font_size = 300;
+
+
+
+char *FPS_text;
+Label FPS_label = {2, 2, 0.05, NULL, NULL, {255,255,255,255}, {0,0,0,255}};
+
+
 
 int init()
 {
@@ -81,6 +89,10 @@ int init()
     }
     current = basic;
     srand(time(NULL)*(WIDTH/HEIGHT));
+    FPS_text = (char *)malloc(5 * sizeof(char));
+    FPS_text[0] = '\0';
+    FPS_label.text = FPS_text;
+    FPS_label.font = roboto_light;
     return RETURN_ZERO;
 }
 
