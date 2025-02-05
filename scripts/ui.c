@@ -68,10 +68,11 @@ void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Col
     int w, h;
     TTF_SizeText(font, text, &w, &h);
     SDL_Rect rect = {x, y, w*scale, h*scale};
-    SDL_Surface *text_surface = TTF_RenderText_Shaded(font, text, bg, fg);
+    SDL_Surface *text_surface = TTF_RenderText_Blended(font, text, bg);
     SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
-    SDL_FreeSurface(text_surface);
+    SDL_SetTextureBlendMode(text_texture, SDL_BLENDMODE_BLEND);
     SDL_RenderCopy(renderer, text_texture, NULL, &rect);
+    SDL_FreeSurface(text_surface);
     SDL_DestroyTexture(text_texture);
     return;
 }
