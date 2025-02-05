@@ -23,11 +23,10 @@ int game()
     int direction[2] = {0,0};
 
     int running = true, out, end = false;
-    Uint64 last_time = SDL_GetTicks64();
+    Uint64 start_time;
     while (running)
     {
-        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
-        last_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks64();
         FPS = get_fps();
         snprintf(FPS_text, 5, "%d", FPS);
 
@@ -153,6 +152,7 @@ int game()
         }
 
         SDL_RenderPresent(renderer);
+        cap_fps(start_time);
     }
     game_quit();
     return RETURN_TO_MAIN_MENU;

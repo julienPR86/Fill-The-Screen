@@ -12,11 +12,10 @@ int pause_menu()
     Button buttons[] = {back_button, restart_button, main_menu_button};
 
     int running = true, out;
-    Uint64 last_time = SDL_GetTicks64();
+    Uint64 start_time;
     while (running)
     {
-        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
-        last_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks64();
         FPS = get_fps();
         snprintf(FPS_text, 5, "%d", FPS);
         
@@ -63,6 +62,7 @@ int pause_menu()
         }
 
         SDL_RenderPresent(renderer);
+        cap_fps(start_time);
     }
     return RETURN_ZERO;
 }

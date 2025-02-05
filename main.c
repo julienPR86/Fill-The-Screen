@@ -17,11 +17,10 @@ int main(int argc, char **argv)
     Button buttons[] = {play_button, exit_button};
 
     int running = true, out;
-    Uint64 last_time = SDL_GetTicks64();
+    Uint64 start_time;
     while (running)
     {
-        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
-        last_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks64();
         FPS = get_fps();
         snprintf(FPS_text, 5, "%d", FPS);
         
@@ -62,6 +61,7 @@ int main(int argc, char **argv)
         }
 
         SDL_RenderPresent(renderer);
+        cap_fps(start_time);
     }
     exit_full_game();
     return RETURN_ZERO;

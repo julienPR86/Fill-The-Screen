@@ -14,11 +14,10 @@ int mode_choice()
     Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
 
     int running = true, out;
-    Uint64 last_time = SDL_GetTicks64();
+    Uint64 start_time;
     while (running)
     {
-        delta_time = (SDL_GetTicks64() - last_time) * 0.001;
-        last_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks64();
         FPS = get_fps();
         snprintf(FPS_text, 5, "%d", FPS);
         
@@ -64,6 +63,7 @@ int mode_choice()
         }
 
         SDL_RenderPresent(renderer);
+        cap_fps(start_time);
     }
     return RETURN_ZERO;
 }
