@@ -2,12 +2,42 @@
 
 int get_fps()
 {
-    if (delta_time != 0)
+    const int update = 10;
+    static int fps = 0;
+    static int counter = 0;
+    static Uint64 last_time = 0;
+    static float total_time = 0;
+
+    Uint64 current_time = SDL_GetTicks64();
+    delta_time = (current_time - last_time) * 0.001f;
+    last_time = current_time;
+
+    total_time += delta_time;
+    counter++;
+
+    if (counter == update)
     {
-        return (int)(1/delta_time);
+        if (total_time > 0)
+            fps = (int)(update / total_time);
+        else
+            fps = 0;
+
+        total_time = 0;
+        counter = 0;
     }
-    return MAX_FPS;
+    return fps;
 }
+
+void cap_fps(Uint64 start_time)
+{
+    Uint64 frame_time = SDL_GetTicks64() - start_time;
+    Uint64 target_time = 1000 / MAX_FPS;
+
+    if (frame_time < target_time)
+        SDL_Delay(target_time - frame_time);
+    return;
+}
+
 
 void mouse_pressed(SDL_Event event)
 {

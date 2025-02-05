@@ -13,7 +13,7 @@
 #define MAX(a, b) ((a > b) ? a : b)
 #define MIN(a, b) ((a < b) ? a : b)
 
-
+// Enums ---------------------------------
 
 enum Returns
 {
@@ -51,7 +51,7 @@ enum ButtonStates
     HOVERED,
 };
 
-
+// Structs ---------------------------------
 
 typedef struct Player
 {
@@ -118,7 +118,7 @@ typedef struct Button
     int (*command)();
 } Button;
 
-
+// Variables ---------------------------------
 
 extern int WIDTH;
 extern int HEIGHT;
@@ -149,7 +149,7 @@ extern int font_size;
 extern char *FPS_text;
 extern Label FPS_label;
 
-
+// Functions ---------------------------------
 
 int init();
 int map_init();
@@ -195,6 +195,7 @@ int end_game();
 float fill_percent(Map *map);
 
 int get_fps();
+void cap_fps(Uint64 start_time);
 void mouse_pressed(SDL_Event event);
 int button_collision(Button *button, int x, int y);
 int get_button_height(Button *button);
