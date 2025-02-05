@@ -30,7 +30,7 @@ int font_size = 300;
 
 
 char *FPS_text;
-Label FPS_label = {2, 2, 0.05, NULL, NULL, {255,255,255,255}, {0,0,0,255}};
+Label FPS_label = {2, 2, 0.06, NULL, NULL, {255,255,255,0}, {0,200,40,255}};
 
 
 
@@ -87,6 +87,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     current = basic;
     srand(time(NULL)*(WIDTH/HEIGHT));
     FPS_text = (char *)malloc(5 * sizeof(char));
