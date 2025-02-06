@@ -19,7 +19,6 @@ int mode_choice()
     {
         start_time = SDL_GetTicks64();
         FPS = get_fps();
-        snprintf(FPS_text, 5, "%d", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.game_mode_background.r,current.main_colors.game_mode_background.g,current.main_colors.game_mode_background.b,current.main_colors.game_mode_background.a);
         SDL_RenderClear(renderer);//background

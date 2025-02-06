@@ -24,6 +24,10 @@ int get_fps()
 
         total_time = 0;
         counter = 0;
+        if (0 > snprintf(FPS_text, 5, "%d", fps))
+        {
+            FPS_text = NULL;
+        }
     }
     return fps;
 }

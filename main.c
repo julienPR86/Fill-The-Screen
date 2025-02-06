@@ -22,7 +22,6 @@ int main(int argc, char **argv)
     {
         start_time = SDL_GetTicks64();
         FPS = get_fps();
-        snprintf(FPS_text, 5, "%d", FPS);
         
         SDL_SetRenderDrawColor(renderer, current.main_colors.menu_background.r,current.main_colors.menu_background.g,current.main_colors.menu_background.b,current.main_colors.menu_background.a);
         SDL_RenderClear(renderer);//background

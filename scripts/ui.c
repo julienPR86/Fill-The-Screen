@@ -65,6 +65,8 @@ void label_render(Label *label)
 
 void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Color bg, SDL_Color fg)
 {
+    if (NULL == text)
+        return;
     int w, h;
     TTF_SizeText(font, text, &w, &h);
     SDL_Rect rect = {x, y, w*scale, h*scale};

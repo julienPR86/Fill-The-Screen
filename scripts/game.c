@@ -28,7 +28,6 @@ int game()
     {
         start_time = SDL_GetTicks64();
         FPS = get_fps();
-        snprintf(FPS_text, 5, "%d", FPS);
 
         SDL_SetRenderDrawColor(renderer, current.main_colors.game_background.r,current.main_colors.game_background.g,current.main_colors.game_background.b,current.main_colors.game_background.a);
         SDL_RenderClear(renderer);//background
