@@ -3,8 +3,9 @@
 int WIDTH = 1080;
 int HEIGHT = 720;
 int FPS;
-int MAX_FPS = 60;
+int MAX_FPS = 120;
 double delta_time;
+int game_speed = 60;
 int probability = 6;
 
 

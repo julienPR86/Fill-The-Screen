@@ -28,8 +28,8 @@ int player_move(int x, int y)
         {
             map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
         }
-        player->x += x;
-        player->y += y;
+        player->x += x * delta_time * game_speed;
+        player->y += y * delta_time * game_speed;
         previous_state = map->map[(int)player->y][(int)player->x];
         map->map[(int)player->y][(int)player->x] = PLAYER_SQUARE;
         player->remaining_moves--;

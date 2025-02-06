@@ -125,6 +125,7 @@ extern int HEIGHT;
 extern int FPS;
 extern int MAX_FPS;
 extern double delta_time;
+extern int game_speed;
 extern int probability;
 
 extern SDL_Window *window;
