@@ -55,8 +55,8 @@ enum ButtonStates
 
 typedef struct Player
 {
-    float x;
-    float y;
+    double x;
+    double y;
     int moves;
     int remaining_moves;
     int frame_move;
