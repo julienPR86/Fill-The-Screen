@@ -37,7 +37,7 @@ int game()
             direction[0] = 0;
             direction[1] = 0;
         }
-        player->frame_move = 0;
+        if (player->frame_move){player->frame_move = 0;}
         while (SDL_PollEvent(&event))
         {
             if (SDL_QUIT == event.type)

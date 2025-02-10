@@ -5,19 +5,24 @@ int player_move(int x, int y)
     static int previous_state = 3;
     if (x ^ y && player->remaining_moves)
     {
+        if (player->x+x >= map->width || player->x+x < 0 || map->map[(int)player->y][(int)player->x + x] == COLLISION_SQUARE ||
+            player->y+y >= map->height || player->y+y < 0 || map->map[(int)player->y + y][(int)player->x] == COLLISION_SQUARE)
+        {
+            if (player->frame_move)
+            {
+                player->moves--;
+            }
+            player->remaining_moves = 0;
+            return 1;
+        }
         for (int i = 0; i < game_speed; i++)
         {
             if (player->x+x >= map->width || player->x+x < 0 || map->map[(int)player->y][(int)player->x + x] == COLLISION_SQUARE ||
                 player->y+y >= map->height || player->y+y < 0 || map->map[(int)player->y + y][(int)player->x] == COLLISION_SQUARE)
             {
-                if (player->frame_move)
-                {
-                    player->moves--;
-                }
                 player->remaining_moves = 0;
                 return 1;
             }
-
             if (DISCOVERY_MODE == game_mode && previous_state == FAKE_SQUARE)
             {
                 map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
