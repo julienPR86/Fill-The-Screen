@@ -7,11 +7,10 @@ int main(int argc, char **argv)
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-
     Label title = {20, 10, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}};
 
-    Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, true, true, NORMAL, "PLAY", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
-    Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, false, false, NORMAL, "QUIT", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
+    Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, NORMAL, "PLAY", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
+    Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, NORMAL, "QUIT", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
     Label labels[] = {title, FPS_label};
     Button buttons[] = {play_button, exit_button};
