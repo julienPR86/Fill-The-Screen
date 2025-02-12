@@ -7,13 +7,14 @@ int main(int argc, char **argv)
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title = {20, 10, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}};
+    Label title = {20, 10, 0, 0, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    label_init(&title);
 
     Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, NORMAL, "PLAY", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &mode_choice};
     Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, NORMAL, "QUIT", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &exit_game};
 
-    Label labels[] = {title, FPS_label};
-    Button buttons[] = {play_button, exit_button};
+    Label *labels[] = {&title, &FPS_label};
+    Button *buttons[] = {&play_button, &exit_button};
 
     int running = true, out;
     Uint64 start_time;
@@ -37,7 +38,7 @@ int main(int argc, char **argv)
 
         for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
         {
-            out = button_update(&buttons[i]);
+            out = button_update(buttons[i]);
             switch (out)
             {
                 case RETURN_ZERO:
@@ -45,28 +46,31 @@ int main(int argc, char **argv)
                 case RETURN_TO_MAIN_MENU:
                     break;
                 case RETURN_EXIT_FULL_GAME:
+                    label_free(&title);
                     exit_full_game();
                     return RETURN_ZERO;
                 default:
                     break;
             }
-            button_render(&buttons[i]);
+            button_render(buttons[i]);
         }
 
         for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
         {
-            label_render(&labels[i]);
+            label_render(labels[i]);
         }
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
     }
+    label_free(&title);
     exit_full_game();
     return RETURN_ZERO;
 }
 
 void exit_full_game()
 {
+    label_free(&FPS_label);
     free(FPS_text);
 
     TTF_CloseFont(roboto_light);
