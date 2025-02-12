@@ -70,6 +70,7 @@ typedef struct
     int **map;
 } Map;
 
+
 typedef struct MainColors
 {
     SDL_Color menu_background;
@@ -85,15 +86,21 @@ typedef struct Theme
     SDL_Color game_colors[5];
 } Theme;
 
+
 typedef struct Label
 {
     int x;
     int y;
+    int w;
+    int h;
     float scale;
     char *text;
     TTF_Font *font;
     SDL_Color bg;
     SDL_Color text_color;
+    SDL_Surface *surface;
+    SDL_Texture *texture;
+    int update;
 } Label;
 
 typedef struct Button
@@ -181,8 +188,10 @@ int main_menu();
 
 int button_update(Button *button);
 void button_render(Button *button);
+
+Label *label_init(Label *label);
 void label_render(Label *label);
-void display_text(char *text, int x, int y, float scale, TTF_Font *font, SDL_Color bg, SDL_Color fg);
+void label_free(Label *label);
 
 int mode_choice();
 int fill_mode();
