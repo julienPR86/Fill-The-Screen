@@ -2,8 +2,8 @@
 
 int mode_choice()
 {
-    Label title = {10, 0, 0.3, "Game mode Choice", roboto_regular, {255,255,255,255}, {255,40,0,255}};
-    Label back_label = {10, HEIGHT-50, 0.1, "Press Escape to go back", roboto_light, {255,255,255,255}, {250,40,0,255}};
+    Label title = {10, 0, 0, 0, 0.3, "Game mode Choice", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label back_label = {10, HEIGHT-50, 0, 0, 0.1, "Press Escape to go back", roboto_light, {255,255,255,255}, {250,40,0,255}, NULL, NULL, false};
 
     Button fill_mode_button = {10, HEIGHT/2-99, 200, 50, 1, 0, 0, NORMAL, "Fill mode", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &fill_mode};
     Button discovery_mode_button = {10, HEIGHT/2-33, 300, 50, 1, 0, 0, NORMAL, "Discovery mode", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &discovery_mode};
