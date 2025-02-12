@@ -51,6 +51,7 @@ int end_game()
         {
             if (SDL_QUIT == event.type)
             {
+                labels_free(labels, 4);
                 return RETURN_EXIT_FULL_GAME;
             }
             mouse_pressed(event);
@@ -62,8 +63,10 @@ int end_game()
             switch (out)
             {
                 case RETURN_RESTART_GAME:
+                    labels_free(labels, 4);
                     return RETURN_RESTART_GAME;
                 case RETURN_TO_MAIN_MENU:
+                    labels_free(labels, 4);
                     return RETURN_TO_MAIN_MENU;
                 default:
                     break;
@@ -84,6 +87,7 @@ int end_game()
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
     }
+    labels_free(labels, 4);
     return RETURN_TO_MAIN_MENU;
 }
 

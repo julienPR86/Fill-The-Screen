@@ -46,7 +46,7 @@ int main(int argc, char **argv)
                 case RETURN_TO_MAIN_MENU:
                     break;
                 case RETURN_EXIT_FULL_GAME:
-                    label_free(&title);
+                    labels_free(labels, 2);
                     exit_full_game();
                     return RETURN_ZERO;
                 default:
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
     }
-    label_free(&title);
+    labels_free(labels, 2);
     exit_full_game();
     return RETURN_ZERO;
 }
@@ -72,6 +72,7 @@ void exit_full_game()
 {
     label_free(&FPS_label);
     free(FPS_text);
+    FPS_text = NULL;
 
     TTF_CloseFont(roboto_light);
     roboto_light = NULL;

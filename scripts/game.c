@@ -43,6 +43,7 @@ int game()
             if (SDL_QUIT == event.type)
             {
                 game_quit();
+                labels_free(labels, 1);
                 return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
@@ -102,9 +103,11 @@ int game()
                                 break;
                             case RETURN_TO_MAIN_MENU:
                                 game_quit();
+                                labels_free(labels, 1);
                                 return RETURN_TO_MAIN_MENU;
                             case RETURN_EXIT_FULL_GAME:
                                 game_quit();
+                                labels_free(labels, 1);
                                 return RETURN_EXIT_FULL_GAME;
                             default:
                                 break;
@@ -136,9 +139,11 @@ int game()
                     break;
                 case RETURN_TO_MAIN_MENU:
                     game_quit();
+                    labels_free(labels, 1);
                     return RETURN_TO_MAIN_MENU;
                 case RETURN_EXIT_FULL_GAME:
                     game_quit();
+                    labels_free(labels, 1);
                     return RETURN_EXIT_FULL_GAME;
                 default:
                     break;
@@ -154,6 +159,7 @@ int game()
         cap_fps(start_time);
     }
     game_quit();
+    labels_free(labels, 1);
     return RETURN_TO_MAIN_MENU;
 }
 

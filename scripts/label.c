@@ -68,3 +68,15 @@ void label_free(Label *label)
     }
     return;
 }
+
+void labels_free(Label *labels[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (labels[i] == &FPS_label)
+            continue;
+        
+        label_free(labels[i]);
+    }
+    return;
+}
