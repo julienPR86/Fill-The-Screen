@@ -15,7 +15,7 @@ int game()
         map = NULL;
         return RETURN_FAILURE;
     }
-    Label labels[] = {FPS_label};
+    Label *labels[] = {&FPS_label};
     
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
     int XOFFSET = WIDTH/2 - (map->width*map->square_size)/2;
@@ -147,7 +147,7 @@ int game()
         
         for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
         {
-            label_render(&labels[i]);
+            label_render(labels[i]);
         }
 
         SDL_RenderPresent(renderer);
