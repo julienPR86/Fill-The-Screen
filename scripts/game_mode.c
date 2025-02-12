@@ -10,8 +10,8 @@ int mode_choice()
     Button constraint_mode_button = {10, HEIGHT/2+33, 300, 50, 1, 0, 0, NORMAL, "Constraint mode", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &constraint_mode};
     Button free_mode_button = {10, HEIGHT/2+99, 200, 50, 1, 0, 0, NORMAL, "Free mode", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &free_mode};
 
-    Label labels[] = {title, back_label, FPS_label};
-    Button buttons[] = {fill_mode_button, discovery_mode_button, constraint_mode_button, free_mode_button};
+    Label *labels[] = {&title, &back_label, &FPS_label};
+    Button *buttons[] = {&fill_mode_button, &discovery_mode_button, &constraint_mode_button, &free_mode_button};
 
     int running = true, out;
     Uint64 start_time;
@@ -41,7 +41,7 @@ int mode_choice()
 
         for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
         {
-            out = button_update(&buttons[i]);
+            out = button_update(buttons[i]);
             switch (out)
             {
                 case RETURN_FAILURE:
@@ -53,12 +53,12 @@ int mode_choice()
                 default:
                     break;
             }
-            button_render(&buttons[i]);
+            button_render(buttons[i]);
         }
 
         for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
         {
-            label_render(&labels[i]);
+            label_render(labels[i]);
         }
 
         SDL_RenderPresent(renderer);
