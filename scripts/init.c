@@ -31,7 +31,7 @@ int font_size = 300;
 
 
 char *FPS_text;
-Label FPS_label = {2, 2, 0.06, NULL, NULL, {255,255,255,0}, {0,200,40,255}};
+Label FPS_label = {2, 2, 0, 0, 0.6, NULL, NULL, {0,0,0,0}, {0,200,40,255}, NULL, NULL, false};
 
 
 
@@ -91,10 +91,20 @@ int init()
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     current = basic;
     srand(time(NULL)*(WIDTH/HEIGHT));
-    FPS_text = (char *)malloc(5 * sizeof(char));
-    FPS_text[0] = '\0';
+
+    FPS_text = (char *)malloc(8 * sizeof(char));
+    if (NULL == FPS_text)
+    {
+        fprintf(stderr, "Memory allocation error\n");
+    }
+    else
+    {
+        FPS_text[0] = '0';
+        FPS_text[1] = '\0';
+    }
     FPS_label.text = FPS_text;
     FPS_label.font = roboto_light;
+    label_init(&FPS_label);
     return RETURN_ZERO;
 }
 
