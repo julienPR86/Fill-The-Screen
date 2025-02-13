@@ -113,12 +113,10 @@ typedef struct Button
     int padx;
     int pady;
     int state;
-    char *text;
-    TTF_Font *font;
+    Label label;
     SDL_Color bg;
     SDL_Color fg;
     SDL_Color hover;
-    SDL_Color text_color;
     SDL_Color outline_color;
     int (*command)();
 } Button;
@@ -186,6 +184,7 @@ int back();
 int restart();
 int main_menu();
 
+Button *button_init(Button *button);
 int button_update(Button *button);
 void button_render(Button *button);
 
