@@ -1,5 +1,13 @@
 #include "../main.h"
 
+Button *button_init(Button *button)
+{
+    label_init(&button->label);
+    button->label.x = button->x;
+    button->label.y = button->y;
+    return button;
+}
+
 int button_update(Button *button)
 {
     int x, y, out = -1; // returns -1 if the button isn't clicked
@@ -49,5 +57,7 @@ void button_render(Button *button)
     
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &button_rect);
+    
+    label_render(&button->label);
     return;
 }
