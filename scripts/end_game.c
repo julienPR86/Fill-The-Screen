@@ -31,8 +31,13 @@ int end_game()
     Label square_ratio_label = {10, 250, 0, 0, 0.1, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
     label_init(&square_ratio_label);
 
-    Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, NORMAL, "Restart", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &restart};
-    Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, NORMAL, "Main menu", roboto_light, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, {0,0,0,255}, &main_menu};
+    Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
+    Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
+
+    Button restart_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, NORMAL, restart_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &restart};
+    button_init(&restart_button);
+    Button main_menu_button = {10, HEIGHT/2+66, 150, 50, 1, 0, 0, NORMAL, main_menu_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &main_menu};
+    button_init(&main_menu_button);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
     Button *buttons[] = {&restart_button, &main_menu_button};

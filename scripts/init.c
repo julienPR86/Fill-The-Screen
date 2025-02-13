@@ -3,7 +3,7 @@
 int WIDTH = 1080;
 int HEIGHT = 720;
 int FPS;
-int MAX_FPS = 120;
+int MAX_FPS = 160;
 double delta_time;
 int game_speed = 60;
 int probability = 6;
@@ -31,7 +31,7 @@ int font_size = 300;
 
 
 char *FPS_text;
-Label FPS_label = {2, 2, 0, 0, 0.6, NULL, NULL, {0,0,0,0}, {0,200,40,255}, NULL, NULL, false};
+Label FPS_label = {2, 2, 0, 0, 0.06, NULL, NULL, {0,0,0,0}, {0,200,40,255}, NULL, NULL, false};
 
 
 
