@@ -38,7 +38,7 @@ int mode_choice()
         {
             if (SDL_QUIT == event.type)
             {
-                labels_free(labels, 3);
+                label_list_free(labels, 3);
                 return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
@@ -59,10 +59,10 @@ int mode_choice()
                 case RETURN_FAILURE:
                     break;
                 case RETURN_EXIT_FULL_GAME:
-                    labels_free(labels, 3);
+                    label_list_free(labels, 3);
                     return RETURN_EXIT_FULL_GAME;
                 case RETURN_TO_MAIN_MENU:
-                    labels_free(labels, 3);
+                    label_list_free(labels, 3);
                     return RETURN_TO_MAIN_MENU;
                 default:
                     break;
@@ -78,6 +78,6 @@ int mode_choice()
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
     }
-    labels_free(labels, 3);
+    label_list_free(labels, 3);
     return RETURN_ZERO;
 }

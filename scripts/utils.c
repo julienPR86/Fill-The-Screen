@@ -2,7 +2,7 @@
 
 int get_fps()
 {
-    const int update = 10;
+    const int update = 20;
     static int fps = 0;
     static int counter = 0;
     static Uint64 last_time = 0;

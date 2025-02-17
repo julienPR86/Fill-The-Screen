@@ -69,7 +69,7 @@ void label_free(Label *label)
     return;
 }
 
-void labels_free(Label *labels[], int size)
+void label_list_free(Label *labels[], int size)
 {
     for (int i = 0; i < size; i++)
     {

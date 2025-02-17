@@ -50,7 +50,7 @@ int main(int argc, char **argv)
                 case RETURN_TO_MAIN_MENU:
                     break;
                 case RETURN_EXIT_FULL_GAME:
-                    labels_free(labels, 2);
+                    label_list_free(labels, 2);
                     exit_full_game();
                     return RETURN_ZERO;
                 default:
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
     }
-    labels_free(labels, 2);
+    label_list_free(labels, 2);
     exit_full_game();
     return RETURN_ZERO;
 }
