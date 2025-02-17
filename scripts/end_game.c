@@ -3,17 +3,29 @@
 int end_game()
 {
     int moves = player->moves;
+    float percent = 1.0/(map->height*map->width) * 100;
     float square_ratio = 0;
     if (moves)
     {
         if (CONSTRAINT_MODE == game_mode)
+        {
+            int count = map_get_squares_number(map, EMPTY_SQUARE) + map_get_squares_number(map, COLLISION_SQUARE);
+            percent = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
             square_ratio = (float)(map->height*map->width-(map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, COLLISION_SQUARE)))/moves;
+        }
         else if (DISCOVERY_MODE == game_mode)
+        {
+            int count = map_get_squares_number(map, EMPTY_SQUARE) + map_get_squares_number(map, FAKE_SQUARE);
+            percent = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
             square_ratio = (float)(map->height*map->width-(map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, FAKE_SQUARE)))/moves;
+        }
         else
+        {
+            int count = map_get_squares_number(map, EMPTY_SQUARE);
+            percent = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
             square_ratio = (float)(map->height*map->width-map_get_squares_number(map, EMPTY_SQUARE))/moves;
+        }
     }
-    float percent = fill_percent(map);
 
     char percent_text[50];
     snprintf(percent_text, sizeof(percent_text), "You filled %.2f%% of the map", percent);
@@ -97,12 +109,4 @@ int end_game()
     }
     label_list_free(labels, 4);
     return RETURN_TO_MAIN_MENU;
-}
-
-float fill_percent(Map *map)
-{
-    int count = map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, COLLISION_SQUARE);
-    float result = 0;
-    result = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
-    return result;
 }

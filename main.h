@@ -55,8 +55,8 @@ enum ButtonStates
 
 typedef struct Player
 {
-    double x;
-    double y;
+    int x;
+    int y;
     int moves;
     int remaining_moves;
     int frame_move;
@@ -178,7 +178,7 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
 int map_get_squares_number(Map *map, int type);
 int map_is_filled(Map *map);
 
-int player_move(int x, int y);
+void player_move(int x, int y);
 void player_reset(Player *player);
 
 int pause_menu();
@@ -203,7 +203,6 @@ int discovery_mode();
 int free_mode();
 
 int end_game();
-float fill_percent(Map *map);
 
 int get_fps();
 void cap_fps(Uint64 start_time);
