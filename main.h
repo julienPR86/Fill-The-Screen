@@ -189,6 +189,7 @@ int button_update(Button *button);
 void button_render(Button *button);
 
 Label *label_init(Label *label);
+void label_update(Label *label);
 void label_render(Label *label);
 void label_free(Label *label);
 void label_list_free(Label *labels[], int size);

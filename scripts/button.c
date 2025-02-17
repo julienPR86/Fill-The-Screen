@@ -35,6 +35,7 @@ int button_update(Button *button)
             button->state = NORMAL;
         }
     }
+    label_update(&button->label);
     return out;
 }
 

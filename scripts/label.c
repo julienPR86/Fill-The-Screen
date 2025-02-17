@@ -32,17 +32,22 @@ Label *label_init(Label *label)
     return label;
 }
 
-void label_render(Label *label)
+void label_update(Label *label)
 {
-    if (NULL == label || NULL == label->texture)
-        return;
-    
     if (label->update)
     {
         label_free(label);
         label_init(label);
         label->update = false;
     }
+    return;
+}
+
+void label_render(Label *label)
+{
+    if (NULL == label || NULL == label->texture)
+        return;
+    
     SDL_Rect label_rect = {label->x, label->y, label->w*label->scale, label->h*label->scale};
     if (0 != SDL_RenderCopy(renderer, label->texture, NULL, &label_rect))
     {

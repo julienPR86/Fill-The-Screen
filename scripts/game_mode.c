@@ -72,6 +72,7 @@ int mode_choice()
 
         for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
         {
+            label_update(labels[i]);
             label_render(labels[i]);
         }
 
