@@ -56,7 +56,7 @@ int game()
                         case SDLK_d:
                             direction[0] = 1;
                             direction[1] = 0;
-                            player->remaining_moves = map->width/delta_time;
+                            player->remaining_moves = map->width;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -64,7 +64,7 @@ int game()
                         case SDLK_q:
                             direction[0] = -1;
                             direction[1] = 0;
-                            player->remaining_moves = map->width/delta_time;
+                            player->remaining_moves = map->width;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -72,7 +72,7 @@ int game()
                         case SDLK_z:
                             direction[0] = 0;
                             direction[1] = -1;
-                            player->remaining_moves = map->height/delta_time;
+                            player->remaining_moves = map->height;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -80,7 +80,7 @@ int game()
                         case SDLK_s:
                             direction[0] = 0;
                             direction[1] = 1;
-                            player->remaining_moves = map->width/delta_time;
+                            player->remaining_moves = map->width;
                             player->moves++;
                             player->frame_move = 1;
                             break;
