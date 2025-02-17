@@ -9,6 +9,8 @@ Label *label_init(Label *label)
     {
         fprintf(stderr, "Size text error : %s\n", TTF_GetError());
     }
+    label->w *= SCALEY;
+    label->h *= SCALEY;
     
     label->surface = TTF_RenderText_Blended(label->font, label->text, label->text_color);
     if (NULL == label->surface)

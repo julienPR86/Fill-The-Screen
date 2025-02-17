@@ -3,6 +3,10 @@
 Button *button_init(Button *button)
 {
     label_init(&button->label);
+
+    button->width = MAX(button->width * SCALEX, button->label.w * button->label.scale);
+    button->height = MAX(button->height * SCALEY, button->label.h * button->label.scale);
+
     button->label.x = button->x + (button->width - button->label.w * button->label.scale)/2;
     button->label.y = button->y + (button->height - button->label.h * button->label.scale)/2;
     return button;

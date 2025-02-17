@@ -125,6 +125,8 @@ typedef struct Button
 
 extern int WIDTH;
 extern int HEIGHT;
+extern float SCALEX;
+extern float SCALEY;
 extern int FPS;
 extern int MAX_FPS;
 extern double delta_time;
