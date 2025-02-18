@@ -19,9 +19,12 @@ SDL_Event event;
 Player *player = NULL;
 Map *map = NULL;
 
-const Theme basic = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}},
+const Theme basic_theme = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}},
                      {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
 Theme current;
+
+const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {200, 0, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
+ButtonStyle current_button_style;
 
 int mouse_button_pressed = 0;
 int game_mode = NO_ACTIVE_MODE;
@@ -92,7 +95,8 @@ int init()
     }
     SCALEX = WIDTH / 1080.0;
     SCALEY = HEIGHT / 720.0;
-    current = basic;
+    current = basic_theme;
+    current_button_style = basic_button_style;
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     srand(time(NULL)*(WIDTH/HEIGHT));
 
