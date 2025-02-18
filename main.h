@@ -10,6 +10,8 @@
 #define true 1
 #define false 0
 
+#define CENTER(a, b) ((a - b) / 2)
+
 #define MAX(a, b) ((a > b) ? a : b)
 #define MIN(a, b) ((a < b) ? a : b)
 
@@ -218,7 +220,7 @@ int get_fps();
 void cap_fps(Uint64 start_time);
 void mouse_pressed(SDL_Event event);
 int button_collision(Button *button, int x, int y);
-int get_button_height(Button *button);
-int get_button_width(Button *button);
+int button_height(Button *button);
+int button_width(Button *button);
 
 #endif

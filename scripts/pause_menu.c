@@ -9,11 +9,11 @@ int pause_menu()
     Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
 
-    Button back_button = {10, HEIGHT/2, 150, 50, NORMAL, back_button_label, basic_button_style, &back};
+    Button back_button = {CENTER(WIDTH, 150*SCALEX), CENTER(HEIGHT, 50*SCALEY), 150, 50, NORMAL, back_button_label, basic_button_style, &back};
     button_init(&back_button);
-    Button restart_button = {10, HEIGHT/2+66, 150, 50, NORMAL, restart_button_label, basic_button_style, &restart};
+    Button restart_button = {CENTER(WIDTH, 150*SCALEX), back_button.y+button_height(&back_button)+10*SCALEY, 150, 50, NORMAL, restart_button_label, basic_button_style, &restart};
     button_init(&restart_button);
-    Button main_menu_button = {10, HEIGHT/2+132, 150, 50, NORMAL, main_menu_button_label, basic_button_style, &main_menu};
+    Button main_menu_button = {CENTER(WIDTH, 150*SCALEX), restart_button.y+button_height(&restart_button)+10*SCALEY, 150, 50, NORMAL, main_menu_button_label, basic_button_style, &main_menu};
     button_init(&main_menu_button);
 
     Label *labels[] = {&title, &FPS_label};

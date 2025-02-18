@@ -23,7 +23,7 @@ const Theme basic_theme = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {
                      {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
 Theme current;
 
-const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {200, 0, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
+const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 ButtonStyle current_button_style;
 
 int mouse_button_pressed = 0;

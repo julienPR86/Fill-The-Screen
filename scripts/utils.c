@@ -68,11 +68,11 @@ int button_collision(Button *button, int x, int y)
     return false;
 }
 
-int get_button_height(Button *button)
+int button_height(Button *button)
 {
-    return button->height+button->outline;
+    return button->height+button->style.outline*2;
 }
-int get_button_width(Button *button)
+int button_width(Button *button)
 {
-    return button->width+button->outline;
+    return button->width+button->style.outline*2;
 }
