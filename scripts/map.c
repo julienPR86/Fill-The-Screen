@@ -8,15 +8,40 @@ Map *map_creation(Map *map)
         fprintf(stderr, "Memory allocation error\n");
         return NULL;
     }
+    map->start_map = (int **)malloc(map->height * sizeof(int *));
+    if (NULL == map->start_map)
+    {
+        free(map->map);
+        fprintf(stderr, "Memory allocation error\n");
+        return NULL;
+    }
     for (int i = 0; i < map->height; i++)
     {
         map->map[i] = (int *)malloc(map->width * sizeof(int));
+        map->start_map[i] = (int *)malloc(map->width * sizeof(int));
         if (NULL == map->map[i])
         {
             for (int j = 0; j < i; j++)
             {
                 free(map->map[j]);
             }
+            free(map->map);
+            free(map->start_map);
+            fprintf(stderr, "Memory allocation error\n");
+            return NULL;
+        }
+        if (NULL == map->start_map[i])
+        {
+            for (int j = 0; j < i; j++)
+            {
+                free(map->start_map[j]);
+            }
+            for (int i = 0; i < map->height; i++)
+            {
+                free(map->map[i]);
+            }
+            free(map->map);
+            free(map->start_map);
             fprintf(stderr, "Memory allocation error\n");
             return NULL;
         }
@@ -29,8 +54,10 @@ Map *map_free(Map *map)
     for (int i = 0; i < map->height; i++)
     {
         free(map->map[i]);
+        free(map->start_map[i]);
     }
     free(map->map);
+    free(map->start_map);
     return map;
 }
 
@@ -41,6 +68,7 @@ Map *map_reset(Map *map, int value)
         for (int x = 0; x < map->width; x++)
         {
             map->map[y][x] = value;
+            map->start_map[y][x] = value;
         }
     }
     return map;
@@ -55,6 +83,7 @@ Map *map_random(Map *map, int value)
             if (!(rand() % probability))
             {
                 map->map[y][x] = value;
+                map->start_map[y][x] = value;
             }
         }
     }
@@ -63,6 +92,7 @@ Map *map_random(Map *map, int value)
 
 void map_print(Map *map)
 {
+    printf("map :\n");
     for (int y = 0; y < map->height; y++)
     {
         for (int x = 0; x < map->width; x++)
@@ -71,10 +101,19 @@ void map_print(Map *map)
         }
         printf("\n");
     }
+    printf("\nstart map :\n");
+    for (int y = 0; y < map->height; y++)
+    {
+        for (int x = 0; x < map->width; x++)
+        {
+           printf("%d ", map->start_map[y][x]);
+        }
+        printf("\n");
+    }
     return;
 }
 
-void map_display(int offset_x, int offset_y)
+void map_display(Map *map, int offset_x, int offset_y)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -92,13 +131,11 @@ void map_display(int offset_x, int offset_y)
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height)
 {
     if (screen_width/map_width < screen_height/map_height)
-    {
         return screen_width/map_width;
-    }
+
     else
-    {
         return screen_height/map_height;
-    }
+
     return RETURN_ZERO;
 }
 
@@ -110,9 +147,7 @@ int map_get_squares_number(Map *map, int type)
         for (int x = 0; x < map->width; x++)
         {
             if (map->map[y][x] == type)
-            {
-                count++;;
-            }
+                count++;
         }
     }
     return count;
@@ -125,9 +160,7 @@ int map_is_filled(Map *map)
         for (int x = 0; x < map->width; x++)
         {
             if (map->map[y][x] == EMPTY_SQUARE)
-            {
                 return false;
-            }
         }
     }
     return true;
