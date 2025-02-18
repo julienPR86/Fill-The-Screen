@@ -4,6 +4,14 @@ void player_move(int delta_x, int delta_y)
 {
     if (!player->can_move || !(delta_x ^ delta_y))
         return;
+
+    if (player->frame_move && player->x + delta_x < 0 || player->y + delta_y < 0 || player->x + delta_x > map->width || player->y + delta_y > map->height ||
+        COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + delta_x] || COLLISION_SQUARE == map->map[(int)player->y + delta_y][(int)player->x])
+    {
+        player->moves--;
+        player->can_move = 0;
+        return;
+    }
     
     for (int i = 0 ; i  < game_speed; i++)
     {
