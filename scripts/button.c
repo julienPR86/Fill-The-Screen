@@ -45,22 +45,33 @@ int button_update(Button *button)
 
 void button_render(Button *button)
 {
-    SDL_Color color;
-    color = button->outline_color;
-    SDL_Rect button_rect = {button->x, button->y, button->width, button->height};
-    SDL_Rect outline_rect = {button->x-button->outline, button->y-button->outline, button->width+button->outline*2, button->height+button->outline*2};
-    
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_Color button_color;
+    SDL_Rect button_rect = {button->x+button->style.inline_, button->y+button->style.inline_, button->width-button->style.inline_*2, button->height-button->style.inline_*2};
+    SDL_Rect inline_rect = {button->x, button->y, button->width, button->height};
+    SDL_Rect outline_rect = {button->x-button->style.outline, button->y-button->style.outline, button->width+button->style.outline*2, button->height+button->style.outline*2};
+
+    switch (button->state)
+    {
+        case NORMAL:
+            button_color = button->style.background;
+            break;
+        case CLICKED:
+            button_color = button->style.foreground;
+            break;
+        case HOVERED:
+            button_color = button->style.hover_color;
+            break;
+        default:
+            break;
+    }
+
+    SDL_SetRenderDrawColor(renderer, button->style.outline_color.r, button->style.outline_color.g, button->style.outline_color.b, button->style.outline_color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
 
-    if (button->state == CLICKED)
-        color = button->fg;
-    else if (button->state == HOVERED)
-        color = button->hover;
-    else
-        color = button->bg;
-    
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_SetRenderDrawColor(renderer, button->style.inline_color.r, button->style.inline_color.g, button->style.inline_color.b, button->style.inline_color.a);
+    SDL_RenderFillRect(renderer, &inline_rect);
+
+    SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
     
     label_render(&button->label);
