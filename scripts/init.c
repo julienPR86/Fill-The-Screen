@@ -154,10 +154,10 @@ int player_init()
         fprintf(stderr, "Memory allocation error\n");
         return RETURN_FAILURE;
     }
-    player->x = 0;
-    player->y = 0;
+    player->x = 0.0;
+    player->y = 0.0;
     player->moves = 0;
-    player->remaining_moves = 0;
+    player->can_move = false;
     player->frame_move = 0;
     return RETURN_ZERO;
 }

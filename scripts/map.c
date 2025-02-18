@@ -43,7 +43,9 @@ Map *map_free(Map *map)
         free(map->start_map[i]);
     }
     free(map->map);
+    map->map = NULL;
     free(map->start_map);
+    map->start_map = NULL;
     return map;
 }
 

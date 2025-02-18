@@ -1,48 +1,48 @@
 #include "../main.h"
 
-int player_move(int x, int y)
+void player_move(int delta_x, int delta_y)
 {
-    static int previous_state = 3;
-    if (x ^ y && player->remaining_moves)
+    if (!player->can_move || !(delta_x ^ delta_y))
+        return;
+    
+    for (int i = 0 ; i  < game_speed; i++)
     {
-        if (player->x+x >= map->width || player->x+x < 0 || map->map[(int)player->y][(int)player->x + x] == COLLISION_SQUARE ||
-            player->y+y >= map->height || player->y+y < 0 || map->map[(int)player->y + y][(int)player->x] == COLLISION_SQUARE)
+        if (player->x + delta_x < 0 || player->y + delta_y < 0 || player->x + delta_x > map->width || player->y + delta_y > map->height ||
+            COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + delta_x] || COLLISION_SQUARE == map->map[(int)player->y + delta_y][(int)player->x])
         {
-            if (player->frame_move)
-            {
-                player->moves--;
-            }
-            player->remaining_moves = 0;
-            return 1;
+            player->can_move = 0;
+            return;
         }
-        for (int i = 0; i < game_speed; i++)
+        switch (game_mode)
         {
-            if (player->x+x >= map->width || player->x+x < 0 || map->map[(int)player->y][(int)player->x + x] == COLLISION_SQUARE ||
-                player->y+y >= map->height || player->y+y < 0 || map->map[(int)player->y + y][(int)player->x] == COLLISION_SQUARE)
-            {
-                player->remaining_moves = 0;
-                return 1;
-            }
-            if (DISCOVERY_MODE == game_mode && previous_state == FAKE_SQUARE)
-            {
-                map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
-            }
-            else if (!(DISCOVERY_MODE == game_mode || CONSTRAINT_MODE == game_mode) && !(rand() % probability))
-            {
-                map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
-            }
-            else
-            {
+            case FREE_MODE:
+            case FILL_MODE:
+                if (!(rand() % probability))
+                    map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
+                else
+                    map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
+                break;
+            
+            case DISCOVERY_MODE:
+                if (FAKE_SQUARE == map->start_map[(int)player->y][(int)player->x])
+                    map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
+                else
+                    map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
+                break;
+            
+            case CONSTRAINT_MODE:
                 map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
-            }
-            player->x += x * delta_time;
-            player->y += y * delta_time;
-            previous_state = map->map[(int)player->y][(int)player->x];
-            map->map[(int)player->y][(int)player->x] = PLAYER_SQUARE;
-            player->remaining_moves--;
+                break;
+            
+            default:
+                map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
+                break;
         }
+        player->x += delta_x * delta_time;
+        player->y += delta_y * delta_time;
+        map->map[(int)player->y][(int)player->x] = PLAYER_SQUARE;
     }
-    return 0;
+    return;
 }
 
 void player_reset(Player *player)
@@ -50,5 +50,5 @@ void player_reset(Player *player)
     player->x = 0;
     player->y = 0;
     player->moves = 0;
-    player->remaining_moves = 0;
+    player->can_move = 0;
 }

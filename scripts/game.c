@@ -15,6 +15,7 @@ int game()
         map = NULL;
         return RETURN_FAILURE;
     }
+    map_print(map);
     Label *labels[] = {&FPS_label};
     
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;
@@ -32,7 +33,7 @@ int game()
         SDL_SetRenderDrawColor(renderer, current.main_colors.game_background.r,current.main_colors.game_background.g,current.main_colors.game_background.b,current.main_colors.game_background.a);
         SDL_RenderClear(renderer);//background
 
-        if (!player->remaining_moves)
+        if (!player->can_move && (direction[0] || direction[1]))
         {
             direction[0] = 0;
             direction[1] = 0;
@@ -48,7 +49,7 @@ int game()
             }
             if (SDL_KEYDOWN == event.type)
             {
-                if (!player->remaining_moves || FREE_MODE == game_mode)
+                if (!player->can_move || FREE_MODE == game_mode)
                 {
                     switch (event.key.keysym.sym)
                     {
@@ -56,7 +57,7 @@ int game()
                         case SDLK_d:
                             direction[0] = 1;
                             direction[1] = 0;
-                            player->remaining_moves = map->width;
+                            player->can_move = true;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -64,7 +65,7 @@ int game()
                         case SDLK_q:
                             direction[0] = -1;
                             direction[1] = 0;
-                            player->remaining_moves = map->width;
+                            player->can_move = true;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -72,7 +73,7 @@ int game()
                         case SDLK_z:
                             direction[0] = 0;
                             direction[1] = -1;
-                            player->remaining_moves = map->height;
+                            player->can_move = true;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -80,7 +81,7 @@ int game()
                         case SDLK_s:
                             direction[0] = 0;
                             direction[1] = 1;
-                            player->remaining_moves = map->width;
+                            player->can_move = true;
                             player->moves++;
                             player->frame_move = 1;
                             break;
@@ -125,8 +126,8 @@ int game()
             }
         }
         player_move(direction[0], direction[1]);
-        map_display(XOFFSET, YOFFSET);
-        if (!player->remaining_moves && map_is_filled(map) || end)
+        map_display(map, XOFFSET, YOFFSET);
+        if ((!player->can_move && map_is_filled(map)) || end)
         {
             end = false;
             out = end_game();
