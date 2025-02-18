@@ -12,9 +12,9 @@ int main(int argc, char **argv)
     Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
 
-    Button play_button = {10, HEIGHT/2, 150, 50, 1, 0, 0, NORMAL, play_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &mode_choice};
+    Button play_button = {10, HEIGHT/2, 150, 50, NORMAL, play_button_label, basic_button_style, &mode_choice};
     button_init(&play_button);
-    Button exit_button = {10, HEIGHT/2+get_button_height(&play_button)+11, 150, 50, 1, 0, 0, NORMAL, exit_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &exit_game};
+    Button exit_button = {10, HEIGHT/2+100, 150, 50, NORMAL, exit_button_label, basic_button_style, &exit_game};
     button_init(&exit_button);
 
     Label *labels[] = {&title_label, &FPS_label};

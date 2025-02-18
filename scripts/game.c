@@ -15,7 +15,6 @@ int game()
         map = NULL;
         return RETURN_FAILURE;
     }
-    map_print(map);
     Label *labels[] = {&FPS_label};
     
     int YOFFSET = HEIGHT/2 - (map->height*map->square_size)/2;

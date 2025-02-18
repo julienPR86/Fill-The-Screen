@@ -12,13 +12,13 @@ int mode_choice()
     Label constraint_mode_button_label = {0, 0, 0, 0, 0.1, "Constraint", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label free_mode_button_label = {0, 0, 0, 0, 0.1, "Free", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
 
-    Button fill_mode_button = {10, HEIGHT/2-99, 200, 50, 1, 0, 0, NORMAL, fill_mode_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &fill_mode};
+    Button fill_mode_button = {10, HEIGHT/2-99, 200, 50, NORMAL, fill_mode_button_label, basic_button_style, &fill_mode};
     button_init(&fill_mode_button);
-    Button discovery_mode_button = {10, HEIGHT/2-33, 300, 50, 1, 0, 0, NORMAL, discovery_mode_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &discovery_mode};
+    Button discovery_mode_button = {10, HEIGHT/2-33, 300, 50, NORMAL, discovery_mode_button_label, basic_button_style, &discovery_mode};
     button_init(&discovery_mode_button);
-    Button constraint_mode_button = {10, HEIGHT/2+33, 300, 50, 1, 0, 0, NORMAL, constraint_mode_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &constraint_mode};
+    Button constraint_mode_button = {10, HEIGHT/2+33, 300, 50, NORMAL, constraint_mode_button_label, basic_button_style, &constraint_mode};
     button_init(&constraint_mode_button);
-    Button free_mode_button = {10, HEIGHT/2+99, 200, 50, 1, 0, 0, NORMAL, free_mode_button_label, {255,0,0,255}, {255,128,0,255}, {230,0,0,255}, {0,0,0,255}, &free_mode};
+    Button free_mode_button = {10, HEIGHT/2+99, 200, 50, NORMAL, free_mode_button_label, basic_button_style, &free_mode};
     button_init(&free_mode_button);
 
     Label *labels[] = {&title, &back_label, &FPS_label};

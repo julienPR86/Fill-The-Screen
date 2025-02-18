@@ -13,7 +13,7 @@ void player_move(int delta_x, int delta_y)
         return;
     }
     
-    for (int i = 0 ; i  < game_speed; i++)
+    for (int i = 0; i < game_speed; i++)
     {
         if (player->x + delta_x < 0 || player->y + delta_y < 0 || player->x + delta_x > map->width || player->y + delta_y > map->height ||
             COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + delta_x] || COLLISION_SQUARE == map->map[(int)player->y + delta_y][(int)player->x])
