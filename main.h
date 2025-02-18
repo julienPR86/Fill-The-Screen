@@ -88,6 +88,18 @@ typedef struct Theme
 } Theme;
 
 
+typedef struct ButtonStyle
+{
+    int outline;
+    int inline_;
+    SDL_Color background;
+    SDL_Color foreground;
+    SDL_Color hover_color;
+    SDL_Color outline_color;
+    SDL_Color inline_color;
+} ButtonStyle;
+
+
 typedef struct Label
 {
     int x;
@@ -110,15 +122,9 @@ typedef struct Button
     int y;
     int width;
     int height;
-    int outline;
-    int padx;
-    int pady;
     int state;
     Label label;
-    SDL_Color bg;
-    SDL_Color fg;
-    SDL_Color hover;
-    SDL_Color outline_color;
+    ButtonStyle style;
     int (*command)();
 } Button;
 
@@ -146,7 +152,10 @@ extern Player *player;
 extern Map *map;
 
 extern Theme current;
-extern const Theme basic;
+extern const Theme basic_theme;
+
+extern ButtonStyle current_button_style;
+extern const ButtonStyle basic_button_style;
 
 extern TTF_Font *roboto_light;
 extern TTF_Font *roboto_regular;
