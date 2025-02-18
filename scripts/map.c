@@ -19,26 +19,12 @@ Map *map_creation(Map *map)
     {
         map->map[i] = (int *)malloc(map->width * sizeof(int));
         map->start_map[i] = (int *)malloc(map->width * sizeof(int));
-        if (NULL == map->map[i])
+        if (NULL == map->map[i] || NULL == map->start_map[i])
         {
             for (int j = 0; j < i; j++)
             {
                 free(map->map[j]);
-            }
-            free(map->map);
-            free(map->start_map);
-            fprintf(stderr, "Memory allocation error\n");
-            return NULL;
-        }
-        if (NULL == map->start_map[i])
-        {
-            for (int j = 0; j < i; j++)
-            {
                 free(map->start_map[j]);
-            }
-            for (int i = 0; i < map->height; i++)
-            {
-                free(map->map[i]);
             }
             free(map->map);
             free(map->start_map);
