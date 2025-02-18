@@ -124,7 +124,12 @@ int map_init()
     map->width = 33;
     map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
     map->map = NULL;
-    map_creation(map);
+    if (NULL == map_creation(map))
+    {
+        free(map);
+        map = NULL;
+        return RETURN_FAILURE;
+    }
     map_reset(map, EMPTY_SQUARE);
     switch (game_mode)
     {
