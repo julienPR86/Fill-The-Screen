@@ -212,6 +212,8 @@ int main_menu();
 Button *button_init(Button *button);
 int button_update(Button *button);
 void button_render(Button *button);
+void button_free(Button *button);
+void button_list_free(Button *button[], int size);
 void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
 
 Label *label_init(Label *label);
