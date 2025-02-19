@@ -8,8 +8,10 @@ int main(int argc, char **argv)
         return RETURN_FAILURE;
     }
     Label title_label = {0, 0, 0, 0, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
-    label_init(&title_label);
-    set_label_anchor(&title_label, CENTER_X, 0, 10);
+    if (NULL != label_init(&title_label))
+    {
+        set_label_anchor(&title_label, CENTER_X, 0, 10);
+    }
 
     Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};

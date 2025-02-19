@@ -2,7 +2,8 @@
 
 Button *button_init(Button *button)
 {
-    label_init(&button->label);
+    if (NULL == label_init(&button->label))
+        return NULL;
 
     button->width = MAX(button->width * SCALEX, button->label.w * button->label.scale);
     button->height = MAX(button->height * SCALEY, button->label.h * button->label.scale);

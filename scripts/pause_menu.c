@@ -3,8 +3,10 @@
 int pause_menu()
 {
     Label title_label = {0, 0, 0, 0, 0.3, "Game Paused", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
-    label_init(&title_label);
-    set_label_anchor(&title_label, CENTER_X, 0, 0);
+    if (NULL != label_init(&title_label))
+    {
+        set_label_anchor(&title_label, CENTER_X, 0, 0);
+    }
 
     Label back_button_label = {0, 0, 0, 0, 0.1, "Back", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
