@@ -10,8 +10,8 @@ Button *button_init(Button *button)
     button->style.outline *= SCALEY;
     button->style.inline_ *= SCALEY;
 
-    button->label.x = button->x + (button->width - button->label.w * button->label.scale)/2;
-    button->label.y = button->y + (button->height - button->label.h * button->label.scale)/2;
+    button->label.x = button->x + CENTERED(button->width, button->label.w * button->label.scale);
+    button->label.y = button->y + CENTERED(button->height, button->label.h * button->label.scale);
     return button;
 }
 
@@ -79,4 +79,39 @@ void button_render(Button *button)
     
     label_render(&button->label);
     return;
+}
+
+void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
+{
+    switch (anchor)
+    {
+        case CENTER:
+            button->x = CENTERED(WIDTH, button->width) + offset_x;
+            button->y = CENTERED(HEIGHT, button->height) + offset_y;
+            break;
+        case CENTER_X:
+            button->x = CENTERED(WIDTH, button->width) + offset_x;
+            break;
+        case CENTER_Y:
+            button->y = CENTERED(HEIGHT, button->height) + offset_y;
+            break;
+        case TOP_LEFT:
+            button->x = offset_x;
+            button->y = offset_y;
+            break;
+        case TOP_RIGHT:
+            button->x = WIDTH - button->width - offset_x;
+            button->y = offset_y;
+            break;
+        case BOTTOM_LEFT:
+            button->x = offset_x;
+            button->y = HEIGHT - button->height - offset_y;
+            break;
+        case BOTTOM_RIGHT:
+            button->x = WIDTH - button->width - offset_x;
+            button->y = HEIGHT - button->height - offset_y;
+            break;
+        default:
+            break;
+    }
 }

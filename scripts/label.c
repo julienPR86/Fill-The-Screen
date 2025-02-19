@@ -87,3 +87,38 @@ void label_list_free(Label *labels[], int size)
     }
     return;
 }
+
+void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y)
+{
+    switch (anchor)
+    {
+        case CENTER:
+            label->x = CENTERED(WIDTH, label->w*label->scale) + offset_x;
+            label->y = CENTERED(HEIGHT, label->h*label->scale) + offset_y;
+            break;
+        case CENTER_X:
+            label->x = CENTERED(WIDTH, label->w*label->scale) + offset_x;
+            break;
+        case CENTER_Y:
+            label->y = CENTERED(HEIGHT, label->h*label->scale) + offset_y;
+            break;
+        case TOP_LEFT:
+            label->x = offset_x;
+            label->y = offset_y;
+            break;
+        case TOP_RIGHT:
+            label->x = WIDTH - label->w*label->scale - offset_x;
+            label->y = offset_y;
+            break;
+        case BOTTOM_LEFT:
+            label->x = offset_x;
+            label->y = HEIGHT - label->h*label->scale - offset_y;
+            break;
+        case BOTTOM_RIGHT:
+            label->x = WIDTH - label->w*label->scale - offset_x;
+            label->y = HEIGHT - label->h*label->scale - offset_y;
+            break;
+        default:
+            break;
+    }
+}
