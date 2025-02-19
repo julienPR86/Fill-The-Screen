@@ -133,6 +133,8 @@ int game()
             {
                 case RETURN_ZERO:
                     break;
+                case RETURN_TO_GAME:
+                    break;
                 case RETURN_RESTART_GAME:
                     game_restart();
                     break;

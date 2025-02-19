@@ -54,19 +54,24 @@ int end_game()
     label_init(&square_ratio_label);
     set_label_anchor(&square_ratio_label, CENTER_X, 0, 0);
 
+    Label back_button_label = {0, 0, 0, 0, 0.1, "Back", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
 
+    Button back_button = {0, 0, 150, 50, NORMAL, back_button_label, basic_button_style, &back};
+    button_init(&back_button);
+    set_button_anchor(&back_button, CENTER, 0, 0);
+
     Button restart_button = {0, 0, 150, 50, NORMAL, restart_button_label, basic_button_style, &restart};
     button_init(&restart_button);
-    set_button_anchor(&restart_button, CENTER, 0, 0);
+    set_button_anchor(&restart_button, CENTER, 0, button_height(&back_button)+10 * SCALEY);
 
     Button main_menu_button = {0, 0, 150, 50, NORMAL, main_menu_button_label, basic_button_style, &main_menu};
     button_init(&main_menu_button);
-    set_button_anchor(&main_menu_button, CENTER, 0, button_height(&restart_button)+10*SCALEY);
+    set_button_anchor(&main_menu_button, CENTER, 0, button_height(&back_button)+button_height(&restart_button)+(10 * SCALEY)*2);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
-    Button *buttons[] = {&restart_button, &main_menu_button};
+    Button *buttons[] = {&back_button, &restart_button, &main_menu_button};
 
     int running = true, out;
     Uint64 start_time;
@@ -93,6 +98,9 @@ int end_game()
             out = button_update(buttons[i]);
             switch (out)
             {
+                case RETURN_TO_GAME:
+                    label_list_free(labels, 4);
+                    return RETURN_TO_GAME;
                 case RETURN_RESTART_GAME:
                     label_list_free(labels, 4);
                     return RETURN_RESTART_GAME;

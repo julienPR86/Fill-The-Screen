@@ -81,6 +81,24 @@ void button_render(Button *button)
     return;
 }
 
+void button_free(Button *button)
+{
+    if (NULL == button)
+        return;
+        
+    label_free(&button->label);
+    return;
+}
+
+void button_list_free(Button *button[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        button_free(&button);
+    }
+    return;
+}
+
 void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
 {
     switch (anchor)
@@ -121,4 +139,5 @@ void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
         default:
             break;
     }
+    return;
 }
