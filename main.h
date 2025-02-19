@@ -10,7 +10,7 @@
 #define true 1
 #define false 0
 
-#define CENTER(a, b) ((a - b) / 2)
+#define CENTERED(a, b) ((a - b) / 2)
 
 #define MAX(a, b) ((a > b) ? a : b)
 #define MIN(a, b) ((a < b) ? a : b)
@@ -51,6 +51,17 @@ enum ButtonStates
     NORMAL,
     CLICKED,
     HOVERED,
+};
+
+enum Anchors
+{
+    CENTER,
+    CENTER_X,
+    CENTER_Y,
+    TOP_LEFT,
+    TOP_RIGHT,
+    BOTTOM_LEFT,
+    BOTTOM_RIGHT,
 };
 
 // Structs ---------------------------------
@@ -201,12 +212,14 @@ int main_menu();
 Button *button_init(Button *button);
 int button_update(Button *button);
 void button_render(Button *button);
+void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
 
 Label *label_init(Label *label);
 void label_update(Label *label);
 void label_render(Label *label);
 void label_free(Label *label);
 void label_list_free(Label *labels[], int size);
+void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y);
 
 int mode_choice();
 int fill_mode();
