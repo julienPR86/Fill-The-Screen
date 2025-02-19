@@ -16,12 +16,14 @@ Label *label_init(Label *label)
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", TTF_GetError());
+        return NULL;
     }
 
     label->texture = SDL_CreateTextureFromSurface(renderer, label->surface);
     if (NULL == label->texture)
     {
         fprintf(stderr, "Texture allocation error : %s\n", SDL_GetError());
+        return NULL;
     }
 
     if (label->bg.a < 255 || label->text_color.a < 255)
@@ -29,6 +31,7 @@ Label *label_init(Label *label)
         if (0 != SDL_SetTextureBlendMode(label->texture, SDL_BLENDMODE_BLEND))
         {
             fprintf(stderr, "Cannot set texture blend mode : %s\n", SDL_GetError());
+            return NULL;
         }
     }
     return label;
