@@ -4,6 +4,9 @@ Button *button_init(Button *button)
 {
     if (NULL == label_init(&button->label))
         return NULL;
+    
+    button->label.x = button->x + CENTERED(button->width, button->label.w * button->label.scale);
+    button->label.y = button->y + CENTERED(button->height, button->label.h * button->label.scale);
 
     button->width = MAX(button->width * SCALEX, button->label.w * button->label.scale);
     button->height = MAX(button->height * SCALEY, button->label.h * button->label.scale);
@@ -11,8 +14,6 @@ Button *button_init(Button *button)
     button->style.outline *= SCALEY;
     button->style.inline_ *= SCALEY;
 
-    button->label.x = button->x + CENTERED(button->width, button->label.w * button->label.scale);
-    button->label.y = button->y + CENTERED(button->height, button->label.h * button->label.scale);
     return button;
 }
 
@@ -49,6 +50,9 @@ int button_update(Button *button)
 
 void button_render(Button *button)
 {
+    if (NULL == button)
+        return;
+        
     SDL_Color button_color;
     SDL_Rect button_rect = {button->x+button->style.inline_, button->y+button->style.inline_, button->width-button->style.inline_*2, button->height-button->style.inline_*2};
     SDL_Rect inline_rect = {button->x, button->y, button->width, button->height};
