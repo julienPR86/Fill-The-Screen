@@ -90,11 +90,11 @@ void button_free(Button *button)
     return;
 }
 
-void button_list_free(Button *button[], int size)
+void button_list_free(Button *buttons[], int size)
 {
     for (int i = 0; i < size; i++)
     {
-        button_free(&button);
+        button_free(buttons[i]);
     }
     return;
 }
