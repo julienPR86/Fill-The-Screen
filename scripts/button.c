@@ -86,28 +86,35 @@ void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
     switch (anchor)
     {
         case CENTER:
+            set_label_anchor(&button->label, CENTER, offset_x, offset_y);
             button->x = CENTERED(WIDTH, button->width) + offset_x;
             button->y = CENTERED(HEIGHT, button->height) + offset_y;
             break;
         case CENTER_X:
+            set_label_anchor(&button->label, CENTER_X, offset_x, offset_y);
             button->x = CENTERED(WIDTH, button->width) + offset_x;
             break;
         case CENTER_Y:
+            set_label_anchor(&button->label, CENTER_Y, offset_x, offset_y);
             button->y = CENTERED(HEIGHT, button->height) + offset_y;
             break;
         case TOP_LEFT:
+            set_label_anchor(&button->label, TOP_LEFT, offset_x, offset_y);
             button->x = offset_x;
             button->y = offset_y;
             break;
         case TOP_RIGHT:
+            set_label_anchor(&button->label, TOP_RIGHT, offset_x, offset_y);
             button->x = WIDTH - button->width - offset_x;
             button->y = offset_y;
             break;
         case BOTTOM_LEFT:
+            set_label_anchor(&button->label, BOTTOM_LEFT, offset_x, offset_y);
             button->x = offset_x;
             button->y = HEIGHT - button->height - offset_y;
             break;
         case BOTTOM_RIGHT:
+            set_label_anchor(&button->label, BOTTOM_RIGHT, offset_x, offset_y);
             button->x = WIDTH - button->width - offset_x;
             button->y = HEIGHT - button->height - offset_y;
             break;
