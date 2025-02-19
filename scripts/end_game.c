@@ -34,23 +34,32 @@ int end_game()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title = {10, 0, 0, 0, 0.3, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
-    label_init(&title);
-    Label congrats = {10, 0, 0, 0, 0.3, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label title_label = {0, 0, 0, 0, 0.3, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    label_init(&title_label);
+    set_label_anchor(&title_label, CENTER_X, 0, 0);
+
+    Label congrats = {0, 0, 0, 0, 0.3, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
     label_init(&congrats);
-    Label percent_label = {10, 150, 0, 0, 0.1, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    set_label_anchor(&congrats, CENTER_X, 0, 0);
+
+    Label percent_label = {0, 150, 0, 0, 0.1, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
     label_init(&percent_label);
-    Label moves_label = {10, 200, 0, 0, 0.1, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    set_label_anchor(&percent_label, CENTER_X, 0, 0);
+
+    Label moves_label = {0, 200, 0, 0, 0.1, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
     label_init(&moves_label);
-    Label square_ratio_label = {10, 250, 0, 0, 0.1, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    set_label_anchor(&moves_label, CENTER_X, 0, 0);
+
+    Label square_ratio_label = {0, 250, 0, 0, 0.1, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
     label_init(&square_ratio_label);
+    set_label_anchor(&square_ratio_label, CENTER_X, 0, 0);
 
     Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
 
-    Button restart_button = {CENTER(WIDTH, 150*SCALEX), CENTER(HEIGHT, 50*SCALEY), 150, 50, NORMAL, restart_button_label, basic_button_style, &restart};
+    Button restart_button = {CENTERED(WIDTH, 150*SCALEX), CENTERED(HEIGHT, 50*SCALEY), 150, 50, NORMAL, restart_button_label, basic_button_style, &restart};
     button_init(&restart_button);
-    Button main_menu_button = {CENTER(WIDTH, 150*SCALEX), restart_button.y+button_height(&restart_button)+10*SCALEY, 150, 50, NORMAL, main_menu_button_label, basic_button_style, &main_menu};
+    Button main_menu_button = {CENTERED(WIDTH, 150*SCALEX), restart_button.y+button_height(&restart_button)+10*SCALEY, 150, 50, NORMAL, main_menu_button_label, basic_button_style, &main_menu};
     button_init(&main_menu_button);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
@@ -96,7 +105,7 @@ int end_game()
         if (percent >= 100.0)
             label_render(&congrats);
         else
-            label_render(&title);
+            label_render(&title_label);
         
         for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
         {

@@ -2,10 +2,14 @@
 
 int mode_choice()
 {
-    Label title = {10, 0, 0, 0, 0.3, "Game mode Choice", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
-    label_init(&title);
-    Label back_label = {10, HEIGHT-50, 0, 0, 0.1, "Press Escape to go back", roboto_light, {255,255,255,255}, {250,40,0,255}, NULL, NULL, false};
+    Label title_label = {0, 0, 0, 0, 0.3, "Game mode Choice", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    label_init(&title_label);
+    set_label_anchor(&title_label, CENTER_X, 0, 0);
+    
+    Label back_label = {0, 0, 0, 0, 0.1, "Press Escape to go back", roboto_light, {255,255,255,255}, {250,40,0,255}, NULL, NULL, false};
     label_init(&back_label);
+    set_label_anchor(&back_label, BOTTOM_LEFT, 0, 10);
+    set_label_anchor(&back_label, CENTER_X, 0, 0);
 
     Label fill_mode_button_label = {0, 0, 0, 0, 0.1, "Fill", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label discovery_mode_button_label = {0, 0, 0, 0, 0.1, "Discovery", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
@@ -21,7 +25,7 @@ int mode_choice()
     Button free_mode_button = {10, HEIGHT/2+99, 200, 50, NORMAL, free_mode_button_label, basic_button_style, &free_mode};
     button_init(&free_mode_button);
 
-    Label *labels[] = {&title, &back_label, &FPS_label};
+    Label *labels[] = {&title_label, &back_label, &FPS_label};
     Button *buttons[] = {&fill_mode_button, &discovery_mode_button, &constraint_mode_button, &free_mode_button};
 
     int running = true, out;

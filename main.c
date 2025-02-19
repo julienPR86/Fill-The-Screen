@@ -7,14 +7,16 @@ int main(int argc, char **argv)
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title_label = {20, 10, 0, 0, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label title_label = {0, 0, 0, 0, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
     label_init(&title_label);
+    set_label_anchor(&title_label, CENTER_X, 0, 10);
+
     Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
     Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
 
-    Button play_button = {CENTER(WIDTH, 150*SCALEX), CENTER(HEIGHT, 50*SCALEY), 150, 50, NORMAL, play_button_label, basic_button_style, &mode_choice};
+    Button play_button = {CENTERED(WIDTH, 150*SCALEX), CENTERED(HEIGHT, 50*SCALEY), 150, 50, NORMAL, play_button_label, basic_button_style, &mode_choice};
     button_init(&play_button);
-    Button exit_button = {CENTER(WIDTH, 150*SCALEX), CENTER(HEIGHT, 50*SCALEY)+button_height(&play_button)+10*SCALEY, 150, 50, NORMAL, exit_button_label, basic_button_style, &exit_game};
+    Button exit_button = {CENTERED(WIDTH, 150*SCALEX), CENTERED(HEIGHT, 50*SCALEY)+button_height(&play_button)+10*SCALEY, 150, 50, NORMAL, exit_button_label, basic_button_style, &exit_game};
     button_init(&exit_button);
 
     Label *labels[] = {&title_label, &FPS_label};
