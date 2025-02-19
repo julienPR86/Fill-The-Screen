@@ -50,6 +50,7 @@ int mode_choice()
             if (SDL_QUIT == event.type)
             {
                 label_list_free(labels, 3);
+                button_list_free(buttons, 4);
                 return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
@@ -71,9 +72,11 @@ int mode_choice()
                     break;
                 case RETURN_EXIT_FULL_GAME:
                     label_list_free(labels, 3);
+                    button_list_free(buttons, 4);
                     return RETURN_EXIT_FULL_GAME;
                 case RETURN_TO_MAIN_MENU:
                     label_list_free(labels, 3);
+                    button_list_free(buttons, 4);
                     return RETURN_TO_MAIN_MENU;
                 default:
                     break;
@@ -91,5 +94,6 @@ int mode_choice()
         cap_fps(start_time);
     }
     label_list_free(labels, 3);
+    button_list_free(buttons, 4);
     return RETURN_ZERO;
 }

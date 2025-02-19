@@ -121,4 +121,5 @@ void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y)
         default:
             break;
     }
+    return;
 }

@@ -56,6 +56,7 @@ int main(int argc, char **argv)
                     break;
                 case RETURN_EXIT_FULL_GAME:
                     label_list_free(labels, 2);
+                    button_list_free(buttons, 2);
                     exit_full_game();
                     return RETURN_ZERO;
                 default:
@@ -74,6 +75,7 @@ int main(int argc, char **argv)
         cap_fps(start_time);
     }
     label_list_free(labels, 2);
+    button_list_free(buttons, 2);
     exit_full_game();
     return RETURN_ZERO;
 }

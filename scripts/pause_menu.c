@@ -20,7 +20,7 @@ int pause_menu()
 
     Button main_menu_button = {0, 0, 150, 50, NORMAL, main_menu_button_label, basic_button_style, &main_menu};
     button_init(&main_menu_button);
-    set_button_anchor(&main_menu_button, CENTER, 0, button_height(&back_button)+10 * SCALEY + button_height(&restart_button)+10 * SCALEY);
+    set_button_anchor(&main_menu_button, CENTER, 0, button_height(&back_button) + button_height(&restart_button)+(10 * SCALEY)*2);
 
     Label *labels[] = {&title_label, &FPS_label};
     Button *buttons[] = {&back_button, &restart_button, &main_menu_button};
@@ -40,6 +40,7 @@ int pause_menu()
             if (SDL_QUIT == event.type)
             {
                 label_list_free(labels, 2);
+                button_list_free(buttons, 3);
                 return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_KEYDOWN == event.type)
@@ -60,12 +61,15 @@ int pause_menu()
             {
                 case RETURN_TO_GAME:
                     label_list_free(labels, 2);
+                    button_list_free(buttons, 3);
                     return RETURN_TO_GAME;
                 case RETURN_RESTART_GAME:
                     label_list_free(labels, 2);
+                    button_list_free(buttons, 3);
                     return RETURN_RESTART_GAME;
                 case RETURN_TO_MAIN_MENU:
                     label_list_free(labels, 2);
+                    button_list_free(buttons, 3);
                     return RETURN_TO_MAIN_MENU;
                 default:
                     break;
@@ -83,5 +87,6 @@ int pause_menu()
         cap_fps(start_time);
     }
     label_list_free(labels, 2);
+    button_list_free(buttons, 3);
     return RETURN_ZERO;
 }

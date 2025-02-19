@@ -88,6 +88,7 @@ int end_game()
             if (SDL_QUIT == event.type)
             {
                 label_list_free(labels, 4);
+                button_list_free(buttons, 3);
                 return RETURN_EXIT_FULL_GAME;
             }
             mouse_pressed(event);
@@ -100,12 +101,15 @@ int end_game()
             {
                 case RETURN_TO_GAME:
                     label_list_free(labels, 4);
+                    button_list_free(buttons, 3);
                     return RETURN_TO_GAME;
                 case RETURN_RESTART_GAME:
                     label_list_free(labels, 4);
+                    button_list_free(buttons, 3);
                     return RETURN_RESTART_GAME;
                 case RETURN_TO_MAIN_MENU:
                     label_list_free(labels, 4);
+                    button_list_free(buttons, 3);
                     return RETURN_TO_MAIN_MENU;
                 default:
                     break;
@@ -128,5 +132,6 @@ int end_game()
         cap_fps(start_time);
     }
     label_list_free(labels, 4);
+    button_list_free(buttons, 3);
     return RETURN_TO_MAIN_MENU;
 }
