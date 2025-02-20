@@ -11,7 +11,7 @@ $(EXEC) : $(OBJ)
 	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS) $(SDLFLAGS)
 
 $(TMP)main.o : main.c
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< -Wall -Werror
 
 $(TMP)%.o : scripts/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
