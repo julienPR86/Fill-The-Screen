@@ -14,6 +14,7 @@ int main(int argc, char **argv)
     }
 
     Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", roboto_light, {0, 0, 0, 255},  NULL, NULL, false};
+    Label options_button_label = {0, 0, 0, 0, 0.1, "Options", roboto_light, {0, 0, 0, 255},  NULL, NULL, false};
     Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", roboto_light, {0, 0, 0, 255}, NULL, NULL, false};
 
     Button play_button = {0, 0, 150, 50, NORMAL, play_button_label, &current_button_style, &mode_choice};
@@ -22,14 +23,20 @@ int main(int argc, char **argv)
         set_button_anchor(&play_button, CENTER, 0, 0);
     }
 
+    Button options_button = {0, 0, 150, 50, NORMAL, options_button_label, &current_button_style, &options};
+    if (NULL != button_init(&options_button))
+    {
+        set_button_anchor(&options_button, CENTER, 0, button_height(&play_button)+10 * SCALEY);
+    }
+
     Button exit_button = {0, 0, 150, 50, NORMAL, exit_button_label, &current_button_style, &exit_game};
     if (NULL != button_init(&exit_button))
     {
-        set_button_anchor(&exit_button, CENTER, 0, button_height(&play_button)+10 * SCALEY);
+        set_button_anchor(&exit_button, CENTER, 0, button_height(&options_button) + button_height(&play_button)+(10 * SCALEY)*2);
     }
     
     Label *labels[] = {&title_label, &FPS_label};
-    Button *buttons[] = {&play_button, &exit_button};
+    Button *buttons[] = {&play_button, &options_button, &exit_button};
 
     int running = true, out;
     Uint64 start_time;
@@ -62,7 +69,7 @@ int main(int argc, char **argv)
                     break;
                 case RETURN_EXIT_FULL_GAME:
                     label_list_free(labels, 2);
-                    button_list_free(buttons, 2);
+                    button_list_free(buttons, 3);
                     exit_full_game();
                     return RETURN_ZERO;
                 default:
@@ -81,7 +88,7 @@ int main(int argc, char **argv)
         cap_fps(start_time);
     }
     label_list_free(labels, 2);
-    button_list_free(buttons, 2);
+    button_list_free(buttons, 3);
     exit_full_game();
     return RETURN_ZERO;
 }
