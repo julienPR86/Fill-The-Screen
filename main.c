@@ -51,7 +51,7 @@ int main(int argc, char **argv)
             mouse_pressed(event);
         }
 
-        for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+        for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
         {
             out = button_update(buttons[i]);
             switch (out)
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
             button_render(buttons[i]);
         }
 
-        for (int i = 0; i < sizeof(labels)/sizeof(labels[0]); i++)
+        for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
             label_update(labels[i]);
             label_render(labels[i]);
