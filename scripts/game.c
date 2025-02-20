@@ -29,7 +29,7 @@ int game()
         start_time = SDL_GetTicks64();
         FPS = get_fps();
 
-        SDL_SetRenderDrawColor(renderer, current.main_colors.game_background.r,current.main_colors.game_background.g,current.main_colors.game_background.b,current.main_colors.game_background.a);
+        SDL_SetRenderDrawColor(renderer, current_theme.main_colors.game_background.r,current_theme.main_colors.game_background.g,current_theme.main_colors.game_background.b,current_theme.main_colors.game_background.a);
         SDL_RenderClear(renderer);//background
 
         if (!player->can_move && (direction[0] || direction[1]))
@@ -190,11 +190,9 @@ int game_quit()
 {
     free(player);
     player = NULL;
-    printf("free player ok\n");
     map_free(map);
     free(map);
     map = NULL;
-    printf("free map ok\n");
     game_mode = NO_ACTIVE_MODE;
     return RETURN_ZERO;
 }

@@ -95,7 +95,7 @@ int end_game()
         start_time = SDL_GetTicks64();
         FPS = get_fps();
         
-        SDL_SetRenderDrawColor(renderer, current.main_colors.end_game_background.r, current.main_colors.end_game_background.g, current.main_colors.end_game_background.b, current.main_colors.end_game_background.a);
+        SDL_SetRenderDrawColor(renderer, current_theme.main_colors.end_game_background.r, current_theme.main_colors.end_game_background.g, current_theme.main_colors.end_game_background.b, current_theme.main_colors.end_game_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))

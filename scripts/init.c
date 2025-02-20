@@ -21,7 +21,7 @@ Map *map = NULL;
 
 const Theme basic_theme = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}},
                      {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
-Theme current;
+Theme current_theme;
 
 const LabelStyle basic_button_label_style = {0, 0, {255, 255, 255, 0}, {0, 0, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 const LabelStyle basic_label_style = {0, 0, {255, 255, 255, 0}, {255, 0, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
@@ -101,7 +101,7 @@ int init()
     }
     SCALEX = WIDTH / 1080.0;
     SCALEY = HEIGHT / 720.0;
-    current = basic_theme;
+    current_theme = basic_theme;
     current_button_style = basic_button_style;
     current_label_style = basic_label_style;
     current_button_label_style = basic_button_label_style;

@@ -173,7 +173,7 @@ extern int game_mode;
 extern Player *player;
 extern Map *map;
 
-extern Theme current;
+extern Theme current_theme;
 extern const Theme basic_theme;
 
 extern LabelStyle FPS_label_style;
