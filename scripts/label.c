@@ -12,7 +12,7 @@ Label *label_init(Label *label)
     label->w *= SCALEY;
     label->h *= SCALEY;
     
-    label->surface = TTF_RenderText_Blended(label->font, label->text, label->text_color);
+    label->surface = TTF_RenderText_Blended(label->font, label->text, label->style->text_color);
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", TTF_GetError());
@@ -26,7 +26,7 @@ Label *label_init(Label *label)
         return NULL;
     }
 
-    if (label->bg.a < 255 || label->text_color.a < 255)
+    if (label->style->background.a < 255 || label->style->text_color.a < 255)
     {
         if (0 != SDL_SetTextureBlendMode(label->texture, SDL_BLENDMODE_BLEND))
         {
