@@ -23,6 +23,12 @@ const Theme basic_theme = {{{255,255,255,255}, {255,255,255,255}, {0,0,0,255}, {
                      {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
 Theme current;
 
+const LabelStyle basic_button_label_style = {0, 0, {255, 255, 255, 0}, {0, 0, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
+const LabelStyle basic_label_style = {0, 0, {255, 255, 255, 0}, {255, 0, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
+LabelStyle FPS_label_style = {0, 0, {255, 255, 255, 0}, {0, 255, 75, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
+LabelStyle current_label_style;
+LabelStyle current_button_label_style;
+
 const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 ButtonStyle current_button_style;
 
@@ -36,7 +42,7 @@ int font_size = 300;
 
 
 char *FPS_text;
-Label FPS_label = {2, 0, 0, 0, 0.06, NULL, NULL, {0,0,0,0}, {0,200,40,255}, NULL, NULL, false};
+Label FPS_label = {2, 0, 0, 0, 0.06, NULL, NULL, NULL, NULL, NULL, false};
 
 
 
@@ -97,6 +103,9 @@ int init()
     SCALEY = HEIGHT / 720.0;
     current = basic_theme;
     current_button_style = basic_button_style;
+    current_label_style = basic_label_style;
+    current_button_label_style = basic_button_label_style;
+    
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     srand(time(NULL)*(WIDTH/HEIGHT));
 
@@ -111,6 +120,7 @@ int init()
         FPS_text[1] = '\0';
     }
     FPS_label.text = FPS_text;
+    FPS_label.style = &FPS_label_style;
     FPS_label.font = roboto_light;
     label_init(&FPS_label);
     return RETURN_ZERO;
