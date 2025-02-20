@@ -101,6 +101,16 @@ typedef struct Theme
 } Theme;
 
 
+typedef struct labelStyle
+{
+    int outline;
+    int inline_;
+    SDL_Color background;
+    SDL_Color text_color;
+    SDL_Color outline_color;
+    SDL_Color inline_color;
+} LabelStyle;
+
 typedef struct ButtonStyle
 {
     int outline;
@@ -121,9 +131,8 @@ typedef struct Label
     int h;
     float scale;
     char *text;
+    LabelStyle *style;
     TTF_Font *font;
-    SDL_Color bg;
-    SDL_Color text_color;
     SDL_Surface *surface;
     SDL_Texture *texture;
     int update;
@@ -166,6 +175,13 @@ extern Map *map;
 
 extern Theme current;
 extern const Theme basic_theme;
+
+extern LabelStyle FPS_label_style;
+extern LabelStyle current_label_style;
+extern const LabelStyle basic_label_style;
+
+extern LabelStyle current_button_label_style;
+extern const LabelStyle basic_button_label_style;
 
 extern ButtonStyle current_button_style;
 extern const ButtonStyle basic_button_style;
