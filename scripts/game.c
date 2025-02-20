@@ -22,7 +22,7 @@ int game()
 
     int direction[2] = {0,0};
 
-    int running = true, out, end = false;
+    int running = true, out, end = false, back_to_map = false;
     Uint64 start_time;
     while (running)
     {
@@ -116,7 +116,8 @@ int game()
                         game_restart();
                         break;
                     case SDLK_e:
-                        end = 1;
+                        end = true;
+                        back_to_map = false;
                         break;
                     default:
                         break;
@@ -125,7 +126,7 @@ int game()
         }
         player_move(direction[0], direction[1]);
         map_display(map, XOFFSET, YOFFSET);
-        if ((!player->can_move && map_is_filled(map)) || end)
+        if (((!player->can_move && map_is_filled(map)) || end) && !back_to_map)
         {
             end = false;
             out = end_game();
@@ -134,6 +135,7 @@ int game()
                 case RETURN_ZERO:
                     break;
                 case RETURN_TO_GAME:
+                    back_to_map = true;
                     break;
                 case RETURN_RESTART_GAME:
                     game_restart();
