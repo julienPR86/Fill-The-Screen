@@ -8,7 +8,7 @@ TMP = tmp/
 all : $(EXEC)
 
 $(EXEC) : $(OBJ)
-	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS) &(SDLFLAGS)
+	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS) $(SDLFLAGS)
 
 $(TMP)main.o : main.c
 	$(CC) -o $@ -c $< $(CFLAGS)
