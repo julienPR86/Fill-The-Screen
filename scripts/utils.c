@@ -70,9 +70,9 @@ int button_collision(Button *button, int x, int y)
 
 int button_height(Button *button)
 {
-    return button->height+button->style.outline*2;
+    return button->height+button->style->outline*2;
 }
 int button_width(Button *button)
 {
-    return button->width+button->style.outline*2;
+    return button->width+button->style->outline*2;
 }

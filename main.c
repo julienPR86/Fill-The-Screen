@@ -16,18 +16,18 @@ int main(int argc, char **argv)
     Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", &current_button_label_style, roboto_light, NULL, NULL, false};
     Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", &current_button_label_style, roboto_light, NULL, NULL, false};
 
-    Button play_button = {0, 0, 150, 50, NORMAL, play_button_label, basic_button_style, &mode_choice};
+    Button play_button = {0, 0, 150, 50, NORMAL, play_button_label, &current_button_style, &mode_choice};
     if (NULL != button_init(&play_button))
     {
         set_button_anchor(&play_button, CENTER, 0, 0);
     }
 
-    Button exit_button = {0, 0, 150, 50, NORMAL, exit_button_label, basic_button_style, &exit_game};
+    Button exit_button = {0, 0, 150, 50, NORMAL, exit_button_label, &current_button_style, &exit_game};
     if (NULL != button_init(&exit_button))
     {
         set_button_anchor(&exit_button, CENTER, 0, button_height(&play_button)+10 * SCALEY);
     }
-
+    
     Label *labels[] = {&title_label, &FPS_label};
     Button *buttons[] = {&play_button, &exit_button};
 

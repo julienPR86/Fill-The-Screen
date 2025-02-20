@@ -146,7 +146,7 @@ typedef struct Button
     int height;
     int state;
     Label label;
-    ButtonStyle style;
+    ButtonStyle *style;
     int (*command)();
 } Button;
 
