@@ -227,6 +227,8 @@ int constraint_mode();
 int discovery_mode();
 int free_mode();
 
+int options();
+
 int end_game();
 
 int get_fps();
