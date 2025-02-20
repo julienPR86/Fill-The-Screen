@@ -7,14 +7,14 @@ int main(int argc, char **argv)
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title_label = {0, 0, 0, 0, 0.3, "Fill The Screen", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label title_label = {0, 0, 0, 0, 0.3, "Fill The Screen", &current_label_style, roboto_regular, NULL, NULL, false};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 10);
     }
 
-    Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
-    Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
+    Label play_button_label = {0, 0, 0, 0, 0.1, "PLAY", &current_button_label_style, roboto_light, NULL, NULL, false};
+    Label exit_button_label = {0, 0, 0, 0, 0.1, "Quit", &current_button_label_style, roboto_light, NULL, NULL, false};
 
     Button play_button = {0, 0, 150, 50, NORMAL, play_button_label, basic_button_style, &mode_choice};
     if (NULL != button_init(&play_button))

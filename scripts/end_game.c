@@ -34,39 +34,39 @@ int end_game()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title_label = {0, 0, 0, 0, 0.3, "Game over", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label title_label = {0, 0, 0, 0, 0.3, "Game over", &current_label_style, roboto_regular, NULL, NULL, false};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
 
-    Label congrats = {0, 0, 0, 0, 0.3, "Congratulation", roboto_regular, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label congrats = {0, 0, 0, 0, 0.3, "Congratulation", &current_label_style, roboto_regular, NULL, NULL, false};
     if (NULL != label_init(&congrats))
     {
         set_label_anchor(&congrats, CENTER_X, 0, 0);
     }
 
-    Label percent_label = {0, 150, 0, 0, 0.1, percent_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label percent_label = {0, 150, 0, 0, 0.1, percent_text, &current_label_style, roboto_light, NULL, NULL, false};
     if (NULL != label_init(&percent_label))
     {
         set_label_anchor(&percent_label, CENTER_X, 0, 0);
     }
 
-    Label moves_label = {0, 200, 0, 0, 0.1, moves_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label moves_label = {0, 200, 0, 0, 0.1, moves_text, &current_label_style, roboto_light, NULL, NULL, false};
     if (NULL != label_init(&moves_label))
     {
         set_label_anchor(&moves_label, CENTER_X, 0, 0);
     }
 
-    Label square_ratio_label = {0, 250, 0, 0, 0.1, square_ratio_text, roboto_light, {255,255,255,255}, {255,40,0,255}, NULL, NULL, false};
+    Label square_ratio_label = {0, 250, 0, 0, 0.1, square_ratio_text, &current_label_style, roboto_light, NULL, NULL, false};
     if (NULL != label_init(&square_ratio_label))
     {
         set_label_anchor(&square_ratio_label, CENTER_X, 0, 0);
     }
 
-    Label back_button_label = {0, 0, 0, 0, 0.1, "Back", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
-    Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
-    Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0,0,0,0}, {0,0,0,255}, NULL, NULL, false};
+    Label back_button_label = {0, 0, 0, 0, 0.1, "Back", &current_button_label_style, roboto_light, NULL, NULL, false};
+    Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", &current_button_label_style, roboto_light, NULL, NULL, false};
+    Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", &current_button_label_style, roboto_light, NULL, NULL, false};
 
     Button back_button = {0, 0, 150, 50, NORMAL, back_button_label, basic_button_style, &back};
     if (NULL != button_init(&back_button))
