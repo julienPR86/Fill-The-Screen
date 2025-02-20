@@ -88,6 +88,7 @@ typedef struct
 typedef struct MainColors
 {
     SDL_Color menu_background;
+    SDL_Color options_background;
     SDL_Color game_mode_background;
     SDL_Color game_background;
     SDL_Color pause_menu_background;
