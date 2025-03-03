@@ -246,6 +246,7 @@ void panel_add_button(Panel *panel, Button *button);
 void panel_remove_button(Panel *panel, Button *button);
 void panel_add_label(Panel *panel, Label *label);
 void panel_remove_label(Panel *panel, Label *label);
+void panel_free(Panel *panel);
 
 int mode_choice();
 int fill_mode();

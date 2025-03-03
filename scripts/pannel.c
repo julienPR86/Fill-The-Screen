@@ -41,3 +41,16 @@ void panel_set_active_state(Panel *panel, int state)
     }
     return;
 }
+
+void panel_free(Panel *panel)
+{
+    if (NULL != panel->buttons)
+    {
+        button_list_free(panel->buttons, (int)sizeof(panel->buttons)/sizeof(panel->buttons[0]));
+    }
+    if (NULL != panel->labels)
+    {
+        label_list_free(panel->labels, (int)sizeof(panel->labels)/sizeof(panel->labels[0]));
+    }
+   
+}
