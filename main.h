@@ -84,6 +84,14 @@ typedef struct
     int **start_map;
 } Map;
 
+typedef struct GameColors
+{
+    SDL_Color collision_square_color;
+    SDL_Color empty_square_color;
+    SDL_Color line_square_color;
+    SDL_Color player_square_color;
+    SDL_Color fake_square_color;
+} GameColors;
 
 typedef struct MainColors
 {
@@ -98,7 +106,7 @@ typedef struct MainColors
 typedef struct Theme
 {
     MainColors main_colors;
-    SDL_Color game_colors[5];
+    GameColors game_colors;
 } Theme;
 
 typedef struct ButtonStyle
@@ -164,7 +172,9 @@ extern Player *player;
 extern Map *map;
 
 extern Theme current_theme;
-extern const Theme basic_theme;
+extern Theme basic_theme;
+extern const GameColors basic_game_colors;
+extern const MainColors basic_main_colors;
 
 extern ButtonStyle current_button_style;
 extern const ButtonStyle basic_button_style;

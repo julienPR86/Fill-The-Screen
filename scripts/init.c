@@ -19,8 +19,9 @@ SDL_Event event;
 Player *player = NULL;
 Map *map = NULL;
 
-const Theme basic_theme = {{{255,255,255,255}, {255, 255, 255, 255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}},
-                     {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}}};
+const GameColors basic_game_colors = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}};
+const MainColors basic_main_colors = {{255,255,255,255}, {255, 255, 255, 255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}};
+Theme basic_theme;
 Theme current_theme;
 
 const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
@@ -95,6 +96,8 @@ int init()
     }
     SCALEX = WIDTH / 1080.0;
     SCALEY = HEIGHT / 720.0;
+    basic_theme.main_colors = basic_main_colors;
+    basic_theme.game_colors = basic_game_colors;
     current_theme = basic_theme;
     current_button_style = basic_button_style;
     

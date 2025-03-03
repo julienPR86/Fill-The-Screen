@@ -45,7 +45,7 @@ int main(int argc, char **argv)
         start_time = SDL_GetTicks64();
         FPS = get_fps();
         
-        SDL_SetRenderDrawColor(renderer, current_theme.main_colors.menu_background.r,current_theme.main_colors.menu_background.g,current_theme.main_colors.menu_background.b,current_theme.main_colors.menu_background.a);
+        SDL_SetRenderDrawColor(renderer, current_theme.main_colors.menu_background.r, current_theme.main_colors.menu_background.g, current_theme.main_colors.menu_background.b, current_theme.main_colors.menu_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))
