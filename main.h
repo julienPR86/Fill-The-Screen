@@ -150,12 +150,12 @@ typedef struct Button
     int active;
 } Button;
 
-typedef struct Pannel
+typedef struct Panel
 {
     Button *buttons;
     Label *labels;
     int active;
-} Pannel;
+} Panel;
 
 // Variables ---------------------------------
 
@@ -240,6 +240,12 @@ void label_render(Label *label);
 void label_free(Label *label);
 void label_list_free(Label *labels[], int size);
 void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y);
+
+Panel *panel_init(Panel *panel);
+void panel_add_button(Panel *panel, Button *button);
+void panel_remove_button(Panel *panel, Button *button);
+void panel_add_label(Panel *panel, Label *label);
+void panel_remove_label(Panel *panel, Label *label);
 
 int mode_choice();
 int fill_mode();
