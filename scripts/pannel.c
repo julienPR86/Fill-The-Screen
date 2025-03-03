@@ -10,6 +10,33 @@ Panel *panel_init(Panel *panel)
     return panel;
 }
 
+void panel_update(Panel *panel)
+{
+    return;
+}
+
+void panel_render(Panel *panel)
+{
+    if (NULL == panel)
+        return;
+    
+    if (NULL != panel->buttons)
+    {
+        for (int i = 0; i < panel->button_count; i++)
+        {
+            button_render(panel->buttons[i]);
+        }
+    }
+    if (NULL != panel->labels)
+    {
+        for (int i = 0; i < panel->label_count; i++)
+        {
+            label_render(panel->labels[i]);
+        }
+    }
+    return;
+}
+
 void panel_add_button(Panel *panel, Button *button)
 {
     if (NULL == panel || NULL == button)
