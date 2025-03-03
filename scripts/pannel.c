@@ -96,12 +96,12 @@ void panel_set_active_state(Panel *panel, int state)
 {
     panel->active = state;
 
-    for (int i = 0; i < (int)sizeof(panel->buttons)/sizeof(panel->buttons[0]); i++)
+    for (int i = 0; i < panel->button_count; i++)
     {
         panel->buttons[i]->active = state;
     }
 
-    for (int i = 0; i < (int)sizeof(panel->labels)/sizeof(panel->labels[0]); i++)
+    for (int i = 0; i < panel->label_count; i++)
     {
         panel->labels[i]->active = state;
     }
@@ -112,11 +112,11 @@ void panel_free(Panel *panel)
 {
     if (NULL != panel->buttons)
     {
-        button_list_free(panel->buttons, (int)sizeof(panel->buttons)/sizeof(panel->buttons[0]));
+        button_list_free(panel->buttons, panel->button_count);
     }
     if (NULL != panel->labels)
     {
-        label_list_free(panel->labels, (int)sizeof(panel->labels)/sizeof(panel->labels[0]));
+        label_list_free(panel->labels, panel->label_count);
     }
     return;
 }
