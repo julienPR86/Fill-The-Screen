@@ -154,6 +154,7 @@ typedef struct Pannel
 {
     Button *buttons;
     Label *labels;
+    int active;
 } Pannel;
 
 // Variables ---------------------------------
