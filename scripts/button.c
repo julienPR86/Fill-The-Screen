@@ -19,6 +19,9 @@ Button *button_init(Button *button)
 
 int button_update(Button *button)
 {
+    if (!button->active)
+        return -1;
+    
     int x, y, out = -1; // returns -1 if the button isn't clicked
     SDL_GetMouseState(&x, &y);
     if (button_collision(button, x, y))
@@ -50,6 +53,9 @@ int button_update(Button *button)
 
 void button_render(Button *button)
 {
+    if (!button->active)
+        return;
+        
     if (NULL == button)
         return;
         

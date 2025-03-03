@@ -2,43 +2,43 @@
 
 int mode_choice()
 {
-    Label title_label = {0, 0, 0, 0, 0.3, "Game mode Choice", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false};
+    Label title_label = {0, 0, 0, 0, 0.3, "Game mode Choice", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
     
-    Label back_label = {0, 0, 0, 0, 0.1, "Press Escape to go back", roboto_light, {255, 0, 0, 255}, NULL, NULL, false};
+    Label back_label = {0, 0, 0, 0, 0.1, "Press Escape to go back", roboto_light, {255, 0, 0, 255}, NULL, NULL, false, true};
     if (NULL != label_init(&back_label))
     {
         set_label_anchor(&back_label, BOTTOM_LEFT, 0, 10);
         set_label_anchor(&back_label, CENTER_X, 0, 0);
     }
 
-    Label fill_mode_button_label = {0, 0, 0, 0, 0.1, "Fill", roboto_light, {0, 0, 0, 255}, NULL, NULL, false};
-    Label discovery_mode_button_label = {0, 0, 0, 0, 0.1, "Discovery", roboto_light, {0, 0, 0, 255}, NULL, NULL, false};
-    Label constraint_mode_button_label = {0, 0, 0, 0, 0.1, "Constraint", roboto_light, {0, 0, 0, 255}, NULL, NULL, false};
-    Label free_mode_button_label = {0, 0, 0, 0, 0.1, "Free", roboto_light, {0, 0, 0, 255}, NULL, NULL, false};
+    Label fill_mode_button_label = {0, 0, 0, 0, 0.1, "Fill", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label discovery_mode_button_label = {0, 0, 0, 0, 0.1, "Discovery", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label constraint_mode_button_label = {0, 0, 0, 0, 0.1, "Constraint", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label free_mode_button_label = {0, 0, 0, 0, 0.1, "Free", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button fill_mode_button = {0, 0, 200, 50, NORMAL, fill_mode_button_label, &current_button_style, &fill_mode};
+    Button fill_mode_button = {0, 0, 200, 50, NORMAL, fill_mode_button_label, &current_button_style, &fill_mode, true};
     if (NULL != button_init(&fill_mode_button))
     {
         set_button_anchor(&fill_mode_button, CENTER, 0, -99 * SCALEY);
     }
 
-    Button discovery_mode_button = {0, 0, 200, 50, NORMAL, discovery_mode_button_label, &current_button_style, &discovery_mode};
+    Button discovery_mode_button = {0, 0, 200, 50, NORMAL, discovery_mode_button_label, &current_button_style, &discovery_mode, true};
     if (NULL != button_init(&discovery_mode_button))
     {
         set_button_anchor(&discovery_mode_button, CENTER, 0, -33 * SCALEY);
     }
 
-    Button constraint_mode_button = {0, 0, 200, 50, NORMAL, constraint_mode_button_label, &current_button_style, &constraint_mode};
+    Button constraint_mode_button = {0, 0, 200, 50, NORMAL, constraint_mode_button_label, &current_button_style, &constraint_mode, true};
     if (NULL != button_init(&constraint_mode_button))
     {
         set_button_anchor(&constraint_mode_button, CENTER, 0, 33 * SCALEY);
     }
 
-    Button free_mode_button = {0, 0, 200, 50, NORMAL, free_mode_button_label, &current_button_style, &free_mode};
+    Button free_mode_button = {0, 0, 200, 50, NORMAL, free_mode_button_label, &current_button_style, &free_mode, true};
     if (NULL != button_init(&free_mode_button))
     {
         set_button_anchor(&free_mode_button, CENTER, 0, 99 * SCALEY);

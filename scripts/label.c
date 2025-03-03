@@ -36,7 +36,7 @@ Label *label_init(Label *label)
 
 void label_update(Label *label)
 {
-    if (label->update)
+    if (label->active && label->update)
     {
         label_free(label);
         label_init(label);
@@ -47,7 +47,7 @@ void label_update(Label *label)
 
 void label_render(Label *label)
 {
-    if (NULL == label || NULL == label->texture)
+    if (NULL == label || NULL == label->texture || !label->active)
         return;
     
     SDL_Rect label_rect = {label->x, label->y, label->w*label->scale, label->h*label->scale};

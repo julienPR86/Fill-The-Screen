@@ -37,7 +37,7 @@ int font_size = 300;
 
 
 char *FPS_text;
-Label FPS_label = {2, 0, 0, 0, 0.06, NULL, NULL, {0, 255, 75, 255}, NULL, NULL, false};
+Label FPS_label = {2, 0, 0, 0, 0.06, NULL, NULL, {0, 255, 75, 255}, NULL, NULL, false, true};
 
 
 
