@@ -134,6 +134,7 @@ typedef struct Label
     SDL_Surface *surface;
     SDL_Texture *texture;
     int update;
+    int active;
 } Label;
 
 typedef struct Button
@@ -146,7 +147,14 @@ typedef struct Button
     Label label;
     ButtonStyle *style;
     int (*command)();
+    int active;
 } Button;
+
+typedef struct Pannel
+{
+    Button *buttons;
+    Label *labels;
+} Pannel;
 
 // Variables ---------------------------------
 
