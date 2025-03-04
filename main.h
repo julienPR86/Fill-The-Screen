@@ -148,7 +148,7 @@ typedef struct Button
     ButtonStyle *style;
     int (*command)();
     int active;
-} Button;
+} Button, Toogle;
 
 typedef struct Panel
 {
@@ -250,6 +250,7 @@ void panel_add_button(Panel *panel, Button *button);
 void panel_remove_button(Panel *panel);
 void panel_add_label(Panel *panel, Label *label);
 void panel_remove_label(Panel *panel);
+void panel_set_active_state(Panel *panel, int state);
 void panel_free(Panel *panel);
 
 int mode_choice();
