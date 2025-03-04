@@ -68,18 +68,18 @@ int end_game()
     Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button back_button = {0, 0, 150, 50, NORMAL, back_button_label, &current_button_style, &back, true};
+    Button back_button = {0, 0, 150, 50, NORMAL, back_button_label, &current_button_style, &back, true, false};
     if (NULL != button_init(&back_button))
     {
         set_button_anchor(&back_button, CENTER, 0, 0);
     }
 
-    Button restart_button = {0, 0, 150, 50, NORMAL, restart_button_label, &current_button_style, &restart, true};
+    Button restart_button = {0, 0, 150, 50, NORMAL, restart_button_label, &current_button_style, &restart, true, false};
     if (NULL != button_init(&restart_button))
     {
         set_button_anchor(&restart_button, CENTER, 0, button_height(&back_button)+10 * SCALEY);
     }
-    Button main_menu_button = {0, 0, 150, 50, NORMAL, main_menu_button_label, &current_button_style, &main_menu, true};
+    Button main_menu_button = {0, 0, 150, 50, NORMAL, main_menu_button_label, &current_button_style, &main_menu, true, false};
     if (NULL != button_init(&main_menu_button))
     {
         set_button_anchor(&main_menu_button, CENTER, 0, button_height(&back_button)+button_height(&restart_button)+(10 * SCALEY)*2);

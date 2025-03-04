@@ -148,6 +148,7 @@ typedef struct Button
     ButtonStyle *style;
     int (*command)();
     int active;
+    int is_toogle;
 } Button, Toogle;
 
 typedef struct Panel
