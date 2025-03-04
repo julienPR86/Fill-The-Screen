@@ -159,7 +159,6 @@ typedef struct Toogle
     int state;
     Label *label;
     ButtonStyle *style;
-    Toogle **group;
     int (*command)();
     int active;
 } Toogle;
