@@ -249,7 +249,11 @@ void button_free(Button *button);
 void button_list_free(Button *button[], int size);
 void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
 
+Toogle *toogle_init(Toogle *toogle);
 int toogle_update(Toogle *toogle);
+void toogle_render(Toogle *button);
+void toogle_free(Toogle *toogle);
+void toogle_list_free(Toogle *toogle[], int size);
 
 Label *label_init(Label *label);
 void label_update(Label *label);
@@ -282,6 +286,7 @@ int get_fps();
 void cap_fps(Uint64 start_time);
 void mouse_pressed(SDL_Event event);
 int button_collision(Button *button, int x, int y);
+int toogle_collision(Toogle *toogle, int x, int y);
 int button_height(Button *button);
 int button_width(Button *button);
 
