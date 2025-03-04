@@ -2,14 +2,13 @@
 
 int options()
 {
-    Label options_label = {0, 0, 0, 0, 0.3, "Options", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, false};
+    Label options_label = {0, 0, 0, 0, 0.3, "Options", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
     if (NULL != label_init(&options_label))
     {
         set_label_anchor(&options_label, CENTER_X, 0, 10);
     }
 
     Label *labels[] = {&options_label, &FPS_label};
-    // Button *buttons[] = {&toogle};
 
     int running = true;
     Uint64 start_time;
