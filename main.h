@@ -144,12 +144,25 @@ typedef struct Button
     int width;
     int height;
     int state;
-    Label label;
+    Label *label;
     ButtonStyle *style;
     int (*command)();
     int active;
-    int is_toogle;
-} Button, Toogle;
+} Button;
+
+typedef struct Toogle
+{
+    int x;
+    int y;
+    int width;
+    int height;
+    int state;
+    Label *label;
+    ButtonStyle *style;
+    Toogle **group;
+    int (*command)();
+    int active;
+} Toogle;
 
 typedef struct Panel
 {
