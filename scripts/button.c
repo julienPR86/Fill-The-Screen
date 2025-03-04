@@ -26,18 +26,14 @@ int button_update(Button *button)
     SDL_GetMouseState(&x, &y);
     if (button_collision(button, x, y))
     {
+        button->state = HOVERED;
         if (mouse_button_pressed == 1)
         {
             button->state = CLICKED;
         }
         else if (mouse_button_pressed == 0 && button->state == CLICKED)
         {
-            button->state = NORMAL;
             out = button->command();
-        }
-        else
-        {
-            button->state = HOVERED;
         }
     }
     else
