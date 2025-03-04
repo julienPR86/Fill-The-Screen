@@ -2,14 +2,14 @@
 
 Button *button_init(Button *button)
 {
-    if (NULL == label_init(&button->label))
+    if (NULL == label_init(button->label))
         return NULL;
 
-    button->width = MAX(button->width * SCALEX, button->label.w * button->label.scale);
-    button->height = MAX(button->height * SCALEY, button->label.h * button->label.scale);
+    button->width = MAX(button->width * SCALEX, button->label->w * button->label->scale);
+    button->height = MAX(button->height * SCALEY, button->label->h * button->label->scale);
 
-    button->label.x = button->x + CENTERED(button->width, button->label.w * button->label.scale);
-    button->label.y = button->y + CENTERED(button->height, button->label.h * button->label.scale);
+    button->label->x = button->x + CENTERED(button->width, button->label->w * button->label->scale);
+    button->label->y = button->y + CENTERED(button->height, button->label->h * button->label->scale);
 
     button->style->outline *= SCALEY;
     button->style->inline_ *= SCALEY;
@@ -33,6 +33,7 @@ int button_update(Button *button)
         else if (mouse_button_pressed == 0 && button->state == CLICKED)
         {
             out = button->command();
+            button->state = HOVERED;
         }
         else
         {
@@ -43,7 +44,7 @@ int button_update(Button *button)
     {
         button->state = NORMAL;
     }
-    label_update(&button->label);
+    label_update(button->label);
     return out;
 }
 
@@ -84,7 +85,7 @@ void button_render(Button *button)
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
     
-    label_render(&button->label);
+    label_render(button->label);
     return;
 }
 
@@ -93,7 +94,7 @@ void button_free(Button *button)
     if (NULL == button)
         return;
         
-    label_free(&button->label);
+    label_free(button->label);
     return;
 }
 
@@ -111,35 +112,35 @@ void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
     switch (anchor)
     {
         case CENTER:
-            set_label_anchor(&button->label, CENTER, offset_x, offset_y);
+            set_label_anchor(button->label, CENTER, offset_x, offset_y);
             button->x = CENTERED(WIDTH, button->width) + offset_x;
             button->y = CENTERED(HEIGHT, button->height) + offset_y;
             break;
         case CENTER_X:
-            set_label_anchor(&button->label, CENTER_X, offset_x, offset_y);
+            set_label_anchor(button->label, CENTER_X, offset_x, offset_y);
             button->x = CENTERED(WIDTH, button->width) + offset_x;
             break;
         case CENTER_Y:
-            set_label_anchor(&button->label, CENTER_Y, offset_x, offset_y);
+            set_label_anchor(button->label, CENTER_Y, offset_x, offset_y);
             button->y = CENTERED(HEIGHT, button->height) + offset_y;
             break;
         case TOP_LEFT:
-            set_label_anchor(&button->label, TOP_LEFT, offset_x, offset_y);
+            set_label_anchor(button->label, TOP_LEFT, offset_x, offset_y);
             button->x = offset_x;
             button->y = offset_y;
             break;
         case TOP_RIGHT:
-            set_label_anchor(&button->label, TOP_RIGHT, offset_x, offset_y);
+            set_label_anchor(button->label, TOP_RIGHT, offset_x, offset_y);
             button->x = WIDTH - button->width - offset_x;
             button->y = offset_y;
             break;
         case BOTTOM_LEFT:
-            set_label_anchor(&button->label, BOTTOM_LEFT, offset_x, offset_y);
+            set_label_anchor(button->label, BOTTOM_LEFT, offset_x, offset_y);
             button->x = offset_x;
             button->y = HEIGHT - button->height - offset_y;
             break;
         case BOTTOM_RIGHT:
-            set_label_anchor(&button->label, BOTTOM_RIGHT, offset_x, offset_y);
+            set_label_anchor(button->label, BOTTOM_RIGHT, offset_x, offset_y);
             button->x = WIDTH - button->width - offset_x;
             button->y = HEIGHT - button->height - offset_y;
             break;
