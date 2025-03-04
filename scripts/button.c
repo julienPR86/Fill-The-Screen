@@ -4,12 +4,12 @@ Button *button_init(Button *button)
 {
     if (NULL == label_init(&button->label))
         return NULL;
-    
-    button->label.x = button->x + CENTERED(button->width, button->label.w * button->label.scale);
-    button->label.y = button->y + CENTERED(button->height, button->label.h * button->label.scale);
 
     button->width = MAX(button->width * SCALEX, button->label.w * button->label.scale);
     button->height = MAX(button->height * SCALEY, button->label.h * button->label.scale);
+
+    button->label.x = button->x + CENTERED(button->width, button->label.w * button->label.scale);
+    button->label.y = button->y + CENTERED(button->height, button->label.h * button->label.scale);
 
     button->style->outline *= SCALEY;
     button->style->inline_ *= SCALEY;
@@ -26,7 +26,6 @@ int button_update(Button *button)
     SDL_GetMouseState(&x, &y);
     if (button_collision(button, x, y))
     {
-        button->state = HOVERED;
         if (mouse_button_pressed == 1)
         {
             button->state = CLICKED;
@@ -35,13 +34,14 @@ int button_update(Button *button)
         {
             out = button->command();
         }
+        else
+        {
+            button->state = HOVERED;
+        }
     }
     else
     {
-        if (button->state)
-        {
-            button->state = NORMAL;
-        }
+        button->state = NORMAL;
     }
     label_update(&button->label);
     return out;
