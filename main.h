@@ -236,6 +236,8 @@ void button_free(Button *button);
 void button_list_free(Button *button[], int size);
 void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
 
+int toogle_update(Toogle *toogle);
+
 Label *label_init(Label *label);
 void label_update(Label *label);
 void label_render(Label *label);
