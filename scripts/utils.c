@@ -68,6 +68,15 @@ int button_collision(Button *button, int x, int y)
     return false;
 }
 
+int toogle_collision(Toogle *toogle, int x, int y)
+{
+    if (x >= toogle->x && x <= toogle->x+toogle->width && y >= toogle->y && y <= toogle->y+toogle->height)
+    {
+        return true;
+    }
+    return false;
+}
+
 int button_height(Button *button)
 {
     return button->height+button->style->outline*2;
