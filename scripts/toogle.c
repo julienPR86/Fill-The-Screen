@@ -2,7 +2,7 @@
 
 Toogle *toogle_init(Toogle *toogle)
 {
-    if (NULL == label_init(toogle->label))
+    if (NULL == toogle || NULL == label_init(toogle->label))
         return NULL;
 
     toogle->width = MAX(toogle->width * SCALEX, toogle->label->w * toogle->label->scale);
@@ -107,7 +107,7 @@ void toogle_render(Toogle *toogle)
 
 void toogle_free(Toogle *toogle)
 {
-    if (NULL == toogle)
+    if (NULL == toogle || NULL == toogle->label)
         return;
         
     label_free(toogle->label);
@@ -116,8 +116,14 @@ void toogle_free(Toogle *toogle)
 
 void toogle_list_free(Toogle *toogles[], int size)
 {
+    if (NULL == toogles)
+        return;
+
     for (int i = 0; i < size; i++)
     {
+        if (NULL == toogles[i])
+            continue;
+
         toogle_free(toogles[i]);
     }
     return;
