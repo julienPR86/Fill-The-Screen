@@ -167,6 +167,7 @@ typedef struct ToogleGroup
 {
     Toogle **toogles;
     int count;
+    int selected;
 } ToogleGroup;
 
 typedef struct Panel
@@ -260,6 +261,13 @@ int toogle_update(Toogle *toogle);
 void toogle_render(Toogle *toogle);
 void toogle_free(Toogle *toogle);
 void toogle_list_free(Toogle *toogle[], int size);
+
+ToogleGroup *group_init(ToogleGroup *group);
+void group_update(ToogleGroup *group);
+void group_render(ToogleGroup *group);
+int group_set_toogle_at_index(ToogleGroup *group, Toogle *toogle, int index);
+void group_clear_selected(ToogleGroup *group);
+void group_free(ToogleGroup *group);
 
 Label *label_init(Label *label);
 void label_update(Label *label);
