@@ -2,7 +2,7 @@
 
 Button *button_init(Button *button)
 {
-    if (NULL == label_init(button->label))
+    if (NULL == button || NULL == label_init(button->label))
         return NULL;
 
     button->width = MAX(button->width * SCALEX, button->label->w * button->label->scale);
@@ -101,8 +101,14 @@ void button_free(Button *button)
 
 void button_list_free(Button *buttons[], int size)
 {
+    if (NULL == buttons)
+        return;
+
     for (int i = 0; i < size; i++)
-    {
+    {   
+        if (NULL == buttons[i])
+            continue;
+            
         button_free(buttons[i]);
     }
     return;
@@ -110,6 +116,8 @@ void button_list_free(Button *buttons[], int size)
 
 void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
 {
+    if (NULL == button)
+        return;
     switch (anchor)
     {
         case CENTER:
