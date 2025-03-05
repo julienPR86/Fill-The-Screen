@@ -32,7 +32,8 @@ int button_update(Button *button)
         }
         else if (mouse_button_pressed == 0 && button->state == CLICKED)
         {
-            out = button->command();
+            if (NULL != button->command)
+                out = button->command();
             button->state = HOVERED;
         }
         else

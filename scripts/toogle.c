@@ -34,7 +34,8 @@ int toogle_update(Toogle *toogle)
                 case NORMAL:
                 case HOVERED:
                     toogle->state = CLICKED;
-                    out = toogle->command();
+                    if (NULL != toogle->command)
+                        out = toogle->command();
                     break;
                 case CLICKED:
                     toogle->state = HOVERED;
