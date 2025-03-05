@@ -19,7 +19,7 @@ Toogle *toogle_init(Toogle *toogle)
 
 int toogle_update(Toogle *toogle)
 {
-    if (!toogle->active)
+    if (NULL == toogle || !toogle->active)
         return -1;
     
     static int update = 1;
@@ -61,16 +61,14 @@ int toogle_update(Toogle *toogle)
             toogle->state = NORMAL;
         }
     }
-    label_update(toogle->label);
+    if (NULL != toogle->label)
+        label_update(toogle->label);
     return out;
 }
 
 void toogle_render(Toogle *toogle)
 {
-    if (!toogle->active)
-        return;
-        
-    if (NULL == toogle)
+    if (NULL == toogle || !toogle->active)
         return;
         
     SDL_Color toogle_color;
@@ -102,7 +100,8 @@ void toogle_render(Toogle *toogle)
     SDL_SetRenderDrawColor(renderer, toogle_color.r, toogle_color.g, toogle_color.b, toogle_color.a);
     SDL_RenderFillRect(renderer, &toogle_rect);
     
-    label_render(toogle->label);
+    if (NULL != toogle->label)
+        label_render(toogle->label);
     return;
 }
 

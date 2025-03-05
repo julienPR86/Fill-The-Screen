@@ -19,7 +19,7 @@ Button *button_init(Button *button)
 
 int button_update(Button *button)
 {
-    if (!button->active)
+    if (NULL == button || !button->active)
         return -1;
     
     int x, y, out = -1; // returns -1 if the button isn't clicked
@@ -45,16 +45,15 @@ int button_update(Button *button)
     {
         button->state = NORMAL;
     }
-    label_update(button->label);
+    if (NULL != button->label)
+        label_update(button->label);
+
     return out;
 }
 
 void button_render(Button *button)
 {
-    if (!button->active)
-        return;
-        
-    if (NULL == button)
+    if (NULL == button || !button->active)
         return;
         
     SDL_Color button_color;
@@ -86,7 +85,8 @@ void button_render(Button *button)
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
     
-    label_render(button->label);
+    if (NULL != button->label)
+        label_render(button->label);
     return;
 }
 
