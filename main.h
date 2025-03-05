@@ -163,6 +163,12 @@ typedef struct Toogle
     int active;
 } Toogle;
 
+typedef struct ToogleGroup
+{
+    Toogle **toogles;
+    int count;
+} ToogleGroup;
+
 typedef struct Panel
 {
     Button **buttons;
@@ -251,7 +257,7 @@ void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
 
 Toogle *toogle_init(Toogle *toogle);
 int toogle_update(Toogle *toogle);
-void toogle_render(Toogle *button);
+void toogle_render(Toogle *toogle);
 void toogle_free(Toogle *toogle);
 void toogle_list_free(Toogle *toogle[], int size);
 
