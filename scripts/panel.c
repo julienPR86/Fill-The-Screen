@@ -40,6 +40,20 @@ void panel_update(Panel *panel)
     if (NULL == panel)
         return;
 
+    if (NULL != panel->buttons)
+    {
+        for (int i = 0; i < panel->button_count; i++)
+        {
+            button_update(panel->buttons[i]);
+        }
+    }
+    if (NULL != panel->labels)
+    {
+        for (int i = 0; i < panel->label_count; i++)
+        {
+            label_update(panel->labels[i]);
+        }
+    }
     return;
 }
 
