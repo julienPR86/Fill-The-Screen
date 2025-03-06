@@ -27,6 +27,7 @@ Theme current_theme;
 const ButtonStyle basic_toogle_style = {0, 0, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 ButtonStyle current_button_style;
+ButtonStyle current_toogle_style;
 
 int mouse_button_pressed = 0;
 int game_mode = NO_ACTIVE_MODE;
@@ -101,6 +102,7 @@ int init()
     basic_theme.game_colors = basic_game_colors;
     current_theme = basic_theme;
     current_button_style = basic_button_style;
+    current_toogle_style = basic_toogle_style;
     
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     srand(time(NULL)*(WIDTH/HEIGHT));
