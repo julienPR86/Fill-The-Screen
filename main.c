@@ -63,7 +63,7 @@ int main(int argc, char **argv)
             out = button_update(buttons[i]);
             switch (out)
             {
-                case RETURN_ZERO:
+                case RETURN_SUCCESS:
                     break;
                 case RETURN_TO_MAIN_MENU:
                     break;
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
                     label_list_free(labels, 2);
                     button_list_free(buttons, 3);
                     exit_full_game();
-                    return RETURN_ZERO;
+                    return RETURN_SUCCESS;
                 default:
                     break;
             }
@@ -90,7 +90,7 @@ int main(int argc, char **argv)
     label_list_free(labels, 2);
     button_list_free(buttons, 3);
     exit_full_game();
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
 
 void exit_full_game()

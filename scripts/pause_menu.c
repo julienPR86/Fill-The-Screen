@@ -96,5 +96,5 @@ int pause_menu()
     }
     label_list_free(labels, 2);
     button_list_free(buttons, 3);
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }

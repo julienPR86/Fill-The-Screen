@@ -144,7 +144,7 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
     else
         return screen_height/map_height;
 
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
 
 int map_get_squares_number(Map *map, int type)

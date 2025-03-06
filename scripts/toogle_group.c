@@ -59,7 +59,7 @@ int group_set_toogle_at_index(ToogleGroup *group, Toogle *toogle, int index)
     group->toogles[index] = toogle;
     if (index == 0)
         group->toogles[index]->state = CLICKED;
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
 
 void group_clear_selected(ToogleGroup *group)

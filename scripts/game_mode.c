@@ -107,5 +107,5 @@ int mode_choice()
     }
     label_list_free(labels, 3);
     button_list_free(buttons, 4);
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }

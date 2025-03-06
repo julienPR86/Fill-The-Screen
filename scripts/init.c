@@ -117,7 +117,7 @@ int init()
     FPS_label.text = FPS_text;
     FPS_label.font = roboto_light;
     label_init(&FPS_label);
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
 
 int map_init()
@@ -151,7 +151,7 @@ int map_init()
             break;
     }
     map->map[0][0] = 3; //basic player position
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
 
 int player_init()
@@ -167,5 +167,5 @@ int player_init()
     player->moves = 0;
     player->can_move = false;
     player->frame_move = 0;
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }

@@ -92,7 +92,7 @@ int game()
                         out = pause_menu();
                         switch (out)
                         {
-                            case RETURN_ZERO:
+                            case RETURN_SUCCESS:
                                 break;
                             case RETURN_TO_GAME:
                                 break;
@@ -129,7 +129,7 @@ int game()
             out = end_game();
             switch (out)
             {
-                case RETURN_ZERO:
+                case RETURN_SUCCESS:
                     break;
                 case RETURN_TO_GAME:
                     back_to_map = true;
@@ -177,7 +177,7 @@ int game_restart()
     }
     map->map[0][0] = PLAYER_SQUARE;
     player_reset(player);
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
 
 int game_quit()
@@ -188,5 +188,5 @@ int game_quit()
     free(map);
     map = NULL;
     game_mode = NO_ACTIVE_MODE;
-    return RETURN_ZERO;
+    return RETURN_SUCCESS;
 }
