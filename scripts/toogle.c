@@ -128,3 +128,13 @@ void toogle_list_free(Toogle *toogles[], int size)
     }
     return;
 }
+
+int toogle_height(Toogle *toogle)
+{
+    return toogle->height+toogle->style->outline*2;
+}
+
+int toogle_width(Toogle *toogle)
+{
+    return toogle->width+toogle->style->outline*2;
+}
