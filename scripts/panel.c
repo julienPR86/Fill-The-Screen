@@ -37,7 +37,7 @@ Panel *panel_init(Panel *panel)
 
 void panel_update(Panel *panel)
 {
-    if (NULL == panel)
+    if (NULL == panel || !panel->active)
         return;
 
     if (NULL != panel->buttons)
@@ -59,7 +59,7 @@ void panel_update(Panel *panel)
 
 void panel_render(Panel *panel)
 {
-    if (NULL == panel)
+    if (NULL == panel || !panel->active)
         return;
     
     if (NULL != panel->buttons)
