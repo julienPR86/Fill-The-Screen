@@ -53,7 +53,7 @@ void group_render(ToogleGroup *group)
 
 int group_set_toogle_at_index(ToogleGroup *group, Toogle *toogle, int index)
 {
-    int static first = true;
+    static int first = true;
     if (NULL == group || NULL == group->toogles || index < 0 || index >= group->count)
         return RETURN_FAILURE;
 

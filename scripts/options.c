@@ -8,9 +8,6 @@ int options()
         set_label_anchor(&options_label, CENTER_X, 0, 10);
     }
 
-    Panel panel = {NULL, 0, NULL, 0, true};
-    panel_init(&panel);
-
     Label *labels[] = {&options_label, &FPS_label};
 
     int running = true;
