@@ -36,6 +36,9 @@ Label *label_init(Label *label)
 
 void label_update(Label *label)
 {
+    if (NULL == label)
+        return;
+        
     if (label->active && label->update)
     {
         label_free(label);
@@ -78,6 +81,9 @@ void label_free(Label *label)
 
 void label_list_free(Label *labels[], int size)
 {
+    if (NULL == labels)
+        return;
+        
     for (int i = 0; i < size; i++)
     {
         if (labels[i] == &FPS_label)
@@ -90,6 +96,9 @@ void label_list_free(Label *labels[], int size)
 
 void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y)
 {
+    if (NULL == label)
+        return;
+
     switch (anchor)
     {
         case CENTER:
