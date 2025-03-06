@@ -210,6 +210,7 @@ extern const MainColors basic_main_colors;
 
 extern ButtonStyle current_button_style;
 extern const ButtonStyle basic_button_style;
+extern const ButtonStyle basic_toogle_style;
 
 extern TTF_Font *roboto_light;
 extern TTF_Font *roboto_regular;
@@ -301,5 +302,7 @@ int button_collision(Button *button, int x, int y);
 int toogle_collision(Toogle *toogle, int x, int y);
 int button_height(Button *button);
 int button_width(Button *button);
+int toogle_height(Toogle *toogle);
+int toogle_width(Toogle *toogle);
 
 #endif

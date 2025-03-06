@@ -24,6 +24,7 @@ const MainColors basic_main_colors = {{255,255,255,255}, {255, 255, 255, 255}, {
 Theme basic_theme;
 Theme current_theme;
 
+const ButtonStyle basic_toogle_style = {0, 0, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 ButtonStyle current_button_style;
 
