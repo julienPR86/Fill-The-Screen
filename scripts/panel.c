@@ -79,6 +79,23 @@ void panel_render(Panel *panel)
     return;
 }
 
+int panel_set_button_at_index(Panel *panel, Button *button, int index)
+{
+    if (NULL == panel || NULL == panel->buttons || index < 0 || index >= panel->button_count)
+        return RETURN_FAILURE;
+
+    panel->buttons[index] = button;
+    return RETURN_SUCCESS;
+}
+
+int panel_set_label_at_index(Panel *panel, Label *label, int index)
+{
+    if (NULL == panel || NULL == panel->labels || index < 0 || index >= panel->label_count)
+        return RETURN_FAILURE;
+
+    panel->labels[index] = label;
+    return RETURN_SUCCESS;
+}
 
 void panel_free(Panel *panel)
 {
