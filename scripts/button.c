@@ -158,3 +158,13 @@ void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
     }
     return;
 }
+
+int button_height(Button *button)
+{
+    return button->height+button->style->outline*2;
+}
+
+int button_width(Button *button)
+{
+    return button->width+button->style->outline*2;
+}
