@@ -168,6 +168,7 @@ typedef struct ToogleGroup
     Toogle **toogles;
     int count;
     int selected;
+    int active;
 } ToogleGroup;
 
 typedef struct Panel
