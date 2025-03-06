@@ -84,5 +84,6 @@ void group_free(ToogleGroup *group)
     {
         toogle_free(group->toogles[i]);
     }
+    free(group->toogles);
     return;
 }
