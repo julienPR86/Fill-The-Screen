@@ -280,8 +280,8 @@ void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y);
 Panel *panel_init(Panel *panel);
 void panel_update(Panel *panel);
 void panel_render(Panel *panel);
-void panel_set_button_at_index(Panel *panel, Button *button, int index);
-void panel_set_label_at_index(Panel *panel, Label *label, int index);
+int panel_set_button_at_index(Panel *panel, Button *button, int index);
+int panel_set_label_at_index(Panel *panel, Label *label, int index);
 void panel_free(Panel *panel);
 
 int mode_choice();
