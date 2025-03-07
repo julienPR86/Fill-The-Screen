@@ -255,6 +255,15 @@ int pause_menu();
 int back();
 int restart();
 int main_menu();
+int mode_choice();
+int fill_mode();
+int constraint_mode();
+int discovery_mode();
+int free_mode();
+int option_gameplay();
+int option_label();
+int option_video();
+int option_audio();
 
 Button *button_init(Button *button);
 int button_update(Button *button);
@@ -289,12 +298,6 @@ void panel_render(Panel *panel);
 int panel_set_button_at_index(Panel *panel, Button *button, int index);
 int panel_set_label_at_index(Panel *panel, Label *label, int index);
 void panel_free(Panel *panel);
-
-int mode_choice();
-int fill_mode();
-int constraint_mode();
-int discovery_mode();
-int free_mode();
 
 int options();
 

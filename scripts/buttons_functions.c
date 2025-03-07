@@ -45,3 +45,24 @@ int main_menu()
 {
     return RETURN_TO_MAIN_MENU;
 }
+
+//Toogles in option menu
+int option_gameplay()
+{
+    return RETURN_OPTION_GAMEPLAY_PANEL;
+}
+
+int option_label()
+{
+    return RETURN_OPTION_LABEL_PANEL;
+}
+
+int option_video()
+{
+    return RETURN_OPTION_VIDEO_PANEL;
+}
+
+int option_audio()
+{
+    return RETURN_OPTION_AUDIO_PANEL;
+}
