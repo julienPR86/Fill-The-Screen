@@ -34,8 +34,6 @@ int toogle_update(Toogle *toogle)
                 case NORMAL:
                 case HOVERED:
                     toogle->state = CLICKED;
-                    if (NULL != toogle->command)
-                        out = toogle->command();
                     break;
                 case CLICKED:
                     toogle->state = HOVERED;
@@ -63,6 +61,8 @@ int toogle_update(Toogle *toogle)
     }
     if (NULL != toogle->label)
         label_update(toogle->label);
+    if (NULL != toogle->command && CLICKED == toogle->state)
+        out = toogle->command();
     return out;
 }
 
