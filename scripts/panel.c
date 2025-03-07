@@ -38,7 +38,7 @@ Panel *panel_init(Panel *panel)
 int panel_update(Panel *panel)
 {
     if (NULL == panel || !panel->active)
-        return -1;
+        return RETURN_NONE;
 
     int out;
     if (NULL != panel->buttons)

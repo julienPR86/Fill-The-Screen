@@ -22,9 +22,9 @@ ToogleGroup *group_init(ToogleGroup *group)
 int group_update(ToogleGroup *group)
 {
     if (NULL == group || NULL == group->toogles)
-        return -1;
+        return RETURN_NONE;
 
-    int out = -1, final_out = -1;
+    int out = RETURN_NONE, final_out = out;
     for (int i = 0; i < group->count; i++)
     {
         out = toogle_update(group->toogles[i]);
@@ -37,7 +37,7 @@ int group_update(ToogleGroup *group)
         if ((NORMAL == group->toogles[i]->state || HOVERED == group->toogles[i]->state) && i == group->selected)
             group->toogles[i]->state = CLICKED;
         
-        if (out != -1)
+        if (out != RETURN_NONE)
             final_out = out;
         
     }

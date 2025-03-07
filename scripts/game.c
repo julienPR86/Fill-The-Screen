@@ -60,7 +60,7 @@ int game()
                             break;
                         case SDLK_LEFT:
                         case SDLK_q:
-                            direction[0] = -1;
+                            direction[0] = RETURN_NONE;
                             direction[1] = 0;
                             player->can_move = true;
                             player->moves++;
@@ -69,7 +69,7 @@ int game()
                         case SDLK_UP:
                         case SDLK_z:
                             direction[0] = 0;
-                            direction[1] = -1;
+                            direction[1] = RETURN_NONE;
                             player->can_move = true;
                             player->moves++;
                             player->frame_move = 1;

@@ -20,10 +20,10 @@ Toogle *toogle_init(Toogle *toogle)
 int toogle_update(Toogle *toogle)
 {
     if (NULL == toogle || !toogle->active)
-        return -1;
+        return RETURN_NONE;
     
     static int update = 1;
-    int x, y, out = -1; // returns -1 if the toogle isn't clicked
+    int x, y, out = RETURN_NONE; // returns RETURN_NONE if the toogle isn't clicked
     SDL_GetMouseState(&x, &y);
     if (toogle_collision(toogle, x, y))
     {
@@ -61,6 +61,7 @@ int toogle_update(Toogle *toogle)
     }
     if (NULL != toogle->label)
         label_update(toogle->label);
+        
     if (NULL != toogle->command && CLICKED == toogle->state)
         out = toogle->command();
     return out;

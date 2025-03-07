@@ -54,7 +54,7 @@ int option_gameplay()
 
 int option_label()
 {
-    return RETURN_OPTION_LABEL_PANEL;
+    return RETURN_OPTION_PANEL;
 }
 
 int option_video()

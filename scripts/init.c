@@ -20,11 +20,11 @@ Player *player = NULL;
 Map *map = NULL;
 
 const GameColors basic_game_colors = {{0,0,0,255}, {255,255,255,255}, {255,128,0,255}, {255,0,0,255}, {255,255,255,255}};
-const MainColors basic_main_colors = {{255,255,255,255}, {255, 255, 255, 255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}};
+const MainColors basic_main_colors = {{255,255,255,255}, {255, 240, 240, 255}, {255,255,255,255}, {0,0,0,255}, {255,255,255,255}, {255,255,255,255}};
 Theme basic_theme;
 Theme current_theme;
 
-const ButtonStyle basic_toogle_style = {0, 0, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
+const ButtonStyle basic_toogle_style = {0, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 ButtonStyle current_button_style;
 ButtonStyle current_toogle_style;
@@ -66,7 +66,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, RETURN_NONE, SDL_RENDERER_ACCELERATED);
     if (NULL == renderer)
     {
         fprintf(stderr, "Could not create the renderer : %s\n", SDL_GetError());
