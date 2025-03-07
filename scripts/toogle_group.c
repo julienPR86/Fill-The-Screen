@@ -19,14 +19,15 @@ ToogleGroup *group_init(ToogleGroup *group)
     return group;
 }
 
-void group_update(ToogleGroup *group)
+int group_update(ToogleGroup *group)
 {
     if (NULL == group || NULL == group->toogles)
         return;
 
+    int out;
     for (int i = 0; i < group->count; i++)
     {
-        toogle_update(group->toogles[i]);
+        out = toogle_update(group->toogles[i]);
         if (CLICKED == group->toogles[i]->state)
         {
             group_clear_selected(group);
@@ -36,7 +37,7 @@ void group_update(ToogleGroup *group)
         if ((NORMAL == group->toogles[i]->state || HOVERED == group->toogles[i]->state) && i == group->selected)
             group->toogles[i]->state = CLICKED;
     }
-    return;
+    return out;
 }
 
 void group_render(ToogleGroup *group)

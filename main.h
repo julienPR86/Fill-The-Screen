@@ -26,6 +26,10 @@ enum Returns
     RETURN_TO_GAMEMODE_CHOICE,
     RETURN_TO_GAME,
     RETURN_RESTART_GAME,
+    RETURN_OPTION_GAMEPLAY_PANEL,
+    RETURN_OPTION_LABEL_PANEL,
+    RETURN_OPTION_VIDEO_PANEL,
+    RETURN_OPTION_AUDIO_PANEL,
 };
 
 enum GameMods
@@ -266,7 +270,7 @@ void toogle_free(Toogle *toogle);
 void toogle_list_free(Toogle *toogle[], int size);
 
 ToogleGroup *group_init(ToogleGroup *group);
-void group_update(ToogleGroup *group);
+int group_update(ToogleGroup *group);
 void group_render(ToogleGroup *group);
 int group_set_toogle_at_index(ToogleGroup *group, Toogle *toogle, int index);
 void group_clear_selected(ToogleGroup *group);
