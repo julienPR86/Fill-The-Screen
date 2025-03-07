@@ -22,7 +22,7 @@ ToogleGroup *group_init(ToogleGroup *group)
 int group_update(ToogleGroup *group)
 {
     if (NULL == group || NULL == group->toogles)
-        return;
+        return -1;
 
     int out;
     for (int i = 0; i < group->count; i++)

@@ -35,16 +35,17 @@ Panel *panel_init(Panel *panel)
     return panel;
 }
 
-void panel_update(Panel *panel)
+int panel_update(Panel *panel)
 {
     if (NULL == panel || !panel->active)
-        return;
+        return -1;
 
+    int out;
     if (NULL != panel->buttons)
     {
         for (int i = 0; i < panel->button_count; i++)
         {
-            button_update(panel->buttons[i]);
+            out = button_update(panel->buttons[i]);
         }
     }
     if (NULL != panel->labels)
@@ -54,7 +55,7 @@ void panel_update(Panel *panel)
             label_update(panel->labels[i]);
         }
     }
-    return;
+    return out;
 }
 
 void panel_render(Panel *panel)
