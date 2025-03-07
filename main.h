@@ -19,6 +19,7 @@
 
 enum Returns
 {
+    RETURN_NONE = -1,
     RETURN_SUCCESS,
     RETURN_FAILURE,
     RETURN_EXIT_FULL_GAME,
