@@ -2,18 +2,18 @@
 
 int options()
 {
-    Label gameplay_label = {0, 0, 0, 0, 0.12, "Gameplay", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label label = {0, 0, 0, 0, 0.12, "label", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label video_label = {0, 0, 0, 0, 0.12, "Video", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label audio_label = {0, 0, 0, 0, 0.12, "Audio", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label gameplay_toogle_label = {0, 0, 0, 0, 0.12, "Gameplay", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label toogle_label = {0, 0, 0, 0, 0.12, "label", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label video_toogle_label = {0, 0, 0, 0, 0.12, "Video", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label audio_toogle_label = {0, 0, 0, 0, 0.12, "Audio", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Toogle gameplay_toogle = {0, 0, WIDTH/4, HEIGHT/10, NORMAL, &gameplay_label, &current_toogle_style, &option_gameplay, true};
+    Toogle gameplay_toogle = {0, 0, WIDTH/4, HEIGHT/10, NORMAL, &gameplay_toogle_label, &current_toogle_style, &option_gameplay, true};
     toogle_init(&gameplay_toogle);
-    Toogle toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &label, &current_toogle_style, &option_label, true};
+    Toogle toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &toogle_label, &current_toogle_style, &option_label, true};
     toogle_init(&toogle);
-    Toogle video_toogle = {toogle.x + toogle_width(&toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &video_label, &current_toogle_style, &option_video, true};
+    Toogle video_toogle = {toogle.x + toogle_width(&toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &video_toogle_label, &current_toogle_style, &option_video, true};
     toogle_init(&video_toogle);
-    Toogle audio_toogle = {video_toogle.x + toogle_width(&video_toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &audio_label, &current_toogle_style, &option_audio, true};
+    Toogle audio_toogle = {video_toogle.x + toogle_width(&video_toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &audio_toogle_label, &current_toogle_style, &option_audio, true};
     toogle_init(&audio_toogle);
 
     ToogleGroup options_group = {NULL, 4, 0, true};
@@ -23,39 +23,14 @@ int options()
     group_set_toogle_at_index(&options_group, &video_toogle, 2);
     group_set_toogle_at_index(&options_group, &audio_toogle, 3);
 
-    Label label_1 = {0, 0, 0, 0, 0.1, "Panel 1", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&label_1))
-    {
-        set_label_anchor(&label_1, CENTER, 0, 0);
-    }
-    Label label_2 = {0, 0, 0, 0, 0.1, "Panel 2", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&label_2))
-    {
-        set_label_anchor(&label_2, CENTER, 0, 0);
-    }
-    Label label_3 = {0, 0, 0, 0, 0.1, "Panel 3", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&label_3))
-    {
-        set_label_anchor(&label_3, CENTER, 0, 0);
-    }
-    Label label_4 = {0, 0, 0, 0, 0.1, "Panel 4", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&label_4))
-    {
-        set_label_anchor(&label_4, CENTER, 0, 0);
-    }
-
-    Panel gameplay_panel = {NULL, 0, NULL, 1, true};
+    Panel gameplay_panel = {NULL, 0, NULL, 0, NULL, 0, true};
     panel_init(&gameplay_panel);
-    panel_set_label_at_index(&gameplay_panel, &label_1, 0);
-    Panel panel = {NULL, 0, NULL, 1, false};
+    Panel panel = {NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&panel);
-    panel_set_label_at_index(&panel, &label_2, 0);
-    Panel video_panel = {NULL, 0, NULL, 1, false};
+    Panel video_panel = {NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&video_panel);
-    panel_set_label_at_index(&video_panel, &label_3, 0);
-    Panel audio_panel = {NULL, 0, NULL, 1, false};
+    Panel audio_panel = {NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&audio_panel);
-    panel_set_label_at_index(&audio_panel, &label_4, 0);
 
     Label *labels[] = {&FPS_label};
     Panel *panels[] = {&gameplay_panel, &panel, &video_panel, &audio_panel};
@@ -115,7 +90,7 @@ int options()
 
         for (int i = 0; i < (int)(sizeof(panels)/sizeof(panels[0])); i++)
         {
-            panel_update(panels[i]);
+            out = panel_update(panels[i]);
             panel_render(panels[i]);
         }
 
