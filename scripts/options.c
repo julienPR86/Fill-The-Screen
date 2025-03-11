@@ -7,13 +7,13 @@ int options()
     Label video_toogle_label = {0, 0, 0, 0, 0.12, "Video", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label audio_toogle_label = {0, 0, 0, 0, 0.12, "Audio", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Toogle gameplay_toogle = {0, 0, WIDTH/4, HEIGHT/10, NORMAL, &gameplay_toogle_label, &current_toogle_style, &option_gameplay, true};
+    Toogle gameplay_toogle = {0, 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &gameplay_toogle_label, &current_toogle_style, &option_gameplay, true};
     toogle_init(&gameplay_toogle);
-    Toogle toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &toogle_label, &current_toogle_style, &option_label, true};
+    Toogle toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &toogle_label, &current_toogle_style, &option_label, true};
     toogle_init(&toogle);
-    Toogle video_toogle = {toogle.x + toogle_width(&toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &video_toogle_label, &current_toogle_style, &option_video, true};
+    Toogle video_toogle = {toogle.x + toogle_width(&toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &video_toogle_label, &current_toogle_style, &option_video, true};
     toogle_init(&video_toogle);
-    Toogle audio_toogle = {video_toogle.x + toogle_width(&video_toogle), 0, WIDTH/4, HEIGHT/10, NORMAL, &audio_toogle_label, &current_toogle_style, &option_audio, true};
+    Toogle audio_toogle = {video_toogle.x + toogle_width(&video_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &audio_toogle_label, &current_toogle_style, &option_audio, true};
     toogle_init(&audio_toogle);
 
     ToogleGroup options_group = {NULL, 4, 0, true};
@@ -32,8 +32,8 @@ int options()
     Panel audio_panel = {NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&audio_panel);
 
-    SliderStyle style = {1, 0, 1, {255, 0, 0, 255}, {0, 0, 0, 0}, {255, 128, 0, 255}, {0, 0, 0, 255}};
-    Slider slider = {100, 200, 100, 20, 0, 0, 100, 1, &style, true};
+    SliderStyle style = {1, 0, 1, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}, {0, 0, 0, 255}};
+    Slider slider = {100, 200, 100, 20, 0, 0, 100, 1, NORMAL, &style, true};
     slider_init(&slider);
 
     Label *labels[] = {&FPS_label};
@@ -45,6 +45,9 @@ int options()
     {
         start_time = SDL_GetTicks64();
         FPS = get_fps();
+
+        get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
+        SDL_GetMouseState(&mouse_x, &mouse_y);
         
         SDL_SetRenderDrawColor(renderer, current_theme.main_colors.options_background.r, current_theme.main_colors.options_background.g, current_theme.main_colors.options_background.b, current_theme.main_colors.options_background.a);
         SDL_RenderClear(renderer);//background

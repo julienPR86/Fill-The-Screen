@@ -53,6 +53,9 @@ int mode_choice()
     {
         start_time = SDL_GetTicks64();
         FPS = get_fps();
+
+        get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
+        SDL_GetMouseState(&mouse_x, &mouse_y);
         
         SDL_SetRenderDrawColor(renderer, current_theme.main_colors.game_mode_background.r, current_theme.main_colors.game_mode_background.g, current_theme.main_colors.game_mode_background.b, current_theme.main_colors.game_mode_background.a);
         SDL_RenderClear(renderer);//background
