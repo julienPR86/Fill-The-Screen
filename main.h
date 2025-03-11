@@ -132,8 +132,9 @@ typedef struct SliderStyle
     int cursor;
     float cursor_scale;
     SDL_Color background;
-    SDL_Color hover;
-    SDL_Color cursor_color;
+    SDL_Color cursor_bg;
+    SDL_Color cursor_fg;
+    SDL_Color cursor_hover_color;
     SDL_Color outline_color;
 } SliderStyle;
 
@@ -198,6 +199,7 @@ typedef struct Slider
     int min;
     int max;
     int step;
+    int state;
     SliderStyle *style;
     int active;
 } Slider;
@@ -229,6 +231,10 @@ extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Event event;
 
+extern int mouse_x;
+extern int mouse_y;
+extern int mouse_delta_x;
+extern int mouse_delta_y;
 extern int mouse_button_pressed;
 
 extern int game_mode;
@@ -345,7 +351,9 @@ int end_game();
 int get_fps();
 void cap_fps(Uint64 start_time);
 void mouse_pressed(SDL_Event event);
+void get_mouse_delta(int *x, int *y);
 int button_collision(Button *button, int x, int y);
 int toogle_collision(Toogle *toogle, int x, int y);
+int slider_cursor_collision(Slider *slider, int x, int y);
 
 #endif
