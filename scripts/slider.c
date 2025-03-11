@@ -12,6 +12,8 @@ Slider *slider_init(Slider *slider)
 
     slider->step = MIN(MAX(1, slider->step), slider->max);
 
+    slider->w *= SCALEX;
+    slider->h *= SCALEY;
     slider->style->outline *= SCALEY;
 
     return slider;
@@ -22,7 +24,8 @@ int slider_update(Slider *slider)
     if (NULL == slider || !slider->active)
         return RETURN_NONE;
     
-    int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
+    int x, y, out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
+    SDL_GetMouseState(&x, &y);
 
     if (slider->value < slider->min)
         slider->value = slider->min;
@@ -30,6 +33,23 @@ int slider_update(Slider *slider)
     if (slider->value > slider->max)
         slider->value = slider->max;
 
+    if (slider_cursor_collision(slider, x, y))
+    {
+        if (mouse_button_pressed == 1)
+        {
+            slider->state = CLICKED;
+            
+        }
+        else
+        {
+            slider->state = HOVERED;
+        }
+    }
+    else
+    {
+        slider->state = NORMAL;
+    }
+    
     return out;
 }
 
@@ -65,7 +85,21 @@ void slider_render(Slider *slider)
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &outline_cursor_rect);
 
-    color = slider->style->cursor_color;
+    switch (slider->state)
+    {
+        case NORMAL:
+            color = slider->style->cursor_bg;
+            break;
+        case HOVERED:
+            color = slider->style->cursor_hover_color;
+            break;
+        case CLICKED:
+            color = slider->style->cursor_fg;
+            break;
+        default:
+            break;
+    }
+    
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &cursor_rect);
         
