@@ -204,6 +204,8 @@ typedef struct Panel
 {
     Button **buttons;
     int button_count;
+    Slider **sliders;
+    int slider_count;
     Label **labels;
     int label_count;
     int active;
