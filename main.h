@@ -31,6 +31,7 @@ enum Returns
     RETURN_OPTION_PANEL,
     RETURN_OPTION_VIDEO_PANEL,
     RETURN_OPTION_AUDIO_PANEL,
+    RETURN_OPTION_GAMEPLAY_PROBABILITY,
 };
 
 enum GameMods
@@ -125,6 +126,16 @@ typedef struct ButtonStyle
     SDL_Color inline_color;
 } ButtonStyle;
 
+typedef struct SliderStyle
+{
+    int outline;
+    float cursor_scale;
+    SDL_Color background;
+    SDL_Color hover;
+    SDL_Color cursor;
+    SDL_Color outline;
+} SliderStyle;
+
 
 typedef struct Label
 {
@@ -175,6 +186,19 @@ typedef struct ToogleGroup
     int selected;
     int active;
 } ToogleGroup;
+
+typedef struct Slider
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    int value;
+    int max;
+    int min;
+    int step;
+    SliderStyle *style;
+} Slider;
 
 typedef struct Panel
 {
@@ -272,12 +296,16 @@ void button_render(Button *button);
 void button_free(Button *button);
 void button_list_free(Button *button[], int size);
 void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
+int button_height(Button *button);
+int button_width(Button *button);
 
 Toogle *toogle_init(Toogle *toogle);
 int toogle_update(Toogle *toogle);
 void toogle_render(Toogle *toogle);
 void toogle_free(Toogle *toogle);
 void toogle_list_free(Toogle *toogle[], int size);
+int toogle_height(Toogle *toogle);
+int toogle_width(Toogle *toogle);
 
 ToogleGroup *group_init(ToogleGroup *group);
 int group_update(ToogleGroup *group);
@@ -309,9 +337,5 @@ void cap_fps(Uint64 start_time);
 void mouse_pressed(SDL_Event event);
 int button_collision(Button *button, int x, int y);
 int toogle_collision(Toogle *toogle, int x, int y);
-int button_height(Button *button);
-int button_width(Button *button);
-int toogle_height(Toogle *toogle);
-int toogle_width(Toogle *toogle);
 
 #endif
