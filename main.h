@@ -126,15 +126,19 @@ typedef struct ButtonStyle
     SDL_Color inline_color;
 } ButtonStyle;
 
+typedef struct CursorStyle
+{
+    int outline;
+    SDL_Color bg;
+    SDL_Color fg;
+    SDL_Color hover_color;
+    SDL_Color outline_color;
+} CursorStyle;
+
 typedef struct SliderStyle
 {
     int outline;
-    int cursor;
-    float cursor_scale;
     SDL_Color background;
-    SDL_Color cursor_bg;
-    SDL_Color cursor_fg;
-    SDL_Color cursor_hover_color;
     SDL_Color outline_color;
 } SliderStyle;
 
@@ -189,6 +193,15 @@ typedef struct ToogleGroup
     int active;
 } ToogleGroup;
 
+typedef struct Cursor
+{
+    int x;
+    int y;
+    int size;
+    int state;
+    CursorStyle style;
+} Cursor;
+
 typedef struct Slider
 {
     int x;
@@ -199,7 +212,7 @@ typedef struct Slider
     int min;
     int max;
     int step;
-    int state;
+    Cursor *cursor;
     SliderStyle *style;
     int active;
 } Slider;
