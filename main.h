@@ -133,7 +133,7 @@ typedef struct SliderStyle
     SDL_Color background;
     SDL_Color hover;
     SDL_Color cursor;
-    SDL_Color outline;
+    SDL_Color outline_color;
 } SliderStyle;
 
 
@@ -198,6 +198,7 @@ typedef struct Slider
     int min;
     int step;
     SliderStyle *style;
+    int active;
 } Slider;
 
 typedef struct Panel
@@ -322,6 +323,12 @@ void label_render(Label *label);
 void label_free(Label *label);
 void label_list_free(Label *labels[], int size);
 void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y);
+
+Slider *slider_init(Slider *slider);
+int slider_update(Slider *slider);
+void slider_render(Slider *slider);
+int slider_height(Slider *slider);
+int slider_width(Slider *slider);
 
 Panel *panel_init(Panel *panel);
 int panel_update(Panel *panel);
