@@ -195,8 +195,8 @@ typedef struct Slider
     int w;
     int h;
     int value;
-    int max;
     int min;
+    int max;
     int step;
     SliderStyle *style;
     int active;
