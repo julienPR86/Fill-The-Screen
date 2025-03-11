@@ -29,6 +29,10 @@ const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 25
 ButtonStyle current_button_style;
 ButtonStyle current_toogle_style;
 
+int mouse_x = 0;
+int mouse_y = 0;
+int mouse_delta_x = 0;
+int mouse_delta_y = 0;
 int mouse_button_pressed = 0;
 int game_mode = NO_ACTIVE_MODE;
 
@@ -96,8 +100,8 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    SCALEX = WIDTH / 1080.0;
-    SCALEY = HEIGHT / 720.0;
+    SCALEX = (float)WIDTH / 1080;
+    SCALEY = (float)HEIGHT / 720;
     basic_theme.main_colors = basic_main_colors;
     basic_theme.game_colors = basic_game_colors;
     current_theme = basic_theme;
