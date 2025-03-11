@@ -54,13 +54,13 @@ int panel_update(Panel *panel)
     if (NULL == panel || !panel->active)
         return RETURN_NONE;
 
-    int out = -1, final_out = out;
+    int out = RETURN_NONE, final_out = out;
     if (NULL != panel->buttons)
     {
         for (int i = 0; i < panel->button_count; i++)
         {
             out = button_update(panel->buttons[i]);
-            if (-1 != out)
+            if (RETURN_NONE != out)
                 final_out = out;
         }
     }
@@ -69,7 +69,7 @@ int panel_update(Panel *panel)
         for (int i = 0; i < panel->slider_count; i++)
         {
             out = slider_update(panel->sliders[i]);
-            if (-1 != out)
+            if (RETURN_NONE != out)
                 final_out = out;
         }
     }
@@ -151,7 +151,6 @@ void panel_free(Panel *panel)
     }
     if (NULL != panel->sliders)
     {
-        slider_list_free(panel->sliders, panel->slider_count);
         free(panel->sliders);
     }
     if (NULL != panel->labels)
