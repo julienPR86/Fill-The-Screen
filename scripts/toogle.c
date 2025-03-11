@@ -23,9 +23,8 @@ int toogle_update(Toogle *toogle)
         return RETURN_NONE;
     
     static int update = 1;
-    int x, y, out = RETURN_NONE; // returns RETURN_NONE if the toogle isn't clicked
-    SDL_GetMouseState(&x, &y);
-    if (toogle_collision(toogle, x, y))
+    int out = RETURN_NONE; // returns RETURN_NONE if the toogle isn't clicked
+    if (toogle_collision(toogle, mouse_x, mouse_y))
     {
         if (mouse_button_pressed == 1 && update)
         {

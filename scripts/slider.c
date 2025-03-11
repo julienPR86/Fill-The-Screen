@@ -24,8 +24,7 @@ int slider_update(Slider *slider)
     if (NULL == slider || !slider->active)
         return RETURN_NONE;
     
-    int x, y, out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
-    SDL_GetMouseState(&x, &y);
+    int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
 
     if (slider->value < slider->min)
         slider->value = slider->min;
@@ -33,7 +32,7 @@ int slider_update(Slider *slider)
     if (slider->value > slider->max)
         slider->value = slider->max;
 
-    if (slider_cursor_collision(slider, x, y))
+    if (slider_cursor_collision(slider, mouse_x, mouse_y))
     {
         if (mouse_button_pressed == 1)
         {

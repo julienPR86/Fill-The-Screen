@@ -22,9 +22,8 @@ int button_update(Button *button)
     if (NULL == button || !button->active)
         return RETURN_NONE;
     
-    int x, y, out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    SDL_GetMouseState(&x, &y);
-    if (button_collision(button, x, y))
+    int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
+    if (button_collision(button, mouse_x, mouse_delta_y))
     {
         if (mouse_button_pressed == 1)
         {
