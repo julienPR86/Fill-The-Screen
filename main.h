@@ -129,10 +129,11 @@ typedef struct ButtonStyle
 typedef struct SliderStyle
 {
     int outline;
+    int cursor;
     float cursor_scale;
     SDL_Color background;
     SDL_Color hover;
-    SDL_Color cursor;
+    SDL_Color cursor_color;
     SDL_Color outline_color;
 } SliderStyle;
 
