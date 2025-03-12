@@ -86,17 +86,9 @@ int toogle_collision(Toogle *toogle, int x, int y)
     return false;
 }
 
-int slider_cursor_collision(Slider *slider, int x, int y)
+int slider_cursor_collision(SliderCursor *cursor, int x, int y)
 {
-    int cursor_x, cursor_y;
-    if (slider->value != 0)
-        cursor_x = slider->x + slider->w / ((float)slider->max / slider->value) - slider->style->cursor / 2;
-    else
-        cursor_x = slider->x - slider->style->cursor / 2;
-    
-    cursor_y = slider->y + CENTERED(slider->h, slider->style->cursor);
-    
-    if (x > cursor_x && x < cursor_x + slider->style->cursor && y > cursor_y && y < cursor_y + slider->style->cursor)
+    if (x > cursor->x && y > cursor->y && x < cursor->x + cursor->size && y < cursor->y + cursor->size)
     {
         return true;
     }
