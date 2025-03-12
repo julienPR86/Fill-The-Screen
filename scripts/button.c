@@ -23,7 +23,7 @@ int button_update(Button *button)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    if (button_collision(button, mouse_x, mouse_delta_y))
+    if (button_collision(button, mouse_x, mouse_y))
     {
         if (mouse_button_pressed == 1)
         {
