@@ -23,13 +23,13 @@ int options()
     group_set_toogle_at_index(&options_group, &video_toogle, 2);
     group_set_toogle_at_index(&options_group, &audio_toogle, 3);
 
-    Panel gameplay_panel = {NULL, 0, NULL, 0, NULL, 0, true};
+    Panel gameplay_panel = {NULL, 0, NULL, 0, NULL, 0, NULL, 0, true};
     panel_init(&gameplay_panel);
-    Panel panel = {NULL, 0, NULL, 0, NULL, 0, false};
+    Panel panel = {NULL, 0, NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&panel);
-    Panel video_panel = {NULL, 0, NULL, 0, NULL, 0, false};
+    Panel video_panel = {NULL, 0, NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&video_panel);
-    Panel audio_panel = {NULL, 0, NULL, 0, NULL, 0, false};
+    Panel audio_panel = {NULL, 0, NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&audio_panel);
 
     Label *labels[] = {&FPS_label};
