@@ -24,6 +24,7 @@ int slider_cursor_update(SliderCursor *cursor)
         {
             cursor->state = CLICKED;
             cursor->x += mouse_delta_x;
+            out = RETURN_SLIDER_UPDATE;
         }
         else
         {
