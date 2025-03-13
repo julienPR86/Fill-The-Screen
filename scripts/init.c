@@ -29,6 +29,12 @@ const ButtonStyle basic_button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 25
 ButtonStyle current_button_style;
 ButtonStyle current_toogle_style;
 
+const SliderCursorStyle basic_slider_cursor_style = {1, {255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}, {0, 0, 0, 255}};
+SliderCursorStyle current_slider_cursor_style;
+
+const SliderStyle basic_slider_style = {1, {255, 128, 0, 255}, {0, 0, 0, 255}};
+SliderStyle current_slider_style;
+
 int mouse_x = 0;
 int mouse_y = 0;
 int mouse_delta_x = 0;
@@ -107,7 +113,9 @@ int init()
     current_theme = basic_theme;
     current_button_style = basic_button_style;
     current_toogle_style = basic_toogle_style;
-    
+    current_slider_style = basic_slider_style;
+    current_slider_cursor_style = basic_slider_cursor_style;
+
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     srand(time(NULL)*(WIDTH/HEIGHT));
 
