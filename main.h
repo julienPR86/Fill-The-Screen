@@ -370,8 +370,10 @@ int panel_set_toogle_at_index(Panel *panel, Toogle *toogle, int index);
 int panel_set_slider_at_index(Panel *panel, Slider *slider, int index);
 int panel_set_label_at_index(Panel *panel, Label *label, int index);
 void panel_free(Panel *panel);
+void panel_list_free(Panel *panels[], int count);
 
 int options();
+int options_apply(Panel *(*panels)[]);
 
 int end_game();
 
