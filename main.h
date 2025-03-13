@@ -126,14 +126,14 @@ typedef struct ButtonStyle
     SDL_Color inline_color;
 } ButtonStyle;
 
-typedef struct CursorStyle
+typedef struct SliderCursorStyle
 {
     int outline;
     SDL_Color bg;
     SDL_Color fg;
     SDL_Color hover_color;
     SDL_Color outline_color;
-} CursorStyle;
+} SliderCursorStyle;
 
 typedef struct SliderStyle
 {
@@ -193,14 +193,14 @@ typedef struct ToogleGroup
     int active;
 } ToogleGroup;
 
-typedef struct Cursor
+typedef struct SliderCursor
 {
     int x;
     int y;
     int size;
     int state;
-    CursorStyle style;
-} Cursor;
+    SliderCursorStyle *style;
+} SliderCursor;
 
 typedef struct Slider
 {
@@ -212,7 +212,7 @@ typedef struct Slider
     int min;
     int max;
     int step;
-    Cursor *cursor;
+    SliderCursor *cursor;
     SliderStyle *style;
     int active;
 } Slider;
@@ -262,8 +262,14 @@ extern const MainColors basic_main_colors;
 
 extern ButtonStyle current_button_style;
 extern ButtonStyle current_toogle_style;
+extern SliderStyle current_slider_style;
+extern SliderCursorStyle current_slider_cursor_style;
+
 extern const ButtonStyle basic_button_style;
 extern const ButtonStyle basic_toogle_style;
+extern const SliderCursorStyle basic_slider_cursor_style;
+extern const SliderStyle basic_slider_style;
+
 
 extern TTF_Font *roboto_light;
 extern TTF_Font *roboto_regular;
@@ -344,6 +350,10 @@ void label_free(Label *label);
 void label_list_free(Label *labels[], int size);
 void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y);
 
+SliderCursor *slider_cursor_init(SliderCursor *cursor);
+int slider_cursor_update(SliderCursor *cursor);
+void slider_cursor_render(SliderCursor *cursor);
+
 Slider *slider_init(Slider *slider);
 int slider_update(Slider *slider);
 void slider_render(Slider *slider);
@@ -367,6 +377,6 @@ void mouse_pressed(SDL_Event event);
 void get_mouse_delta(int *x, int *y);
 int button_collision(Button *button, int x, int y);
 int toogle_collision(Toogle *toogle, int x, int y);
-int slider_cursor_collision(Slider *slider, int x, int y);
+int slider_cursor_collision(SliderCursor *cursor, int x, int y);
 
 #endif
