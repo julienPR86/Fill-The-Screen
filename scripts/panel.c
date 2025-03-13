@@ -204,3 +204,18 @@ void panel_free(Panel *panel)
     }
     return;
 }
+
+void panel_list_free(Panel *panels[], int count)
+{
+    if (NULL == panels)
+        return;
+
+    for (int i = 0; i < count; i++)
+    {
+        if (NULL == panels[i])
+            continue;
+
+        panel_free(panels[i]);
+    }
+    return;
+}
