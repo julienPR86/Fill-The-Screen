@@ -221,6 +221,8 @@ typedef struct Panel
 {
     Button **buttons;
     int button_count;
+    Toogle **toogles;
+    int toogle_count;
     Slider **sliders;
     int slider_count;
     Label **labels;
@@ -364,6 +366,8 @@ Panel *panel_init(Panel *panel);
 int panel_update(Panel *panel);
 void panel_render(Panel *panel);
 int panel_set_button_at_index(Panel *panel, Button *button, int index);
+int panel_set_toogle_at_index(Panel *panel, Toogle *toogle, int index);
+int panel_set_slider_at_index(Panel *panel, Slider *slider, int index);
 int panel_set_label_at_index(Panel *panel, Label *label, int index);
 void panel_free(Panel *panel);
 

@@ -18,6 +18,20 @@ Panel *panel_init(Panel *panel)
             panel->buttons[i] = NULL;
         }
     }
+    if (panel->toogle_count != 0)
+    {    
+        panel->toogles = (Toogle **)malloc(sizeof(Toogle *) * panel->toogle_count);
+        if (NULL == panel->toogles)
+        {
+            panel_free(panel);
+            fprintf(stderr, "Failed to init panel : memory allocation error\n");
+            return NULL;
+        }
+        for (int i = 0; i < panel->toogle_count; i++)
+        {
+            panel->toogles[i] = NULL;
+        }
+    }
     if (panel->slider_count != 0)
     {    
         panel->sliders = (Slider **)malloc(sizeof(Slider *) * panel->slider_count);
@@ -64,7 +78,16 @@ int panel_update(Panel *panel)
                 final_out = out;
         }
     }
-    if (NULL != panel->sliders)
+    if (NULL != panel->toogles && RETURN_NONE == final_out)
+    {
+        for (int i = 0; i < panel->toogle_count; i++)
+        {
+            out = toogle_update(panel->toogles[i]);
+            if (RETURN_NONE != out)
+                final_out = out;
+        }
+    }
+    if (NULL != panel->sliders && RETURN_NONE == final_out)
     {
         for (int i = 0; i < panel->slider_count; i++)
         {
@@ -95,6 +118,13 @@ void panel_render(Panel *panel)
             button_render(panel->buttons[i]);
         }
     }
+    if (NULL != panel->toogles)
+    {
+        for (int i = 0; i < panel->toogle_count; i++)
+        {
+            toogle_render(panel->toogles[i]);
+        }
+    }
     if (NULL != panel->sliders)
     {
         for (int i = 0; i < panel->slider_count; i++)
@@ -118,6 +148,15 @@ int panel_set_button_at_index(Panel *panel, Button *button, int index)
         return RETURN_FAILURE;
 
     panel->buttons[index] = button;
+    return RETURN_SUCCESS;
+}
+
+int panel_set_toogle_at_index(Panel *panel, Toogle *toogle, int index)
+{
+    if (NULL == panel || NULL == panel->toogles || index < 0 || index >= panel->toogle_count)
+        return RETURN_FAILURE;
+
+    panel->toogles[index] = toogle;
     return RETURN_SUCCESS;
 }
 
@@ -148,6 +187,11 @@ void panel_free(Panel *panel)
     {
         button_list_free(panel->buttons, panel->button_count);
         free(panel->buttons);
+    }
+    if (NULL != panel->toogles) 
+    {
+        toogle_list_free(panel->toogles, panel->toogle_count);
+        free(panel->toogles);
     }
     if (NULL != panel->sliders)
     {

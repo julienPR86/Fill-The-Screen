@@ -32,10 +32,6 @@ int options()
     Panel audio_panel = {NULL, 0, NULL, 0, NULL, 0, false};
     panel_init(&audio_panel);
 
-    SliderStyle style = {1, 0, 1, {255, 128, 0, 255}, {255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}, {0, 0, 0, 255}};
-    Slider slider = {100, 200, 100, 20, 0, 0, 100, 1, NORMAL, &style, true};
-    slider_init(&slider);
-
     Label *labels[] = {&FPS_label};
     Panel *panels[] = {&gameplay_panel, &panel, &video_panel, &audio_panel};
 
@@ -106,8 +102,6 @@ int options()
             label_update(labels[i]);
             label_render(labels[i]);
         }
-        slider_update(&slider);
-        slider_render(&slider);
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
