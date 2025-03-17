@@ -8,6 +8,7 @@ Label *label_init(Label *label)
     if (0 != TTF_SizeText(label->font, label->text, &label->w, &label->h))
     {
         fprintf(stderr, "Size text error : %s\n", TTF_GetError());
+        return NULL;
     }
     label->w *= SCALEY;
     label->h *= SCALEY;
