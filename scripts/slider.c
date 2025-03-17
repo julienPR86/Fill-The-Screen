@@ -14,7 +14,8 @@ Slider *slider_init(Slider *slider)
         slider->cursor->size = slider->h;
 
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
-    
+    slider->cursor->x = slider->x + slider->w  / ((float)slider->max / (*slider->value)) - slider->cursor->size/2;
+
     return slider;
 }
 
