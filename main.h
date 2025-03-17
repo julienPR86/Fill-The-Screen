@@ -208,7 +208,7 @@ typedef struct Slider
     int y;
     int w;
     int h;
-    int value;
+    int *value;
     int min;
     int max;
     int step;
@@ -373,7 +373,6 @@ void panel_free(Panel *panel);
 void panel_list_free(Panel *panels[], int count);
 
 int options();
-int options_apply(Panel *(*panels)[]);
 
 int end_game();
 
