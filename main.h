@@ -212,6 +212,7 @@ typedef struct Slider
     int min;
     int max;
     int step;
+    Label *label;
     SliderCursor *cursor;
     SliderStyle *style;
     int active;
@@ -359,6 +360,8 @@ void slider_cursor_render(SliderCursor *cursor);
 Slider *slider_init(Slider *slider);
 int slider_update(Slider *slider);
 void slider_render(Slider *slider);
+void slider_free(Slider *slider);
+void slider_list_free(Slider *sliders[], int size);
 int slider_height(Slider *slider);
 int slider_width(Slider *slider);
 

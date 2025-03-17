@@ -2,7 +2,7 @@
 
 Slider *slider_init(Slider *slider)
 {
-    if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style)
+    if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style || NULL == label_init(slider->label))
         return NULL;
 
     slider->step = MIN(MAX(1, slider->step), slider->max);
@@ -49,6 +49,8 @@ int slider_update(Slider *slider)
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
     *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
+    
+    label_update(slider->label);
     return out;
 }
 
@@ -70,6 +72,31 @@ void slider_render(Slider *slider)
     SDL_RenderFillRect(renderer, &slider_rect);
 
     slider_cursor_render(slider->cursor);
+    label_render(slider->label);
+    return;
+}
+
+void slider_free(Slider *slider)
+{
+    if (NULL == slider || NULL == slider->label)
+        return;
+    
+    label_free(slider->label);
+    return;
+}
+
+void slider_list_free(Slider *sliders[], int size)
+{
+    if (NULL == sliders)
+        return;
+    
+    for (int i = 0; i < size; i++)
+    {
+        if (NULL == sliders[i])
+            continue;
+
+        slider_free(sliders[i]);
+    }
     return;
 }
 
