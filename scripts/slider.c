@@ -12,9 +12,15 @@ Slider *slider_init(Slider *slider)
 
     if (slider->cursor->size < slider->h)
         slider->cursor->size = slider->h;
+    
+    if (*slider->value < slider->min)
+        *slider->value = slider->min;
+
+    if (*slider->value > slider->max)
+        *slider->value = slider->max;
 
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
-    slider->cursor->x = slider->x + slider->w  / ((float)slider->max / (*slider->value)) - slider->cursor->size/2;
+    slider->cursor->x = slider->x + slider->w  / ((float)slider->min + (slider->max - slider->min) / (*slider->value)) - slider->cursor->size/2;
 
     return slider;
 }
@@ -25,7 +31,7 @@ int slider_update(Slider *slider)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
-
+    
     if (*slider->value < slider->min)
         *slider->value = slider->min;
 
