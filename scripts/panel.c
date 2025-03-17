@@ -195,6 +195,7 @@ void panel_free(Panel *panel)
     }
     if (NULL != panel->sliders)
     {
+        slider_list_free(panel->sliders, panel->slider_count);
         free(panel->sliders);
     }
     if (NULL != panel->labels)
