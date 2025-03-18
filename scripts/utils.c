@@ -95,3 +95,7 @@ int slider_cursor_collision(SliderCursor *cursor, int x, int y)
     return false;
 }
 
+int get_number_digits(int number)
+{
+    return (number == 0) ? 0 : ((int)log10(number)+1);
+}
