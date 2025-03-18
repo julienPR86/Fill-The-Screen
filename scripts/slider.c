@@ -58,7 +58,7 @@ int slider_update(Slider *slider)
             slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
 
             slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
-            snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", probability);
+            snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
             slider->label->update = true;
             break;
         
