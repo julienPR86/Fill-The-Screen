@@ -23,7 +23,7 @@ Slider *slider_init(Slider *slider)
     slider->cursor->x = slider->x + slider->w  / ((float)slider->min + (slider->max - slider->min) / (*slider->value)) - slider->cursor->size/2;
 
     slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
-    snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", probability);
+    snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", slider->value);
     if (NULL == label_init(slider->label))
     {
         fprintf(stderr, "Failed to init slider label\n");
