@@ -89,10 +89,7 @@ void group_free(ToogleGroup *group)
     if (NULL == group || NULL == group->toogles)
         return;
         
-    for (int i = 0; i < group->count; i++)
-    {
-        toogle_free(group->toogles[i]);
-    }
+    toogle_list_free(group->toogles, group->count);
     free(group->toogles);
     return;
 }
