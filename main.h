@@ -243,6 +243,8 @@ extern int MAX_FPS;
 extern double delta_time;
 extern int game_speed;
 extern int probability;
+extern int map_width;
+extern int map_height;
 
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;

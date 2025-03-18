@@ -9,6 +9,8 @@ int MAX_FPS = 144;
 double delta_time;
 int game_speed = 60;
 int probability = 6;
+int map_width = 33;
+int map_height = 22;
 
 
 
@@ -143,8 +145,8 @@ int map_init()
         fprintf(stderr, "Memory allocation error\n");
         return RETURN_FAILURE;
     }
-    map->height = 22;
-    map->width = 33;
+    map->height = map_height;
+    map->width = map_width;
     map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
     map->map = NULL;
     if (NULL == map_creation(map))
