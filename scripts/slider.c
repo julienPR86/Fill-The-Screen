@@ -2,10 +2,10 @@
 
 Slider *slider_init(Slider *slider)
 {
-    if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style || NULL == label_init(slider->label))
+    if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style)
         return NULL;
 
-    slider->step = MIN(MAX(1, slider->step), slider->max);
+    slider->step = MIN(MAX(1, slider->step), MAX(1, slider->max));
     slider->w *= SCALEX;
     slider->h *= SCALEY;
     slider->style->outline *= SCALEY;
@@ -22,6 +22,14 @@ Slider *slider_init(Slider *slider)
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
     slider->cursor->x = slider->x + slider->w  / ((float)slider->min + (slider->max - slider->min) / (*slider->value)) - slider->cursor->size/2;
 
+    slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
+    snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", probability);
+    if (NULL == label_init(slider->label))
+    {
+        fprintf(stderr, "Failed to init slider label\n");
+    }
+    slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
+    slider->label->y = slider->cursor->y + CENTERED(slider->cursor->size, slider->label->h * slider->label->scale);
     return slider;
 }
 
@@ -39,12 +47,25 @@ int slider_update(Slider *slider)
         *slider->value = slider->max;
 
     out = slider_cursor_update(slider->cursor);
+    switch (out)
+    {
+        case RETURN_SLIDER_UPDATE:
+            if (slider->cursor->x + slider->cursor->size / 2 < slider->x)
+                slider->cursor->x = slider->x - slider->cursor->size / 2;
+            else if (slider->cursor->x + slider->cursor->size / 2 > slider->x + slider->w)
+                slider->cursor->x = slider->x + slider->w - slider->cursor->size / 2;
 
-    if (slider->cursor->x + slider->cursor->size / 2 < slider->x)
-        slider->cursor->x = slider->x - slider->cursor->size / 2;
+            slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
 
-    else if (slider->cursor->x + slider->cursor->size / 2 > slider->x + slider->w)
-        slider->cursor->x = slider->x + slider->w - slider->cursor->size / 2;
+            slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
+            snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", probability);
+            slider->label->update = true;
+            break;
+        
+        default:
+            break;
+    }
+    
 
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
