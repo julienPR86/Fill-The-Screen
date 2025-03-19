@@ -345,7 +345,6 @@ int toogle_width(Toogle *toogle);
 ToogleGroup *group_init(ToogleGroup *group);
 int group_update(ToogleGroup *group);
 void group_render(ToogleGroup *group);
-int group_set_toogle_at_index(ToogleGroup *group, Toogle *toogle, int index);
 void group_clear_selected(ToogleGroup *group);
 void group_free(ToogleGroup *group);
 
@@ -371,10 +370,6 @@ int slider_width(Slider *slider);
 Panel *panel_init(Panel *panel);
 int panel_update(Panel *panel);
 void panel_render(Panel *panel);
-int panel_set_button_at_index(Panel *panel, Button *button, int index);
-int panel_set_toogle_at_index(Panel *panel, Toogle *toogle, int index);
-int panel_set_slider_at_index(Panel *panel, Slider *slider, int index);
-int panel_set_label_at_index(Panel *panel, Label *label, int index);
 void panel_free(Panel *panel);
 void panel_list_free(Panel *panels[], int count);
 
