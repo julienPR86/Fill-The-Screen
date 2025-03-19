@@ -10,6 +10,14 @@ Slider *slider_init(Slider *slider)
     slider->h *= SCALEY;
     slider->style->outline *= SCALEY;
 
+    if (NULL == slider->value)
+    {
+        slider->cursor->x = slider->x;
+        slider->cursor->y = slider->y;
+        slider->cursor->size = 0;
+        return slider;
+    }
+
     if (slider->cursor->size < slider->h)
         slider->cursor->size = slider->h;
     
@@ -39,12 +47,6 @@ int slider_update(Slider *slider)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
-    
-    if (*slider->value < slider->min)
-        *slider->value = slider->min;
-
-    if (*slider->value > slider->max)
-        *slider->value = slider->max;
 
     out = slider_cursor_update(slider->cursor);
     switch (out)
@@ -58,6 +60,9 @@ int slider_update(Slider *slider)
             slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
             slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
+            if (NULL == slider->value)
+                break;
+            
             slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
             snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
             slider->label->update = true;
@@ -66,8 +71,16 @@ int slider_update(Slider *slider)
         default:
             break;
     }
-    *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
+    if (NULL != slider->value)
+    {
+        if (*slider->value < slider->min)
+            *slider->value = slider->min;
 
+        if (*slider->value > slider->max)
+            *slider->value = slider->max;
+
+        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
+    }
     label_update(slider->label);
     return out;
 }
