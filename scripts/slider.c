@@ -5,7 +5,7 @@ Slider *slider_init(Slider *slider)
     if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style)
         return NULL;
 
-    slider->step = MIN(MAX(1, slider->step), MAX(1, slider->max));
+    slider->step = MIN(MAX(1, slider->step), slider->max);
     slider->w *= SCALEX;
     slider->h *= SCALEY;
     slider->style->outline *= SCALEY;
@@ -19,8 +19,8 @@ Slider *slider_init(Slider *slider)
     if (*slider->value > slider->max)
         *slider->value = slider->max;
 
+    slider->cursor->x = slider->x + (slider->w * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->size / 2;
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
-    slider->cursor->x = slider->x + slider->w  / ((float)slider->min + (slider->max - slider->min) / (*slider->value)) - slider->cursor->size/2;
 
     slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
     snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
@@ -56,6 +56,7 @@ int slider_update(Slider *slider)
                 slider->cursor->x = slider->x + slider->w - slider->cursor->size / 2;
 
             slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
+            slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
             slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
             snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
@@ -65,12 +66,8 @@ int slider_update(Slider *slider)
         default:
             break;
     }
-    
-
-    slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
-
     *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
-    
+
     label_update(slider->label);
     return out;
 }
