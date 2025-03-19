@@ -49,21 +49,6 @@ void group_render(ToogleGroup *group)
     return;
 }
 
-int group_set_toogle_at_index(ToogleGroup *group, Toogle *toogle, int index)
-{
-    static int first = true;
-    if (NULL == group || NULL == group->toogles || index < 0 || index >= group->count)
-        return RETURN_FAILURE;
-
-    group->toogles[index] = toogle;
-    if (first)
-    {
-        group->toogles[index]->state = CLICKED;
-        first = false;
-    }
-    return RETURN_SUCCESS;
-}
-
 void group_clear_selected(ToogleGroup *group)
 {
     if (NULL == group || NULL == group->toogles)
