@@ -5,61 +5,18 @@ Panel *panel_init(Panel *panel)
     if (NULL == panel)
         return NULL;
     
-    if (panel->button_count != 0)
-    {    
-        panel->buttons = (Button **)malloc(sizeof(Button *) * panel->button_count);
-        if (NULL == panel->buttons)
-        {
-            fprintf(stderr, "Failed to init panel : memory allocation error\n");
-            return NULL;
-        }
-        for (int i = 0; i < panel->button_count; i++)
-        {
-            panel->buttons[i] = NULL;
-        }
-    }
-    if (panel->toogle_count != 0)
-    {    
-        panel->toogles = (Toogle **)malloc(sizeof(Toogle *) * panel->toogle_count);
-        if (NULL == panel->toogles)
-        {
-            panel_free(panel);
-            fprintf(stderr, "Failed to init panel : memory allocation error\n");
-            return NULL;
-        }
-        for (int i = 0; i < panel->toogle_count; i++)
-        {
-            panel->toogles[i] = NULL;
-        }
-    }
-    if (panel->slider_count != 0)
-    {    
-        panel->sliders = (Slider **)malloc(sizeof(Slider *) * panel->slider_count);
-        if (NULL == panel->sliders)
-        {
-            panel_free(panel);
-            fprintf(stderr, "Failed to init panel : memory allocation error\n");
-            return NULL;
-        }
-        for (int i = 0; i < panel->slider_count; i++)
-        {
-            panel->sliders[i] = NULL;
-        }
-    }
-    if (panel->label_count != 0)
-    {
-        panel->labels = (Label **)malloc(sizeof(Label *) * panel->label_count);
-        if (NULL == panel->labels)
-        {
-            panel_free(panel);
-            fprintf(stderr, "Failed to init panel : memory allocation error\n");
-            return NULL;
-        }
-        for (int i = 0; i < panel->label_count; i++)
-        {
-            panel->labels[i] = NULL;
-        }
-    }
+    if (NULL == panel->buttons && panel->button_count != 0)
+        panel->button_count = 0;
+
+    if (NULL == panel->toogles && panel->toogle_count != 0)
+        panel->toogle_count = 0;
+
+    if (NULL == panel->sliders && panel->slider_count != 0)
+        panel->slider_count = 0;
+
+    if (NULL == panel->labels && panel->label_count != 0)
+        panel->label_count = 0;
+    
     return panel;
 }
 
@@ -186,22 +143,18 @@ void panel_free(Panel *panel)
     if (NULL != panel->buttons)
     {
         button_list_free(panel->buttons, panel->button_count);
-        free(panel->buttons);
     }
     if (NULL != panel->toogles) 
     {
         toogle_list_free(panel->toogles, panel->toogle_count);
-        free(panel->toogles);
     }
     if (NULL != panel->sliders)
     {
         slider_list_free(panel->sliders, panel->slider_count);
-        free(panel->sliders);
     }
     if (NULL != panel->labels)
     {
         label_list_free(panel->labels, panel->label_count);
-        free(panel->labels);
     }
     return;
 }
