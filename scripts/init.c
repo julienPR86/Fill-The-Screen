@@ -139,6 +139,9 @@ int init()
 
 int map_init()
 {
+    if (0 == map_height || 0 == map_width)
+        return RETURN_FAILURE;
+        
     map = malloc(sizeof(Map));
     if (NULL == map)
     {
