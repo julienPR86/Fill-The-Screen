@@ -5,16 +5,9 @@ ToogleGroup *group_init(ToogleGroup *group)
     if (NULL == group || 0 == group->count)
         return NULL;
 
-    group->toogles = (Toogle **)malloc(sizeof(Toogle *) * group->count);
-    if (NULL == group->toogles)
-    {
-        fprintf(stderr, "Failed to init ToogleGroup : Memory allocation error\n");
-        return NULL;
-    }
-    for (int i = 0; i < group->count; i++)
-    {
-        group->toogles[i] = NULL;
-    }
+    if (NULL == group->toogles && group->count != 0)
+        group->count = 0;
+
     group->selected = 0;
     return group;
 }
@@ -90,6 +83,5 @@ void group_free(ToogleGroup *group)
         return;
         
     toogle_list_free(group->toogles, group->count);
-    free(group->toogles);
     return;
 }
