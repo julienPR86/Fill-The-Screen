@@ -66,20 +66,18 @@ int slider_update(Slider *slider)
             slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
             snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
             slider->label->update = true;
+
+            *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
+            
+            if (*slider->value < slider->min)
+                *slider->value = slider->min;
+
+            if (*slider->value > slider->max)
+                *slider->value = slider->max;
             break;
         
         default:
             break;
-    }
-    if (NULL != slider->value)
-    {
-        if (*slider->value < slider->min)
-            *slider->value = slider->min;
-
-        if (*slider->value > slider->max)
-            *slider->value = slider->max;
-
-        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
     }
     label_update(slider->label);
     return out;
