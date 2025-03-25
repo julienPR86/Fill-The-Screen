@@ -112,7 +112,7 @@ typedef struct Panel
     int slider_count;
     Label **labels;
     int label_count;
-    SDL_Rect **rects;
+    Rect **rects;
     int rect_count;
     int active;
 } Panel;
