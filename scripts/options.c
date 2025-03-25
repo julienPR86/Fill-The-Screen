@@ -68,11 +68,16 @@ int options()
 
     // colors panel --------------------------------------------------------------------------
 
-    Label player_red_slider_title_label = {20, 100*SCALEY, 0, 0, 0.1, "Player color", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    int rect_color_border = 2;
+    Color color_rect_border_color = {0, 0, 0, 255};
+
+    Label player_red_slider_title_label = {20, 120*SCALEY, 0, 0, 0.1, "Player color", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&player_red_slider_title_label);
 
-    SDL_Rect _player_color_rect_ = {player_red_slider_title_label.x + player_red_slider_title_label.w * player_red_slider_title_label.scale + 10*SCALEX, player_red_slider_title_label.y, 50*SCALEX, 50*SCALEY};
+    SDL_Rect _player_color_rect__border = {player_red_slider_title_label.x + player_red_slider_title_label.w * player_red_slider_title_label.scale + (15-rect_color_border)*SCALEX, player_red_slider_title_label.y - (5+rect_color_border) * SCALEY, (50+rect_color_border*2)*SCALEX, (50+rect_color_border*2)*SCALEY};
+    SDL_Rect _player_color_rect_ = {player_red_slider_title_label.x + player_red_slider_title_label.w * player_red_slider_title_label.scale + 15*SCALEX, player_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY};
     Rect player_color_rect = {&_player_color_rect_, &theme.game_colors.player_square_color};
+    Rect player_color_rect_border = {&_player_color_rect__border, &color_rect_border_color};
 
     Label player_red_slider_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&player_red_slider_description_label);
@@ -98,12 +103,79 @@ int options()
     Slider player_blue_slider = {20, player_blue_slider_description_label.y + player_blue_slider_description_label.h * player_blue_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &player_blue_slider_label, &player_blue_slider_cursor, &slider_style, true};
     slider_init(&player_blue_slider);
 
+
+    Label collision_square_red_slider_title_label = {350, 120*SCALEY, 0, 0, 0.1, "Collisions color", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&collision_square_red_slider_title_label);
+
+    SDL_Rect _collision_square_color_rect__border = {collision_square_red_slider_title_label.x + collision_square_red_slider_title_label.w * collision_square_red_slider_title_label.scale + (15-rect_color_border)*SCALEX, collision_square_red_slider_title_label.y - (5+rect_color_border) * SCALEY, (50+rect_color_border*2)*SCALEX, (50+rect_color_border*2)*SCALEY};
+    SDL_Rect _collision_square_color_rect_ = {collision_square_red_slider_title_label.x + collision_square_red_slider_title_label.w * collision_square_red_slider_title_label.scale + 15*SCALEX, collision_square_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY};
+    Rect collision_square_color_rect = {&_collision_square_color_rect_, &theme.game_colors.collision_square_color};
+    Rect collision_square_color_rect_border = {&_collision_square_color_rect__border, &color_rect_border_color};
+
+    Label collision_square_red_slider_description_label = {350, 150*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&collision_square_red_slider_description_label);
+
+    Label collision_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor collision_square_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider collision_square_red_slider = {350, collision_square_red_slider_description_label.y + collision_square_red_slider_description_label.h * collision_square_red_slider_description_label.scale, 256, 20, &theme.game_colors.collision_square_color.r, 0, 255, 1, &collision_square_red_slider_label, &collision_square_red_slider_cursor, &slider_style, true};
+    slider_init(&collision_square_red_slider);
+
+    Label collision_square_green_slider_description_label = {350, 200*SCALEY, 0, 0, 0.075, "Green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&collision_square_green_slider_description_label);
+
+    Label collision_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor collision_square_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider collision_square_green_slider = {350, collision_square_green_slider_description_label.y + collision_square_green_slider_description_label.h * collision_square_green_slider_description_label.scale, 256, 20, &theme.game_colors.collision_square_color.g, 0, 255, 1, &collision_square_green_slider_label, &collision_square_green_slider_cursor, &slider_style, true};
+    slider_init(&collision_square_green_slider);
+
+    Label collision_square_blue_slider_description_label = {350, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&collision_square_blue_slider_description_label);
+
+    Label collision_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor collision_square_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider collision_square_blue_slider = {350, collision_square_blue_slider_description_label.y + collision_square_blue_slider_description_label.h * collision_square_blue_slider_description_label.scale, 256, 20, &theme.game_colors.collision_square_color.b, 0, 255, 1, &collision_square_blue_slider_label, &collision_square_blue_slider_cursor, &slider_style, true};
+    slider_init(&collision_square_blue_slider);
+
+
+    Label line_square_red_slider_title_label = {700, 120*SCALEY, 0, 0, 0.1, "Line color", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&line_square_red_slider_title_label);
+
+    SDL_Rect _line_square_color_rect__border = {line_square_red_slider_title_label.x + line_square_red_slider_title_label.w * line_square_red_slider_title_label.scale + (15-rect_color_border)*SCALEX, line_square_red_slider_title_label.y - (5+rect_color_border) * SCALEY, (50+rect_color_border*2)*SCALEX, (50+rect_color_border*2)*SCALEY};
+    SDL_Rect _line_square_color_rect_ = {line_square_red_slider_title_label.x + line_square_red_slider_title_label.w * line_square_red_slider_title_label.scale + 15*SCALEX, line_square_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY};
+    Rect line_square_color_rect = {&_line_square_color_rect_, &theme.game_colors.line_square_color};
+    Rect line_square_color_rect_border = {&_line_square_color_rect__border, &color_rect_border_color};
+
+    Label line_square_red_slider_description_label = {700, 150*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&line_square_red_slider_description_label);
+
+    Label line_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor line_square_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider line_square_red_slider = {700, line_square_red_slider_description_label.y + line_square_red_slider_description_label.h * line_square_red_slider_description_label.scale, 256, 20, &theme.game_colors.line_square_color.r, 0, 255, 1, &line_square_red_slider_label, &line_square_red_slider_cursor, &slider_style, true};
+    slider_init(&line_square_red_slider);
+
+    Label line_square_green_slider_description_label = {700, 200*SCALEY, 0, 0, 0.075, "Green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&line_square_green_slider_description_label);
+
+    Label line_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor line_square_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider line_square_green_slider = {700, line_square_green_slider_description_label.y + line_square_green_slider_description_label.h * line_square_green_slider_description_label.scale, 256, 20, &theme.game_colors.line_square_color.g, 0, 255, 1, &line_square_green_slider_label, &line_square_green_slider_cursor, &slider_style, true};
+    slider_init(&line_square_green_slider);
+
+    Label line_square_blue_slider_description_label = {700, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&line_square_blue_slider_description_label);
+
+    Label line_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor line_square_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider line_square_blue_slider = {700, line_square_blue_slider_description_label.y + line_square_blue_slider_description_label.h * line_square_blue_slider_description_label.scale, 256, 20, &theme.game_colors.line_square_color.b, 0, 255, 1, &line_square_blue_slider_label, &line_square_blue_slider_cursor, &slider_style, true};
+    slider_init(&line_square_blue_slider);
+
+
     Button *colors_button_list[] = {};
     Toogle *colors_toogle_list[] = {};
-    Slider *colors_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
-    Label *colors_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
-    Rect *color_rect_list[] = {&player_color_rect};
-    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 3, colors_label_list, 3, color_rect_list, 1, false};
+    Slider *colors_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider, &collision_square_red_slider, &collision_square_green_slider, &collision_square_blue_slider, &line_square_red_slider, &line_square_green_slider, &line_square_blue_slider};
+    Label *colors_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label, &collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label, &line_square_red_slider_title_label, &line_square_red_slider_description_label, &line_square_green_slider_description_label, &line_square_blue_slider_description_label};
+    Rect *color_rect_list[] = {&player_color_rect_border, &player_color_rect, &collision_square_color_rect_border, &collision_square_color_rect, &line_square_color_rect_border, &line_square_color_rect};
+    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 9, colors_label_list, 12, color_rect_list, 6, false};
     panel_init(&colors_panel);
 
     // Video panel --------------------------------------------------------------------
