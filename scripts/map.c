@@ -107,7 +107,7 @@ void map_display(Map *map, int offset_x, int offset_y)
     {
         for (int x = 0; x < map->width; x++)
         {
-            SDL_Color color;
+            Color color;
             switch (map->map[y][x])
             {
                 case COLLISION_SQUARE:

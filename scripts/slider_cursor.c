@@ -43,7 +43,7 @@ void slider_cursor_render(SliderCursor *cursor)
     if (NULL == cursor || NULL == cursor->style)
         return;
 
-    SDL_Color color;
+    Color color;
     SDL_Rect cursor_rect = {cursor->x, cursor->y, cursor->size, cursor->size};
     SDL_Rect outline_rect = {cursor->x - cursor->style->outline, cursor->y - cursor->style->outline, cursor->size + cursor->style->outline * 2, cursor->size + cursor->style->outline * 2};
 

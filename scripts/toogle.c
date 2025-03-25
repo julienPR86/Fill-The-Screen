@@ -71,7 +71,7 @@ void toogle_render(Toogle *toogle)
     if (NULL == toogle || !toogle->active)
         return;
         
-    SDL_Color toogle_color;
+    Color toogle_color;
     SDL_Rect toogle_rect = {toogle->x+toogle->style->inline_, toogle->y+toogle->style->inline_, toogle->width-toogle->style->inline_*2, toogle->height-toogle->style->inline_*2};
     SDL_Rect inline_rect = {toogle->x, toogle->y, toogle->width, toogle->height};
     SDL_Rect outline_rect = {toogle->x-toogle->style->outline, toogle->y-toogle->style->outline, toogle->width+toogle->style->outline*2, toogle->height+toogle->style->outline*2};

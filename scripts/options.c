@@ -67,11 +67,19 @@ int options()
 
     // colors panel --------------------------------------------------------------------------
     
+    Label player_red_slider_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Player red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&player_red_slider_description_label);
+
+    Label player_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor player_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider player_red_slider = {20, player_red_slider_description_label.y + player_red_slider_description_label.h * player_red_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &player_red_slider_label, &player_red_slider_cursor, &slider_style, true};
+    slider_init(&player_red_slider);
+
     Button *colors_button_list[] = {};
     Toogle *colors_toogle_list[] = {};
-    Slider *colors_slider_list[] = {};
-    Label *colors_label_list[] = {};
-    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 0, colors_label_list, 0, false};
+    Slider *colors_slider_list[] = {&player_red_slider};
+    Label *colors_label_list[] = {&player_red_slider_description_label};
+    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 1, colors_label_list, 1, false};
     panel_init(&colors_panel);
 
     // Video panel --------------------------------------------------------------------

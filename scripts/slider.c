@@ -88,7 +88,7 @@ void slider_render(Slider *slider)
     if (NULL == slider || NULL == slider->style || !slider->active)
         return;
     
-    SDL_Color color;
+    Color color;
     SDL_Rect slider_rect = {slider->x, slider->y, slider->w, slider->h};
     SDL_Rect outline_rect = {slider->x - slider->style->outline, slider->y - slider->style->outline, slider->w + slider->style->outline * 2, slider->h + slider->style->outline * 2};
     

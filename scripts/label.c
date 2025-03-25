@@ -12,8 +12,10 @@ Label *label_init(Label *label)
     }
     label->w *= SCALEY;
     label->h *= SCALEY;
+
+    SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
     
-    label->surface = TTF_RenderText_Blended(label->font, label->text, label->text_color);
+    label->surface = TTF_RenderText_Blended(label->font, label->text, color);
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", TTF_GetError());

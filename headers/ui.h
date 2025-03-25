@@ -30,7 +30,7 @@ typedef struct Label
     float scale;
     char *text;
     TTF_Font *font;
-    SDL_Color text_color;
+    Color text_color;
     SDL_Surface *surface;
     SDL_Texture *texture;
     int update;
