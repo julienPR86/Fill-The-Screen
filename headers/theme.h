@@ -55,9 +55,9 @@ typedef struct Theme
 
 extern Theme theme;
 
-extern ButtonStyle current_button_style;
-extern ButtonStyle current_toogle_style;
-extern SliderStyle current_slider_style;
-extern SliderCursorStyle current_slider_cursor_style;
+extern ButtonStyle button_style;
+extern ButtonStyle toogle_style;
+extern SliderStyle slider_style;
+extern SliderCursorStyle slider_cursor_style;
 
 #endif

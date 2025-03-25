@@ -7,13 +7,13 @@ int options()
     Label video_toogle_label = {0, 0, 0, 0, 0.12, "Video", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label audio_toogle_label = {0, 0, 0, 0, 0.12, "Audio", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Toogle gameplay_toogle = {0, 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &gameplay_toogle_label, &current_toogle_style, &option_gameplay, true};
+    Toogle gameplay_toogle = {0, 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &gameplay_toogle_label, &toogle_style, &option_gameplay, true};
     toogle_init(&gameplay_toogle);
-    Toogle colors_toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &colors_toogle_label, &current_toogle_style, &option_label, true};
+    Toogle colors_toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &colors_toogle_label, &toogle_style, &option_label, true};
     toogle_init(&colors_toogle);
-    Toogle video_toogle = {colors_toogle.x + toogle_width(&colors_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &video_toogle_label, &current_toogle_style, &option_video, true};
+    Toogle video_toogle = {colors_toogle.x + toogle_width(&colors_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &video_toogle_label, &toogle_style, &option_video, true};
     toogle_init(&video_toogle);
-    Toogle audio_toogle = {video_toogle.x + toogle_width(&video_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &audio_toogle_label, &current_toogle_style, &option_audio, true};
+    Toogle audio_toogle = {video_toogle.x + toogle_width(&video_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &audio_toogle_label, &toogle_style, &option_audio, true};
     toogle_init(&audio_toogle);
 
     Toogle *options_toogle_list[] = {&gameplay_toogle, &colors_toogle, &video_toogle, &audio_toogle};
@@ -26,8 +26,8 @@ int options()
     label_init(&probability_silder_description_label);
 
     Label probability_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor probability_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider probability_slider = {20, probability_silder_description_label.y + probability_silder_description_label.h * probability_silder_description_label.scale, 200, 20, &probability, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &current_slider_style, true};
+    SliderCursor probability_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider probability_slider = {20, probability_silder_description_label.y + probability_silder_description_label.h * probability_silder_description_label.scale, 200, 20, &probability, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
     slider_init(&probability_slider);
 
 
@@ -35,8 +35,8 @@ int options()
     label_init(&map_width_slider_description_label);
 
     Label map_width_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor map_width_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider map_width_slider = {20, map_width_slider_description_label.y + map_width_slider_description_label.h * map_width_slider_description_label.scale, 200, 20, &map_width, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &current_slider_style, true};
+    SliderCursor map_width_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider map_width_slider = {20, map_width_slider_description_label.y + map_width_slider_description_label.h * map_width_slider_description_label.scale, 200, 20, &map_width, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
     slider_init(&map_width_slider);
 
 
@@ -44,8 +44,8 @@ int options()
     label_init(&map_height_slider_description_label);
 
     Label map_height_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor map_height_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider map_height_slider = {20, map_height_slider_description_label.y + map_height_slider_description_label.h * map_height_slider_description_label.scale, 200, 20, &map_height, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &current_slider_style, true};
+    SliderCursor map_height_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider map_height_slider = {20, map_height_slider_description_label.y + map_height_slider_description_label.h * map_height_slider_description_label.scale, 200, 20, &map_height, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
     slider_init(&map_height_slider);
 
 
@@ -53,8 +53,8 @@ int options()
     label_init(&game_speed_slider_description);
 
     Label game_speed_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor game_speed_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider game_speed_slider = {20, game_speed_slider_description.y + game_speed_slider_description.h * game_speed_slider_description.scale, 300, 20, &game_speed, 1, 300, 1, &game_speed_slider_label, &game_speed_slider_cursor, &current_slider_style, true};
+    SliderCursor game_speed_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider game_speed_slider = {20, game_speed_slider_description.y + game_speed_slider_description.h * game_speed_slider_description.scale, 300, 20, &game_speed, 1, 300, 1, &game_speed_slider_label, &game_speed_slider_cursor, &slider_style, true};
     slider_init(&game_speed_slider);
 
 
@@ -80,8 +80,8 @@ int options()
     label_init(&max_fps_silder_description_label);
 
     Label max_fps_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor max_fps_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider max_fps_slider = {20, max_fps_silder_description_label.y + max_fps_silder_description_label.h * max_fps_silder_description_label.scale, 200, 20, &MAX_FPS, 30, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &current_slider_style, true};
+    SliderCursor max_fps_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider max_fps_slider = {20, max_fps_silder_description_label.y + max_fps_silder_description_label.h * max_fps_silder_description_label.scale, 200, 20, &MAX_FPS, 30, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider);
 
     Button *video_button_list[] = {};
@@ -97,8 +97,8 @@ int options()
     label_init(&master_audio_silder_description_label);
 
     Label master_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor master_audio_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider master_audio_slider = {20, master_audio_silder_description_label.y + master_audio_silder_description_label.h * master_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &master_audio_slider_label, &master_audio_slider_cursor, &current_slider_style, true};
+    SliderCursor master_audio_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider master_audio_slider = {20, master_audio_silder_description_label.y + master_audio_silder_description_label.h * master_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &master_audio_slider_label, &master_audio_slider_cursor, &slider_style, true};
     slider_init(&master_audio_slider);
 
 
@@ -106,8 +106,8 @@ int options()
     label_init(&music_audio_silder_description_label);
 
     Label music_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor music_audio_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider music_audio_slider = {20, music_audio_silder_description_label.y + music_audio_silder_description_label.h * music_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &music_audio_slider_label, &music_audio_slider_cursor, &current_slider_style, true};
+    SliderCursor music_audio_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider music_audio_slider = {20, music_audio_silder_description_label.y + music_audio_silder_description_label.h * music_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &music_audio_slider_label, &music_audio_slider_cursor, &slider_style, true};
     slider_init(&music_audio_slider);
 
 
@@ -115,8 +115,8 @@ int options()
     label_init(&effects_audio_silder_description_label);
 
     Label effects_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    SliderCursor effects_audio_slider_cursor = {0, 0, 0, NORMAL, &current_slider_cursor_style};
-    Slider effects_audio_slider = {20, effects_audio_silder_description_label.y + effects_audio_silder_description_label.h * effects_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &current_slider_style, true};
+    SliderCursor effects_audio_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider effects_audio_slider = {20, effects_audio_silder_description_label.y + effects_audio_silder_description_label.h * effects_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &slider_style, true};
     slider_init(&effects_audio_slider);
 
 
