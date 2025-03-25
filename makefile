@@ -17,4 +17,4 @@ $(TMP)%.o : scripts/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -f $(TMP)*.o
+	rm -f $(TMP)*.o *.exe
