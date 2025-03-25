@@ -53,7 +53,7 @@ typedef struct Theme
     GameColors game_colors;
 } Theme;
 
-extern Theme current_theme;
+extern Theme theme;
 
 extern ButtonStyle current_button_style;
 extern ButtonStyle current_toogle_style;

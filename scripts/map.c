@@ -111,19 +111,19 @@ void map_display(Map *map, int offset_x, int offset_y)
             switch (map->map[y][x])
             {
                 case COLLISION_SQUARE:
-                    color = current_theme.game_colors.collision_square_color;
+                    color = theme.game_colors.collision_square_color;
                     break;
                 case EMPTY_SQUARE:
-                    color = current_theme.game_colors.empty_square_color;
+                    color = theme.game_colors.empty_square_color;
                     break;
                 case LINE_SQUARE:
-                    color = current_theme.game_colors.line_square_color;
+                    color = theme.game_colors.line_square_color;
                     break;
                 case PLAYER_SQUARE:
-                    color = current_theme.game_colors.player_square_color;
+                    color = theme.game_colors.player_square_color;
                     break;
                 case FAKE_SQUARE:
-                    color = current_theme.game_colors.fake_square_color;
+                    color = theme.game_colors.fake_square_color;
                     break;
                 default:
                     break;

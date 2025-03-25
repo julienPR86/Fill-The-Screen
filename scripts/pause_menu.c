@@ -43,7 +43,7 @@ int pause_menu()
         get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
         SDL_GetMouseState(&mouse_x, &mouse_y);
         
-        SDL_SetRenderDrawColor(renderer, current_theme.main_colors.pause_menu_background.r, current_theme.main_colors.pause_menu_background.g, current_theme.main_colors.pause_menu_background.b, current_theme.main_colors.pause_menu_background.a);
+        SDL_SetRenderDrawColor(renderer, theme.main_colors.pause_menu_background.r, theme.main_colors.pause_menu_background.g, theme.main_colors.pause_menu_background.b, theme.main_colors.pause_menu_background.a);
         SDL_RenderClear(renderer);//background
 
         while (SDL_PollEvent(&event))
