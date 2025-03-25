@@ -104,7 +104,7 @@ void panel_render(Panel *panel)
         for (int i = 0; i < panel->rect_count; i++)
         {
             SDL_SetRenderDrawColor(renderer, panel->rects[i]->color.r, panel->rects[i]->color.g, panel->rects[i]->color.b, panel->rects[i]->color.a);
-            SDL_RenderFillRect(renderer, panel->rects[i]);
+            SDL_RenderFillRect(renderer, panel->rects[i]->rect);
         }
     }
     return;
