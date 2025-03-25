@@ -21,6 +21,12 @@ enum Anchors
     BOTTOM_RIGHT,
 };
 
+typedef struct Rect
+{
+    SDL_Rect rect;
+    Color color;
+} Rect;
+
 typedef struct Label
 {
     int x;
