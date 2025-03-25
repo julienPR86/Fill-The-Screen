@@ -68,6 +68,14 @@ int panel_update(Panel *panel)
 
 void panel_render(Panel *panel)
 {
+    if (NULL != panel->rects)
+    {
+        for (int i = 0; i < panel->rect_count; i++)
+        {
+            SDL_SetRenderDrawColor(renderer, panel->rects[i]->color->r, panel->rects[i]->color->g, panel->rects[i]->color->b, panel->rects[i]->color->a);
+            SDL_RenderFillRect(renderer, panel->rects[i]->rect);
+        }
+    }
     if (NULL == panel || !panel->active)
         return;
     
@@ -97,14 +105,6 @@ void panel_render(Panel *panel)
         for (int i = 0; i < panel->label_count; i++)
         {
             label_render(panel->labels[i]);
-        }
-    }
-    if (NULL != panel->rects)
-    {
-        for (int i = 0; i < panel->rect_count; i++)
-        {
-            SDL_SetRenderDrawColor(renderer, panel->rects[i]->color->r, panel->rects[i]->color->g, panel->rects[i]->color->b, panel->rects[i]->color->a);
-            SDL_RenderFillRect(renderer, panel->rects[i]->rect);
         }
     }
     return;
