@@ -75,11 +75,27 @@ int options()
     Slider player_red_slider = {20, player_red_slider_description_label.y + player_red_slider_description_label.h * player_red_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &player_red_slider_label, &player_red_slider_cursor, &slider_style, true};
     slider_init(&player_red_slider);
 
+    Label player_green_slider_description_label = {20, 200*SCALEY, 0, 0, 0.075, "Player green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&player_green_slider_description_label);
+
+    Label player_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor player_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider player_green_slider = {20, player_green_slider_description_label.y + player_green_slider_description_label.h * player_green_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.g, 0, 255, 1, &player_green_slider_label, &player_green_slider_cursor, &slider_style, true};
+    slider_init(&player_green_slider);
+
+    Label player_blue_slider_description_label = {20, 250*SCALEY, 0, 0, 0.075, "Player blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&player_blue_slider_description_label);
+
+    Label player_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    SliderCursor player_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
+    Slider player_blue_slider = {20, player_blue_slider_description_label.y + player_blue_slider_description_label.h * player_blue_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &player_blue_slider_label, &player_blue_slider_cursor, &slider_style, true};
+    slider_init(&player_blue_slider);
+
     Button *colors_button_list[] = {};
     Toogle *colors_toogle_list[] = {};
-    Slider *colors_slider_list[] = {&player_red_slider};
-    Label *colors_label_list[] = {&player_red_slider_description_label};
-    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 1, colors_label_list, 1, false};
+    Slider *colors_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
+    Label *colors_label_list[] = {&player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
+    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 3, colors_label_list, 3, false};
     panel_init(&colors_panel);
 
     // Video panel --------------------------------------------------------------------
