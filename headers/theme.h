@@ -54,18 +54,10 @@ typedef struct Theme
 } Theme;
 
 extern Theme current_theme;
-extern Theme basic_theme;
-extern const GameColors basic_game_colors;
-extern const MainColors basic_main_colors;
 
 extern ButtonStyle current_button_style;
 extern ButtonStyle current_toogle_style;
 extern SliderStyle current_slider_style;
 extern SliderCursorStyle current_slider_cursor_style;
-
-extern const ButtonStyle basic_button_style;
-extern const ButtonStyle basic_toogle_style;
-extern const SliderCursorStyle basic_slider_cursor_style;
-extern const SliderStyle basic_slider_style;
 
 #endif
