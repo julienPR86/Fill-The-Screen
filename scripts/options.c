@@ -62,7 +62,7 @@ int options()
     Toogle *gameplay_toogle_list[] = {};
     Slider *gameplay_slider_list[] = {&probability_slider, &map_width_slider, &map_height_slider, &game_speed_slider};
     Label *gameplay_label_list[] = {&probability_silder_description_label, &map_width_slider_description_label, &map_height_slider_description_label, &game_speed_slider_description};
-    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toogle_list, 0, gameplay_slider_list, 4, gameplay_label_list, 4, true};
+    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toogle_list, 0, gameplay_slider_list, 4, gameplay_label_list, 4, NULL, 0, true};
     panel_init(&gameplay_panel);
 
     // colors panel --------------------------------------------------------------------------
@@ -95,7 +95,7 @@ int options()
     Toogle *colors_toogle_list[] = {};
     Slider *colors_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
     Label *colors_label_list[] = {&player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
-    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 3, colors_label_list, 3, false};
+    Panel colors_panel = {colors_button_list, 0, colors_toogle_list, 0, colors_slider_list, 3, colors_label_list, 3, NULL, 0, false};
     panel_init(&colors_panel);
 
     // Video panel --------------------------------------------------------------------
@@ -112,7 +112,7 @@ int options()
     Toogle *video_toogle_list[] = {};
     Slider *video_slider_list[] = {&max_fps_slider};
     Label *video_label_list[] = {&max_fps_silder_description_label};
-    Panel video_panel = {video_button_list, 0, video_toogle_list, 0, video_slider_list, 1, video_label_list, 1, false};
+    Panel video_panel = {video_button_list, 0, video_toogle_list, 0, video_slider_list, 1, video_label_list, 1, NULL, 0, false};
     panel_init(&video_panel);
 
     // Audio panel --------------------------------------------------------------------
@@ -148,9 +148,10 @@ int options()
     Toogle *audio_toogle_list[] = {};
     Slider *audio_slider_list[] = {&master_audio_slider, &music_audio_slider, &effects_audio_slider};
     Label *audio_label_list[] = {&master_audio_silder_description_label, &music_audio_silder_description_label, &effects_audio_silder_description_label};
-    Panel audio_panel = {audio_button_list, 0, audio_toogle_list, 0, audio_slider_list, 3, audio_label_list, 3, false};
+    Panel audio_panel = {audio_button_list, 0, audio_toogle_list, 0, audio_slider_list, 3, audio_label_list, 3, NULL, 0, false};
     panel_init(&audio_panel);
 
+    // panels end ---------------------
 
     Label *labels[] = {&FPS_label};
     Panel *panels[] = {&gameplay_panel, &colors_panel, &video_panel, &audio_panel};
