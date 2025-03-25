@@ -68,6 +68,9 @@ int panel_update(Panel *panel)
 
 void panel_render(Panel *panel)
 {
+    if (NULL == panel || !panel->active)
+        return;
+
     if (NULL != panel->rects)
     {
         for (int i = 0; i < panel->rect_count; i++)
@@ -76,9 +79,6 @@ void panel_render(Panel *panel)
             SDL_RenderFillRect(renderer, panel->rects[i]->rect);
         }
     }
-    if (NULL == panel || !panel->active)
-        return;
-    
     if (NULL != panel->buttons)
     {
         for (int i = 0; i < panel->button_count; i++)
