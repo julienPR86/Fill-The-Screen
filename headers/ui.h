@@ -23,7 +23,7 @@ enum Anchors
 
 typedef struct Rect
 {
-    SDL_Rect rect;
+    SDL_Rect *rect;
     Color color;
 } Rect;
 
