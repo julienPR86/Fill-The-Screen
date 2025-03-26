@@ -2,6 +2,9 @@
 
 void rect_render(Rect *rect)
 {
+    if (NULL == rect || NULL == rect->rect_color)
+        return;
+
     SDL_Rect outline_rect = {rect->x - rect->outline, rect->y - rect->outline, rect->w + rect->outline*2, rect->h + rect->outline*2};
     SDL_Rect main_rect = {rect->x, rect->y, rect->w, rect->h};
 
