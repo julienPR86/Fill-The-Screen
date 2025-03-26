@@ -44,7 +44,7 @@ void cap_fps(Uint64 start_time)
 }
 
 
-void mouse_pressed(SDL_Event event)
+void mouse_event(SDL_Event event)
 {
     if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
     {

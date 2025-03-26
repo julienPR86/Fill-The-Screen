@@ -255,7 +255,7 @@ int options()
                     running = false;
                 }
             }
-            mouse_pressed(event);
+            mouse_event(event);
         }
 
         for (int i = 0; i < (int)(sizeof(panels)/sizeof(panels[0])); i++)

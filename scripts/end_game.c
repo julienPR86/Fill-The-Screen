@@ -109,7 +109,7 @@ int end_game()
                 button_list_free(buttons, 3);
                 return RETURN_EXIT_FULL_GAME;
             }
-            mouse_pressed(event);
+            mouse_event(event);
         }
 
         for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)

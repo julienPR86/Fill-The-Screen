@@ -62,7 +62,7 @@ int pause_menu()
                     break;
                 }
             }
-            mouse_pressed(event);
+            mouse_event(event);
         }
 
         for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
