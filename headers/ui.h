@@ -23,8 +23,13 @@ enum Anchors
 
 typedef struct Rect
 {
-    SDL_Rect *rect;
-    Color *color;
+    int x;
+    int y;
+    int w;
+    int h;
+    int outline;
+    Color *rect_color;
+    Color outline_color;
 } Rect;
 
 typedef struct Label
@@ -116,6 +121,8 @@ typedef struct Panel
     int rect_count;
     int active;
 } Panel;
+
+void rect_render(Rect *rect);
 
 Button *button_init(Button *button);
 int button_update(Button *button);
