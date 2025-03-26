@@ -33,6 +33,8 @@ int mouse_y = 0;
 int mouse_delta_x = 0;
 int mouse_delta_y = 0;
 int mouse_button_pressed = 0;
+int mouse_wheel_value = 0;
+
 int game_mode = NO_ACTIVE_MODE;
 
 TTF_Font *roboto_regular;

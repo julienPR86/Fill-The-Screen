@@ -64,6 +64,7 @@ extern int mouse_y;
 extern int mouse_delta_x;
 extern int mouse_delta_y;
 extern int mouse_button_pressed;
+extern int mouse_wheel_value;
 
 extern char *FPS_text;
 extern Label FPS_label;
