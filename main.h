@@ -50,6 +50,7 @@ extern int WIDTH;
 extern int HEIGHT;
 extern float SCALEX;
 extern float SCALEY;
+
 extern int FPS;
 extern int MAX_FPS;
 extern double delta_time;
@@ -63,10 +64,6 @@ extern int mouse_y;
 extern int mouse_delta_x;
 extern int mouse_delta_y;
 extern int mouse_button_pressed;
-
-extern TTF_Font *roboto_light;
-extern TTF_Font *roboto_regular;
-extern int font_size;
 
 extern char *FPS_text;
 extern Label FPS_label;

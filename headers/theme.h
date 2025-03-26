@@ -68,4 +68,8 @@ extern ButtonStyle toogle_style;
 extern SliderStyle slider_style;
 extern SliderCursorStyle slider_cursor_style;
 
+extern TTF_Font *roboto_light;
+extern TTF_Font *roboto_regular;
+extern int font_size;
+
 #endif
