@@ -60,7 +60,6 @@ int main(int argc, char **argv)
             }
             mouse_event(event);
         }
-        printf("%d\n", mouse_wheel_value);
 
         for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
         {

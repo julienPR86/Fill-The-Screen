@@ -31,6 +31,10 @@ Slider *slider_init(Slider *slider)
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
     slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
+    if (NULL == slider->label->text)
+    {
+        fprintf(stderr, "slider->label->text : Memory allocation error");
+    }
     snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
     if (NULL == label_init(slider->label))
     {
@@ -63,7 +67,17 @@ int slider_update(Slider *slider)
             if (NULL == slider->value)
                 break;
             
+            if (NULL != slider->label->text)
+            {
+                free(slider->label->text);
+                slider->label->text = NULL;
+            }
+            
             slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
+            if (NULL == slider->label->text)
+            {
+                fprintf(stderr, "slider->label->text : Memory allocation error");
+            }
             snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
             slider->label->update = true;
 
@@ -110,6 +124,12 @@ void slider_free(Slider *slider)
     if (NULL == slider || NULL == slider->label)
         return;
     
+    if (NULL != slider->label->text)
+    {
+        free(slider->label->text);
+        slider->label->text = NULL;
+    }
+
     label_free(slider->label);
     return;
 }
