@@ -60,6 +60,7 @@ int main(int argc, char **argv)
             }
             mouse_event(event);
         }
+        printf("%d\n", mouse_wheel_value);
 
         for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
         {
@@ -89,6 +90,7 @@ int main(int argc, char **argv)
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
+        mouse_event_reset();
     }
     label_list_free(labels, 2);
     button_list_free(buttons, 3);

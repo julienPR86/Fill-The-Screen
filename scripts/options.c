@@ -302,6 +302,7 @@ int options()
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
+        mouse_event_reset();
     }
     panel_list_free(panels, 4);
     group_free(&options_group);
