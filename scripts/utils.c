@@ -66,7 +66,7 @@ void mouse_event(SDL_Event event)
 
 void mouse_event_reset()
 {
-    mouse_wheel_value = 1;
+    mouse_wheel_value = 0;
     return;
 }
 
