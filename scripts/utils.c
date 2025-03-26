@@ -57,6 +57,17 @@ void mouse_event(SDL_Event event)
             mouse_button_pressed = 0;
         }
     }
+    if (SDL_MOUSEWHEEL == event.type)
+    {
+        mouse_wheel_value = event.wheel.y;
+    }
+    return;
+}
+
+void mouse_event_reset()
+{
+    mouse_wheel_value = 1;
+    return;
 }
 
 void get_mouse_delta(int *_x, int *_y)
