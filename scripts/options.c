@@ -22,7 +22,7 @@ int options()
 
     // Gameplay panel ----------------------------------------------------------------
     
-    Label probability_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Collision's squares spawn probability on 1", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label probability_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Blocks spawn probability", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&probability_silder_description_label);
 
     Label probability_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
