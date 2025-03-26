@@ -98,7 +98,7 @@ int options()
     slider_init(&player_blue_slider);
 
 
-    Label collision_square_red_slider_title_label = {350, 120*SCALEY, 0, 0, 0.1, "Collisions color", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_red_slider_title_label = {350, 120*SCALEY, 0, 0, 0.1, "Blocks color", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&collision_square_red_slider_title_label);
 
     Rect collision_square_color_rect = {collision_square_red_slider_title_label.x + collision_square_red_slider_title_label.w * collision_square_red_slider_title_label.scale + 15*SCALEX, collision_square_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY, 2, &theme.game_colors.collision_square_color, {0, 0, 0, 255}};
