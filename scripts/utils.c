@@ -97,6 +97,15 @@ int toogle_collision(Toogle *toogle, int x, int y)
     return false;
 }
 
+int slider_collision(Slider *slider, int x, int y)
+{
+    if (x > slider->x && y > slider->y && x < slider->x + slider->w && y < slider->y + slider->h)
+    {
+        return true;
+    }
+    return false;
+}
+
 int slider_cursor_collision(SliderCursor *cursor, int x, int y)
 {
     if (x > cursor->x && y > cursor->y && x < cursor->x + cursor->size && y < cursor->y + cursor->size)
