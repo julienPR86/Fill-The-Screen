@@ -10,6 +10,7 @@ void get_mouse_delta(int *x, int *y);
 
 int button_collision(Button *button, int x, int y);
 int toogle_collision(Toogle *toogle, int x, int y);
+int slider_collision(Slider *slider, int x, int y);
 int slider_cursor_collision(SliderCursor *cursor, int x, int y);
 
 int get_number_digits(int number);
