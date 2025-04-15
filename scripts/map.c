@@ -103,18 +103,22 @@ void map_print(Map *map)
 
 void map_display(Map *map, int offset_x, int offset_y)
 {
+    Color color = theme.game_colors.empty_square_color;
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_Rect rect = {offset_x, offset_y, map->square_size * map->width, map->square_size * map->height};
+    SDL_RenderFillRect(renderer, &rect);
+
     for (int y = 0; y < map->height; y++)
     {
         for (int x = 0; x < map->width; x++)
         {
-            Color color;
             switch (map->map[y][x])
             {
                 case COLLISION_SQUARE:
                     color = theme.game_colors.collision_square_color;
                     break;
                 case EMPTY_SQUARE:
-                    color = theme.game_colors.empty_square_color;
+                    continue;
                     break;
                 case LINE_SQUARE:
                     color = theme.game_colors.line_square_color;
