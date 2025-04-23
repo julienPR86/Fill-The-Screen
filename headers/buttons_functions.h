@@ -11,7 +11,7 @@ int constraint_mode();
 int discovery_mode();
 int free_mode();
 int option_gameplay();
-int option_label();
+int option_color_label();
 int option_video();
 int option_audio();
 

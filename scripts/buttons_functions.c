@@ -52,9 +52,9 @@ int option_gameplay()
     return RETURN_OPTION_GAMEPLAY_PANEL;
 }
 
-int option_label()
+int option_color_label()
 {
-    return RETURN_OPTION_PANEL;
+    return RETURN_OPTION_COLOR_PANEL;
 }
 
 int option_video()

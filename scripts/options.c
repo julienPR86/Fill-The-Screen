@@ -9,7 +9,7 @@ int options()
 
     Toogle gameplay_toogle = {0, 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &gameplay_toogle_label, &toogle_style, &option_gameplay, true};
     toogle_init(&gameplay_toogle);
-    Toogle colors_toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &colors_toogle_label, &toogle_style, &option_label, true};
+    Toogle colors_toogle = {toogle_width(&gameplay_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &colors_toogle_label, &toogle_style, &option_color_label, true};
     toogle_init(&colors_toogle);
     Toogle video_toogle = {colors_toogle.x + toogle_width(&colors_toogle), 0, WIDTH/SCALEX/4, HEIGHT/10, NORMAL, &video_toogle_label, &toogle_style, &option_video, true};
     toogle_init(&video_toogle);
@@ -298,7 +298,7 @@ int options()
             case RETURN_OPTION_GAMEPLAY_PANEL:
                 gameplay_panel.active = true;
                 break;
-            case RETURN_OPTION_PANEL:
+            case RETURN_OPTION_COLOR_PANEL:
                 colors_panel.active = true;
                 break;
             case RETURN_OPTION_VIDEO_PANEL:
