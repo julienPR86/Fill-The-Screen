@@ -52,7 +52,7 @@ typedef struct MainColors
     Color game_mode_background;
     Color game_background;
     Color pause_menu_background;
-    Color end_game_background;
+    Color game_stats_background;
 } MainColors;
 
 typedef struct Theme

@@ -126,7 +126,7 @@ int game()
         if (((!player->can_move && map_is_filled(map)) || end) && !back_to_map)
         {
             end = false;
-            out = end_game();
+            out = game_stats();
             switch (out)
             {
                 case RETURN_SUCCESS:

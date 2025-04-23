@@ -11,7 +11,7 @@
 
 //locals headers includes
 #include "headers/buttons_functions.h"
-#include "headers/end_game.h"
+#include "headers/game_stats.h"
 #include "headers/game_mode.h"
 #include "headers/game.h"
 #include "headers/init.h"
