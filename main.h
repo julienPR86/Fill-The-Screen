@@ -121,4 +121,7 @@ extern char *FPS_text;
 //fps label to display fps value
 extern Label FPS_label;
 
+//function that exit the whole game
+void exit_full_game();
+
 #endif
