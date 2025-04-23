@@ -1,11 +1,10 @@
 #include "../main.h"
-//quit button in main
+
 int exit_game()
 {
     return RETURN_EXIT_FULL_GAME;
 }
 
-//buttons in game mode
 int fill_mode()
 {
     game_mode = FILL_MODE;
@@ -30,7 +29,6 @@ int free_mode()
     return game();
 }
 
-//buttons in pause menu + end game menu
 int back()
 {
     return RETURN_TO_GAME;
@@ -46,7 +44,6 @@ int main_menu()
     return RETURN_TO_MAIN_MENU;
 }
 
-//Toogles in option menu
 int option_gameplay()
 {
     return RETURN_OPTION_GAMEPLAY_PANEL;
