@@ -68,6 +68,16 @@ enum Returns
     RETURN_SLIDER_UPDATE,
 };
 
+enum MouseState
+{
+    //no buttons are pressed
+    MOUSE_STATE_NONE,
+    //left mouse button pressed
+    MOUSE_STATE_LEFT_CLICK,
+    //right mouse button pressed
+    MOUSE_STATE_RIGHT_CLICK,
+};
+
 //window width
 extern int WIDTH;
 //window height
