@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_ttf.h>
 
 //locals headers includes
 #include "headers/buttons_functions.h"
