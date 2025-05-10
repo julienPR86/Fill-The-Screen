@@ -1,6 +1,6 @@
 #include "main.h"
 
-int main(int argc, char **argv)
+int main()
 {
     if (RETURN_FAILURE == init())
     {
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     Uint64 start_time;
     while (running)
     {
-        start_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks();
         FPS = get_fps();
 
         get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
         while (SDL_PollEvent(&event))
         {
-            if (SDL_QUIT == event.type)
+            if (SDL_EVENT_QUIT == event.type)
             {
                 running = false;
                 break;

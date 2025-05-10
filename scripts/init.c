@@ -28,10 +28,10 @@ ButtonStyle toogle_style = {0, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70
 SliderCursorStyle slider_cursor_style = {1, {255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}, {0, 0, 0, 255}};
 SliderStyle slider_style = {1, {255, 128, 0, 255}, {0, 0, 0, 255}};
 
-int mouse_x = 0;
-int mouse_y = 0;
-int mouse_delta_x = 0;
-int mouse_delta_y = 0;
+float mouse_x = 0;
+float mouse_y = 0;
+float mouse_delta_x = 0;
+float mouse_delta_y = 0;
 int mouse_button_pressed = 0;
 int mouse_wheel_value = 0;
 
@@ -50,20 +50,20 @@ Label FPS_label = {2, 0, 0, 0, 0.06, NULL, NULL, {0, 255, 75, 255}, NULL, NULL, 
 
 int init()
 {
-    if (0 != SDL_Init(SDL_INIT_EVERYTHING))
+    if (true != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
     {
         fprintf(stderr, "Could not initialize SDL : %s\n", SDL_GetError());
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    if (0 != TTF_Init())
+    if (true != TTF_Init())
     {
-        fprintf(stderr, "Could not initialize TTF : %s\n", TTF_GetError());
+        fprintf(stderr, "Could not initialize TTF : %s\n", SDL_GetError());
         TTF_Quit();
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    window = SDL_CreateWindow("Fill The Screen", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, 0);
     if (NULL == window)
     {
         fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
@@ -71,7 +71,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    renderer = SDL_CreateRenderer(window, RETURN_NONE, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, NULL);
     if (NULL == renderer)
     {
         fprintf(stderr, "Could not create the renderer : %s\n", SDL_GetError());
@@ -83,7 +83,7 @@ int init()
     roboto_regular = TTF_OpenFont("font/Roboto-regular.ttf", font_size);
     if (NULL == roboto_regular)
     {
-        fprintf(stderr, "Cound not initialised the font : %s\n", TTF_GetError());
+        fprintf(stderr, "Cound not initialised the font : %s\n", SDL_GetError());
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         TTF_Quit();
@@ -93,7 +93,7 @@ int init()
     roboto_light = TTF_OpenFont("font/Roboto-light.ttf", font_size);
     if (NULL == roboto_light)
     {
-        fprintf(stderr, "Cound not initialised the font : %s\n", TTF_GetError());
+        fprintf(stderr, "Cound not initialised the font : %s\n", SDL_GetError());
         TTF_CloseFont(roboto_regular);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);

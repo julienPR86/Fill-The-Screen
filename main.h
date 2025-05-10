@@ -105,13 +105,13 @@ extern SDL_Renderer *renderer;
 extern SDL_Event event;
 
 //contains the x mouse position
-extern int mouse_x;
+extern float mouse_x;
 //contains the y mouse position
-extern int mouse_y;
+extern float mouse_y;
 //contains the x mouse delta position since the last frame
-extern int mouse_delta_x;
+extern float mouse_delta_x;
 //contains the y mouse delta position since the last frame
-extern int mouse_delta_y;
+extern float mouse_delta_y;
 //contains a value which tells which mouse button is pressed
 extern int mouse_button_pressed;
 //contains a value between -1 and 1 that tells the wheel rotation value

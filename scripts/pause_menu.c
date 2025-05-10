@@ -37,7 +37,7 @@ int pause_menu()
     Uint64 start_time;
     while (running)
     {
-        start_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks();
         FPS = get_fps();
 
         get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
@@ -48,15 +48,15 @@ int pause_menu()
 
         while (SDL_PollEvent(&event))
         {
-            if (SDL_QUIT == event.type)
+            if (SDL_EVENT_QUIT == event.type)
             {
                 label_list_free(labels, 2);
                 button_list_free(buttons, 3);
                 return RETURN_EXIT_FULL_GAME;
             }
-            if (SDL_KEYDOWN == event.type)
+            if (SDL_EVENT_KEY_DOWN == event.type)
             {
-                if (SDLK_ESCAPE == event.key.keysym.sym)
+                if (SDLK_ESCAPE == event.key.key)
                 {
                     running = false;
                     break;

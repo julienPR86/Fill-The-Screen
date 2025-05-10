@@ -118,8 +118,8 @@ void slider_render(Slider *slider)
         return;
     
     Color color;
-    SDL_Rect slider_rect = {slider->x, slider->y, slider->w, slider->h};
-    SDL_Rect outline_rect = {slider->x - slider->style->outline, slider->y - slider->style->outline, slider->w + slider->style->outline * 2, slider->h + slider->style->outline * 2};
+    SDL_FRect slider_rect = {slider->x, slider->y, slider->w, slider->h};
+    SDL_FRect outline_rect = {slider->x - slider->style->outline, slider->y - slider->style->outline, slider->w + slider->style->outline * 2, slider->h + slider->style->outline * 2};
     
     color = slider->style->outline_color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);

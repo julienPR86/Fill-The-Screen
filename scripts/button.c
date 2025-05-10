@@ -56,9 +56,9 @@ void button_render(Button *button)
         return;
         
     Color button_color;
-    SDL_Rect button_rect = {button->x+button->style->inline_, button->y+button->style->inline_, button->width-button->style->inline_*2, button->height-button->style->inline_*2};
-    SDL_Rect inline_rect = {button->x, button->y, button->width, button->height};
-    SDL_Rect outline_rect = {button->x-button->style->outline, button->y-button->style->outline, button->width+button->style->outline*2, button->height+button->style->outline*2};
+    SDL_FRect button_rect = {button->x+button->style->inline_, button->y+button->style->inline_, button->width-button->style->inline_*2, button->height-button->style->inline_*2};
+    SDL_FRect inline_rect = {button->x, button->y, button->width, button->height};
+    SDL_FRect outline_rect = {button->x-button->style->outline, button->y-button->style->outline, button->width+button->style->outline*2, button->height+button->style->outline*2};
 
     switch (button->state)
     {

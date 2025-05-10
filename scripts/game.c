@@ -26,7 +26,7 @@ int game()
     Uint64 start_time;
     while (running)
     {
-        start_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks();
         FPS = get_fps();
 
         SDL_SetRenderDrawColor(renderer, theme.main_colors.game_background.r, theme.main_colors.game_background.g, theme.main_colors.game_background.b, theme.main_colors.game_background.a);
@@ -39,19 +39,19 @@ int game()
         }
         while (SDL_PollEvent(&event))
         {
-            if (SDL_QUIT == event.type)
+            if (SDL_EVENT_QUIT == event.type)
             {
                 game_quit();
                 return RETURN_EXIT_FULL_GAME;
             }
-            if (SDL_KEYDOWN == event.type)
+            if (SDL_EVENT_KEY_DOWN == event.type)
             {
                 if (!player->can_move || FREE_MODE == game_mode)
                 {
-                    switch (event.key.keysym.sym)
+                    switch (event.key.key)
                     {
                         case SDLK_RIGHT:
-                        case SDLK_d:
+                        case SDLK_D:
                             direction[0] = 1;
                             direction[1] = 0;
                             player->can_move = true;
@@ -59,7 +59,7 @@ int game()
                             player->frame_move = 1;
                             break;
                         case SDLK_LEFT:
-                        case SDLK_q:
+                        case SDLK_Q:
                             direction[0] = RETURN_NONE;
                             direction[1] = 0;
                             player->can_move = true;
@@ -67,7 +67,7 @@ int game()
                             player->frame_move = 1;
                             break;
                         case SDLK_UP:
-                        case SDLK_z:
+                        case SDLK_Z:
                             direction[0] = 0;
                             direction[1] = RETURN_NONE;
                             player->can_move = true;
@@ -75,7 +75,7 @@ int game()
                             player->frame_move = 1;
                             break;
                         case SDLK_DOWN:
-                        case SDLK_s:
+                        case SDLK_S:
                             direction[0] = 0;
                             direction[1] = 1;
                             player->can_move = true;
@@ -86,7 +86,7 @@ int game()
                             break;
                     }
                 }
-                switch (event.key.keysym.sym)
+                switch (event.key.key)
                 {
                     case SDLK_ESCAPE:
                         out = pause_menu();
@@ -109,10 +109,10 @@ int game()
                                 break;
                         }
                         break;
-                    case SDLK_r:
+                    case SDLK_R:
                         game_restart();
                         break;
-                    case SDLK_e:
+                    case SDLK_E:
                         end = true;
                         back_to_map = false;
                         break;

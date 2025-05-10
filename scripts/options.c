@@ -260,7 +260,7 @@ int options()
     Uint64 start_time;
     while (running)
     {
-        start_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks();
         FPS = get_fps();
 
         get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
@@ -271,16 +271,16 @@ int options()
 
         while (SDL_PollEvent(&event))
         {
-            if (SDL_QUIT == event.type)
+            if (SDL_EVENT_QUIT == event.type)
             {
                 panel_list_free(panels, 4);
                 group_free(&options_group);
                 label_list_free(labels, 1);
                 return RETURN_EXIT_FULL_GAME;
             }
-            if (SDL_KEYDOWN == event.type)
+            if (SDL_EVENT_KEY_DOWN == event.type)
             {
-                if (SDLK_ESCAPE == event.key.keysym.sym)
+                if (SDLK_ESCAPE == event.key.key)
                 {
                     running = false;
                 }

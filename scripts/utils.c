@@ -8,7 +8,7 @@ int get_fps()
     static Uint64 last_time = 0;
     static float total_time = 0;
 
-    Uint64 current_time = SDL_GetTicks64();
+    Uint64 current_time = SDL_GetTicks();
     delta_time = (current_time - last_time) * 0.001f;
     last_time = current_time;
 
@@ -35,7 +35,7 @@ int get_fps()
 
 void cap_fps(Uint64 start_time)
 {
-    Uint64 frame_time = SDL_GetTicks64() - start_time;
+    Uint64 frame_time = SDL_GetTicks() - start_time;
     Uint64 target_time = 1000 / MAX_FPS;
 
     if (frame_time < target_time)
@@ -46,18 +46,18 @@ void cap_fps(Uint64 start_time)
 
 void mouse_event(SDL_Event event)
 {
-    if (SDL_MOUSEBUTTONDOWN == event.type && !mouse_button_pressed)
+    if (SDL_EVENT_MOUSE_BUTTON_DOWN == event.type && !mouse_button_pressed)
     {
         mouse_button_pressed = event.button.button;
     }
-    if (SDL_MOUSEBUTTONUP == event.type)
+    if (SDL_EVENT_MOUSE_BUTTON_UP == event.type)
     {
         if (event.button.button == mouse_button_pressed)
         {
             mouse_button_pressed = 0;
         }
     }
-    if (SDL_MOUSEWHEEL == event.type)
+    if (SDL_EVENT_MOUSE_WHEEL == event.type)
     {
         mouse_wheel_value = event.wheel.y;
     }
@@ -70,9 +70,9 @@ void mouse_event_reset()
     return;
 }
 
-void get_mouse_delta(int *_x, int *_y)
+void get_mouse_delta(float *_x, float *_y)
 {
-    int x, y;
+    float x, y;
     SDL_GetMouseState(&x, &y);
     *_x = x - mouse_x;
     *_y = y - mouse_y;

@@ -92,7 +92,7 @@ int game_stats()
     Uint64 start_time;
     while (running)
     {
-        start_time = SDL_GetTicks64();
+        start_time = SDL_GetTicks();
         FPS = get_fps();
 
         get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
@@ -103,7 +103,7 @@ int game_stats()
 
         while (SDL_PollEvent(&event))
         {
-            if (SDL_QUIT == event.type)
+            if (SDL_EVENT_QUIT == event.type)
             {
                 label_list_free(labels, 4);
                 button_list_free(buttons, 3);

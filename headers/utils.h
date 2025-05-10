@@ -11,7 +11,7 @@ void mouse_event(SDL_Event event);
 //reset mouse events
 void mouse_event_reset();
 //return the mouse x and y delta
-void get_mouse_delta(int *x, int *y);
+void get_mouse_delta(float *x, float *y);
 
 //return 1 if (x,y) is in button, 0 otherwise
 int button_collision(Button *button, int x, int y);

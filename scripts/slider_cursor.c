@@ -44,8 +44,8 @@ void slider_cursor_render(SliderCursor *cursor)
         return;
 
     Color color;
-    SDL_Rect cursor_rect = {cursor->x, cursor->y, cursor->size, cursor->size};
-    SDL_Rect outline_rect = {cursor->x - cursor->style->outline, cursor->y - cursor->style->outline, cursor->size + cursor->style->outline * 2, cursor->size + cursor->style->outline * 2};
+    SDL_FRect cursor_rect = {cursor->x, cursor->y, cursor->size, cursor->size};
+    SDL_FRect outline_rect = {cursor->x - cursor->style->outline, cursor->y - cursor->style->outline, cursor->size + cursor->style->outline * 2, cursor->size + cursor->style->outline * 2};
 
     color = cursor->style->outline_color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
