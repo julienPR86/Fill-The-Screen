@@ -6,3 +6,5 @@ tmp/*.o
 #vscode extensions
 *.vs
 *.vscode
+#ignore texts files
+*.txt
