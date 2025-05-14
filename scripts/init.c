@@ -42,7 +42,7 @@ int max_font_size = 100;
 
 
 char *FPS_text;
-Label FPS_label = {2, 0, 0, 0, 1, NULL, NULL, {0, 255, 75, 255}, NULL, NULL, false, true};
+Label FPS_label = {2, 0, 0, 0, 1, NULL, 20, {0, 255, 75, 255}, NULL, NULL, NULL, false, true};
 
 
 
@@ -128,7 +128,6 @@ int init()
         FPS_text[1] = '\0';
     }
     FPS_label.text = FPS_text;
-    FPS_label.font = roboto_regular_fonts[20];
     label_init(&FPS_label);
     return RETURN_SUCCESS;
 }

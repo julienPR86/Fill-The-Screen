@@ -7,15 +7,15 @@ int main()
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title_label = {0, 0, 0, 0, 1, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {0, 0, 0, 0, 1, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 10);
     }
 
-    Label play_button_label = {0, 0, 0, 0, 1, "PLAY", 100, {0, 0, 0, 255},  NULL, NULL, false, true};
-    Label options_button_label = {0, 0, 0, 0, 1, "Options", 100, {0, 0, 0, 255},  NULL, NULL, false, true};
-    Label exit_button_label = {0, 0, 0, 0, 1, "Quit", 100, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label play_button_label = {0, 0, 0, 0, 1, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label options_button_label = {0, 0, 0, 0, 1, "Options", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label exit_button_label = {0, 0, 0, 0, 1, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
 
     Button play_button = {0, 0, 150, 50, NORMAL, &play_button_label, &button_style, &mode_choice, true};
     if (NULL != button_init(&play_button))

@@ -34,39 +34,39 @@ int game_stats()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title_label = {0, 0, 0, 0, 0.3, "Game over", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {0, 0, 0, 0, 1, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
 
-    Label congrats = {0, 0, 0, 0, 0.3, "Congratulation", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label congrats = {0, 0, 0, 0, 1, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&congrats))
     {
         set_label_anchor(&congrats, CENTER_X, 0, 0);
     }
 
-    Label percent_label = {0, 150, 0, 0, 0.1, percent_text, roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label percent_label = {0, 150, 0, 0, 1, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&percent_label))
     {
         set_label_anchor(&percent_label, CENTER_X, 0, 0);
     }
 
-    Label moves_label = {0, 200, 0, 0, 0.1, moves_text, roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label moves_label = {0, 200, 0, 0, 1, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&moves_label))
     {
         set_label_anchor(&moves_label, CENTER_X, 0, 0);
     }
 
-    Label square_ratio_label = {0, 250, 0, 0, 0.1, square_ratio_text, roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label square_ratio_label = {0, 250, 0, 0, 1, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&square_ratio_label))
     {
         set_label_anchor(&square_ratio_label, CENTER_X, 0, 0);
     }
 
-    Label back_button_label = {0, 0, 0, 0, 0.1, "Back", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label back_button_label = {0, 0, 0, 0, 1, "Back", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label restart_button_label = {0, 0, 0, 0, 1, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label main_menu_button_label = {0, 0, 0, 0, 1, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
 
     Button back_button = {0, 0, 150, 50, NORMAL, &back_button_label, &button_style, &back, true};
     if (NULL != button_init(&back_button))
