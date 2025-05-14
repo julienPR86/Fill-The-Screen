@@ -108,9 +108,9 @@ extern SliderStyle slider_style;
 //the slider cursor style
 extern SliderCursorStyle slider_cursor_style;
 
-//Roboto regular font
-extern TTF_Font *roboto_regular;
-//font size
-extern int font_size;
+//Roboto_regular font array
+extern TTF_Font **roboto_regular_fonts;
+//Roboto_regular array size
+extern int max_font_size;
 
 #endif

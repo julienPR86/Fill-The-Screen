@@ -37,13 +37,12 @@ int mouse_wheel_value = 0;
 
 int game_mode = NO_ACTIVE_MODE;
 
-TTF_Font *roboto_regular;
-int font_size = 300;
-
+TTF_Font **roboto_regular_fonts;
+int max_font_size = 100;
 
 
 char *FPS_text;
-Label FPS_label = {2, 0, 0, 0, 0.06, NULL, NULL, {0, 255, 75, 255}, NULL, NULL, false, true};
+Label FPS_label = {2, 0, 0, 0, 1, NULL, NULL, {0, 255, 75, 255}, NULL, NULL, false, true};
 
 
 
@@ -79,16 +78,39 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    roboto_regular = TTF_OpenFont("font/Roboto-regular.ttf", font_size);
-    if (NULL == roboto_regular)
+
+    roboto_regular_fonts = (TTF_Font **)malloc(max_font_size * sizeof(TTF_Font *));
+    if (NULL == roboto_regular_fonts)
     {
-        fprintf(stderr, "Cound not initialised the font : %s\n", SDL_GetError());
+        fprintf(stderr, "memory allocation error : Could not allocate font array");
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         TTF_Quit();
         SDL_Quit();
         return RETURN_FAILURE;
     }
+    else
+    {
+        for (int i = 0; i < max_font_size; i++)
+        {
+            roboto_regular_fonts[i] = TTF_OpenFont("font/Roboto-regular.ttf", i+1);
+            if (NULL == roboto_regular_fonts[i])
+            {
+                fprintf(stderr, "Could not initialised the font; size : %d; %s\n", i, SDL_GetError());
+                for (int j = 0; j < i; j++)
+                {
+                    TTF_CloseFont(roboto_regular_fonts[j]);
+                }
+                free(roboto_regular_fonts);
+                SDL_DestroyRenderer(renderer);
+                SDL_DestroyWindow(window);
+                TTF_Quit();
+                SDL_Quit();
+                return RETURN_FAILURE;
+            }
+        }
+    }
+
     SCALEX = (float)WIDTH / 1080;
     SCALEY = (float)HEIGHT / 720;
 
@@ -106,7 +128,7 @@ int init()
         FPS_text[1] = '\0';
     }
     FPS_label.text = FPS_text;
-    FPS_label.font = roboto_regular;
+    FPS_label.font = roboto_regular_fonts[20];
     label_init(&FPS_label);
     return RETURN_SUCCESS;
 }
