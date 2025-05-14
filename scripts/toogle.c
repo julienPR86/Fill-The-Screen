@@ -2,14 +2,22 @@
 
 Toogle *toogle_init(Toogle *toogle)
 {
-    if (NULL == toogle || NULL == label_init(toogle->label))
+    if (NULL == toogle)
         return NULL;
 
-    toogle->width = MAX(toogle->width * SCALEX, toogle->label->w * toogle->label->scale);
-    toogle->height = MAX(toogle->height * SCALEY, toogle->label->h * toogle->label->scale);
+    toogle->label = label_init(toogle->label);
 
-    toogle->label->x = toogle->x + CENTERED(toogle->width, toogle->label->w * toogle->label->scale);
-    toogle->label->y = toogle->y + CENTERED(toogle->height, toogle->label->h * toogle->label->scale);
+    toogle->width = toogle->width * SCALEX;
+    toogle->height = toogle->height * SCALEY;
+
+    if (NULL != toogle->label)
+    {
+        toogle->width = MAX(toogle->width * SCALEX, toogle->label->w * toogle->label->scale);
+        toogle->height = MAX(toogle->height * SCALEY, toogle->label->h * toogle->label->scale);
+
+        toogle->label->x = toogle->x + CENTERED(toogle->width, toogle->label->w * toogle->label->scale);
+        toogle->label->y = toogle->y + CENTERED(toogle->height, toogle->label->h * toogle->label->scale);
+    }
 
     toogle->style->outline *= SCALEY;
     toogle->style->inline_ *= SCALEY;
