@@ -22,37 +22,37 @@ int options()
 
     // Gameplay panel ----------------------------------------------------------------
     
-    Label probability_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Blocks spawn probability", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label probability_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Blocks spawn probability", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&probability_silder_description_label);
 
-    Label probability_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label probability_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor probability_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider probability_slider = {20, probability_silder_description_label.y + probability_silder_description_label.h * probability_silder_description_label.scale, 200, 20, &probability, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
     slider_init(&probability_slider);
 
 
-    Label map_width_slider_description_label = {20, 225*SCALEY, 0, 0, 0.075, "Map width", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label map_width_slider_description_label = {20, 225*SCALEY, 0, 0, 0.075, "Map width", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&map_width_slider_description_label);
 
-    Label map_width_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label map_width_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor map_width_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider map_width_slider = {20, map_width_slider_description_label.y + map_width_slider_description_label.h * map_width_slider_description_label.scale, 200, 20, &map_width, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
     slider_init(&map_width_slider);
 
 
-    Label map_height_slider_description_label = {20, 300*SCALEY, 0, 0, 0.075, "Map height", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label map_height_slider_description_label = {20, 300*SCALEY, 0, 0, 0.075, "Map height", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&map_height_slider_description_label);
 
-    Label map_height_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label map_height_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor map_height_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider map_height_slider = {20, map_height_slider_description_label.y + map_height_slider_description_label.h * map_height_slider_description_label.scale, 200, 20, &map_height, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
     slider_init(&map_height_slider);
 
 
-    Label game_speed_slider_description = {20, 375*SCALEY, 0, 0, 0.075, "Game speed", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label game_speed_slider_description = {20, 375*SCALEY, 0, 0, 0.075, "Game speed", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&game_speed_slider_description);
 
-    Label game_speed_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label game_speed_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor game_speed_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider game_speed_slider = {20, game_speed_slider_description.y + game_speed_slider_description.h * game_speed_slider_description.scale, 300, 20, &game_speed, 1, 300, 1, &game_speed_slider_label, &game_speed_slider_cursor, &slider_style, true};
     slider_init(&game_speed_slider);
@@ -73,26 +73,26 @@ int options()
 
     Rect player_color_rect = {player_red_slider_title_label.x + player_red_slider_title_label.w * player_red_slider_title_label.scale + 15*SCALEX, player_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY, 2, &theme.game_colors.player_square_color, {0, 0, 0, 255}};
 
-    Label player_red_slider_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_red_slider_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Red", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&player_red_slider_description_label);
 
-    Label player_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor player_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider player_red_slider = {20, player_red_slider_description_label.y + player_red_slider_description_label.h * player_red_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &player_red_slider_label, &player_red_slider_cursor, &slider_style, true};
     slider_init(&player_red_slider);
 
-    Label player_green_slider_description_label = {20, 200*SCALEY, 0, 0, 0.075, "Green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_green_slider_description_label = {20, 200*SCALEY, 0, 0, 0.075, "Green", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&player_green_slider_description_label);
 
-    Label player_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor player_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider player_green_slider = {20, player_green_slider_description_label.y + player_green_slider_description_label.h * player_green_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.g, 0, 255, 1, &player_green_slider_label, &player_green_slider_cursor, &slider_style, true};
     slider_init(&player_green_slider);
 
-    Label player_blue_slider_description_label = {20, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_blue_slider_description_label = {20, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&player_blue_slider_description_label);
 
-    Label player_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor player_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider player_blue_slider = {20, player_blue_slider_description_label.y + player_blue_slider_description_label.h * player_blue_slider_description_label.scale, 256, 20, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &player_blue_slider_label, &player_blue_slider_cursor, &slider_style, true};
     slider_init(&player_blue_slider);
@@ -103,26 +103,26 @@ int options()
 
     Rect collision_square_color_rect = {collision_square_red_slider_title_label.x + collision_square_red_slider_title_label.w * collision_square_red_slider_title_label.scale + 15*SCALEX, collision_square_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY, 2, &theme.game_colors.collision_square_color, {0, 0, 0, 255}};
 
-    Label collision_square_red_slider_description_label = {350, 150*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_red_slider_description_label = {350, 150*SCALEY, 0, 0, 0.075, "Red", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&collision_square_red_slider_description_label);
 
-    Label collision_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor collision_square_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider collision_square_red_slider = {350, collision_square_red_slider_description_label.y + collision_square_red_slider_description_label.h * collision_square_red_slider_description_label.scale, 256, 20, &theme.game_colors.collision_square_color.r, 0, 255, 1, &collision_square_red_slider_label, &collision_square_red_slider_cursor, &slider_style, true};
     slider_init(&collision_square_red_slider);
 
-    Label collision_square_green_slider_description_label = {350, 200*SCALEY, 0, 0, 0.075, "Green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_green_slider_description_label = {350, 200*SCALEY, 0, 0, 0.075, "Green", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&collision_square_green_slider_description_label);
 
-    Label collision_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor collision_square_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider collision_square_green_slider = {350, collision_square_green_slider_description_label.y + collision_square_green_slider_description_label.h * collision_square_green_slider_description_label.scale, 256, 20, &theme.game_colors.collision_square_color.g, 0, 255, 1, &collision_square_green_slider_label, &collision_square_green_slider_cursor, &slider_style, true};
     slider_init(&collision_square_green_slider);
 
-    Label collision_square_blue_slider_description_label = {350, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_blue_slider_description_label = {350, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&collision_square_blue_slider_description_label);
 
-    Label collision_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor collision_square_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider collision_square_blue_slider = {350, collision_square_blue_slider_description_label.y + collision_square_blue_slider_description_label.h * collision_square_blue_slider_description_label.scale, 256, 20, &theme.game_colors.collision_square_color.b, 0, 255, 1, &collision_square_blue_slider_label, &collision_square_blue_slider_cursor, &slider_style, true};
     slider_init(&collision_square_blue_slider);
@@ -133,26 +133,26 @@ int options()
 
     Rect line_square_color_rect = {line_square_red_slider_title_label.x + line_square_red_slider_title_label.w * line_square_red_slider_title_label.scale + 15*SCALEX, line_square_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY, 2, &theme.game_colors.line_square_color, {0, 0, 0, 255}};
 
-    Label line_square_red_slider_description_label = {700, 150*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_red_slider_description_label = {700, 150*SCALEY, 0, 0, 0.075, "Red", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&line_square_red_slider_description_label);
 
-    Label line_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor line_square_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider line_square_red_slider = {700, line_square_red_slider_description_label.y + line_square_red_slider_description_label.h * line_square_red_slider_description_label.scale, 256, 20, &theme.game_colors.line_square_color.r, 0, 255, 1, &line_square_red_slider_label, &line_square_red_slider_cursor, &slider_style, true};
     slider_init(&line_square_red_slider);
 
-    Label line_square_green_slider_description_label = {700, 200*SCALEY, 0, 0, 0.075, "Green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_green_slider_description_label = {700, 200*SCALEY, 0, 0, 0.075, "Green", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&line_square_green_slider_description_label);
 
-    Label line_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor line_square_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider line_square_green_slider = {700, line_square_green_slider_description_label.y + line_square_green_slider_description_label.h * line_square_green_slider_description_label.scale, 256, 20, &theme.game_colors.line_square_color.g, 0, 255, 1, &line_square_green_slider_label, &line_square_green_slider_cursor, &slider_style, true};
     slider_init(&line_square_green_slider);
 
-    Label line_square_blue_slider_description_label = {700, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_blue_slider_description_label = {700, 250*SCALEY, 0, 0, 0.075, "Blue", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&line_square_blue_slider_description_label);
 
-    Label line_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor line_square_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider line_square_blue_slider = {700, line_square_blue_slider_description_label.y + line_square_blue_slider_description_label.h * line_square_blue_slider_description_label.scale, 256, 20, &theme.game_colors.line_square_color.b, 0, 255, 1, &line_square_blue_slider_label, &line_square_blue_slider_cursor, &slider_style, true};
     slider_init(&line_square_blue_slider);
@@ -163,26 +163,26 @@ int options()
 
     Rect empty_square_color_rect = {empty_square_red_slider_title_label.x + empty_square_red_slider_title_label.w * empty_square_red_slider_title_label.scale + 15*SCALEX, empty_square_red_slider_title_label.y - 5 * SCALEY, 50*SCALEX, 50*SCALEY, 2, &theme.game_colors.empty_square_color, {0, 0, 0, 255}};
 
-    Label empty_square_red_slider_description_label = {20, 400*SCALEY, 0, 0, 0.075, "Red", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_red_slider_description_label = {20, 400*SCALEY, 0, 0, 0.075, "Red", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&empty_square_red_slider_description_label);
 
-    Label empty_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_red_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor empty_square_red_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider empty_square_red_slider = {20, empty_square_red_slider_description_label.y + empty_square_red_slider_description_label.h * empty_square_red_slider_description_label.scale, 256, 20, &theme.game_colors.empty_square_color.r, 0, 255, 1, &empty_square_red_slider_label, &empty_square_red_slider_cursor, &slider_style, true};
     slider_init(&empty_square_red_slider);
 
-    Label empty_square_green_slider_description_label = {20, 450*SCALEY, 0, 0, 0.075, "Green", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_green_slider_description_label = {20, 450*SCALEY, 0, 0, 0.075, "Green", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&empty_square_green_slider_description_label);
 
-    Label empty_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_green_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor empty_square_green_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider empty_square_green_slider = {20, empty_square_green_slider_description_label.y + empty_square_green_slider_description_label.h * empty_square_green_slider_description_label.scale, 256, 20, &theme.game_colors.empty_square_color.g, 0, 255, 1, &empty_square_green_slider_label, &empty_square_green_slider_cursor, &slider_style, true};
     slider_init(&empty_square_green_slider);
 
-    Label empty_square_blue_slider_description_label = {20, 500*SCALEY, 0, 0, 0.075, "Blue", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_blue_slider_description_label = {20, 500*SCALEY, 0, 0, 0.075, "Blue", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&empty_square_blue_slider_description_label);
 
-    Label empty_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_blue_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor empty_square_blue_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider empty_square_blue_slider = {20, empty_square_blue_slider_description_label.y + empty_square_blue_slider_description_label.h * empty_square_blue_slider_description_label.scale, 256, 20, &theme.game_colors.empty_square_color.b, 0, 255, 1, &empty_square_blue_slider_label, &empty_square_blue_slider_cursor, &slider_style, true};
     slider_init(&empty_square_blue_slider);
@@ -198,10 +198,10 @@ int options()
 
     // Video panel --------------------------------------------------------------------
 
-    Label max_fps_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Max FPS", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label max_fps_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Max FPS", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&max_fps_silder_description_label);
 
-    Label max_fps_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label max_fps_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor max_fps_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider max_fps_slider = {20, max_fps_silder_description_label.y + max_fps_silder_description_label.h * max_fps_silder_description_label.scale, 200, 20, &MAX_FPS, 30, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider);
@@ -216,28 +216,28 @@ int options()
 
     // Audio panel --------------------------------------------------------------------
 
-    Label master_audio_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Master volume", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label master_audio_silder_description_label = {20, 150*SCALEY, 0, 0, 0.075, "Master volume", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&master_audio_silder_description_label);
 
-    Label master_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label master_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor master_audio_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider master_audio_slider = {20, master_audio_silder_description_label.y + master_audio_silder_description_label.h * master_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &master_audio_slider_label, &master_audio_slider_cursor, &slider_style, true};
     slider_init(&master_audio_slider);
 
 
-    Label music_audio_silder_description_label = {20, 225*SCALEY, 0, 0, 0.075, "Music volume", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label music_audio_silder_description_label = {20, 225*SCALEY, 0, 0, 0.075, "Music volume", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&music_audio_silder_description_label);
 
-    Label music_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label music_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor music_audio_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider music_audio_slider = {20, music_audio_silder_description_label.y + music_audio_silder_description_label.h * music_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &music_audio_slider_label, &music_audio_slider_cursor, &slider_style, true};
     slider_init(&music_audio_slider);
 
 
-    Label effects_audio_silder_description_label = {20, 300*SCALEY, 0, 0, 0.075, "Effects volume", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label effects_audio_silder_description_label = {20, 300*SCALEY, 0, 0, 0.075, "Effects volume", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&effects_audio_silder_description_label);
 
-    Label effects_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label effects_audio_slider_label = {0, 0, 0, 0, 0.06, NULL, roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor effects_audio_slider_cursor = {0, 0, 0, NORMAL, &slider_cursor_style};
     Slider effects_audio_slider = {20, effects_audio_silder_description_label.y + effects_audio_silder_description_label.h * effects_audio_silder_description_label.scale, 200, 20, NULL, 30, 240, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &slider_style, true};
     slider_init(&effects_audio_slider);

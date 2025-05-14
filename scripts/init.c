@@ -38,7 +38,6 @@ int mouse_wheel_value = 0;
 int game_mode = NO_ACTIVE_MODE;
 
 TTF_Font *roboto_regular;
-TTF_Font *roboto_light;
 int font_size = 300;
 
 
@@ -90,17 +89,6 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    roboto_light = TTF_OpenFont("font/Roboto-light.ttf", font_size);
-    if (NULL == roboto_light)
-    {
-        fprintf(stderr, "Cound not initialised the font : %s\n", SDL_GetError());
-        TTF_CloseFont(roboto_regular);
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        TTF_Quit();
-        SDL_Quit();
-        return RETURN_FAILURE;
-    }
     SCALEX = (float)WIDTH / 1080;
     SCALEY = (float)HEIGHT / 720;
 
@@ -118,7 +106,7 @@ int init()
         FPS_text[1] = '\0';
     }
     FPS_label.text = FPS_text;
-    FPS_label.font = roboto_light;
+    FPS_label.font = roboto_regular;
     label_init(&FPS_label);
     return RETURN_SUCCESS;
 }

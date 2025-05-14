@@ -8,9 +8,9 @@ int pause_menu()
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
 
-    Label back_button_label = {0, 0, 0, 0, 0.1, "Back", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label back_button_label = {0, 0, 0, 0, 0.1, "Back", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label restart_button_label = {0, 0, 0, 0, 0.1, "Restart", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label main_menu_button_label = {0, 0, 0, 0, 0.1, "Main menu", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Button back_button = {0, 0, 150, 50, NORMAL, &back_button_label, &button_style, &back, true};
     if (NULL != button_init(&back_button))

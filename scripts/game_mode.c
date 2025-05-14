@@ -8,17 +8,17 @@ int mode_choice()
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
     
-    Label back_label = {0, 0, 0, 0, 0.1, "Press Escape to go back", roboto_light, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label back_label = {0, 0, 0, 0, 0.1, "Press Escape to go back", roboto_regular, {255, 0, 0, 255}, NULL, NULL, false, true};
     if (NULL != label_init(&back_label))
     {
         set_label_anchor(&back_label, BOTTOM_LEFT, 0, 10);
         set_label_anchor(&back_label, CENTER_X, 0, 0);
     }
 
-    Label fill_mode_button_label = {0, 0, 0, 0, 0.1, "Fill", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label discovery_mode_button_label = {0, 0, 0, 0, 0.1, "Discovery", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label constraint_mode_button_label = {0, 0, 0, 0, 0.1, "Constraint", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label free_mode_button_label = {0, 0, 0, 0, 0.1, "Free", roboto_light, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label fill_mode_button_label = {0, 0, 0, 0, 0.1, "Fill", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label discovery_mode_button_label = {0, 0, 0, 0, 0.1, "Discovery", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label constraint_mode_button_label = {0, 0, 0, 0, 0.1, "Constraint", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label free_mode_button_label = {0, 0, 0, 0, 0.1, "Free", roboto_regular, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Button fill_mode_button = {0, 0, 200, 50, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
     if (NULL != button_init(&fill_mode_button))
