@@ -30,18 +30,20 @@ Slider *slider_init(Slider *slider)
     slider->cursor->x = slider->x + (slider->w * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->size / 2;
     slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
-    slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
-    if (NULL == slider->label->text)
+    if (NULL != slider->label)
     {
-        fprintf(stderr, "slider->label->text : Memory allocation error");
+        slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
+        if (NULL == slider->label->text)
+        {
+            fprintf(stderr, "slider->label->text : Memory allocation error");
+        }
+        snprintf(slider->label->text, get_number_digits(slider->max)+1, "%d", *slider->value);
+
+        slider->label = label_init(slider->label);
+        
+        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
+        slider->label->y = slider->cursor->y + CENTERED(slider->cursor->size, slider->label->h * slider->label->scale);
     }
-    snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
-    if (NULL == label_init(slider->label))
-    {
-        fprintf(stderr, "Failed to init slider label\n");
-    }
-    slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
-    slider->label->y = slider->cursor->y + CENTERED(slider->cursor->size, slider->label->h * slider->label->scale);
     return slider;
 }
 
@@ -106,9 +108,9 @@ int slider_update(Slider *slider)
 
         if (*slider->value > slider->max)
             *slider->value = slider->max;
+
+        label_update(slider->label);
     }
-    
-    label_update(slider->label);
     return out;
 }
 
@@ -130,7 +132,10 @@ void slider_render(Slider *slider)
     SDL_RenderFillRect(renderer, &slider_rect);
 
     slider_cursor_render(slider->cursor);
-    label_render(slider->label);
+    if (NULL != slider->label)
+    {
+        label_render(slider->label);
+    }
     return;
 }
 
