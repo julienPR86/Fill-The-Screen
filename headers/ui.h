@@ -56,8 +56,6 @@ typedef struct Label
     int w;
     //height
     int h;
-    //label scale
-    float scale;
     //label text
     char *text;
     //label font
