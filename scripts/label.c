@@ -28,12 +28,18 @@ Label *label_init(Label *label)
     if (NULL == label->texture)
     {
         fprintf(stderr, "Texture allocation error : %s\n", SDL_GetError());
+        SDL_DestroySurface(label->surface);
+        label->surface = NULL;
         return NULL;
     }
 
     if (true != SDL_SetTextureBlendMode(label->texture, SDL_BLENDMODE_BLEND))
     {
         fprintf(stderr, "Cannot set texture blend mode : %s\n", SDL_GetError());
+        SDL_DestroyTexture(label->texture);
+        label->texture = NULL;
+        SDL_DestroySurface(label->surface);
+        label->surface = NULL;
         return NULL;
     }
     return label;
