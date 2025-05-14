@@ -2,8 +2,10 @@
 
 Label *label_init(Label *label)
 {
-    if (NULL == label || NULL == label->text)
+    if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
+
+    label->font = roboto_regular_fonts[label->font_size-1];
 
     if (true != TTF_GetStringSize(label->font, label->text, strlen(label->text), &label->w, &label->h))
     {
