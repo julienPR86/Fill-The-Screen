@@ -12,11 +12,11 @@ Button *button_init(Button *button)
 
     if (NULL != button->label)
     {
-        button->width = MAX(button->width * SCALEX, button->label->w * button->label->scale);
-        button->height = MAX(button->height * SCALEY, button->label->h * button->label->scale);
+        button->width = MAX(button->width * SCALEX, button->label->w);
+        button->height = MAX(button->height * SCALEY, button->label->h);
 
-        button->label->x = button->x + CENTERED(button->width, button->label->w * button->label->scale);
-        button->label->y = button->y + CENTERED(button->height, button->label->h * button->label->scale);
+        button->label->x = button->x + CENTERED(button->width, button->label->w);
+        button->label->y = button->y + CENTERED(button->height, button->label->h);
     }
 
     button->style->outline *= SCALEY;

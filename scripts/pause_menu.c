@@ -2,15 +2,15 @@
 
 int pause_menu()
 {
-    Label title_label = {0, 0, 0, 0, 1, "Game Paused", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label title_label = {0, 0, 0, 0, "Game Paused", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
 
-    Label back_button_label = {0, 0, 0, 0, 1, "Back", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
-    Label restart_button_label = {0, 0, 0, 0, 1, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
-    Label main_menu_button_label = {0, 0, 0, 0, 1, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label back_button_label = {0, 0, 0, 0, "Back", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label restart_button_label = {0, 0, 0, 0, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label main_menu_button_label = {0, 0, 0, 0, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
 
     Button back_button = {0, 0, 150, 50, NORMAL, &back_button_label, &button_style, &back, true};
     if (NULL != button_init(&back_button))

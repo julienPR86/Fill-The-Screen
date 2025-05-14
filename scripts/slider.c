@@ -41,8 +41,8 @@ Slider *slider_init(Slider *slider)
 
         slider->label = label_init(slider->label);
         
-        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
-        slider->label->y = slider->cursor->y + CENTERED(slider->cursor->size, slider->label->h * slider->label->scale);
+        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w);
+        slider->label->y = slider->cursor->y + CENTERED(slider->cursor->size, slider->label->h);
     }
     return slider;
 }
@@ -84,7 +84,7 @@ int slider_update(Slider *slider)
         else if (slider->cursor->x + slider->cursor->size / 2 > slider->x + slider->w)
             slider->cursor->x = slider->x + slider->w - slider->cursor->size / 2;
 
-        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w * slider->label->scale);
+        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w);
         // slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
 
         if (NULL != slider->label->text)

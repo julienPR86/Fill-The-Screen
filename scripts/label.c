@@ -64,7 +64,7 @@ void label_render(Label *label)
     if (NULL == label || NULL == label->texture || !label->active)
         return;
     
-    SDL_FRect label_rect = {label->x, label->y, label->w*label->scale, label->h*label->scale};
+    SDL_FRect label_rect = {label->x, label->y, label->w, label->h};
     if (true != SDL_RenderTexture(renderer, label->texture, NULL, &label_rect))
     {
         fprintf(stderr, "Render copy error : %s\n", SDL_GetError());
@@ -113,30 +113,30 @@ void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y)
     switch (anchor)
     {
         case CENTER:
-            label->x = CENTERED(WIDTH, label->w*label->scale) + offset_x;
-            label->y = CENTERED(HEIGHT, label->h*label->scale) + offset_y;
+            label->x = CENTERED(WIDTH, label->w) + offset_x;
+            label->y = CENTERED(HEIGHT, label->h) + offset_y;
             break;
         case CENTER_X:
-            label->x = CENTERED(WIDTH, label->w*label->scale) + offset_x;
+            label->x = CENTERED(WIDTH, label->w) + offset_x;
             break;
         case CENTER_Y:
-            label->y = CENTERED(HEIGHT, label->h*label->scale) + offset_y;
+            label->y = CENTERED(HEIGHT, label->h) + offset_y;
             break;
         case TOP_LEFT:
             label->x = offset_x;
             label->y = offset_y;
             break;
         case TOP_RIGHT:
-            label->x = WIDTH - label->w*label->scale - offset_x;
+            label->x = WIDTH - label->w - offset_x;
             label->y = offset_y;
             break;
         case BOTTOM_LEFT:
             label->x = offset_x;
-            label->y = HEIGHT - label->h*label->scale - offset_y;
+            label->y = HEIGHT - label->h - offset_y;
             break;
         case BOTTOM_RIGHT:
-            label->x = WIDTH - label->w*label->scale - offset_x;
-            label->y = HEIGHT - label->h*label->scale - offset_y;
+            label->x = WIDTH - label->w - offset_x;
+            label->y = HEIGHT - label->h - offset_y;
             break;
         default:
             break;

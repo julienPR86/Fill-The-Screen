@@ -12,11 +12,11 @@ Toogle *toogle_init(Toogle *toogle)
 
     if (NULL != toogle->label)
     {
-        toogle->width = MAX(toogle->width * SCALEX, toogle->label->w * toogle->label->scale);
-        toogle->height = MAX(toogle->height * SCALEY, toogle->label->h * toogle->label->scale);
+        toogle->width = MAX(toogle->width * SCALEX, toogle->label->w);
+        toogle->height = MAX(toogle->height * SCALEY, toogle->label->h);
 
-        toogle->label->x = toogle->x + CENTERED(toogle->width, toogle->label->w * toogle->label->scale);
-        toogle->label->y = toogle->y + CENTERED(toogle->height, toogle->label->h * toogle->label->scale);
+        toogle->label->x = toogle->x + CENTERED(toogle->width, toogle->label->w);
+        toogle->label->y = toogle->y + CENTERED(toogle->height, toogle->label->h);
     }
 
     toogle->style->outline *= SCALEY;

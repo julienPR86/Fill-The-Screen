@@ -2,23 +2,23 @@
 
 int mode_choice()
 {
-    Label title_label = {0, 0, 0, 0, 1, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label title_label = {0, 0, 0, 0, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&title_label))
     {
         set_label_anchor(&title_label, CENTER_X, 0, 0);
     }
     
-    Label back_label = {0, 0, 0, 0, 1, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label back_label = {0, 0, 0, 0, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, NULL, false, true};
     if (NULL != label_init(&back_label))
     {
         set_label_anchor(&back_label, BOTTOM_LEFT, 0, 10);
         set_label_anchor(&back_label, CENTER_X, 0, 0);
     }
 
-    Label fill_mode_button_label = {0, 0, 0, 0, 1, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
-    Label discovery_mode_button_label = {0, 0, 0, 0, 1, "Discovery", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
-    Label constraint_mode_button_label = {0, 0, 0, 0, 1, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
-    Label free_mode_button_label = {0, 0, 0, 0, 1, "Free", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label fill_mode_button_label = {0, 0, 0, 0, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label discovery_mode_button_label = {0, 0, 0, 0, "Discovery", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label constraint_mode_button_label = {0, 0, 0, 0, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
+    Label free_mode_button_label = {0, 0, 0, 0, "Free", 30, {0, 0, 0, 255}, NULL, NULL, NULL, false, true};
 
     Button fill_mode_button = {0, 0, 200, 50, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
     if (NULL != button_init(&fill_mode_button))
