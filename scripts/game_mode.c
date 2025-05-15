@@ -3,46 +3,27 @@
 int mode_choice()
 {
     Label title_label = {0, 0, 0, 0, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&title_label))
-    {
-        set_label_anchor(&title_label, CENTER_X, 0, 0);
-    }
+    label_init(&title_label);
     
-    Label back_label = {0, 0, 0, 0, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&back_label))
-    {
-        set_label_anchor(&back_label, BOTTOM_LEFT, 0, 10);
-        set_label_anchor(&back_label, CENTER_X, 0, 0);
-    }
+    Label back_label = {20, HEIGHT-50, 0, 0, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&back_label);
 
     Label fill_mode_button_label = {0, 0, 0, 0, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label discovery_mode_button_label = {0, 0, 0, 0, "Discovery", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label constraint_mode_button_label = {0, 0, 0, 0, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label free_mode_button_label = {0, 0, 0, 0, "Free", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button fill_mode_button = {0, 0, 200, 50, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
-    if (NULL != button_init(&fill_mode_button))
-    {
-        set_button_anchor(&fill_mode_button, CENTER, 0, -99 * SCALEY);
-    }
+    Button fill_mode_button = {20, 200, 200, 50, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
+    button_init(&fill_mode_button);
 
-    Button discovery_mode_button = {0, 0, 200, 50, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
-    if (NULL != button_init(&discovery_mode_button))
-    {
-        set_button_anchor(&discovery_mode_button, CENTER, 0, -33 * SCALEY);
-    }
+    Button discovery_mode_button = {20, 300, 200, 50, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
+    button_init(&discovery_mode_button);
 
-    Button constraint_mode_button = {0, 0, 200, 50, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
-    if (NULL != button_init(&constraint_mode_button))
-    {
-        set_button_anchor(&constraint_mode_button, CENTER, 0, 33 * SCALEY);
-    }
+    Button constraint_mode_button = {20, 400, 200, 50, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
+    button_init(&constraint_mode_button);
 
-    Button free_mode_button = {0, 0, 200, 50, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
-    if (NULL != button_init(&free_mode_button))
-    {
-        set_button_anchor(&free_mode_button, CENTER, 0, 99 * SCALEY);
-    }
+    Button free_mode_button = {20, 500, 200, 50, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
+    button_init(&free_mode_button);
 
     Label *labels[] = {&title_label, &back_label, &FPS_label};
     Button *buttons[] = {&fill_mode_button, &discovery_mode_button, &constraint_mode_button, &free_mode_button};
@@ -96,7 +77,7 @@ int mode_choice()
                 default:
                     break;
             }
-            button_render(buttons[i]);
+            button_render(buttons[i], SCALE);
         }
 
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)

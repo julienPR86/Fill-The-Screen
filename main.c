@@ -8,32 +8,20 @@ int main()
         return RETURN_FAILURE;
     }
     Label title_label = {0, 0, 0, 0, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
-    if (NULL != label_init(&title_label))
-    {
-        set_label_anchor(&title_label, CENTER_X, 0, 10);
-    }
+    label_init(&title_label);
 
     Label play_button_label = {0, 0, 0, 0, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label options_button_label = {0, 0, 0, 0, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label exit_button_label = {0, 0, 0, 0, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button play_button = {0, 0, 150, 50, NORMAL, &play_button_label, &button_style, &mode_choice, true};
-    if (NULL != button_init(&play_button))
-    {
-        set_button_anchor(&play_button, CENTER, 0, 0);
-    }
+    Button play_button = {20, 200, 150, 50, NORMAL, &play_button_label, &button_style, &mode_choice, true};
+    button_init(&play_button);
 
-    Button options_button = {0, 0, 150, 50, NORMAL, &options_button_label, &button_style, &options, true};
-    if (NULL != button_init(&options_button))
-    {
-        set_button_anchor(&options_button, CENTER, 0, button_height(&play_button)+10 * SCALEY);
-    }
+    Button options_button = {20, 300, 150, 50, NORMAL, &options_button_label, &button_style, &options, true};
+    button_init(&options_button);
 
-    Button exit_button = {0, 0, 150, 50, NORMAL, &exit_button_label, &button_style, &exit_game, true};
-    if (NULL != button_init(&exit_button))
-    {
-        set_button_anchor(&exit_button, CENTER, 0, button_height(&options_button) + button_height(&play_button)+(10 * SCALEY)*2);
-    }
+    Button exit_button = {20, 400, 150, 50, NORMAL, &exit_button_label, &button_style, &exit_game, true};
+    button_init(&exit_button);
     
     Label *labels[] = {&title_label, &FPS_label};
     Button *buttons[] = {&play_button, &options_button, &exit_button};
@@ -78,7 +66,7 @@ int main()
                 default:
                     break;
             }
-            button_render(buttons[i]);
+            button_render(buttons[i], SCALE);
         }
 
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)

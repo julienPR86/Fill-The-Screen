@@ -79,36 +79,36 @@ void get_mouse_delta(float *_x, float *_y)
     return;
 }
 
-int button_collision(Button *button, int x, int y)
+int button_collision(Button *button, int x, int y, float scale)
 {
-    if (x >= button->x && x <= button->x+button->width && y >= button->y && y <= button->y+button->height)
+    if (x >= button->x && x <= button->x + button->width * scale && y >= button->y && y <= button->y + button->height * scale)
     {
         return true;
     }
     return false;
 }
 
-int toogle_collision(Toogle *toogle, int x, int y)
+int toogle_collision(Toogle *toogle, int x, int y, float scale)
 {
-    if (x >= toogle->x && x <= toogle->x+toogle->width && y >= toogle->y && y <= toogle->y+toogle->height)
+    if (x >= toogle->x && x <= toogle->x + toogle->width * scale && y >= toogle->y && y <= toogle->y + toogle->height * scale)
     {
         return true;
     }
     return false;
 }
 
-int slider_collision(Slider *slider, int x, int y)
+int slider_collision(Slider *slider, int x, int y, float scale)
 {
-    if (x > slider->x && y > slider->y && x < slider->x + slider->w && y < slider->y + slider->h)
+    if (x > slider->x && y > slider->y && x < slider->x + slider->w * scale && y < slider->y + slider->h * scale)
     {
         return true;
     }
     return false;
 }
 
-int slider_cursor_collision(SliderCursor *cursor, int x, int y)
+int slider_cursor_collision(SliderCursor *cursor, int x, int y, float scale)
 {
-    if (x > cursor->x && y > cursor->y && x < cursor->x + cursor->size && y < cursor->y + cursor->size)
+    if (x > cursor->x && y > cursor->y && x < cursor->x + cursor->size * scale && y < cursor->y + cursor->size * scale)
     {
         return true;
     }
