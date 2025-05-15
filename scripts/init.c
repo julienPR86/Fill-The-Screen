@@ -2,8 +2,7 @@
 
 int WIDTH = 1080;
 int HEIGHT = 720;
-float SCALEX;
-float SCALEY;
+float SCALE;
 int FPS;
 int MAX_FPS = 144;
 double delta_time;
@@ -110,12 +109,10 @@ int init()
             }
         }
     }
-
-    SCALEX = (float)WIDTH / 1080;
-    SCALEY = (float)HEIGHT / 720;
+    SCALE = ((float)WIDTH / 1080 + (float)HEIGHT / 720) / 2;
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-    srand(time(NULL)*(WIDTH/HEIGHT));
+    srand(time(NULL) * (WIDTH / HEIGHT));
 
     FPS_text = (char *)malloc(8 * sizeof(char));
     if (NULL == FPS_text)
