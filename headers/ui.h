@@ -14,25 +14,23 @@ enum ButtonStates
     HOVERED,
 };
 
+//UI_Element struct, it represent the base of an UI element, which contains an x and y position, a width and a height
 typedef struct UI_Element
-{
-    int x;
-    int y;
-    int width;
-    int height;
-} UI_Element;
-
-//Rect struture
-typedef struct Rect
 {
     //x position
     int x;
     //y position
     int y;
     //width
-    int w;
+    int width;
     //height
-    int h;
+    int height;
+} UI_Element;
+
+//Rect struture
+typedef struct Rect
+{
+    UI_Element rect;
     //outline thickness
     int outline;
     //rect color
