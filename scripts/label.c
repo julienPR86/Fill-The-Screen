@@ -10,8 +10,6 @@ Label *label_init(Label *label)
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
         return NULL;
     }
-    label->w *= (SCALEY + SCALEX)/2;
-    label->h *= (SCALEY + SCALEX)/2;
 
     SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
     
@@ -99,45 +97,6 @@ void label_list_free(Label *labels[], int size)
             continue;
         
         label_free(labels[i]);
-    }
-    return;
-}
-
-void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y)
-{
-    if (NULL == label)
-        return;
-
-    switch (anchor)
-    {
-        case CENTER:
-            label->x = CENTERED(WIDTH, label->w) + offset_x;
-            label->y = CENTERED(HEIGHT, label->h) + offset_y;
-            break;
-        case CENTER_X:
-            label->x = CENTERED(WIDTH, label->w) + offset_x;
-            break;
-        case CENTER_Y:
-            label->y = CENTERED(HEIGHT, label->h) + offset_y;
-            break;
-        case TOP_LEFT:
-            label->x = offset_x;
-            label->y = offset_y;
-            break;
-        case TOP_RIGHT:
-            label->x = WIDTH - label->w - offset_x;
-            label->y = offset_y;
-            break;
-        case BOTTOM_LEFT:
-            label->x = offset_x;
-            label->y = HEIGHT - label->h - offset_y;
-            break;
-        case BOTTOM_RIGHT:
-            label->x = WIDTH - label->w - offset_x;
-            label->y = HEIGHT - label->h - offset_y;
-            break;
-        default:
-            break;
     }
     return;
 }

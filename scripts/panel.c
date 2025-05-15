@@ -56,7 +56,7 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 continue;
 
-            out = slider_update(panel->sliders[i]);
+            out = slider_update(panel->sliders[i], SCALE);
         }
     }
     if (NULL != panel->labels)
@@ -85,21 +85,21 @@ void panel_render(Panel *panel)
     {
         for (int i = 0; i < panel->button_count; i++)
         {
-            button_render(panel->buttons[i]);
+            button_render(panel->buttons[i], SCALE);
         }
     }
     if (NULL != panel->toogles)
     {
         for (int i = 0; i < panel->toogle_count; i++)
         {
-            toogle_render(panel->toogles[i]);
+            toogle_render(panel->toogles[i], SCALE);
         }
     }
     if (NULL != panel->sliders)
     {
         for (int i = 0; i < panel->slider_count; i++)
         {
-            slider_render(panel->sliders[i]);
+            slider_render(panel->sliders[i], SCALE);
         }
     }
     if (NULL != panel->labels)

@@ -1,14 +1,11 @@
 #include "../main.h"
 
-Slider *slider_init(Slider *slider)
+Slider *slider_init(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style)
         return NULL;
 
     slider->step = MIN(MAX(1, slider->step), slider->max);
-    slider->w *= SCALEX;
-    slider->h *= SCALEY;
-    slider->style->outline *= SCALEY;
 
     if (NULL == slider->value)
     {
@@ -27,8 +24,8 @@ Slider *slider_init(Slider *slider)
     if (*slider->value > slider->max)
         *slider->value = slider->max;
 
-    slider->cursor->x = slider->x + (slider->w * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->size / 2;
-    slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
+    slider->cursor->x = slider->x + (slider->w * scale * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->size * scale / 2;
+    slider->cursor->y = slider->y + CENTERED(slider->h * scale, slider->cursor->size * scale);
 
     if (NULL != slider->label)
     {
@@ -47,7 +44,7 @@ Slider *slider_init(Slider *slider)
     return slider;
 }
 
-int slider_update(Slider *slider)
+int slider_update(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider->cursor || !slider->active)
         return RETURN_NONE;
@@ -66,7 +63,7 @@ int slider_update(Slider *slider)
     
     if (RETURN_NONE == out)
     {    
-        if (slider_collision(slider, mouse_x, mouse_y) || slider->cursor->state == CLICKED)
+        if (slider_collision(slider, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
         {
             if (mouse_button_pressed == 1)
             {
@@ -81,8 +78,8 @@ int slider_update(Slider *slider)
     {
         if (slider->cursor->x + slider->cursor->size / 2 < slider->x)
             slider->cursor->x = slider->x - slider->cursor->size / 2;
-        else if (slider->cursor->x + slider->cursor->size / 2 > slider->x + slider->w)
-            slider->cursor->x = slider->x + slider->w - slider->cursor->size / 2;
+        else if (slider->cursor->x + slider->cursor->size / 2 > slider->x + slider->w * scale)
+            slider->cursor->x = slider->x + slider->w * scale - slider->cursor->size / 2;
 
         slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w);
         // slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
@@ -101,7 +98,7 @@ int slider_update(Slider *slider)
         snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
         slider->label->update = true;
 
-        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + slider->cursor->size / 2 - slider->x) / slider->w / slider->step * slider->step;
+        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + (slider->cursor->size * scale) / 2 - slider->x) / (slider->w * scale) / slider->step * slider->step;
             
         if (*slider->value < slider->min)
             *slider->value = slider->min;
@@ -114,14 +111,14 @@ int slider_update(Slider *slider)
     return out;
 }
 
-void slider_render(Slider *slider)
+void slider_render(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider->style || !slider->active)
         return;
     
     Color color;
-    SDL_FRect slider_rect = {slider->x, slider->y, slider->w, slider->h};
-    SDL_FRect outline_rect = {slider->x - slider->style->outline, slider->y - slider->style->outline, slider->w + slider->style->outline * 2, slider->h + slider->style->outline * 2};
+    SDL_FRect slider_rect = {slider->x, slider->y, slider->w * scale, slider->h * scale};
+    SDL_FRect outline_rect = {slider->x - slider->style->outline * scale, slider->y - slider->style->outline * scale, (slider->w + slider->style->outline * 2) * scale, (slider->h + slider->style->outline * 2) * scale};
     
     color = slider->style->outline_color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
@@ -131,7 +128,7 @@ void slider_render(Slider *slider)
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &slider_rect);
 
-    slider_cursor_render(slider->cursor);
+    slider_cursor_render(slider->cursor, scale);
     if (NULL != slider->label)
     {
         label_render(slider->label);
@@ -169,12 +166,12 @@ void slider_list_free(Slider *sliders[], int size)
     return;
 }
 
-int slider_height(Slider *slider)
+int slider_height(Slider *slider, float scale)
 {
-    return slider->h + slider->style->outline*2;
+    return (slider->h + slider->style->outline * 2) * scale;
 }
 
-int slider_width(Slider *slider)
+int slider_width(Slider *slider, float scale)
 {
-    return slider->w + slider->style->outline*2;
+    return (slider->w + slider->style->outline * 2) * scale;
 }

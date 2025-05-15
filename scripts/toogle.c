@@ -7,21 +7,17 @@ Toogle *toogle_init(Toogle *toogle)
 
     toogle->label = label_init(toogle->label);
 
-    toogle->width = toogle->width * SCALEX;
-    toogle->height = toogle->height * SCALEY;
+    toogle->width = toogle->width;
+    toogle->height = toogle->height;
 
     if (NULL != toogle->label)
     {
-        toogle->width = MAX(toogle->width * SCALEX, toogle->label->w);
-        toogle->height = MAX(toogle->height * SCALEY, toogle->label->h);
+        toogle->width = MAX(toogle->width, toogle->label->w);
+        toogle->height = MAX(toogle->height, toogle->label->h);
 
         toogle->label->x = toogle->x + CENTERED(toogle->width, toogle->label->w);
         toogle->label->y = toogle->y + CENTERED(toogle->height, toogle->label->h);
     }
-
-    toogle->style->outline *= SCALEY;
-    toogle->style->inline_ *= SCALEY;
-
     return toogle;
 }
 
@@ -32,7 +28,7 @@ int toogle_update(Toogle *toogle)
     
     static int update = 1;
     int out = RETURN_NONE; // returns RETURN_NONE if the toogle isn't clicked
-    if (toogle_collision(toogle, mouse_x, mouse_y))
+    if (toogle_collision(toogle, mouse_x, mouse_y, SCALE))
     {
         if (mouse_button_pressed == 1 && update)
         {
@@ -74,15 +70,15 @@ int toogle_update(Toogle *toogle)
     return out;
 }
 
-void toogle_render(Toogle *toogle)
+void toogle_render(Toogle *toogle, float scale)
 {
     if (NULL == toogle || !toogle->active)
         return;
         
     Color toogle_color;
-    SDL_FRect toogle_rect = {toogle->x+toogle->style->inline_, toogle->y+toogle->style->inline_, toogle->width-toogle->style->inline_*2, toogle->height-toogle->style->inline_*2};
-    SDL_FRect inline_rect = {toogle->x, toogle->y, toogle->width, toogle->height};
-    SDL_FRect outline_rect = {toogle->x-toogle->style->outline, toogle->y-toogle->style->outline, toogle->width+toogle->style->outline*2, toogle->height+toogle->style->outline*2};
+    SDL_FRect toogle_rect = {toogle->x + toogle->style->inline_ * scale, toogle->y + toogle->style->inline_ * scale, (toogle->width - toogle->style->inline_ * 2) * scale, (toogle->height - toogle->style->inline_ * 2) * scale};
+    SDL_FRect inline_rect = {toogle->x, toogle->y, toogle->width * scale, toogle->height * scale};
+    SDL_FRect outline_rect = {toogle->x - toogle->style->outline * scale, toogle->y - toogle->style->outline * scale, (toogle->width + toogle->style->outline * 2) * scale, (toogle->height + toogle->style->outline * 2) * scale};
 
     switch (toogle->state)
     {
@@ -137,12 +133,12 @@ void toogle_list_free(Toogle *toogles[], int size)
     return;
 }
 
-int toogle_height(Toogle *toogle)
+int toogle_height(Toogle *toogle, float scale)
 {
-    return toogle->height+toogle->style->outline*2;
+    return (toogle->height + toogle->style->outline * 2) * scale;
 }
 
-int toogle_width(Toogle *toogle)
+int toogle_width(Toogle *toogle, float scale)
 {
-    return toogle->width+toogle->style->outline*2;
+    return (toogle->width + toogle->style->outline * 2) * scale;
 }

@@ -7,20 +7,14 @@ Button *button_init(Button *button)
 
     button->label = label_init(button->label);
 
-    button->width = button->width * SCALEX;
-    button->height = button->height * SCALEY;
-
     if (NULL != button->label)
     {
-        button->width = MAX(button->width * SCALEX, button->label->w);
-        button->height = MAX(button->height * SCALEY, button->label->h);
+        button->width = MAX(button->width, button->label->w);
+        button->height = MAX(button->height, button->label->h);
 
         button->label->x = button->x + CENTERED(button->width, button->label->w);
         button->label->y = button->y + CENTERED(button->height, button->label->h);
     }
-
-    button->style->outline *= SCALEY;
-    button->style->inline_ *= SCALEY;
     return button;
 }
 
@@ -30,7 +24,7 @@ int button_update(Button *button)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    if (button_collision(button, mouse_x, mouse_y))
+    if (button_collision(button, mouse_x, mouse_y, SCALE))
     {
         if (mouse_button_pressed == 1)
         {
@@ -57,15 +51,15 @@ int button_update(Button *button)
     return out;
 }
 
-void button_render(Button *button)
+void button_render(Button *button, float scale)
 {
     if (NULL == button || !button->active)
         return;
         
     Color button_color;
-    SDL_FRect button_rect = {button->x+button->style->inline_, button->y+button->style->inline_, button->width-button->style->inline_*2, button->height-button->style->inline_*2};
-    SDL_FRect inline_rect = {button->x, button->y, button->width, button->height};
-    SDL_FRect outline_rect = {button->x-button->style->outline, button->y-button->style->outline, button->width+button->style->outline*2, button->height+button->style->outline*2};
+    SDL_FRect button_rect = {button->x + button->style->inline_ * scale, button->y + button->style->inline_ * scale, (button->width - button->style->inline_ * 2) * scale, (button->height - button->style->inline_ * 2) * scale};
+    SDL_FRect inline_rect = {button->x, button->y, button->width * scale, button->height * scale};
+    SDL_FRect outline_rect = {button->x - button->style->outline * scale, button->y - button->style->outline * scale, (button->width + button->style->outline * 2) * scale, (button->height + button->style->outline * 2) * scale};
 
     switch (button->state)
     {
@@ -120,57 +114,12 @@ void button_list_free(Button *buttons[], int size)
     return;
 }
 
-void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y)
+int button_height(Button *button, float scale)
 {
-    if (NULL == button)
-        return;
-    switch (anchor)
-    {
-        case CENTER:
-            set_label_anchor(button->label, CENTER, offset_x, offset_y);
-            button->x = CENTERED(WIDTH, button->width) + offset_x;
-            button->y = CENTERED(HEIGHT, button->height) + offset_y;
-            break;
-        case CENTER_X:
-            set_label_anchor(button->label, CENTER_X, offset_x, offset_y);
-            button->x = CENTERED(WIDTH, button->width) + offset_x;
-            break;
-        case CENTER_Y:
-            set_label_anchor(button->label, CENTER_Y, offset_x, offset_y);
-            button->y = CENTERED(HEIGHT, button->height) + offset_y;
-            break;
-        case TOP_LEFT:
-            set_label_anchor(button->label, TOP_LEFT, offset_x, offset_y);
-            button->x = offset_x;
-            button->y = offset_y;
-            break;
-        case TOP_RIGHT:
-            set_label_anchor(button->label, TOP_RIGHT, offset_x, offset_y);
-            button->x = WIDTH - button->width - offset_x;
-            button->y = offset_y;
-            break;
-        case BOTTOM_LEFT:
-            set_label_anchor(button->label, BOTTOM_LEFT, offset_x, offset_y);
-            button->x = offset_x;
-            button->y = HEIGHT - button->height - offset_y;
-            break;
-        case BOTTOM_RIGHT:
-            set_label_anchor(button->label, BOTTOM_RIGHT, offset_x, offset_y);
-            button->x = WIDTH - button->width - offset_x;
-            button->y = HEIGHT - button->height - offset_y;
-            break;
-        default:
-            break;
-    }
-    return;
+    return (button->height + button->style->outline * 2) * scale;
 }
 
-int button_height(Button *button)
+int button_width(Button *button, float scale)
 {
-    return button->height+button->style->outline*2;
-}
-
-int button_width(Button *button)
-{
-    return button->width+button->style->outline*2;
+    return (button->width + button->style->outline * 2) * scale;
 }

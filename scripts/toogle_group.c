@@ -44,7 +44,7 @@ void group_render(ToogleGroup *group)
 
     for (int i = 0; i < group->count; i++)
     {
-        toogle_render(group->toogles[i]);
+        toogle_render(group->toogles[i], SCALE);
     }
     return;
 }
