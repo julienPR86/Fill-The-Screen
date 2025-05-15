@@ -88,7 +88,12 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
     return false;
 }
 
+void set_UI_element_position(UI_Element *element, int x, int y, int anchor)
+{
+    return;
+}
+
 int get_number_digits(int number)
 {
-    return (number == 0) ? 0 : ((int)log10(number)+1);
+    return (number == 0) ? 1 : ((int)log10(number)+1);
 }
