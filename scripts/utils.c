@@ -79,36 +79,9 @@ void get_mouse_delta(float *_x, float *_y)
     return;
 }
 
-int button_collision(Button *button, int x, int y, float scale)
+int UI_element_collision(UI_Element *element, int x, int y, float scale)
 {
-    if (x >= button->x && x <= button->x + button->width * scale && y >= button->y && y <= button->y + button->height * scale)
-    {
-        return true;
-    }
-    return false;
-}
-
-int toggle_collision(Toggle *toggle, int x, int y, float scale)
-{
-    if (x >= toggle->x && x <= toggle->x + toggle->width * scale && y >= toggle->y && y <= toggle->y + toggle->height * scale)
-    {
-        return true;
-    }
-    return false;
-}
-
-int slider_collision(Slider *slider, int x, int y, float scale)
-{
-    if (x > slider->x && y > slider->y && x < slider->x + slider->w * scale && y < slider->y + slider->h * scale)
-    {
-        return true;
-    }
-    return false;
-}
-
-int slider_cursor_collision(SliderCursor *cursor, int x, int y, float scale)
-{
-    if (x > cursor->x && y > cursor->y && x < cursor->x + cursor->size * scale && y < cursor->y + cursor->size * scale)
+    if (x >= element->x && x <= element->x + element->width * scale && y >= element->y && y <= element->y + element->height * scale)
     {
         return true;
     }
