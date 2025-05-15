@@ -14,13 +14,13 @@ void mouse_event_reset();
 void get_mouse_delta(float *x, float *y);
 
 //return 1 if (x,y) is in button, 0 otherwise
-int button_collision(Button *button, int x, int y);
+int button_collision(Button *button, int x, int y, float scale);
 //return 1 if (x,y) is in toogle, 0 otherwise
-int toogle_collision(Toogle *toogle, int x, int y);
+int toogle_collision(Toogle *toogle, int x, int y, float scale);
 //return 1 if (x,y) is in slider, 0 otherwise
-int slider_collision(Slider *slider, int x, int y);
+int slider_collision(Slider *slider, int x, int y, float scale);
 //return 1 if (x,y) is in slider cursor, 0 otherwise
-int slider_cursor_collision(SliderCursor *cursor, int x, int y);
+int slider_cursor_collision(SliderCursor *cursor, int x, int y, float scale);
 
 //return the number of digits in number
 int get_number_digits(int number);
