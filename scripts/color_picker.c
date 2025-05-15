@@ -19,9 +19,15 @@ void picker_free(ColorPicker *picker)
 {
     if (NULL == picker)
         return;
-
-    label_list_free(picker->labels, 4);
-    slider_list_free(picker->sliders, 3);
+        
+    if (NULL != picker->labels)
+    {
+        label_list_free(picker->labels, 4);
+    }
+    if (NULL != picker->sliders)
+    {
+        slider_list_free(picker->sliders, 3);
+    }
     return;
 }
 
