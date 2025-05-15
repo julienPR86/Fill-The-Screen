@@ -14,18 +14,6 @@ enum ButtonStates
     HOVERED,
 };
 
-//UI anchors
-enum Anchors
-{
-    CENTER,
-    CENTER_X,
-    CENTER_Y,
-    TOP_LEFT,
-    TOP_RIGHT,
-    BOTTOM_LEFT,
-    BOTTOM_RIGHT,
-};
-
 //Rect struture
 typedef struct Rect
 {
@@ -203,39 +191,37 @@ typedef struct Panel
 } Panel;
 
 //render a rectangle
-void rect_render(Rect *rect);
+void rect_render(Rect *rect, float scale);
 
 //button init, needs to be called before all button functions
 Button *button_init(Button *button);
 //update a button
 int button_update(Button *button);
 //render a button
-void button_render(Button *button);
+void button_render(Button *button, float scale);
 //free the button's label
 void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
-//set the button anchor
-void set_button_anchor(Button *button, int anchor, int offset_x, int offset_y);
 //return the button height
-int button_height(Button *button);
+int button_height(Button *button, float scale);
 //return the button width
-int button_width(Button *button);
+int button_width(Button *button, float scale);
 
 //toogle init, needs to be called before all toogle functions
 Toogle *toogle_init(Toogle *toogle);
 //update a toogle
 int toogle_update(Toogle *toogle);
 //render a toogle
-void toogle_render(Toogle *toogle);
+void toogle_render(Toogle *toogle, float scale);
 //free the toogle's label
 void toogle_free(Toogle *toogle);
 //free a toogle's list
 void toogle_list_free(Toogle *toogle[], int size);
 //return the toogle height
-int toogle_height(Toogle *toogle);
+int toogle_height(Toogle *toogle, float scale);
 //return the toogle width
-int toogle_width(Toogle *toogle);
+int toogle_width(Toogle *toogle, float scale);
 
 //toogle group init, needs to be called before all toogle group functions
 ToogleGroup *group_init(ToogleGroup *group);
@@ -258,30 +244,28 @@ void label_render(Label *label);
 void label_free(Label *label);
 //freea label list
 void label_list_free(Label *labels[], int size);
-//set label anchor
-void set_label_anchor(Label *label, int anchor, int offset_x, int offset_y);
 
 //slider cursor init, needs to be called before all slider cursor functions
 SliderCursor *slider_cursor_init(SliderCursor *cursor);
 //updaye slider cursor
 int slider_cursor_update(SliderCursor *cursor);
 //render slider cursor
-void slider_cursor_render(SliderCursor *cursor);
+void slider_cursor_render(SliderCursor *cursor, float scale);
 
 //slider init, needs to be called before all slider functions
-Slider *slider_init(Slider *slider);
+Slider *slider_init(Slider *slider, float scale);
 //update slider
-int slider_update(Slider *slider);
+int slider_update(Slider *slider, float scale);
 //render slider
-void slider_render(Slider *slider);
+void slider_render(Slider *slider, float scale);
 //free a slider
 void slider_free(Slider *slider);
 //free a slider list
 void slider_list_free(Slider *sliders[], int size);
 //get slider height
-int slider_height(Slider *slider);
+int slider_height(Slider *slider, float scale);
 //get slider width
-int slider_width(Slider *slider);
+int slider_width(Slider *slider, float scale);
 
 //panel init, needs to be called before all panel functions
 Panel *panel_init(Panel *panel);
