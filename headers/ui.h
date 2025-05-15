@@ -164,7 +164,7 @@ typedef struct ColorPicker
     Rect *color_rect;
     //The labels, in order : Picker Title, red slider label, green slider label, blue slider label
     Label *labels[4];
-    
+
     //The sliders, in order : red slider, green slider, blue slider
     Slider *sliders[3];
 } ColorPicker;
@@ -272,6 +272,21 @@ void slider_list_free(Slider *sliders[], int size);
 int slider_height(Slider *slider, float scale);
 //get slider width
 int slider_width(Slider *slider, float scale);
+
+//Color picker init, needs to be called before all picker functions
+ColorPicker *picker_init(ColorPicker *picker);
+//update picker
+int picker_update(ColorPicker *picker, float scale);
+//render picker
+void picker_render(ColorPicker *picker, float scale);
+//free a picker
+void picker_free(ColorPicker *picker);
+//free a picker list
+void picker_list_free(ColorPicker *pickers[], int size);
+//get picker height
+int picker_height(ColorPicker *picker, float scale);
+//get picker width
+int picker_width(ColorPicker *picker, float scale);
 
 //panel init, needs to be called before all panel functions
 Panel *panel_init(Panel *panel);
