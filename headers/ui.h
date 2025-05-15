@@ -164,7 +164,7 @@ typedef struct ColorPicker
     Rect *color_rect;
     //The labels, in order : Picker Title, red slider label, green slider label, blue slider label
     Label *labels[4];
-
+    
     //The sliders, in order : red slider, green slider, blue slider
     Slider *sliders[3];
 } ColorPicker;

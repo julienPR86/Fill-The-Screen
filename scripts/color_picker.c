@@ -19,15 +19,9 @@ void picker_free(ColorPicker *picker)
 {
     if (NULL == picker)
         return;
-        
-    if (NULL != picker->labels)
-    {
-        label_list_free(picker->labels, 4);
-    }
-    if (NULL != picker->sliders)
-    {
-        slider_list_free(picker->sliders, 3);
-    }
+
+    label_list_free(picker->labels, 4);
+    slider_list_free(picker->sliders, 3);
     return;
 }
 
@@ -45,10 +39,10 @@ void picker_list_free(ColorPicker *pickers[], int size)
 
 int picker_height(ColorPicker *picker, float scale)
 {
-    return;
+    return picker->rect.width * scale;
 }
 
 int picker_width(ColorPicker *picker, float scale)
 {
-    return;
+    return picker->rect.height * scale;
 }
