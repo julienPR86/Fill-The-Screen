@@ -1,7 +1,7 @@
 #ifndef _THEME_H_
 #define _THEME_H_
 
-//Color structe which use int, because of slider which uses ints, not int_8
+//Color struct which use int, because of slider which uses ints, not int_8
 typedef struct Color
 {
     int r;
@@ -101,8 +101,8 @@ extern Theme theme;
 
 //the button style
 extern ButtonStyle button_style;
-//the toogle style
-extern ButtonStyle toogle_style;
+//the toggle style
+extern ButtonStyle toggle_style;
 //the slider style
 extern SliderStyle slider_style;
 //the slider cursor style

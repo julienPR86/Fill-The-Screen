@@ -88,9 +88,9 @@ int button_collision(Button *button, int x, int y, float scale)
     return false;
 }
 
-int toogle_collision(Toogle *toogle, int x, int y, float scale)
+int toggle_collision(Toggle *toggle, int x, int y, float scale)
 {
-    if (x >= toogle->x && x <= toogle->x + toogle->width * scale && y >= toogle->y && y <= toogle->y + toogle->height * scale)
+    if (x >= toggle->x && x <= toggle->x + toggle->width * scale && y >= toggle->y && y <= toggle->y + toggle->height * scale)
     {
         return true;
     }

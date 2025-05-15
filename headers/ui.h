@@ -46,7 +46,7 @@ typedef struct Label
     int x;
     //y position
     int y;
-    //widht
+    //width
     int w;
     //height
     int h;
@@ -89,8 +89,8 @@ typedef struct Button
     int active;
 } Button;
 
-//toogle structure
-typedef struct Toogle
+//toggle structure
+typedef struct Toggle
 {
     //x position
     int x;
@@ -100,30 +100,30 @@ typedef struct Toogle
     int width;
     //height
     int height;
-    //toogle state
+    //toggle state
     int state;
-    //toogle label
+    //toggle label
     Label *label;
-    //toogle style
+    //toggle style
     ButtonStyle *style;
-    //toogle command, is called when the toogle is clicked
+    //toggle command, is called when the toggle is clicked
     int (*command)();
     //is active parameter
     int active;
-} Toogle;
+} Toggle;
 
-//toogle group structure
-typedef struct ToogleGroup
+//toggle group structure
+typedef struct ToggleGroup
 {
-    //toogle group
-    Toogle **toogles;
-    //toogle count
+    //toggle group
+    Toggle **toggles;
+    //toggle count
     int count;
     //the selected index
     int selected;
     //is active parameter
     int active;
-} ToogleGroup;
+} ToggleGroup;
 
 //slider cursor structure
 typedef struct SliderCursor
@@ -176,13 +176,13 @@ typedef struct Panel
     Button **buttons;
     //buttons count
     int button_count;
-    //toogles
-    Toogle **toogles;
-    //toogles count
-    int toogle_count;
+    //toggles
+    Toggle **toggles;
+    //toggles count
+    int toggle_count;
     // sliders
     Slider **sliders;
-    //sldiers count
+    //sliders count
     int slider_count;
     // labels
     Label **labels;
@@ -214,31 +214,31 @@ int button_height(Button *button, float scale);
 //return the button width
 int button_width(Button *button, float scale);
 
-//toogle init, needs to be called before all toogle functions
-Toogle *toogle_init(Toogle *toogle);
-//update a toogle
-int toogle_update(Toogle *toogle);
-//render a toogle
-void toogle_render(Toogle *toogle, float scale);
-//free the toogle's label
-void toogle_free(Toogle *toogle);
-//free a toogle's list
-void toogle_list_free(Toogle *toogle[], int size);
-//return the toogle height
-int toogle_height(Toogle *toogle, float scale);
-//return the toogle width
-int toogle_width(Toogle *toogle, float scale);
+//toggle init, needs to be called before all toggle functions
+Toggle *toggle_init(Toggle *toggle);
+//update a toggle
+int toggle_update(Toggle *toggle);
+//render a toggle
+void toggle_render(Toggle *toggle, float scale);
+//free the toggle's label
+void toggle_free(Toggle *toggle);
+//free a toggle's list
+void toggle_list_free(Toggle *toggle[], int size);
+//return the toggle height
+int toggle_height(Toggle *toggle, float scale);
+//return the toggle width
+int toggle_width(Toggle *toggle, float scale);
 
-//toogle group init, needs to be called before all toogle group functions
-ToogleGroup *group_init(ToogleGroup *group);
-//update a toogle group
-int group_update(ToogleGroup *group);
-//render a toogle group
-void group_render(ToogleGroup *group);
-//set all toogles states to normal
-void group_clear_selected(ToogleGroup *group);
-//free the toogle group
-void group_free(ToogleGroup *group);
+//toggle group init, needs to be called before all toggle group functions
+ToggleGroup *group_init(ToggleGroup *group);
+//update a toggle group
+int group_update(ToggleGroup *group);
+//render a toggle group
+void group_render(ToggleGroup *group);
+//set all toggles states to normal
+void group_clear_selected(ToggleGroup *group);
+//free the toggle group
+void group_free(ToggleGroup *group);
 
 //label init, needs to be called before all label functions
 Label *label_init(Label *label);
@@ -248,12 +248,12 @@ void label_update(Label *label);
 void label_render(Label *label);
 //free a label
 void label_free(Label *label);
-//freea label list
+//free a label list
 void label_list_free(Label *labels[], int size);
 
 //slider cursor init, needs to be called before all slider cursor functions
 SliderCursor *slider_cursor_init(SliderCursor *cursor);
-//updaye slider cursor
+//update slider cursor
 int slider_cursor_update(SliderCursor *cursor);
 //render slider cursor
 void slider_cursor_render(SliderCursor *cursor, float scale);

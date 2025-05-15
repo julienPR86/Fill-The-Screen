@@ -8,8 +8,8 @@ Panel *panel_init(Panel *panel)
     if (NULL == panel->buttons && panel->button_count != 0)
         panel->button_count = 0;
 
-    if (NULL == panel->toogles && panel->toogle_count != 0)
-        panel->toogle_count = 0;
+    if (NULL == panel->toggles && panel->toggle_count != 0)
+        panel->toggle_count = 0;
 
     if (NULL == panel->sliders && panel->slider_count != 0)
         panel->slider_count = 0;
@@ -39,14 +39,14 @@ int panel_update(Panel *panel)
             out = button_update(panel->buttons[i]);
         }
     }
-    if (NULL != panel->toogles && RETURN_NONE == out)
+    if (NULL != panel->toggles && RETURN_NONE == out)
     {
-        for (int i = 0; i < panel->toogle_count; i++)
+        for (int i = 0; i < panel->toggle_count; i++)
         {
             if (RETURN_NONE != out)
                 continue;
 
-            out = toogle_update(panel->toogles[i]);
+            out = toggle_update(panel->toggles[i]);
         }
     }
     if (NULL != panel->sliders && RETURN_NONE == out)
@@ -88,11 +88,11 @@ void panel_render(Panel *panel)
             button_render(panel->buttons[i], SCALE);
         }
     }
-    if (NULL != panel->toogles)
+    if (NULL != panel->toggles)
     {
-        for (int i = 0; i < panel->toogle_count; i++)
+        for (int i = 0; i < panel->toggle_count; i++)
         {
-            toogle_render(panel->toogles[i], SCALE);
+            toggle_render(panel->toggles[i], SCALE);
         }
     }
     if (NULL != panel->sliders)
@@ -121,9 +121,9 @@ void panel_free(Panel *panel)
     {
         button_list_free(panel->buttons, panel->button_count);
     }
-    if (NULL != panel->toogles) 
+    if (NULL != panel->toggles) 
     {
-        toogle_list_free(panel->toogles, panel->toogle_count);
+        toggle_list_free(panel->toggles, panel->toggle_count);
     }
     if (NULL != panel->sliders)
     {

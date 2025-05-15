@@ -40,7 +40,7 @@
 //Returns values enum
 enum Returns
 {
-    //return state for UI elements like buttons or toogles, when they're not pressed
+    //return state for UI elements like buttons or toggles, when they're not pressed
     RETURN_NONE = -1,
     //return 0 if function exit successfully
     RETURN_SUCCESS,

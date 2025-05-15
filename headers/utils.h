@@ -15,8 +15,8 @@ void get_mouse_delta(float *x, float *y);
 
 //return 1 if (x,y) is in button, 0 otherwise
 int button_collision(Button *button, int x, int y, float scale);
-//return 1 if (x,y) is in toogle, 0 otherwise
-int toogle_collision(Toogle *toogle, int x, int y, float scale);
+//return 1 if (x,y) is in toggle, 0 otherwise
+int toggle_collision(Toggle *toggle, int x, int y, float scale);
 //return 1 if (x,y) is in slider, 0 otherwise
 int slider_collision(Slider *slider, int x, int y, float scale);
 //return 1 if (x,y) is in slider cursor, 0 otherwise
