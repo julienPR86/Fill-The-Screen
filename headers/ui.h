@@ -43,7 +43,7 @@ typedef struct UI_Element
 //Rect struture
 typedef struct Rect
 {
-    //Rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width and height values
     UI_Element rect;
     //outline thickness
     int outline;
@@ -56,7 +56,7 @@ typedef struct Rect
 //label structure
 typedef struct Label
 {
-    //Rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width and height values
     UI_Element rect;
     //label text
     char *text;
@@ -77,7 +77,7 @@ typedef struct Label
 //button structure
 typedef struct Button
 {
-    //Rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width and height values
     UI_Element rect;
     //button state
     int state;
@@ -94,7 +94,7 @@ typedef struct Button
 //toggle structure
 typedef struct Toggle
 {
-    //Rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width and height values
     UI_Element rect;
     //toggle state
     int state;
@@ -124,7 +124,7 @@ typedef struct ToggleGroup
 //slider cursor structure
 typedef struct SliderCursor
 {
-    //Rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width and height values
     UI_Element rect;
     //cursor state
     int state;
@@ -135,7 +135,7 @@ typedef struct SliderCursor
 //slider structure
 typedef struct Slider
 {
-    //Rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width and height values
     UI_Element rect;
     //current value
     int *value;
@@ -154,6 +154,20 @@ typedef struct Slider
     //is active parameter
     int active;
 } Slider;
+
+//Color picker structure
+typedef struct ColorPicker
+{
+    //The element The element rect, contains the x, y, width and height values
+    UI_Element rect;
+    //The color rect which display the picked color
+    Rect *color_rect;
+    //The labels, in order : Picker Title, red slider label, green slider label, blue slider label
+    Label *labels[4];
+    
+    //The sliders, in order : red slider, green slider, blue slider
+    Slider *sliders[3];
+} ColorPicker;
 
 //panel structure
 typedef struct Panel
@@ -183,7 +197,7 @@ typedef struct Panel
 } Panel;
 
 //render a rectangle
-void rect_render(Rect *rect, float scale);
+void rect_render(Rect *The element rect, float scale);
 
 //button init, needs to be called before all button functions
 Button *button_init(Button *button);
