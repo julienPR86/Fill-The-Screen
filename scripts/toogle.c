@@ -30,7 +30,7 @@ int toogle_update(Toogle *toogle)
     int out = RETURN_NONE; // returns RETURN_NONE if the toogle isn't clicked
     if (toogle_collision(toogle, mouse_x, mouse_y, SCALE))
     {
-        if (mouse_button_pressed == 1 && update)
+        if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK && update)
         {
             switch (toogle->state)
             {
@@ -46,7 +46,7 @@ int toogle_update(Toogle *toogle)
             }
             update = 0;
         }
-        else if (mouse_button_pressed == 0 && !update)
+        else if (mouse_button_pressed == MOUSE_STATE_NONE && !update)
         {
             update = 1;
         }

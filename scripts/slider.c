@@ -65,7 +65,7 @@ int slider_update(Slider *slider, float scale)
     {    
         if (slider_collision(slider, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
         {
-            if (mouse_button_pressed == 1)
+            if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
             {
                 slider->cursor->state = CLICKED;
                 slider->cursor->x += mouse_delta_x;

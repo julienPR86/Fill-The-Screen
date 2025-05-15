@@ -26,11 +26,11 @@ int button_update(Button *button)
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
     if (button_collision(button, mouse_x, mouse_y, SCALE))
     {
-        if (mouse_button_pressed == 1)
+        if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
             button->state = CLICKED;
         }
-        else if (mouse_button_pressed == 0 && button->state == CLICKED)
+        else if (mouse_button_pressed == MOUSE_STATE_NONE && button->state == CLICKED)
         {
             if (NULL != button->command)
                 out = button->command();
