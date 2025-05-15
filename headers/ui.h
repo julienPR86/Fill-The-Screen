@@ -270,7 +270,7 @@ void panel_free(Panel *panel);
 //free a panel list
 void panel_list_free(Panel *panels[], int count);
 
-//Set the position of an UI element based on the given position and anchor
-void set_UI_element_position(UI_Element *element, int x, int y, int anchor);;
+//Set the position of UI element based on the given position and anchor
+void set_UI_element_position(UI_Element *element, int x, int y, int anchor);
 
 #endif
