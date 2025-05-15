@@ -197,7 +197,7 @@ typedef struct Panel
 } Panel;
 
 //render a rectangle
-void rect_render(Rect *The element rect, float scale);
+void rect_render(Rect *element, float scale);
 
 //button init, needs to be called before all button functions
 Button *button_init(Button *button);
