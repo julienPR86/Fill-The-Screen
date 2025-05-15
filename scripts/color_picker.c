@@ -17,11 +17,23 @@ void picker_render(ColorPicker *picker, float scale)
 
 void picker_free(ColorPicker *picker)
 {
+    if (NULL == picker)
+        return;
+
+    label_list_free(picker->labels, 4);
+    slider_list_free(picker->sliders, 3);
     return;
 }
 
 void picker_list_free(ColorPicker *pickers[], int size)
 {
+    if (NULL == pickers)
+        return;
+
+    for (int i = 0; i < size; i++)
+    {
+        picker_free(pickers[i]);
+    }
     return;
 }
 
