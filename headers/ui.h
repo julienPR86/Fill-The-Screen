@@ -14,6 +14,14 @@ enum ButtonStates
     HOVERED,
 };
 
+typedef struct UI_Element
+{
+    int x;
+    int y;
+    int width;
+    int height;
+} UI_Element;
+
 //Rect struture
 typedef struct Rect
 {
