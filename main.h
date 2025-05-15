@@ -85,9 +85,7 @@ extern int WIDTH;
 extern int HEIGHT;
 
 //window scale on x axis
-extern float SCALEX;
-//window scale on y axis
-extern float SCALEY;
+extern float SCALE;
 //window scale is based on the actual resolution and the basic window resolution, which is 1080x720
 
 //contains the current fps number
