@@ -88,8 +88,60 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
     return false;
 }
 
-void set_UI_element_position(UI_Element *element, int x, int y, int anchor)
+void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor)
 {
+    switch (anchor)
+    {
+        case CENTER:
+            element->x = x - element->width * scale / 2;
+            element->y = y - element->height * scale / 2;
+            break;
+
+        case TOP_LEFT:
+            element->x = x;
+            element->y = y;
+            break;
+
+        case TOP_CENTER:
+            element->x = x - element->width * scale / 2;
+            element->y = y;
+            break;
+
+        case TOP_RIGHT:
+            element->x = x - element->width * scale;
+            element->y = y;
+            break;
+
+        case MID_LEFT:
+            element->x = x;
+            element->y = y - element->height * scale / 2;
+            break;
+
+        case MID_RIGHT:
+            element->x = x - element->width * scale;
+            element->y = y - element->height * scale / 2;
+            break;
+
+        case BOTTOM_LEFT:
+            element->x = x;
+            element->y = y - element->height * scale;
+            break;
+
+        case BOTTOM_CENTER:
+            element->x = x - element->width * scale / 2;
+            element->y = y - element->height * scale;
+            break;
+
+        case BOTTOM_RIGHT:
+            element->x = x - element->width * scale;
+            element->y = y - element->height * scale;
+            break;
+
+        default:
+            element->x = x;
+            element->y = y;
+            break;
+    }
     return;
 }
 
