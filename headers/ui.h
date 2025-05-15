@@ -62,8 +62,6 @@ typedef struct Label
     int font_size;
     //text color
     Color text_color;
-    //Label font, needs to be null at declaration, will update in label_init
-    TTF_Font *font;
     //label surface, needs to be null at declaration, will update in label_init
     SDL_Surface *surface;
     //label texture, needs to be null at declaration, will update in label_init
