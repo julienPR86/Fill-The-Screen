@@ -5,19 +5,17 @@ Label *label_init(Label *label)
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
 
-    label->font = roboto_regular_fonts[label->font_size-1];
-
-    if (true != TTF_GetStringSize(label->font, label->text, strlen(label->text), &label->w, &label->h))
+    if (true != TTF_GetStringSize(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), &label->w, &label->h))
     {
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
         return NULL;
     }
-    label->w *= SCALEY;
-    label->h *= SCALEY;
+    label->w *= (SCALEY + SCALEX)/2;
+    label->h *= (SCALEY + SCALEX)/2;
 
     SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
     
-    label->surface = TTF_RenderText_Blended(label->font, label->text, strlen(label->text), color);
+    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), color);
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", SDL_GetError());
