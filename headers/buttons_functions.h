@@ -17,7 +17,7 @@ int constraint_mode();
 int discovery_mode();
 //button function which tells to launch a game in free mode
 int free_mode();
-//button function which tells to active the gameply panel in the options
+//button function which tells to active the gameplay panel in the options
 int option_gameplay();
 //button function which tells to active the color panel in the options
 int option_color_label();

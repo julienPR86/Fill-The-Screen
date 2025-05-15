@@ -23,7 +23,7 @@ extern Player *player;
 int player_init();
 //move the player towards x and y direction
 void player_move(int x, int y);
-//reset all playe values
+//reset all player fields
 void player_reset(Player *player);
 
 #endif
