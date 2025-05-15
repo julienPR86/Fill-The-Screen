@@ -7,16 +7,16 @@ Toggle *toggle_init(Toggle *toggle)
 
     toggle->label = label_init(toggle->label);
 
-    toggle->width = toggle->width;
-    toggle->height = toggle->height;
+    toggle->rect.width = toggle->rect.width;
+    toggle->rect.height = toggle->rect.height;
 
     if (NULL != toggle->label)
     {
-        toggle->width = MAX(toggle->width, toggle->label->w);
-        toggle->height = MAX(toggle->height, toggle->label->h);
+        toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width);
+        toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height);
 
-        toggle->label->x = toggle->x + CENTERED(toggle->width, toggle->label->w);
-        toggle->label->y = toggle->y + CENTERED(toggle->height, toggle->label->h);
+        toggle->label->rect.x = toggle->rect.x + CENTERED(toggle->rect.width, toggle->label->rect.width);
+        toggle->label->rect.y = toggle->rect.y + CENTERED(toggle->rect.height, toggle->label->rect.height);
     }
     return toggle;
 }
@@ -28,7 +28,7 @@ int toggle_update(Toggle *toggle)
     
     static int update = 1;
     int out = RETURN_NONE; // returns RETURN_NONE if the toggle isn't clicked
-    if (toggle_collision(toggle, mouse_x, mouse_y, SCALE))
+    if (UI_element_collision(&toggle->rect, mouse_x, mouse_y, SCALE))
     {
         if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK && update)
         {
@@ -76,9 +76,9 @@ void toggle_render(Toggle *toggle, float scale)
         return;
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {toggle->x + toggle->style->inline_ * scale, toggle->y + toggle->style->inline_ * scale, (toggle->width - toggle->style->inline_ * 2) * scale, (toggle->height - toggle->style->inline_ * 2) * scale};
-    SDL_FRect inline_rect = {toggle->x, toggle->y, toggle->width * scale, toggle->height * scale};
-    SDL_FRect outline_rect = {toggle->x - toggle->style->outline * scale, toggle->y - toggle->style->outline * scale, (toggle->width + toggle->style->outline * 2) * scale, (toggle->height + toggle->style->outline * 2) * scale};
+    SDL_FRect toggle_rect = {toggle->rect.x + toggle->style->inline_ * scale, toggle->rect.y + toggle->style->inline_ * scale, (toggle->rect.width - toggle->style->inline_ * 2) * scale, (toggle->rect.height - toggle->style->inline_ * 2) * scale};
+    SDL_FRect inline_rect = {toggle->rect.x, toggle->rect.y, toggle->rect.width * scale, toggle->rect.height * scale};
+    SDL_FRect outline_rect = {toggle->rect.x - toggle->style->outline * scale, toggle->rect.y - toggle->style->outline * scale, (toggle->rect.width + toggle->style->outline * 2) * scale, (toggle->rect.height + toggle->style->outline * 2) * scale};
 
     switch (toggle->state)
     {
@@ -135,10 +135,10 @@ void toggle_list_free(Toggle *toggles[], int size)
 
 int toggle_height(Toggle *toggle, float scale)
 {
-    return (toggle->height + toggle->style->outline * 2) * scale;
+    return (toggle->rect.height + toggle->style->outline * 2) * scale;
 }
 
 int toggle_width(Toggle *toggle, float scale)
 {
-    return (toggle->width + toggle->style->outline * 2) * scale;
+    return (toggle->rect.width + toggle->style->outline * 2) * scale;
 }

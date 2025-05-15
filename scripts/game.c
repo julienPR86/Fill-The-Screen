@@ -17,8 +17,8 @@ int game()
     }
     Label *labels[] = {&FPS_label};
     
-    int YOFFSET = CENTERED(HEIGHT, (map->height*map->square_size));
-    int XOFFSET = CENTERED(WIDTH, (map->width*map->square_size));
+    int YOFFSET = CENTERED(HEIGHT, (map->height * map->square_size));
+    int XOFFSET = CENTERED(WIDTH, (map->width * map->square_size));
 
     int direction[2] = {0,0};
 

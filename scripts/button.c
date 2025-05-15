@@ -9,11 +9,11 @@ Button *button_init(Button *button)
 
     if (NULL != button->label)
     {
-        button->width = MAX(button->width, button->label->w);
-        button->height = MAX(button->height, button->label->h);
+        button->rect.width = MAX(button->rect.width, button->label->rect.width);
+        button->rect.height = MAX(button->rect.height, button->label->rect.height);
 
-        button->label->x = button->x + CENTERED(button->width, button->label->w);
-        button->label->y = button->y + CENTERED(button->height, button->label->h);
+        button->label->rect.x = button->rect.x + CENTERED(button->rect.width, button->label->rect.width);
+        button->label->rect.y = button->rect.y + CENTERED(button->rect.height, button->label->rect.height);
     }
     return button;
 }
@@ -24,7 +24,7 @@ int button_update(Button *button)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    if (button_collision(button, mouse_x, mouse_y, SCALE))
+    if (UI_element_collision(&button->rect, mouse_x, mouse_y, SCALE))
     {
         if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
@@ -57,9 +57,9 @@ void button_render(Button *button, float scale)
         return;
         
     Color button_color;
-    SDL_FRect button_rect = {button->x + button->style->inline_ * scale, button->y + button->style->inline_ * scale, (button->width - button->style->inline_ * 2) * scale, (button->height - button->style->inline_ * 2) * scale};
-    SDL_FRect inline_rect = {button->x, button->y, button->width * scale, button->height * scale};
-    SDL_FRect outline_rect = {button->x - button->style->outline * scale, button->y - button->style->outline * scale, (button->width + button->style->outline * 2) * scale, (button->height + button->style->outline * 2) * scale};
+    SDL_FRect button_rect = {button->rect.x + button->style->inline_ * scale, button->rect.y + button->style->inline_ * scale, (button->rect.width - button->style->inline_ * 2) * scale, (button->rect.height - button->style->inline_ * 2) * scale};
+    SDL_FRect inline_rect = {button->rect.x, button->rect.y, button->rect.width * scale, button->rect.height * scale};
+    SDL_FRect outline_rect = {button->rect.x - button->style->outline * scale, button->rect.y - button->style->outline * scale, (button->rect.width + button->style->outline * 2) * scale, (button->rect.height + button->style->outline * 2) * scale};
 
     switch (button->state)
     {
@@ -116,10 +116,10 @@ void button_list_free(Button *buttons[], int size)
 
 int button_height(Button *button, float scale)
 {
-    return (button->height + button->style->outline * 2) * scale;
+    return (button->rect.height + button->style->outline * 2) * scale;
 }
 
 int button_width(Button *button, float scale)
 {
-    return (button->width + button->style->outline * 2) * scale;
+    return (button->rect.width + button->style->outline * 2) * scale;
 }

@@ -30,6 +30,7 @@ typedef struct UI_Element
 //Rect struture
 typedef struct Rect
 {
+    //Rect, contains the x, y, width and height values
     UI_Element rect;
     //outline thickness
     int outline;
@@ -42,14 +43,8 @@ typedef struct Rect
 //label structure
 typedef struct Label
 {
-    //x position
-    int x;
-    //y position
-    int y;
-    //width
-    int w;
-    //height
-    int h;
+    //Rect, contains the x, y, width and height values
+    UI_Element rect;
     //label text
     char *text;
     //label font
@@ -69,14 +64,8 @@ typedef struct Label
 //button structure
 typedef struct Button
 {
-    //x position
-    int x;
-    //y position
-    int y;
-    //width
-    int width;
-    //height
-    int height;
+    //Rect, contains the x, y, width and height values
+    UI_Element rect;
     //button state
     int state;
     //button label
@@ -92,14 +81,8 @@ typedef struct Button
 //toggle structure
 typedef struct Toggle
 {
-    //x position
-    int x;
-    //y position
-    int y;
-    //width
-    int width;
-    //height
-    int height;
+    //Rect, contains the x, y, width and height values
+    UI_Element rect;
     //toggle state
     int state;
     //toggle label
@@ -128,12 +111,8 @@ typedef struct ToggleGroup
 //slider cursor structure
 typedef struct SliderCursor
 {
-    //x position
-    int x;
-    //y position
-    int y;
-    //square size
-    int size;
+    //Rect, contains the x, y, width and height values
+    UI_Element rect;
     //cursor state
     int state;
     //cursor style
@@ -143,14 +122,8 @@ typedef struct SliderCursor
 //slider structure
 typedef struct Slider
 {
-    //x position
-    int x;
-    // y position
-    int y;
-    //width
-    int w;
-    //height
-    int h;
+    //Rect, contains the x, y, width and height values
+    UI_Element rect;
     //current value
     int *value;
     //min value

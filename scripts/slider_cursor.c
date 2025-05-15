@@ -15,12 +15,12 @@ int slider_cursor_update(SliderCursor *cursor)
     
     int out = RETURN_NONE;
 
-    if (slider_cursor_collision(cursor, mouse_x, mouse_y, SCALE) || cursor->state == CLICKED)
+    if (UI_element_collision(&cursor->rect, mouse_x, mouse_y, SCALE) || cursor->state == CLICKED)
     {
         if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
             cursor->state = CLICKED;
-            cursor->x += mouse_delta_x;
+            cursor->rect.x += mouse_delta_x;
             out = RETURN_SLIDER_UPDATE;
         }
         else
@@ -41,8 +41,8 @@ void slider_cursor_render(SliderCursor *cursor, float scale)
         return;
 
     Color color;
-    SDL_FRect cursor_rect = {cursor->x, cursor->y, cursor->size * scale, cursor->size * scale};
-    SDL_FRect outline_rect = {cursor->x - cursor->style->outline * scale, cursor->y - cursor->style->outline * scale, (cursor->size + cursor->style->outline * 2) * scale, (cursor->size + cursor->style->outline * 2) * scale};
+    SDL_FRect cursor_rect = {cursor->rect.x, cursor->rect.y, cursor->rect.width* scale, cursor->rect.height * scale};
+    SDL_FRect outline_rect = {cursor->rect.x - cursor->style->outline * scale, cursor->rect.y - cursor->style->outline * scale, (cursor->rect.width + cursor->style->outline * 2) * scale, (cursor->rect.height + cursor->style->outline * 2) * scale};
 
     color = cursor->style->outline_color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);

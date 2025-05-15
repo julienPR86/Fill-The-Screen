@@ -9,23 +9,26 @@ Slider *slider_init(Slider *slider, float scale)
 
     if (NULL == slider->value)
     {
-        slider->cursor->x = slider->x;
-        slider->cursor->y = slider->y;
-        slider->cursor->size = 0;
+        slider->cursor->rect.x = slider->rect.x;
+        slider->cursor->rect.y = slider->rect.y;
+        slider->cursor->rect.width = 0;
+        slider->cursor->rect.height = 0;
         return slider;
     }
 
-    if (slider->cursor->size < slider->h)
-        slider->cursor->size = slider->h;
+    if (slider->cursor->rect.height < slider->rect.height)
+        slider->cursor->rect.height = slider->rect.height;
     
+    slider->cursor->rect.width = slider->cursor->rect.height;
+
     if (*slider->value < slider->min)
         *slider->value = slider->min;
 
     if (*slider->value > slider->max)
         *slider->value = slider->max;
 
-    slider->cursor->x = slider->x + (slider->w * scale * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->size * scale / 2;
-    slider->cursor->y = slider->y + CENTERED(slider->h * scale, slider->cursor->size * scale);
+    slider->cursor->rect.x = slider->rect.x + (slider->rect.width * scale * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->rect.width * scale / 2;
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->cursor->rect.height * scale);
 
     if (NULL != slider->label)
     {
@@ -38,8 +41,8 @@ Slider *slider_init(Slider *slider, float scale)
 
         slider->label = label_init(slider->label);
         
-        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w);
-        slider->label->y = slider->cursor->y + CENTERED(slider->cursor->size, slider->label->h);
+        slider->label->rect.x = slider->cursor->rect.x + CENTERED(slider->cursor->rect.width, slider->label->rect.width);
+        slider->label->rect.y = slider->cursor->rect.y + CENTERED(slider->cursor->rect.height, slider->label->rect.height);
     }
     return slider;
 }
@@ -63,12 +66,12 @@ int slider_update(Slider *slider, float scale)
     
     if (RETURN_NONE == out)
     {    
-        if (slider_collision(slider, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
+        if (UI_element_collision(&slider->rect, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
         {
             if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
             {
                 slider->cursor->state = CLICKED;
-                slider->cursor->x += mouse_delta_x;
+                slider->cursor->rect.x += mouse_delta_x;
                 out = RETURN_SLIDER_UPDATE;
             }
         }
@@ -76,13 +79,13 @@ int slider_update(Slider *slider, float scale)
     
     if (RETURN_NONE != out && NULL != slider->label && NULL != slider->value)
     {
-        if (slider->cursor->x + slider->cursor->size / 2 < slider->x)
-            slider->cursor->x = slider->x - slider->cursor->size / 2;
-        else if (slider->cursor->x + slider->cursor->size / 2 > slider->x + slider->w * scale)
-            slider->cursor->x = slider->x + slider->w * scale - slider->cursor->size / 2;
+        if (slider->cursor->rect.x + slider->cursor->rect.width / 2 < slider->rect.x)
+            slider->cursor->rect.x = slider->rect.x - slider->cursor->rect.width / 2;
+        else if (slider->cursor->rect.x + slider->cursor->rect.width / 2 > slider->rect.x + slider->rect.width * scale)
+            slider->cursor->rect.x = slider->rect.x + slider->rect.width * scale - slider->cursor->rect.width / 2;
 
-        slider->label->x = slider->cursor->x + CENTERED(slider->cursor->size, slider->label->w);
-        // slider->cursor->y = slider->y + CENTERED(slider->h, slider->cursor->size);
+        slider->label->rect.x = slider->cursor->rect.x + CENTERED(slider->cursor->rect.width, slider->label->rect.width);
+        // slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height);
 
         if (NULL != slider->label->text)
         {
@@ -98,7 +101,7 @@ int slider_update(Slider *slider, float scale)
         snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
         slider->label->update = true;
 
-        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->x + (slider->cursor->size * scale) / 2 - slider->x) / (slider->w * scale) / slider->step * slider->step;
+        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
             
         if (*slider->value < slider->min)
             *slider->value = slider->min;
@@ -117,8 +120,8 @@ void slider_render(Slider *slider, float scale)
         return;
     
     Color color;
-    SDL_FRect slider_rect = {slider->x, slider->y, slider->w * scale, slider->h * scale};
-    SDL_FRect outline_rect = {slider->x - slider->style->outline * scale, slider->y - slider->style->outline * scale, (slider->w + slider->style->outline * 2) * scale, (slider->h + slider->style->outline * 2) * scale};
+    SDL_FRect slider_rect = {slider->rect.x, slider->rect.y, slider->rect.width * scale, slider->rect.height * scale};
+    SDL_FRect outline_rect = {slider->rect.x - slider->style->outline * scale, slider->rect.y - slider->style->outline * scale, (slider->rect.width + slider->style->outline * 2) * scale, (slider->rect.height + slider->style->outline * 2) * scale};
     
     color = slider->style->outline_color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
@@ -168,10 +171,10 @@ void slider_list_free(Slider *sliders[], int size)
 
 int slider_height(Slider *slider, float scale)
 {
-    return (slider->h + slider->style->outline * 2) * scale;
+    return (slider->rect.height + slider->style->outline * 2) * scale;
 }
 
 int slider_width(Slider *slider, float scale)
 {
-    return (slider->w + slider->style->outline * 2) * scale;
+    return (slider->rect.width + slider->style->outline * 2) * scale;
 }

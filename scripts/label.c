@@ -5,7 +5,7 @@ Label *label_init(Label *label)
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
 
-    if (true != TTF_GetStringSize(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), &label->w, &label->h))
+    if (true != TTF_GetStringSize(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
         return NULL;
@@ -60,7 +60,7 @@ void label_render(Label *label)
     if (NULL == label || NULL == label->texture || !label->active)
         return;
     
-    SDL_FRect label_rect = {label->x, label->y, label->w, label->h};
+    SDL_FRect label_rect = {label->rect.x, label->rect.y, label->rect.width, label->rect.height};
     if (true != SDL_RenderTexture(renderer, label->texture, NULL, &label_rect))
     {
         fprintf(stderr, "Render copy error : %s\n", SDL_GetError());
