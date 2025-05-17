@@ -34,7 +34,7 @@ int panel_update(Panel *panel)
         for (int i = 0; i < panel->button_count; i++)
         {
             if (RETURN_NONE != out)
-                continue;
+                return out;
 
             out = button_update(panel->buttons[i]);
         }
@@ -44,7 +44,7 @@ int panel_update(Panel *panel)
         for (int i = 0; i < panel->toggle_count; i++)
         {
             if (RETURN_NONE != out)
-                continue;
+                return out;
 
             out = toggle_update(panel->toggles[i]);
         }
@@ -54,7 +54,7 @@ int panel_update(Panel *panel)
         for (int i = 0; i < panel->slider_count; i++)
         {
             if (RETURN_NONE != out)
-                continue;
+                return out;
 
             out = slider_update(panel->sliders[i], SCALE);
         }
