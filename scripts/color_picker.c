@@ -12,6 +12,21 @@ int picker_update(ColorPicker *picker, float scale)
 
 void picker_render(ColorPicker *picker, float scale)
 {
+    if (NULL == picker)
+        return;
+        
+    rect_render(picker->color_rect, scale);
+
+    int i;
+    for (i = 0; i < 4; i++)
+    {
+        label_render(picker->labels[i]);
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        slider_render(picker->sliders[i], scale);
+    }
     return;
 }
 
