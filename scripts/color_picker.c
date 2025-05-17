@@ -7,14 +7,30 @@ ColorPicker *picker_init(ColorPicker *picker)
 
 int picker_update(ColorPicker *picker, float scale)
 {
-    return 0;
+    if (NULL == picker)
+        return;
+        
+    int out, i;
+    for (i = 0; i < 4; i++)
+    {
+        label_update(picker->labels[i]);
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        if (RETURN_NONE != out)
+            return out;
+            
+        out = slider_update(picker->sliders[i], scale);
+    }
+    return out;
 }
 
 void picker_render(ColorPicker *picker, float scale)
 {
     if (NULL == picker)
         return;
-        
+
     rect_render(picker->color_rect, scale);
 
     int i;
