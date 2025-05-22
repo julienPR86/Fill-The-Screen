@@ -2,13 +2,33 @@
 
 ColorPicker *picker_init(ColorPicker *picker)
 {
+    if (NULL == picker || NULL == picker->color_rect)
+        return NULL;
+    
+    int i;
+    for (i = 0; i < 4; i++)
+    {
+        if (NULL == picker->labels[i])
+        {
+            fprintf(stderr, "Gap in picker's labels list\n");
+            return NULL;
+        }
+    }
+    for (i = 0; i < 3; i++)
+    {
+        if (NULL == picker->sliders[i])
+        {
+            fprintf(stderr, "Gap in picker's sliders list\n");
+            return NULL;
+        }
+    }
     return picker;
 }
 
 int picker_update(ColorPicker *picker, float scale)
 {
     if (NULL == picker)
-        return;
+        return RETURN_FAILURE;
         
     int out, i;
     for (i = 0; i < 4; i++)
@@ -20,7 +40,7 @@ int picker_update(ColorPicker *picker, float scale)
     {
         if (RETURN_NONE != out)
             return out;
-            
+
         out = slider_update(picker->sliders[i], scale);
     }
     return out;
