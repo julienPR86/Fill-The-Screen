@@ -25,7 +25,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale)
 
     for (i = 0; i < 4; i++)
     {
-        label_init(picker->labels);
+        label_init(picker->labels[i]);
     }
     for (i = 0; i < 3; i++)
     {
@@ -113,7 +113,7 @@ void update_positions(ColorPicker *picker, int scale)
     set_UI_element_position(&picker->sliders[1]->rect, picker->rect.x, picker->labels[2]->rect.y + picker->labels[2]->rect.height, scale, TOP_LEFT);
     set_UI_element_position(&picker->sliders[2]->rect, picker->rect.x, picker->labels[3]->rect.y + picker->labels[3]->rect.height, scale, TOP_LEFT);
 
-    set_UI_element_position(&picker->color_rect, picker->rect.x + (picker->labels[0]->rect.width + 15) * scale, picker->rect.y, scale, TOP_LEFT);
+    set_UI_element_position(&picker->color_rect->rect, picker->rect.x + (picker->labels[0]->rect.width + 15) * scale, picker->rect.y, scale, TOP_LEFT);
     return;
 }
 
