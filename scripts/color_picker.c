@@ -44,7 +44,7 @@ int picker_update(ColorPicker *picker, float scale)
 
     update_positions(picker, scale);
         
-    int out, i;
+    int out = RETURN_NONE, i;
     for (i = 0; i < 4; i++)
     {
         label_update(picker->labels[i]);
