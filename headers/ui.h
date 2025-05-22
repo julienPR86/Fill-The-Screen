@@ -274,7 +274,7 @@ int slider_height(Slider *slider, float scale);
 int slider_width(Slider *slider, float scale);
 
 //Color picker init, needs to be called before all picker functions
-ColorPicker *picker_init(ColorPicker *picker);
+ColorPicker *picker_init(ColorPicker *picker, float scale);
 //update picker
 int picker_update(ColorPicker *picker, float scale);
 //render picker

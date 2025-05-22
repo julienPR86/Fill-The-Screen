@@ -1,6 +1,6 @@
 #include "../main.h"
 
-ColorPicker *picker_init(ColorPicker *picker)
+ColorPicker *picker_init(ColorPicker *picker, float scale)
 {
     if (NULL == picker || NULL == picker->color_rect)
         return NULL;
@@ -22,6 +22,16 @@ ColorPicker *picker_init(ColorPicker *picker)
             return NULL;
         }
     }
+
+    for (i = 0; i < 4; i++)
+    {
+        label_init(picker->labels);
+    }
+    for (i = 0; i < 3; i++)
+    {
+        slider_init(picker->sliders[i], scale);
+    }
+
     return picker;
 }
 
@@ -90,6 +100,7 @@ void picker_list_free(ColorPicker *pickers[], int size)
 
 void update_position(ColorPicker *picker, int scale)
 {
+
     return;
 }
 
