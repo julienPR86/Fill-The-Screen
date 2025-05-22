@@ -88,6 +88,11 @@ void picker_list_free(ColorPicker *pickers[], int size)
     return;
 }
 
+void update_position(ColorPicker *picker, int scale)
+{
+    return;
+}
+
 int picker_height(ColorPicker *picker, float scale)
 {
     return picker->rect.width * scale;

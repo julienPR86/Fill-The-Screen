@@ -283,6 +283,8 @@ void picker_render(ColorPicker *picker, float scale);
 void picker_free(ColorPicker *picker);
 //free a picker list
 void picker_list_free(ColorPicker *pickers[], int size);
+//update all picker elements position
+void update_position(ColorPicker *picker, int scale);
 //get picker height
 int picker_height(ColorPicker *picker, float scale);
 //get picker width
