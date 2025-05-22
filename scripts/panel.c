@@ -17,6 +17,9 @@ Panel *panel_init(Panel *panel)
     if (NULL == panel->labels && panel->label_count != 0)
         panel->label_count = 0;
 
+    if (NULL == panel->pickers && panel->picker_count != 0)
+        panel->label_count = 0;
+
     if (NULL == panel->rects && panel->rect_count != 0)
         panel->label_count = 0;
     
@@ -57,6 +60,16 @@ int panel_update(Panel *panel)
                 return out;
 
             out = slider_update(panel->sliders[i], SCALE);
+        }
+    }
+    if (NULL != panel->pickers && RETURN_NONE == out)
+    {
+        for (int i = 0; i < panel->picker_count; i++)
+        {
+            if (RETURN_NONE != out)
+                return out;
+
+            out = picker_update(panel->pickers[i], SCALE);
         }
     }
     if (NULL != panel->labels)
@@ -102,6 +115,13 @@ void panel_render(Panel *panel)
             slider_render(panel->sliders[i], SCALE);
         }
     }
+    if (NULL != panel->pickers)
+    {
+        for (int i = 0; i < panel->picker_count; i++)
+        {
+            picker_render(panel->pickers[i], SCALE);
+        }
+    }
     if (NULL != panel->labels)
     {
         for (int i = 0; i < panel->label_count; i++)
@@ -128,6 +148,10 @@ void panel_free(Panel *panel)
     if (NULL != panel->sliders)
     {
         slider_list_free(panel->sliders, panel->slider_count);
+    }
+    if (NULL != panel->sliders)
+    {
+        picker_list_free(panel->pickers, panel->picker_count);
     }
     if (NULL != panel->labels)
     {
