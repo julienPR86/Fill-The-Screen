@@ -181,10 +181,14 @@ typedef struct Panel
     Toggle **toggles;
     //toggles count
     int toggle_count;
-    // sliders
+    //sliders
     Slider **sliders;
     //sliders count
     int slider_count;
+    //color pickers
+    ColorPicker **pickers;
+    //Color picker count
+    int picker_count;
     // labels
     Label **labels;
     //labels count
