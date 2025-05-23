@@ -61,139 +61,127 @@ int options()
     Button *gameplay_button_list[] = {};
     Toggle *gameplay_toggle_list[] = {};
     Slider *gameplay_slider_list[] = {&probability_slider, &map_width_slider, &map_height_slider, &game_speed_slider};
+    ColorPicker *gameplay_picker_list[] = {};
     Label *gameplay_label_list[] = {&probability_slider_description_label, &map_width_slider_description_label, &map_height_slider_description_label, &game_speed_slider_description};
     Rect *gameplay_rect_list[] = {};
-    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toggle_list, 0, gameplay_slider_list, 4, gameplay_label_list, 4, gameplay_rect_list, 0, true};
+    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toggle_list, 0, gameplay_slider_list, 4, gameplay_picker_list , 0, gameplay_label_list, 4, gameplay_rect_list, 0, true};
     panel_init(&gameplay_panel);
 
     // colors panel --------------------------------------------------------------------------
 
-    Label player_red_slider_title_label = {{20, 120*SCALE, 0, 0}, "Player color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&player_red_slider_title_label);
+    Rect player_color_rect = {{0, 0, 50, 50}, 2, &theme.game_colors.player_square_color, {0, 0, 0, 255}};
 
-    Rect player_color_rect = {{player_red_slider_title_label.rect.x + player_red_slider_title_label.rect.width + 15*SCALE, player_red_slider_title_label.rect.y - 5 * SCALE, 50*SCALE, 50*SCALE}, 2, &theme.game_colors.player_square_color, {0, 0, 0, 255}};
-
-    Label player_red_slider_description_label = {{20, 150*SCALE, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&player_red_slider_description_label);
+    Label player_red_slider_title_label = {{0, 0, 0, 0}, "Player color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_red_slider_description_label = {{0, 0, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_green_slider_description_label = {{0, 0, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label player_blue_slider_description_label = {{0, 0, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Label player_red_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor player_red_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider player_red_slider = {{20, player_red_slider_description_label.rect.y + player_red_slider_description_label.rect.height, 256, 20}, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &player_red_slider_label, &player_red_slider_cursor, &slider_style, true};
-    slider_init(&player_red_slider, SCALE);
-
-    Label player_green_slider_description_label = {{20, 200*SCALE, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&player_green_slider_description_label);
+    Slider player_red_slider = {{0, 0, 256, 20}, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &player_red_slider_label, &player_red_slider_cursor, &slider_style, true};
 
     Label player_green_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor player_green_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider player_green_slider = {{20, player_green_slider_description_label.rect.y + player_green_slider_description_label.rect.height, 256, 20}, (int *)&theme.game_colors.player_square_color.g, 0, 255, 1, &player_green_slider_label, &player_green_slider_cursor, &slider_style, true};
-    slider_init(&player_green_slider, SCALE);
-
-    Label player_blue_slider_description_label = {{20, 250*SCALE, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&player_blue_slider_description_label);
+    Slider player_green_slider = {{0, 0, 256, 20}, (int *)&theme.game_colors.player_square_color.g, 0, 255, 1, &player_green_slider_label, &player_green_slider_cursor, &slider_style, true};
 
     Label player_blue_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor player_blue_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider player_blue_slider = {{20, player_blue_slider_description_label.rect.y + player_blue_slider_description_label.rect.height, 256, 20}, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &player_blue_slider_label, &player_blue_slider_cursor, &slider_style, true};
-    slider_init(&player_blue_slider, SCALE);
+    Slider player_blue_slider = {{0, 0, 256, 20}, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &player_blue_slider_label, &player_blue_slider_cursor, &slider_style, true};
+
+    Label *player_picker_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
+    Slider *player_picker_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
+
+    ColorPicker player_picker = {{20, 100, 0, 0}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
+    picker_init(&player_picker, SCALE);
 
 
-    Label collision_square_red_slider_title_label = {{350, 120*SCALE, 0, 0}, "Blocks color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&collision_square_red_slider_title_label);
+    Rect collision_square_color_rect = {{0, 0, 50, 50}, 2, &theme.game_colors.collision_square_color, {0, 0, 0, 255}};
 
-    Rect collision_square_color_rect = {{collision_square_red_slider_title_label.rect.x + collision_square_red_slider_title_label.rect.width + 15*SCALE, collision_square_red_slider_title_label.rect.y - 5 * SCALE, 50*SCALE, 50*SCALE}, 2, &theme.game_colors.collision_square_color, {0, 0, 0, 255}};
-
-    Label collision_square_red_slider_description_label = {{350, 150*SCALE, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&collision_square_red_slider_description_label);
+    Label collision_square_red_slider_title_label = {{0, 0, 0, 0}, "Blocks color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_red_slider_description_label = {{0, 0, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_green_slider_description_label = {{0, 0, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label collision_square_blue_slider_description_label = {{0, 0, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Label collision_square_red_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor collision_square_red_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider collision_square_red_slider = {{350, collision_square_red_slider_description_label.rect.y + collision_square_red_slider_description_label.rect.height, 256, 20}, &theme.game_colors.collision_square_color.r, 0, 255, 1, &collision_square_red_slider_label, &collision_square_red_slider_cursor, &slider_style, true};
-    slider_init(&collision_square_red_slider, SCALE);
-
-    Label collision_square_green_slider_description_label = {{350, 200*SCALE, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&collision_square_green_slider_description_label);
+    Slider collision_square_red_slider = {{0, 0, 256, 20}, &theme.game_colors.collision_square_color.r, 0, 255, 1, &collision_square_red_slider_label, &collision_square_red_slider_cursor, &slider_style, true};
 
     Label collision_square_green_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor collision_square_green_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider collision_square_green_slider = {{350, collision_square_green_slider_description_label.rect.y + collision_square_green_slider_description_label.rect.height, 256, 20}, &theme.game_colors.collision_square_color.g, 0, 255, 1, &collision_square_green_slider_label, &collision_square_green_slider_cursor, &slider_style, true};
-    slider_init(&collision_square_green_slider, SCALE);
-
-    Label collision_square_blue_slider_description_label = {{350, 250*SCALE, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&collision_square_blue_slider_description_label);
+    Slider collision_square_green_slider = {{0, 0, 256, 20}, &theme.game_colors.collision_square_color.g, 0, 255, 1, &collision_square_green_slider_label, &collision_square_green_slider_cursor, &slider_style, true};
 
     Label collision_square_blue_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor collision_square_blue_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider collision_square_blue_slider = {{350, collision_square_blue_slider_description_label.rect.y + collision_square_blue_slider_description_label.rect.height, 256, 20}, &theme.game_colors.collision_square_color.b, 0, 255, 1, &collision_square_blue_slider_label, &collision_square_blue_slider_cursor, &slider_style, true};
-    slider_init(&collision_square_blue_slider, SCALE);
+    Slider collision_square_blue_slider = {{0, 0, 256, 20}, &theme.game_colors.collision_square_color.b, 0, 255, 1, &collision_square_blue_slider_label, &collision_square_blue_slider_cursor, &slider_style, true};
+
+    Label *collision_square_picker_label_list[] = {&collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label};
+    Slider *collision_square_picker_slider_list[] = {&collision_square_red_slider, &collision_square_green_slider, &collision_square_blue_slider};
+
+    ColorPicker collision_square_picker = {{350, 100, 0, 0}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list};
+    picker_init(&collision_square_picker, SCALE);
 
 
-    Label line_square_red_slider_title_label = {{700, 120*SCALE, 0, 0}, "Line color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&line_square_red_slider_title_label);
 
-    Rect line_square_color_rect = {{line_square_red_slider_title_label.rect.x + line_square_red_slider_title_label.rect.width + 15*SCALE, line_square_red_slider_title_label.rect.y - 5 * SCALE, 50*SCALE, 50*SCALE}, 2, &theme.game_colors.line_square_color, {0, 0, 0, 255}};
+    Rect line_square_color_rect = {{0, 0, 50, 50}, 2, &theme.game_colors.line_square_color, {0, 0, 0, 255}};
 
-    Label line_square_red_slider_description_label = {{700, 150*SCALE, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&line_square_red_slider_description_label);
+    Label line_square_slider_title_label = {{0, 0, 0, 0}, "Line color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_red_slider_description_label = {{0, 0, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_green_slider_description_label = {{0, 0, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label line_square_blue_slider_description_label = {{0, 0, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Label line_square_red_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor line_square_red_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider line_square_red_slider = {{700, line_square_red_slider_description_label.rect.y + line_square_red_slider_description_label.rect.height, 256, 20}, &theme.game_colors.line_square_color.r, 0, 255, 1, &line_square_red_slider_label, &line_square_red_slider_cursor, &slider_style, true};
-    slider_init(&line_square_red_slider, SCALE);
-
-    Label line_square_green_slider_description_label = {{700, 200*SCALE, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&line_square_green_slider_description_label);
+    Slider line_square_red_slider = {{0, 0, 256, 20}, &theme.game_colors.line_square_color.r, 0, 255, 1, &line_square_red_slider_label, &line_square_red_slider_cursor, &slider_style, true};
 
     Label line_square_green_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor line_square_green_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider line_square_green_slider = {{700, line_square_green_slider_description_label.rect.y + line_square_green_slider_description_label.rect.height, 256, 20}, &theme.game_colors.line_square_color.g, 0, 255, 1, &line_square_green_slider_label, &line_square_green_slider_cursor, &slider_style, true};
-    slider_init(&line_square_green_slider, SCALE);
-
-    Label line_square_blue_slider_description_label = {{700, 250*SCALE, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&line_square_blue_slider_description_label);
+    Slider line_square_green_slider = {{0, 0, 256, 20}, &theme.game_colors.line_square_color.g, 0, 255, 1, &line_square_green_slider_label, &line_square_green_slider_cursor, &slider_style, true};
 
     Label line_square_blue_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor line_square_blue_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider line_square_blue_slider = {{700, line_square_blue_slider_description_label.rect.y + line_square_blue_slider_description_label.rect.height, 256, 20}, &theme.game_colors.line_square_color.b, 0, 255, 1, &line_square_blue_slider_label, &line_square_blue_slider_cursor, &slider_style, true};
-    slider_init(&line_square_blue_slider, SCALE);
+    Slider line_square_blue_slider = {{0, 0, 256, 20}, &theme.game_colors.line_square_color.b, 0, 255, 1, &line_square_blue_slider_label, &line_square_blue_slider_cursor, &slider_style, true};
+
+    Label *line_square_picker_label_list[] = {&line_square_slider_title_label, &line_square_red_slider_description_label, &line_square_green_slider_description_label, &line_square_blue_slider_description_label};
+    Slider *line_square_picker_slider_list[] = {&line_square_red_slider, &line_square_green_slider, &line_square_blue_slider};
+
+    ColorPicker line_square_picker = {{700, 100, 0, 0}, &line_square_color_rect, line_square_picker_label_list, line_square_picker_slider_list};
+    picker_init(&line_square_picker, SCALE);
 
 
-    Label empty_square_red_slider_title_label = {{20, 370*SCALE, 0, 0}, "Background color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&empty_square_red_slider_title_label);
 
-    Rect empty_square_color_rect = {{empty_square_red_slider_title_label.rect.x + empty_square_red_slider_title_label.rect.width + 15*SCALE, empty_square_red_slider_title_label.rect.y - 5 * SCALE, 50*SCALE, 50*SCALE}, 2, &theme.game_colors.empty_square_color, {0, 0, 0, 255}};
-
-    Label empty_square_red_slider_description_label = {{20, 400*SCALE, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&empty_square_red_slider_description_label);
+    Rect empty_square_color_rect = {{0, 0, 50, 50}, 2, &theme.game_colors.empty_square_color, {0, 0, 0, 255}};
+    
+    Label empty_square_slider_title_label = {{0, 0, 0, 0}, "Background color", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_red_slider_description_label = {{0, 0, 0, 0}, "Red", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_green_slider_description_label = {{0, 0, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label empty_square_blue_slider_description_label = {{0, 0, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Label empty_square_red_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor empty_square_red_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider empty_square_red_slider = {{20, empty_square_red_slider_description_label.rect.y + empty_square_red_slider_description_label.rect.height, 256, 20}, &theme.game_colors.empty_square_color.r, 0, 255, 1, &empty_square_red_slider_label, &empty_square_red_slider_cursor, &slider_style, true};
-    slider_init(&empty_square_red_slider, SCALE);
-
-    Label empty_square_green_slider_description_label = {{20, 450*SCALE, 0, 0}, "Green", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&empty_square_green_slider_description_label);
+    Slider empty_square_red_slider = {{0, 0, 256, 20}, &theme.game_colors.empty_square_color.r, 0, 255, 1, &empty_square_red_slider_label, &empty_square_red_slider_cursor, &slider_style, true};
 
     Label empty_square_green_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor empty_square_green_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider empty_square_green_slider = {{20, empty_square_green_slider_description_label.rect.y + empty_square_green_slider_description_label.rect.height, 256, 20}, &theme.game_colors.empty_square_color.g, 0, 255, 1, &empty_square_green_slider_label, &empty_square_green_slider_cursor, &slider_style, true};
-    slider_init(&empty_square_green_slider, SCALE);
-
-    Label empty_square_blue_slider_description_label = {{20, 500*SCALE, 0, 0}, "Blue", 20, {0, 0, 0, 255}, NULL, NULL, false, true};
-    label_init(&empty_square_blue_slider_description_label);
+    Slider empty_square_green_slider = {{0, 0, 256, 20}, &theme.game_colors.empty_square_color.g, 0, 255, 1, &empty_square_green_slider_label, &empty_square_green_slider_cursor, &slider_style, true};
 
     Label empty_square_blue_slider_label = {{0, 0, 0, 0}, NULL, 10, {0, 0, 0, 255}, NULL, NULL, false, true};
     SliderCursor empty_square_blue_slider_cursor = {{0, 0, 0, 0}, NORMAL, &slider_cursor_style};
-    Slider empty_square_blue_slider = {{20, empty_square_blue_slider_description_label.rect.y + empty_square_blue_slider_description_label.rect.height, 256, 20}, &theme.game_colors.empty_square_color.b, 0, 255, 1, &empty_square_blue_slider_label, &empty_square_blue_slider_cursor, &slider_style, true};
-    slider_init(&empty_square_blue_slider, SCALE);
+    Slider empty_square_blue_slider = {{0, 0, 256, 20}, &theme.game_colors.empty_square_color.b, 0, 255, 1, &empty_square_blue_slider_label, &empty_square_blue_slider_cursor, &slider_style, true};
+
+    Label *empty_square_picker_label_list[] = {&empty_square_slider_title_label, &empty_square_red_slider_description_label, &empty_square_green_slider_description_label, &empty_square_blue_slider_description_label};
+    Slider *empty_square_picker_slider_list[] = {&empty_square_red_slider, &empty_square_green_slider, &empty_square_blue_slider};
+
+    ColorPicker empty_square_picker = {{20, 500, 0, 0}, &empty_square_color_rect, empty_square_picker_label_list, empty_square_picker_slider_list};
+    picker_init(&empty_square_picker, SCALE);
 
 
     Button *colors_button_list[] = {};
     Toggle *colors_toggle_list[] = {};
-    Slider *colors_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider, &collision_square_red_slider, &collision_square_green_slider, &collision_square_blue_slider, &line_square_red_slider, &line_square_green_slider, &line_square_blue_slider, &empty_square_red_slider, &empty_square_green_slider, &empty_square_blue_slider};
-    Label *colors_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label, &collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label, &line_square_red_slider_title_label, &line_square_red_slider_description_label, &line_square_green_slider_description_label, &line_square_blue_slider_description_label, &empty_square_red_slider_title_label, &empty_square_red_slider_description_label, &empty_square_green_slider_description_label, &empty_square_blue_slider_description_label};
-    Rect *color_rect_list[] = {&player_color_rect, &collision_square_color_rect, &line_square_color_rect , &empty_square_color_rect};
-    Panel colors_panel = {colors_button_list, 0, colors_toggle_list, 0, colors_slider_list, 12, colors_label_list, 16, color_rect_list, 4, false};
+    Slider *colors_slider_list[] = {};
+    ColorPicker *color_picker_list[] = {&player_picker, &collision_square_picker, &line_square_picker, &empty_square_picker};
+    Label *colors_label_list[] = {};
+    Rect *color_rect_list[] = {};
+    Panel colors_panel = {colors_button_list, 0, colors_toggle_list, 0, colors_slider_list, 0, color_picker_list , 4, colors_label_list, 0, color_rect_list, 0, false};
     panel_init(&colors_panel);
 
     // Video panel --------------------------------------------------------------------
@@ -209,9 +197,10 @@ int options()
     Button *video_button_list[] = {};
     Toggle *video_toggle_list[] = {};
     Slider *video_slider_list[] = {&max_fps_slider};
+    ColorPicker *video_picker_list[] = {};
     Label *video_label_list[] = {&max_fps_slider_description_label};
     Rect *video_rect_list[] = {};
-    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_label_list, 1, video_rect_list, 0, false};
+    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_picker_list , 0, video_label_list, 1, video_rect_list, 0, false};
     panel_init(&video_panel);
 
     // Audio panel --------------------------------------------------------------------
@@ -246,9 +235,10 @@ int options()
     Button *audio_button_list[] = {};
     Toggle *audio_toggle_list[] = {};
     Slider *audio_slider_list[] = {&master_audio_slider, &music_audio_slider, &effects_audio_slider};
+    ColorPicker *audio_picker_list[] = {};
     Label *audio_label_list[] = {&master_audio_slider_description_label, &music_audio_slider_description_label, &effects_audio_slider_description_label};
     Rect *audio_rect_list[] = {};
-    Panel audio_panel = {audio_button_list, 0, audio_toggle_list, 0, audio_slider_list, 3, audio_label_list, 3, audio_rect_list, 0, false};
+    Panel audio_panel = {audio_button_list, 0, audio_toggle_list, 0, audio_slider_list, 3, audio_picker_list , 0, audio_label_list, 3, audio_rect_list, 0, false};
     panel_init(&audio_panel);
 
     // panels end ---------------------
