@@ -37,6 +37,9 @@
 //Get min value between a and b
 #define MIN(a, b) ((a < b) ? a : b)
 
+//Init values for UI_element
+#define ZERO {0, 0, 0, 0}
+
 //Returns values enum
 enum Returns
 {
