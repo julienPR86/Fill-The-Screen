@@ -1,6 +1,8 @@
 #ifndef _THEME_H_
 #define _THEME_H_
 
+#define DARK {0, 0, 0, 255}
+
 //Color struct which use int, because of slider which uses ints, not int_8
 typedef struct Color
 {
