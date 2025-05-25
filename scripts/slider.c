@@ -169,6 +169,13 @@ void slider_list_free(Slider *sliders[], int size)
     return;
 }
 
+void set_cursor_position(Slider *slider, float scale)
+{
+    slider->cursor->rect.x = slider->rect.x + (slider->rect.width * scale * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->rect.width * scale / 2;
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->cursor->rect.height * scale);
+    return;
+}
+
 int slider_height(Slider *slider, float scale)
 {
     return (slider->rect.height + slider->style->outline * 2) * scale;
