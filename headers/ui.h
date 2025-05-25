@@ -271,8 +271,10 @@ int slider_update(Slider *slider, float scale);
 void slider_render(Slider *slider, float scale);
 //free a slider
 void slider_free(Slider *slider);
-//free a slider list
+//free a list of sliders
 void slider_list_free(Slider *sliders[], int size);
+//Updates the slider's cursor position
+void set_cursor_position(Slider *slider, float scale);
 //get slider height
 int slider_height(Slider *slider, float scale);
 //get slider width
