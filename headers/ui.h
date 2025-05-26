@@ -279,6 +279,8 @@ void slider_clamp_value(Slider *slider);
 void slider_set_cursor_position(Slider *slider, float scale);
 //Limits the cursor position
 void slider_clamp_cursor_position(Slider *slider, float scale);
+//Updates the slider label text based on the slider value
+Slider *slider_label_text_update(Slider *slider);
 //Updates the slider's label position
 void slider_set_label_position(Slider *slider, float scale);
 //get slider height

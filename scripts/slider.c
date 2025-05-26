@@ -27,15 +27,12 @@ Slider *slider_init(Slider *slider, float scale)
 
     if (NULL != slider->label)
     {
-        slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
-        if (NULL == slider->label->text)
+        if (NULL == slider_label_text_update(slider))
         {
-            fprintf(stderr, "slider->label->text : Memory allocation error");
+            slider->label = NULL;
+            return slider;
         }
-        snprintf(slider->label->text, get_number_digits(slider->max)+1, "%d", *slider->value);
-
-        slider->label = label_init(slider->label);
-        
+        label_init(slider->label);
         slider_set_label_position(slider, scale);
     }
     return slider;
@@ -46,7 +43,7 @@ int slider_update(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->cursor || !slider->active)
         return RETURN_NONE;
     
-    int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked
+    int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
 
     out = slider_cursor_update(slider->cursor);
     switch (out)
@@ -74,7 +71,7 @@ int slider_update(Slider *slider, float scale)
         }
     }
     
-    if (RETURN_NONE != out && NULL != slider->label && NULL != slider->value) // Execute if the slider is being updated
+    if (RETURN_NONE != out && NULL != slider->label && NULL != slider->value) // Execute if the slider is being clicked / updated
     {
         if (NULL != slider->label->text)
         {
@@ -82,13 +79,7 @@ int slider_update(Slider *slider, float scale)
             slider->label->text = NULL;
         }
             
-        slider->label->text = (char *)malloc((get_number_digits(slider->max)+1) * sizeof(char));
-        if (NULL == slider->label->text)
-        {
-            fprintf(stderr, "slider->label->text : Memory allocation error");
-        }
-        snprintf(slider->label->text, (get_number_digits(slider->max)+1), "%d", *slider->value);
-        slider->label->update = true;
+        slider_label_text_update(slider);
 
         *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
         slider_clamp_value(slider);
@@ -198,6 +189,22 @@ void slider_clamp_cursor_position(Slider *slider, float scale)
     slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->cursor->rect.height * scale);
 
     return;
+}
+
+Slider *slider_label_text_update(Slider *slider)
+{
+    int digits = get_number_digits(slider->max)+1;
+
+    slider->label->text = (char *)malloc(digits * sizeof(char));
+    if (NULL == slider->label->text)
+    {
+        fprintf(stderr, "slider label text : Memory allocation error");
+        return NULL;
+    }
+    snprintf(slider->label->text, digits, "%d", *slider->value);
+    slider->label->update = true;
+
+    return slider;
 }
 
 void slider_set_label_position(Slider *slider, float scale)
