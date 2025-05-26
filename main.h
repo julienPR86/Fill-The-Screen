@@ -47,7 +47,7 @@ enum Returns
     RETURN_NONE = -1,
     //return 0 if function exit successfully
     RETURN_SUCCESS,
-    //return 1 if function exit successfully
+    //return 1 if function exit unsuccessfully
     RETURN_FAILURE,
     //tells to quit the whole game
     RETURN_EXIT_FULL_GAME,

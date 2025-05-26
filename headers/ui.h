@@ -286,7 +286,7 @@ Slider *slider_label_text_update(Slider *slider);
 //Updates the slider's label position
 void slider_set_label_position(Slider *slider, float scale);
 //Calculate the slider value based on the cursor position and the slider step
-int slider_value(Slider *slider, float scale);
+int slider_get_value(Slider *slider, float scale);
 //get slider height
 int slider_height(Slider *slider, float scale);
 //get slider width

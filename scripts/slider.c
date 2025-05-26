@@ -81,7 +81,7 @@ int slider_update(Slider *slider, float scale)
             
         slider_label_text_update(slider);
 
-        *slider->value = slider_value(slider, scale);
+        *slider->value = slider_get_value(slider, scale);
         slider_clamp_value(slider);
 
         label_update(slider->label);
@@ -176,7 +176,7 @@ int slider_check_cursor_position(Slider * slider, float scale)
     if (NULL == slider || NULL == slider->cursor)
         return RETURN_NONE;
 
-    if (*slider->value != slider_value(slider, scale))
+    if (*slider->value != slider_get_value(slider, scale))
         return false;
 
     return true;
@@ -228,7 +228,7 @@ void slider_set_label_position(Slider *slider, float scale)
     return;
 }
 
-int slider_value(Slider *slider, float scale)
+int slider_get_value(Slider *slider, float scale)
 {
     int value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
     return value;
