@@ -273,8 +273,12 @@ void slider_render(Slider *slider, float scale);
 void slider_free(Slider *slider);
 //free a list of sliders
 void slider_list_free(Slider *sliders[], int size);
+//Clamp the value of the cursor based on the min and max value
+void slider_clamp_value(Slider *slider);
 //Updates the slider's cursor position
 void slider_set_cursor_position(Slider *slider, float scale);
+//Limits the cursor position
+void slider_clamp_cursor_position(Slider *slider, float scale);
 //Updates the slider's label position
 void slider_set_label_position(Slider *slider, float scale);
 //get slider height
