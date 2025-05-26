@@ -5,6 +5,8 @@ Label *label_init(Label *label)
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
 
+    label->update = false;
+
     if (true != TTF_GetStringSize(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
