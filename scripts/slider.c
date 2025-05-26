@@ -81,7 +81,7 @@ int slider_update(Slider *slider, float scale)
             
         slider_label_text_update(slider);
 
-        *slider->value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
+        *slider->value = slider_value(slider, scale);
         slider_clamp_value(slider);
 
         label_update(slider->label);
@@ -171,6 +171,17 @@ void slider_set_cursor_position(Slider *slider, float scale)
     return;
 }
 
+int slider_check_cursor_position(Slider * slider, float scale)
+{
+    if (NULL == slider || NULL == slider->cursor)
+        return RETURN_NONE;
+
+    if (*slider->value != slider_value(slider, scale))
+        return false;
+
+    return true;
+}
+
 void slider_clamp_cursor_position(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider->cursor)
@@ -215,6 +226,12 @@ void slider_set_label_position(Slider *slider, float scale)
     slider->label->rect.x = slider->rect.x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale;
     slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->label->rect.height * scale);
     return;
+}
+
+int slider_value(Slider *slider, float scale)
+{
+    int value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
+    return value;
 }
 
 int slider_height(Slider *slider, float scale)
