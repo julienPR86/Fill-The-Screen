@@ -277,12 +277,16 @@ void slider_list_free(Slider *sliders[], int size);
 void slider_clamp_value(Slider *slider);
 //Updates the slider's cursor position
 void slider_set_cursor_position(Slider *slider, float scale);
+//Check if the slider cursor is at the right position
+int slider_check_cursor_position(Slider * slider, float scale);
 //Limits the cursor position
 void slider_clamp_cursor_position(Slider *slider, float scale);
 //Updates the slider label text based on the slider value
 Slider *slider_label_text_update(Slider *slider);
 //Updates the slider's label position
 void slider_set_label_position(Slider *slider, float scale);
+//Calculate the slider value based on the cursor position and the slider step
+int slider_value(Slider *slider, float scale);
 //get slider height
 int slider_height(Slider *slider, float scale);
 //get slider width
