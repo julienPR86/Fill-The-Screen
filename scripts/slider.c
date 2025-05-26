@@ -195,14 +195,7 @@ void slider_clamp_cursor_position(Slider *slider, float scale)
         slider->cursor->rect.x = slider->rect.x + slider->rect.width * scale - slider->cursor->rect.width / 2;
     }
     
-    if (slider->cursor->rect.y < slider->rect.y)
-    {
-        slider->cursor->rect.y = slider->rect.y;
-    }
-    else if (slider->cursor->rect.y > slider->rect.y)
-    {
-        slider->cursor->rect.y = slider->rect.y;
-    }
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->cursor->rect.height * scale);
 
     return;
 }
