@@ -157,7 +157,7 @@ void slider_clamp_value(Slider *slider)
 {
     if (NULL == slider)
         return;
-        
+
     if (*slider->value < slider->min)
     {
         *slider->value = slider->min;
@@ -209,10 +209,10 @@ void slider_clamp_cursor_position(Slider *slider, float scale)
 
 void slider_set_label_position(Slider *slider, float scale)
 {
-    if (NULL == slider || NULL == slider->label)
+    if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return;
 
-    slider->label->rect.x = slider->rect.x + slider->rect.width * scale + 10;
+    slider->label->rect.x = slider->rect.x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale;
     slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->label->rect.height * scale);
     return;
 }
