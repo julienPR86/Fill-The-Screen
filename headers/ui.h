@@ -274,7 +274,9 @@ void slider_free(Slider *slider);
 //free a list of sliders
 void slider_list_free(Slider *sliders[], int size);
 //Updates the slider's cursor position
-void set_cursor_position(Slider *slider, float scale);
+void slider_set_cursor_position(Slider *slider, float scale);
+//Updates the slider's label position
+void slider_set_label_position(Slider *slider, float scale);
 //get slider height
 int slider_height(Slider *slider, float scale);
 //get slider width
@@ -291,7 +293,7 @@ void picker_free(ColorPicker *picker);
 //free a picker list
 void picker_list_free(ColorPicker *pickers[], int size);
 //update all picker elements position
-void update_positions(ColorPicker *picker, int scale);
+void picker_set_positions(ColorPicker *picker, int scale);
 //get picker height
 int picker_height(ColorPicker *picker, float scale);
 //get picker width
