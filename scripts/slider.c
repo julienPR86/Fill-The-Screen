@@ -55,6 +55,7 @@ int slider_update(Slider *slider, float scale)
             break;
     }
 
+    // slider_set_cursor_position(slider, scale);
     slider_clamp_cursor_position(slider, scale);
     slider_set_label_position(slider, scale);
     
@@ -68,6 +69,14 @@ int slider_update(Slider *slider, float scale)
                 slider->cursor->rect.x += mouse_delta_x;
                 out = RETURN_SLIDER_UPDATE;
             }
+            else
+            {
+                slider->cursor->state = HOVERED;
+            }
+        }
+        else
+        {
+            slider->cursor->state = NORMAL;
         }
     }
     
