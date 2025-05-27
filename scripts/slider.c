@@ -172,7 +172,7 @@ void slider_set_cursor_position(Slider *slider, float scale)
 
 int slider_check_cursor_position(Slider * slider, float scale)
 {
-    if (NULL == slider || NULL == slider->cursor)
+    if (NULL == slider)
         return RETURN_NONE;
 
     if (*slider->value != slider_get_value(slider, scale))
@@ -229,6 +229,9 @@ void slider_set_label_position(Slider *slider, float scale)
 
 int slider_get_value(Slider *slider, float scale)
 {
+    if (NULL == slider || NULL == slider->cursor)
+        return RETURN_NONE;
+
     int value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
     return value;
 }
