@@ -10,29 +10,10 @@ SliderCursor *slider_cursor_init(SliderCursor *cursor)
 
 int slider_cursor_update(SliderCursor *cursor)
 {
-    if (NULL == cursor || NULL == cursor->style)
+    if (NULL == cursor)
         return RETURN_NONE;
     
-    int out = RETURN_NONE;
-
-    if (UI_element_collision(&cursor->rect, mouse_x, mouse_y, SCALE) || cursor->state == CLICKED)
-    {
-        if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
-        {
-            cursor->state = CLICKED;
-            cursor->rect.x += mouse_delta_x;
-            out = RETURN_SLIDER_UPDATE;
-        }
-        else
-        {
-            cursor->state = HOVERED;
-        }
-    }
-    else
-    {
-        cursor->state = NORMAL;
-    }
-    return out;
+    return RETURN_NONE;
 }
 
 void slider_cursor_render(SliderCursor *cursor, float scale)

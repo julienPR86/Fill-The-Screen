@@ -45,23 +45,13 @@ int slider_update(Slider *slider, float scale)
     
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
 
-    out = slider_cursor_update(slider->cursor);
-    switch (out)
-    {
-        case RETURN_SLIDER_UPDATE:
-            break;
-            
-        default:
-            break;
-    }
-
     // slider_set_cursor_position(slider, scale);
     slider_clamp_cursor_position(slider, scale);
     slider_set_label_position(slider, scale);
     
     if (RETURN_NONE == out)
     {    
-        if (UI_element_collision(&slider->rect, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
+        if (UI_element_collision(&slider->rect, mouse_x, mouse_y, SCALE) || UI_element_collision(&slider->cursor->rect, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
         {
             if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
             {
