@@ -71,21 +71,20 @@ int slider_update(Slider *slider, float scale)
         }
     }
     
-    if (RETURN_NONE != out && NULL != slider->label && NULL != slider->value) // Execute if the slider is being clicked / updated
+    if (RETURN_NONE == out || NULL == slider->label || NULL == slider->value) // Execute if the slider is being clicked / updated
+        return out;
+
+    if (NULL != slider->label->text)
     {
-        if (NULL != slider->label->text)
-        {
-            free(slider->label->text);
-            slider->label->text = NULL;
-        }
-            
-        slider_label_text_update(slider);
+        free(slider->label->text);
+        slider->label->text = NULL;
+    } 
+    slider_label_text_update(slider);
 
-        *slider->value = slider_get_value(slider, scale);
-        slider_clamp_value(slider);
+    *slider->value = slider_get_value(slider, scale);
+    slider_clamp_value(slider);
 
-        label_update(slider->label);
-    }
+    label_update(slider->label);
     return out;
 }
 
