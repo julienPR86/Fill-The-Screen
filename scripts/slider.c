@@ -232,7 +232,7 @@ int slider_get_value(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->cursor)
         return RETURN_NONE;
 
-    int value = slider->min + (slider->max - slider->min) * (slider->cursor->rect.x + (slider->cursor->rect.width * scale) / 2 - slider->rect.x) / (slider->rect.width * scale) / slider->step * slider->step;
+    int value = roundf((((slider->cursor->rect.x + slider->cursor->rect.width * scale / 2) - slider->rect.x) * 100 / slider->rect.width * scale) * (slider->max - slider->min) / 100) + slider->min;
     return value;
 }
 
