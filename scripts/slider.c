@@ -71,7 +71,10 @@ int slider_update(Slider *slider, float scale)
     slider_set_label_position(slider, scale);
     
     if (RETURN_NONE == out || NULL == slider->label || NULL == slider->value) // Execute if the slider is being clicked / updated
+    {
+        slider_set_cursor_position(slider, scale);
         return out;
+    }
 
     if (NULL != slider->label->text)
     {
