@@ -32,7 +32,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale)
         slider_init(picker->sliders[i], scale);
     }
 
-    update_positions(picker, scale);
+    picker_set_positions(picker, scale);
 
     return picker;
 }
@@ -41,8 +41,6 @@ int picker_update(ColorPicker *picker, float scale)
 {
     if (NULL == picker)
         return RETURN_FAILURE;
-
-    update_positions(picker, scale);
         
     int out = RETURN_NONE, i;
     for (i = 0; i < 4; i++)
@@ -102,8 +100,11 @@ void picker_list_free(ColorPicker *pickers[], int size)
     return;
 }
 
-void update_positions(ColorPicker *picker, int scale)
+void picker_set_positions(ColorPicker *picker, int scale)
 {
+    if (NULL == picker || NULL == picker->labels || NULL == picker->sliders)
+        return;
+
     set_UI_element_position(&picker->labels[0]->rect, picker->rect.x, picker->rect.y, scale, TOP_LEFT);
     set_UI_element_position(&picker->labels[1]->rect, picker->rect.x, picker->rect.y + 30 * scale, scale, TOP_LEFT);
     set_UI_element_position(&picker->labels[2]->rect, picker->rect.x, picker->labels[1]->rect.y + 50 * scale, scale, TOP_LEFT);
