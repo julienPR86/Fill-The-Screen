@@ -42,12 +42,9 @@ int slider_update(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider->cursor || !slider->active)
         return RETURN_NONE;
+
     
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
-
-    // slider_set_cursor_position(slider, scale);
-    slider_clamp_cursor_position(slider, scale);
-    slider_set_label_position(slider, scale);
     
     if (RETURN_NONE == out)
     {    
@@ -69,6 +66,9 @@ int slider_update(Slider *slider, float scale)
             slider->cursor->state = NORMAL;
         }
     }
+
+    slider_clamp_cursor_position(slider, scale);
+    slider_set_label_position(slider, scale);
     
     if (RETURN_NONE == out || NULL == slider->label || NULL == slider->value) // Execute if the slider is being clicked / updated
         return out;
