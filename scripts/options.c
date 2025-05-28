@@ -36,7 +36,7 @@ int options()
 
     Label map_width_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor map_width_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
-    Slider map_width_slider = {{20, map_width_slider_description_label.rect.y + map_width_slider_description_label.rect.height, 200, 20}, &map_width, 2, 200, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
+    Slider map_width_slider = {{20, map_width_slider_description_label.rect.y + map_width_slider_description_label.rect.height, 200, 20}, &map_width, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
     slider_init(&map_width_slider, SCALE);
 
 
@@ -45,7 +45,7 @@ int options()
 
     Label map_height_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor map_height_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
-    Slider map_height_slider = {{20, map_height_slider_description_label.rect.y + map_height_slider_description_label.rect.height, 200, 20}, &map_height, 2, 200, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
+    Slider map_height_slider = {{20, map_height_slider_description_label.rect.y + map_height_slider_description_label.rect.height, 200, 20}, &map_height, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
     slider_init(&map_height_slider, SCALE);
 
 
