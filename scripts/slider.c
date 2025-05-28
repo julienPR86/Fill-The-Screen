@@ -22,7 +22,6 @@ Slider *slider_init(Slider *slider, float scale)
     slider->cursor->rect.width = slider->cursor->rect.height;
 
     slider_clamp_value(slider);
-
     slider_set_cursor_position(slider, scale);
 
     if (NULL != slider->label)
@@ -56,6 +55,12 @@ int slider_update(Slider *slider, float scale)
                 slider->cursor->rect.x += mouse_delta_x;
                 out = RETURN_SLIDER_UPDATE;
             }
+            else if (mouse_wheel_value != 0)
+            {
+                slider->cursor->state = CLICKED;
+                *slider->value += mouse_wheel_value * -1;
+                out = RETURN_SLIDER_UPDATE;
+            }
             else
             {
                 slider->cursor->state = HOVERED;
@@ -70,11 +75,22 @@ int slider_update(Slider *slider, float scale)
     slider_clamp_cursor_position(slider, scale);
     slider_set_label_position(slider, scale);
     
-    if (RETURN_NONE == out || NULL == slider->label || NULL == slider->value) // Execute if the slider is being clicked / updated
+    if (RETURN_NONE == out || NULL == slider->label || NULL == slider->value) // Execute if the slider isn't being clicked / updated
     {
         slider_set_cursor_position(slider, scale);
         return out;
     }
+
+    if (mouse_wheel_value == 0)
+    {
+        *slider->value = slider_get_value(slider, scale);
+    }
+    else
+    {
+        slider_set_cursor_position(slider, scale);
+        slider_clamp_cursor_position(slider, scale);
+    }
+    slider_clamp_value(slider);
 
     if (NULL != slider->label->text)
     {
@@ -82,9 +98,6 @@ int slider_update(Slider *slider, float scale)
         slider->label->text = NULL;
     } 
     slider_label_text_update(slider);
-
-    *slider->value = slider_get_value(slider, scale);
-    slider_clamp_value(slider);
 
     label_update(slider->label);
     return out;
