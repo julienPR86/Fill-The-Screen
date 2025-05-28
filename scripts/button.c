@@ -114,12 +114,12 @@ void button_list_free(Button *buttons[], int size)
     return;
 }
 
-int button_height(Button *button, float scale)
+int button_get_height(Button *button, float scale)
 {
     return (button->rect.height + button->style->outline * 2) * scale;
 }
 
-int button_width(Button *button, float scale)
+int button_get_width(Button *button, float scale)
 {
     return (button->rect.width + button->style->outline * 2) * scale;
 }

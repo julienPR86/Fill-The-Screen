@@ -238,7 +238,7 @@ int slider_get_value(Slider *slider, float scale)
     return value;
 }
 
-int slider_height(Slider *slider, float scale)
+int slider_get_height(Slider *slider, float scale)
 {
     if (NULL == slider)
         return 0;
@@ -246,7 +246,7 @@ int slider_height(Slider *slider, float scale)
     return (slider->rect.height + slider->style->outline * 2) * scale;
 }
 
-int slider_width(Slider *slider, float scale)
+int slider_get_width(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return 0;

@@ -215,9 +215,9 @@ void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
 //return the button height
-int button_height(Button *button, float scale);
+int button_get_height(Button *button, float scale);
 //return the button width
-int button_width(Button *button, float scale);
+int button_get_width(Button *button, float scale);
 
 //toggle init, needs to be called before all toggle functions
 Toggle *toggle_init(Toggle *toggle);
@@ -230,9 +230,9 @@ void toggle_free(Toggle *toggle);
 //free a toggle's list
 void toggle_list_free(Toggle *toggle[], int size);
 //return the toggle height
-int toggle_height(Toggle *toggle, float scale);
+int toggle_get_height(Toggle *toggle, float scale);
 //return the toggle width
-int toggle_width(Toggle *toggle, float scale);
+int toggle_get_width(Toggle *toggle, float scale);
 
 //toggle group init, needs to be called before all toggle group functions
 ToggleGroup *group_init(ToggleGroup *group);
@@ -288,9 +288,9 @@ void slider_set_label_position(Slider *slider, float scale);
 //Calculate the slider value based on the cursor position and the slider step
 int slider_get_value(Slider *slider, float scale);
 //get slider height
-int slider_height(Slider *slider, float scale);
+int slider_get_height(Slider *slider, float scale);
 //get slider width
-int slider_width(Slider *slider, float scale);
+int slider_get_width(Slider *slider, float scale);
 
 //Color picker init, needs to be called before all picker functions
 ColorPicker *picker_init(ColorPicker *picker, float scale);
@@ -305,9 +305,9 @@ void picker_list_free(ColorPicker *pickers[], int size);
 //update all picker elements position
 void picker_set_positions(ColorPicker *picker, int scale);
 //get picker height
-int picker_height(ColorPicker *picker, float scale);
+int picker_get_height(ColorPicker *picker, float scale);
 //get picker width
-int picker_width(ColorPicker *picker, float scale);
+int picker_get_width(ColorPicker *picker, float scale);
 
 //panel init, needs to be called before all panel functions
 Panel *panel_init(Panel *panel);

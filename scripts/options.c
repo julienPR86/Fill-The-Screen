@@ -9,11 +9,11 @@ int options()
 
     Toggle gameplay_toggle = {{0, 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
     toggle_init(&gameplay_toggle);
-    Toggle colors_toggle = {{toggle_width(&gameplay_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
+    Toggle colors_toggle = {{toggle_get_width(&gameplay_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
     toggle_init(&colors_toggle);
-    Toggle video_toggle = {{colors_toggle.rect.x + toggle_width(&colors_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
+    Toggle video_toggle = {{colors_toggle.rect.x + toggle_get_width(&colors_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
     toggle_init(&video_toggle);
-    Toggle audio_toggle = {{video_toggle.rect.x + toggle_width(&video_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
+    Toggle audio_toggle = {{video_toggle.rect.x + toggle_get_width(&video_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
     toggle_init(&audio_toggle);
 
     Toggle *options_toggle_list[] = {&gameplay_toggle, &colors_toggle, &video_toggle, &audio_toggle};
