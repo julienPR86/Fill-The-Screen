@@ -27,7 +27,7 @@ int options()
 
     Label probability_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor probability_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
-    Slider probability_slider = {{20, probability_slider_description_label.rect.y + probability_slider_description_label.rect.height, 200, 20}, &probability, 1, 200, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
+    Slider probability_slider = {{20, probability_slider_description_label.rect.y + probability_slider_description_label.rect.height, 200, 20}, &probability, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
     slider_init(&probability_slider, SCALE);
 
 
