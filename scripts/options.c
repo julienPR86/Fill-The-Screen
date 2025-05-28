@@ -118,7 +118,7 @@ int options()
     Label *collision_square_picker_label_list[] = {&collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label};
     Slider *collision_square_picker_slider_list[] = {&collision_square_red_slider, &collision_square_green_slider, &collision_square_blue_slider};
 
-    ColorPicker collision_square_picker = {{350, 150, 0, 0}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list};
+    ColorPicker collision_square_picker = {{370, 150, 0, 0}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list};
     picker_init(&collision_square_picker, SCALE);
 
 

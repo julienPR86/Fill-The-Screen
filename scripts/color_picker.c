@@ -120,10 +120,25 @@ void picker_set_positions(ColorPicker *picker, int scale)
 
 int picker_height(ColorPicker *picker, float scale)
 {
-    return picker->rect.width * scale;
+    if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
+        return RETURN_NONE;
+
+    int i, height = 0;
+    for (i = 2; i < 4; i++)
+    {
+        height += picker->labels[i]->rect.height;
+    }
+    for (i = 0; i < 3; i++)
+    {
+        height += slider_height(picker->sliders[i], scale);
+    }
+    return (height + picker->color_rect->rect.height + 20) * scale;
 }
 
 int picker_width(ColorPicker *picker, float scale)
 {
-    return picker->rect.height * scale;
+    if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
+        return RETURN_NONE;
+
+    return MAX((picker->labels[0]->rect.width + picker->color_rect->rect.width + 15), slider_width(picker->sliders[0], scale)) * scale;
 }
