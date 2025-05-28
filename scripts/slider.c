@@ -251,5 +251,5 @@ int slider_width(Slider *slider, float scale)
     if (NULL == slider)
         return 0;
 
-    return (slider->rect.width + slider->style->outline * 2) * scale;
+    return (slider->rect.width + slider->style->outline * 2 + slider->label->rect.width + 5) * scale;
 }
