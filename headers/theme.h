@@ -1,9 +1,6 @@
 #ifndef _THEME_H_
 #define _THEME_H_
 
-#define DARK {0, 0, 0, 255}
-#define WHITE {255, 255, 255, 255}
-
 //Color struct which use int, because of slider which uses ints, not int_8
 typedef struct Color
 {
@@ -94,6 +91,9 @@ extern ButtonStyle toggle_style;
 extern SliderStyle slider_style;
 //the slider cursor style
 extern SliderCursorStyle slider_cursor_style;
+
+const Color DARK;
+const Color WHITE;
 
 //Roboto_regular font array
 extern TTF_Font **roboto_regular_fonts;
