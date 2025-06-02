@@ -17,7 +17,7 @@ void rect_render(Rect *rect, float scale)
 void render_outline(UI_Element *element, float scale)
 {
     SDL_FRect outline_rect = {element->x - element->outline.size * scale, element->y - element->outline.size * scale, element->width * scale + element->outline.size * 2 * scale, element->height * scale + element->outline.size * 2 * scale};
-    SDL_FRect inline_rect = {element->x - element->inline_.size * scale, element->y - element->inline_.size * scale, element->width * scale + element->inline_.size * 2 * scale, element->height * scale + element->inline_.size * 2 * scale};
+    SDL_FRect inline_rect = {element->x, element->y, element->width, element->height};
     
     SDL_SetRenderDrawColor(renderer, element->outline.color.r, element->outline.color.g, element->outline.color.b, element->outline.color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
