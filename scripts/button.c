@@ -56,9 +56,9 @@ void button_render(Button *button, float scale)
         
     Color button_color;
     SDL_FRect button_rect = {button->rect.x + button->rect.inline_.size * scale, button->rect.y + button->rect.inline_.size * scale, (button->rect.width - button->rect.inline_.size * 2) * scale, (button->rect.height - button->rect.inline_.size * 2) * scale};
-    SDL_FRect inline_rect = {button->rect.x, button->rect.y, button->rect.width * scale, button->rect.height * scale};
-    SDL_FRect outline_rect = {button->rect.x - button->rect.outline.size * scale, button->rect.y - button->rect.outline.size * scale, (button->rect.width + button->rect.outline.size * 2) * scale, (button->rect.height + button->rect.outline.size * 2) * scale};
 
+    render_outline(&button->rect, scale);
+    
     switch (button->state)
     {
         case NORMAL:
@@ -73,12 +73,6 @@ void button_render(Button *button, float scale)
         default:
             break;
     }
-
-    SDL_SetRenderDrawColor(renderer, button->rect.outline.color.r, button->rect.outline.color.g, button->rect.outline.color.b, button->rect.outline.color.a);
-    SDL_RenderFillRect(renderer, &outline_rect);
-
-    SDL_SetRenderDrawColor(renderer, button->rect.inline_.color.r, button->rect.inline_.color.g, button->rect.inline_.color.b, button->rect.inline_.color.a);
-    SDL_RenderFillRect(renderer, &inline_rect);
 
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
