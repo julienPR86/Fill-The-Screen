@@ -224,10 +224,10 @@ typedef struct Panel
 } Panel;
 
 //Outlines
-Outline *outlines;
+extern Outline *outlines;
 
 //inlines
-Inline *inlines;
+extern Inline *inlines;
 
 //render a rectangle
 void rect_render(Rect *element, float scale);
