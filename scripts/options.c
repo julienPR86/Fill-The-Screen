@@ -69,7 +69,7 @@ int options()
 
     // colors panel --------------------------------------------------------------------------
 
-    Rect player_color_rect = {{0, 0, 50, 50, NO_OUTLINE, NO_INLINE}, &theme.game_colors.player_square_color};
+    Rect player_color_rect = {{0, 0, 50, 50, rect_outline, rect_inline}, &theme.game_colors.player_square_color};
 
     Label player_red_slider_title_label = {ZERO, "Player color", 30, DARK, NULL, NULL, false, true};
     Label player_red_slider_description_label = {ZERO, "Red", 20, DARK, NULL, NULL, false, true};
@@ -96,7 +96,7 @@ int options()
 
 
 
-    Rect collision_square_color_rect = {{0, 0, 50, 50, NO_OUTLINE, NO_INLINE}, &theme.game_colors.collision_square_color};
+    Rect collision_square_color_rect = {{0, 0, 50, 50, rect_outline, rect_inline}, &theme.game_colors.collision_square_color};
 
     Label collision_square_red_slider_title_label = {ZERO, "Blocks color", 30, DARK, NULL, NULL, false, true};
     Label collision_square_red_slider_description_label = {ZERO, "Red", 20, DARK, NULL, NULL, false, true};
@@ -123,7 +123,7 @@ int options()
 
 
 
-    Rect line_square_color_rect = {{0, 0, 50, 50, NO_OUTLINE, NO_INLINE}, &theme.game_colors.line_square_color};
+    Rect line_square_color_rect = {{0, 0, 50, 50, rect_outline, rect_inline}, &theme.game_colors.line_square_color};
 
     Label line_square_slider_title_label = {ZERO, "Line color", 30, DARK, NULL, NULL, false, true};
     Label line_square_red_slider_description_label = {ZERO, "Red", 20, DARK, NULL, NULL, false, true};
@@ -150,7 +150,7 @@ int options()
 
 
 
-    Rect empty_square_color_rect = {{0, 0, 50, 50, NO_OUTLINE, NO_INLINE}, &theme.game_colors.empty_square_color};
+    Rect empty_square_color_rect = {{0, 0, 50, 50, rect_outline, rect_inline}, &theme.game_colors.empty_square_color};
     
     Label empty_square_slider_title_label = {ZERO, "Background color", 30, DARK, NULL, NULL, false, true};
     Label empty_square_red_slider_description_label = {ZERO, "Red", 20, DARK, NULL, NULL, false, true};
