@@ -27,19 +27,6 @@ enum Anchors
     BOTTOM_RIGHT,
 };
 
-//UI_Element struct, it represent the base of an UI element, which contains an x and y position, a width and a height
-typedef struct UI_Element
-{
-    //x position
-    int x;
-    //y position
-    int y;
-    //width
-    int width;
-    //height
-    int height;
-} UI_Element;
-
 //Outline structure
 typedef struct Outline
 {
@@ -57,6 +44,24 @@ typedef struct Inline
     //Inline color
     Color color;
 } Inline;
+
+//UI_Element struct, it represent the base of an UI element, which contains an x and y position, a width and a height
+typedef struct UI_Element
+{
+    //x position
+    int x;
+    //y position
+    int y;
+    //width
+    int width;
+    //height
+    int height;
+    //element outline
+    Outline outline;
+    //element inline
+    Inline inline_;
+} UI_Element;
+
 
 //Rect struture
 typedef struct Rect
