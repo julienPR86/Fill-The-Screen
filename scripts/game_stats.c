@@ -34,10 +34,10 @@ int game_stats()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title_label = {{0, 0, 0, 0}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {ZERO, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&title_label);
 
-    Label congrats = {{0, 0, 0, 0}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label congrats = {ZERO, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&congrats);
 
     Label percent_label = {{0, 150, 0, 0}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
@@ -49,9 +49,9 @@ int game_stats()
     Label square_ratio_label = {{0, 250, 0, 0}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&square_ratio_label);
 
-    Label back_button_label = {{0, 0, 0, 0}, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label restart_button_label = {{0, 0, 0, 0}, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label main_menu_button_label = {{0, 0, 0, 0}, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label back_button_label = {ZERO, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label restart_button_label = {ZERO, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label main_menu_button_label = {ZERO, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Button back_button = {{20, 400, 150, 50}, NORMAL, &back_button_label, &button_style, &back, true};
     button_init(&back_button);

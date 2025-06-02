@@ -7,12 +7,12 @@ int main()
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title_label = {{0, 0, 0, 0}, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {ZERO, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&title_label);
 
-    Label play_button_label = {{0, 0, 0, 0}, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label options_button_label = {{0, 0, 0, 0}, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label exit_button_label = {{0, 0, 0, 0}, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label play_button_label = {ZERO, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label options_button_label = {ZERO, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label exit_button_label = {ZERO, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Button play_button = {{20, 200, 150, 50}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
     button_init(&play_button);
