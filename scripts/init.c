@@ -44,7 +44,7 @@ int max_font_size = 100;
 
 
 char *FPS_text;
-Label FPS_label = {{2, 0, 0, 0, NULL, NULL}, NULL, 20, {0, 255, 75, 255}, NULL, NULL, false, true};
+Label FPS_label = {{2, 0, 0, 0, {0, {0, 0, 0, 255}}, {0, {255, 255, 255, 255}}}, NULL, 20, {0, 255, 75, 255}, NULL, NULL, false, true};
 
 
 
