@@ -68,7 +68,7 @@ void picker_render(ColorPicker *picker, float scale)
     int i;
     for (i = 0; i < 4; i++)
     {
-        label_render(picker->labels[i]);
+        label_render(picker->labels[i], scale);
     }
 
     for (i = 0; i < 3; i++)

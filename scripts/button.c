@@ -78,7 +78,7 @@ void button_render(Button *button, float scale)
     SDL_RenderFillRect(renderer, &button_rect);
     
     if (NULL != button->label)
-        label_render(button->label);
+        label_render(button->label, scale);
     return;
 }
 

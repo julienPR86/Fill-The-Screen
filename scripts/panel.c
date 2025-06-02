@@ -126,7 +126,7 @@ void panel_render(Panel *panel)
     {
         for (int i = 0; i < panel->label_count; i++)
         {
-            label_render(panel->labels[i]);
+            label_render(panel->labels[i], SCALE);
         }
     }
     return;

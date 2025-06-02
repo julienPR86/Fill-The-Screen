@@ -83,7 +83,7 @@ int mode_choice()
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
             label_update(labels[i]);
-            label_render(labels[i]);
+            label_render(labels[i], SCALE);
         }
 
         SDL_RenderPresent(renderer);

@@ -110,11 +110,8 @@ void slider_render(Slider *slider, float scale)
     
     Color color;
     SDL_FRect slider_rect = {slider->rect.x, slider->rect.y, slider->rect.width * scale, slider->rect.height * scale};
-    SDL_FRect outline_rect = {slider->rect.x - slider->rect.outline.size * scale, slider->rect.y - slider->rect.outline.size * scale, (slider->rect.width + slider->rect.outline.size * 2) * scale, (slider->rect.height + slider->rect.outline.size * 2) * scale};
-    
-    color = slider->rect.outline.color;
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderFillRect(renderer, &outline_rect);
+
+    render_outline(&slider->rect, scale);
 
     color = slider->style->background;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
@@ -123,7 +120,7 @@ void slider_render(Slider *slider, float scale)
     slider_cursor_render(slider->cursor, scale);
     if (NULL != slider->label)
     {
-        label_render(slider->label);
+        label_render(slider->label, scale);
     }
     return;
 }
