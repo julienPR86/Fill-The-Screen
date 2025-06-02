@@ -16,6 +16,9 @@ void rect_render(Rect *rect, float scale)
 
 void render_outline(UI_Element *element, float scale)
 {
+    if (NULL == element || element->width <= 0 || element->height <= 0)
+        return;
+
     if (element->outline.size > 0)
     {
         SDL_FRect outline_rect = {element->x - element->outline.size * scale, element->y - element->outline.size * scale, element->width * scale + element->outline.size * 2 * scale, element->height * scale + element->outline.size * 2 * scale};
