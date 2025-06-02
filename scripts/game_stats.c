@@ -40,26 +40,26 @@ int game_stats()
     Label congrats = {ZERO, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&congrats);
 
-    Label percent_label = {{0, 150, 0, 0}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label percent_label = {{0, 150, 0, 0, OUTLINE, INLINE}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&percent_label);
 
-    Label moves_label = {{0, 200, 0, 0}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label moves_label = {{0, 200, 0, 0, OUTLINE, INLINE}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&moves_label);
 
-    Label square_ratio_label = {{0, 250, 0, 0}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label square_ratio_label = {{0, 250, 0, 0, OUTLINE, INLINE}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&square_ratio_label);
 
     Label back_button_label = {ZERO, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label restart_button_label = {ZERO, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label main_menu_button_label = {ZERO, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button back_button = {{20, 400, 150, 50}, NORMAL, &back_button_label, &button_style, &back, true};
+    Button back_button = {{20, 400, 150, 50, OUTLINE, INLINE}, NORMAL, &back_button_label, &button_style, &back, true};
     button_init(&back_button);
 
-    Button restart_button = {{20, 500, 150, 50}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    Button restart_button = {{20, 500, 150, 50, OUTLINE, INLINE}, NORMAL, &restart_button_label, &button_style, &restart, true};
     button_init(&restart_button);
 
-    Button main_menu_button = {{20, 600, 150, 50}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    Button main_menu_button = {{20, 600, 150, 50, OUTLINE, INLINE}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
     button_init(&main_menu_button);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};

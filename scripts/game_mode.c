@@ -5,7 +5,7 @@ int mode_choice()
     Label title_label = {ZERO, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&title_label);
     
-    Label back_label = {{20, HEIGHT-50, 0, 0}, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label back_label = {{20, HEIGHT-50, 0, 0, OUTLINE, INLINE}, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&back_label);
 
     Label fill_mode_button_label = {ZERO, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
@@ -13,16 +13,16 @@ int mode_choice()
     Label constraint_mode_button_label = {ZERO, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label free_mode_button_label = {ZERO, "Free", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button fill_mode_button = {{20, 200, 200, 50}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
+    Button fill_mode_button = {{20, 200, 200, 50, OUTLINE, INLINE}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
     button_init(&fill_mode_button);
 
-    Button discovery_mode_button = {{20, 300, 200, 50}, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
+    Button discovery_mode_button = {{20, 300, 200, 50, OUTLINE, INLINE}, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
     button_init(&discovery_mode_button);
 
-    Button constraint_mode_button = {{20, 400, 200, 50}, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
+    Button constraint_mode_button = {{20, 400, 200, 50, OUTLINE, INLINE}, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
     button_init(&constraint_mode_button);
 
-    Button free_mode_button = {{20, 500, 200, 50}, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
+    Button free_mode_button = {{20, 500, 200, 50, OUTLINE, INLINE}, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
     button_init(&free_mode_button);
 
     Label *labels[] = {&title_label, &back_label, &FPS_label};
