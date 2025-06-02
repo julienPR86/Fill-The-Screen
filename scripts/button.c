@@ -45,9 +45,7 @@ int button_update(Button *button)
     {
         button->state = NORMAL;
     }
-    if (NULL != button->label)
-        label_update(button->label);
-
+    label_update(button->label);
     return out;
 }
 
