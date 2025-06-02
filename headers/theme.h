@@ -92,8 +92,8 @@ extern SliderStyle slider_style;
 //the slider cursor style
 extern SliderCursorStyle slider_cursor_style;
 
-const Color DARK;
-const Color WHITE;
+extern const Color DARK;
+extern const Color WHITE;
 
 //Roboto_regular font array
 extern TTF_Font **roboto_regular_fonts;
