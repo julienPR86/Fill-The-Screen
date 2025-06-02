@@ -220,6 +220,11 @@ typedef struct Panel
     int active;
 } Panel;
 
+//basic outline style
+extern Outline basic_outline;
+//basic inline style
+extern Inline basic_inline;
+
 //render a rectangle
 void rect_render(Rect *element, float scale);
 
