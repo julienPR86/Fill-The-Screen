@@ -7,13 +7,13 @@ int options()
     Label video_toggle_label = {ZERO, "Video", 40, DARK, NULL, NULL, false, true};
     Label audio_toggle_label = {ZERO, "Audio", 40, DARK, NULL, NULL, false, true};
 
-    Toggle gameplay_toggle = {{0, 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, NO_INLINE}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
+    Toggle gameplay_toggle = {{0, 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
     toggle_init(&gameplay_toggle);
-    Toggle colors_toggle = {{toggle_get_width(&gameplay_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, NO_INLINE}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
+    Toggle colors_toggle = {{toggle_get_width(&gameplay_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
     toggle_init(&colors_toggle);
-    Toggle video_toggle = {{colors_toggle.rect.x + toggle_get_width(&colors_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, NO_INLINE}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
+    Toggle video_toggle = {{colors_toggle.rect.x + toggle_get_width(&colors_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
     toggle_init(&video_toggle);
-    Toggle audio_toggle = {{video_toggle.rect.x + toggle_get_width(&video_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, NO_INLINE}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
+    Toggle audio_toggle = {{video_toggle.rect.x + toggle_get_width(&video_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
     toggle_init(&audio_toggle);
 
     Toggle *options_toggle_list[] = {&gameplay_toggle, &colors_toggle, &video_toggle, &audio_toggle};
@@ -26,7 +26,7 @@ int options()
     label_init(&probability_slider_description_label);
 
     Label probability_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor probability_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor probability_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider probability_slider = {{20, probability_slider_description_label.rect.y + probability_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, &probability, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
     slider_init(&probability_slider, SCALE);
 
@@ -35,7 +35,7 @@ int options()
     label_init(&map_width_slider_description_label);
 
     Label map_width_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor map_width_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor map_width_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider map_width_slider = {{20, map_width_slider_description_label.rect.y + map_width_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, &map_width, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
     slider_init(&map_width_slider, SCALE);
 
@@ -44,7 +44,7 @@ int options()
     label_init(&map_height_slider_description_label);
 
     Label map_height_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor map_height_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor map_height_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider map_height_slider = {{20, map_height_slider_description_label.rect.y + map_height_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, &map_height, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
     slider_init(&map_height_slider, SCALE);
 
@@ -53,7 +53,7 @@ int options()
     label_init(&game_speed_slider_description);
 
     Label game_speed_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor game_speed_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor game_speed_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider game_speed_slider = {{20, game_speed_slider_description.rect.y + game_speed_slider_description.rect.height, 300, 20, outlines[1], NO_INLINE}, &game_speed, 1, 300, 1, &game_speed_slider_label, &game_speed_slider_cursor, &slider_style, true};
     slider_init(&game_speed_slider, SCALE);
 
@@ -77,15 +77,15 @@ int options()
     Label player_blue_slider_description_label = {ZERO, "Blue", 20, DARK, NULL, NULL, false, true};
 
     Label player_red_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor player_red_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor player_red_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider player_red_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &player_red_slider_label, &player_red_slider_cursor, &slider_style, true};
 
     Label player_green_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor player_green_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor player_green_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider player_green_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, (int *)&theme.game_colors.player_square_color.g, 0, 255, 1, &player_green_slider_label, &player_green_slider_cursor, &slider_style, true};
 
     Label player_blue_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor player_blue_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor player_blue_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider player_blue_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &player_blue_slider_label, &player_blue_slider_cursor, &slider_style, true};
 
     Label *player_picker_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
@@ -104,15 +104,15 @@ int options()
     Label collision_square_blue_slider_description_label = {ZERO, "Blue", 20, DARK, NULL, NULL, false, true};
 
     Label collision_square_red_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor collision_square_red_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor collision_square_red_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider collision_square_red_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.collision_square_color.r, 0, 255, 1, &collision_square_red_slider_label, &collision_square_red_slider_cursor, &slider_style, true};
 
     Label collision_square_green_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor collision_square_green_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor collision_square_green_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider collision_square_green_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.collision_square_color.g, 0, 255, 1, &collision_square_green_slider_label, &collision_square_green_slider_cursor, &slider_style, true};
 
     Label collision_square_blue_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor collision_square_blue_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor collision_square_blue_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider collision_square_blue_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.collision_square_color.b, 0, 255, 1, &collision_square_blue_slider_label, &collision_square_blue_slider_cursor, &slider_style, true};
 
     Label *collision_square_picker_label_list[] = {&collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label};
@@ -131,15 +131,15 @@ int options()
     Label line_square_blue_slider_description_label = {ZERO, "Blue", 20, DARK, NULL, NULL, false, true};
 
     Label line_square_red_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor line_square_red_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor line_square_red_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider line_square_red_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.line_square_color.r, 0, 255, 1, &line_square_red_slider_label, &line_square_red_slider_cursor, &slider_style, true};
 
     Label line_square_green_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor line_square_green_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor line_square_green_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider line_square_green_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.line_square_color.g, 0, 255, 1, &line_square_green_slider_label, &line_square_green_slider_cursor, &slider_style, true};
 
     Label line_square_blue_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor line_square_blue_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor line_square_blue_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider line_square_blue_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.line_square_color.b, 0, 255, 1, &line_square_blue_slider_label, &line_square_blue_slider_cursor, &slider_style, true};
 
     Label *line_square_picker_label_list[] = {&line_square_slider_title_label, &line_square_red_slider_description_label, &line_square_green_slider_description_label, &line_square_blue_slider_description_label};
@@ -158,15 +158,15 @@ int options()
     Label empty_square_blue_slider_description_label = {ZERO, "Blue", 20, DARK, NULL, NULL, false, true};
 
     Label empty_square_red_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor empty_square_red_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor empty_square_red_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider empty_square_red_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.empty_square_color.r, 0, 255, 1, &empty_square_red_slider_label, &empty_square_red_slider_cursor, &slider_style, true};
 
     Label empty_square_green_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor empty_square_green_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor empty_square_green_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider empty_square_green_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.empty_square_color.g, 0, 255, 1, &empty_square_green_slider_label, &empty_square_green_slider_cursor, &slider_style, true};
 
     Label empty_square_blue_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor empty_square_blue_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor empty_square_blue_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider empty_square_blue_slider = {{0, 0, 256, 20, outlines[1], NO_INLINE}, &theme.game_colors.empty_square_color.b, 0, 255, 1, &empty_square_blue_slider_label, &empty_square_blue_slider_cursor, &slider_style, true};
 
     Label *empty_square_picker_label_list[] = {&empty_square_slider_title_label, &empty_square_red_slider_description_label, &empty_square_green_slider_description_label, &empty_square_blue_slider_description_label};
@@ -191,7 +191,7 @@ int options()
     label_init(&max_fps_slider_description_label);
 
     Label max_fps_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor max_fps_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor max_fps_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, &MAX_FPS, 30, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider, SCALE);
 
@@ -210,7 +210,7 @@ int options()
     label_init(&master_audio_slider_description_label);
 
     Label master_audio_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor master_audio_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor master_audio_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider master_audio_slider = {{20, master_audio_slider_description_label.rect.y + master_audio_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, NULL, 0, 200, 1, &master_audio_slider_label, &master_audio_slider_cursor, &slider_style, true};
     slider_init(&master_audio_slider, SCALE);
 
@@ -219,7 +219,7 @@ int options()
     label_init(&music_audio_slider_description_label);
 
     Label music_audio_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor music_audio_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor music_audio_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider music_audio_slider = {{20, music_audio_slider_description_label.rect.y + music_audio_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, NULL, 0, 200, 1, &music_audio_slider_label, &music_audio_slider_cursor, &slider_style, true};
     slider_init(&music_audio_slider, SCALE);
 
@@ -228,7 +228,7 @@ int options()
     label_init(&effects_audio_slider_description_label);
 
     Label effects_audio_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
-    SliderCursor effects_audio_slider_cursor = {ZERO, NORMAL, &slider_cursor_style};
+    SliderCursor effects_audio_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
     Slider effects_audio_slider = {{20, effects_audio_slider_description_label.rect.y + effects_audio_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, NULL, 0, 200, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &slider_style, true};
     slider_init(&effects_audio_slider, SCALE);
 
