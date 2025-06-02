@@ -16,46 +16,30 @@ typedef struct Color
 //button style structure
 typedef struct ButtonStyle
 {
-    //outline thickness
-    int outline;
-    //inline thickness
-    int inline_;
     //background color
     Color background;
     //foreground color
     Color foreground;
     //hover color
     Color hover_color;
-    //outline color
-    Color outline_color;
-    //inline_color
-    Color inline_color;
 } ButtonStyle;
 
 //Slider cursor structure
 typedef struct SliderCursorStyle
 {
-    //outline thickness
-    int outline;
     //background color
     Color bg;
     //background foreground
     Color fg;
     //hover color
     Color hover_color;
-    //outline color
-    Color outline_color;
 } SliderCursorStyle;
 
 //Slider style
 typedef struct SliderStyle
 {
-    //outline thickness
-    int outline;
     //background color
     Color background;
-    //outline color
-    Color outline_color;
 } SliderStyle;
 
 //Squares color

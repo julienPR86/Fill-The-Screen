@@ -66,7 +66,7 @@ typedef struct UI_Element
 //Rect struture
 typedef struct Rect
 {
-    //The element rect, contains the x, y, width and height values
+    //The element rect, contains the x, y, width, height, outline and inline values
     UI_Element rect;
     //rect color
     Color *rect_color;
