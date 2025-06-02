@@ -278,7 +278,7 @@ Label *label_init(Label *label);
 //update label
 void label_update(Label *label);
 //render label
-void label_render(Label *label);
+void label_render(Label *label, float scale);
 //free a label
 void label_free(Label *label);
 //free a label list
