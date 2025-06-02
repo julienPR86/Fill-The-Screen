@@ -11,7 +11,7 @@ enum MouseButtonState
     MOUSE_STATE_RIGHT_CLICK,
 };
 
-struct MouseState
+typedef struct MouseState
 {
     //contains the x mouse position
     float mouse_x;
