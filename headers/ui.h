@@ -68,12 +68,8 @@ typedef struct Rect
 {
     //The element rect, contains the x, y, width and height values
     UI_Element rect;
-    //outline thickness
-    int outline;
     //rect color
     Color *rect_color;
-    //outline color
-    Color outline_color;
 } Rect;
 
 //label structure
