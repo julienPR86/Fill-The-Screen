@@ -42,34 +42,30 @@ int slider_update(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->cursor || !slider->active)
         return RETURN_NONE;
 
-    
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
     
-    if (RETURN_NONE == out)
-    {    
-        if (UI_element_collision(&slider->rect, mouse_x, mouse_y, SCALE) || UI_element_collision(&slider->cursor->rect, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
+    if (UI_element_collision(&slider->rect, mouse_x, mouse_y, SCALE) || UI_element_collision(&slider->cursor->rect, mouse_x, mouse_y, SCALE) || slider->cursor->state == CLICKED)
+    {
+        if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
-            if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
-            {
-                slider->cursor->state = CLICKED;
-                slider->cursor->rect.x += mouse_delta_x;
-                out = RETURN_SLIDER_UPDATE;
-            }
-            else if (mouse_wheel_value != 0)
-            {
-                slider->cursor->state = CLICKED;
-                *slider->value += mouse_wheel_value * -1;
-                out = RETURN_SLIDER_UPDATE;
-            }
-            else
-            {
-                slider->cursor->state = HOVERED;
-            }
+            slider->cursor->state = CLICKED;
+            slider->cursor->rect.x += mouse_delta_x;
+            out = RETURN_SLIDER_UPDATE;
+        }
+        else if (mouse_wheel_value != 0)
+        {
+            slider->cursor->state = CLICKED;
+            *slider->value += mouse_wheel_value * -1;
+            out = RETURN_SLIDER_UPDATE;
         }
         else
         {
-            slider->cursor->state = NORMAL;
+            slider->cursor->state = HOVERED;
         }
+    }
+    else
+    {
+        slider->cursor->state = NORMAL;
     }
 
     slider_clamp_cursor_position(slider, scale);
