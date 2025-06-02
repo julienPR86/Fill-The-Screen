@@ -254,8 +254,8 @@ int options()
         start_time = SDL_GetTicks();
         FPS = get_fps();
 
-        get_mouse_delta(&mouse_delta_x, &mouse_delta_y);
-        SDL_GetMouseState(&mouse_x, &mouse_y);
+        get_mouse_delta(&mouse_state.delta_x, &mouse_state.delta_y);
+        SDL_GetMouseState(&mouse_state.x, &mouse_state.y);
         
         SDL_SetRenderDrawColor(renderer, theme.main_colors.options_background.r, theme.main_colors.options_background.g, theme.main_colors.options_background.b, theme.main_colors.options_background.a);
         SDL_RenderClear(renderer);//background

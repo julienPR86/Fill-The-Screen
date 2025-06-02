@@ -46,27 +46,27 @@ void cap_fps(Uint64 start_time)
 
 void mouse_event(SDL_Event event)
 {
-    if (SDL_EVENT_MOUSE_BUTTON_DOWN == event.type && !mouse_button_pressed)
+    if (SDL_EVENT_MOUSE_BUTTON_DOWN == event.type && !mouse_state.button_pressed)
     {
-        mouse_button_pressed = event.button.button;
+        mouse_state.button_pressed = event.button.button;
     }
     if (SDL_EVENT_MOUSE_BUTTON_UP == event.type)
     {
-        if (event.button.button == mouse_button_pressed)
+        if (event.button.button == mouse_state.button_pressed)
         {
-            mouse_button_pressed = 0;
+            mouse_state.button_pressed = 0;
         }
     }
     if (SDL_EVENT_MOUSE_WHEEL == event.type)
     {
-        mouse_wheel_value = event.wheel.y;
+        mouse_state.wheel_value = event.wheel.y;
     }
     return;
 }
 
 void mouse_event_reset()
 {
-    mouse_wheel_value = 0;
+    mouse_state.wheel_value = 0;
     return;
 }
 
@@ -74,8 +74,8 @@ void get_mouse_delta(float *_x, float *_y)
 {
     float x, y;
     SDL_GetMouseState(&x, &y);
-    *_x = x - mouse_x;
-    *_y = y - mouse_y;
+    *_x = x - x;
+    *_y = y - y;
     return;
 }
 

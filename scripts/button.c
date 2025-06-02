@@ -24,13 +24,13 @@ int button_update(Button *button)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    if (UI_element_collision(&button->rect, mouse_x, mouse_y, SCALE))
+    if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE))
     {
-        if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK)
+        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
             button->state = CLICKED;
         }
-        else if (mouse_button_pressed == MOUSE_STATE_NONE && button->state == CLICKED)
+        else if (mouse_state.button_pressed == MOUSE_STATE_NONE && button->state == CLICKED)
         {
             if (NULL != button->command)
                 out = button->command();

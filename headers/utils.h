@@ -14,19 +14,19 @@ enum MouseButtonState
 typedef struct MouseState
 {
     //contains the x mouse position
-    float mouse_x;
+    float x;
     //contains the y mouse position
-    float mouse_y;
+    float y;
     //contains the x mouse delta position since the last frame
-    float mouse_delta_x;
+    float delta_x;
     //contains the y mouse delta position since the last frame
-    float mouse_delta_y;
+    float delta_y;
     //contains a value which tells which mouse button is pressed
-    int mouse_button_pressed;
+    int button_pressed;
     //contains the last button pressed
-    int previous_mouse_button_pressed;
+    int previous_button_pressed;
     //contains a value between -1 and 1 that tells the wheel rotation value
-    int mouse_wheel_value;
+    int wheel_value;
 } MouseState;
 
 //return the current fps value

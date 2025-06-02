@@ -28,9 +28,9 @@ int toggle_update(Toggle *toggle)
     
     static int update = 1;
     int out = RETURN_NONE; // returns RETURN_NONE if the toggle isn't clicked
-    if (UI_element_collision(&toggle->rect, mouse_x, mouse_y, SCALE))
+    if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, SCALE))
     {
-        if (mouse_button_pressed == MOUSE_STATE_LEFT_CLICK && update)
+        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && update)
         {
             switch (toggle->state)
             {
@@ -46,7 +46,7 @@ int toggle_update(Toggle *toggle)
             }
             update = 0;
         }
-        else if (mouse_button_pressed == MOUSE_STATE_NONE && !update)
+        else if (mouse_state.button_pressed == MOUSE_STATE_NONE && !update)
         {
             update = 1;
         }
