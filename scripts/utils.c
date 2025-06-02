@@ -76,8 +76,8 @@ void get_mouse_delta(float *_x, float *_y)
 {
     float x, y;
     SDL_GetMouseState(&x, &y);
-    *_x = x - x;
-    *_y = y - y;
+    *_x = x - mouse_state.x;
+    *_y = y - mouse_state.y;
     return;
 }
 
