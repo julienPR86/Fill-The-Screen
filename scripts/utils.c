@@ -64,9 +64,11 @@ void mouse_event(SDL_Event event)
     return;
 }
 
-void mouse_event_reset()
+void mouse_event_update()
 {
     mouse_state.wheel_value = 0;
+    mouse_state.frame_input = (mouse_state.previous_button_pressed != mouse_state.button_pressed);
+    mouse_state.previous_button_pressed = mouse_state.button_pressed;
     return;
 }
 

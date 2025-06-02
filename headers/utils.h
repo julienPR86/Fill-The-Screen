@@ -39,7 +39,7 @@ void cap_fps(Uint64 start_time);
 //do the mouse events
 void mouse_event(SDL_Event event);
 //reset mouse events
-void mouse_event_reset();
+void mouse_event_update();
 //return the mouse x and y delta
 void get_mouse_delta(float *x, float *y);
 

@@ -84,7 +84,7 @@ int pause_menu()
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
-        mouse_event_reset();
+        mouse_event_update();
     }
     label_list_free(labels, 2);
     button_list_free(buttons, 3);
