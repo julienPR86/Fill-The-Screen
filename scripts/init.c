@@ -11,6 +11,8 @@ int probability = 6;
 int map_width = 33;
 int map_height = 22;
 
+MouseState mouse_state = {0, 0, 0, 0, MOUSE_STATE_NONE, MOUSE_STATE_NONE, 0};
+
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
@@ -26,13 +28,6 @@ ButtonStyle button_style = {1, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70
 ButtonStyle toggle_style = {0, 1, {255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 255}, {0, 0, 0, 255}, {255, 255, 255, 255}};
 SliderCursorStyle slider_cursor_style = {1, {255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}, {0, 0, 0, 255}};
 SliderStyle slider_style = {1, {255, 128, 0, 255}, {0, 0, 0, 255}};
-
-float mouse_x = 0;
-float mouse_y = 0;
-float mouse_delta_x = 0;
-float mouse_delta_y = 0;
-int mouse_button_pressed = 0;
-int mouse_wheel_value = 0;
 
 int game_mode = NO_ACTIVE_MODE;
 
