@@ -40,6 +40,24 @@ typedef struct UI_Element
     int height;
 } UI_Element;
 
+//Outline structure
+typedef struct Outline
+{
+    //Outline thickness
+    int size;
+    //outline color
+    Color color;
+} Outline;
+
+//Inline structure
+typedef struct Inline
+{
+    //Inline thickness
+    int size;
+    //Inline color
+    Color color;
+} Inline;
+
 //Rect struture
 typedef struct Rect
 {
