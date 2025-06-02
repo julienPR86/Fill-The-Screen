@@ -25,6 +25,8 @@ typedef struct MouseState
     int button_pressed;
     //contains the last button pressed
     int previous_button_pressed;
+    //equals 1 if a different button has been pressed, 0 otherwise
+    int frame_input;
     //contains a value between -1 and 1 that tells the wheel rotation value
     int wheel_value;
 } MouseState;
