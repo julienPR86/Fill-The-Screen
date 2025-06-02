@@ -46,9 +46,13 @@ int slider_update(Slider *slider, float scale)
     
     if (UI_element_collision(&slider->rect, mouse_state.x, mouse_state.y, SCALE) || UI_element_collision(&slider->cursor->rect, mouse_state.x, mouse_state.y, SCALE) || slider->cursor->state == CLICKED)
     {
-        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK)
+        if (mouse_state.frame_input)
         {
             slider->cursor->state = CLICKED;
+        }
+        
+        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && slider->cursor->state == CLICKED)
+        {
             slider->cursor->rect.x += mouse_state.delta_x;
             out = RETURN_SLIDER_UPDATE;
         }
@@ -58,7 +62,7 @@ int slider_update(Slider *slider, float scale)
             *slider->value += mouse_state.wheel_value * -1;
             out = RETURN_SLIDER_UPDATE;
         }
-        else
+        else if (mouse_state.button_pressed == MOUSE_STATE_NONE)
         {
             slider->cursor->state = HOVERED;
         }
