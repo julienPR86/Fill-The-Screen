@@ -29,14 +29,13 @@ ButtonStyle toggle_style = {{255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 2
 SliderCursorStyle slider_cursor_style = {{255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}};
 SliderStyle slider_style = {{255, 128, 0, 255}};
 
-Outline outline_1 = {1, DARK};
-Outline outline_2 = {2, DARK};
-Outline outline_3 = {3, DARK};
+const Color DARK = {0, 0, 0, 255};
+const Color WHITE = {255, 255, 255, 255};
 
-Inline inline_1 = {1, WHITE};
-Inline inline_2 = {2, WHITE};
-Inline inline_3 = {3, WHITE};
-
+Outline *outlines;
+int max_outline_size = 10;
+Inline *inlines;
+int max_inline_size = 5;
 
 int game_mode = NO_ACTIVE_MODE;
 
@@ -45,7 +44,7 @@ int max_font_size = 100;
 
 
 char *FPS_text;
-Label FPS_label = {{2, 0, 0, 0, NO_OUTLINE, NO_INLINE}, NULL, 20, {0, 255, 75, 255}, NULL, NULL, false, true};
+Label FPS_label = {{2, 0, 0, 0, NULL, NULL}, NULL, 20, {0, 255, 75, 255}, NULL, NULL, false, true};
 
 
 
@@ -82,10 +81,49 @@ int init()
         return RETURN_FAILURE;
     }
 
+    outlines = (Outline *)malloc(max_outline_size * sizeof(Outline));
+    if (NULL == outlines)
+    {
+        fprintf(stderr, "Memory alocation error : Outlines array");
+        SDL_DestroyRenderer(renderer);
+        renderer = NULL;
+        SDL_DestroyWindow(window);
+        window = NULL;
+        TTF_Quit();
+        SDL_Quit();
+        return RETURN_FAILURE;
+    }
+    for (int i = 0; i < max_outline_size; i++)
+    {
+        outlines[i].size = i;
+        outlines[i].color = DARK;
+    }
+
+    inlines = (Inline *)malloc(max_inline_size * sizeof(Inline));
+    if (NULL == inlines)
+    {
+        fprintf(stderr, "Memory alocation error : Outlines array");
+        free(outlines);
+        SDL_DestroyRenderer(renderer);
+        renderer = NULL;
+        SDL_DestroyWindow(window);
+        window = NULL;
+        TTF_Quit();
+        SDL_Quit();
+        return RETURN_FAILURE;
+    }
+    for (int i = 0; i < max_inline_size; i++)
+    {
+        inlines[i].size = i;
+        inlines[i].color = WHITE;
+    }
+
     roboto_regular_fonts = (TTF_Font **)malloc(max_font_size * sizeof(TTF_Font *));
     if (NULL == roboto_regular_fonts)
     {
         fprintf(stderr, "memory allocation error : Could not allocate font array");
+        free(inlines);
+        free(outlines);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         TTF_Quit();
@@ -100,6 +138,8 @@ int init()
             if (NULL == roboto_regular_fonts[i])
             {
                 fprintf(stderr, "Could not initialised the font; size : %d; %s\n", i, SDL_GetError());
+                free(inlines);
+                free(outlines);
                 for (int j = 0; j < i; j++)
                 {
                     TTF_CloseFont(roboto_regular_fonts[j]);
@@ -118,6 +158,7 @@ int init()
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     srand(time(NULL) * (WIDTH / HEIGHT));
 
+
     FPS_text = (char *)malloc(8 * sizeof(char));
     if (NULL == FPS_text)
     {
@@ -127,9 +168,12 @@ int init()
     {
         FPS_text[0] = '0';
         FPS_text[1] = '\0';
+        FPS_label.text = FPS_text;
+        FPS_label.rect.outline = outlines[0];
+        FPS_label.rect.inline_ = inlines[0];
+        label_init(&FPS_label);
     }
-    FPS_label.text = FPS_text;
-    label_init(&FPS_label);
+    
     return RETURN_SUCCESS;
 }
 
