@@ -1,6 +1,34 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
 
+enum MouseButtonState
+{
+    //no buttons are pressed
+    MOUSE_STATE_NONE,
+    //left mouse button pressed
+    MOUSE_STATE_LEFT_CLICK,
+    //right mouse button pressed
+    MOUSE_STATE_RIGHT_CLICK,
+};
+
+struct MouseState
+{
+    //contains the x mouse position
+    float mouse_x;
+    //contains the y mouse position
+    float mouse_y;
+    //contains the x mouse delta position since the last frame
+    float mouse_delta_x;
+    //contains the y mouse delta position since the last frame
+    float mouse_delta_y;
+    //contains a value which tells which mouse button is pressed
+    int mouse_button_pressed;
+    //contains the last button pressed
+    int previous_mouse_button_pressed;
+    //contains a value between -1 and 1 that tells the wheel rotation value
+    int mouse_wheel_value;
+} MouseState;
+
 //return the current fps value
 int get_fps();
 //cap the fps to max_fps

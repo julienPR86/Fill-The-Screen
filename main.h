@@ -72,16 +72,6 @@ enum Returns
     RETURN_SLIDER_UPDATE,
 };
 
-enum MouseState
-{
-    //no buttons are pressed
-    MOUSE_STATE_NONE,
-    //left mouse button pressed
-    MOUSE_STATE_LEFT_CLICK,
-    //right mouse button pressed
-    MOUSE_STATE_RIGHT_CLICK,
-};
-
 //window width
 extern int WIDTH;
 //window height
@@ -104,19 +94,6 @@ extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 //SDL event container
 extern SDL_Event event;
-
-//contains the x mouse position
-extern float mouse_x;
-//contains the y mouse position
-extern float mouse_y;
-//contains the x mouse delta position since the last frame
-extern float mouse_delta_x;
-//contains the y mouse delta position since the last frame
-extern float mouse_delta_y;
-//contains a value which tells which mouse button is pressed
-extern int mouse_button_pressed;
-//contains a value between -1 and 1 that tells the wheel rotation value
-extern int mouse_wheel_value;
 
 //contains the fps value in string
 extern char *FPS_text;
