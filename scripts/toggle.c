@@ -76,9 +76,9 @@ void toggle_render(Toggle *toggle, float scale)
         return;
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {toggle->rect.x + toggle->style->inline_ * scale, toggle->rect.y + toggle->style->inline_ * scale, (toggle->rect.width - toggle->style->inline_ * 2) * scale, (toggle->rect.height - toggle->style->inline_ * 2) * scale};
+    SDL_FRect toggle_rect = {toggle->rect.x + toggle->rect.inline_.size * scale, toggle->rect.y + toggle->rect.inline_.size * scale, (toggle->rect.width - toggle->rect.inline_.size * 2) * scale, (toggle->rect.height - toggle->rect.inline_.size * 2) * scale};
     SDL_FRect inline_rect = {toggle->rect.x, toggle->rect.y, toggle->rect.width * scale, toggle->rect.height * scale};
-    SDL_FRect outline_rect = {toggle->rect.x - toggle->style->outline * scale, toggle->rect.y - toggle->style->outline * scale, (toggle->rect.width + toggle->style->outline * 2) * scale, (toggle->rect.height + toggle->style->outline * 2) * scale};
+    SDL_FRect outline_rect = {toggle->rect.x - toggle->rect.outline.size * scale, toggle->rect.y - toggle->rect.outline.size * scale, (toggle->rect.width + toggle->rect.outline.size * 2) * scale, (toggle->rect.height + toggle->rect.outline.size * 2) * scale};
 
     switch (toggle->state)
     {
@@ -95,10 +95,10 @@ void toggle_render(Toggle *toggle, float scale)
             break;
     }
 
-    SDL_SetRenderDrawColor(renderer, toggle->style->outline_color.r, toggle->style->outline_color.g, toggle->style->outline_color.b, toggle->style->outline_color.a);
+    SDL_SetRenderDrawColor(renderer, toggle->rect.outline.color.r, toggle->rect.outline.color.g, toggle->rect.outline.color.b, toggle->rect.outline.color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
 
-    SDL_SetRenderDrawColor(renderer, toggle->style->inline_color.r, toggle->style->inline_color.g, toggle->style->inline_color.b, toggle->style->inline_color.a);
+    SDL_SetRenderDrawColor(renderer, toggle->rect.inline_.color.r, toggle->rect.inline_.color.g, toggle->rect.inline_.color.b, toggle->rect.inline_.color.a);
     SDL_RenderFillRect(renderer, &inline_rect);
 
     SDL_SetRenderDrawColor(renderer, toggle_color.r, toggle_color.g, toggle_color.b, toggle_color.a);
@@ -135,10 +135,10 @@ void toggle_list_free(Toggle *toggles[], int size)
 
 int toggle_get_height(Toggle *toggle, float scale)
 {
-    return (toggle->rect.height + toggle->style->outline * 2) * scale;
+    return (toggle->rect.height + toggle->rect.outline.size * 2) * scale;
 }
 
 int toggle_get_width(Toggle *toggle, float scale)
 {
-    return (toggle->rect.width + toggle->style->outline * 2) * scale;
+    return (toggle->rect.width + toggle->rect.outline.size * 2) * scale;
 }

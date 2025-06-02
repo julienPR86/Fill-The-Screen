@@ -110,9 +110,9 @@ void slider_render(Slider *slider, float scale)
     
     Color color;
     SDL_FRect slider_rect = {slider->rect.x, slider->rect.y, slider->rect.width * scale, slider->rect.height * scale};
-    SDL_FRect outline_rect = {slider->rect.x - slider->style->outline * scale, slider->rect.y - slider->style->outline * scale, (slider->rect.width + slider->style->outline * 2) * scale, (slider->rect.height + slider->style->outline * 2) * scale};
+    SDL_FRect outline_rect = {slider->rect.x - slider->rect.outline.size * scale, slider->rect.y - slider->rect.outline.size * scale, (slider->rect.width + slider->rect.outline.size * 2) * scale, (slider->rect.height + slider->rect.outline.size * 2) * scale};
     
-    color = slider->style->outline_color;
+    color = slider->rect.outline.color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &outline_rect);
 
@@ -256,7 +256,7 @@ int slider_get_height(Slider *slider, float scale)
     if (NULL == slider)
         return 0;
 
-    return (slider->rect.height + slider->style->outline * 2) * scale;
+    return (slider->rect.height + slider->rect.outline.size * 2) * scale;
 }
 
 int slider_get_width(Slider *slider, float scale)
@@ -264,5 +264,5 @@ int slider_get_width(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return 0;
 
-    return (slider->rect.width + slider->style->outline * 2 + slider->cursor->rect.width + slider->label->rect.width + 5) * scale;
+    return (slider->rect.width + slider->rect.outline.size * 2 + slider->cursor->rect.width + slider->label->rect.width + 5) * scale;
 }
