@@ -3,8 +3,6 @@
 
 #define DARK {0, 0, 0, 255}
 #define WHITE {255, 255, 255, 255}
-#define NO_OUTLINE {0, DARK}
-#define NO_INLINE {0, WHITE}
 
 //Color struct which use int, because of slider which uses ints, not int_8
 typedef struct Color

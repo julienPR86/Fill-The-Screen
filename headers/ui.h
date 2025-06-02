@@ -3,6 +3,9 @@
 
 #include "theme.h"
 
+#define NO_OUTLINE {0, DARK}
+#define NO_INLINE {0, WHITE}
+
 //Buttons state
 enum ButtonStates
 {
@@ -220,10 +223,15 @@ typedef struct Panel
     int active;
 } Panel;
 
-//basic outline style
-extern Outline rect_outline;
-//basic inline style
-extern Inline rect_inline;
+//Outlines
+Outline outline_1 = {1, DARK};
+Outline outline_2 = {2, DARK};
+Outline outline_3 = {3, DARK};
+
+//inlines
+Inline inline_1 = {1, WHITE};
+Inline inline_2 = {2, WHITE};
+Inline inline_3 = {3, WHITE};
 
 //render a rectangle
 void rect_render(Rect *element, float scale);

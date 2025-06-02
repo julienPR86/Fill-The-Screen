@@ -29,8 +29,14 @@ ButtonStyle toggle_style = {{255, 0, 0, 255}, {255, 128, 0, 255}, {250, 70, 0, 2
 SliderCursorStyle slider_cursor_style = {{255, 0, 0, 255}, {255, 180, 0, 255}, {255, 100, 0, 255}};
 SliderStyle slider_style = {{255, 128, 0, 255}};
 
-Outline rect_outline = {2, DARK};
-Inline rect_inline = {1, WHITE};
+Outline outline_1 = {1, DARK};
+Outline outline_2 = {2, DARK};
+Outline outline_3 = {3, DARK};
+
+Inline inline_1 = {1, WHITE};
+Inline inline_2 = {2, WHITE};
+Inline inline_3 = {3, WHITE};
+
 
 int game_mode = NO_ACTIVE_MODE;
 
