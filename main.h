@@ -38,7 +38,7 @@
 #define MIN(a, b) ((a < b) ? a : b)
 
 //Init values for UI_element
-#define ZERO {0, 0, 0, 0}
+#define ZERO {0, 0, 0, 0, {0, DARK}, {0, WHITE}}
 
 //Returns values enum
 enum Returns
