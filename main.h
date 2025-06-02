@@ -77,9 +77,10 @@ extern int WIDTH;
 //window height
 extern int HEIGHT;
 
-//window scale on x axis
-extern float SCALE;
 //window scale is based on the actual resolution and the basic window resolution, which is 1080x720
+extern float SCALE;
+
+extern MouseState mouse_state;
 
 //contains the current fps number
 extern int FPS;
