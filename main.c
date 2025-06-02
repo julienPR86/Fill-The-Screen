@@ -91,6 +91,8 @@ void exit_full_game()
     free(FPS_text);
     FPS_text = NULL;
 
+    free(inlines);
+    free(outlines);
     for (int i = 0; i < max_font_size; i++)
     {
         TTF_CloseFont(roboto_regular_fonts[i]);
