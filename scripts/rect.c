@@ -22,12 +22,12 @@ void render_outline(UI_Element *element, float scale)
     SDL_FRect outline_rect;
     
     SDL_SetRenderDrawColor(renderer, element->outline.color.r, element->outline.color.g, element->outline.color.b, element->outline.color.a);
-    for (int i = 1; i <= element->outline.size; i++)
+    for (int i = 1; i <= element->outline.size * scale; i++)
     {
         outline_rect.x = element->x - i;
         outline_rect.y = element->y - i;
-        outline_rect.w = (element->width + i * 2) * scale;
-        outline_rect.h = (element->height + i * 2) * scale;
+        outline_rect.w = element->width * scale + i * 2;
+        outline_rect.h = element->height * scale + i * 2;
         SDL_RenderRect(renderer, &outline_rect);
     }
     return;
@@ -41,12 +41,12 @@ void render_inline(UI_Element *element, float scale)
     SDL_FRect inline_rect;
     
     SDL_SetRenderDrawColor(renderer, element->inline_.color.r, element->inline_.color.g, element->inline_.color.b, element->inline_.color.a);
-    for (int i = 0; i < element->inline_.size; i++)
+    for (int i = 0; i < element->inline_.size * scale; i++)
     {
         inline_rect.x = element->x +  i;
         inline_rect.y = element->y +  i;
-        inline_rect.w = (element->width - i * 2) * scale;
-        inline_rect.h = (element->height - i * 2) * scale;
+        inline_rect.w = element->width * scale - i * 2;
+        inline_rect.h = element->height * scale - i * 2;
         SDL_RenderRect(renderer, &inline_rect);
     }
     return;
