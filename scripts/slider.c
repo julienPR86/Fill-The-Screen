@@ -111,13 +111,15 @@ void slider_render(Slider *slider, float scale)
     Color color;
     SDL_FRect slider_rect = {slider->rect.x, slider->rect.y, slider->rect.width * scale, slider->rect.height * scale};
 
-    render_outline(&slider->rect, scale);
-
     color = slider->style->background;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &slider_rect);
 
     slider_cursor_render(slider->cursor, scale);
+
+    render_outline(&slider->rect, scale);
+    render_inline(&slider->rect, scale);
+
     if (NULL != slider->label)
     {
         label_render(slider->label, scale);

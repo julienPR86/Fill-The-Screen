@@ -61,10 +61,10 @@ void label_render(Label *label, float scale)
 {
     if (NULL == label || NULL == label->texture || !label->active)
         return;
-    
-    SDL_FRect label_rect = {label->rect.x, label->rect.y, label->rect.width, label->rect.height};
 
     render_outline(&label->rect, scale);
+    
+    SDL_FRect label_rect = {label->rect.x, label->rect.y, label->rect.width, label->rect.height};
 
     if (true != SDL_RenderTexture(renderer, label->texture, NULL, &label_rect))
     {
