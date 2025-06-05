@@ -73,7 +73,7 @@ void toggle_render(Toggle *toggle, float scale)
         return;
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {toggle->rect.x, toggle->rect.y, toggle->rect.width, toggle->rect.height};
+    SDL_FRect toggle_rect = {toggle->rect.x, toggle->rect.y, toggle->rect.width * scale, toggle->rect.height * scale};
 
     switch (toggle->state)
     {
