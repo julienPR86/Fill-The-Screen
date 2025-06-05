@@ -266,9 +266,9 @@ void group_clear_selected(ToggleGroup *group);
 void group_free(ToggleGroup *group);
 
 //label init, needs to be called before all label functions
-Label *label_init(Label *label);
+Label *label_init(Label *label, float scale);
 //update label
-void label_update(Label *label);
+void label_update(Label *label, float scale);
 //render label
 void label_render(Label *label, float scale);
 //free a label

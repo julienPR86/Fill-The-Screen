@@ -1,13 +1,13 @@
 #include "../main.h"
 
-Label *label_init(Label *label)
+Label *label_init(Label *label, float scale)
 {
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
 
     label->update = false;
 
-    if (true != TTF_GetStringSize(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
+    if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
         return NULL;
@@ -15,7 +15,7 @@ Label *label_init(Label *label)
 
     SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
     
-    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[label->font_size-1], label->text, strlen(label->text), color);
+    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), color);
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", SDL_GetError());
@@ -43,7 +43,7 @@ Label *label_init(Label *label)
     return label;
 }
 
-void label_update(Label *label)
+void label_update(Label *label, float scale)
 {
     if (NULL == label)
         return;
@@ -51,7 +51,7 @@ void label_update(Label *label)
     if (label->active && label->update)
     {
         label_free(label);
-        label_init(label);
+        label_init(label, scale);
         label->update = false;
     }
     return;
