@@ -124,7 +124,7 @@ void picker_set_positions(ColorPicker *picker, int scale)
         //Positions the picker title in the middle of the color rect
         set_UI_element_position(&picker->labels[0]->rect, picker->rect.x, picker->rect.y + get_height(&picker->color_rect->rect, scale)/2, scale, MID_LEFT);
         //Then moves the color rect to the right of the picker title
-        set_UI_element_position(&picker->color_rect->rect, picker->labels[0]->rect.x + get_width(&picker->labels[0]->rect, scale), picker->rect.y, scale, TOP_LEFT); 
+        set_UI_element_position(&picker->color_rect->rect, picker->labels[0]->rect.x + get_width(&picker->labels[0]->rect, scale) * 1.1, picker->rect.y, scale, TOP_LEFT); 
     }
      
     int y_position = MAX(picker->labels[0]->rect.y + get_height(&picker->labels[0]->rect, scale), picker->color_rect->rect.y + get_height(&picker->color_rect->rect, scale));
@@ -173,5 +173,5 @@ int picker_get_width(ColorPicker *picker, float scale)
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
         return RETURN_NONE;
 
-    return MAX(get_width(&picker->labels[0]->rect, scale) + get_width(&picker->color_rect->rect, scale), slider_get_width(picker->sliders[0], scale));
+    return MAX(get_width(&picker->labels[0]->rect, scale) * 1.1 + get_width(&picker->color_rect->rect, scale), slider_get_width(picker->sliders[0], scale));
 }
