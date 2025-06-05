@@ -9,13 +9,13 @@ int pause_menu()
     Label restart_button_label = {ZERO, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label main_menu_button_label = {ZERO, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button back_button = {{20, 300, 150, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &back_button_label, &button_style, &back, true};
+    Button back_button = {{20, 300, 150, 50, outlines[2], inlines[1]}, NORMAL, &back_button_label, &button_style, &back, true};
     button_init(&back_button);
 
-    Button restart_button = {{20, 400, 150, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    Button restart_button = {{20, 400, 150, 50, outlines[2], inlines[1]}, NORMAL, &restart_button_label, &button_style, &restart, true};
     button_init(&restart_button);
 
-    Button main_menu_button = {{20, 500, 150, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    Button main_menu_button = {{20, 500, 150, 50, outlines[2], inlines[1]}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
     button_init(&main_menu_button);
 
     Label *labels[] = {&title_label, &FPS_label};

@@ -13,16 +13,16 @@ int mode_choice()
     Label constraint_mode_button_label = {ZERO, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label free_mode_button_label = {ZERO, "Free", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button fill_mode_button = {{20, 200, 200, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
+    Button fill_mode_button = {{20, 200, 200, 50, outlines[2], inlines[1]}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
     button_init(&fill_mode_button);
 
-    Button discovery_mode_button = {{20, 300, 200, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
+    Button discovery_mode_button = {{20, 300, 200, 50, outlines[2], inlines[1]}, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
     button_init(&discovery_mode_button);
 
-    Button constraint_mode_button = {{20, 400, 200, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
+    Button constraint_mode_button = {{20, 400, 200, 50, outlines[2], inlines[1]}, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
     button_init(&constraint_mode_button);
 
-    Button free_mode_button = {{20, 500, 200, 50, NO_OUTLINE, NO_INLINE}, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
+    Button free_mode_button = {{20, 500, 200, 50, outlines[2], inlines[1]}, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
     button_init(&free_mode_button);
 
     Label *labels[] = {&title_label, &back_label, &FPS_label};
