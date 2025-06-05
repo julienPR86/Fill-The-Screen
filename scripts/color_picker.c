@@ -33,6 +33,8 @@ ColorPicker *picker_init(ColorPicker *picker, float scale)
     }
 
     picker_set_positions(picker, scale);
+    picker->rect.width = picker_get_width(picker, scale);
+    picker->rect.height = picker_get_height(picker, scale);
 
     return picker;
 }
@@ -75,6 +77,7 @@ void picker_render(ColorPicker *picker, float scale)
     {
         slider_render(picker->sliders[i], scale);
     }
+    render_outline(&picker->rect, scale);
     return;
 }
 
@@ -105,16 +108,8 @@ void picker_set_positions(ColorPicker *picker, int scale)
     if (NULL == picker || NULL == picker->labels || NULL == picker->sliders)
         return;
 
-    set_UI_element_position(&picker->labels[0]->rect, picker->rect.x, picker->rect.y, scale, TOP_LEFT);
-    set_UI_element_position(&picker->labels[1]->rect, picker->rect.x, picker->rect.y + 30 * scale, scale, TOP_LEFT);
-    set_UI_element_position(&picker->labels[2]->rect, picker->rect.x, picker->labels[1]->rect.y + 50 * scale, scale, TOP_LEFT);
-    set_UI_element_position(&picker->labels[3]->rect, picker->rect.x, picker->labels[2]->rect.y + 50 * scale, scale, TOP_LEFT);
-
-    set_UI_element_position(&picker->sliders[0]->rect, picker->rect.x, picker->labels[1]->rect.y + picker->labels[1]->rect.height, scale, TOP_LEFT);
-    set_UI_element_position(&picker->sliders[1]->rect, picker->rect.x, picker->labels[2]->rect.y + picker->labels[2]->rect.height, scale, TOP_LEFT);
-    set_UI_element_position(&picker->sliders[2]->rect, picker->rect.x, picker->labels[3]->rect.y + picker->labels[3]->rect.height, scale, TOP_LEFT);
-
-    set_UI_element_position(&picker->color_rect->rect, picker->rect.x + (picker->labels[0]->rect.width + 15) * scale, picker->rect.y, scale, TOP_LEFT);
+    (void)scale;
+    
     return;
 }
 
@@ -123,16 +118,28 @@ int picker_get_height(ColorPicker *picker, float scale)
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
         return RETURN_NONE;
 
-    int i, height = 0;
-    for (i = 2; i < 4; i++)
+    int h1 = 0, h2 = 0, i;
+
+    for (i = 0; i < 4; i++)
     {
-        height += picker->labels[i]->rect.height;
+        h1 += get_height(&picker->labels[i]->rect, scale);
     }
     for (i = 0; i < 3; i++)
     {
-        height += slider_get_height(picker->sliders[i], scale);
+        h1 += get_height(&picker->sliders[i]->rect, scale);
     }
-    return (height + picker->color_rect->rect.height + 20) * scale;
+
+    h2 += get_height(&picker->color_rect->rect, scale);
+    for (i = 2; i < 4; i++)
+    {
+        h2 += get_height(&picker->labels[i]->rect, scale);
+    }
+    for (i = 0; i < 3; i++)
+    {
+        h2 += get_height(&picker->sliders[i]->rect, scale);
+    }
+
+    return MAX(h1, h2);
 }
 
 int picker_get_width(ColorPicker *picker, float scale)
@@ -140,5 +147,5 @@ int picker_get_width(ColorPicker *picker, float scale)
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
         return RETURN_NONE;
 
-    return MAX((picker->labels[0]->rect.width + picker->color_rect->rect.width + 15), slider_get_width(picker->sliders[0], scale)) * scale;
+    return MAX(get_width(&picker->labels[0]->rect, scale) + get_width(&picker->color_rect->rect, scale), get_width(&picker->sliders[0]->rect, scale));
 }
