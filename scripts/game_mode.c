@@ -2,16 +2,16 @@
 
 int mode_choice()
 {
-    Label title_label = {ZERO, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {EMPTY_UI_ELEMENT, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&title_label);
     
     Label back_label = {{20, HEIGHT-50, 0, 0, NO_OUTLINE, NO_INLINE}, "Press Escape to go back", 20, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&back_label);
 
-    Label fill_mode_button_label = {ZERO, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label discovery_mode_button_label = {ZERO, "Discovery", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label constraint_mode_button_label = {ZERO, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
-    Label free_mode_button_label = {ZERO, "Free", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label fill_mode_button_label = {EMPTY_UI_ELEMENT, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label discovery_mode_button_label = {EMPTY_UI_ELEMENT, "Discovery", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label constraint_mode_button_label = {EMPTY_UI_ELEMENT, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
+    Label free_mode_button_label = {EMPTY_UI_ELEMENT, "Free", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
     Button fill_mode_button = {{20, 200, 200, 50, outlines[2], inlines[1]}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
     button_init(&fill_mode_button);
