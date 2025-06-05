@@ -16,11 +16,6 @@ Slider *slider_init(Slider *slider, float scale)
 
     slider->step = MIN(MAX(1, slider->step), slider->max);
 
-    if (slider->cursor->rect.height < slider->rect.height)
-        slider->cursor->rect.height = slider->rect.height;
-    
-    slider->cursor->rect.width = slider->cursor->rect.height;
-
     slider_clamp_value(slider);
     slider_set_cursor_position(slider, scale);
 
