@@ -174,8 +174,8 @@ void slider_set_cursor_position(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->cursor || NULL == slider->value)
         return;
 
-    slider->cursor->rect.x = slider->rect.x + (slider->rect.width * scale * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (float)slider->cursor->rect.width * scale / 2;
-    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->cursor->rect.height * scale);
+    slider->cursor->rect.x = slider->rect.x + ((slider->rect.width * scale) * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (slider->cursor->rect.width / 2) * scale;
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale;
     return;
 }
 
@@ -195,18 +195,17 @@ void slider_clamp_cursor_position(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->cursor)
         return;
 
-    if (slider->cursor->rect.x + slider->cursor->rect.width / 2 < slider->rect.x)
+    if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) * scale < slider->rect.x)
     {
-        slider->cursor->rect.x = slider->rect.x - slider->cursor->rect.width / 2;
+        slider->cursor->rect.x = slider->rect.x - (slider->cursor->rect.width / 2) * scale;
     }
 
-    else if (slider->cursor->rect.x + slider->cursor->rect.width / 2 > slider->rect.x + slider->rect.width * scale)
+    else if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) * scale > slider->rect.x + slider->rect.width * scale)
     {
-        slider->cursor->rect.x = slider->rect.x + slider->rect.width * scale - slider->cursor->rect.width / 2;
+        slider->cursor->rect.x = slider->rect.x + slider->rect.width * scale - (slider->cursor->rect.width / 2) * scale;
     }
     
-    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->cursor->rect.height * scale);
-
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale;
     return;
 }
 
