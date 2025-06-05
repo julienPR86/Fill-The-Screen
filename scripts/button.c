@@ -56,8 +56,6 @@ void button_render(Button *button, float scale)
         
     Color button_color;
     SDL_FRect button_rect = {button->rect.x + button->rect.inline_.size * scale, button->rect.y + button->rect.inline_.size * scale, (button->rect.width - button->rect.inline_.size * 2) * scale, (button->rect.height - button->rect.inline_.size * 2) * scale};
-
-    render_outline(&button->rect, scale);
     
     switch (button->state)
     {
@@ -76,6 +74,9 @@ void button_render(Button *button, float scale)
 
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
+
+    render_outline(&button->rect, scale);
+    render_inline(&button->rect, scale);
     
     if (NULL != button->label)
         label_render(button->label, scale);
