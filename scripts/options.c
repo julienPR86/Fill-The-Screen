@@ -9,11 +9,11 @@ int options()
 
     Toggle gameplay_toggle = {{0, 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
     toggle_init(&gameplay_toggle);
-    Toggle colors_toggle = {{toggle_get_width(&gameplay_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
+    Toggle colors_toggle = {{get_width(&gameplay_toggle.rect, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
     toggle_init(&colors_toggle);
-    Toggle video_toggle = {{colors_toggle.rect.x + toggle_get_width(&colors_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
+    Toggle video_toggle = {{colors_toggle.rect.x + get_width(&colors_toggle.rect, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
     toggle_init(&video_toggle);
-    Toggle audio_toggle = {{video_toggle.rect.x + toggle_get_width(&video_toggle, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
+    Toggle audio_toggle = {{video_toggle.rect.x + get_width(&video_toggle.rect, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
     toggle_init(&audio_toggle);
 
     Toggle *options_toggle_list[] = {&gameplay_toggle, &colors_toggle, &video_toggle, &audio_toggle};
@@ -91,7 +91,7 @@ int options()
     Label *player_picker_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
     Slider *player_picker_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
 
-    ColorPicker player_picker = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
+    ColorPicker player_picker = {{20, 150, 0, 0, outlines[1], NO_INLINE}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
     picker_init(&player_picker, SCALE);
 
 
