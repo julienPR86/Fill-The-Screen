@@ -91,7 +91,7 @@ int options()
     Label *player_picker_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
     Slider *player_picker_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
 
-    ColorPicker player_picker = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
+    ColorPicker player_picker = {{20 * SCALE, 150 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
     picker_init(&player_picker, SCALE);
 
 
@@ -118,7 +118,7 @@ int options()
     Label *collision_square_picker_label_list[] = {&collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label};
     Slider *collision_square_picker_slider_list[] = {&collision_square_red_slider, &collision_square_green_slider, &collision_square_blue_slider};
 
-    ColorPicker collision_square_picker = {{370, 150, 0, 0, NO_OUTLINE, NO_INLINE}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list};
+    ColorPicker collision_square_picker = {{370 * SCALE, 150 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list};
     picker_init(&collision_square_picker, SCALE);
 
 
@@ -145,7 +145,7 @@ int options()
     Label *line_square_picker_label_list[] = {&line_square_slider_title_label, &line_square_red_slider_description_label, &line_square_green_slider_description_label, &line_square_blue_slider_description_label};
     Slider *line_square_picker_slider_list[] = {&line_square_red_slider, &line_square_green_slider, &line_square_blue_slider};
 
-    ColorPicker line_square_picker = {{700, 150, 0, 0, NO_OUTLINE, NO_INLINE}, &line_square_color_rect, line_square_picker_label_list, line_square_picker_slider_list};
+    ColorPicker line_square_picker = {{700 * SCALE, 150 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, &line_square_color_rect, line_square_picker_label_list, line_square_picker_slider_list};
     picker_init(&line_square_picker, SCALE);
 
 
@@ -172,7 +172,7 @@ int options()
     Label *empty_square_picker_label_list[] = {&empty_square_slider_title_label, &empty_square_red_slider_description_label, &empty_square_green_slider_description_label, &empty_square_blue_slider_description_label};
     Slider *empty_square_picker_slider_list[] = {&empty_square_red_slider, &empty_square_green_slider, &empty_square_blue_slider};
 
-    ColorPicker empty_square_picker = {{20, 400, 0, 0, NO_OUTLINE, NO_INLINE}, &empty_square_color_rect, empty_square_picker_label_list, empty_square_picker_slider_list};
+    ColorPicker empty_square_picker = {{20 * SCALE, 400 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, &empty_square_color_rect, empty_square_picker_label_list, empty_square_picker_slider_list};
     picker_init(&empty_square_picker, SCALE);
 
 
