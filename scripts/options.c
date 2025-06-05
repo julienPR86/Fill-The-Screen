@@ -192,7 +192,7 @@ int options()
 
     Label max_fps_slider_label = {ZERO, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor max_fps_slider_cursor = {{0, 0, 0, 0, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
-    Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, &MAX_FPS, 30, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
+    Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE}, &MAX_FPS, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider, SCALE);
 
     Button *video_button_list[] = {};
