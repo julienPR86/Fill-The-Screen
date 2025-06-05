@@ -95,53 +95,53 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
     switch (anchor)
     {
         case CENTER:
-            element->x = x - element->width * scale / 2;
-            element->y = y - element->height * scale / 2;
+            element->x = x - (element->width / 2 + element->outline.size) * scale;
+            element->y = y - (element->height / 2 + element->outline.size) * scale;
             break;
 
         case TOP_LEFT:
-            element->x = x;
-            element->y = y;
+            element->x = x + element->outline.size;
+            element->y = y + element->outline.size;
             break;
 
         case TOP_CENTER:
-            element->x = x - element->width * scale / 2;
-            element->y = y;
+            element->x = x - (element->width / 2 + element->outline.size) * scale;
+            element->y = y + element->outline.size;
             break;
 
         case TOP_RIGHT:
-            element->x = x - element->width * scale;
-            element->y = y;
+            element->x = x - (element->width + element->outline.size) * scale;
+            element->y = y + element->outline.size;
             break;
 
         case MID_LEFT:
-            element->x = x;
-            element->y = y - element->height * scale / 2;
+            element->x = x + element->outline.size;
+            element->y = y - (element->height / 2 + element->outline.size) * scale;
             break;
 
         case MID_RIGHT:
-            element->x = x - element->width * scale;
-            element->y = y - element->height * scale / 2;
+            element->x = x - (element->width + element->outline.size) * scale;
+            element->y = y - (element->height / 2 + element->outline.size) * scale ;
             break;
 
         case BOTTOM_LEFT:
-            element->x = x;
-            element->y = y - element->height * scale;
+            element->x = x + element->outline.size;
+            element->y = y - (element->height + element->outline.size) * scale;
             break;
 
         case BOTTOM_CENTER:
-            element->x = x - element->width * scale / 2;
-            element->y = y - element->height * scale;
+            element->x = x - (element->width / 2 + element->outline.size) * scale;
+            element->y = y - (element->height + element->outline.size) * scale;
             break;
 
         case BOTTOM_RIGHT:
-            element->x = x - element->width * scale;
-            element->y = y - element->height * scale;
+            element->x = x - (element->width + element->outline.size) * scale;
+            element->y = y - (element->height + element->outline.size) * scale;
             break;
 
         default:
-            element->x = x;
-            element->y = y;
+            element->x = x + element->outline.size;
+            element->y = y + element->outline.size;
             break;
     }
     return;
