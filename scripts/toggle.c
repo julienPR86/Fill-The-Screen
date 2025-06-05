@@ -7,9 +7,6 @@ Toggle *toggle_init(Toggle *toggle)
 
     toggle->label = label_init(toggle->label);
 
-    toggle->rect.width = toggle->rect.width;
-    toggle->rect.height = toggle->rect.height;
-
     if (NULL != toggle->label)
     {
         toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width);
@@ -76,9 +73,7 @@ void toggle_render(Toggle *toggle, float scale)
         return;
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {toggle->rect.x + toggle->rect.inline_.size * scale, toggle->rect.y + toggle->rect.inline_.size * scale, (toggle->rect.width - toggle->rect.inline_.size * 2) * scale, (toggle->rect.height - toggle->rect.inline_.size * 2) * scale};
-    
-    render_outline(&toggle->rect, scale);
+    SDL_FRect toggle_rect = {toggle->rect.x, toggle->rect.y, toggle->rect.width, toggle->rect.height};
 
     switch (toggle->state)
     {
@@ -97,6 +92,9 @@ void toggle_render(Toggle *toggle, float scale)
 
     SDL_SetRenderDrawColor(renderer, toggle_color.r, toggle_color.g, toggle_color.b, toggle_color.a);
     SDL_RenderFillRect(renderer, &toggle_rect);
+
+    render_outline(&toggle->rect, scale);
+    render_inline(&toggle->rect, scale);
     
     if (NULL != toggle->label)
         label_render(toggle->label, scale);
