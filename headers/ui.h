@@ -352,6 +352,11 @@ void panel_list_free(Panel *panels[], int count);
 void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor);
 //Draw the element outline
 void render_outline(UI_Element *element, float scale);
+//Draw the element inline
 void render_inline(UI_Element *element, float scale);
+//return the height of the element
+int get_height(UI_Element *element, float scale);
+//return the width of the element
+int get_width(UI_Element *element, float scale);
 
 #endif

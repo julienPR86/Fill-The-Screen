@@ -51,3 +51,13 @@ void render_inline(UI_Element *element, float scale)
     }
     return;
 }
+
+int get_height(UI_Element *element, float scale)
+{
+    return (element->height + element->outline.size * 2) * scale;
+}
+
+int get_width(UI_Element *element, float scale)
+{
+    return (element->width + element->outline.size * 2) * scale;
+}
