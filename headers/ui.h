@@ -352,5 +352,6 @@ void panel_list_free(Panel *panels[], int count);
 void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor);
 //Draw the element outline
 void render_outline(UI_Element *element, float scale);
+void render_inline(UI_Element *element, float scale);
 
 #endif

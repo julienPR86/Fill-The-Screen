@@ -36,3 +36,11 @@ void render_outline(UI_Element *element, float scale)
     SDL_RenderFillRect(renderer, &inline_rect);
     return;
 }
+
+void render_inline(UI_Element *element, float scale)
+{
+    if (NULL == element || element->width <= 0 || element->height <= 0)
+        return;
+        
+    return;
+}
