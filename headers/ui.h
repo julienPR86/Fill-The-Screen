@@ -242,10 +242,6 @@ void button_render(Button *button, float scale);
 void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
-//return the button height
-int button_get_height(Button *button, float scale);
-//return the button width
-int button_get_width(Button *button, float scale);
 
 //toggle init, needs to be called before all toggle functions
 Toggle *toggle_init(Toggle *toggle);
@@ -257,10 +253,6 @@ void toggle_render(Toggle *toggle, float scale);
 void toggle_free(Toggle *toggle);
 //free a toggle's list
 void toggle_list_free(Toggle *toggle[], int size);
-//return the toggle height
-int toggle_get_height(Toggle *toggle, float scale);
-//return the toggle width
-int toggle_get_width(Toggle *toggle, float scale);
 
 //toggle group init, needs to be called before all toggle group functions
 ToggleGroup *group_init(ToggleGroup *group);

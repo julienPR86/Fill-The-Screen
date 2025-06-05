@@ -124,13 +124,3 @@ void toggle_list_free(Toggle *toggles[], int size)
     }
     return;
 }
-
-int toggle_get_height(Toggle *toggle, float scale)
-{
-    return (toggle->rect.height + toggle->rect.outline.size * 2) * scale;
-}
-
-int toggle_get_width(Toggle *toggle, float scale)
-{
-    return (toggle->rect.width + toggle->rect.outline.size * 2) * scale;
-}
