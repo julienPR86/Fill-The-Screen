@@ -152,28 +152,20 @@ int picker_get_height(ColorPicker *picker, float scale)
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
         return RETURN_NONE;
 
-    int h1 = 0, h2 = 0, i;
+    int height = 0, i;
 
-    for (i = 0; i < 4; i++)
+    height += MAX(get_height(&picker->color_rect->rect, scale), get_height(&picker->labels[0]->rect, scale));
+
+    for (i = 1; i < 4; i++)
     {
-        h1 += get_height(&picker->labels[i]->rect, scale);
+        height += get_height(&picker->labels[i]->rect, scale);
     }
     for (i = 0; i < 3; i++)
     {
-        h1 += get_height(&picker->sliders[i]->rect, scale);
+        height += get_height(&picker->sliders[i]->rect, scale);
     }
 
-    h2 += get_height(&picker->color_rect->rect, scale);
-    for (i = 2; i < 4; i++)
-    {
-        h2 += get_height(&picker->labels[i]->rect, scale);
-    }
-    for (i = 0; i < 3; i++)
-    {
-        h2 += get_height(&picker->sliders[i]->rect, scale);
-    }
-
-    return MAX(h1, h2);
+    return height;
 }
 
 int picker_get_width(ColorPicker *picker, float scale)
