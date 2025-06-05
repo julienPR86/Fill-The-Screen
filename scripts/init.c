@@ -1,7 +1,7 @@
 #include "../main.h"
 
-int WIDTH = 1080;
-int HEIGHT = 720;
+int WIDTH = 1920;
+int HEIGHT = 1080;
 float SCALE;
 int FPS;
 int MAX_FPS = 144;
@@ -40,7 +40,7 @@ int max_inline_size = 5;
 int game_mode = NO_ACTIVE_MODE;
 
 TTF_Font **roboto_regular_fonts;
-int max_font_size = 100;
+int max_font_size = 300;
 
 
 char *FPS_text;
@@ -171,7 +171,7 @@ int init()
         FPS_label.text = FPS_text;
         FPS_label.rect.outline = outlines[0];
         FPS_label.rect.inline_ = inlines[0];
-        label_init(&FPS_label);
+        label_init(&FPS_label, SCALE);
     }
     
     return RETURN_SUCCESS;

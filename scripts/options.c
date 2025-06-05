@@ -8,13 +8,13 @@ int options()
     Label audio_toggle_label = {EMPTY_UI_ELEMENT, "Audio", 40, DARK, NULL, NULL, false, true};
 
     Toggle gameplay_toggle = {{0, 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
-    toggle_init(&gameplay_toggle);
+    toggle_init(&gameplay_toggle, SCALE);
     Toggle colors_toggle = {{get_width(&gameplay_toggle.rect, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
-    toggle_init(&colors_toggle);
+    toggle_init(&colors_toggle, SCALE);
     Toggle video_toggle = {{colors_toggle.rect.x + get_width(&colors_toggle.rect, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
-    toggle_init(&video_toggle);
+    toggle_init(&video_toggle, SCALE);
     Toggle audio_toggle = {{video_toggle.rect.x + get_width(&video_toggle.rect, SCALE), 0, WIDTH/SCALE/4, HEIGHT/10, NO_OUTLINE, inlines[1]}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
-    toggle_init(&audio_toggle);
+    toggle_init(&audio_toggle, SCALE);
 
     Toggle *options_toggle_list[] = {&gameplay_toggle, &colors_toggle, &video_toggle, &audio_toggle};
     ToggleGroup options_group = {options_toggle_list, 4, 0, true};
@@ -23,7 +23,7 @@ int options()
     // Gameplay panel ----------------------------------------------------------------
     
     Label probability_slider_description_label = {{20, 150*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Blocks spawn probability", 20, DARK, NULL, NULL, false, true};
-    label_init(&probability_slider_description_label);
+    label_init(&probability_slider_description_label, SCALE);
 
     Label probability_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor probability_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -32,7 +32,7 @@ int options()
 
 
     Label map_width_slider_description_label = {{20, 225*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Map width", 20, DARK, NULL, NULL, false, true};
-    label_init(&map_width_slider_description_label);
+    label_init(&map_width_slider_description_label, SCALE);
 
     Label map_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor map_width_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -41,7 +41,7 @@ int options()
 
 
     Label map_height_slider_description_label = {{20, 300*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Map height", 20, DARK, NULL, NULL, false, true};
-    label_init(&map_height_slider_description_label);
+    label_init(&map_height_slider_description_label, SCALE);
 
     Label map_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor map_height_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -50,7 +50,7 @@ int options()
 
 
     Label game_speed_slider_description = {{20, 375*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Game speed", 20, DARK, NULL, NULL, false, true};
-    label_init(&game_speed_slider_description);
+    label_init(&game_speed_slider_description, SCALE);
 
     Label game_speed_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor game_speed_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -188,7 +188,7 @@ int options()
     // Video panel --------------------------------------------------------------------
 
     Label max_fps_slider_description_label = {{20, 150*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Max FPS", 20, DARK, NULL, NULL, false, true};
-    label_init(&max_fps_slider_description_label);
+    label_init(&max_fps_slider_description_label, SCALE);
 
     Label max_fps_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor max_fps_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -207,7 +207,7 @@ int options()
     // Audio panel --------------------------------------------------------------------
 
     Label master_audio_slider_description_label = {{20, 150*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Master volume", 20, DARK, NULL, NULL, false, true};
-    label_init(&master_audio_slider_description_label);
+    label_init(&master_audio_slider_description_label, SCALE);
 
     Label master_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor master_audio_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -216,7 +216,7 @@ int options()
 
 
     Label music_audio_slider_description_label = {{20, 225*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Music volume", 20, DARK, NULL, NULL, false, true};
-    label_init(&music_audio_slider_description_label);
+    label_init(&music_audio_slider_description_label, SCALE);
 
     Label music_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor music_audio_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -225,7 +225,7 @@ int options()
 
 
     Label effects_audio_slider_description_label = {{20, 300*SCALE, 0, 0, NO_OUTLINE, NO_INLINE}, "Effects volume", 20, DARK, NULL, NULL, false, true};
-    label_init(&effects_audio_slider_description_label);
+    label_init(&effects_audio_slider_description_label, SCALE);
 
     Label effects_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
     SliderCursor effects_audio_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE}, NORMAL, &slider_cursor_style};
@@ -283,7 +283,7 @@ int options()
         {
             panels[i]->active = false;
         }
-        out = group_update(&options_group);
+        out = group_update(&options_group, SCALE);
         switch (out)
         {
             case RETURN_OPTION_GAMEPLAY_PANEL:
@@ -317,7 +317,7 @@ int options()
         }
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
-            label_update(labels[i]);
+            label_update(labels[i], SCALE);
             label_render(labels[i], SCALE);
         }
 

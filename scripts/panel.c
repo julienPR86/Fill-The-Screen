@@ -39,7 +39,7 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 return out;
 
-            out = button_update(panel->buttons[i]);
+            out = button_update(panel->buttons[i], SCALE);
         }
     }
     if (NULL != panel->toggles && RETURN_NONE == out)
@@ -49,7 +49,7 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 return out;
 
-            out = toggle_update(panel->toggles[i]);
+            out = toggle_update(panel->toggles[i], SCALE);
         }
     }
     if (NULL != panel->sliders && RETURN_NONE == out)
@@ -76,7 +76,7 @@ int panel_update(Panel *panel)
     {
         for (int i = 0; i < panel->label_count; i++)
         {
-            label_update(panel->labels[i]);
+            label_update(panel->labels[i], SCALE);
         }
     }
     return out;

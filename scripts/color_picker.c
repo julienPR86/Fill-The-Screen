@@ -25,7 +25,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale)
 
     for (i = 0; i < 4; i++)
     {
-        label_init(picker->labels[i]);
+        label_init(picker->labels[i], scale);
     }
     for (i = 0; i < 3; i++)
     {
@@ -47,7 +47,7 @@ int picker_update(ColorPicker *picker, float scale)
     int out = RETURN_NONE, i;
     for (i = 0; i < 4; i++)
     {
-        label_update(picker->labels[i]);
+        label_update(picker->labels[i], scale);
     }
 
     for (i = 0; i < 3; i++)

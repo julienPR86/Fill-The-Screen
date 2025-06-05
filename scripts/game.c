@@ -150,7 +150,7 @@ int game()
         
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
-            label_update(labels[i]);
+            label_update(labels[i], SCALE);
             label_render(labels[i], SCALE);
         }
 

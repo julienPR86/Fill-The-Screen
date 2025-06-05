@@ -26,7 +26,7 @@ Slider *slider_init(Slider *slider, float scale)
             slider->label = NULL;
             return slider;
         }
-        label_init(slider->label);
+        label_init(slider->label, SCALE);
         slider_set_label_position(slider, scale);
     }
     return slider;
@@ -94,7 +94,7 @@ int slider_update(Slider *slider, float scale)
     } 
     slider_label_text_update(slider);
 
-    label_update(slider->label);
+    label_update(slider->label, SCALE);
     return out;
 }
 
