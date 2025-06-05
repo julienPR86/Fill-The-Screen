@@ -181,5 +181,5 @@ int picker_get_width(ColorPicker *picker, float scale)
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
         return RETURN_NONE;
 
-    return MAX(get_width(&picker->labels[0]->rect, scale) + get_width(&picker->color_rect->rect, scale), get_width(&picker->sliders[0]->rect, scale));
+    return MAX(get_width(&picker->labels[0]->rect, scale) + get_width(&picker->color_rect->rect, scale), slider_get_width(picker->sliders[0], scale));
 }
