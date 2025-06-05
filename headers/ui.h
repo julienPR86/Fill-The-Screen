@@ -244,9 +244,9 @@ void button_free(Button *button);
 void button_list_free(Button *button[], int size);
 
 //toggle init, needs to be called before all toggle functions
-Toggle *toggle_init(Toggle *toggle);
+Toggle *toggle_init(Toggle *toggle, float scale);
 //update a toggle
-int toggle_update(Toggle *toggle);
+int toggle_update(Toggle *toggle, float scale);
 //render a toggle
 void toggle_render(Toggle *toggle, float scale);
 //free the toggle's label

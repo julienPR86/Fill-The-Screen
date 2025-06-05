@@ -1,11 +1,11 @@
 #include "../main.h"
 
-Toggle *toggle_init(Toggle *toggle)
+Toggle *toggle_init(Toggle *toggle, float scale)
 {
     if (NULL == toggle)
         return NULL;
 
-    toggle->label = label_init(toggle->label);
+    toggle->label = label_init(toggle->label, scale);
 
     if (NULL != toggle->label)
     {
@@ -18,7 +18,7 @@ Toggle *toggle_init(Toggle *toggle)
     return toggle;
 }
 
-int toggle_update(Toggle *toggle)
+int toggle_update(Toggle *toggle, float scale)
 {
     if (NULL == toggle || !toggle->active)
         return RETURN_NONE;
@@ -60,7 +60,7 @@ int toggle_update(Toggle *toggle)
         }
     }
     if (NULL != toggle->label)
-        label_update(toggle->label);
+        label_update(toggle->label, scale);
         
     if (NULL != toggle->command && CLICKED == toggle->state)
         out = toggle->command();
