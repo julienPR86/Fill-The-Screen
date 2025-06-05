@@ -257,7 +257,7 @@ void toggle_list_free(Toggle *toggle[], int size);
 //toggle group init, needs to be called before all toggle group functions
 ToggleGroup *group_init(ToggleGroup *group);
 //update a toggle group
-int group_update(ToggleGroup *group);
+int group_update(ToggleGroup *group, float scale);
 //render a toggle group
 void group_render(ToggleGroup *group);
 //set all toggles states to normal

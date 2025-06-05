@@ -12,7 +12,7 @@ ToggleGroup *group_init(ToggleGroup *group)
     return group;
 }
 
-int group_update(ToggleGroup *group)
+int group_update(ToggleGroup *group, float scale)
 {
     if (NULL == group || NULL == group->toggles)
         return RETURN_NONE;
@@ -20,7 +20,7 @@ int group_update(ToggleGroup *group)
     int out = RETURN_NONE, final_out = out;
     for (int i = 0; i < group->count; i++)
     {
-        out = toggle_update(group->toggles[i]);
+        out = toggle_update(group->toggles[i], scale);
         if (CLICKED == group->toggles[i]->state)
         {
             group_clear_selected(group);
