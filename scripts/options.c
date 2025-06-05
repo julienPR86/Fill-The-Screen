@@ -91,7 +91,7 @@ int options()
     Label *player_picker_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
     Slider *player_picker_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
 
-    ColorPicker player_picker = {{20, 150, 0, 0, outlines[1], NO_INLINE}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
+    ColorPicker player_picker = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE}, &player_color_rect, player_picker_label_list, player_picker_slider_list};
     picker_init(&player_picker, SCALE);
 
 
