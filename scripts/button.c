@@ -1,11 +1,11 @@
 #include "../main.h"
 
-Button *button_init(Button *button)
+Button *button_init(Button *button, float scale)
 {
     if (NULL == button)
         return NULL;
 
-    button->label = label_init(button->label);
+    button->label = label_init(button->label, scale);
 
     if (NULL != button->label)
     {
@@ -18,7 +18,7 @@ Button *button_init(Button *button)
     return button;
 }
 
-int button_update(Button *button)
+int button_update(Button *button, float scale)
 {
     if (NULL == button || !button->active)
         return RETURN_NONE;
@@ -45,7 +45,7 @@ int button_update(Button *button)
     {
         button->state = NORMAL;
     }
-    label_update(button->label);
+    label_update(button->label, scale);
     return out;
 }
 

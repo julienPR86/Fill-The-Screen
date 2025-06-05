@@ -233,9 +233,9 @@ extern Inline *inlines;
 void rect_render(Rect *element, float scale);
 
 //button init, needs to be called before all button functions
-Button *button_init(Button *button);
+Button *button_init(Button *button, float scale);
 //update a button
-int button_update(Button *button);
+int button_update(Button *button, float scale);
 //render a button
 void button_render(Button *button, float scale);
 //free the button's label
