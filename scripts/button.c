@@ -9,6 +9,8 @@ Button *button_init(Button *button, float scale)
 
     if (NULL != button->label)
     {
+        button->label->rect.anchor = NONE;
+
         button->rect.width = MAX(button->rect.width, button->label->rect.width);
         button->rect.height = MAX(button->rect.height, button->label->rect.height);
 
