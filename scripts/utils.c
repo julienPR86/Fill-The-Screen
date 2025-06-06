@@ -150,13 +150,7 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
 
 void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor)
 {
-    int _anchor_;
-    if (NONE == anchor)
-        _anchor_ = element->anchor;
-    else
-        _anchor_ = anchor;
-
-    switch (_anchor_)
+    switch (anchor)
     {
         case NONE:
             element->x = x + element->outline.size * scale;
