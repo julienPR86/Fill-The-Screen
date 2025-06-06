@@ -114,7 +114,7 @@ void label_center(Label *label, UI_Element *rect, float scale)
     if (NULL == label || NULL == rect)
         return;
 
-    label->rect.x = rect->x + CENTERED(rect->width * scale, label->rect.width * scale);
-    label->rect.y = rect->y + CENTERED(rect->height * scale, label->rect.height * scale);
+    label->rect.x = rect->x + CENTERED(rect->width * scale, label->rect.width);
+    label->rect.y = rect->y + CENTERED(rect->height * scale, label->rect.height);
     return;
 }
