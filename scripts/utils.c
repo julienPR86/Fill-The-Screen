@@ -98,8 +98,6 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
     switch (anchor)
     {
         case NONE:
-            element->x = x;
-            element->y = y;
             break;
         
         case CENTER:
