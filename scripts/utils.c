@@ -83,7 +83,65 @@ void get_mouse_delta(float *_x, float *_y)
 
 int UI_element_collision(UI_Element *element, int x, int y, float scale)
 {
-    if (x >= element->x && x <= element->x + element->width * scale && y >= element->y && y <= element->y + element->height * scale)
+    int _x_, _y_;
+    switch (element->anchor)
+    {
+        case NONE:
+            _x_ = element->x + element->outline.size;
+            _y_ = element->y + element->outline.size;
+            break;
+
+        case CENTER:
+            _x_ = element->x - (element->width / 2 + element->outline.size) * scale;
+            _y_ = element->y - (element->height / 2 + element->outline.size) * scale;
+            break;
+
+        case TOP_LEFT:
+            _x_ = element->x + element->outline.size;
+            _y_ = element->y + element->outline.size;
+            break;
+
+        case TOP_CENTER:
+            _x_ = element->x - (element->width / 2 + element->outline.size) * scale;
+            _y_ = element->y + element->outline.size;
+            break;
+
+        case TOP_RIGHT:
+            _x_ = element->x - (element->width + element->outline.size) * scale;
+            _y_ = element->y + element->outline.size;
+            break;
+
+        case MID_LEFT:
+            _x_ = element->x + element->outline.size;
+            _y_ = element->y - (element->height / 2 + element->outline.size) * scale;
+            break;
+
+        case MID_RIGHT:
+            _x_ = element->x - (element->width + element->outline.size) * scale;
+            _y_ = element->y - (element->height / 2 + element->outline.size) * scale ;
+            break;
+
+        case BOTTOM_LEFT:
+            _x_ = element->x + element->outline.size;
+            _y_ = element->y - (element->height + element->outline.size) * scale;
+            break;
+
+        case BOTTOM_CENTER:
+            _x_ = element->x - (element->width / 2 + element->outline.size) * scale;
+            _y_ = element->y - (element->height + element->outline.size) * scale;
+            break;
+
+        case BOTTOM_RIGHT:
+            _x_ = element->x - (element->width + element->outline.size) * scale;
+            _y_ = element->y - (element->height + element->outline.size) * scale;
+            break;
+
+        default:
+            _x_ = element->x + element->outline.size;
+            _y_ = element->y + element->outline.size;
+            break;
+    }
+    if (x > _x_ && x < _x_ + element->width * scale && y > _y_ && y < _y_ + element->height * scale)
     {
         return true;
     }
