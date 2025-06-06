@@ -11,9 +11,6 @@ Button *button_init(Button *button, float scale)
     {
         button->rect.width = MAX(button->rect.width, button->label->rect.width);
         button->rect.height = MAX(button->rect.height, button->label->rect.height);
-
-        button->label->rect.x = button->rect.x + CENTERED(button->rect.width, button->label->rect.width);
-        button->label->rect.y = button->rect.y + CENTERED(button->rect.height, button->label->rect.height);
     }
     return button;
 }
@@ -107,5 +104,15 @@ void button_list_free(Button *buttons[], int size)
             
         button_free(buttons[i]);
     }
+    return;
+}
+
+void button_center_label(Button *button, float scale)
+{
+    if (NULL == button || NULL == button->label)
+        return;
+
+    button->label->rect.x = button->rect.x + CENTERED(button->rect.width, button->label->rect.width);
+    button->label->rect.y = button->rect.y + CENTERED(button->rect.height, button->label->rect.height);
     return;
 }

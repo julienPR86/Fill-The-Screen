@@ -245,6 +245,8 @@ void button_render(Button *button, float scale);
 void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
+//Center the button label
+void button_center_label(Button *button, float scale);
 
 //toggle init, needs to be called before all toggle functions
 Toggle *toggle_init(Toggle *toggle, float scale);
