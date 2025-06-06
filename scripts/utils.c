@@ -90,7 +90,7 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
     return false;
 }
 
-void set_UI_element_position(UI_Element *element, int x, int y, float scale)
+void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor)
 {
     switch (element->anchor)
     {
