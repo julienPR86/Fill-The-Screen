@@ -17,10 +17,10 @@ int main()
     Button play_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
     button_init(&play_button, SCALE);
 
-    Button options_button = {{WIDTH/2, HEIGHT/2+100, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &options_button_label, &button_style, &options, true};
+    Button options_button = {{WIDTH/2, HEIGHT/2 + 100 * SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &options_button_label, &button_style, &options, true};
     button_init(&options_button, SCALE);
 
-    Button exit_button = {{WIDTH/2, HEIGHT/2+200, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
+    Button exit_button = {{WIDTH/2, HEIGHT/2 + 200 * SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
     button_init(&exit_button, SCALE);
     
     Label *labels[] = {&title_label, &FPS_label};
