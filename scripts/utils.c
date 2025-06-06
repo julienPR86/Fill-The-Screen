@@ -83,7 +83,10 @@ void get_mouse_delta(float *_x, float *_y)
 
 int UI_element_collision(UI_Element *element, int x, int y, float scale)
 {
-    if (x >= element->x - element->outline.size * scale && x < element->x + (element->width + element->outline.size) * scale && y >= element->y - element->outline.size * scale && y < element->y + (element->height + element->outline.size) * scale)
+    UI_Element new_element = *element;
+    set_UI_element_position(&new_element, element->x, element->y, scale, element->anchor);
+
+    if (x >= new_element.x - new_element.outline.size * scale && x < new_element.x + (element->width + new_element.outline.size) * scale && y >= new_element.y - new_element.outline.size * scale && y < new_element.y + (new_element.height + new_element.outline.size) * scale)
     {
         return true;
     }
