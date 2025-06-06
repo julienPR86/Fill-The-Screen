@@ -87,8 +87,8 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
     switch (element->anchor)
     {
         case NONE:
-            _x_ = element->x + element->outline.size;
-            _y_ = element->y + element->outline.size;
+            _x_ = element->x + element->outline.size * scale;
+            _y_ = element->y + element->outline.size * scale;
             break;
 
         case CENTER:
@@ -97,22 +97,22 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
             break;
 
         case TOP_LEFT:
-            _x_ = element->x + element->outline.size;
-            _y_ = element->y + element->outline.size;
+            _x_ = element->x + element->outline.size * scale;
+            _y_ = element->y + element->outline.size * scale;
             break;
 
         case TOP_CENTER:
             _x_ = element->x - (element->width / 2 + element->outline.size) * scale;
-            _y_ = element->y + element->outline.size;
+            _y_ = element->y + element->outline.size * scale;
             break;
 
         case TOP_RIGHT:
             _x_ = element->x - (element->width + element->outline.size) * scale;
-            _y_ = element->y + element->outline.size;
+            _y_ = element->y + element->outline.size * scale;
             break;
 
         case MID_LEFT:
-            _x_ = element->x + element->outline.size;
+            _x_ = element->x + element->outline.size * scale;
             _y_ = element->y - (element->height / 2 + element->outline.size) * scale;
             break;
 
@@ -122,7 +122,7 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
             break;
 
         case BOTTOM_LEFT:
-            _x_ = element->x + element->outline.size;
+            _x_ = element->x + element->outline.size * scale;
             _y_ = element->y - (element->height + element->outline.size) * scale;
             break;
 
@@ -137,8 +137,8 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale)
             break;
 
         default:
-            _x_ = element->x + element->outline.size;
-            _y_ = element->y + element->outline.size;
+            _x_ = element->x + element->outline.size * scale;
+            _y_ = element->y + element->outline.size * scale;
             break;
     }
     if (x > _x_ && x < _x_ + element->width * scale && y > _y_ && y < _y_ + element->height * scale)
@@ -159,8 +159,8 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
     switch (_anchor_)
     {
         case NONE:
-            element->x = x + element->outline.size;
-            element->y = y + element->outline.size;
+            element->x = x + element->outline.size * scale;
+            element->y = y + element->outline.size * scale;
             break;
         
         case CENTER:
@@ -169,22 +169,22 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
             break;
 
         case TOP_LEFT:
-            element->x = x + element->outline.size;
-            element->y = y + element->outline.size;
+            element->x = x + element->outline.size * scale;
+            element->y = y + element->outline.size * scale;
             break;
 
         case TOP_CENTER:
             element->x = x - (element->width / 2 + element->outline.size) * scale;
-            element->y = y + element->outline.size;
+            element->y = y + element->outline.size * scale;
             break;
 
         case TOP_RIGHT:
             element->x = x - (element->width + element->outline.size) * scale;
-            element->y = y + element->outline.size;
+            element->y = y + element->outline.size * scale;
             break;
 
         case MID_LEFT:
-            element->x = x + element->outline.size;
+            element->x = x + element->outline.size * scale;
             element->y = y - (element->height / 2 + element->outline.size) * scale;
             break;
 
@@ -194,7 +194,7 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
             break;
 
         case BOTTOM_LEFT:
-            element->x = x + element->outline.size;
+            element->x = x + element->outline.size * scale;
             element->y = y - (element->height + element->outline.size) * scale;
             break;
 
@@ -209,8 +209,8 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
             break;
 
         default:
-            element->x = x + element->outline.size;
-            element->y = y + element->outline.size;
+            element->x = x + element->outline.size * scale;
+            element->y = y + element->outline.size * scale;
             break;
     }
     return;
