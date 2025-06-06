@@ -55,7 +55,7 @@ void button_render(Button *button, float scale)
         return;
         
     Color button_color;
-    SDL_FRect button_rect = {button->rect.x + button->rect.inline_.size * scale, button->rect.y + button->rect.inline_.size * scale, (button->rect.width - button->rect.inline_.size * 2) * scale, (button->rect.height - button->rect.inline_.size * 2) * scale};
+    SDL_FRect button_rect = {button->rect.x, button->rect.y, button->rect.width * scale, button->rect.height * scale};
     
     switch (button->state)
     {
