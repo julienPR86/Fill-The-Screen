@@ -53,9 +53,12 @@ void button_render(Button *button, float scale)
 {
     if (NULL == button || !button->active)
         return;
+
+    UI_Element anchored_rect = button->rect;
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, anchored_rect.anchor);
         
     Color button_color;
-    SDL_FRect button_rect = {button->rect.x, button->rect.y, button->rect.width * scale, button->rect.height * scale};
+    SDL_FRect button_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale, anchored_rect.height * scale};
     
     switch (button->state)
     {
@@ -75,8 +78,8 @@ void button_render(Button *button, float scale)
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
 
-    render_outline(&button->rect, scale);
-    render_inline(&button->rect, scale);
+    render_outline(&anchored_rect, scale);
+    render_inline(&anchored_rect, scale);
     
     if (NULL != button->label)
         label_render(button->label, scale);
