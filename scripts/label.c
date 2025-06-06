@@ -6,6 +6,7 @@ Label *label_init(Label *label, float scale)
         return NULL;
 
     label->update = false;
+    label->rect.anchor = NONE;
 
     if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
