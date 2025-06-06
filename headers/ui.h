@@ -19,6 +19,7 @@ enum ButtonStates
 
 enum Anchors
 {
+    NONE,
     CENTER,
     TOP_LEFT,
     TOP_CENTER,
