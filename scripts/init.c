@@ -1,7 +1,7 @@
 #include "../main.h"
 
-int WIDTH = 1920;
-int HEIGHT = 1080;
+int WIDTH = 1080;
+int HEIGHT = 720;
 float SCALE;
 int FPS;
 int MAX_FPS = 144;
