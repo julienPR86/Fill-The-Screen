@@ -12,7 +12,7 @@ Button *button_init(Button *button, float scale)
         button->rect.width = MAX(button->rect.width, button->label->rect.width);
         button->rect.height = MAX(button->rect.height, button->label->rect.height);
 
-        
+        label_center(button->label, &button->rect, scale);
     }
     return button;
 }
@@ -80,7 +80,7 @@ void button_render(Button *button, float scale)
     render_outline(&anchored_rect, scale);
     render_inline(&anchored_rect, scale);
 
-    button_center_label(button, scale);
+    label_center(button->label, &anchored_rect, scale);
     label_render(button->label, scale);
     return;
 }
