@@ -6,7 +6,6 @@ Label *label_init(Label *label, float scale)
         return NULL;
 
     label->update = false;
-    label->rect.anchor = NONE;
 
     if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
@@ -62,10 +61,13 @@ void label_render(Label *label, float scale)
 {
     if (NULL == label || NULL == label->texture || !label->active)
         return;
-
-    render_outline(&label->rect, scale);
     
-    SDL_FRect label_rect = {label->rect.x, label->rect.y, label->rect.width, label->rect.height};
+    UI_Element anchored_rect = label->rect;
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, anchored_rect.anchor);
+
+    render_outline(&anchored_rect, scale);
+    
+    SDL_FRect label_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width, anchored_rect.height};
 
     if (true != SDL_RenderTexture(renderer, label->texture, NULL, &label_rect))
     {
