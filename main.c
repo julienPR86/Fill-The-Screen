@@ -14,13 +14,13 @@ int main()
     Label options_button_label = {EMPTY_UI_ELEMENT, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label exit_button_label = {EMPTY_UI_ELEMENT, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button play_button = {{20, 200, 150, 50, outlines[2], inlines[1]}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
+    Button play_button = {{20, 200, 150, 50, outlines[2], inlines[1], TOP_LEFT}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
     button_init(&play_button, SCALE);
 
-    Button options_button = {{20, 300, 150, 50, outlines[2], inlines[1]}, NORMAL, &options_button_label, &button_style, &options, true};
+    Button options_button = {{20, 300, 150, 50, outlines[2], inlines[1], TOP_LEFT}, NORMAL, &options_button_label, &button_style, &options, true};
     button_init(&options_button, SCALE);
 
-    Button exit_button = {{20, 400, 150, 50, outlines[2], inlines[1]}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
+    Button exit_button = {{20, 400, 150, 50, outlines[2], inlines[1], TOP_LEFT}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
     button_init(&exit_button, SCALE);
     
     Label *labels[] = {&title_label, &FPS_label};
