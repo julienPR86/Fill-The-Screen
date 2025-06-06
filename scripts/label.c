@@ -67,7 +67,7 @@ void label_render(Label *label, float scale)
 
     render_outline(&anchored_rect, scale);
     
-    SDL_FRect label_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width, anchored_rect.height};
+    SDL_FRect label_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale, anchored_rect.height * scale};
 
     if (true != SDL_RenderTexture(renderer, label->texture, NULL, &label_rect))
     {
