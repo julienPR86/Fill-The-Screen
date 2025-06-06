@@ -9,11 +9,12 @@ Toggle *toggle_init(Toggle *toggle, float scale)
 
     if (NULL != toggle->label)
     {
+        toggle->label->rect.anchor = NONE;
+
         toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width);
         toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height);
 
-        toggle->label->rect.x = toggle->rect.x + CENTERED(toggle->rect.width, toggle->label->rect.width);
-        toggle->label->rect.y = toggle->rect.y + CENTERED(toggle->rect.height, toggle->label->rect.height);
+        label_center(toggle->label, &toggle->rect, scale);
     }
     return toggle;
 }
@@ -71,9 +72,12 @@ void toggle_render(Toggle *toggle, float scale)
 {
     if (NULL == toggle || !toggle->active)
         return;
+
+    UI_Element anchored_rect = toggle->rect;
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, anchored_rect.anchor);
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {toggle->rect.x, toggle->rect.y, toggle->rect.width * scale, toggle->rect.height * scale};
+    SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale, anchored_rect.height * scale};
 
     switch (toggle->state)
     {
@@ -93,11 +97,11 @@ void toggle_render(Toggle *toggle, float scale)
     SDL_SetRenderDrawColor(renderer, toggle_color.r, toggle_color.g, toggle_color.b, toggle_color.a);
     SDL_RenderFillRect(renderer, &toggle_rect);
 
-    render_outline(&toggle->rect, scale);
-    render_inline(&toggle->rect, scale);
+    render_outline(&anchored_rect, scale);
+    render_inline(&anchored_rect, scale);
     
-    if (NULL != toggle->label)
-        label_render(toggle->label, scale);
+    label_center(toggle->label, &anchored_rect, scale);
+    label_render(toggle->label, scale);
     return;
 }
 
