@@ -245,8 +245,6 @@ void button_render(Button *button, float scale);
 void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
-//Center the button label
-void button_center_label(Button *button, float scale);
 
 //toggle init, needs to be called before all toggle functions
 Toggle *toggle_init(Toggle *toggle, float scale);
@@ -280,6 +278,8 @@ void label_render(Label *label, float scale);
 void label_free(Label *label);
 //free a label list
 void label_list_free(Label *labels[], int size);
+//Center the label inside the rect passed in
+void label_center(Label *label, UI_Element *rect, float scale);
 
 //slider cursor init, needs to be called before all slider cursor functions
 SliderCursor *slider_cursor_init(SliderCursor *cursor);

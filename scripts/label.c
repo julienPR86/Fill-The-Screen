@@ -106,3 +106,13 @@ void label_list_free(Label *labels[], int size)
     }
     return;
 }
+
+void label_center(Label *label, UI_Element *rect, float scale)
+{
+    if (NULL == label || NULL == rect)
+        return;
+
+    label->rect.x = rect->x + CENTERED(rect->width * scale, label->rect.width * scale);
+    label->rect.y = rect->y + CENTERED(rect->height * scale, label->rect.height * scale);
+    return;
+}
