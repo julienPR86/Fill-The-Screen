@@ -63,6 +63,8 @@ typedef struct UI_Element
     Outline outline;
     //element inline
     Inline inline_;
+    //define the element anchor
+    int anchor;
 } UI_Element;
 
 
