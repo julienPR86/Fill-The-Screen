@@ -158,6 +158,11 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
 
     switch (_anchor_)
     {
+        case NONE:
+            element->x = x + element->outline.size;
+            element->y = y + element->outline.size;
+            break;
+        
         case CENTER:
             element->x = x - (element->width / 2 + element->outline.size) * scale;
             element->y = y - (element->height / 2 + element->outline.size) * scale;
