@@ -21,6 +21,8 @@ Slider *slider_init(Slider *slider, float scale)
 
     if (NULL != slider->label)
     {
+        slider->label->rect.anchor = NONE;
+
         if (NULL == slider_label_text_update(slider))
         {
             slider->label = NULL;
@@ -231,7 +233,7 @@ void slider_set_label_position(Slider *slider, float scale)
         return;
 
     slider->label->rect.x = slider->rect.x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale;
-    slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->label->rect.height * scale);
+    slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale, slider->label->rect.height);
     return;
 }
 
