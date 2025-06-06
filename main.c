@@ -7,7 +7,7 @@ int main()
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title_label = {{WIDTH/2, 50, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {{WIDTH/2, 10 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&title_label, SCALE);
 
     Label play_button_label = {{0, 0, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
