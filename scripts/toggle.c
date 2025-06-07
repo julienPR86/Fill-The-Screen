@@ -11,8 +11,8 @@ Toggle *toggle_init(Toggle *toggle, float scale)
     {
         toggle->label->rect.anchor = NONE;
 
-        toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width);
-        toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height);
+        toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width/scale);
+        toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height/scale);
 
         label_center(toggle->label, &toggle->rect, scale);
     }
