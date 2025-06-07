@@ -259,5 +259,5 @@ int slider_get_width(Slider *slider, float scale)
     if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return 0;
 
-    return get_width(&slider->rect, scale) + get_width(&slider->cursor->rect, scale) + slider->label->rect.width;
+    return get_width(&slider->rect, scale) + get_width(&slider->cursor->rect, scale) + slider->label->rect.width + 5*scale;
 }
