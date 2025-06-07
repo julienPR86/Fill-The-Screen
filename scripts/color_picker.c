@@ -104,7 +104,7 @@ void picker_list_free(ColorPicker *pickers[], int size)
     return;
 }
 
-void picker_set_positions(ColorPicker *picker, int scale)
+void picker_set_positions(ColorPicker *picker, float scale)
 {
     if (NULL == picker || NULL == picker->labels || NULL == picker->sliders)
         return;
