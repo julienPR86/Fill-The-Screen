@@ -20,6 +20,9 @@ int options()
     ToggleGroup options_group = {options_toggle_list, 4, 0, true};
     group_init(&options_group);
 
+    Label back_label = {{WIDTH/2, HEIGHT - 10*SCALE, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, true};
+    label_init(&back_label, SCALE);
+
     // Gameplay panel ----------------------------------------------------------------
     
     Label probability_slider_description_label = {{20, 150*SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Blocks spawn probability", 20, DARK, NULL, NULL, false, true};
@@ -244,7 +247,7 @@ int options()
 
     // panels end ---------------------
 
-    Label *labels[] = {&FPS_label};
+    Label *labels[] = {&FPS_label, &back_label};
     Panel *panels[] = {&gameplay_panel, &colors_panel, &video_panel, &audio_panel};
 
     int running = true, out;
