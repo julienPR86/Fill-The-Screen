@@ -118,7 +118,7 @@ void picker_set_positions(ColorPicker *picker, int scale)
     if (picker->labels[0]->rect.height > get_height(&picker->color_rect->rect, scale))
     {
         //Moves the color rect to the right center of the picker title
-        set_UI_element_position(&picker->color_rect->rect, picker->labels[0]->rect.x + picker->labels[0]->rect.width, picker->labels[0]->rect.y + picker->labels[0]->rect.height/2, scale, MID_LEFT); 
+        set_UI_element_position(&picker->color_rect->rect, picker->labels[0]->rect.x + picker->labels[0]->rect.width * 1.1, picker->labels[0]->rect.y + picker->labels[0]->rect.height/2, scale, MID_LEFT); 
     }
     else
     {
@@ -136,12 +136,12 @@ void picker_set_positions(ColorPicker *picker, int scale)
     set_UI_element_position(&picker->sliders[0]->rect, picker->rect.x, picker->labels[1]->rect.y + picker->labels[1]->rect.height, scale, TOP_LEFT);
 
     //Positions the third label
-    set_UI_element_position(&picker->labels[2]->rect, picker->rect.x, picker->sliders[0]->rect.y + picker->sliders[0]->rect.height, scale, TOP_LEFT);
+    set_UI_element_position(&picker->labels[2]->rect, picker->rect.x, picker->sliders[0]->rect.y + get_height(&picker->sliders[0]->rect, scale), scale, TOP_LEFT);
     //Positions the second slider
     set_UI_element_position(&picker->sliders[1]->rect, picker->rect.x, picker->labels[2]->rect.y + picker->labels[2]->rect.height, scale, TOP_LEFT);
 
     //Positions the fourth label
-    set_UI_element_position(&picker->labels[3]->rect, picker->rect.x, picker->sliders[1]->rect.y + picker->sliders[1]->rect.height, scale, TOP_LEFT);
+    set_UI_element_position(&picker->labels[3]->rect, picker->rect.x, picker->sliders[1]->rect.y + get_height(&picker->sliders[1]->rect, scale), scale, TOP_LEFT);
     //Positions the third slider
     set_UI_element_position(&picker->sliders[2]->rect, picker->rect.x, picker->labels[3]->rect.y + picker->labels[3]->rect.height, scale, TOP_LEFT);
 
