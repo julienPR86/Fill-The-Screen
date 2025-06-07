@@ -34,32 +34,32 @@ int game_stats()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title_label = {EMPTY_UI_ELEMENT, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label title_label = {{WIDTH/2, 50 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&title_label, SCALE);
 
-    Label congrats = {EMPTY_UI_ELEMENT, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label congrats = {{WIDTH/2, 50 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&congrats, SCALE);
 
-    Label percent_label = {{0, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label percent_label = {{WIDTH/2, 180 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&percent_label, SCALE);
 
-    Label moves_label = {{0, 200, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label moves_label = {{WIDTH/2, 230 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&moves_label, SCALE);
 
-    Label square_ratio_label = {{0, 250, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
+    Label square_ratio_label = {{WIDTH/2, 280 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, true};
     label_init(&square_ratio_label, SCALE);
 
     Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label restart_button_label = {EMPTY_UI_ELEMENT, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
     Label main_menu_button_label = {EMPTY_UI_ELEMENT, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, true};
 
-    Button back_button = {{20, 400, 150, 50, outlines[2], inlines[1], TOP_LEFT}, NORMAL, &back_button_label, &button_style, &back, true};
+    Button back_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
     button_init(&back_button, SCALE);
 
-    Button restart_button = {{20, 500, 150, 50, outlines[2], inlines[1], TOP_LEFT}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    Button restart_button = {{WIDTH/2, HEIGHT/2 + 100*SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
     button_init(&restart_button, SCALE);
 
-    Button main_menu_button = {{20, 600, 150, 50, outlines[2], inlines[1], TOP_LEFT}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    Button main_menu_button = {{WIDTH/2, HEIGHT/2 + 200*SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
     button_init(&main_menu_button, SCALE);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
