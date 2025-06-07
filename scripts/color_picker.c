@@ -78,7 +78,7 @@ void picker_render(ColorPicker *picker, float scale)
     {
         slider_render(picker->sliders[i], scale);
     }
-    render_outline(&picker->rect, scale);
+    render_outline(&picker->rect, 1);
     return;
 }
 
@@ -163,7 +163,7 @@ int picker_get_height(ColorPicker *picker, float scale)
     }
     for (i = 0; i < 3; i++)
     {
-        height += get_height(&picker->sliders[i]->rect, scale);
+        height += slider_get_height(picker->sliders[i], scale);
     }
 
     return height;
