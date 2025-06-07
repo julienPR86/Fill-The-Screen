@@ -26,6 +26,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale)
     for (i = 0; i < 4; i++)
     {
         label_init(picker->labels[i], scale);
+        picker->labels[i]->rect.anchor = NONE;
     }
     for (i = 0; i < 3; i++)
     {
