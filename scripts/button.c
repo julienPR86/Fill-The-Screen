@@ -11,8 +11,8 @@ Button *button_init(Button *button, float scale)
     {
         button->label->rect.anchor = NONE;
 
-        button->rect.width = MAX(button->rect.width, button->label->rect.width);
-        button->rect.height = MAX(button->rect.height, button->label->rect.height);
+        button->rect.width = MAX(button->rect.width, button->label->rect.width/scale);
+        button->rect.height = MAX(button->rect.height, button->label->rect.height/scale);
 
         label_center(button->label, &button->rect, scale);
     }
