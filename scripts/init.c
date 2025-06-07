@@ -8,8 +8,8 @@ int MAX_FPS = 144;
 double delta_time;
 int game_speed = 60;
 int probability = 6;
-int map_width = 33;
-int map_height = 22;
+int map_width = 40;
+int map_height = 26;
 
 MouseState mouse_state = {0, 0, 0, 0, MOUSE_STATE_NONE, MOUSE_STATE_NONE, 0, 0};
 
