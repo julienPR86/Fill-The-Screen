@@ -105,11 +105,6 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
             element->y = y - (element->height / 2 + element->outline.size) * scale;
             break;
 
-        case TOP_LEFT:
-            element->x = x;
-            element->y = y;
-            break;
-
         case TOP_CENTER:
             element->x = x - (element->width / 2 + element->outline.size) * scale;
             element->y = y;
@@ -145,6 +140,7 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
             element->y = y - (element->height + element->outline.size) * scale;
             break;
 
+        case TOP_LEFT:
         default:
             element->x = x;
             element->y = y;
