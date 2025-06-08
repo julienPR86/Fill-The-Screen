@@ -350,7 +350,7 @@ void panel_free(Panel *panel);
 void panel_list_free(Panel *panels[], int count);
 
 //Set the position of UI element based on the given position and anchor
-void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor);
+void set_UI_element_position(UI_Element *element, int x, int y, float scale, float scale_x, float scale_y,  int anchor);
 //Draw the element outline
 void render_outline(UI_Element *element, float scale);
 //Draw the element inline
