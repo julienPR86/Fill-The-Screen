@@ -88,7 +88,7 @@ int update_window_size(SDL_Window *window, int w, int h)
 
     if (!SDL_SetWindowSize(window, w, h))
     {
-        fprintf("Window resize error : %s\n", SDL_GetError());
+        fprintf(stderr, "Window resize error : %s\n", SDL_GetError());
         return 0;
     }
     return 1;
