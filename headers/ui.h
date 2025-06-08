@@ -95,6 +95,8 @@ typedef struct Label
     SDL_Texture *texture;
     //tells if the surface and textures needs to be updated, if the text changed for example
     int update;
+    //a local scale which tells to update the label if SCALE has changed
+    float local_scale;
     //is active parameter
     int active;
 } Label;
