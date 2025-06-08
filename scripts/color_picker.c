@@ -42,8 +42,8 @@ ColorPicker *picker_init(ColorPicker *picker, float scale)
 
 int picker_update(ColorPicker *picker, float scale)
 {
-    if (NULL == picker)
-        return RETURN_FAILURE;
+    if (NULL == picker || !picker->active)
+        return RETURN_NONE;
         
     int out = RETURN_NONE, i;
     for (i = 0; i < 4; i++)
@@ -63,7 +63,7 @@ int picker_update(ColorPicker *picker, float scale)
 
 void picker_render(ColorPicker *picker, float scale)
 {
-    if (NULL == picker)
+    if (NULL == picker || !picker->active)
         return;
 
     rect_render(picker->color_rect, scale);
