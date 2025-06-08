@@ -114,7 +114,7 @@ void picker_set_positions(ColorPicker *picker, float scale)
     //Positions the color rect in the top left corner
     set_UI_element_position(&picker->color_rect->rect, picker->rect.x + pad_x, picker->rect.y, scale, TOP_LEFT);
     //Positions the picker title in the top left corner
-    set_UI_element_position(&picker->labels[0]->rect, picker->rect.x + pad_x, picker->rect.y, scale, TOP_LEFT); 
+    set_UI_element_position(&picker->labels[0]->rect, picker->rect.x + pad_x, picker->rect.y, 1, TOP_LEFT); 
 
     //check which one of the color rect and the title have the biggest height
     if (picker->labels[0]->rect.height > get_height(&picker->color_rect->rect, scale))
