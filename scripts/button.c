@@ -25,7 +25,7 @@ int button_update(Button *button, float scale)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE))
+    if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE, SCALE_X, SCALE_Y))
     {
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
@@ -56,7 +56,7 @@ void button_render(Button *button, float scale)
         return;
 
     UI_Element anchored_rect = button->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, anchored_rect.anchor);
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, SCALE_X, SCALE_Y, anchored_rect.anchor);
         
     Color button_color;
     SDL_FRect button_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale, anchored_rect.height * scale};
