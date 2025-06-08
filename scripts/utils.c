@@ -81,6 +81,19 @@ void get_mouse_delta(float *_x, float *_y)
     return;
 }
 
+int update_window_size(SDL_Window *window, int w, int h)
+{
+    if (NULL == window || w <= 0 || h <= 0)
+        return 0;
+
+    if (!SDL_SetWindowSize(window, w, h))
+    {
+        fprintf("Window resize error : %s\n", SDL_GetError());
+        return 0;
+    }
+    return 1;
+}
+
 float update_scale()
 {
     SCALE = MAX((float)WIDTH / 1080, (float)HEIGHT / 720);
