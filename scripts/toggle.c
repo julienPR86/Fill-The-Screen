@@ -5,6 +5,7 @@ Toggle *toggle_init(Toggle *toggle, float scale)
     if (NULL == toggle)
         return NULL;
 
+    toggle->local_scale = scale;
     toggle->label = label_init(toggle->label, scale);
 
     if (NULL != toggle->label)
@@ -23,6 +24,11 @@ int toggle_update(Toggle *toggle, float scale)
 {
     if (NULL == toggle || !toggle->active)
         return RETURN_NONE;
+
+    if (toggle->local_scale != scale)
+    {
+        toggle->local_scale = scale;
+    }
     
     static int update = 1;
     int out = RETURN_NONE; // returns RETURN_NONE if the toggle isn't clicked

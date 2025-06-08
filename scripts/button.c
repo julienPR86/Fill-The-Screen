@@ -5,6 +5,7 @@ Button *button_init(Button *button, float scale)
     if (NULL == button)
         return NULL;
 
+    button->local_scale = scale;
     button->label = label_init(button->label, scale);
 
     if (NULL != button->label)
@@ -23,6 +24,11 @@ int button_update(Button *button, float scale)
 {
     if (NULL == button || !button->active)
         return RETURN_NONE;
+
+    if (button->local_scale != scale)
+    {
+        button->local_scale = scale;
+    }
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
     if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE))
