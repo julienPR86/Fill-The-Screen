@@ -96,7 +96,9 @@ int update_window_size(SDL_Window *window, int w, int h)
 
 float update_scale()
 {
-    SCALE = MIN((float)WIDTH / 1080, (float)HEIGHT / 720);
+    SCALE_X = (float)WIDTH / 1080;
+    SCALE_Y = (float)HEIGHT / 720;
+    SCALE = MIN(SCALE_X, SCALE_Y);
     return SCALE;
 }
 
