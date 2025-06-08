@@ -44,7 +44,7 @@ void mouse_event_update();
 void get_mouse_delta(float *x, float *y);
 
 //Update the SCALE value when called
-int update_scale();
+float update_scale();
 
 //return 1 if (x,y) is in element, 0 otherwise
 int UI_element_collision(UI_Element *element, int x, int y, float scale);

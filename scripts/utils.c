@@ -81,7 +81,7 @@ void get_mouse_delta(float *_x, float *_y)
     return;
 }
 
-int update_scale()
+float update_scale()
 {
     SCALE = MAX((float)WIDTH / 1080, (float)HEIGHT / 720);
     return SCALE;
