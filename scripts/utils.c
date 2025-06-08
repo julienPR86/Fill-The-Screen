@@ -81,6 +81,12 @@ void get_mouse_delta(float *_x, float *_y)
     return;
 }
 
+int update_scale()
+{
+    SCALE = MAX((float)WIDTH / 1080, (float)HEIGHT / 720);
+    return SCALE;
+}
+
 int UI_element_collision(UI_Element *element, int x, int y, float scale)
 {
     UI_Element new_element = *element;
