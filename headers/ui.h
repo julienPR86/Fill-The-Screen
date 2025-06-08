@@ -201,6 +201,8 @@ typedef struct ColorPicker
     //The sliders, in order : red slider, green slider, blue slider
     //Sliders after the 3rd index won't be allocated and used
     Slider **sliders;
+    //is active parameter
+    int active;
 } ColorPicker;
 
 //panel structure
