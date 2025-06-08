@@ -14,13 +14,13 @@ int main()
     Label options_button_label = {EMPTY_UI_ELEMENT, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label exit_button_label = {EMPTY_UI_ELEMENT, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
-    Button play_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
+    Button play_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &play_button_label, &button_style, &mode_choice, 1.0, true};
     button_init(&play_button, SCALE);
 
-    Button options_button = {{WIDTH/2, HEIGHT/2 + 100 * SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &options_button_label, &button_style, &options, true};
+    Button options_button = {{WIDTH/2, HEIGHT/2 + 100 * SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &options_button_label, &button_style, &options, 1.0, true};
     button_init(&options_button, SCALE);
 
-    Button exit_button = {{WIDTH/2, HEIGHT/2 + 200 * SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
+    Button exit_button = {{WIDTH/2, HEIGHT/2 + 200 * SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &exit_button_label, &button_style, &exit_game, 1.0, true};
     button_init(&exit_button, SCALE);
     
     Label *labels[] = {&title_label, &FPS_label};
