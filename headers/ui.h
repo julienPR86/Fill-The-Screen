@@ -114,8 +114,6 @@ typedef struct Button
     ButtonStyle *style;
     //button command, is called when the button is clicked
     int (*command)();
-    //a local scale which tells to update the label if SCALE has changed
-    float local_scale;
     //is active parameter
     int active;
 } Button;
@@ -133,8 +131,6 @@ typedef struct Toggle
     ButtonStyle *style;
     //toggle command, is called when the toggle is clicked
     int (*command)();
-    //a local scale which tells to update the label if SCALE has changed
-    float local_scale;
     //is active parameter
     int active;
 } Toggle;
@@ -182,8 +178,6 @@ typedef struct Slider
     SliderCursor *cursor;
     //slider style
     SliderStyle *style;
-    //a local scale which tells to update the label if SCALE has changed
-    float local_scale;
     //is active parameter
     int active;
 } Slider;

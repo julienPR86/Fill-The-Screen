@@ -5,8 +5,6 @@ Slider *slider_init(Slider *slider, float scale)
     if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style)
         return NULL;
 
-    slider->local_scale = scale;
-
     if (NULL == slider->value)
     {
         slider->cursor->rect.x = slider->rect.x;
@@ -40,11 +38,6 @@ int slider_update(Slider *slider, float scale)
 {
     if (NULL == slider || NULL == slider->cursor || !slider->active)
         return RETURN_NONE;
-
-    if (slider->local_scale != scale)
-    {
-        slider->local_scale = scale;
-    }
 
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
     
