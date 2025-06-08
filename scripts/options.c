@@ -198,13 +198,29 @@ int options()
     Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &MAX_FPS, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider, SCALE);
 
+    Label screen_width_slider_description_label = {{20, 250*SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Width", 20, DARK, NULL, NULL, false, true};
+    label_init(&screen_width_slider_description_label, SCALE);
+
+    Label screen_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
+    SliderCursor screen_width_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
+    Slider screen_width_slider = {{20, screen_width_slider_description_label.rect.y + screen_width_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &WIDTH, 1080, 1920, 1, &screen_width_slider_label, &screen_width_slider_cursor, &slider_style, true};
+    slider_init(&screen_width_slider, SCALE);
+
+    Label screen_height_slider_description_label = {{20, 350*SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Height", 20, DARK, NULL, NULL, false, true};
+    label_init(&screen_height_slider_description_label, SCALE);
+
+    Label screen_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, true};
+    SliderCursor screen_height_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
+    Slider screen_height_slider = {{20, screen_height_slider_description_label.rect.y + screen_height_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &HEIGHT, 720, 1080, 1, &screen_height_slider_label, &screen_height_slider_cursor, &slider_style, true};
+    slider_init(&screen_height_slider, SCALE);
+
     Button *video_button_list[] = {};
     Toggle *video_toggle_list[] = {};
-    Slider *video_slider_list[] = {&max_fps_slider};
+    Slider *video_slider_list[] = {&max_fps_slider, &screen_width_slider, &screen_height_slider};
     ColorPicker *video_picker_list[] = {};
-    Label *video_label_list[] = {&max_fps_slider_description_label};
+    Label *video_label_list[] = {&max_fps_slider_description_label, &screen_width_slider_description_label, &screen_height_slider_description_label};
     Rect *video_rect_list[] = {};
-    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_picker_list , 0, video_label_list, 1, video_rect_list, 0, false};
+    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 3, video_picker_list , 0, video_label_list, 3, video_rect_list, 0, false};
     panel_init(&video_panel);
 
     // Audio panel --------------------------------------------------------------------
@@ -331,5 +347,7 @@ int options()
     panel_list_free(panels, 4);
     group_free(&options_group);
     label_list_free(labels, 1);
+    update_scale();
+    update_window_size(window, WIDTH, HEIGHT);
     return RETURN_TO_MAIN_MENU;
 }
