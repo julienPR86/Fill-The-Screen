@@ -153,7 +153,7 @@ int init()
             }
         }
     }
-    SCALE = MAX((float)WIDTH / 1080, (float)HEIGHT / 720);
+    update_scale();
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     srand(time(NULL) * (WIDTH / HEIGHT));
