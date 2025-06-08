@@ -6,6 +6,7 @@ Label *label_init(Label *label, float scale)
         return NULL;
 
     label->update = false;
+    label->local_scale = scale;
 
     if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
@@ -48,11 +49,12 @@ void label_update(Label *label, float scale)
     if (NULL == label)
         return;
         
-    if (label->active && label->update)
+    if ((label->active && label->update) || label->local_scale != scale)
     {
         label_free(label);
         label_init(label, scale);
         label->update = false;
+        label->local_scale = scale;
     }
     return;
 }
