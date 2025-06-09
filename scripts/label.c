@@ -59,13 +59,13 @@ void label_update(Label *label, float scale)
     return;
 }
 
-void label_render(Label *label, float scale)
+void label_render(Label *label, float scale, float scale_x, float scale_y)
 {
     if (NULL == label || NULL == label->texture || !label->active || 0 == scale)
         return;
     
     UI_Element anchored_rect = label->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, 1.0, 1.0, 1.0, anchored_rect.anchor);
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, 1.0, scale_x, scale_y, anchored_rect.anchor);
 
     render_outline(&anchored_rect, 1);
     
