@@ -41,7 +41,7 @@ int slider_update(Slider *slider, float scale)
 
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
     
-    if (UI_element_collision(&slider->rect, mouse_state.x, mouse_state.y, SCALE, SCALE_X, SCALE_Y) || UI_element_collision(&slider->cursor->rect, mouse_state.x, mouse_state.y, SCALE, SCALE_X, SCALE_Y) || slider->cursor->state == CLICKED)
+    if (UI_element_collision(&slider->rect, mouse_state.x, mouse_state.y, SCALE) || UI_element_collision(&slider->cursor->rect, mouse_state.x, mouse_state.y, SCALE) || slider->cursor->state == CLICKED)
     {
         if (mouse_state.frame_input)
         {
