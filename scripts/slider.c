@@ -119,7 +119,7 @@ void slider_render(Slider *slider, float scale_x, float scale_y)
 
     if (NULL != slider->label)
     {
-        label_render(slider->label, scale_x, scale_y);
+        label_render(slider->label, 1, 1);
     }
     return;
 }
