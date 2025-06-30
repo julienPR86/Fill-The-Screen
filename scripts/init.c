@@ -1,7 +1,9 @@
 #include "../main.h"
 
-int WIDTH = 1080;
-int HEIGHT = 720;
+int WINDOW_WIDTH = 1080;
+int WINDOW_HEIGHT = 720;
+int WIDTH;
+int HEIGHT;
 float SCALE_X;
 float SCALE_Y;
 int FPS;
@@ -51,6 +53,9 @@ Label FPS_label = {{2, 0, 0, 0, {0, {0, 0, 0, 255}}, {0, {255, 255, 255, 255}}, 
 
 int init()
 {
+    WIDTH = WINDOW_WIDTH;
+    HEIGHT = WINDOW_HEIGHT;
+    
     if (true != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
     {
         fprintf(stderr, "Could not initialize SDL : %s\n", SDL_GetError());

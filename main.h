@@ -72,6 +72,11 @@ enum Returns
     RETURN_SLIDER_UPDATE,
 };
 
+//Basic window width, 1080
+extern int WINDOW_WIDTH;
+//Basic window height, 720
+extern int WINDOW_HEIGHT;
+
 //window width
 extern int WIDTH;
 //window height
