@@ -104,16 +104,19 @@ void slider_render(Slider *slider, float scale_x, float scale_y)
 {
     if (NULL == slider || NULL == slider->style || !slider->active)
         return;
+
+    UI_Element anchored_rect = slider->rect;
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, anchored_rect.anchor);
     
     Color color;
-    SDL_FRect slider_rect = {slider->rect.x, slider->rect.y, slider->rect.width * scale_x, slider->rect.height * scale_y};
+    SDL_FRect slider_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
 
     color = slider->style->background;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &slider_rect);
 
-    render_outline(&slider->rect, scale_x, scale_y);
-    render_inline(&slider->rect, scale_x, scale_y);
+    render_outline(&anchored_rect, scale_x, scale_y);
+    render_inline(&anchored_rect, scale_x, scale_y);
 
     slider_cursor_render(slider->cursor, scale_x, scale_y);
 
