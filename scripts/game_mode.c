@@ -2,10 +2,10 @@
 
 int mode_choice()
 {
-    Label title_label = {{WIDTH/2, 20 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label title_label = {{WINDOW_WIDTH/2, 20 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game mode Choice", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&title_label, SCALE_X, SCALE_Y);
     
-    Label back_label = {{WIDTH/2, HEIGHT - 10 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label back_label = {{WINDOW_WIDTH/2, HEIGHT - 10 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&back_label, SCALE_X, SCALE_Y);
 
     Label fill_mode_button_label = {EMPTY_UI_ELEMENT, "Fill", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
@@ -13,16 +13,16 @@ int mode_choice()
     Label constraint_mode_button_label = {EMPTY_UI_ELEMENT, "Constraint", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label free_mode_button_label = {EMPTY_UI_ELEMENT, "Free", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
-    Button fill_mode_button = {{WIDTH/2, HEIGHT/2 - 100 * SCALE_Y, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
+    Button fill_mode_button = {{WINDOW_WIDTH/2, HEIGHT/2 - 100 * SCALE_Y, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &fill_mode_button_label, &button_style, &fill_mode, true};
     button_init(&fill_mode_button, SCALE_X, SCALE_Y);
 
-    Button discovery_mode_button = {{WIDTH/2, HEIGHT/2, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
+    Button discovery_mode_button = {{WINDOW_WIDTH/2, HEIGHT/2, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &discovery_mode_button_label, &button_style, &discovery_mode, true};
     button_init(&discovery_mode_button, SCALE_X, SCALE_Y);
 
-    Button constraint_mode_button = {{WIDTH/2, HEIGHT/2 + 100 * SCALE_Y, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
+    Button constraint_mode_button = {{WINDOW_WIDTH/2, HEIGHT/2 + 100 * SCALE_Y, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &constraint_mode_button_label, &button_style, &constraint_mode, true};
     button_init(&constraint_mode_button, SCALE_X, SCALE_Y);
 
-    Button free_mode_button = {{WIDTH/2, HEIGHT/2 + 200 * SCALE_Y, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
+    Button free_mode_button = {{WINDOW_WIDTH/2, HEIGHT/2 + 200 * SCALE_Y, 200, 50, outlines[2], inlines[1], CENTER}, NORMAL, &free_mode_button_label, &button_style, &free_mode, true};
     button_init(&free_mode_button, SCALE_X, SCALE_Y);
 
     Label *labels[] = {&title_label, &back_label, &FPS_label};
