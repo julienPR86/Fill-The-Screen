@@ -246,18 +246,18 @@ int slider_get_value(Slider *slider, float scale_x, float scale_y)
     return value;
 }
 
-int slider_get_height(Slider *slider, float scale_x, float scale_y)
+int slider_get_height(Slider *slider, float scale_y)
 {
     if (NULL == slider)
         return 0;
 
-    return MAX(get_height(&slider->rect, scale_x, scale_y), get_height(&slider->cursor->rect, scale_x, scale_y));
+    return MAX(get_height(&slider->rect, scale_y), get_height(&slider->cursor->rect, scale_y));
 }
 
-int slider_get_width(Slider *slider, float scale_x, float scale_y)
+int slider_get_width(Slider *slider, float scale_x)
 {
     if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return 0;
 
-    return get_width(&slider->rect, scale_x, scale_y) + get_width(&slider->cursor->rect, scale_x, scale_y) + slider->label->rect.width + 5 * scale_x;
+    return get_width(&slider->rect, scale_x) + get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
 }
