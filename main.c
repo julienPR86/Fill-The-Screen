@@ -10,7 +10,7 @@ int main()
     Label title_label = {{WIDTH/2, 10 * SCALE_X, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&title_label, SCALE_X, SCALE_Y);
 
-    Label play_button_label = {{0, 0, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label play_button_label = {EMPTY_UI_ELEMENT, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label options_button_label = {EMPTY_UI_ELEMENT, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label exit_button_label = {EMPTY_UI_ELEMENT, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
