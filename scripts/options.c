@@ -20,12 +20,12 @@ int options()
     ToggleGroup options_group = {options_toggle_list, 4, 0, true};
     group_init(&options_group);
 
-    Label back_label = {{WIDTH/2, HEIGHT - 10*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label back_label = {{WIDTH/2, HEIGHT - 10, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&back_label, SCALE_X, SCALE_Y);
 
     // Gameplay panel ----------------------------------------------------------------
     
-    Label probability_slider_description_label = {{20, 150*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Blocks spawn probability", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label probability_slider_description_label = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Blocks spawn probability", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&probability_slider_description_label, SCALE_X, SCALE_Y);
 
     Label probability_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -34,7 +34,7 @@ int options()
     slider_init(&probability_slider, SCALE_X, SCALE_Y);
 
 
-    Label map_width_slider_description_label = {{20, 225*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Map width", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label map_width_slider_description_label = {{20, 225, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Map width", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&map_width_slider_description_label, SCALE_X, SCALE_Y);
 
     Label map_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -43,7 +43,7 @@ int options()
     slider_init(&map_width_slider, SCALE_X, SCALE_Y);
 
 
-    Label map_height_slider_description_label = {{20, 300*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Map height", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label map_height_slider_description_label = {{20, 300, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Map height", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&map_height_slider_description_label, SCALE_X, SCALE_Y);
 
     Label map_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -52,7 +52,7 @@ int options()
     slider_init(&map_height_slider, SCALE_X, SCALE_Y);
 
 
-    Label game_speed_slider_description = {{20, 375*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Game speed", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label game_speed_slider_description = {{20, 375, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Game speed", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&game_speed_slider_description, SCALE_X, SCALE_Y);
 
     Label game_speed_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -94,7 +94,7 @@ int options()
     Label *player_picker_label_list[] = {&player_red_slider_title_label, &player_red_slider_description_label, &player_green_slider_description_label, &player_blue_slider_description_label};
     Slider *player_picker_slider_list[] = {&player_red_slider, &player_green_slider, &player_blue_slider};
 
-    ColorPicker player_picker = {{20 * SCALE_X, 150 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &player_color_rect, player_picker_label_list, player_picker_slider_list, true};
+    ColorPicker player_picker = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &player_color_rect, player_picker_label_list, player_picker_slider_list, true};
     picker_init(&player_picker, SCALE_X, SCALE_Y);
 
 
@@ -121,7 +121,7 @@ int options()
     Label *collision_square_picker_label_list[] = {&collision_square_red_slider_title_label, &collision_square_red_slider_description_label, &collision_square_green_slider_description_label, &collision_square_blue_slider_description_label};
     Slider *collision_square_picker_slider_list[] = {&collision_square_red_slider, &collision_square_green_slider, &collision_square_blue_slider};
 
-    ColorPicker collision_square_picker = {{370 * SCALE_X, 150 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list, true};
+    ColorPicker collision_square_picker = {{370, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &collision_square_color_rect, collision_square_picker_label_list, collision_square_picker_slider_list, true};
     picker_init(&collision_square_picker, SCALE_X, SCALE_Y);
 
 
@@ -148,7 +148,7 @@ int options()
     Label *line_square_picker_label_list[] = {&line_square_slider_title_label, &line_square_red_slider_description_label, &line_square_green_slider_description_label, &line_square_blue_slider_description_label};
     Slider *line_square_picker_slider_list[] = {&line_square_red_slider, &line_square_green_slider, &line_square_blue_slider};
 
-    ColorPicker line_square_picker = {{700 * SCALE_X, 150 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &line_square_color_rect, line_square_picker_label_list, line_square_picker_slider_list, true};
+    ColorPicker line_square_picker = {{700, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &line_square_color_rect, line_square_picker_label_list, line_square_picker_slider_list, true};
     picker_init(&line_square_picker, SCALE_X, SCALE_Y);
 
 
@@ -175,7 +175,7 @@ int options()
     Label *empty_square_picker_label_list[] = {&empty_square_slider_title_label, &empty_square_red_slider_description_label, &empty_square_green_slider_description_label, &empty_square_blue_slider_description_label};
     Slider *empty_square_picker_slider_list[] = {&empty_square_red_slider, &empty_square_green_slider, &empty_square_blue_slider};
 
-    ColorPicker empty_square_picker = {{20 * SCALE_X, 400 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &empty_square_color_rect, empty_square_picker_label_list, empty_square_picker_slider_list, true};
+    ColorPicker empty_square_picker = {{20, 400, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, &empty_square_color_rect, empty_square_picker_label_list, empty_square_picker_slider_list, true};
     picker_init(&empty_square_picker, SCALE_X, SCALE_Y);
 
 
@@ -190,7 +190,7 @@ int options()
 
     // Video panel --------------------------------------------------------------------
 
-    Label max_fps_slider_description_label = {{20, 150*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Max FPS", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label max_fps_slider_description_label = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Max FPS", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&max_fps_slider_description_label, SCALE_X, SCALE_Y);
 
     Label max_fps_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -198,7 +198,7 @@ int options()
     Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &MAX_FPS, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider, SCALE_X, SCALE_Y);
 
-    Label screen_width_slider_description_label = {{20, 250*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Width", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label screen_width_slider_description_label = {{20, 250, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Width", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&screen_width_slider_description_label, SCALE_X, SCALE_Y);
 
     Label screen_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -206,7 +206,7 @@ int options()
     Slider screen_width_slider = {{20, screen_width_slider_description_label.rect.y + screen_width_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &WIDTH, 1080, 1920, 1, &screen_width_slider_label, &screen_width_slider_cursor, &slider_style, true};
     slider_init(&screen_width_slider, SCALE_X, SCALE_Y);
 
-    Label screen_height_slider_description_label = {{20, 350*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Height", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label screen_height_slider_description_label = {{20, 350, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Height", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&screen_height_slider_description_label, SCALE_X, SCALE_Y);
 
     Label screen_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -225,7 +225,7 @@ int options()
 
     // Audio panel --------------------------------------------------------------------
 
-    Label master_audio_slider_description_label = {{20, 150*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Master volume", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label master_audio_slider_description_label = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Master volume", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&master_audio_slider_description_label, SCALE_X, SCALE_Y);
 
     Label master_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -234,7 +234,7 @@ int options()
     slider_init(&master_audio_slider, SCALE_X, SCALE_Y);
 
 
-    Label music_audio_slider_description_label = {{20, 225*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Music volume", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label music_audio_slider_description_label = {{20, 225, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Music volume", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&music_audio_slider_description_label, SCALE_X, SCALE_Y);
 
     Label music_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
@@ -243,7 +243,7 @@ int options()
     slider_init(&music_audio_slider, SCALE_X, SCALE_Y);
 
 
-    Label effects_audio_slider_description_label = {{20, 300*SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Effects volume", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label effects_audio_slider_description_label = {{20, 300, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Effects volume", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&effects_audio_slider_description_label, SCALE_X, SCALE_Y);
 
     Label effects_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
