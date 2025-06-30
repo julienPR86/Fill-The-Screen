@@ -7,13 +7,13 @@ int options()
     Label video_toggle_label = {EMPTY_UI_ELEMENT, "Video", 40, DARK, NULL, NULL, false, 1.0, true};
     Label audio_toggle_label = {EMPTY_UI_ELEMENT, "Audio", 40, DARK, NULL, NULL, false, 1.0, true};
 
-    Toggle gameplay_toggle = {{0, 0, WIDTH/SCALE_X/4, HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
+    Toggle gameplay_toggle = {{0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &gameplay_toggle_label, &toggle_style, &option_gameplay, true};
     toggle_init(&gameplay_toggle, SCALE_X, SCALE_Y);
-    Toggle colors_toggle = {{get_width(&gameplay_toggle.rect, SCALE_X), 0, WIDTH/SCALE_X/4, HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
+    Toggle colors_toggle = {{get_width(&gameplay_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &colors_toggle_label, &toggle_style, &option_color_label, true};
     toggle_init(&colors_toggle, SCALE_X, SCALE_Y);
-    Toggle video_toggle = {{colors_toggle.rect.x + get_width(&colors_toggle.rect, SCALE_X), 0, WIDTH/SCALE_X/4, HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
+    Toggle video_toggle = {{colors_toggle.rect.x + get_width(&colors_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &video_toggle_label, &toggle_style, &option_video, true};
     toggle_init(&video_toggle, SCALE_X, SCALE_Y);
-    Toggle audio_toggle = {{video_toggle.rect.x + get_width(&video_toggle.rect, SCALE_X), 0, WIDTH/SCALE_X/4, HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
+    Toggle audio_toggle = {{video_toggle.rect.x + get_width(&video_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, NO_OUTLINE, inlines[1], TOP_LEFT}, NORMAL, &audio_toggle_label, &toggle_style, &option_audio, true};
     toggle_init(&audio_toggle, SCALE_X, SCALE_Y);
 
     Toggle *options_toggle_list[] = {&gameplay_toggle, &colors_toggle, &video_toggle, &audio_toggle};
