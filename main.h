@@ -73,9 +73,9 @@ enum Returns
 };
 
 //Basic window width, 1080
-extern int WINDOW_WIDTH;
+extern const int WINDOW_WIDTH;
 //Basic window height, 720
-extern int WINDOW_HEIGHT;
+extern const int WINDOW_HEIGHT;
 
 //window width
 extern int WIDTH;

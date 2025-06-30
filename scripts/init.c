@@ -1,7 +1,7 @@
 #include "../main.h"
 
-int WINDOW_WIDTH = 1080;
-int WINDOW_HEIGHT = 720;
+const int WINDOW_WIDTH = 1080;
+const int WINDOW_HEIGHT = 720;
 int WIDTH;
 int HEIGHT;
 float SCALE_X;
