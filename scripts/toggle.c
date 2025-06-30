@@ -101,7 +101,7 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
     render_inline(&anchored_rect, scale_x, scale_y);
     
     label_center(toggle->label, &anchored_rect, scale_x, scale_y);
-    label_render(toggle->label, scale_x, scale_y);
+    label_render(toggle->label, 1, 1);
     return;
 }
 
