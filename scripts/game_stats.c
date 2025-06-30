@@ -34,33 +34,33 @@ int game_stats()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title_label = {{WIDTH/2, 50 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&title_label, SCALE);
+    Label title_label = {{WIDTH/2, 50 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    label_init(&title_label, SCALE_X, SCALE_Y);
 
-    Label congrats = {{WIDTH/2, 50 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&congrats, SCALE);
+    Label congrats = {{WIDTH/2, 50 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    label_init(&congrats, SCALE_X, SCALE_Y);
 
-    Label percent_label = {{WIDTH/2, 180 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&percent_label, SCALE);
+    Label percent_label = {{WIDTH/2, 180 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    label_init(&percent_label, SCALE_X, SCALE_Y);
 
-    Label moves_label = {{WIDTH/2, 230 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&moves_label, SCALE);
+    Label moves_label = {{WIDTH/2, 230 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    label_init(&moves_label, SCALE_X, SCALE_Y);
 
-    Label square_ratio_label = {{WIDTH/2, 280 * SCALE, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&square_ratio_label, SCALE);
+    Label square_ratio_label = {{WIDTH/2, 280 * SCALE_Y, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    label_init(&square_ratio_label, SCALE_X, SCALE_Y);
 
     Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label restart_button_label = {EMPTY_UI_ELEMENT, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label main_menu_button_label = {EMPTY_UI_ELEMENT, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
     Button back_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
-    button_init(&back_button, SCALE);
+    button_init(&back_button, SCALE_X, SCALE_Y);
 
-    Button restart_button = {{WIDTH/2, HEIGHT/2 + 100*SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
-    button_init(&restart_button, SCALE);
+    Button restart_button = {{WIDTH/2, HEIGHT/2 + 100 * SCALE_Y, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    button_init(&restart_button, SCALE_X, SCALE_Y);
 
-    Button main_menu_button = {{WIDTH/2, HEIGHT/2 + 200*SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
-    button_init(&main_menu_button, SCALE);
+    Button main_menu_button = {{WIDTH/2, HEIGHT/2 + 200 * SCALE_Y, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    button_init(&main_menu_button, SCALE_X, SCALE_Y);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
     Button *buttons[] = {&back_button, &restart_button, &main_menu_button};
@@ -91,7 +91,7 @@ int game_stats()
 
         for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
         {
-            out = button_update(buttons[i], SCALE);
+            out = button_update(buttons[i], SCALE_X, SCALE_Y);
             switch (out)
             {
                 case RETURN_TO_GAME:
@@ -109,18 +109,18 @@ int game_stats()
                 default:
                     break;
             }
-            button_render(buttons[i], SCALE);
+            button_render(buttons[i], SCALE_X, SCALE_Y);
         }
 
         if (percent >= 100.0)
-            label_render(&congrats, SCALE);
+            label_render(&congrats, SCALE_X, SCALE_Y);
         else
-            label_render(&title_label, SCALE);
+            label_render(&title_label, SCALE_X, SCALE_Y);
         
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
-            label_update(labels[i], SCALE);
-            label_render(labels[i], SCALE);
+            label_update(labels[i], SCALE_X, SCALE_Y);
+            label_render(labels[i], SCALE_X, SCALE_Y);
         }
 
         SDL_RenderPresent(renderer);

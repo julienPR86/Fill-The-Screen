@@ -207,7 +207,7 @@ void slider_clamp_cursor_position(Slider *slider, float scale_x, float scale_y)
         slider->cursor->rect.x = slider->rect.x + slider->rect.width * scale_x - (slider->cursor->rect.width / 2) * scale_x;
     }
     
-    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale_x;
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale_y;
     return;
 }
 
@@ -241,6 +241,8 @@ int slider_get_value(Slider *slider, float scale_x, float scale_y)
 {
     if (NULL == slider || NULL == slider->cursor)
         return RETURN_NONE;
+
+    (void)scale_y;
 
     int value = roundf((((slider->cursor->rect.x + (slider->cursor->rect.width / 2) * scale_x) - slider->rect.x) * 100 / (slider->rect.width * scale_x)) * (slider->max - slider->min) / 100) + slider->min;
     return value;

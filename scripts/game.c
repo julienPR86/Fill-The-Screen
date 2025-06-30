@@ -150,8 +150,8 @@ int game()
         
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
-            label_update(labels[i], SCALE);
-            label_render(labels[i], SCALE);
+            label_update(labels[i], SCALE_X, SCALE_Y);
+            label_render(labels[i], SCALE_X, SCALE_Y);
         }
 
         SDL_RenderPresent(renderer);

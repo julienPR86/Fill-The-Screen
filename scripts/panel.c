@@ -39,7 +39,7 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 return out;
 
-            out = button_update(panel->buttons[i], SCALE);
+            out = button_update(panel->buttons[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->toggles && RETURN_NONE == out)
@@ -49,7 +49,7 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 return out;
 
-            out = toggle_update(panel->toggles[i], SCALE);
+            out = toggle_update(panel->toggles[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->sliders && RETURN_NONE == out)
@@ -59,7 +59,7 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 return out;
 
-            out = slider_update(panel->sliders[i], SCALE);
+            out = slider_update(panel->sliders[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->pickers && RETURN_NONE == out)
@@ -69,14 +69,14 @@ int panel_update(Panel *panel)
             if (RETURN_NONE != out)
                 return out;
 
-            out = picker_update(panel->pickers[i], SCALE);
+            out = picker_update(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->labels)
     {
         for (int i = 0; i < panel->label_count; i++)
         {
-            label_update(panel->labels[i], SCALE);
+            label_update(panel->labels[i], SCALE_X, SCALE_Y);
         }
     }
     return out;
@@ -91,42 +91,42 @@ void panel_render(Panel *panel)
     {
         for (int i = 0; i < panel->rect_count; i++)
         {
-            rect_render(panel->rects[i], SCALE);
+            rect_render(panel->rects[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->buttons)
     {
         for (int i = 0; i < panel->button_count; i++)
         {
-            button_render(panel->buttons[i], SCALE);
+            button_render(panel->buttons[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->toggles)
     {
         for (int i = 0; i < panel->toggle_count; i++)
         {
-            toggle_render(panel->toggles[i], SCALE);
+            toggle_render(panel->toggles[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->sliders)
     {
         for (int i = 0; i < panel->slider_count; i++)
         {
-            slider_render(panel->sliders[i], SCALE);
+            slider_render(panel->sliders[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->pickers)
     {
         for (int i = 0; i < panel->picker_count; i++)
         {
-            picker_render(panel->pickers[i], SCALE);
+            picker_render(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->labels)
     {
         for (int i = 0; i < panel->label_count; i++)
         {
-            label_render(panel->labels[i], SCALE);
+            label_render(panel->labels[i], SCALE_X, SCALE_Y);
         }
     }
     return;

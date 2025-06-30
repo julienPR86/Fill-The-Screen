@@ -3,20 +3,20 @@
 int pause_menu()
 {
     Label title_label = {EMPTY_UI_ELEMENT, "Game Paused", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&title_label, SCALE);
+    label_init(&title_label, SCALE_X, SCALE_Y);
 
     Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label restart_button_label = {EMPTY_UI_ELEMENT, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label main_menu_button_label = {EMPTY_UI_ELEMENT, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
     Button back_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
-    button_init(&back_button, SCALE);
+    button_init(&back_button, SCALE_X, SCALE_Y);
 
-    Button restart_button = {{WIDTH/2, HEIGHT/2 + 100*SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
-    button_init(&restart_button, SCALE);
+    Button restart_button = {{WIDTH/2, HEIGHT/2 + 100*SCALE_Y, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    button_init(&restart_button, SCALE_X, SCALE_Y);
 
-    Button main_menu_button = {{WIDTH/2, HEIGHT/2 + 200*SCALE, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
-    button_init(&main_menu_button, SCALE);
+    Button main_menu_button = {{WIDTH/2, HEIGHT/2 + 200*SCALE_Y, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    button_init(&main_menu_button, SCALE_X, SCALE_Y);
 
     Label *labels[] = {&title_label, &FPS_label};
     Button *buttons[] = {&back_button, &restart_button, &main_menu_button};
@@ -55,7 +55,7 @@ int pause_menu()
 
         for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
         {
-            out = button_update(buttons[i], SCALE);
+            out = button_update(buttons[i], SCALE_X, SCALE_Y);
             switch (out)
             {
                 case RETURN_TO_GAME:
@@ -73,13 +73,13 @@ int pause_menu()
                 default:
                     break;
             }
-            button_render(buttons[i], SCALE);
+            button_render(buttons[i], SCALE_X, SCALE_Y);
         }
 
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
-            label_update(labels[i], SCALE);
-            label_render(labels[i], SCALE);
+            label_update(labels[i], SCALE_X, SCALE_Y);
+            label_render(labels[i], SCALE_X, SCALE_Y);
         }
 
         SDL_RenderPresent(renderer);

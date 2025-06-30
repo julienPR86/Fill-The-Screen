@@ -334,9 +334,9 @@ void picker_list_free(ColorPicker *pickers[], int size);
 //update all picker elements position
 void picker_set_positions(ColorPicker *picker, float scale_x, float scale_y);
 //get picker height
-int picker_get_height(ColorPicker *picker, float scale_x, float scale_y);
+int picker_get_height(ColorPicker *picker, float scale_y);
 //get picker width
-int picker_get_width(ColorPicker *picker, float scale_x, float scale_y);
+int picker_get_width(ColorPicker *picker, float scale_x);
 
 //panel init, needs to be called before all panel functions
 Panel *panel_init(Panel *panel);

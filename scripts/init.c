@@ -172,7 +172,7 @@ int init()
         FPS_label.text = FPS_text;
         FPS_label.rect.outline = outlines[0];
         FPS_label.rect.inline_ = inlines[0];
-        label_init(&FPS_label, SCALE);
+        label_init(&FPS_label, SCALE_X, SCALE_Y);
     }
     
     return RETURN_SUCCESS;
