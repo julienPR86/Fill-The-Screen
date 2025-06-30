@@ -51,7 +51,7 @@ void label_update(Label *label, float scale_x, float scale_y)
     if (NULL == label)
         return;
         
-    if ((label->active && label->update) || label->local_scale != scale_x)
+    if ((label->update || label->local_scale != scale_x) && label->active)
     {
         label_free(label);
         label_init(label, scale_x, scale_y);
