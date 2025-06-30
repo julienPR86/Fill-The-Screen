@@ -48,7 +48,7 @@ int update_window_size(SDL_Window *window, int w, int h);
 float update_scale();
 
 //return 1 if (x,y) is in element, 0 otherwise
-int UI_element_collision(UI_Element *element, int x, int y, float scale);
+int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
 
 //return the number of digits in number
 int get_number_digits(int number);

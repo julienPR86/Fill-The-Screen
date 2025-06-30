@@ -1,32 +1,32 @@
 #include "../main.h"
 
-Toggle *toggle_init(Toggle *toggle, float scale)
+Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
 {
     if (NULL == toggle)
         return NULL;
 
-    toggle->label = label_init(toggle->label, scale);
+    toggle->label = label_init(toggle->label, scale_x, scale_y);
 
     if (NULL != toggle->label)
     {
         toggle->label->rect.anchor = NONE;
 
-        toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width/scale);
-        toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height/scale);
+        toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width/scale_x);
+        toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height/scale_y);
 
-        label_center(toggle->label, &toggle->rect, scale);
+        label_center(toggle->label, &toggle->rect, scale_x, scale_y);
     }
     return toggle;
 }
 
-int toggle_update(Toggle *toggle, float scale)
+int toggle_update(Toggle *toggle, float scale_x, float scale_y)
 {
     if (NULL == toggle || !toggle->active)
         return RETURN_NONE;
     
     static int update = 1;
     int out = RETURN_NONE; // returns RETURN_NONE if the toggle isn't clicked
-    if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, SCALE))
+    if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, scale_x, scale_y))
     {
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && update)
         {
@@ -61,23 +61,23 @@ int toggle_update(Toggle *toggle, float scale)
         }
     }
     if (NULL != toggle->label)
-        label_update(toggle->label, scale);
+        label_update(toggle->label, scale_x, scale_y);
         
     if (NULL != toggle->command && CLICKED == toggle->state)
         out = toggle->command();
     return out;
 }
 
-void toggle_render(Toggle *toggle, float scale)
+void toggle_render(Toggle *toggle, float scale_x, float scale_y)
 {
     if (NULL == toggle || !toggle->active)
         return;
 
     UI_Element anchored_rect = toggle->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, anchored_rect.anchor);
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, anchored_rect.anchor);
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale, anchored_rect.height * scale};
+    SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
 
     switch (toggle->state)
     {
@@ -97,11 +97,11 @@ void toggle_render(Toggle *toggle, float scale)
     SDL_SetRenderDrawColor(renderer, toggle_color.r, toggle_color.g, toggle_color.b, toggle_color.a);
     SDL_RenderFillRect(renderer, &toggle_rect);
 
-    render_outline(&anchored_rect, scale);
-    render_inline(&anchored_rect, scale);
+    render_outline(&anchored_rect, scale_x, scale_y);
+    render_inline(&anchored_rect, scale_x, scale_y);
     
-    label_center(toggle->label, &anchored_rect, scale);
-    label_render(toggle->label, scale);
+    label_center(toggle->label, &anchored_rect, scale_x, scale_y);
+    label_render(toggle->label, scale_x, scale_y);
     return;
 }
 

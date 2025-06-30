@@ -101,19 +101,19 @@ float update_scale()
     return MIN(SCALE_X, SCALE_Y);
 }
 
-int UI_element_collision(UI_Element *element, int x, int y, float scale)
+int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y)
 {
     UI_Element new_element = *element;
-    set_UI_element_position(&new_element, element->x, element->y, scale, element->anchor);
+    set_UI_element_position(&new_element, element->x, element->y, scale_x, scale_y, element->anchor);
 
-    if (x >= new_element.x - new_element.outline.size * scale && x < new_element.x + (element->width + new_element.outline.size) * scale && y >= new_element.y - new_element.outline.size * scale && y < new_element.y + (new_element.height + new_element.outline.size) * scale)
+    if (x >= new_element.x - new_element.outline.size * scale_x && x < new_element.x + (element->width + new_element.outline.size) * scale_x && y >= new_element.y - new_element.outline.size * scale_y && y < new_element.y + (new_element.height + new_element.outline.size) * scale_y)
     {
         return true;
     }
     return false;
 }
 
-void set_UI_element_position(UI_Element *element, int x, int y, float scale, int anchor)
+void set_UI_element_position(UI_Element *element, int x, int y, float scale_x, float scale_y, int anchor)
 {
     element->x = x;
     element->y = y;
@@ -121,39 +121,39 @@ void set_UI_element_position(UI_Element *element, int x, int y, float scale, int
     switch (anchor)
     {
         case CENTER:
-            element->x = x - (element->width / 2 + element->outline.size) * scale;
-            element->y = y - (element->height / 2 + element->outline.size) * scale;
+            element->x = x - (element->width / 2 + element->outline.size) * scale_x;
+            element->y = y - (element->height / 2 + element->outline.size) * scale_y;
             break;
 
         case TOP_CENTER:
-            element->x = x - (element->width / 2 + element->outline.size) * scale;
+            element->x = x - (element->width / 2 + element->outline.size) * scale_x;
             break;
 
         case TOP_RIGHT:
-            element->x = x - (element->width + element->outline.size) * scale;
+            element->x = x - (element->width + element->outline.size) * scale_x;
             break;
 
         case MID_LEFT:
-            element->y = y - (element->height / 2 + element->outline.size) * scale;
+            element->y = y - (element->height / 2 + element->outline.size) * scale_y;
             break;
 
         case MID_RIGHT:
-            element->x = x - (element->width + element->outline.size) * scale;
-            element->y = y - (element->height / 2 + element->outline.size) * scale ;
+            element->x = x - (element->width + element->outline.size) * scale_x;
+            element->y = y - (element->height / 2 + element->outline.size) * scale_y;
             break;
 
         case BOTTOM_LEFT:
-            element->y = y - (element->height + element->outline.size) * scale;
+            element->y = y - (element->height + element->outline.size) * scale_y;
             break;
 
         case BOTTOM_CENTER:
-            element->x = x - (element->width / 2 + element->outline.size) * scale;
-            element->y = y - (element->height + element->outline.size) * scale;
+            element->x = x - (element->width / 2 + element->outline.size) * scale_x;
+            element->y = y - (element->height + element->outline.size) * scale_y;
             break;
 
         case BOTTOM_RIGHT:
-            element->x = x - (element->width + element->outline.size) * scale;
-            element->y = y - (element->height + element->outline.size) * scale;
+            element->x = x - (element->width + element->outline.size) * scale_x;
+            element->y = y - (element->height + element->outline.size) * scale_y;
             break;
 
         case NONE:

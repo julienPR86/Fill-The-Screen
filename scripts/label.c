@@ -1,14 +1,14 @@
 #include "../main.h"
 
-Label *label_init(Label *label, float scale)
+Label *label_init(Label *label, float scale_x, float scale_y)
 {
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
 
     label->update = false;
-    label->local_scale = scale;
+    label->local_scale = scale_x;
 
-    if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
+    if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale_x)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
         return NULL;
@@ -16,7 +16,7 @@ Label *label_init(Label *label, float scale)
 
     SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
     
-    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[(int)(label->font_size * scale)-1], label->text, strlen(label->text), color);
+    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[(int)(label->font_size * scale_x)-1], label->text, strlen(label->text), color);
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", SDL_GetError());
@@ -44,30 +44,30 @@ Label *label_init(Label *label, float scale)
     return label;
 }
 
-void label_update(Label *label, float scale)
+void label_update(Label *label, float scale_x, float scale_y)
 {
     if (NULL == label)
         return;
         
-    if ((label->active && label->update) || label->local_scale != scale)
+    if ((label->active && label->update) || label->local_scale != scale_x)
     {
         label_free(label);
-        label_init(label, scale);
+        label_init(label, scale_x, scale_y);
         label->update = false;
-        label->local_scale = scale;
+        label->local_scale = scale_x;
     }
     return;
 }
 
-void label_render(Label *label, float scale)
+void label_render(Label *label, float scale_x, float scale_y)
 {
-    if (NULL == label || NULL == label->texture || !label->active || 0 == scale)
+    if (NULL == label || NULL == label->texture || !label->active || 0 == scale_x)
         return;
     
     UI_Element anchored_rect = label->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, 1.0, anchored_rect.anchor);
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, 1.0, 1.0, anchored_rect.anchor);
 
-    render_outline(&anchored_rect, 1);
+    render_outline(&anchored_rect, 1.0, 1.0);
     
     SDL_FRect label_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width, anchored_rect.height};
 
@@ -111,12 +111,12 @@ void label_list_free(Label *labels[], int size)
     return;
 }
 
-void label_center(Label *label, UI_Element *rect, float scale)
+void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y)
 {
     if (NULL == label || NULL == rect)
         return;
 
-    label->rect.x = rect->x + CENTERED(rect->width * scale, label->rect.width);
-    label->rect.y = rect->y + CENTERED(rect->height * scale, label->rect.height);
+    label->rect.x = rect->x + CENTERED(rect->width * scale_x, label->rect.width);
+    label->rect.y = rect->y + CENTERED(rect->height * scale_x, label->rect.height);
     return;
 }

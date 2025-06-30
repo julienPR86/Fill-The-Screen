@@ -16,13 +16,13 @@ int slider_cursor_update(SliderCursor *cursor)
     return RETURN_NONE;
 }
 
-void slider_cursor_render(SliderCursor *cursor, float scale)
+void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
 {
     if (NULL == cursor || NULL == cursor->style)
         return;
 
     Color color;
-    SDL_FRect cursor_rect = {cursor->rect.x, cursor->rect.y, cursor->rect.width* scale, cursor->rect.height * scale};
+    SDL_FRect cursor_rect = {cursor->rect.x, cursor->rect.y, cursor->rect.width * scale_x, cursor->rect.height * scale_y};
 
     switch (cursor->state)
     {
@@ -42,7 +42,7 @@ void slider_cursor_render(SliderCursor *cursor, float scale)
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &cursor_rect);
 
-    render_outline(&cursor->rect, scale);
-    render_inline(&cursor->rect, scale);
+    render_outline(&cursor->rect, scale_x, scale_y);
+    render_inline(&cursor->rect, scale_x, scale_y);
     return;
 }

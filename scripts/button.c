@@ -1,31 +1,31 @@
 #include "../main.h"
 
-Button *button_init(Button *button, float scale)
+Button *button_init(Button *button, float scale_x, float scale_y)
 {
     if (NULL == button)
         return NULL;
 
-    button->label = label_init(button->label, scale);
+    button->label = label_init(button->label, scale_x, scale_y);
 
     if (NULL != button->label)
     {
         button->label->rect.anchor = NONE;
 
-        button->rect.width = MAX(button->rect.width, button->label->rect.width/scale);
-        button->rect.height = MAX(button->rect.height, button->label->rect.height/scale);
+        button->rect.width = MAX(button->rect.width, button->label->rect.width/scale_x);
+        button->rect.height = MAX(button->rect.height, button->label->rect.height/scale_y);
 
-        label_center(button->label, &button->rect, scale);
+        label_center(button->label, &button->rect, scale_x, scale_y);
     }
     return button;
 }
 
-int button_update(Button *button, float scale)
+int button_update(Button *button, float scale_x, float scale_y)
 {
     if (NULL == button || !button->active)
         return RETURN_NONE;
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
-    if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE))
+    if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE_X, SCALE_Y))
     {
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK)
         {
@@ -46,20 +46,20 @@ int button_update(Button *button, float scale)
     {
         button->state = NORMAL;
     }
-    label_update(button->label, scale);
+    label_update(button->label, scale_x, scale_y);
     return out;
 }
 
-void button_render(Button *button, float scale)
+void button_render(Button *button, float scale_x, float scale_y)
 {
     if (NULL == button || !button->active)
         return;
 
     UI_Element anchored_rect = button->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale, anchored_rect.anchor);
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, anchored_rect.anchor);
         
     Color button_color;
-    SDL_FRect button_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale, anchored_rect.height * scale};
+    SDL_FRect button_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
     
     switch (button->state)
     {
@@ -79,11 +79,11 @@ void button_render(Button *button, float scale)
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
 
-    render_outline(&anchored_rect, scale);
-    render_inline(&anchored_rect, scale);
+    render_outline(&anchored_rect, scale_x, scale_y);
+    render_inline(&anchored_rect, scale_x, scale_y);
 
-    label_center(button->label, &anchored_rect, scale);
-    label_render(button->label, scale);
+    label_center(button->label, &anchored_rect, scale_x, scale_y);
+    label_render(button->label, scale_x, scale_y);
     return;
 }
 

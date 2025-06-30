@@ -237,25 +237,25 @@ extern Outline *outlines;
 extern Inline *inlines;
 
 //render a rectangle
-void rect_render(Rect *element, float scale);
+void rect_render(Rect *element, float scale_x, float scale_y);
 
 //button init, needs to be called before all button functions
-Button *button_init(Button *button, float scale);
+Button *button_init(Button *button, float scale_x, float scale_y);
 //update a button
-int button_update(Button *button, float scale);
+int button_update(Button *button, float scale_x, float scale_y);
 //render a button
-void button_render(Button *button, float scale);
+void button_render(Button *button, float scale_x, float scale_y);
 //free the button's label
 void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
 
 //toggle init, needs to be called before all toggle functions
-Toggle *toggle_init(Toggle *toggle, float scale);
+Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y);
 //update a toggle
-int toggle_update(Toggle *toggle, float scale);
+int toggle_update(Toggle *toggle, float scale_x, float scale_y);
 //render a toggle
-void toggle_render(Toggle *toggle, float scale);
+void toggle_render(Toggle *toggle, float scale_x, float scale_y);
 //free the toggle's label
 void toggle_free(Toggle *toggle);
 //free a toggle's list
@@ -264,7 +264,7 @@ void toggle_list_free(Toggle *toggle[], int size);
 //toggle group init, needs to be called before all toggle group functions
 ToggleGroup *group_init(ToggleGroup *group);
 //update a toggle group
-int group_update(ToggleGroup *group, float scale);
+int group_update(ToggleGroup *group, float scale_x, float scale_y);
 //render a toggle group
 void group_render(ToggleGroup *group);
 //set all toggles states to normal
@@ -273,31 +273,31 @@ void group_clear_selected(ToggleGroup *group);
 void group_free(ToggleGroup *group);
 
 //label init, needs to be called before all label functions
-Label *label_init(Label *label, float scale);
+Label *label_init(Label *label, float scale_x, float scale_y);
 //update label
-void label_update(Label *label, float scale);
+void label_update(Label *label, float scale_x, float scale_y);
 //render label
-void label_render(Label *label, float scale);
+void label_render(Label *label, float scale_x, float scale_y);
 //free a label
 void label_free(Label *label);
 //free a label list
 void label_list_free(Label *labels[], int size);
 //Center the label inside the rect passed in
-void label_center(Label *label, UI_Element *rect, float scale);
+void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y);
 
 //slider cursor init, needs to be called before all slider cursor functions
 SliderCursor *slider_cursor_init(SliderCursor *cursor);
 //update slider cursor
 int slider_cursor_update(SliderCursor *cursor);
 //render slider cursor
-void slider_cursor_render(SliderCursor *cursor, float scale);
+void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y);
 
 //slider init, needs to be called before all slider functions
-Slider *slider_init(Slider *slider, float scale);
+Slider *slider_init(Slider *slider, float scale_x, float scale_y);
 //update slider
-int slider_update(Slider *slider, float scale);
+int slider_update(Slider *slider, float scale_x, float scale_y);
 //render slider
-void slider_render(Slider *slider, float scale);
+void slider_render(Slider *slider, float scale_x, float scale_y);
 //free a slider
 void slider_free(Slider *slider);
 //free a list of sliders
@@ -305,38 +305,38 @@ void slider_list_free(Slider *sliders[], int size);
 //Clamp the value of the cursor based on the min and max value
 void slider_clamp_value(Slider *slider);
 //Updates the slider's cursor position
-void slider_set_cursor_position(Slider *slider, float scale);
+void slider_set_cursor_position(Slider *slider, float scale_x, float scale_y);
 //Check if the slider cursor is at the right position
-int slider_check_cursor_position(Slider * slider, float scale);
+int slider_check_cursor_position(Slider * slider, float scale_x, float scale_y);
 //Limits the cursor position
-void slider_clamp_cursor_position(Slider *slider, float scale);
+void slider_clamp_cursor_position(Slider *slider, float scale_x, float scale_y);
 //Updates the slider label text based on the slider value
 Slider *slider_label_text_update(Slider *slider);
 //Updates the slider's label position
-void slider_set_label_position(Slider *slider, float scale);
+void slider_set_label_position(Slider *slider, float scale_x, float scale_y);
 //Calculate the slider value based on the cursor position and the slider step
-int slider_get_value(Slider *slider, float scale);
+int slider_get_value(Slider *slider, float scale_x, float scale_y);
 //get slider height
-int slider_get_height(Slider *slider, float scale);
+int slider_get_height(Slider *slider, float scale_x, float scale_y);
 //get slider width
-int slider_get_width(Slider *slider, float scale);
+int slider_get_width(Slider *slider, float scale_x, float scale_y);
 
 //Color picker init, needs to be called before all picker functions
-ColorPicker *picker_init(ColorPicker *picker, float scale);
+ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y);
 //update picker
-int picker_update(ColorPicker *picker, float scale);
+int picker_update(ColorPicker *picker, float scale_x, float scale_y);
 //render picker
-void picker_render(ColorPicker *picker, float scale);
+void picker_render(ColorPicker *picker, float scale_x, float scale_y);
 //free a picker
 void picker_free(ColorPicker *picker);
 //free a picker list
 void picker_list_free(ColorPicker *pickers[], int size);
 //update all picker elements position
-void picker_set_positions(ColorPicker *picker, float scale);
+void picker_set_positions(ColorPicker *picker, float scale_x, float scale_y);
 //get picker height
-int picker_get_height(ColorPicker *picker, float scale);
+int picker_get_height(ColorPicker *picker, float scale_x, float scale_y);
 //get picker width
-int picker_get_width(ColorPicker *picker, float scale);
+int picker_get_width(ColorPicker *picker, float scale_x, float scale_y);
 
 //panel init, needs to be called before all panel functions
 Panel *panel_init(Panel *panel);
@@ -350,14 +350,14 @@ void panel_free(Panel *panel);
 void panel_list_free(Panel *panels[], int count);
 
 //Set the position of UI element based on the given position and anchor
-void set_UI_element_position(UI_Element *element, int x, int y, float scale,  int anchor);
+void set_UI_element_position(UI_Element *element, int x, int y, float scale_x, float scale_y,  int anchor);
 //Draw the element outline
-void render_outline(UI_Element *element, float scale);
+void render_outline(UI_Element *element, float scale_x, float scale_y);
 //Draw the element inline
-void render_inline(UI_Element *element, float scale);
+void render_inline(UI_Element *element, float scale_x, float scale_y);
 //return the height of the element
-int get_height(UI_Element *element, float scale);
+int get_height(UI_Element *element, float scale_x, float scale_y);
 //return the width of the element
-int get_width(UI_Element *element, float scale);
+int get_width(UI_Element *element, float scale_x, float scale_y);
 
 #endif

@@ -12,7 +12,7 @@ ToggleGroup *group_init(ToggleGroup *group)
     return group;
 }
 
-int group_update(ToggleGroup *group, float scale)
+int group_update(ToggleGroup *group, float scale_x, float scale_y)
 {
     if (NULL == group || NULL == group->toggles)
         return RETURN_NONE;
@@ -20,7 +20,7 @@ int group_update(ToggleGroup *group, float scale)
     int out = RETURN_NONE, final_out = out;
     for (int i = 0; i < group->count; i++)
     {
-        out = toggle_update(group->toggles[i], scale);
+        out = toggle_update(group->toggles[i], scale_x, scale_y);
         if (CLICKED == group->toggles[i]->state)
         {
             group_clear_selected(group);
@@ -44,7 +44,7 @@ void group_render(ToggleGroup *group)
 
     for (int i = 0; i < group->count; i++)
     {
-        toggle_render(group->toggles[i], SCALE);
+        toggle_render(group->toggles[i], SCALE_X, SCALE_Y);
     }
     return;
 }
