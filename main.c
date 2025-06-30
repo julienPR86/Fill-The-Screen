@@ -7,20 +7,20 @@ int main()
         fprintf(stderr, "Could not initialised the game\n");
         return RETURN_FAILURE;
     }
-    Label title_label = {{WIDTH/2, 10 * SCALE_X, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label title_label = {{WINDOW_WIDTH/2, 10, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Fill The Screen", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&title_label, SCALE_X, SCALE_Y);
 
     Label play_button_label = {EMPTY_UI_ELEMENT, "PLAY", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label options_button_label = {EMPTY_UI_ELEMENT, "Options", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label exit_button_label = {EMPTY_UI_ELEMENT, "Quit", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
-    Button play_button = {{WIDTH/2, HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
+    Button play_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &play_button_label, &button_style, &mode_choice, true};
     button_init(&play_button, SCALE_X, SCALE_Y);
 
-    Button options_button = {{WIDTH/2, HEIGHT/2 + 100 * SCALE_X, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &options_button_label, &button_style, &options, true};
+    Button options_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &options_button_label, &button_style, &options, true};
     button_init(&options_button, SCALE_X, SCALE_Y);
 
-    Button exit_button = {{WIDTH/2, HEIGHT/2 + 200 * SCALE_X, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
+    Button exit_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &exit_button_label, &button_style, &exit_game, true};
     button_init(&exit_button, SCALE_X, SCALE_Y);
     
     Label *labels[] = {&title_label, &FPS_label};
