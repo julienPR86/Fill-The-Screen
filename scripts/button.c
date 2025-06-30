@@ -83,7 +83,7 @@ void button_render(Button *button, float scale_x, float scale_y)
     render_inline(&anchored_rect, scale_x, scale_y);
 
     label_center(button->label, &anchored_rect, scale_x, scale_y);
-    label_render(button->label, scale_x, scale_y);
+    label_render(button->label, 1.0, 1.0);
     return;
 }
 
