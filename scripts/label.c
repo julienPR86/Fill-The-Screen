@@ -118,8 +118,6 @@ void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y)
     if (NULL == label || NULL == rect)
         return;
 
-    (void)scale_y;
-
     label->rect.x = rect->x + CENTERED(rect->width * scale_x, label->rect.width);
     label->rect.y = rect->y + CENTERED(rect->height * scale_y, label->rect.height);
     return;
