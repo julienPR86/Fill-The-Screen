@@ -101,11 +101,6 @@ void update_scale()
     return;
 }
 
-float get_scale()
-{
-    return MAX(SCALE_X, SCALE_Y);
-}
-
 int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y)
 {
     UI_Element new_element = *element;

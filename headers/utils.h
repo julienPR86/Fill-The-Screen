@@ -46,8 +46,6 @@ void get_mouse_delta(float *x, float *y);
 int update_window_size(SDL_Window *window, int w, int h);
 //Update the SCALE on X and Y axis, return the min value between them
 void update_scale();
-//Return the maximum between the scale on the x and y axis
-float get_scale();
 
 //return 1 if (x,y) is in element, 0 otherwise
 int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
