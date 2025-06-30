@@ -2,7 +2,6 @@
 
 int WIDTH = 1080;
 int HEIGHT = 720;
-float SCALE;
 float SCALE_X;
 float SCALE_Y;
 int FPS;

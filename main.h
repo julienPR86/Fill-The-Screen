@@ -77,8 +77,6 @@ extern int WIDTH;
 //window height
 extern int HEIGHT;
 
-//window scale is based on the actual resolution and the basic window resolution, which is 1080x720
-extern float SCALE;
 //Scale on X axis
 extern float SCALE_X;
 //Scale on y axis
