@@ -356,8 +356,8 @@ void render_outline(UI_Element *element, float scale_x, float scale_y);
 //Draw the element inline
 void render_inline(UI_Element *element, float scale_x, float scale_y);
 //return the height of the element
-int get_height(UI_Element *element, float scale_x, float scale_y);
+int get_height(UI_Element *element, float scale_y);
 //return the width of the element
-int get_width(UI_Element *element, float scale_x, float scale_y);
+int get_width(UI_Element *element, float scale_x);
 
 #endif
