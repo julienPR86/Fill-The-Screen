@@ -98,8 +98,7 @@ float update_scale()
 {
     SCALE_X = (float)WIDTH / 1080;
     SCALE_Y = (float)HEIGHT / 720;
-    SCALE = MIN(SCALE_X, SCALE_Y);
-    return SCALE;
+    return MIN(SCALE_X, SCALE_Y);
 }
 
 int UI_element_collision(UI_Element *element, int x, int y, float scale)

@@ -44,7 +44,7 @@ void mouse_event_update();
 void get_mouse_delta(float *x, float *y);
 //Update the size of the window passed in
 int update_window_size(SDL_Window *window, int w, int h);
-//Update the SCALE value when called
+//Update the SCALE on X and Y axis, return the min value between them
 float update_scale();
 
 //return 1 if (x,y) is in element, 0 otherwise
