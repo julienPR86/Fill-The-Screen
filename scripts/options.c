@@ -20,7 +20,7 @@ int options()
     ToggleGroup options_group = {options_toggle_list, 4, 0, true};
     group_init(&options_group);
 
-    Label back_label = {{WIDTH/2, HEIGHT - 10, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label back_label = {{WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&back_label, SCALE_X, SCALE_Y);
 
     // Gameplay panel ----------------------------------------------------------------
