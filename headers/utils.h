@@ -47,6 +47,8 @@ int update_window_size(SDL_Window *window, int w, int h);
 //Update the SCALE on X and Y axis, return the min value between them
 void update_scale();
 
+//return true if (x, y) is in element, false otherwise
+int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
 //return 1 if (x,y) is in element, 0 otherwise
 void set_UI_element_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor);
 
