@@ -56,7 +56,7 @@ void button_render(Button *button, float scale_x, float scale_y)
         return;
 
     UI_Element anchored_rect = button->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, anchored_rect.anchor);
+    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
         
     Color button_color;
     SDL_FRect button_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
