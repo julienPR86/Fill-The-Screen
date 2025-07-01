@@ -80,7 +80,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
 
     if (mouse_state.wheel_value == 0)
     {
-        *slider->value = slider_get_value(slider, scale_x, scale_y);
+        *slider->value = slider_get_value(slider);
     }
     else
     {
@@ -179,7 +179,9 @@ void slider_set_cursor_position(Slider *slider, float scale_x, float scale_y)
     if (NULL == slider || NULL == slider->cursor || NULL == slider->value)
         return;
 
-    slider->cursor->rect.x = slider->rect.x + ((slider->rect.width * scale_x) * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (slider->cursor->rect.width / 2) * scale_x;
+    (void)scale_x;
+
+    slider->cursor->rect.x = slider->rect.x + ((slider->rect.width) * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (slider->cursor->rect.width / 2);
     slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale_y;
     return;
 }
@@ -189,7 +191,7 @@ int slider_check_cursor_position(Slider * slider, float scale_x, float scale_y)
     if (NULL == slider)
         return RETURN_NONE;
 
-    if (*slider->value != slider_get_value(slider, scale_x, scale_y))
+    if (*slider->value != slider_get_value(slider))
         return false;
 
     return true;
@@ -200,14 +202,16 @@ void slider_clamp_cursor_position(Slider *slider, float scale_x, float scale_y)
     if (NULL == slider || NULL == slider->cursor)
         return;
 
-    if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) * scale_x < slider->rect.x)
+    (void)scale_x;
+
+    if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) < slider->rect.x)
     {
-        slider->cursor->rect.x = slider->rect.x - (slider->cursor->rect.width / 2) * scale_x;
+        slider->cursor->rect.x = slider->rect.x - (slider->cursor->rect.width / 2);
     }
 
-    else if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) * scale_x > slider->rect.x + slider->rect.width * scale_x)
+    else if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) > slider->rect.x + slider->rect.width)
     {
-        slider->cursor->rect.x = slider->rect.x + slider->rect.width * scale_x - (slider->cursor->rect.width / 2) * scale_x;
+        slider->cursor->rect.x = slider->rect.x + slider->rect.width - (slider->cursor->rect.width / 2);
     }
     
     slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale_y;
@@ -240,13 +244,10 @@ void slider_set_label_position(Slider *slider, float scale_x, float scale_y)
     return;
 }
 
-int slider_get_value(Slider *slider, float scale_x, float scale_y)
+int slider_get_value(Slider *slider)
 {
     if (NULL == slider || NULL == slider->cursor)
         return RETURN_NONE;
-
-    (void)scale_y;
-    (void)scale_x;
 
     int value = roundf((((slider->cursor->rect.x + (slider->cursor->rect.width / 2)) - slider->rect.x) * 100 / (slider->rect.width)) * (slider->max - slider->min) / 100) + slider->min;
     return value;
