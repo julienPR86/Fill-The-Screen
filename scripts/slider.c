@@ -246,8 +246,9 @@ int slider_get_value(Slider *slider, float scale_x, float scale_y)
         return RETURN_NONE;
 
     (void)scale_y;
+    (void)scale_x;
 
-    int value = roundf((((slider->cursor->rect.x + (slider->cursor->rect.width / 2) * scale_x) - slider->rect.x) * 100 / (slider->rect.width * scale_x)) * (slider->max - slider->min) / 100) + slider->min;
+    int value = roundf((((slider->cursor->rect.x + (slider->cursor->rect.width / 2)) - slider->rect.x) * 100 / (slider->rect.width)) * (slider->max - slider->min) / 100) + slider->min;
     return value;
 }
 
