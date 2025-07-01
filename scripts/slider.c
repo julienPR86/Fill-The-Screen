@@ -186,7 +186,7 @@ void slider_set_cursor_position(Slider *slider, float scale_x, float scale_y)
     return;
 }
 
-int slider_check_cursor_position(Slider * slider, float scale_x, float scale_y)
+int slider_check_cursor_position(Slider * slider)
 {
     if (NULL == slider)
         return RETURN_NONE;
