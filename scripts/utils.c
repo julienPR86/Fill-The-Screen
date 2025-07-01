@@ -115,45 +115,45 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float
 
 void set_UI_element_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
 {
-    element->x = x * scale_x;
-    element->y = y * scale_y;
+    element->x = x * x_position_factor;
+    element->y = y * y_position_factor;
     
     switch (anchor)
     {
         case CENTER:
-            element->x = (x - (element->width / 2 + element->outline.size)) * scale_x;
-            element->y = (y - (element->height / 2 + element->outline.size)) * scale_y;
+            element->x = x * x_position_factor - (element->width / 2 + element->outline.size) * scale_x;
+            element->y = y * y_position_factor - (element->height / 2 + element->outline.size) * scale_y;
             break;
 
         case TOP_CENTER:
-            element->x = (x - (element->width / 2 + element->outline.size)) * scale_x;
+            element->x = x * x_position_factor - (element->width / 2 + element->outline.size) * scale_x;
             break;
 
         case TOP_RIGHT:
-            element->x = (x - (element->width + element->outline.size)) * scale_x;
+            element->x = x * x_position_factor - (element->width + element->outline.size) * scale_x;
             break;
 
         case MID_LEFT:
-            element->y = (y - (element->height / 2 + element->outline.size)) * scale_y;
+            element->y = y * y_position_factor - (element->height / 2 + element->outline.size) * scale_y;
             break;
 
         case MID_RIGHT:
-            element->x = (x - (element->width + element->outline.size)) * scale_x;
-            element->y = (y - (element->height / 2 + element->outline.size)) * scale_y;
+            element->x = x * x_position_factor - (element->width + element->outline.size) * scale_x;
+            element->y = y * y_position_factor - (element->height / 2 + element->outline.size) * scale_y;
             break;
 
         case BOTTOM_LEFT:
-            element->y = (y - (element->height + element->outline.size)) * scale_y;
+            element->y = y * y_position_factor - (element->height + element->outline.size) * scale_y;
             break;
 
         case BOTTOM_CENTER:
-            element->x = (x - (element->width / 2 + element->outline.size)) * scale_x;
-            element->y = (y - (element->height + element->outline.size)) * scale_y;
+            element->x = x * x_position_factor - (element->width / 2 + element->outline.size) * scale_x;
+            element->y = y * y_position_factor - (element->height + element->outline.size) * scale_y;
             break;
 
         case BOTTOM_RIGHT:
-            element->x = (x - (element->width + element->outline.size)) * scale_x;
-            element->y = (y - (element->height + element->outline.size)) * scale_y;
+            element->x = x * x_position_factor - (element->width + element->outline.size) * scale_x;
+            element->y = y * y_position_factor - (element->height + element->outline.size) * scale_y;
             break;
 
         case NONE:
