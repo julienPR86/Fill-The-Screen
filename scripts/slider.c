@@ -235,7 +235,7 @@ void slider_set_label_position(Slider *slider, float scale_x, float scale_y)
     if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return;
 
-    slider->label->rect.x = slider->rect.x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale_x;
+    slider->label->rect.x = slider->rect.x * scale_x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale_x;
     slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale_y, slider->label->rect.height);
     return;
 }
