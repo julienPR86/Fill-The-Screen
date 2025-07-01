@@ -315,7 +315,7 @@ Slider *slider_label_text_update(Slider *slider);
 //Updates the slider's label position
 void slider_set_label_position(Slider *slider, float scale_x, float scale_y);
 //Calculate the slider value based on the cursor position and the slider step
-int slider_get_value(Slider *slider, float scale_x, float scale_y);
+int slider_get_value(Slider *slider);
 //get slider height
 int slider_get_height(Slider *slider, float scale_y);
 //get slider width
