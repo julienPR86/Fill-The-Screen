@@ -69,7 +69,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, 0);
+    window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
     if (NULL == window)
     {
         fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
