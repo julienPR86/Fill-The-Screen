@@ -22,8 +22,6 @@ int button_update(Button *button, float scale_x, float scale_y)
 {
     if (NULL == button || !button->active)
         return RETURN_NONE;
-
-    match_UI_Element_size(&button->rect, &button->label->rect, scale_x, scale_y);
     
     int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
     if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE_X, SCALE_Y))
@@ -47,7 +45,11 @@ int button_update(Button *button, float scale_x, float scale_y)
     {
         button->state = NORMAL;
     }
-    label_update(button->label, scale_x, scale_y);
+    if (NULL != button->label)
+    {
+        match_UI_Element_size(&button->rect, &button->label->rect, scale_x, scale_y);
+        label_update(button->label, scale_x, scale_y);
+    }
     return out;
 }
 
