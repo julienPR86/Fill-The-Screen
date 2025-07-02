@@ -17,8 +17,8 @@ int game()
     }
     Label *labels[] = {&FPS_label};
     
-    int YOFFSET = CENTERED(HEIGHT, (map->height * map->square_size));
-    int XOFFSET = CENTERED(WIDTH, (map->width * map->square_size));
+    int Y_OFFSET, X_OFFSET;
+    map_set_offset(&X_OFFSET, &Y_OFFSET);
 
     int direction[2] = {0,0};
 
@@ -124,7 +124,9 @@ int game()
             }
         }
         player_move(direction[0], direction[1]);
-        map_display(map, XOFFSET, YOFFSET);
+        map_set_offset(&X_OFFSET, &Y_OFFSET);
+        map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
+        map_display(map, X_OFFSET, Y_OFFSET);
         if (((!player->can_move && map_is_filled(map)) || end) && !back_to_map)
         {
             end = false;
