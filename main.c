@@ -74,9 +74,6 @@ int main()
             label_update(labels[i], SCALE_X, SCALE_Y);
             label_render(labels[i], SCALE_X, SCALE_Y);
         }
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderLine(renderer, 0, HEIGHT/2, WIDTH, HEIGHT/2);
-        SDL_RenderLine(renderer, WIDTH/2, 0, WIDTH/2, HEIGHT);
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
