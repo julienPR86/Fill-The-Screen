@@ -5,12 +5,10 @@ Label *label_init(Label *label, float scale_x, float scale_y)
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
         return NULL;
 
-    (void)scale_y;
-
     label->update = false;
-    label->local_scale = scale_x;
+    label->local_scale = (scale_x + scale_y)/2;
 
-    if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * scale_x)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
+    if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * label->local_scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
         fprintf(stderr, "Size text error : %s\n", SDL_GetError());
         return NULL;
@@ -18,7 +16,7 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 
     SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
     
-    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[(int)(label->font_size * scale_x)-1], label->text, strlen(label->text), color);
+    label->surface = TTF_RenderText_Blended(roboto_regular_fonts[(int)(label->font_size * label->local_scale)-1], label->text, strlen(label->text), color);
     if (NULL == label->surface)
     {
         fprintf(stderr, "Surface allocation error : %s\n", SDL_GetError());
@@ -51,12 +49,12 @@ void label_update(Label *label, float scale_x, float scale_y)
     if (NULL == label)
         return;
         
-    if ((label->update || label->local_scale != scale_x) && label->active)
+    if ((label->update || label->local_scale != (scale_x + scale_y)/2) && label->active)
     {
         label_free(label);
         label_init(label, scale_x, scale_y);
         label->update = false;
-        label->local_scale = scale_x;
+        label->local_scale = (scale_x + scale_y)/2;
     }
     return;
 }
