@@ -56,6 +56,7 @@ int mode_choice()
                     running = false;
                 }
             }
+            update_window_size(event, window);
             mouse_event(event);
         }
 

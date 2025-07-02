@@ -86,6 +86,7 @@ int game_stats()
                 button_list_free(buttons, 3);
                 return RETURN_EXIT_FULL_GAME;
             }
+            update_window_size(event, window);
             mouse_event(event);
         }
 

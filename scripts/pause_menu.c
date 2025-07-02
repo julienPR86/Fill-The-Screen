@@ -50,6 +50,7 @@ int pause_menu()
                     break;
                 }
             }
+            update_window_size(event, window);
             mouse_event(event);
         }
 

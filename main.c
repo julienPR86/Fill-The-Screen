@@ -46,6 +46,7 @@ int main()
                 running = false;
                 break;
             }
+            update_window_size(event, window);
             mouse_event(event);
         }
 

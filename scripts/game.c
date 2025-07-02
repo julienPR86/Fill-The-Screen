@@ -44,6 +44,8 @@ int game()
                 game_quit();
                 return RETURN_EXIT_FULL_GAME;
             }
+            update_window_size(event, window);
+            
             if (SDL_EVENT_KEY_DOWN == event.type)
             {
                 if (!player->can_move || FREE_MODE == game_mode)
