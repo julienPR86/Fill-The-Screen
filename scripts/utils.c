@@ -81,7 +81,7 @@ void get_mouse_delta(float *_x, float *_y)
     return;
 }
 
-int update_window_size(SDL_Window *window, int w, int h)
+int set_window_size(SDL_Window *window, int w, int h)
 {
     if (NULL == window || w <= 0 || h <= 0)
         return 0;
@@ -92,6 +92,18 @@ int update_window_size(SDL_Window *window, int w, int h)
         return 0;
     }
     return 1;
+}
+
+void update_window_size(SDL_Event event, SDL_Window *window)
+{
+    if (SDL_EVENT_WINDOW_RESIZED == event.type)
+    {
+        if (true != SDL_GetWindowSize(window, &WIDTH, &HEIGHT))
+        {
+            fprintf(stderr, "Failed to get window size : %s\n", SDL_GetError());
+        }
+        update_scale();
+    }
 }
 
 void update_scale()

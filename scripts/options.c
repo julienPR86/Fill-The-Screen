@@ -348,6 +348,6 @@ int options()
     group_free(&options_group);
     label_list_free(labels, 1);
     update_scale();
-    update_window_size(window, WIDTH, HEIGHT);
+    set_window_size(window, WIDTH, HEIGHT);
     return RETURN_TO_MAIN_MENU;
 }
