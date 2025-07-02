@@ -61,7 +61,6 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
     }
     if (NULL != toggle->label)
     {
-        match_UI_Element_size(&toggle->rect, &toggle->label->rect, scale_x, scale_y);
         label_update(toggle->label, scale_x, scale_y);
     }
         
@@ -78,6 +77,11 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
 
     UI_Element anchored_rect = toggle->rect;
     set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
+
+    if (NULL != toggle->label)
+    {
+        match_UI_Element_size(&anchored_rect, &toggle->label->rect, scale_x, scale_y);
+    }
         
     Color toggle_color;
     SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
