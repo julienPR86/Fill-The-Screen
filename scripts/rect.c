@@ -17,6 +17,22 @@ void rect_render(Rect *rect, float scale_x, float scale_y)
     return;
 }
 
+void match_UI_Element_size(UI_Element *element, UI_Element *frame, float scale_x, float scale_y)
+{
+    if (NULL == element || NULL == frame)
+        return;
+
+    if (element->width * scale_x < frame->width)
+    {
+        element->width = frame->width;
+    }
+    if (element->height * scale_y < frame->height)
+    {
+        element->height = frame->height;
+    }
+    return;
+}
+
 void render_outline(UI_Element *element, float scale_x, float scale_y)
 {
     if (NULL == element || element->width <= 0 || element->height <= 0 || element->outline.size <= 0)
