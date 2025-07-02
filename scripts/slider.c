@@ -72,7 +72,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
     slider_clamp_cursor_position(slider, scale_x, scale_y);
     slider_set_label_position(slider, scale_x, scale_y);
     
-    if (RETURN_NONE == out && NULL != slider->label && NULL != slider->value) // Execute if the slider isn't being clicked / updated
+    if (RETURN_NONE == out || NULL == slider->value) // Execute if the slider isn't being clicked / updated
     {
         slider_set_cursor_position(slider);
         return out;
