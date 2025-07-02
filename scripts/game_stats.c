@@ -34,32 +34,32 @@ int game_stats()
     char square_ratio_text[50];
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
-    Label title_label = {{WINDOW_WIDTH/2, 50, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label title_label = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&title_label, SCALE_X, SCALE_Y);
 
-    Label congrats = {{WINDOW_WIDTH/2, 50, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label congrats = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&congrats, SCALE_X, SCALE_Y);
 
-    Label percent_label = {{WINDOW_WIDTH/2, 180, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label percent_label = {{WINDOW_WIDTH/2, congrats.rect.y + congrats.rect.height + 25, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&percent_label, SCALE_X, SCALE_Y);
 
-    Label moves_label = {{WINDOW_WIDTH/2, 230, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label moves_label = {{WINDOW_WIDTH/2, percent_label.rect.y + percent_label.rect.height + 5, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&moves_label, SCALE_X, SCALE_Y);
 
-    Label square_ratio_label = {{WINDOW_WIDTH/2, 280, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label square_ratio_label = {{WINDOW_WIDTH/2, moves_label.rect.y + moves_label.rect.height + 5, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&square_ratio_label, SCALE_X, SCALE_Y);
 
     Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label restart_button_label = {EMPTY_UI_ELEMENT, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label main_menu_button_label = {EMPTY_UI_ELEMENT, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
-    Button back_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
+    Button back_button = {{WINDOW_WIDTH/2, square_ratio_label.rect.y + square_ratio_label.rect.height + 30 * 3/SCALE_X, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
     button_init(&back_button, SCALE_X, SCALE_Y);
 
-    Button restart_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    Button restart_button = {{WINDOW_WIDTH/2, back_button.rect.y + back_button.rect.height + 20, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
     button_init(&restart_button, SCALE_X, SCALE_Y);
 
-    Button main_menu_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    Button main_menu_button = {{WINDOW_WIDTH/2, restart_button.rect.y + restart_button.rect.height + 20, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
     button_init(&main_menu_button, SCALE_X, SCALE_Y);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
