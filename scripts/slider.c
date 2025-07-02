@@ -36,7 +36,7 @@ Slider *slider_init(Slider *slider, float scale_x, float scale_y)
 
 int slider_update(Slider *slider, float scale_x, float scale_y)
 {
-    if (NULL == slider || NULL == slider->cursor || !slider->active)
+    if (NULL == slider || NULL == slider->cursor || !slider->active || NULL == slider->value)
         return RETURN_NONE;
 
     int out = RETURN_NONE; // returns RETURN_NONE if the slider isn't clicked / updated
