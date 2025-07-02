@@ -11,8 +11,7 @@ Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
     {
         toggle->label->rect.anchor = NONE;
 
-        toggle->rect.width = MAX(toggle->rect.width, toggle->label->rect.width/scale_x);
-        toggle->rect.height = MAX(toggle->rect.height, toggle->label->rect.height/scale_y);
+        match_UI_Element_size(&toggle->rect, &toggle->label->rect, scale_x, scale_y);
 
         label_center(toggle->label, &toggle->rect, scale_x, scale_y);
     }
@@ -61,10 +60,14 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
         }
     }
     if (NULL != toggle->label)
+    {
+        match_UI_Element_size(&toggle->rect, &toggle->label->rect, scale_x, scale_y);
         label_update(toggle->label, scale_x, scale_y);
+    }
         
     if (NULL != toggle->command && CLICKED == toggle->state)
         out = toggle->command();
+        
     return out;
 }
 
