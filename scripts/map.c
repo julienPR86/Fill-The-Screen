@@ -177,3 +177,11 @@ int map_is_filled(Map *map)
     }
     return true;
 }
+
+void map_set_offset(int *offset_x, int *offset_y)
+{
+    *offset_x = CENTERED(HEIGHT, (map->height * map->square_size));
+    *offset_y = CENTERED(WIDTH, (map->width * map->square_size));
+    return;
+}
+

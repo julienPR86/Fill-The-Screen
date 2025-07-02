@@ -54,5 +54,7 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
 int map_get_squares_number(Map *map, int type);
 //check if there is no more empty square in the map
 int map_is_filled(Map *map);
+//Set the offset for the map rendering based on the HEIGHT, WIDTH, and map size
+void map_set_offset(int *offset_x, int *offset_y);
 
 #endif
