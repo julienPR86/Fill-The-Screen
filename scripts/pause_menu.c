@@ -2,7 +2,7 @@
 
 int pause_menu()
 {
-    Label title_label = {EMPTY_UI_ELEMENT, "Game Paused", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label title_label = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game Paused", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&title_label, SCALE_X, SCALE_Y);
 
     Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
