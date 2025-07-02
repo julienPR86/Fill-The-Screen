@@ -17,7 +17,7 @@ Slider *slider_init(Slider *slider, float scale_x, float scale_y)
     slider->step = MIN(MAX(1, slider->step), slider->max);
 
     slider_clamp_value(slider);
-    slider_set_cursor_position(slider, scale_x, scale_y);
+    slider_set_cursor_position(slider);
 
     if (NULL != slider->label)
     {
@@ -74,7 +74,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
     
     if (RETURN_NONE == out && NULL != slider->label && NULL != slider->value) // Execute if the slider isn't being clicked / updated
     {
-        slider_set_cursor_position(slider, scale_x, scale_y);
+        slider_set_cursor_position(slider);
         return out;
     }
 
@@ -84,7 +84,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
     }
     else
     {
-        slider_set_cursor_position(slider, scale_x, scale_y);
+        slider_set_cursor_position(slider);
         slider_clamp_cursor_position(slider, scale_x, scale_y);
     }
     slider_clamp_value(slider);
@@ -174,15 +174,13 @@ void slider_clamp_value(Slider *slider)
     return;
 }
 
-void slider_set_cursor_position(Slider *slider, float scale_x, float scale_y)
+void slider_set_cursor_position(Slider *slider)
 {
     if (NULL == slider || NULL == slider->cursor || NULL == slider->value)
         return;
 
-    (void)scale_x;
-
     slider->cursor->rect.x = slider->rect.x + ((slider->rect.width) * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (slider->cursor->rect.width / 2);
-    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height) * scale_y;
+    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height);
     return;
 }
 

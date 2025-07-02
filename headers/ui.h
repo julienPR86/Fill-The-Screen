@@ -305,7 +305,7 @@ void slider_list_free(Slider *sliders[], int size);
 //Clamp the value of the cursor based on the min and max value
 void slider_clamp_value(Slider *slider);
 //Updates the slider's cursor position
-void slider_set_cursor_position(Slider *slider, float scale_x, float scale_y);
+void slider_set_cursor_position(Slider *slider);
 //Check if the slider cursor is at the right position
 int slider_check_cursor_position(Slider * slider);
 //Limits the cursor position
