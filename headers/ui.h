@@ -311,7 +311,7 @@ void slider_set_cursor_position(Slider *slider);
 //Check if the slider cursor is at the right position
 int slider_check_cursor_position(Slider * slider);
 //Limits the cursor position
-void slider_clamp_cursor_position(Slider *slider, float scale_x, float scale_y);
+void slider_clamp_cursor_position(Slider *slider);
 //Updates the slider label text based on the slider value
 Slider *slider_label_text_update(Slider *slider);
 //Updates the slider's label position
