@@ -167,7 +167,7 @@ typedef struct Slider
     //current value
     int *value;
     //Caches the last value of value, needs to be NULL at initialisation
-    int *cache_value;
+    int cache_value;
     //min value
     int min;
     //max value
