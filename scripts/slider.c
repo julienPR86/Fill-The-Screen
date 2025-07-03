@@ -71,7 +71,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         slider->cursor->state = NORMAL;
     }
 
-    /*if (slider->cache_value != *slider->value) // Update the slider if the value has changed
+    if (slider->cache_value != *slider->value) // Update the slider if the value has changed
     {
         slider_set_cursor_position(slider);
 
@@ -79,7 +79,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         label_update(slider->label, scale_x, scale_y);
 
         slider->cache_value = *slider->value;
-    }*/
+    }
     
     slider_clamp_value(slider);
     slider_clamp_cursor_position(slider);
