@@ -77,7 +77,7 @@ int init()
         SDL_Quit();
         return RETURN_FAILURE;
     }
-    renderer = SDL_CreateRenderer(window, NULL);
+    renderer = SDL_CreateRenderer(window, "software");
     if (NULL == renderer)
     {
         fprintf(stderr, "Could not create the renderer : %s\n", SDL_GetError());
