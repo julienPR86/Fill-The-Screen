@@ -169,7 +169,7 @@ void panel_free(Panel *panel)
     {
         slider_list_free(panel->sliders, panel->slider_count);
     }
-    if (NULL != panel->sliders)
+    if (NULL != panel->pickers)
     {
         picker_list_free(panel->pickers, panel->picker_count);
     }
