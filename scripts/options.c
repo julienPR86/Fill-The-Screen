@@ -193,19 +193,9 @@ int options()
     // Video panel --------------------------------------------------------------------
 
     Label fullscreen_toggle_label = {EMPTY_UI_ELEMENT, "Fullscreen", 30, DARK, NULL, NULL, false, 1.0, true};
-    Label fullscreen_borderless_toggle_label = {EMPTY_UI_ELEMENT, "Fullscreen Borderless", 30, DARK, NULL, NULL, false, 1.0, true};
-    Label borderless_toggle_label = {EMPTY_UI_ELEMENT, "Borderless", 30, DARK, NULL, NULL, false, 1.0, true};
 
     Toggle fullscreen_toggle = {{20, 150, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
     toggle_init(&fullscreen_toggle, SCALE_X, SCALE_Y);
-    Toggle fullscreen_borderless_toggle = {{20, 200, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_borderless_toggle_label, &toggle_style, NULL, true};
-    toggle_init(&fullscreen_borderless_toggle, SCALE_X, SCALE_Y);
-    Toggle borderless_toggle = {{20, 250, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &borderless_toggle_label, &toggle_style, NULL, true};
-    toggle_init(&borderless_toggle, SCALE_X, SCALE_Y);
-
-    Toggle *window_state_toggle_list[] = {&fullscreen_toggle, &fullscreen_borderless_toggle, &borderless_toggle};
-    ToggleGroup window_state_group = {window_state_toggle_list, 3, 0, true};
-    group_init(&window_state_group);
 
     Label max_fps_slider_description_label = {{20, 350, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Max FPS", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&max_fps_slider_description_label, SCALE_X, SCALE_Y);
@@ -216,13 +206,13 @@ int options()
     slider_init(&max_fps_slider, SCALE_X, SCALE_Y);
 
     Button *video_button_list[] = {};
-    Toggle *video_toggle_list[] = {};
+    Toggle *video_toggle_list[] = {&fullscreen_toggle};
     Slider *video_slider_list[] = {&max_fps_slider};
     ColorPicker *video_picker_list[] = {};
-    ToggleGroup *video_group_list[] = {&window_state_group};
+    ToggleGroup *video_group_list[] = {};
     Label *video_label_list[] = {&max_fps_slider_description_label};
     Rect *video_rect_list[] = {};
-    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_picker_list, 0, video_group_list, 1, video_label_list, 1, video_rect_list, 0, false};
+    Panel video_panel = {video_button_list, 0, video_toggle_list, 1, video_slider_list, 1, video_picker_list, 0, video_group_list, 0, video_label_list, 1, video_rect_list, 0, false};
     panel_init(&video_panel);
 
     // Audio panel --------------------------------------------------------------------
