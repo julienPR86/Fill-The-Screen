@@ -198,29 +198,13 @@ int options()
     Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &MAX_FPS, 0, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider, SCALE_X, SCALE_Y);
 
-    Label screen_width_slider_description_label = {{20, 250, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Width", 20, DARK, NULL, NULL, false, 1.0, true};
-    label_init(&screen_width_slider_description_label, SCALE_X, SCALE_Y);
-
-    Label screen_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
-    SliderCursor screen_width_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider screen_width_slider = {{20, screen_width_slider_description_label.rect.y + screen_width_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &WIDTH, 0, 1080, 1920, 1, &screen_width_slider_label, &screen_width_slider_cursor, &slider_style, true};
-    slider_init(&screen_width_slider, SCALE_X, SCALE_Y);
-
-    Label screen_height_slider_description_label = {{20, 350, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Screen Height", 20, DARK, NULL, NULL, false, 1.0, true};
-    label_init(&screen_height_slider_description_label, SCALE_X, SCALE_Y);
-
-    Label screen_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
-    SliderCursor screen_height_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider screen_height_slider = {{20, screen_height_slider_description_label.rect.y + screen_height_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &HEIGHT, 0, 720, 1080, 1, &screen_height_slider_label, &screen_height_slider_cursor, &slider_style, true};
-    slider_init(&screen_height_slider, SCALE_X, SCALE_Y);
-
     Button *video_button_list[] = {};
     Toggle *video_toggle_list[] = {};
-    Slider *video_slider_list[] = {&max_fps_slider, &screen_width_slider, &screen_height_slider};
+    Slider *video_slider_list[] = {&max_fps_slider};
     ColorPicker *video_picker_list[] = {};
-    Label *video_label_list[] = {&max_fps_slider_description_label, &screen_width_slider_description_label, &screen_height_slider_description_label};
+    Label *video_label_list[] = {&max_fps_slider_description_label};
     Rect *video_rect_list[] = {};
-    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 3, video_picker_list , 0, video_label_list, 3, video_rect_list, 0, false};
+    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_picker_list , 0, video_label_list, 1, video_rect_list, 0, false};
     panel_init(&video_panel);
 
     // Audio panel --------------------------------------------------------------------
