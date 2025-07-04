@@ -1,6 +1,13 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
 
+enum WindowState
+{
+    FULLSCREEN,
+    FULLSCREEN_BORDERLESS,
+    BORDERLESS,
+};
+
 enum MouseButtonState
 {
     //no buttons are pressed
