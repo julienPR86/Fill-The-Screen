@@ -277,6 +277,8 @@ void group_render(ToggleGroup *group);
 void group_clear_selected(ToggleGroup *group);
 //free the toggle group
 void group_free(ToggleGroup *group);
+//free a list of toggles
+void group_list_free(ToggleGroup **groups, int count);
 
 //label init, needs to be called before all label functions
 Label *label_init(Label *label, float scale_x, float scale_y);

@@ -70,3 +70,18 @@ void group_free(ToggleGroup *group)
     toggle_list_free(group->toggles, group->count);
     return;
 }
+
+void group_list_free(ToggleGroup **groups, int count)
+{
+    if (NULL == groups)
+        return;
+    
+    for (int i = 0; i < count; i++)
+    {
+        if (NULL == groups[i])
+            continue;
+            
+        group_free(groups[i]);
+    }
+    return;
+}

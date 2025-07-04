@@ -20,6 +20,9 @@ Panel *panel_init(Panel *panel)
     if (NULL == panel->pickers && panel->picker_count != 0)
         panel->label_count = 0;
 
+    if (NULL == panel->groups && panel->groups_count != 0)
+        panel->groups_count = 0;
+
     if (NULL == panel->rects && panel->rect_count != 0)
         panel->label_count = 0;
     
@@ -72,6 +75,16 @@ int panel_update(Panel *panel)
             out = picker_update(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
+    if (NULL != panel->groups && RETURN_NONE == out)
+    {
+        for (int i = 0; i < panel->groups_count; i++)
+        {
+            if (RETURN_NONE != out)
+                return out;
+
+            out = group_update(panel->groups[i], SCALE_X, SCALE_Y);
+        }
+    }
     if (NULL != panel->labels)
     {
         for (int i = 0; i < panel->label_count; i++)
@@ -120,6 +133,13 @@ void panel_render(Panel *panel)
         for (int i = 0; i < panel->picker_count; i++)
         {
             picker_render(panel->pickers[i], SCALE_X, SCALE_Y);
+        }
+    }
+    if (NULL != panel->groups)
+    {
+        for (int i = 0; i < panel->groups_count; i++)
+        {
+            group_render(panel->groups[i]);
         }
     }
     if (NULL != panel->labels)
