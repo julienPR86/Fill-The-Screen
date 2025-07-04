@@ -33,6 +33,8 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
                 case NORMAL:
                 case HOVERED:
                     toggle->state = CLICKED;
+                    if (NULL != toggle->command)
+                        out = toggle->command();
                     break;
                 case CLICKED:
                     toggle->state = HOVERED;
@@ -57,10 +59,6 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
     {
         label_update(toggle->label, scale_x, scale_y);
     }
-        
-    if (NULL != toggle->command && CLICKED == toggle->state)
-        out = toggle->command();
-        
     return out;
 }
 
