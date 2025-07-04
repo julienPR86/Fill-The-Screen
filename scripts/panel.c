@@ -173,6 +173,10 @@ void panel_free(Panel *panel)
     {
         picker_list_free(panel->pickers, panel->picker_count);
     }
+    if (NULL != panel->groups)
+    {
+        group_list_free(panel->groups, panel->groups_count);
+    }
     if (NULL != panel->labels)
     {
         label_list_free(panel->labels, panel->label_count);
