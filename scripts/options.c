@@ -65,9 +65,10 @@ int options()
     Toggle *gameplay_toggle_list[] = {};
     Slider *gameplay_slider_list[] = {&probability_slider, &map_width_slider, &map_height_slider, &game_speed_slider};
     ColorPicker *gameplay_picker_list[] = {};
+    ToggleGroup *gameplay_group_list[] = {};
     Label *gameplay_label_list[] = {&probability_slider_description_label, &map_width_slider_description_label, &map_height_slider_description_label, &game_speed_slider_description};
     Rect *gameplay_rect_list[] = {};
-    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toggle_list, 0, gameplay_slider_list, 4, gameplay_picker_list , 0, gameplay_label_list, 4, gameplay_rect_list, 0, true};
+    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toggle_list, 0, gameplay_slider_list, 4, gameplay_picker_list, 0, gameplay_group_list, 0, gameplay_label_list, 4, gameplay_rect_list, 0, true};
     panel_init(&gameplay_panel);
 
     // colors panel --------------------------------------------------------------------------
@@ -183,9 +184,10 @@ int options()
     Toggle *colors_toggle_list[] = {};
     Slider *colors_slider_list[] = {};
     ColorPicker *color_picker_list[] = {&player_picker, &collision_square_picker, &line_square_picker, &empty_square_picker};
+    ToggleGroup *color_group_list[] = {};
     Label *colors_label_list[] = {};
     Rect *color_rect_list[] = {};
-    Panel colors_panel = {colors_button_list, 0, colors_toggle_list, 0, colors_slider_list, 0, color_picker_list , 4, colors_label_list, 0, color_rect_list, 0, false};
+    Panel colors_panel = {colors_button_list, 0, colors_toggle_list, 0, colors_slider_list, 0, color_picker_list, 4, color_group_list, 0, colors_label_list, 0, color_rect_list, 0, false};
     panel_init(&colors_panel);
 
     // Video panel --------------------------------------------------------------------
@@ -196,9 +198,9 @@ int options()
 
     Toggle fullscreen_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
     toggle_init(&fullscreen_toggle, SCALE_X, SCALE_Y);
-    Toggle fullscreen_borderless_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
+    Toggle fullscreen_borderless_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_borderless_toggle_label, &toggle_style, NULL, true};
     toggle_init(&fullscreen_borderless_toggle, SCALE_X, SCALE_Y);
-    Toggle borderless_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
+    Toggle borderless_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &borderless_toggle_label, &toggle_style, NULL, true};
     toggle_init(&borderless_toggle, SCALE_X, SCALE_Y);
 
     Toggle *window_state_toggle_list[] = {&fullscreen_toggle, &fullscreen_borderless_toggle, &borderless_toggle};
@@ -217,9 +219,10 @@ int options()
     Toggle *video_toggle_list[] = {};
     Slider *video_slider_list[] = {&max_fps_slider};
     ColorPicker *video_picker_list[] = {};
+    ToggleGroup *video_group_list[] = {};
     Label *video_label_list[] = {&max_fps_slider_description_label};
     Rect *video_rect_list[] = {};
-    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_picker_list , 0, video_label_list, 1, video_rect_list, 0, false};
+    Panel video_panel = {video_button_list, 0, video_toggle_list, 0, video_slider_list, 1, video_picker_list, 0, video_group_list, 0, video_label_list, 1, video_rect_list, 0, false};
     panel_init(&video_panel);
 
     // Audio panel --------------------------------------------------------------------
@@ -255,9 +258,10 @@ int options()
     Toggle *audio_toggle_list[] = {};
     Slider *audio_slider_list[] = {&master_audio_slider, &music_audio_slider, &effects_audio_slider};
     ColorPicker *audio_picker_list[] = {};
+    ToggleGroup *audio_group_list[] = {};
     Label *audio_label_list[] = {&master_audio_slider_description_label, &music_audio_slider_description_label, &effects_audio_slider_description_label};
     Rect *audio_rect_list[] = {};
-    Panel audio_panel = {audio_button_list, 0, audio_toggle_list, 0, audio_slider_list, 3, audio_picker_list , 0, audio_label_list, 3, audio_rect_list, 0, false};
+    Panel audio_panel = {audio_button_list, 0, audio_toggle_list, 0, audio_slider_list, 3, audio_picker_list, 0, audio_group_list, 0, audio_label_list, 3, audio_rect_list, 0, false};
     panel_init(&audio_panel);
 
     // panels end ---------------------
