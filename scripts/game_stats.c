@@ -37,10 +37,10 @@ int game_stats()
     Label title_label = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game over", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&title_label, SCALE_X, SCALE_Y);
 
-    Label congrats = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&congrats, SCALE_X, SCALE_Y);
+    Label congrats_label = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    label_init(&congrats_label, SCALE_X, SCALE_Y);
 
-    Label percent_label = {{WINDOW_WIDTH/2, congrats.rect.y + congrats.rect.height + 25, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label percent_label = {{WINDOW_WIDTH/2, congrats_label.rect.y + congrats_label.rect.height + 25, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&percent_label, SCALE_X, SCALE_Y);
 
     Label moves_label = {{WINDOW_WIDTH/2, percent_label.rect.y + percent_label.rect.height + 5, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
@@ -114,7 +114,7 @@ int game_stats()
         }
 
         if (percent >= 100.0)
-            label_render(&congrats, SCALE_X, SCALE_Y);
+            label_render(&congrats_label, SCALE_X, SCALE_Y);
         else
             label_render(&title_label, SCALE_X, SCALE_Y);
         
