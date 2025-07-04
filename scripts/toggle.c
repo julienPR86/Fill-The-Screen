@@ -23,11 +23,10 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
     if (NULL == toggle || !toggle->active)
         return RETURN_NONE;
     
-    static int update = 1;
     int out = RETURN_NONE; // returns RETURN_NONE if the toggle isn't clicked
     if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, scale_x, scale_y))
     {
-        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && update)
+        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && mouse_state.frame_input)
         {
             switch (toggle->state)
             {
@@ -41,13 +40,8 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
                 default:
                     break;
             }
-            update = 0;
         }
-        else if (mouse_state.button_pressed == MOUSE_STATE_NONE && !update)
-        {
-            update = 1;
-        }
-        else if (NORMAL == toggle->state)
+        else if (mouse_state.button_pressed == MOUSE_STATE_NONE && toggle->state != CLICKED)
         {
             toggle->state = HOVERED;
         }
