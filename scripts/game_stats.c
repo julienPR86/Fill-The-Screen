@@ -114,9 +114,15 @@ int game_stats()
         }
 
         if (percent >= 100.0)
+        {
+            label_update(&congrats_label, SCALE_X, SCALE_Y);
             label_render(&congrats_label, SCALE_X, SCALE_Y);
+        }
         else
+        {
+            label_update(&title_label, SCALE_X, SCALE_Y);
             label_render(&title_label, SCALE_X, SCALE_Y);
+        }
         
         for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
         {
