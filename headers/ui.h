@@ -220,6 +220,10 @@ typedef struct Panel
     ColorPicker **pickers;
     //Color picker count
     int picker_count;
+    //toggle group
+    ToggleGroup **groups;
+    //toggles group count
+    int groups_count;
     // labels
     Label **labels;
     //labels count
