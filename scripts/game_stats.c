@@ -40,13 +40,13 @@ int game_stats()
     Label congrats_label = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Congratulation", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&congrats_label, SCALE_X, SCALE_Y);
 
-    Label percent_label = {{WINDOW_WIDTH/2, congrats_label.rect.y + congrats_label.rect.height + 25, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label percent_label = {{WINDOW_WIDTH/2, congrats_label.rect.y + congrats_label.rect.height/SCALE_Y + 30, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, percent_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&percent_label, SCALE_X, SCALE_Y);
 
-    Label moves_label = {{WINDOW_WIDTH/2, percent_label.rect.y + percent_label.rect.height + 5, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label moves_label = {{WINDOW_WIDTH/2, percent_label.rect.y + percent_label.rect.height/SCALE_Y + 10, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, moves_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&moves_label, SCALE_X, SCALE_Y);
 
-    Label square_ratio_label = {{WINDOW_WIDTH/2, moves_label.rect.y + moves_label.rect.height + 5, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
+    Label square_ratio_label = {{WINDOW_WIDTH/2, moves_label.rect.y + moves_label.rect.height/SCALE_Y + 10, 0, 0, NO_OUTLINE, NO_INLINE, CENTER}, square_ratio_text, 35, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     label_init(&square_ratio_label, SCALE_X, SCALE_Y);
 
     Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
