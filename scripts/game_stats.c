@@ -53,13 +53,13 @@ int game_stats()
     Label restart_button_label = {EMPTY_UI_ELEMENT, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
     Label main_menu_button_label = {EMPTY_UI_ELEMENT, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
 
-    Button back_button = {{WINDOW_WIDTH/2, square_ratio_label.rect.y + square_ratio_label.rect.height + 30 * 3/SCALE_X, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
+    Button back_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
     button_init(&back_button, SCALE_X, SCALE_Y);
 
-    Button restart_button = {{WINDOW_WIDTH/2, back_button.rect.y + back_button.rect.height + 20, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
+    Button restart_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
     button_init(&restart_button, SCALE_X, SCALE_Y);
 
-    Button main_menu_button = {{WINDOW_WIDTH/2, restart_button.rect.y + restart_button.rect.height + 20, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
+    Button main_menu_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
     button_init(&main_menu_button, SCALE_X, SCALE_Y);
     
     Label *labels[] = {&percent_label, &moves_label, &square_ratio_label, &FPS_label};
