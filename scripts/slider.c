@@ -71,7 +71,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         slider->cursor->state = NORMAL;
     }
 
-    if (slider->cache_value != *slider->value) // Update the slider if the value has changed
+    if (slider->cache_value != *slider->value) // Update the slider if the value has changed elsewhere
     {
         slider_set_cursor_position(slider);
 
