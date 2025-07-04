@@ -190,7 +190,22 @@ int options()
 
     // Video panel --------------------------------------------------------------------
 
-    Label max_fps_slider_description_label = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Max FPS", 20, DARK, NULL, NULL, false, 1.0, true};
+    Label fullscreen_toggle_label = {EMPTY_UI_ELEMENT, "Fullscreen", 30, DARK, NULL, NULL, false, 1.0, true};
+    Label fullscreen_borderless_toggle_label = {EMPTY_UI_ELEMENT, "Fullscreen Borderless", 30, DARK, NULL, NULL, false, 1.0, true};
+    Label borderless_toggle_label = {EMPTY_UI_ELEMENT, "Borderless", 30, DARK, NULL, NULL, false, 1.0, true};
+
+    Toggle fullscreen_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
+    toggle_init(&fullscreen_toggle, SCALE_X, SCALE_Y);
+    Toggle fullscreen_borderless_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
+    toggle_init(&fullscreen_borderless_toggle, SCALE_X, SCALE_Y);
+    Toggle borderless_toggle = {{0, 0, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, NULL, true};
+    toggle_init(&borderless_toggle, SCALE_X, SCALE_Y);
+
+    Toggle *window_state_toggle_list[] = {&fullscreen_toggle, &fullscreen_borderless_toggle, &borderless_toggle};
+    ToggleGroup window_state_group = {window_state_toggle_list, 3, 0, true};
+    group_init(&window_state_group);
+
+    Label max_fps_slider_description_label = {{20, 350, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Max FPS", 20, DARK, NULL, NULL, false, 1.0, true};
     label_init(&max_fps_slider_description_label, SCALE_X, SCALE_Y);
 
     Label max_fps_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
