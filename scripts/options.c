@@ -292,23 +292,31 @@ int options()
             mouse_event(event);
         }
 
-        for (int i = 0; i < (int)(sizeof(panels)/sizeof(panels[0])); i++)
-        {
-            panels[i]->active = false;
-        }
         out = group_update(&options_group, SCALE_X, SCALE_Y);
         switch (out)
         {
             case RETURN_OPTION_GAMEPLAY_PANEL:
                 gameplay_panel.active = true;
+                colors_panel.active = false;
+                video_panel.active = false;
+                audio_panel.active = false;
                 break;
             case RETURN_OPTION_COLOR_PANEL:
+                gameplay_panel.active = false;
                 colors_panel.active = true;
+                video_panel.active = false;
+                audio_panel.active = false;
                 break;
             case RETURN_OPTION_VIDEO_PANEL:
+                gameplay_panel.active = false;
+                colors_panel.active = false;
                 video_panel.active = true;
+                audio_panel.active = false;
                 break;
             case RETURN_OPTION_AUDIO_PANEL:
+                gameplay_panel.active = false;
+                colors_panel.active = false;
+                video_panel.active = false;
                 audio_panel.active = true;
                 break;
             default:
