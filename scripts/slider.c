@@ -84,6 +84,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
     slider_clamp_value(slider);
     slider_clamp_cursor_position(slider);
     slider_set_label_position(slider, scale_x, scale_y);
+    label_update(slider->label, scale_x, scale_y);
     
     if (RETURN_NONE == out)// Exit the function if the slider isn't being clicked / updated
     {
@@ -102,14 +103,13 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         slider_clamp_cursor_position(slider);
     }
 
-    //update the slider label
+    //update the slider label text
     if (NULL != slider->label->text)
     {
         free(slider->label->text);
         slider->label->text = NULL;
     } 
     slider_label_text_update(slider);
-    label_update(slider->label, scale_x, scale_y);
     return out;
 }
 
