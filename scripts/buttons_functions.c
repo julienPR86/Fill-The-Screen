@@ -63,3 +63,15 @@ int option_audio()
 {
     return RETURN_OPTION_AUDIO_PANEL;
 }
+
+int option_window_fullscreen()
+{
+    if (true != SDL_SetWindowFullscreen(window, true))
+    {
+        fprintf(stderr, "Failed to set window to fullscreen : %s\n", SDL_GetError());
+        return RETURN_FAILURE;
+    }
+    SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
+    update_scale();
+    return RETURN_SUCCESS;
+}

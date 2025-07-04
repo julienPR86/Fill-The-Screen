@@ -25,5 +25,6 @@ int option_color_label();
 int option_video();
 //button function which tells to active the audio panel in the options
 int option_audio();
-
+//toggle function to set the window to fullscreen
+int option_window_fullscreen();
 #endif
