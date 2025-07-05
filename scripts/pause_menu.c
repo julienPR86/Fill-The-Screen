@@ -2,24 +2,10 @@
 
 int pause_menu()
 {
-    Label title_label = {{WINDOW_WIDTH/2, 0, 0, 0, NO_OUTLINE, NO_INLINE, TOP_CENTER}, "Game Paused", 100, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&title_label, SCALE_X, SCALE_Y);
+    pause_menu_data_ui_init();
 
-    Label back_button_label = {EMPTY_UI_ELEMENT, "Back", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    Label restart_button_label = {EMPTY_UI_ELEMENT, "Restart", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    Label main_menu_button_label = {EMPTY_UI_ELEMENT, "Main menu", 30, {0, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-
-    Button back_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &back_button_label, &button_style, &back, true};
-    button_init(&back_button, SCALE_X, SCALE_Y);
-
-    Button restart_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &restart_button_label, &button_style, &restart, true};
-    button_init(&restart_button, SCALE_X, SCALE_Y);
-
-    Button main_menu_button = {{WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER}, NORMAL, &main_menu_button_label, &button_style, &main_menu, true};
-    button_init(&main_menu_button, SCALE_X, SCALE_Y);
-
-    Label *labels[] = {&title_label, &FPS_label};
-    Button *buttons[] = {&back_button, &restart_button, &main_menu_button};
+    Label *labels[] = {&pause_menu_title_label, &FPS_label};
+    Button *buttons[] = {&pause_menu_back_button, &pause_menu_restart_button, &pause_menu_main_menu_button};
 
     int running = true, out;
     Uint64 start_time;

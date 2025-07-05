@@ -28,6 +28,7 @@
 #include "data/UI/headers/data_ui_main_menu.h"
 #include "data/UI/headers/data_ui_mode_selection.h"
 #include "data/UI/headers/data_ui_game_stats.h"
+#include "data/UI/headers/data_ui_pause_menu.h"
 
 //booleans definitions
 #define true 1
