@@ -140,7 +140,7 @@ int init()
     {
         for (int i = 0; i < max_font_size; i++)
         {
-            roboto_regular_fonts[i] = TTF_OpenFont("font/Roboto-regular.ttf", i+1);
+            roboto_regular_fonts[i] = TTF_OpenFont("data/fonts/Roboto-regular.ttf", i+1);
             if (NULL == roboto_regular_fonts[i])
             {
                 fprintf(stderr, "Could not initialised the font; size : %d; %s\n", i, SDL_GetError());
