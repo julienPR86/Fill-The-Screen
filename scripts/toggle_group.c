@@ -1,5 +1,14 @@
 #include "../main.h"
 
+ToggleGroup *group_set_fields(ToggleGroup *group, Toggle *toggles[], int count, int selected, int active)
+{
+    group->toggles = toggles;
+    group->count = count;
+    group->selected = selected;
+    group->active = active;
+    return group;
+}
+
 ToggleGroup *group_init(ToggleGroup *group)
 {
     if (NULL == group || 0 == group->count)

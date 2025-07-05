@@ -1,5 +1,15 @@
 #include "../main.h"
 
+Toggle *toggle_set_fields(Toggle *toggle, int state, Label *label, ButtonStyle *style, int (*command)(), int active)
+{
+    toggle->state = state;
+    toggle->label = label;
+    toggle->style = style;
+    toggle->command = command;
+    toggle->active = active;
+    return toggle;
+}
+
 Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
 {
     if (NULL == toggle)
