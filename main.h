@@ -13,7 +13,7 @@
 //locals headers includes
 #include "headers/buttons_functions.h"
 #include "headers/game_stats.h"
-#include "headers/game_mode.h"
+#include "headers/mode_selection.h"
 #include "headers/game.h"
 #include "headers/init.h"
 #include "headers/map.h"
@@ -26,6 +26,7 @@
 
 //UI data
 #include "data/UI/headers/data_ui_main_menu.h"
+#include "data/UI/headers/data_ui_mode_selection.h"
 
 //booleans definitions
 #define true 1
