@@ -10,8 +10,8 @@ int main()
 
     main_menu_data_init();
     
-    Label *labels[] = {&title_label, &FPS_label};
-    Button *buttons[] = {&play_button, &options_button, &exit_button};
+    Label *labels[] = {&main_menu_title_label, &FPS_label};
+    Button *buttons[] = {&main_menu_play_button, &main_menu_options_button, &main_menu_exit_button};
 
     int running = true, out;
     Uint64 start_time;
