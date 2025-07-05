@@ -75,3 +75,15 @@ int option_window_fullscreen()
     update_scale();
     return RETURN_SUCCESS;
 }
+
+int option_window_floating()
+{
+    if (true != SDL_SetWindowFullscreen(window, false))
+    {
+        fprintf(stderr, "Failed to set window to floating : %s\n", SDL_GetError());
+        return RETURN_FAILURE;
+    }
+    SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
+    update_scale();
+    return RETURN_SUCCESS;
+}
