@@ -193,6 +193,7 @@ int options()
     // Video panel --------------------------------------------------------------------
 
     Label fullscreen_toggle_label = {EMPTY_UI_ELEMENT, "Fullscreen", 30, DARK, NULL, NULL, false, 1.0, true};
+    Label fullscreen_toggle_label = {EMPTY_UI_ELEMENT, "Floating", 30, DARK, NULL, NULL, false, 1.0, true};
 
     Toggle fullscreen_toggle = {{20, 150, 0, 0, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &fullscreen_toggle_label, &toggle_style, &option_window_fullscreen, true};
     toggle_init(&fullscreen_toggle, SCALE_X, SCALE_Y);
