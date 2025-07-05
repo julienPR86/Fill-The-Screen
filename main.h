@@ -24,6 +24,9 @@
 #include "headers/ui.h" 
 #include "headers/utils.h"
 
+//UI data
+#include "data/headers/main_menu_data.h"
+
 //booleans definitions
 #define true 1
 #define false 0
