@@ -8,7 +8,7 @@ int main()
         return RETURN_FAILURE;
     }
 
-    main_menu_data_init();
+    main_menu_data_ui_init();
     
     Label *labels[] = {&main_menu_title_label, &FPS_label};
     Button *buttons[] = {&main_menu_play_button, &main_menu_options_button, &main_menu_exit_button};

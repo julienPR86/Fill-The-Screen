@@ -9,7 +9,7 @@ Button main_menu_play_button;
 Button main_menu_options_button;
 Button main_menu_exit_button;
 
-void main_menu_data_init()
+void main_menu_data_ui_init()
 {
     UI_Element_set_fields(&main_menu_title_label.rect, WINDOW_WIDTH/2, 10, 0, 0, outlines[0], inlines[0], TOP_CENTER);
     label_set_fields(&main_menu_title_label, "FIll The Screen", 100, DARK, 0, 1.0, 1);
