@@ -30,7 +30,7 @@ int options()
 
     Label probability_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor probability_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider probability_slider = {{20, probability_slider_description_label.rect.y + probability_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &probability, 0, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
+    Slider probability_slider = {{20, probability_slider_description_label.rect.y + probability_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &probability, 0, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
     slider_init(&probability_slider, SCALE_X, SCALE_Y);
 
 
@@ -39,7 +39,7 @@ int options()
 
     Label map_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor map_width_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider map_width_slider = {{20, map_width_slider_description_label.rect.y + map_width_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &map_width, 0, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
+    Slider map_width_slider = {{20, map_width_slider_description_label.rect.y + map_width_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &map_width, 0, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
     slider_init(&map_width_slider, SCALE_X, SCALE_Y);
 
 
@@ -48,7 +48,7 @@ int options()
 
     Label map_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor map_height_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider map_height_slider = {{20, map_height_slider_description_label.rect.y + map_height_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &map_height, 0, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
+    Slider map_height_slider = {{20, map_height_slider_description_label.rect.y + map_height_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &map_height, 0, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
     slider_init(&map_height_slider, SCALE_X, SCALE_Y);
 
 
@@ -209,7 +209,7 @@ int options()
 
     Label max_fps_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor max_fps_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &MAX_FPS, 0, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
+    Slider max_fps_slider = {{20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &MAX_FPS, 0, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true};
     slider_init(&max_fps_slider, SCALE_X, SCALE_Y);
 
     Button *video_button_list[] = {};
@@ -229,7 +229,7 @@ int options()
 
     Label master_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor master_audio_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider master_audio_slider = {{20, master_audio_slider_description_label.rect.y + master_audio_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, NULL, 0, 0, 200, 1, &master_audio_slider_label, &master_audio_slider_cursor, &slider_style, true};
+    Slider master_audio_slider = {{20, master_audio_slider_description_label.rect.y + master_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, NULL, 0, 0, 200, 1, &master_audio_slider_label, &master_audio_slider_cursor, &slider_style, true};
     slider_init(&master_audio_slider, SCALE_X, SCALE_Y);
 
 
@@ -238,7 +238,7 @@ int options()
 
     Label music_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor music_audio_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider music_audio_slider = {{20, music_audio_slider_description_label.rect.y + music_audio_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, NULL, 0, 0, 200, 1, &music_audio_slider_label, &music_audio_slider_cursor, &slider_style, true};
+    Slider music_audio_slider = {{20, music_audio_slider_description_label.rect.y + music_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, NULL, 0, 0, 200, 1, &music_audio_slider_label, &music_audio_slider_cursor, &slider_style, true};
     slider_init(&music_audio_slider, SCALE_X, SCALE_Y);
 
 
@@ -247,7 +247,7 @@ int options()
 
     Label effects_audio_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
     SliderCursor effects_audio_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider effects_audio_slider = {{20, effects_audio_slider_description_label.rect.y + effects_audio_slider_description_label.rect.height, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, NULL, 0, 0, 200, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &slider_style, true};
+    Slider effects_audio_slider = {{20, effects_audio_slider_description_label.rect.y + effects_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, NULL, 0, 0, 200, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &slider_style, true};
     slider_init(&effects_audio_slider, SCALE_X, SCALE_Y);
 
 
