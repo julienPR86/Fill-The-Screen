@@ -1,5 +1,18 @@
 #include "../main.h"
 
+Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, int update, float local_scale, int active)
+{
+    label->text = text;
+    label->font_size = font_size;
+    label->text_color = text_color;
+    label->surface = NULL;
+    label->texture = NULL;
+    label->update = update;
+    label->local_scale = local_scale;
+    label->active = active;
+    return label;
+}
+
 Label *label_init(Label *label, float scale_x, float scale_y)
 {
     if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)

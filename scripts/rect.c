@@ -80,3 +80,15 @@ int get_width(UI_Element *element, float scale_x)
 {
     return (element->width + element->outline.size * 2) * scale_x;
 }
+
+UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, int anchor)
+{
+    element->x = x;
+    element->y = y;
+    element->width = width;
+    element->height = height;
+    element->outline = outline;
+    element->inline_ = inline_;
+    element->anchor = anchor;
+    return element;
+}

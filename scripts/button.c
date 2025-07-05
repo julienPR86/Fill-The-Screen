@@ -1,5 +1,15 @@
 #include "../main.h"
 
+Button *button_set_fields(Button *button, int state, Label *label, ButtonStyle *style, int (*command)(), int active)
+{
+    button->state = state;
+    button->label = label;
+    button->style = style;
+    button->command = command;
+    button->active = active;
+    return button;
+}
+
 Button *button_init(Button *button, float scale_x, float scale_y)
 {
     if (NULL == button)

@@ -242,9 +242,14 @@ extern Outline *outlines;
 //inlines
 extern Inline *inlines;
 
+//Set the fields of element to the values passed in
+UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, int anchor);
+
 //render a rectangle
 void rect_render(Rect *element, float scale_x, float scale_y);
 
+//Set the fields of button based on the values passed in
+Button *button_set_fields(Button *button, int state, Label *label, ButtonStyle *style, int (*command)(), int active);
 //button init, needs to be called before all button functions
 Button *button_init(Button *button, float scale_x, float scale_y);
 //update a button
@@ -256,6 +261,8 @@ void button_free(Button *button);
 //free a button's list
 void button_list_free(Button *button[], int size);
 
+//Set the fields of toggle based on the values passed in
+Toggle *toggle_set_fields(Toggle *toggle, int state, Label *label, ButtonStyle *style, int (*command)(), int active);
 //toggle init, needs to be called before all toggle functions
 Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y);
 //update a toggle
@@ -267,6 +274,8 @@ void toggle_free(Toggle *toggle);
 //free a toggle's list
 void toggle_list_free(Toggle *toggle[], int size);
 
+//Set the fields of toggle group based on the values passed in
+ToggleGroup *group_set_fields(ToggleGroup *group, Toggle *toggles[], int count, int selected, int active);
 //toggle group init, needs to be called before all toggle group functions
 ToggleGroup *group_init(ToggleGroup *group);
 //update a toggle group
@@ -280,6 +289,8 @@ void group_free(ToggleGroup *group);
 //free a list of toggles
 void group_list_free(ToggleGroup **groups, int count);
 
+//Set the label fields based on te values passed in
+Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, int update, float local_scale, int active);
 //label init, needs to be called before all label functions
 Label *label_init(Label *label, float scale_x, float scale_y);
 //update label
@@ -299,7 +310,6 @@ SliderCursor *slider_cursor_init(SliderCursor *cursor);
 int slider_cursor_update(SliderCursor *cursor);
 //render slider cursor
 void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y);
-
 //slider init, needs to be called before all slider functions
 Slider *slider_init(Slider *slider, float scale_x, float scale_y);
 //update slider
