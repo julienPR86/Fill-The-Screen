@@ -361,6 +361,8 @@ int picker_get_height(ColorPicker *picker, float scale_y);
 //get picker width
 int picker_get_width(ColorPicker *picker, float scale_x);
 
+//Set the fields of the panel passed in
+Panel *panel_set_fields(Panel* panel, Button **buttons, int button_count, Toggle **toggles, int toggle_count, Slider **sliders, int slider_count, ColorPicker **pickers, int picker_count, ToggleGroup **groups, int group_count, Label **labels, int label_count, Rect **rects, int rect_count, int active);
 //panel init, needs to be called before all panel functions
 Panel *panel_init(Panel *panel);
 //update panel

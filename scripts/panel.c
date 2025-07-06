@@ -1,5 +1,24 @@
 #include "../main.h"
 
+Panel *panel_set_fields(Panel* panel, Button **buttons, int button_count, Toggle **toggles, int toggle_count, Slider **sliders, int slider_count, ColorPicker **pickers, int picker_count, ToggleGroup **groups, int group_count, Label **labels, int label_count, Rect **rects, int rect_count, int active)
+{
+    panel->buttons = buttons;
+    panel->button_count = button_count;
+    panel->toggles = toggles;
+    panel->toggle_count = toggle_count;
+    panel->sliders = sliders;
+    panel->slider_count = slider_count;
+    panel->pickers = pickers;
+    panel->picker_count = picker_count;
+    panel->groups = groups;
+    panel->groups_count = group_count;
+    panel->labels = labels;
+    panel->label_count = label_count;
+    panel->rects = rects;
+    panel->rect_count = rect_count;
+    return panel;
+}
+
 Panel *panel_init(Panel *panel)
 {
     if (NULL == panel)
