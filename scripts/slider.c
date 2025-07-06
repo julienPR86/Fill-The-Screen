@@ -1,5 +1,19 @@
 #include "../main.h"
 
+Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, int active)
+{
+    slider->value = value;
+    slider->cache_value = *value;
+    slider->min = min;
+    slider->max = max;
+    slider->step = step;
+    slider->label = label;
+    slider->cursor = cursor;
+    slider->style = style;
+    slider->active = active;
+    return slider;
+}
+
 Slider *slider_init(Slider *slider, float scale_x, float scale_y)
 {
     if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style || slider->min == slider->max)

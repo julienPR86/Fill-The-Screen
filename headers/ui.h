@@ -312,6 +312,9 @@ SliderCursor *slider_cursor_init(SliderCursor *cursor);
 int slider_cursor_update(SliderCursor *cursor);
 //render slider cursor
 void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y);
+
+//Set the fields of the slider passed in
+Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, int active);
 //slider init, needs to be called before all slider functions
 Slider *slider_init(Slider *slider, float scale_x, float scale_y);
 //update slider
