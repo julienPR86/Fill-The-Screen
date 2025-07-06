@@ -16,6 +16,7 @@ Panel *panel_set_fields(Panel* panel, Button **buttons, int button_count, Toggle
     panel->label_count = label_count;
     panel->rects = rects;
     panel->rect_count = rect_count;
+    panel->active = active;
     return panel;
 }
 
