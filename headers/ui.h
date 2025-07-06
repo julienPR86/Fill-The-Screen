@@ -304,6 +304,8 @@ void label_list_free(Label *labels[], int size);
 //Center the label inside the rect passed in
 void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y);
 
+//Set the fields of the cursor passed in
+SliderCursor *slider_cursor_set_fields(SliderCursor *cursor, int state, SliderCursorStyle *style);
 //slider cursor init, needs to be called before all slider cursor functions
 SliderCursor *slider_cursor_init(SliderCursor *cursor);
 //update slider cursor

@@ -1,5 +1,12 @@
 #include "../main.h"
 
+SliderCursor *slider_cursor_set_fields(SliderCursor *cursor, int state, SliderCursorStyle *style)
+{
+    cursor->state = state;
+    cursor->style = style;
+    return cursor;
+}
+
 SliderCursor *slider_cursor_init(SliderCursor *cursor)
 {
     if (NULL == cursor || NULL == cursor->style)
