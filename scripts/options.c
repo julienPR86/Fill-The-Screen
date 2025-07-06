@@ -3,58 +3,6 @@
 int options()
 {
     options_data_ui_init();
-
-    Label back_label = {{WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, NO_OUTLINE, NO_INLINE, BOTTOM_CENTER}, "Press Escape to go back", 30, {255, 0, 0, 255}, NULL, NULL, false, 1.0, true};
-    label_init(&back_label, SCALE_X, SCALE_Y);
-
-    // Gameplay panel ----------------------------------------------------------------
-    
-    Label probability_slider_description_label = {{20, 150, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Blocks spawn probability", 20, DARK, NULL, NULL, false, 1.0, true};
-    label_init(&probability_slider_description_label, SCALE_X, SCALE_Y);
-
-    Label probability_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
-    SliderCursor probability_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider probability_slider = {{20, probability_slider_description_label.rect.y + probability_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &probability, 0, 1, 100, 1, &probability_slider_label, &probability_slider_cursor, &slider_style, true};
-    slider_init(&probability_slider, SCALE_X, SCALE_Y);
-
-
-    Label map_width_slider_description_label = {{20, 225, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Map width", 20, DARK, NULL, NULL, false, 1.0, true};
-    label_init(&map_width_slider_description_label, SCALE_X, SCALE_Y);
-
-    Label map_width_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
-    SliderCursor map_width_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider map_width_slider = {{20, map_width_slider_description_label.rect.y + map_width_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &map_width, 0, 2, 100, 1, &map_width_slider_label, &map_width_slider_cursor, &slider_style, true};
-    slider_init(&map_width_slider, SCALE_X, SCALE_Y);
-
-
-    Label map_height_slider_description_label = {{20, 300, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Map height", 20, DARK, NULL, NULL, false, 1.0, true};
-    label_init(&map_height_slider_description_label, SCALE_X, SCALE_Y);
-
-    Label map_height_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
-    SliderCursor map_height_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider map_height_slider = {{20, map_height_slider_description_label.rect.y + map_height_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], NO_INLINE, TOP_LEFT}, &map_height, 0, 2, 100, 1, &map_height_slider_label, &map_height_slider_cursor, &slider_style, true};
-    slider_init(&map_height_slider, SCALE_X, SCALE_Y);
-
-
-    Label game_speed_slider_description = {{20, 375, 0, 0, NO_OUTLINE, NO_INLINE, TOP_LEFT}, "Game speed", 20, DARK, NULL, NULL, false, 1.0, true};
-    label_init(&game_speed_slider_description, SCALE_X, SCALE_Y);
-
-    Label game_speed_slider_label = {EMPTY_UI_ELEMENT, NULL, 20, DARK, NULL, NULL, false, 1.0, true};
-    SliderCursor game_speed_slider_cursor = {{0, 0, 20, 20, outlines[1], NO_INLINE, TOP_LEFT}, NORMAL, &slider_cursor_style};
-    Slider game_speed_slider = {{20, game_speed_slider_description.rect.y + game_speed_slider_description.rect.height, 300, 20, outlines[1], NO_INLINE, TOP_LEFT}, &game_speed, 0, 1, 300, 1, &game_speed_slider_label, &game_speed_slider_cursor, &slider_style, true};
-    slider_init(&game_speed_slider, SCALE_X, SCALE_Y);
-
-
-    Button *gameplay_button_list[] = {};
-    Toggle *gameplay_toggle_list[] = {};
-    Slider *gameplay_slider_list[] = {&probability_slider, &map_width_slider, &map_height_slider, &game_speed_slider};
-    ColorPicker *gameplay_picker_list[] = {};
-    ToggleGroup *gameplay_group_list[] = {};
-    Label *gameplay_label_list[] = {&probability_slider_description_label, &map_width_slider_description_label, &map_height_slider_description_label, &game_speed_slider_description};
-    Rect *gameplay_rect_list[] = {};
-    Panel gameplay_panel = {gameplay_button_list, 0, gameplay_toggle_list, 0, gameplay_slider_list, 4, gameplay_picker_list, 0, gameplay_group_list, 0, gameplay_label_list, 4, gameplay_rect_list, 0, true};
-    panel_init(&gameplay_panel);
-
     // colors panel --------------------------------------------------------------------------
 
     Rect player_color_rect = {{0, 0, 50, 50, outlines[2], NO_INLINE, TOP_LEFT}, &theme.game_colors.player_square_color};
