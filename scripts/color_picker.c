@@ -1,5 +1,14 @@
 #include "../main.h"
 
+ColorPicker *picker_set_fields(ColorPicker *picker, Rect *color_rect, Label **labels, Slider **sliders, int active)
+{
+    picker->color_rect = color_rect;
+    picker->labels = labels;
+    picker->sliders = sliders;
+    picker->active = active;
+    return picker;
+}
+
 ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
 {
     if (NULL == picker || NULL == picker->color_rect)

@@ -346,6 +346,8 @@ int slider_get_height(Slider *slider, float scale_y);
 //get slider width
 int slider_get_width(Slider *slider, float scale_x);
 
+//Set the fields of the color picker passed in
+ColorPicker *picker_set_fields(ColorPicker *picker, Rect *color_rect, Label **labels, Slider **sliders, int active);
 //Color picker init, needs to be called before all picker functions
 ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y);
 //update picker
