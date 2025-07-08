@@ -3,7 +3,8 @@
 Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, int active)
 {
     slider->value = value;
-    slider->cache_value = *value;
+    if (NULL != value)
+        slider->cache_value = *value;
     slider->min = min;
     slider->max = max;
     slider->step = step;
