@@ -245,6 +245,8 @@ extern Inline *inlines;
 //Set the fields of element to the values passed in
 UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, int anchor);
 
+//Set the fields of the rect passed in
+void rect_set_fields(Rect *rect, Color *color);
 //render a rectangle
 void rect_render(Rect *element, float scale_x, float scale_y);
 

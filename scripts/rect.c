@@ -1,5 +1,11 @@
 #include "../main.h"
 
+void rect_set_fields(Rect *rect, Color *color)
+{
+    rect->rect_color = color;
+    return;
+}
+
 void rect_render(Rect *rect, float scale_x, float scale_y)
 {
     if (NULL == rect || NULL == rect->rect_color)
