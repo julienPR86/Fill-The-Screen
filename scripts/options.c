@@ -3,9 +3,6 @@
 int options()
 {
     options_data_ui_init();
-    
-    Label *labels[] = {&FPS_label, &back_label};
-    Panel *panels[] = {&gameplay_panel, &colors_panel, &video_panel, &audio_panel};
 
     int running = true, out;
     Uint64 start_time;
@@ -24,9 +21,9 @@ int options()
         {
             if (SDL_EVENT_QUIT == event.type)
             {
-                panel_list_free(panels, 4);
+                panel_list_free(options_panels, 4);
                 group_free(&options_group);
-                label_list_free(labels, 1);
+                label_list_free(options_labels, 1);
                 return RETURN_EXIT_FULL_GAME;
             }
             if (SDL_EVENT_KEY_DOWN == event.type)
@@ -44,36 +41,36 @@ int options()
         switch (out)
         {
             case RETURN_OPTION_GAMEPLAY_PANEL:
-                gameplay_panel.active = true;
-                colors_panel.active = false;
-                video_panel.active = false;
-                audio_panel.active = false;
+                options_gameplay_panel.active = true;
+                options_colors_panel.active = false;
+                options_video_panel.active = false;
+                options_audio_panel.active = false;
                 break;
             case RETURN_OPTION_COLOR_PANEL:
-                gameplay_panel.active = false;
-                colors_panel.active = true;
-                video_panel.active = false;
-                audio_panel.active = false;
+                options_gameplay_panel.active = false;
+                options_colors_panel.active = true;
+                options_video_panel.active = false;
+                options_audio_panel.active = false;
                 break;
             case RETURN_OPTION_VIDEO_PANEL:
-                gameplay_panel.active = false;
-                colors_panel.active = false;
-                video_panel.active = true;
-                audio_panel.active = false;
+                options_gameplay_panel.active = false;
+                options_colors_panel.active = false;
+                options_video_panel.active = true;
+                options_audio_panel.active = false;
                 break;
             case RETURN_OPTION_AUDIO_PANEL:
-                gameplay_panel.active = false;
-                colors_panel.active = false;
-                video_panel.active = false;
-                audio_panel.active = true;
+                options_gameplay_panel.active = false;
+                options_colors_panel.active = false;
+                options_video_panel.active = false;
+                options_audio_panel.active = true;
                 break;
             default:
                 break;
         }
         group_render(&options_group);
-        for (int i = 0; i < (int)(sizeof(panels)/sizeof(panels[0])); i++)
+        for (int i = 0; i < (int)(sizeof(options_panels)/sizeof(options_panels[0])); i++)
         {
-            out = panel_update(panels[i]);
+            out = panel_update(options_panels[i]);
             switch (out)
             {
                 case RETURN_NONE:
@@ -82,21 +79,21 @@ int options()
                 default:
                     break;
             }
-            panel_render(panels[i]);
+            panel_render(options_panels[i]);
         }
-        for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
+        for (int i = 0; i < (int)(sizeof(options_labels)/sizeof(options_labels[0])); i++)
         {
-            label_update(labels[i], SCALE_X, SCALE_Y);
-            label_render(labels[i], SCALE_X, SCALE_Y);
+            label_update(options_labels[i], SCALE_X, SCALE_Y);
+            label_render(options_labels[i], SCALE_X, SCALE_Y);
         }
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
         mouse_event_update();
     }
-    panel_list_free(panels, 4);
+    panel_list_free(options_panels, 4);
     group_free(&options_group);
-    label_list_free(labels, 1);
+    label_list_free(options_labels, 1);
     update_scale();
     set_window_size(window, WIDTH, HEIGHT);
     return RETURN_TO_MAIN_MENU;
