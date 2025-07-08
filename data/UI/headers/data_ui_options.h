@@ -167,4 +167,26 @@ extern Panel video_panel;
 
 //Audio panel
 
+extern Label master_audio_slider_description_label;
+
+extern Label master_audio_slider_label;
+extern SliderCursor master_audio_slider_cursor ;
+extern Slider master_audio_slider;
+
+extern Label music_audio_slider_description_label;
+
+extern Label music_audio_slider_label;
+extern SliderCursor music_audio_slider_cursor ;
+extern Slider music_audio_slider;
+
+extern Label effects_audio_slider_description_label;
+
+extern Label effects_audio_slider_label;
+extern SliderCursor effects_audio_slider_cursor;
+extern Slider effects_audio_slider;
+
+extern Slider *audio_slider_list[3];
+extern Label *audio_label_list[3];
+extern Panel audio_panel;
+
 void options_data_ui_init();

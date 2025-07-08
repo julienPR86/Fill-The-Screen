@@ -169,6 +169,29 @@ Panel video_panel;
 
 //Audio panel
 
+Label master_audio_slider_description_label;
+
+Label master_audio_slider_label;
+SliderCursor master_audio_slider_cursor ;
+Slider master_audio_slider;
+
+Label music_audio_slider_description_label;
+
+Label music_audio_slider_label;
+SliderCursor music_audio_slider_cursor ;
+Slider music_audio_slider;
+
+Label effects_audio_slider_description_label;
+
+Label effects_audio_slider_label;
+SliderCursor effects_audio_slider_cursor;
+Slider effects_audio_slider;
+
+Slider *audio_slider_list[3];
+Label *audio_label_list[3];
+Panel audio_panel;
+
+
 void options_data_ui_init()
 {   
     UI_Element_set_fields(&back_label.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, outlines[0], inlines[0], BOTTOM_CENTER);
@@ -522,6 +545,51 @@ void options_data_ui_init()
 
     //Audio panel
 
+    UI_Element_set_fields(&master_audio_slider_description_label.rect, 20, 150, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    label_set_fields(&master_audio_slider_description_label, "Master volume", 20, DARK, false, 1.0, true);
+    label_init(&master_audio_slider_description_label, SCALE_X, SCALE_Y);
 
+    UI_Element_set_fields(&master_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    label_set_fields(&master_audio_slider_label, NULL, 20, DARK, false, 1.0, true);
+    UI_Element_set_fields(&master_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_cursor_set_fields(&master_audio_slider_cursor, NORMAL, &slider_cursor_style);
+    UI_Element_set_fields(&master_audio_slider.rect, 20, master_audio_slider_description_label.rect.y + master_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_set_fields(&master_audio_slider, NULL, 0, 200, 1, &master_audio_slider_label, &master_audio_slider_cursor, &slider_style, true);
+    slider_init(&master_audio_slider, SCALE_X, SCALE_Y);
+
+    UI_Element_set_fields(&music_audio_slider_description_label.rect, 20, 225, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    label_set_fields(&music_audio_slider_description_label, "Music volume", 20, DARK, false, 1.0, true);
+    label_init(&music_audio_slider_description_label, SCALE_X, SCALE_Y);
+
+    UI_Element_set_fields(&music_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    label_set_fields(&music_audio_slider_label, NULL, 20, DARK, false, 1.0, true);
+    UI_Element_set_fields(&music_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_cursor_set_fields(&music_audio_slider_cursor, NORMAL, &slider_cursor_style);
+    UI_Element_set_fields(&music_audio_slider.rect, 20, music_audio_slider_description_label.rect.y + music_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_set_fields(&music_audio_slider, NULL, 0, 200, 1, &music_audio_slider_label, &music_audio_slider_cursor, &slider_style, true);
+    slider_init(&music_audio_slider, SCALE_X, SCALE_Y);
+
+    UI_Element_set_fields(&effects_audio_slider_description_label.rect, 20, 300, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    label_set_fields(&effects_audio_slider_description_label, "Effects volume", 20, DARK, false, 1.0, true);
+    label_init(&effects_audio_slider_description_label, SCALE_X, SCALE_Y);
+
+    UI_Element_set_fields(&effects_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    label_set_fields(&effects_audio_slider_label, NULL, 20, DARK, false, 1.0, true);
+    UI_Element_set_fields(&effects_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_cursor_set_fields(&effects_audio_slider_cursor, NORMAL, &slider_cursor_style);
+    UI_Element_set_fields(&effects_audio_slider.rect, 20, effects_audio_slider_description_label.rect.y + effects_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_set_fields(&effects_audio_slider, NULL, 0, 200, 1, &effects_audio_slider_label, &effects_audio_slider_cursor, &slider_style, true);
+    slider_init(&effects_audio_slider, SCALE_X, SCALE_Y);
+
+    audio_slider_list[0] = &master_audio_slider;
+    audio_slider_list[1] = &music_audio_slider;
+    audio_slider_list[2] = &effects_audio_slider;
+
+    audio_label_list[0] = &master_audio_slider_description_label;
+    audio_label_list[1] = &music_audio_slider_description_label;
+    audio_label_list[2] = &effects_audio_slider_description_label;
+
+    panel_set_fields(&audio_panel, NULL, 0, NULL, 0, audio_slider_list, 3, NULL, 0, NULL, 0, audio_label_list, 3, NULL, 0, false);
+    panel_init(&audio_panel);
     return;
 }
