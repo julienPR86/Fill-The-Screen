@@ -20,7 +20,7 @@
 #include "headers/options.h"
 #include "headers/pause_menu.h"
 #include "headers/player.h"
-#include "headers/theme.h"
+#include "headers/color.h"
 #include "headers/ui.h" 
 #include "headers/utils.h"
 

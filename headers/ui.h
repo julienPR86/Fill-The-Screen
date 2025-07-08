@@ -1,7 +1,7 @@
 #ifndef _UI_H_
 #define _UI_H_
 
-#include "theme.h"
+#include "color.h"
 
 #define NO_OUTLINE {0, DARK}
 #define NO_INLINE {0, WHITE}
