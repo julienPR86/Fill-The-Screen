@@ -19,7 +19,7 @@ void main_menu_data_ui_init()
     label_set_fields(&main_menu_play_button_label, "PLAY", 30, DARK, 0, 1.0, 1);
 
     UI_Element_set_fields(&main_menu_options_button_label.rect, 0, 10, 0, 0, outlines[0], inlines[0], NONE);
-    label_set_fields(&main_menu_options_button_label, "options", 30, DARK, 0, 1.0, 1);
+    label_set_fields(&main_menu_options_button_label, "Options", 30, DARK, 0, 1.0, 1);
 
     UI_Element_set_fields(&main_menu_exit_button_label.rect,0, 10, 0, 0, outlines[0], inlines[0], NONE);
     label_set_fields(&main_menu_exit_button_label, "Quit", 30, DARK, 0, 1.0, 1);
