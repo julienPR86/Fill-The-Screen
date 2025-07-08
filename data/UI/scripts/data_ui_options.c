@@ -147,7 +147,27 @@ Panel colors_panel;
 
 //Video panel
 
+Label fullscreen_toggle_label;
+Label floating_toggle_label;
 
+Toggle fullscreen_toggle;
+Toggle floating_toggle;
+
+Toggle *window_state_toggle_list[2];
+ToggleGroup window_state_group;
+
+Label max_fps_slider_description_label;
+
+Label max_fps_slider_label;
+SliderCursor max_fps_slider_cursor;
+Slider max_fps_slider;
+
+Slider *video_slider_list[1];
+ToggleGroup *video_group_list[1];
+Label *video_label_list[1];
+Panel video_panel;
+
+//Audio panel
 
 void options_data_ui_init()
 {   
@@ -464,6 +484,43 @@ void options_data_ui_init()
     panel_init(&colors_panel);
 
     //Video panel ------------------------------------------
+
+    UI_Element_set_fields(&fullscreen_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    label_set_fields(&fullscreen_toggle_label, "Fullscreen", 30, DARK, false, 1.0, true);
+    UI_Element_set_fields(&floating_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    label_set_fields(&floating_toggle_label, "Floating", 30, DARK, false, 1.0, true);
+
+    UI_Element_set_fields(&fullscreen_toggle.rect, 20, 150, 0, 0, outlines[1], inlines[0], TOP_LEFT);
+    toggle_set_fields(&fullscreen_toggle, NORMAL, &fullscreen_toggle_label, &toggle_style, &option_window_fullscreen, true);
+    toggle_init(&fullscreen_toggle, SCALE_X, SCALE_Y);
+
+    UI_Element_set_fields(&floating_toggle.rect, 20, 200, 0, 0, outlines[1], inlines[0], TOP_LEFT);
+    toggle_set_fields(&floating_toggle, NORMAL, &floating_toggle_label, &toggle_style, &option_window_floating, true);
+    toggle_init(&floating_toggle, SCALE_X, SCALE_Y);
+
+    window_state_toggle_list[0] = &floating_toggle;
+    window_state_toggle_list[1] = &fullscreen_toggle;
+    group_set_fields(&window_state_group, window_state_toggle_list, 2, 0, true);
+
+    UI_Element_set_fields(&max_fps_slider_description_label.rect, 20, 350, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    label_set_fields(&max_fps_slider_description_label, "Max FPS", 20, DARK, false, 1.0, true);
+    label_init(&max_fps_slider_description_label, SCALE_X, SCALE_Y);
+
+    UI_Element_set_fields(&max_fps_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    label_set_fields(&max_fps_slider_label, NULL, 20, DARK, false, 1.0, true);
+    UI_Element_set_fields(&max_fps_slider_cursor.rect,0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_cursor_set_fields(&max_fps_slider_cursor, NORMAL, &slider_cursor_style);
+    UI_Element_set_fields(&max_fps_slider.rect, 20, max_fps_slider_description_label.rect.y + max_fps_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    slider_set_fields(&max_fps_slider, &MAX_FPS, 60, 240, 1, &max_fps_slider_label, &max_fps_slider_cursor, &slider_style, true);
+    slider_init(&max_fps_slider, SCALE_X, SCALE_Y);
+
+    video_slider_list[0] = &max_fps_slider;
+    video_group_list[0] = &window_state_group;
+    video_label_list[0] = &max_fps_slider_description_label;
+    panel_set_fields(&video_panel, NULL, 0, NULL, 0, video_slider_list, 1, NULL, 0, video_group_list, 1, video_label_list, 1, NULL, 0, false);
+    panel_init(&video_panel);
+
+    //Audio panel
 
 
     return;

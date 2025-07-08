@@ -145,4 +145,26 @@ extern Panel colors_panel;
 
 //Video panel
 
+extern Label fullscreen_toggle_label;
+extern Label floating_toggle_label;
+
+extern Toggle fullscreen_toggle;
+extern Toggle floating_toggle;
+
+extern Toggle *window_state_toggle_list[2];
+extern ToggleGroup window_state_group;
+
+extern Label max_fps_slider_description_label;
+
+extern Label max_fps_slider_label;
+extern SliderCursor max_fps_slider_cursor;
+extern Slider max_fps_slider;
+
+extern Slider *video_slider_list[1];
+extern ToggleGroup *video_group_list[1];
+extern Label *video_label_list[1];
+extern Panel video_panel;
+
+//Audio panel
+
 void options_data_ui_init();
