@@ -29,21 +29,21 @@ UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, 
 //Set the size of element to the size of frame if it's smaller
 //!! Do not put a label rect for element, only for frame if necessary !!
 //!! Set scale_x and scale_y to 1 except if frame is a label !!
-void match_UI_Element_size(UI_Element *element, UI_Element *frame, float scale_x, float scale_y);
+void UI_Element_match_size(UI_Element *element, UI_Element *frame, float scale_x, float scale_y);
 
 //return true if (x, y) is in element, false otherwise
 int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
 //return 1 if (x,y) is in element, 0 otherwise
-void set_UI_element_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor);
+void UI_Element_set_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor);
 
 //Draw the element inline
-void render_inline(UI_Element *element, float scale_x, float scale_y);
+void UI_Element_render_inline(UI_Element *element, float scale_x, float scale_y);
 //Draw the element outline
-void render_outline(UI_Element *element, float scale_x, float scale_y);
+void UI_Element_render_outline(UI_Element *element, float scale_x, float scale_y);
 
 //return the height of the element
-int get_height(UI_Element *element, float scale_y);
+int UI_Element_get_height(UI_Element *element, float scale_y);
 //return the width of the element
-int get_width(UI_Element *element, float scale_x);
+int UI_Element_get_width(UI_Element *element, float scale_x);
 
 #endif

@@ -116,7 +116,7 @@ void update_scale()
 int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y)
 {
     UI_Element new_element = *element;
-    set_UI_element_position(&new_element, element->x, element->y, scale_x, scale_y, scale_x, scale_y, element->anchor);
+    UI_Element_set_position(&new_element, element->x, element->y, scale_x, scale_y, scale_x, scale_y, element->anchor);
 
     if (x >= new_element.x - new_element.outline.size * scale_x && x < new_element.x + (element->width + new_element.outline.size) * scale_x && y >= new_element.y - new_element.outline.size * scale_y && y < new_element.y + (new_element.height + new_element.outline.size) * scale_y)
     {
@@ -125,7 +125,7 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float
     return false;
 }
 
-void set_UI_element_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
+void UI_Element_set_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
 {
     element->x = x * x_position_factor;
     element->y = y * y_position_factor;

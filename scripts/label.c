@@ -78,9 +78,9 @@ void label_render(Label *label, float scale_x, float scale_y)
         return;
     
     UI_Element anchored_rect = label->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, 1, 1, anchored_rect.anchor);
+    UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, 1, 1, anchored_rect.anchor);
 
-    render_outline(&anchored_rect, 1.0, 1.0);
+    UI_Element_render_outline(&anchored_rect, 1.0, 1.0);
     
     SDL_FRect label_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width, anchored_rect.height};
 

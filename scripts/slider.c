@@ -134,7 +134,7 @@ void slider_render(Slider *slider, float scale_x, float scale_y)
         return;
 
     UI_Element anchored_rect = slider->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
+    UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
     
     Color color;
     SDL_FRect slider_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
@@ -143,8 +143,8 @@ void slider_render(Slider *slider, float scale_x, float scale_y)
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &slider_rect);
 
-    render_outline(&anchored_rect, scale_x, scale_y);
-    render_inline(&anchored_rect, scale_x, scale_y);
+    UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
+    UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
 
     slider_cursor_render(slider->cursor, scale_x, scale_y);
 
@@ -283,7 +283,7 @@ int slider_get_height(Slider *slider, float scale_y)
     if (NULL == slider)
         return 0;
 
-    return MAX(get_height(&slider->rect, scale_y), get_height(&slider->cursor->rect, scale_y));
+    return MAX(UI_Element_get_height(&slider->rect, scale_y), UI_Element_get_height(&slider->cursor->rect, scale_y));
 }
 
 int slider_get_width(Slider *slider, float scale_x)
@@ -291,5 +291,5 @@ int slider_get_width(Slider *slider, float scale_x)
     if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
         return 0;
 
-    return get_width(&slider->rect, scale_x) + get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
+    return UI_Element_get_width(&slider->rect, scale_x) + UI_Element_get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
 }

@@ -21,7 +21,7 @@ Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
     {
         toggle->label->rect.anchor = NONE;
 
-        match_UI_Element_size(&toggle->rect, &toggle->label->rect, scale_x, scale_y);
+        UI_Element_match_size(&toggle->rect, &toggle->label->rect, scale_x, scale_y);
 
         label_center(toggle->label, &toggle->rect, scale_x, scale_y);
     }
@@ -78,11 +78,11 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
         return;
 
     UI_Element anchored_rect = toggle->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
+    UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
 
     if (NULL != toggle->label)
     {
-        match_UI_Element_size(&anchored_rect, &toggle->label->rect, scale_x, scale_y);
+        UI_Element_match_size(&anchored_rect, &toggle->label->rect, scale_x, scale_y);
     }
         
     Color toggle_color;
@@ -106,8 +106,8 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
     SDL_SetRenderDrawColor(renderer, toggle_color.r, toggle_color.g, toggle_color.b, toggle_color.a);
     SDL_RenderFillRect(renderer, &toggle_rect);
 
-    render_outline(&anchored_rect, scale_x, scale_y);
-    render_inline(&anchored_rect, scale_x, scale_y);
+    UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
+    UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
     
     label_center(toggle->label, &anchored_rect, scale_x, scale_y);
     label_render(toggle->label, 1, 1);

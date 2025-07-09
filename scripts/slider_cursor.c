@@ -29,7 +29,7 @@ void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
         return;
 
     UI_Element anchored_rect = cursor->rect;
-    set_UI_element_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
+    UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
 
     Color color;
     SDL_FRect cursor_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
@@ -52,7 +52,7 @@ void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &cursor_rect);
 
-    render_outline(&anchored_rect, scale_x, scale_y);
-    render_inline(&anchored_rect, scale_x, scale_y);
+    UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
+    UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
     return;
 }
