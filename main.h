@@ -21,7 +21,7 @@
 #include "headers/pause_menu.h"
 #include "headers/player.h"
 #include "headers/color.h"
-#include "headers/UI/ui.h" 
+#include "headers/UI/ui.h"
 #include "headers/utils.h"
 
 //UI data
@@ -43,9 +43,6 @@
 #define MAX(a, b) ((a > b) ? a : b)
 //Get min value between a and b
 #define MIN(a, b) ((a < b) ? a : b)
-
-//Init values for UI_element
-#define EMPTY_UI_ELEMENT {0, 0, 0, 0, NO_OUTLINE, NO_INLINE, NONE}
 
 //Returns values enum
 enum Returns

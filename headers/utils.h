@@ -56,16 +56,6 @@ void update_window_size(SDL_Event event, SDL_Window *window);
 //Update the SCALE on X and Y axis, return the min value between them
 void update_scale();
 
-//Set the size of element to the size of frame if it's smaller
-//!! Do not put a label rect for element, only for frame if necessary !!
-//!! Set scale_x and scale_y to 1 except if frame is a label !!
-void match_UI_Element_size(UI_Element *element, UI_Element *frame, float scale_x, float scale_y);
-
-//return true if (x, y) is in element, false otherwise
-int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
-//return 1 if (x,y) is in element, 0 otherwise
-void set_UI_element_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor);
-
 //return the number of digits in number
 int get_number_digits(int number);
 
