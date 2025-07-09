@@ -1,4 +1,4 @@
-#include "../../../headers/ui.h"
+#include "../../../headers/UI/ui.h"
 
 extern Label title_label;
 extern Label congrats_label;

@@ -21,7 +21,7 @@
 #include "headers/pause_menu.h"
 #include "headers/player.h"
 #include "headers/color.h"
-#include "headers/ui.h" 
+#include "headers/UI/ui.h" 
 #include "headers/utils.h"
 
 //UI data

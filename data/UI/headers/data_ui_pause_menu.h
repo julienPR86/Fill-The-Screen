@@ -1,4 +1,4 @@
-#include "../../../headers/ui.h"
+#include "../../../headers/UI/ui.h"
 
 extern Label pause_menu_title_label;
 extern Label pause_menu_back_button_label;

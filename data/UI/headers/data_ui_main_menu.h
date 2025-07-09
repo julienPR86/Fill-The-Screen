@@ -1,4 +1,4 @@
-#include "../../../headers/ui.h"
+#include "../../../headers/UI/ui.h"
 
 extern Label main_menu_title_label;
 extern Label main_menu_play_button_label;
