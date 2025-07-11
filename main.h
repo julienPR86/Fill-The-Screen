@@ -44,6 +44,16 @@
 //Get min value between a and b
 #define MIN(a, b) ((a < b) ? a : b)
 
+enum GameState
+{
+    GAME_STATE_MAIN_MENU,
+    GAME_STATE_OPTIONS,
+    GAME_STATE_MODE_SELECTION,
+    GAME_STATE_GAME,
+    GAME_STATE_PAUSE_MENU,
+    GAME_STATE_GAME_STATS,
+};
+
 //Returns values enum
 enum Returns
 {
