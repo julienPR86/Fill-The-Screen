@@ -1,7 +1,12 @@
 #ifndef _BUTTONS_FUNCS_H_
 #define _BUTTONS_FUNCS_H_
 
+int game_state_main_menu();
 int game_state_mode_selection();
+int game_state_options();
+int game_state_game();
+int game_state_pause_menu();
+int game_state_game_stats();
 
 //button function which tells to exit the game
 int exit_game();
