@@ -1,5 +1,41 @@
 #include "../main.h"
 
+int game_state_main_menu()
+{
+    game_state = GAME_STATE_MAIN_MENU;
+    return 0;
+}
+
+int game_state_options()
+{
+    game_state = GAME_STATE_MODE_SELECTION;
+    return 0;
+}
+
+int game_state_mode_selection()
+{
+    game_state = GAME_STATE_MODE_SELECTION;
+    return 0;
+}
+
+int game_state_game()
+{
+    game_state = GAME_STATE_GAME;
+    return 0;
+}
+
+int game_state_pause_menu()
+{
+    game_state = GAME_STATE_PAUSE_MENU;
+    return 0;
+}
+
+int game_state_game_stats()
+{
+    game_state = GAME_STATE_GAME_STATS;
+    return 0;
+}
+
 int exit_game()
 {
     return RETURN_EXIT_FULL_GAME;

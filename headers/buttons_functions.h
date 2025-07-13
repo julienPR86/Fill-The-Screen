@@ -1,6 +1,8 @@
 #ifndef _BUTTONS_FUNCS_H_
 #define _BUTTONS_FUNCS_H_
 
+int game_state_mode_selection();
+
 //button function which tells to exit the game
 int exit_game();
 //button function which tells to return to game
@@ -17,6 +19,7 @@ int constraint_mode();
 int discovery_mode();
 //button function which tells to launch a game in free mode
 int free_mode();
+
 //button function which tells to active the gameplay panel in the options
 int option_gameplay();
 //button function which tells to active the color panel in the options
@@ -29,4 +32,5 @@ int option_audio();
 int option_window_fullscreen();
 //toggle function to set the window to floating mode
 int option_window_floating();
+
 #endif
