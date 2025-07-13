@@ -9,6 +9,9 @@ Button main_menu_play_button;
 Button main_menu_options_button;
 Button main_menu_exit_button;
 
+Label *main_menu_labels[1];
+Button *main_menu_buttons[3];
+
 void main_menu_data_ui_init()
 {
     UI_Element_set_fields(&main_menu_title_label.rect, WINDOW_WIDTH/2, 10, 0, 0, outlines[0], inlines[0], TOP_CENTER);
@@ -26,16 +29,22 @@ void main_menu_data_ui_init()
 
 
     UI_Element_set_fields(&main_menu_play_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&main_menu_play_button, NORMAL, &main_menu_play_button_label, &button_style, &mode_choice, true);
+    button_set_fields(&main_menu_play_button, NORMAL, &main_menu_play_button_label, &button_style, NULL, true);
     button_init(&main_menu_play_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&main_menu_options_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&main_menu_options_button, NORMAL, &main_menu_options_button_label, &button_style, &options, true);
+    button_set_fields(&main_menu_options_button, NORMAL, &main_menu_options_button_label, &button_style, NULL, true);
     button_init(&main_menu_options_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&main_menu_exit_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&main_menu_exit_button, NORMAL, &main_menu_exit_button_label, &button_style, &exit_game, true);
+    button_set_fields(&main_menu_exit_button, NORMAL, &main_menu_exit_button_label, &button_style, NULL, true);
     button_init(&main_menu_exit_button, SCALE_X, SCALE_Y);
+
+    main_menu_labels[0] = &main_menu_title_label;
+    
+    main_menu_buttons[0] = &main_menu_play_button;
+    main_menu_buttons[1] = &main_menu_options_button;
+    main_menu_buttons[2] = &main_menu_exit_button;
 
     return;
 }
