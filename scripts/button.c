@@ -127,3 +127,14 @@ void button_list_free(Button *buttons[], int size)
     }
     return;
 }
+
+int button_list_update_and_render(Button *buttons[], int count)
+{
+    int out = RETURN_NONE;
+    for (int i = 0; i < count; i++)
+    {
+        out = button_update(buttons[i], SCALE_X, SCALE_Y);
+        button_render(buttons[i], SCALE_X, SCALE_Y);
+    }
+    return out;
+}

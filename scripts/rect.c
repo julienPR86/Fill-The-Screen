@@ -98,3 +98,13 @@ UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, 
     element->anchor = anchor;
     return element;
 }
+
+int rect_list_update_and_render(Rect *rects[], int count)
+{
+    int out = RETURN_NONE;
+    for (int i = 0; i < count; i++)
+    {
+        rect_render(rects[i], SCALE_X, SCALE_Y);
+    }
+    return out;
+}

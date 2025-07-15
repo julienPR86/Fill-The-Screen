@@ -133,3 +133,13 @@ void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y)
     label->rect.y = rect->y + CENTERED(rect->height * scale_y, label->rect.height);
     return;
 }
+
+int label_list_update_and_render(Label *labels[], int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        label_update(labels[i], SCALE_X, SCALE_Y);
+        label_render(labels[i], SCALE_X, SCALE_Y);
+    }
+    return RETURN_NONE;
+}

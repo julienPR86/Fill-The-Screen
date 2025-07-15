@@ -43,4 +43,6 @@ int picker_get_height(ColorPicker *picker, float scale_y);
 //get picker width
 int picker_get_width(ColorPicker *picker, float scale_x);
 
+int picker_list_update_and_render(ColorPicker *pickers[], int count);
+
 #endif

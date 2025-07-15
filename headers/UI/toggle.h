@@ -35,4 +35,6 @@ void toggle_free(Toggle *toggle);
 //free a toggle's list
 void toggle_list_free(Toggle *toggle[], int size);
 
+int toggle_list_update_and_render(Toggle **toggles, int count);
+
 #endif

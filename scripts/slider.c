@@ -293,3 +293,14 @@ int slider_get_width(Slider *slider, float scale_x)
 
     return UI_Element_get_width(&slider->rect, scale_x) + UI_Element_get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
 }
+
+int slider_list_update_and_render(Slider *sliders[], int count)
+{
+    int out = RETURN_NONE;
+    for (int i = 0; i < count; i++)
+    {
+        out = slider_update(sliders[i], SCALE_X, SCALE_Y);
+        slider_render(sliders[i], SCALE_X, SCALE_Y);
+    }
+    return out;
+}

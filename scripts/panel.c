@@ -218,3 +218,14 @@ void panel_list_free(Panel *panels[], int count)
     }
     return;
 }
+
+int panel_list_update_and_render(Panel *panels[], int count)
+{
+    int out = RETURN_NONE;
+    for (int i = 0; i < count; i++)
+    {
+        out = panel_update(panels[i]);
+        panel_render(panels[i]);
+    }
+    return out;
+}

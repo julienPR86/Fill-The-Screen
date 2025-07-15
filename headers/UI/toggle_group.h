@@ -31,4 +31,6 @@ void group_free(ToggleGroup *group);
 //free a list of toggles
 void group_list_free(ToggleGroup **groups, int count);
 
+int group_list_update_and_render(ToggleGroup *groups[], int count);
+
 #endif

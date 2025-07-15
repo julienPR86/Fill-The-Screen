@@ -192,3 +192,14 @@ int picker_get_width(ColorPicker *picker, float scale_x)
 
     return MAX(picker->labels[0]->rect.width * 1.1 + UI_Element_get_width(&picker->color_rect->rect, scale_x), slider_get_width(picker->sliders[0], scale_x));
 }
+
+int picker_list_update_and_render(ColorPicker *pickers[], int count)
+{
+    int out = RETURN_NONE;
+    for (int i = 0; i < count; i++)
+    {
+        out = picker_update(pickers[i], SCALE_X, SCALE_Y);
+        picker_render(pickers[i], SCALE_X, SCALE_Y);
+    }
+    return out;
+}

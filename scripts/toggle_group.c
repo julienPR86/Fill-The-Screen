@@ -94,3 +94,14 @@ void group_list_free(ToggleGroup **groups, int count)
     }
     return;
 }
+
+int group_list_update_and_render(ToggleGroup *groups[], int count)
+{
+    int out = RETURN_NONE;
+    for (int i = 0; i < count; i++)
+    {
+        out = group_update(groups[i], SCALE_X, SCALE_Y);
+        group_render(groups[i]);
+    }
+    return out;
+}

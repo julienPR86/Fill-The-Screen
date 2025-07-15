@@ -42,4 +42,6 @@ void label_list_free(Label *labels[], int size);
 //Center the label inside the rect passed in
 void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y);
 
+int label_list_update_and_render(Label *labels[], int count);
+
 #endif

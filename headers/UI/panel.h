@@ -57,4 +57,6 @@ void panel_free(Panel *panel);
 //free a panel list
 void panel_list_free(Panel *panels[], int count);
 
+int panel_list_update_and_render(Panel *panels[], int count);
+
 #endif

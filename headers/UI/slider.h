@@ -62,4 +62,6 @@ int slider_get_height(Slider *slider, float scale_y);
 //get slider width
 int slider_get_width(Slider *slider, float scale_x);
 
+int slider_list_update_and_render(Slider *sliders[], int count);
+
 #endif

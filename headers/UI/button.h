@@ -33,6 +33,9 @@ void button_render(Button *button, float scale_x, float scale_y);
 //free the button's label
 void button_free(Button *button);
 //free a button's list
-void button_list_free(Button *button[], int size);
+void button_list_free(Button *buttons[], int size);
+
+//Update and render a list of buttons
+int button_list_update_and_render(Button *buttons[], int count);
 
 #endif
