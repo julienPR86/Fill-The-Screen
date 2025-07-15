@@ -8,7 +8,7 @@ int game_state_main_menu()
 
 int game_state_options()
 {
-    game_state = GAME_STATE_MODE_SELECTION;
+    game_state = GAME_STATE_OPTIONS;
     return 0;
 }
 
