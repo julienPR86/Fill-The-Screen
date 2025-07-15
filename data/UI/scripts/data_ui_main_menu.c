@@ -29,11 +29,11 @@ void main_menu_data_ui_init()
 
 
     UI_Element_set_fields(&main_menu_play_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&main_menu_play_button, NORMAL, &main_menu_play_button_label, &button_style, NULL, true);
+    button_set_fields(&main_menu_play_button, NORMAL, &main_menu_play_button_label, &button_style, &game_state_mode_selection, true);
     button_init(&main_menu_play_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&main_menu_options_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&main_menu_options_button, NORMAL, &main_menu_options_button_label, &button_style, NULL, true);
+    button_set_fields(&main_menu_options_button, NORMAL, &main_menu_options_button_label, &button_style, &game_state_options, true);
     button_init(&main_menu_options_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&main_menu_exit_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER);
