@@ -44,25 +44,29 @@ int exit_game()
 int fill_mode()
 {
     game_mode = FILL_MODE;
-    return game();
+    game_state_game();
+    return 0;
 }
 
 int discovery_mode()
 {
     game_mode = DISCOVERY_MODE;
-    return game();
+    game_state_game();
+    return 0;
 }
 
 int constraint_mode()
 {
     game_mode = CONSTRAINT_MODE;
-    return game();
+    game_state_game();
+    return 0;
 }
 
 int free_mode()
 {
     game_mode = FREE_MODE;
-    return game();
+    game_state_game();
+    return 0;
 }
 
 int back()
