@@ -1,16 +1,19 @@
 #include "../../../headers/UI/ui.h"
 
-extern Label title_label;
-extern Label congrats_label;
-extern Label percent_label;
-extern Label moves_label;
-extern Label square_ratio_label;
-extern Label back_button_label;
-extern Label restart_button_label;
-extern Label main_menu_button_label;
+extern Label game_stats_title_label;
+extern Label game_stats_congrats_label;
+extern Label game_stats_percent_label;
+extern Label game_stats_moves_label;
+extern Label game_stats_square_ratio_label;
+extern Label game_stats_back_button_label;
+extern Label game_stats_restart_button_label;
+extern Label game_stats_main_menu_button_label;
 
-extern Button back_button;
-extern Button restart_button;
-extern Button main_menu_button;
+extern Button game_stats_back_button;
+extern Button game_stats_restart_button;
+extern Button game_stats_main_menu_button;
+
+extern Label *game_stats_labels[4];
+extern Button *game_stats_buttons[3];
 
 void game_stats_data_ui_init();
