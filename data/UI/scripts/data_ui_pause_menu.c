@@ -9,6 +9,9 @@ Button pause_menu_back_button;
 Button pause_menu_restart_button;
 Button pause_menu_main_menu_button;
 
+Label *pause_menu_labels[1];
+Button *pause_menu_buttons[3];
+
 void pause_menu_data_ui_init()
 {
     UI_Element_set_fields(&pause_menu_title_label.rect, WINDOW_WIDTH/2, 0, 0, 0, outlines[0], inlines[0], TOP_CENTER);
@@ -35,6 +38,12 @@ void pause_menu_data_ui_init()
     UI_Element_set_fields(&pause_menu_main_menu_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER);
     button_set_fields(&pause_menu_main_menu_button, NORMAL, &pause_menu_main_menu_button_label, &button_style, &main_menu, true);
     button_init(&pause_menu_main_menu_button, SCALE_X, SCALE_Y);
+
+    pause_menu_labels[0] = &pause_menu_title_label;
+
+    pause_menu_buttons[0] = &pause_menu_back_button;
+    pause_menu_buttons[1] = &pause_menu_restart_button;
+    pause_menu_buttons[2] = &pause_menu_main_menu_button;
 
     return;
 }
