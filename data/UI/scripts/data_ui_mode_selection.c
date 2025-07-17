@@ -38,19 +38,19 @@ void game_mode_data_ui_init()
     label_set_fields(&mode_selection_free_mode_button_label, "Free", 30, DARK, false, 1.0, true);
 
     UI_Element_set_fields(&mode_selection_fill_mode_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 100, 200, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&mode_selection_fill_mode_button, NORMAL, &mode_selection_fill_mode_button_label, &button_style, NULL, true);
+    button_set_fields(&mode_selection_fill_mode_button, NORMAL, &mode_selection_fill_mode_button_label, &button_style, &fill_mode, true);
     button_init(&mode_selection_fill_mode_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&mode_selection_discovery_mode_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 200, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&mode_selection_discovery_mode_button, NORMAL, &mode_selection_discovery_mode_button_label, &button_style, NULL, true);
+    button_set_fields(&mode_selection_discovery_mode_button, NORMAL, &mode_selection_discovery_mode_button_label, &button_style, &discovery_mode, true);
     button_init(&mode_selection_discovery_mode_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&mode_selection_constraint_mode_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 200, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&mode_selection_constraint_mode_button, NORMAL, &mode_selection_constraint_mode_button_label, &button_style, NULL, true);
+    button_set_fields(&mode_selection_constraint_mode_button, NORMAL, &mode_selection_constraint_mode_button_label, &button_style, &constraint_mode, true);
     button_init(&mode_selection_constraint_mode_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&mode_selection_free_mode_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 200, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&mode_selection_free_mode_button, NORMAL, &mode_selection_free_mode_button_label, &button_style, NULL, true);
+    button_set_fields(&mode_selection_free_mode_button, NORMAL, &mode_selection_free_mode_button_label, &button_style, &free_mode, true);
     button_init(&mode_selection_free_mode_button, SCALE_X, SCALE_Y);
 
     mode_selection_labels[0] = &mode_selection_title_label;
