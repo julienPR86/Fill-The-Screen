@@ -192,7 +192,7 @@ extern Label *options_audio_label_list[3];
 extern Panel options_audio_panel;
 
 
-extern Label *options_labels[2];
+extern Label *options_labels[1];
 extern Panel *options_panels[4];
 
 void options_data_ui_init();

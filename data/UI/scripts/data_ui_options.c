@@ -192,7 +192,7 @@ Label *options_audio_label_list[3];
 Panel options_audio_panel;
 
 
-Label *options_labels[2];
+Label *options_labels[1];
 Panel *options_panels[4];
 
 
@@ -596,9 +596,7 @@ void options_data_ui_init()
     panel_set_fields(&options_audio_panel, NULL, 0, NULL, 0, options_audio_slider_list, 3, NULL, 0, NULL, 0, options_audio_label_list, 3, NULL, 0, false);
     panel_init(&options_audio_panel);
 
-
-    options_labels[0] = &FPS_label;
-    options_labels[1] = &options_back_label;
+    options_labels[0] = &options_back_label;
 
     options_panels[0] = &options_gameplay_panel;
     options_panels[1] = &options_colors_panel;
