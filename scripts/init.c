@@ -40,6 +40,7 @@ int max_outline_size = 10;
 Inline *inlines;
 int max_inline_size = 5;
 
+int game_state = GAME_STATE_NONE;
 int game_mode = NO_ACTIVE_MODE;
 
 TTF_Font **roboto_regular_fonts;
@@ -220,7 +221,7 @@ int map_init()
     return RETURN_SUCCESS;
 }
 
-int player_init()
+int player_init(Player *player)
 {
     player = (Player *)malloc(sizeof(Player));
     if (NULL == player)

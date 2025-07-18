@@ -1,12 +1,12 @@
 #include "../main.h"
 
-void player_move(int delta_x, int delta_y)
+void player_move(Player *player)
 {
-    if (!player->can_move || !(delta_x ^ delta_y))
+    if (!player->can_move || !(player->direction_x ^ player->direction_y))
         return;
 
-    if (player->frame_move && (player->x + delta_x < 0 || player->y + delta_y < 0 || player->x + delta_x > map->width || player->y + delta_y > map->height ||
-        COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + delta_x] || COLLISION_SQUARE == map->map[(int)player->y + delta_y][(int)player->x]))
+    if (player->frame_move && (player->x + player->direction_x < 0 || player->y + player->direction_y < 0 || player->x + player->direction_x > map->width || player->y + player->direction_y > map->height ||
+        COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + player->direction_x] || COLLISION_SQUARE == map->map[(int)player->y + player->direction_y][(int)player->x]))
     {
         player->moves--;
         player->can_move = 0;
@@ -17,8 +17,8 @@ void player_move(int delta_x, int delta_y)
     
     for (int i = 0; i < game_speed; i++)
     {
-        if (player->x + delta_x < 0 || player->y + delta_y < 0 || player->x + delta_x > map->width || player->y + delta_y > map->height ||
-            COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + delta_x] || COLLISION_SQUARE == map->map[(int)player->y + delta_y][(int)player->x])
+        if (player->x + player->direction_x < 0 || player->y + player->direction_y < 0 || player->x + player->direction_x > map->width || player->y + player->direction_y > map->height ||
+            COLLISION_SQUARE == map->map[(int)player->y][(int)player->x + player->direction_x] || COLLISION_SQUARE == map->map[(int)player->y + player->direction_y][(int)player->x])
         {
             player->can_move = 0;
             return;
@@ -48,8 +48,8 @@ void player_move(int delta_x, int delta_y)
                 map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
                 break;
         }
-        player->x += delta_x * delta_time;
-        player->y += delta_y * delta_time;
+        player->x += player->direction_x * delta_time;
+        player->y += player->direction_y * delta_time;
         map->map[(int)player->y][(int)player->x] = PLAYER_SQUARE;
     }
     return;
