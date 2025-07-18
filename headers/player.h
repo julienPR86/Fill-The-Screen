@@ -8,6 +8,10 @@ typedef struct Player
     double x;
     //y position
     double y;
+    //boolean for the x direction
+    int direction_x;
+    //boolean for the y direction
+    int direction_y;
     //number of moves
     int moves;
     //tells if the player can move
