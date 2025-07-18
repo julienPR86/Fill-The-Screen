@@ -231,6 +231,8 @@ int player_init(Player *player)
     }
     player->x = 0.0;
     player->y = 0.0;
+    player->direction_x = 0;
+    player->direction_y = 0;
     player->moves = 0;
     player->can_move = false;
     player->frame_move = 0;
