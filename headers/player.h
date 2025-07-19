@@ -24,9 +24,11 @@ typedef struct Player
 extern Player *player;
 
 //need to be called before all player functions 
-int player_init(Player *player);
+int player_init();
 //move the player towards x and y direction
 void player_move(Player *player);
+//Set the move direction of player and set all the moves boolean
+void player_set_move_direction(int direction_x, int direction_y);
 //reset all player fields
 void player_reset(Player *player);
 
