@@ -94,6 +94,12 @@ extern SliderCursorStyle slider_cursor_style;
 
 extern const Color DARK;
 extern const Color WHITE;
+extern const Color RED;
+extern const Color ORANGE;
+extern const Color YELLOW;
+extern const Color GREEN;
+extern const Color BLUE;
+extern const Color PURPLE;
 
 //Roboto_regular font array
 extern TTF_Font **roboto_regular_fonts;
