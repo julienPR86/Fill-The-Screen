@@ -12,13 +12,10 @@
 
 //locals headers includes
 #include "headers/buttons_functions.h"
-#include "headers/game_stats.h"
-#include "headers/mode_selection.h"
 #include "headers/game.h"
 #include "headers/init.h"
 #include "headers/map.h"
 #include "headers/options.h"
-#include "headers/pause_menu.h"
 #include "headers/player.h"
 #include "headers/color.h"
 #include "headers/UI/ui.h"
@@ -46,44 +43,14 @@
 
 enum GameState
 {
+    GAME_STATE_NONE,
     GAME_STATE_MAIN_MENU,
     GAME_STATE_OPTIONS,
     GAME_STATE_MODE_SELECTION,
     GAME_STATE_GAME,
     GAME_STATE_PAUSE_MENU,
     GAME_STATE_GAME_STATS,
-};
-
-//Returns values enum
-enum Returns
-{
-    //return state for UI elements like buttons or toggles, when they're not pressed
-    RETURN_NONE = -1,
-    //return 0 if function exit successfully
-    RETURN_SUCCESS,
-    //return 1 if function exit unsuccessfully
-    RETURN_FAILURE,
-    //tells to quit the whole game
-    RETURN_EXIT_FULL_GAME,
-    //tells to go back to main menu
-    RETURN_TO_MAIN_MENU,
-    //tell to return to game mode choice menu
-    RETURN_TO_GAMEMODE_CHOICE,
-    //tells to go back to the game
-    RETURN_TO_GAME,
-    //tells to restart the current game
-    RETURN_RESTART_GAME,
-    //UI states
-    //active option gameplay panel
-    RETURN_OPTION_GAMEPLAY_PANEL,
-    //active option color panel
-    RETURN_OPTION_COLOR_PANEL,
-    //active option video panel
-    RETURN_OPTION_VIDEO_PANEL,
-    //active option audio panel
-    RETURN_OPTION_AUDIO_PANEL,
-    //UI state which tells to update slider
-    RETURN_SLIDER_UPDATE,
+    GAME_STATE_EXIT_GAME,
 };
 
 //Basic window width, 1080
