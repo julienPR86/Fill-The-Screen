@@ -66,8 +66,11 @@ void player_set_move_direction(int direction_x, int direction_y)
 
 void player_reset(Player *player)
 {
-    player->x = 0;
-    player->y = 0;
+    player->x = 0.0;
+    player->y = 0.0;
+    player->direction_x = 0;
+    player->direction_y = 0;
     player->moves = 0;
-    player->can_move = 0;
+    player->can_move = false;
+    player->frame_move = 0;
 }
