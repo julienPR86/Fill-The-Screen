@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../../main.h"
 
 SliderCursor *slider_cursor_set_fields(SliderCursor *cursor, int state, SliderCursorStyle *style)
 {

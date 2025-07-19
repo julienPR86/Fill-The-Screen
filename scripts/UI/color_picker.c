@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../../main.h"
 
 ColorPicker *picker_set_fields(ColorPicker *picker, Rect *color_rect, Label **labels, Slider **sliders, int active)
 {

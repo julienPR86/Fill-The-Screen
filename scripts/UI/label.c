@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../../main.h"
 
 Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, int update, float local_scale, int active)
 {

@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../../main.h"
 
 Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, int active)
 {

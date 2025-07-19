@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../../main.h"
 
 ToggleGroup *group_set_fields(ToggleGroup *group, Toggle *toggles[], int count, int selected, int active)
 {
