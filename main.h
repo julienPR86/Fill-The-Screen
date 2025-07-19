@@ -93,7 +93,5 @@ extern Label FPS_label;
 
 //The game main loop
 int game_loop();
-//function that exit the whole game
-void exit_full_game();
 
 #endif
