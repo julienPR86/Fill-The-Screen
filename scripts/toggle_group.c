@@ -24,9 +24,9 @@ ToggleGroup *group_init(ToggleGroup *group)
 int group_update(ToggleGroup *group, float scale_x, float scale_y)
 {
     if (NULL == group || NULL == group->toggles)
-        return RETURN_NONE;
+        return 0;
 
-    int out = RETURN_NONE, final_out = out;
+    int out = 0, final_out = out;
     for (int i = 0; i < group->count; i++)
     {
         out = toggle_update(group->toggles[i], scale_x, scale_y);
@@ -39,7 +39,7 @@ int group_update(ToggleGroup *group, float scale_x, float scale_y)
         if ((NORMAL == group->toggles[i]->state || HOVERED == group->toggles[i]->state) && i == group->selected)
             group->toggles[i]->state = CLICKED;
         
-        if (out != RETURN_NONE)
+        if (out != 0)
             final_out = out;
         
     }
@@ -97,7 +97,7 @@ void group_list_free(ToggleGroup **groups, int count)
 
 int group_list_update_and_render(ToggleGroup *groups[], int count)
 {
-    int out = RETURN_NONE;
+    int out = 0;
     for (int i = 0; i < count; i++)
     {
         out = group_update(groups[i], SCALE_X, SCALE_Y);

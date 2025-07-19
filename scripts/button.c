@@ -31,9 +31,9 @@ Button *button_init(Button *button, float scale_x, float scale_y)
 int button_update(Button *button, float scale_x, float scale_y)
 {
     if (NULL == button || !button->active)
-        return RETURN_NONE;
+        return 0;
     
-    int out = RETURN_NONE; // returns RETURN_NONE if the button isn't clicked
+    int out = 0; // returns 0 if the button isn't clicked
     if (UI_element_collision(&button->rect, mouse_state.x, mouse_state.y, SCALE_X, SCALE_Y))
     {
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK)
@@ -130,7 +130,7 @@ void button_list_free(Button *buttons[], int size)
 
 int button_list_update_and_render(Button *buttons[], int count)
 {
-    int out = RETURN_NONE;
+    int out = 0;
     for (int i = 0; i < count; i++)
     {
         out = button_update(buttons[i], SCALE_X, SCALE_Y);

@@ -52,54 +52,54 @@ Panel *panel_init(Panel *panel)
 int panel_update(Panel *panel)
 {
     if (NULL == panel || !panel->active)
-        return RETURN_NONE;
+        return 0;
 
-    int out = RETURN_NONE;
-    if (NULL != panel->buttons && RETURN_NONE == out)
+    int out = 0;
+    if (NULL != panel->buttons && 0 == out)
     {
         for (int i = 0; i < panel->button_count; i++)
         {
-            if (RETURN_NONE != out)
+            if (0 != out)
                 return out;
 
             out = button_update(panel->buttons[i], SCALE_X, SCALE_Y);
         }
     }
-    if (NULL != panel->toggles && RETURN_NONE == out)
+    if (NULL != panel->toggles && 0 == out)
     {
         for (int i = 0; i < panel->toggle_count; i++)
         {
-            if (RETURN_NONE != out)
+            if (0 != out)
                 return out;
 
             out = toggle_update(panel->toggles[i], SCALE_X, SCALE_Y);
         }
     }
-    if (NULL != panel->sliders && RETURN_NONE == out)
+    if (NULL != panel->sliders && 0 == out)
     {
         for (int i = 0; i < panel->slider_count; i++)
         {
-            if (RETURN_NONE != out)
+            if (0 != out)
                 return out;
 
             out = slider_update(panel->sliders[i], SCALE_X, SCALE_Y);
         }
     }
-    if (NULL != panel->pickers && RETURN_NONE == out)
+    if (NULL != panel->pickers && 0 == out)
     {
         for (int i = 0; i < panel->picker_count; i++)
         {
-            if (RETURN_NONE != out)
+            if (0 != out)
                 return out;
 
             out = picker_update(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
-    if (NULL != panel->groups && RETURN_NONE == out)
+    if (NULL != panel->groups && 0 == out)
     {
         for (int i = 0; i < panel->groups_count; i++)
         {
-            if (RETURN_NONE != out)
+            if (0 != out)
                 return out;
 
             out = group_update(panel->groups[i], SCALE_X, SCALE_Y);
@@ -221,7 +221,7 @@ void panel_list_free(Panel *panels[], int count)
 
 int panel_list_update_and_render(Panel *panels[], int count)
 {
-    int out = RETURN_NONE;
+    int out = 0;
     for (int i = 0; i < count; i++)
     {
         out = panel_update(panels[i]);

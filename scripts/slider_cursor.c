@@ -18,9 +18,9 @@ SliderCursor *slider_cursor_init(SliderCursor *cursor)
 int slider_cursor_update(SliderCursor *cursor)
 {
     if (NULL == cursor)
-        return RETURN_NONE;
+        return 0;
     
-    return RETURN_NONE;
+    return 0;
 }
 
 void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)

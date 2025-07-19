@@ -31,9 +31,9 @@ Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
 int toggle_update(Toggle *toggle, float scale_x, float scale_y)
 {
     if (NULL == toggle || !toggle->active)
-        return RETURN_NONE;
+        return 0;
     
-    int out = RETURN_NONE; // returns RETURN_NONE if the toggle isn't clicked
+    int out = 0; // returns 0 if the toggle isn't clicked
     if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, scale_x, scale_y))
     {
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && mouse_state.frame_input)
@@ -140,7 +140,7 @@ void toggle_list_free(Toggle *toggles[], int size)
 
 int toggle_list_update_and_render(Toggle **toggles, int count)
 {
-    int out = RETURN_NONE;
+    int out = 0;
     for (int i = 0; i < count; i++)
     {
         out = toggle_update(toggles[i], SCALE_X, SCALE_Y);

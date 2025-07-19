@@ -141,5 +141,5 @@ int label_list_update_and_render(Label *labels[], int count)
         label_update(labels[i], SCALE_X, SCALE_Y);
         label_render(labels[i], SCALE_X, SCALE_Y);
     }
-    return RETURN_NONE;
+    return 0;
 }

@@ -52,9 +52,9 @@ ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
 int picker_update(ColorPicker *picker, float scale_x, float scale_y)
 {
     if (NULL == picker || !picker->active)
-        return RETURN_NONE;
+        return 0;
         
-    int out = RETURN_NONE, i;
+    int out = 0, i;
     for (i = 0; i < 4; i++)
     {
         label_update(picker->labels[i], scale_x, scale_y);
@@ -62,7 +62,7 @@ int picker_update(ColorPicker *picker, float scale_x, float scale_y)
 
     for (i = 0; i < 3; i++)
     {
-        if (RETURN_NONE != out)
+        if (0 != out)
             return out;
 
         out = slider_update(picker->sliders[i], scale_x, scale_y);
@@ -165,7 +165,7 @@ void picker_set_positions(ColorPicker *picker, float scale_x, float scale_y)
 int picker_get_height(ColorPicker *picker, float scale_y)
 {
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
-        return RETURN_NONE;
+        return 0;
 
     int height = 0, i;
 
@@ -186,7 +186,7 @@ int picker_get_height(ColorPicker *picker, float scale_y)
 int picker_get_width(ColorPicker *picker, float scale_x)
 {
     if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
-        return RETURN_NONE;
+        return 0;
 
     scale_x = 1;
 
@@ -195,7 +195,7 @@ int picker_get_width(ColorPicker *picker, float scale_x)
 
 int picker_list_update_and_render(ColorPicker *pickers[], int count)
 {
-    int out = RETURN_NONE;
+    int out = 0;
     for (int i = 0; i < count; i++)
     {
         out = picker_update(pickers[i], SCALE_X, SCALE_Y);
