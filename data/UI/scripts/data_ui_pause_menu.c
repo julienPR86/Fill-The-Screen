@@ -32,7 +32,7 @@ void pause_menu_data_ui_init()
     button_init(&pause_menu_back_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&pause_menu_restart_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&pause_menu_restart_button, NORMAL, &pause_menu_restart_button_label, &button_style, &restart, true);
+    button_set_fields(&pause_menu_restart_button, NORMAL, &pause_menu_restart_button_label, &button_style, &restart_game, true);
     button_init(&pause_menu_restart_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&pause_menu_main_menu_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER);

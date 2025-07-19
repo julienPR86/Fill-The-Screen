@@ -84,7 +84,7 @@ void game_stats_data_ui_init()
     button_init(&game_stats_back_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_restart_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&game_stats_restart_button, NORMAL, &game_stats_restart_button_label, &button_style, &restart, true);
+    button_set_fields(&game_stats_restart_button, NORMAL, &game_stats_restart_button_label, &button_style, &restart_game, true);
     button_init(&game_stats_restart_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_main_menu_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER);

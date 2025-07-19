@@ -37,7 +37,7 @@ void main_menu_data_ui_init()
     button_init(&main_menu_options_button, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&main_menu_exit_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], CENTER);
-    button_set_fields(&main_menu_exit_button, NORMAL, &main_menu_exit_button_label, &button_style, NULL, true);
+    button_set_fields(&main_menu_exit_button, NORMAL, &main_menu_exit_button_label, &button_style, &game_state_exit_main_menu, true);
     button_init(&main_menu_exit_button, SCALE_X, SCALE_Y);
 
     main_menu_labels[0] = &main_menu_title_label;
