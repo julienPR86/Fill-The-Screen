@@ -61,14 +61,14 @@ int init()
     {
         fprintf(stderr, "Could not initialize SDL : %s\n", SDL_GetError());
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
     if (true != TTF_Init())
     {
         fprintf(stderr, "Could not initialize TTF : %s\n", SDL_GetError());
         TTF_Quit();
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
     window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, (SDL_WINDOW_RESIZABLE));
     if (NULL == window)
@@ -76,7 +76,7 @@ int init()
         fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
         TTF_Quit();
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
     renderer = SDL_CreateRenderer(window, "software");
     if (NULL == renderer)
@@ -85,7 +85,7 @@ int init()
         SDL_DestroyWindow(window);
         TTF_Quit();
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
 
     outlines = (Outline *)malloc(max_outline_size * sizeof(Outline));
@@ -98,7 +98,7 @@ int init()
         window = NULL;
         TTF_Quit();
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
     for (int i = 0; i < max_outline_size; i++)
     {
@@ -117,7 +117,7 @@ int init()
         window = NULL;
         TTF_Quit();
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
     for (int i = 0; i < max_inline_size; i++)
     {
@@ -135,7 +135,7 @@ int init()
         SDL_DestroyWindow(window);
         TTF_Quit();
         SDL_Quit();
-        return RETURN_FAILURE;
+        return -1;
     }
     else
     {
@@ -156,7 +156,7 @@ int init()
                 SDL_DestroyWindow(window);
                 TTF_Quit();
                 SDL_Quit();
-                return RETURN_FAILURE;
+                return -1;
             }
         }
     }
@@ -181,19 +181,19 @@ int init()
         label_init(&FPS_label, SCALE_X, SCALE_Y);
     }
     
-    return RETURN_SUCCESS;
+    return 0;
 }
 
 int map_init()
 {
     if (0 == map_height || 0 == map_width)
-        return RETURN_FAILURE;
+        return -1;
         
     map = malloc(sizeof(Map));
     if (NULL == map)
     {
         fprintf(stderr, "Memory allocation error\n");
-        return RETURN_FAILURE;
+        return -1;
     }
     map->height = map_height;
     map->width = map_width;
@@ -203,7 +203,7 @@ int map_init()
     {
         free(map);
         map = NULL;
-        return RETURN_FAILURE;
+        return -1;
     }
     map_reset(map, EMPTY_SQUARE);
     switch (game_mode)
@@ -217,24 +217,18 @@ int map_init()
         default:
             break;
     }
-    map->map[0][0] = 3; //basic player position
-    return RETURN_SUCCESS;
+    map->map[0][0] = PLAYER_SQUARE; //basic player position
+    return 0;
 }
 
-int player_init(Player *player)
+int player_init()
 {
     player = (Player *)malloc(sizeof(Player));
     if (NULL == player)
     {
         fprintf(stderr, "Memory allocation error\n");
-        return RETURN_FAILURE;
+        return -1;
     }
-    player->x = 0.0;
-    player->y = 0.0;
-    player->direction_x = 0;
-    player->direction_y = 0;
-    player->moves = 0;
-    player->can_move = false;
-    player->frame_move = 0;
-    return RETURN_SUCCESS;
+    player_reset(player);
+    return 0;
 }
