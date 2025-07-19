@@ -5,16 +5,13 @@ int game_state_main_menu()
     switch (game_state)
     {
         case GAME_STATE_OPTIONS:
-            game_state_exit_options();
             break;
         case GAME_STATE_GAME:
             game_state_exit_game();    
             break;
         case GAME_STATE_PAUSE_MENU:
-            game_state_exit_pause_menu();
             break;
         case GAME_STATE_MODE_SELECTION:
-            game_state_exit_mode_selection();
             break;
         default:
             break;
