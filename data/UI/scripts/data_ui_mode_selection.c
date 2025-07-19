@@ -18,11 +18,11 @@ Button *mode_selection_buttons[4];
 void game_mode_data_ui_init()
 {
     UI_Element_set_fields(&mode_selection_title_label.rect, WINDOW_WIDTH/2, 20, 0, 0, outlines[0], inlines[0], TOP_CENTER);
-    label_set_fields(&mode_selection_title_label, "Game mode Choice", 100, DARK, false, 1.0, true);
+    label_set_fields(&mode_selection_title_label, "Game mode Choice", 100, RED, false, 1.0, true);
     label_init(&mode_selection_title_label, SCALE_X, SCALE_Y);
         
     UI_Element_set_fields(&mode_selection_back_label.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, outlines[0], inlines[0], BOTTOM_CENTER);
-    label_set_fields(&mode_selection_back_label, "Press Escape to go back", 30, DARK, false, 1.0, true);
+    label_set_fields(&mode_selection_back_label, "Press Escape to go back", 30, RED, false, 1.0, true);
     label_init(&mode_selection_back_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&mode_selection_fill_mode_button_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);

@@ -51,23 +51,23 @@ void game_stats_data_ui_init()
     snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
 
     UI_Element_set_fields(&game_stats_title_label.rect, WINDOW_WIDTH/2, 0, 0, 0, outlines[0], inlines[0], TOP_CENTER);
-    label_set_fields(&game_stats_title_label, "Game over", 100, DARK, false, 1.0, true);
+    label_set_fields(&game_stats_title_label, "Game over", 100, RED, false, 1.0, true);
     label_init(&game_stats_title_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_congrats_label.rect, WINDOW_WIDTH/2, 0, 0, 0, outlines[0], inlines[0], TOP_CENTER);
-    label_set_fields(&game_stats_congrats_label, "Congratulation", 100, DARK, false, 1.0, true);
+    label_set_fields(&game_stats_congrats_label, "Congratulation", 100, RED, false, 1.0, true);
     label_init(&game_stats_congrats_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_percent_label.rect, WINDOW_WIDTH/2, game_stats_congrats_label.rect.y + game_stats_congrats_label.rect.height/SCALE_Y + 30, 0, 0, outlines[0], inlines[0], CENTER);
-    label_set_fields(&game_stats_percent_label, percent_text, 35, DARK, false, 1.0, true);
+    label_set_fields(&game_stats_percent_label, percent_text, 35, RED, false, 1.0, true);
     label_init(&game_stats_percent_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_moves_label.rect, WINDOW_WIDTH/2, game_stats_percent_label.rect.y + game_stats_percent_label.rect.height/SCALE_Y + 10, 0, 0, outlines[0], inlines[0], CENTER);
-    label_set_fields(&game_stats_moves_label, moves_text, 35, DARK, false, 1.0, true);
+    label_set_fields(&game_stats_moves_label, moves_text, 35, RED, false, 1.0, true);
     label_init(&game_stats_moves_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_square_ratio_label.rect, WINDOW_WIDTH/2, game_stats_moves_label.rect.y + game_stats_moves_label.rect.height/SCALE_Y + 10, 0, 0, outlines[0], inlines[0], CENTER);
-    label_set_fields(&game_stats_square_ratio_label, square_ratio_text, 35, DARK, false, 1.0, true);
+    label_set_fields(&game_stats_square_ratio_label, square_ratio_text, 35, RED, false, 1.0, true);
     label_init(&game_stats_square_ratio_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&game_stats_back_button_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);

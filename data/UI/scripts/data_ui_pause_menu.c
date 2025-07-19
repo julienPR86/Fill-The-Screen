@@ -15,7 +15,7 @@ Button *pause_menu_buttons[3];
 void pause_menu_data_ui_init()
 {
     UI_Element_set_fields(&pause_menu_title_label.rect, WINDOW_WIDTH/2, 0, 0, 0, outlines[0], inlines[0], TOP_CENTER);
-    label_set_fields(&pause_menu_title_label, "Game Paused", 100, DARK, false, 1.0, true);
+    label_set_fields(&pause_menu_title_label, "Game Paused", 100, RED, false, 1.0, true);
     label_init(&pause_menu_title_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&pause_menu_back_button_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);

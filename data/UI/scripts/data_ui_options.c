@@ -199,7 +199,7 @@ Panel *options_panels[4];
 void options_data_ui_init()
 {   
     UI_Element_set_fields(&options_back_label.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, outlines[0], inlines[0], BOTTOM_CENTER);
-    label_set_fields(&options_back_label, "Press Escape to go back", 30, DARK, false, 1.0, true);
+    label_set_fields(&options_back_label, "Press Escape to go back", 30, RED, false, 1.0, true);
     label_init(&options_back_label, SCALE_X, SCALE_Y);
 
     UI_Element_set_fields(&options_gameplay_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
