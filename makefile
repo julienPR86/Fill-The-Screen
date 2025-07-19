@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 SDL_FLAGS = -lSDL3 -lSDL3_ttf
-EXEC = main
+EXEC = build/main
 TMP = tmp/
 
 OBJ = 	$(TMP)main.o $(TMP)init.o $(TMP)game_loop.o \
@@ -27,4 +27,4 @@ $(TMP)%.o : scripts/UI/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -f $(TMP)*.o *.exe
+	rm -f $(TMP)*.o *.exe build/*.exe
