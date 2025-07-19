@@ -1,5 +1,7 @@
 #ignore executable file
 *.exe
+#ignore .dll files
+*.dll
 #ignore obj files
 *.o
 tmp/*.o
