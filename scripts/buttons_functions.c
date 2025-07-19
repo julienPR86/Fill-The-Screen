@@ -2,7 +2,31 @@
 
 int game_state_main_menu()
 {
+    switch (game_state)
+    {
+        case GAME_STATE_OPTIONS:
+            game_state_exit_options();
+            break;
+        case GAME_STATE_GAME:
+            game_state_exit_game();    
+            break;
+        case GAME_STATE_PAUSE_MENU:
+            game_state_exit_pause_menu();
+            break;
+        case GAME_STATE_MODE_SELECTION:
+            game_state_exit_mode_selection();
+            break;
+        default:
+            break;
+    }
+    game_mode = NO_ACTIVE_MODE;
     game_state = GAME_STATE_MAIN_MENU;
+    return 0;
+}
+
+int game_state_exit_main_menu()
+{
+    game_state = GAME_STATE_EXIT_GAME;
     return 0;
 }
 
@@ -20,25 +44,57 @@ int game_state_mode_selection()
 
 int game_state_game()
 {
+    switch (game_state)
+    {
+        case GAME_STATE_MODE_SELECTION:
+            if (map_init())
+            {
+                fprintf(stderr, "Could not initialised the map\n");
+                return -1;
+            }
+            if (player_init())
+            {
+                fprintf(stderr, "Could not initialised the player\n");
+                map_free(map);
+                free(map);
+                map = NULL;
+                return -1;
+            }
+            break;
+        
+        default:
+            break;
+    }
     game_state = GAME_STATE_GAME;
+    return 0;
+}
+
+int game_state_exit_game()
+{
+    game_quit();
+    game_state = GAME_STATE_MODE_SELECTION;
     return 0;
 }
 
 int game_state_pause_menu()
 {
+    pause_menu_data_ui_init();
     game_state = GAME_STATE_PAUSE_MENU;
     return 0;
 }
 
 int game_state_game_stats()
 {
+    game_stats_data_ui_init();
     game_state = GAME_STATE_GAME_STATS;
     return 0;
 }
 
-int exit_game()
+int restart_game()
 {
-    return RETURN_EXIT_FULL_GAME;
+    game_state_exit_game();
+    game_state_game();
+    return 0;
 }
 
 int fill_mode()
@@ -69,39 +125,40 @@ int free_mode()
     return 0;
 }
 
-int back()
+int option_open_panel_gameplay()
 {
-    return RETURN_TO_GAME;
+    options_gameplay_panel.active = true;
+    options_colors_panel.active = false;
+    options_video_panel.active = false;
+    options_audio_panel.active = false;
+    return 0;
 }
 
-int restart()
+int option_open_panel_color()
 {
-    return RETURN_RESTART_GAME;
+    options_gameplay_panel.active = false;
+    options_colors_panel.active = true;
+    options_video_panel.active = false;
+    options_audio_panel.active = false;
+    return 0;
 }
 
-int main_menu()
+int option_open_panel_video()
 {
-    return RETURN_TO_MAIN_MENU;
+    options_gameplay_panel.active = false;
+    options_colors_panel.active = false;
+    options_video_panel.active = true;
+    options_audio_panel.active = false;
+    return 0;
 }
 
-int option_gameplay()
+int option_open_panel_audio()
 {
-    return RETURN_OPTION_GAMEPLAY_PANEL;
-}
-
-int option_color_label()
-{
-    return RETURN_OPTION_COLOR_PANEL;
-}
-
-int option_video()
-{
-    return RETURN_OPTION_VIDEO_PANEL;
-}
-
-int option_audio()
-{
-    return RETURN_OPTION_AUDIO_PANEL;
+    options_gameplay_panel.active = false;
+    options_colors_panel.active = false;
+    options_video_panel.active = false;
+    options_audio_panel.active = true;
+    return 0;
 }
 
 int option_window_fullscreen()
@@ -109,11 +166,11 @@ int option_window_fullscreen()
     if (true != SDL_SetWindowFullscreen(window, true))
     {
         fprintf(stderr, "Failed to set window to fullscreen : %s\n", SDL_GetError());
-        return RETURN_FAILURE;
+        return -1;
     }
     SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
     update_scale();
-    return RETURN_SUCCESS;
+    return 0;
 }
 
 int option_window_floating()
@@ -121,9 +178,9 @@ int option_window_floating()
     if (true != SDL_SetWindowFullscreen(window, false))
     {
         fprintf(stderr, "Failed to set window to floating : %s\n", SDL_GetError());
-        return RETURN_FAILURE;
+        return -1;
     }
     SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
     update_scale();
-    return RETURN_SUCCESS;
+    return 0;
 }
