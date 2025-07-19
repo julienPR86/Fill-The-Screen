@@ -1,7 +1,7 @@
 #ignore executable file
 *.exe
-#ignore .dll files
-*.dll
+#ignore the build folder
+build
 #ignore obj files
 *.o
 tmp/*.o
