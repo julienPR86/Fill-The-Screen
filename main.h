@@ -14,6 +14,7 @@
 #include "headers/buttons_functions.h"
 #include "headers/game.h"
 #include "headers/init.h"
+#include "headers/exit.h"
 #include "headers/map.h"
 #include "headers/options.h"
 #include "headers/player.h"
