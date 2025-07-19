@@ -56,7 +56,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
     if (NULL == slider || NULL == slider->cursor || !slider->active || NULL == slider->value)
         return 0;
 
-    int out = 0; // returns 0 if the slider isn't clicked / updated
+    int update = 0; // returns 0 if the slider isn't clicked / updated
     
     if (UI_element_collision(&slider->rect, mouse_state.x, mouse_state.y, scale_x, scale_y) || UI_element_collision(&slider->cursor->rect, mouse_state.x, mouse_state.y, scale_x, scale_y) || slider->cursor->state == CLICKED)
     {
@@ -68,13 +68,13 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && slider->cursor->state == CLICKED)
         {
             slider->cursor->rect.x += mouse_state.delta_x;
-            out = 0;
+            update = 1;
         }
         else if (mouse_state.wheel_value != 0)
         {
             slider->cursor->state = CLICKED;
             *slider->value += mouse_state.wheel_value * -1;
-            out = 0;
+            update = 1;
         }
         else if (mouse_state.button_pressed == MOUSE_STATE_NONE)
         {
@@ -101,10 +101,10 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
     slider_set_label_position(slider, scale_x, scale_y);
     label_update(slider->label, scale_x, scale_y);
     
-    if (0 == out)// Exit the function if the slider isn't being clicked / updated
+    if (0 == update)// Exit the function if the slider isn't being clicked / updated
     {
         slider_set_cursor_position(slider);
-        return out;
+        return 0;
     }
 
     if (mouse_state.wheel_value == 0) // Check if we change the slider value with the mouse
@@ -125,7 +125,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         slider->label->text = NULL;
     } 
     slider_label_text_update(slider);
-    return out;
+    return 0;
 }
 
 void slider_render(Slider *slider, float scale_x, float scale_y)
