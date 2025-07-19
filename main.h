@@ -84,6 +84,8 @@ extern SDL_Renderer *renderer;
 //SDL event container
 extern SDL_Event event;
 
+extern int game_state;
+
 //contains the fps value in string
 extern char *FPS_text;
 //fps label to display fps value
