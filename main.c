@@ -2,75 +2,20 @@
 
 int main()
 {
-    if (RETURN_FAILURE == init())
+    if (-1 == init())
     {
         fprintf(stderr, "Could not initialised the game\n");
-        return RETURN_FAILURE;
+        return -1;
     }
 
-    main_menu_data_ui_init();
-    
-    Label *labels[] = {&main_menu_title_label, &FPS_label};
-    Button *buttons[] = {&main_menu_play_button, &main_menu_options_button, &main_menu_exit_button};
-
-    int running = true, out;
-    Uint64 start_time;
-    while (running)
+    if (-1 == game_loop())
     {
-        start_time = SDL_GetTicks();
-        FPS = get_fps();
-
-        get_mouse_delta(&mouse_state.delta_x, &mouse_state.delta_y);
-        SDL_GetMouseState(&mouse_state.x, &mouse_state.y);
-        
-        SDL_SetRenderDrawColor(renderer, theme.main_colors.menu_background.r, theme.main_colors.menu_background.g, theme.main_colors.menu_background.b, theme.main_colors.menu_background.a);
-        SDL_RenderClear(renderer);//background
-
-        while (SDL_PollEvent(&event))
-        {
-            if (SDL_EVENT_QUIT == event.type)
-            {
-                running = false;
-                break;
-            }
-            update_window_size(event, window);
-            mouse_event(event);
-        }
-
-        for (int i = 0; i < (int)(sizeof(buttons)/sizeof(buttons[0])); i++)
-        {
-            out = button_update(buttons[i], SCALE_X, SCALE_Y);
-            switch (out)
-            {
-                case RETURN_SUCCESS:
-                    break;
-                case RETURN_TO_MAIN_MENU:
-                    break;
-                case RETURN_EXIT_FULL_GAME:
-                    label_list_free(labels, 2);
-                    button_list_free(buttons, 3);
-                    exit_full_game();
-                    return RETURN_SUCCESS;
-                default:
-                    break;
-            }
-            button_render(buttons[i], SCALE_X, SCALE_Y);
-        }
-
-        for (int i = 0; i < (int)(sizeof(labels)/sizeof(labels[0])); i++)
-        {
-            label_update(labels[i], SCALE_X, SCALE_Y);
-            label_render(labels[i], SCALE_X, SCALE_Y);
-        }
-
-        SDL_RenderPresent(renderer);
-        cap_fps(start_time);
-        mouse_event_update();
+        fprintf(stderr, "Failed to start game loop\n");
     }
-    label_list_free(labels, 2);
-    button_list_free(buttons, 3);
+
     exit_full_game();
-    return RETURN_SUCCESS;
+    printf("exit ok\n");
+    return 0;
 }
 
 void exit_full_game()
@@ -86,12 +31,13 @@ void exit_full_game()
         TTF_CloseFont(roboto_regular_fonts[i]);
     }
     free(roboto_regular_fonts);
+
     SDL_DestroyRenderer(renderer);
     renderer = NULL;
     SDL_DestroyWindow(window);
     window = NULL;
+
     TTF_Quit();
     SDL_Quit();
-    printf("exit ok\n");
     return;
 }
