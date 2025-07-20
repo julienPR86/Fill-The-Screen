@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, int anchor)
+UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, float scale, int anchor)
 {
     element->x = x;
     element->y = y;
@@ -8,6 +8,7 @@ UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, 
     element->height = height;
     element->outline = outline;
     element->inline_ = inline_;
+    element->scale = scale;
     element->anchor = anchor;
     return element;
 }

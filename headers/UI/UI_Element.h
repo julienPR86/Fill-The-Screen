@@ -19,12 +19,14 @@ typedef struct UI_Element
     Outline outline;
     //element inline
     Inline inline_;
+    //element local scale
+    float scale;
     //define the element anchor
     int anchor;
 } UI_Element;
 
 //Set the fields of element to the values passed in
-UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, int anchor);
+UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, float scale, int anchor);
 
 //Set the size of element to the size of frame if it's smaller
 //!! Do not put a label rect for element, only for frame if necessary !!
