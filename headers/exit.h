@@ -9,7 +9,7 @@ void destroy_window_and_renderer();
 
 //Close all the fonts in list
 //list needs to be allocated, it's freed at the end of the function
-void close_font_list(TTF_Font **list);
+void close_font_list(TTF_Font **list, int count);
 
 //freed the FPS label, and the FPS text variables, then it's set to NLL
 void free_FPS_label();

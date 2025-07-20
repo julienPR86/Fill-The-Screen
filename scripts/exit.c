@@ -8,7 +8,7 @@ void exit_full_game()
     free(inlines);
     free(outlines);
 
-    close_font_list(roboto_regular_fonts);
+    close_font_list(roboto_regular_fonts, max_font_size);
 
     destroy_window_and_renderer();
 
@@ -26,9 +26,9 @@ void free_FPS_label()
     return;
 }
 
-void close_font_list(TTF_Font **list)
+void close_font_list(TTF_Font **list, int count)
 {
-    for (int i = 0; i < max_font_size; i++)
+    for (int i = 0; i < count; i++)
     {
         TTF_CloseFont(list[i]);
     }
