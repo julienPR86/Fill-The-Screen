@@ -98,10 +98,7 @@ int init()
     if (NULL == outlines)
     {
         fprintf(stderr, "Memory alocation error : Outlines array");
-        SDL_DestroyRenderer(renderer);
-        renderer = NULL;
-        SDL_DestroyWindow(window);
-        window = NULL;
+        destroy_window_and_renderer();
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -117,10 +114,7 @@ int init()
     {
         fprintf(stderr, "Memory alocation error : Outlines array");
         free(outlines);
-        SDL_DestroyRenderer(renderer);
-        renderer = NULL;
-        SDL_DestroyWindow(window);
-        window = NULL;
+        destroy_window_and_renderer();
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -137,8 +131,7 @@ int init()
         fprintf(stderr, "memory allocation error : Could not allocate font array");
         free(inlines);
         free(outlines);
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
+        destroy_window_and_renderer();
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -153,13 +146,8 @@ int init()
                 fprintf(stderr, "Could not initialised the font; size : %d; %s\n", i, SDL_GetError());
                 free(inlines);
                 free(outlines);
-                for (int j = 0; j < i; j++)
-                {
-                    TTF_CloseFont(roboto_regular_fonts[j]);
-                }
-                free(roboto_regular_fonts);
-                SDL_DestroyRenderer(renderer);
-                SDL_DestroyWindow(window);
+                close_font_list(roboto_regular_fonts, i);
+                destroy_window_and_renderer();
                 TTF_Quit();
                 SDL_Quit();
                 return -1;
