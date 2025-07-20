@@ -125,7 +125,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         slider->label->text = NULL;
     } 
     slider_label_text_update(slider);
-    return 0;
+    return update;
 }
 
 void slider_render(Slider *slider, float scale_x, float scale_y)

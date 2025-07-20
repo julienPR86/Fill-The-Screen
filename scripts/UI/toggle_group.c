@@ -26,7 +26,7 @@ int group_update(ToggleGroup *group, float scale_x, float scale_y)
     if (NULL == group || NULL == group->toggles)
         return 0;
 
-    int out = 0, final_out = out;
+    int out = 0;
     for (int i = 0; i < group->count; i++)
     {
         out = toggle_update(group->toggles[i], scale_x, scale_y);
@@ -38,12 +38,8 @@ int group_update(ToggleGroup *group, float scale_x, float scale_y)
         }
         if ((NORMAL == group->toggles[i]->state || HOVERED == group->toggles[i]->state) && i == group->selected)
             group->toggles[i]->state = CLICKED;
-        
-        if (out != 0)
-            final_out = out;
-        
     }
-    return final_out;
+    return out;
 }
 
 void group_render(ToggleGroup *group)

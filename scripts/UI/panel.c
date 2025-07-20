@@ -59,9 +59,6 @@ int panel_update(Panel *panel)
     {
         for (int i = 0; i < panel->button_count; i++)
         {
-            if (0 != out)
-                return out;
-
             out = button_update(panel->buttons[i], SCALE_X, SCALE_Y);
         }
     }
@@ -69,9 +66,6 @@ int panel_update(Panel *panel)
     {
         for (int i = 0; i < panel->toggle_count; i++)
         {
-            if (0 != out)
-                return out;
-
             out = toggle_update(panel->toggles[i], SCALE_X, SCALE_Y);
         }
     }
@@ -79,9 +73,6 @@ int panel_update(Panel *panel)
     {
         for (int i = 0; i < panel->slider_count; i++)
         {
-            if (0 != out)
-                return out;
-
             out = slider_update(panel->sliders[i], SCALE_X, SCALE_Y);
         }
     }
@@ -89,9 +80,6 @@ int panel_update(Panel *panel)
     {
         for (int i = 0; i < panel->picker_count; i++)
         {
-            if (0 != out)
-                return out;
-
             out = picker_update(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
@@ -99,9 +87,6 @@ int panel_update(Panel *panel)
     {
         for (int i = 0; i < panel->groups_count; i++)
         {
-            if (0 != out)
-                return out;
-
             out = group_update(panel->groups[i], SCALE_X, SCALE_Y);
         }
     }

@@ -62,9 +62,6 @@ int picker_update(ColorPicker *picker, float scale_x, float scale_y)
 
     for (i = 0; i < 3; i++)
     {
-        if (0 != out)
-            return out;
-
         out = slider_update(picker->sliders[i], scale_x, scale_y);
     }
     return out;

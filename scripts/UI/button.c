@@ -43,7 +43,10 @@ int button_update(Button *button, float scale_x, float scale_y)
         else if (mouse_state.button_pressed == MOUSE_STATE_NONE && button->state == CLICKED)
         {
             if (NULL != button->command)
-                out = button->command();
+            {
+                button->command();
+                out = 1;
+            }
             button->state = HOVERED;
         }
         else
