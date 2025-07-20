@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 SDL_FLAGS = -lSDL3 -lSDL3_ttf
-EXEC = build/main
+EXEC = main
 TMP = tmp/
 
 OBJ = 	$(TMP)main.o $(TMP)init.o $(TMP)game_loop.o \
