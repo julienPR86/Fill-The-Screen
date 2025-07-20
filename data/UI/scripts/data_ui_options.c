@@ -198,35 +198,35 @@ Panel *options_panels[4];
 
 void options_data_ui_init()
 {   
-    UI_Element_set_fields(&options_back_label.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, outlines[0], inlines[0], BOTTOM_CENTER);
+    UI_Element_set_fields(&options_back_label.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT - 10, 0, 0, outlines[0], inlines[0], 1.0, BOTTOM_CENTER);
     label_set_fields(&options_back_label, "Press Escape to go back", 30, RED, false, 1.0, true);
     label_init(&options_back_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_gameplay_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_gameplay_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_gameplay_toggle_label, "Gameplay", 40, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_colors_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_colors_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_colors_toggle_label, "Colors", 40, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_video_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_video_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_video_toggle_label, "Video", 40, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_audio_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_audio_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_audio_toggle_label, "Audio", 40, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_gameplay_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], TOP_LEFT);
+    UI_Element_set_fields(&options_gameplay_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
     toggle_set_fields(&options_gameplay_toggle, NORMAL, &options_gameplay_toggle_label, &toggle_style, &option_open_panel_gameplay, true);
     toggle_init(&options_gameplay_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_colors_toggle.rect, UI_Element_get_width(&options_gameplay_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], TOP_LEFT);
+    UI_Element_set_fields(&options_colors_toggle.rect, UI_Element_get_width(&options_gameplay_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
     toggle_set_fields(&options_colors_toggle, NORMAL, &options_colors_toggle_label, &toggle_style, &option_open_panel_color, true);
     toggle_init(&options_colors_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_video_toggle.rect, options_colors_toggle.rect.x + UI_Element_get_width(&options_colors_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], TOP_LEFT);
+    UI_Element_set_fields(&options_video_toggle.rect, options_colors_toggle.rect.x + UI_Element_get_width(&options_colors_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
     toggle_set_fields(&options_video_toggle, NORMAL, &options_video_toggle_label, &toggle_style, &option_open_panel_video, true);
     toggle_init(&options_video_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_audio_toggle.rect, options_video_toggle.rect.x + UI_Element_get_width(&options_video_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], TOP_LEFT);
+    UI_Element_set_fields(&options_audio_toggle.rect, options_video_toggle.rect.x + UI_Element_get_width(&options_video_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
     toggle_set_fields(&options_audio_toggle, NORMAL, &options_audio_toggle_label, &toggle_style, &option_open_panel_audio, true);
     toggle_init(&options_audio_toggle, SCALE_X, SCALE_Y);
 
@@ -240,59 +240,59 @@ void options_data_ui_init()
 
     //Gameplay panel ------------------------------------------------------------
 
-    UI_Element_set_fields(&options_probability_slider_description_label.rect, 20, 150, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_probability_slider_description_label.rect, 20, 150, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_probability_slider_description_label, "Blocks spawn probability", 20, DARK, false, 1.0, true);
     label_init(&options_probability_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_probability_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_probability_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_probability_slider_label, NULL, 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_probability_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_probability_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_probability_slider_cursor, NORMAL, &slider_cursor_style);
 
-    UI_Element_set_fields(&options_probability_slider.rect, 20, options_probability_slider_description_label.rect.y + options_probability_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_probability_slider.rect, 20, options_probability_slider_description_label.rect.y + options_probability_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_probability_slider, &probability, 1, 100, 1, &options_probability_slider_label, &options_probability_slider_cursor, &slider_style, true);
     slider_init(&options_probability_slider, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_map_width_slider_description_label.rect, 20, 225, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_map_width_slider_description_label.rect, 20, 225, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_map_width_slider_description_label, "Map width", 20, DARK, false, 1.0, true);
     label_init(&options_map_width_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_map_width_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_map_width_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_map_width_slider_label, NULL, 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_map_width_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_map_width_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_map_width_slider_cursor, NORMAL, &slider_cursor_style);
 
-    UI_Element_set_fields(&options_map_width_slider.rect, 20, options_map_width_slider_description_label.rect.y + options_map_width_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_map_width_slider.rect, 20, options_map_width_slider_description_label.rect.y + options_map_width_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_map_width_slider, &map_width, 2, 100, 1, &options_map_width_slider_label, &options_map_width_slider_cursor, &slider_style, true);
     slider_init(&options_map_width_slider, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_map_height_slider_description_label.rect, 20, 300, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_map_height_slider_description_label.rect, 20, 300, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_map_height_slider_description_label, "Map height", 20, DARK, false, 1.0, true);
     label_init(&options_map_height_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_map_height_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_map_height_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_map_height_slider_label, NULL, 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_map_height_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_map_height_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_map_height_slider_cursor, NORMAL, &slider_cursor_style);
 
-    UI_Element_set_fields(&options_map_height_slider.rect, 20, options_map_height_slider_description_label.rect.y + options_map_height_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_map_height_slider.rect, 20, options_map_height_slider_description_label.rect.y + options_map_height_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_map_height_slider, &map_height, 2, 100, 1, &options_map_height_slider_label, &options_map_height_slider_cursor, &slider_style, true);
     slider_init(&options_map_height_slider, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_game_speed_slider_description.rect, 20, 375, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_game_speed_slider_description.rect, 20, 375, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_game_speed_slider_description, "Game speed", 20, DARK, false, 1.0, true);
     label_init(&options_game_speed_slider_description, SCALE_X, SCALE_Y);
     
-    UI_Element_set_fields(&options_game_speed_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_game_speed_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_game_speed_slider_label, NULL, 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_game_speed_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_game_speed_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_game_speed_slider_cursor, NORMAL, &slider_cursor_style);
 
-    UI_Element_set_fields(&options_game_speed_slider.rect, 20, options_game_speed_slider_description.rect.y + options_game_speed_slider_description.rect.height, 300, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_game_speed_slider.rect, 20, options_game_speed_slider_description.rect.y + options_game_speed_slider_description.rect.height, 300, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_game_speed_slider, &game_speed, 1, 300, 1, &options_game_speed_slider_label, &options_game_speed_slider_cursor, &slider_style, true);
     slider_init(&options_game_speed_slider, SCALE_X, SCALE_Y);
 
@@ -313,37 +313,37 @@ void options_data_ui_init()
 
     //Color panel ------------------------------------------------------------
 
-    UI_Element_set_fields(&options_player_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], 1.0, TOP_LEFT);
     rect_set_fields(&options_player_color_rect, &theme.game_colors.player_square_color);
 
-    UI_Element_set_fields(&options_player_red_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_red_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_red_slider_title_label, "Player color", 30, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_player_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_red_slider_description_label, "Red", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_player_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_green_slider_description_label, "Green", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_player_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_blue_slider_description_label, "Blue", 20, DARK, false, 1.0, true);
     
-    UI_Element_set_fields(&options_player_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_red_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_player_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_player_red_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_player_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_player_red_slider, (int *)&theme.game_colors.player_square_color.r, 0, 255, 1, &options_player_red_slider_label, &options_player_red_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_player_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_green_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_player_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_player_green_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_player_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_player_green_slider, (int *)&theme.game_colors.player_square_color.g, 0, 255, 1, &options_player_green_slider_label, &options_player_green_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_player_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_player_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_player_blue_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_player_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_player_blue_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_player_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_player_blue_slider, (int *)&theme.game_colors.player_square_color.b, 0, 255, 1, &options_player_blue_slider_label, &options_player_blue_slider_cursor, &slider_style, true);
 
     options_player_picker_label_list[0] = &options_player_red_slider_title_label;
@@ -355,42 +355,42 @@ void options_data_ui_init()
     options_player_picker_slider_list[1] = &options_player_green_slider;
     options_player_picker_slider_list[2] = &options_player_blue_slider;
 
-    UI_Element_set_fields(&options_player_picker.rect, 20, 150, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_player_picker.rect, 20, 150, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     picker_set_fields(&options_player_picker, &options_player_color_rect, options_player_picker_label_list, options_player_picker_slider_list, true);
     picker_init(&options_player_picker, SCALE_X, SCALE_Y);
 
 
-    UI_Element_set_fields(&options_collision_square_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], 1.0, TOP_LEFT);
     rect_set_fields(&options_collision_square_color_rect, &theme.game_colors.collision_square_color);
 
-    UI_Element_set_fields(&options_collision_square_red_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_red_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_red_slider_title_label, "Blocks color", 30, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_collision_square_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_red_slider_description_label, "Red", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_collision_square_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_green_slider_description_label, "Green", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_collision_square_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_blue_slider_description_label, "Blue", 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_collision_square_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_red_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_collision_square_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_collision_square_red_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_collision_square_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_collision_square_red_slider, &theme.game_colors.collision_square_color.r, 0, 255, 1, &options_collision_square_red_slider_label, &options_collision_square_red_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_collision_square_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_green_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_collision_square_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_collision_square_green_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_collision_square_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_collision_square_green_slider, &theme.game_colors.collision_square_color.g, 0, 255, 1, &options_collision_square_green_slider_label, &options_collision_square_green_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_collision_square_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_collision_square_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_collision_square_blue_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_collision_square_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_collision_square_blue_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_collision_square_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_collision_square_blue_slider, &theme.game_colors.collision_square_color.b, 0, 255, 1, &options_collision_square_blue_slider_label, &options_collision_square_blue_slider_cursor, &slider_style, true);
 
     options_collision_square_picker_label_list[0] = &options_collision_square_red_slider_title_label;
@@ -402,42 +402,42 @@ void options_data_ui_init()
     options_collision_square_picker_slider_list[1] = &options_collision_square_green_slider;
     options_collision_square_picker_slider_list[2] = &options_collision_square_blue_slider;
 
-    UI_Element_set_fields(&options_collision_square_picker.rect, 370, 150, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_collision_square_picker.rect, 370, 150, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     picker_set_fields(&options_collision_square_picker, &options_collision_square_color_rect, options_collision_square_picker_label_list, options_collision_square_picker_slider_list, true);
     picker_init(&options_collision_square_picker, SCALE_X, SCALE_Y);
 
 
-    UI_Element_set_fields(&options_line_square_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], 1.0, TOP_LEFT);
     rect_set_fields(&options_line_square_color_rect, &theme.game_colors.line_square_color);
 
-    UI_Element_set_fields(&options_line_square_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_slider_title_label, "Line color", 30, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_line_square_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_red_slider_description_label, "Red", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_line_square_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_green_slider_description_label, "Green", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_line_square_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_blue_slider_description_label, "Blue", 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_line_square_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_red_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_line_square_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_line_square_red_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_line_square_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_line_square_red_slider, &theme.game_colors.line_square_color.r, 0, 255, 1, &options_line_square_red_slider_label, &options_line_square_red_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_line_square_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_green_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_line_square_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_line_square_green_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_line_square_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_line_square_green_slider, &theme.game_colors.line_square_color.g, 0, 255, 1, &options_line_square_green_slider_label, &options_line_square_green_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_line_square_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_line_square_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_line_square_blue_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_line_square_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_line_square_blue_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_line_square_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_line_square_blue_slider, &theme.game_colors.line_square_color.b, 0, 255, 1, &options_line_square_blue_slider_label, &options_line_square_blue_slider_cursor, &slider_style, true);
 
     options_options_line_square_picker_label_list[0] = &options_line_square_slider_title_label;
@@ -449,43 +449,43 @@ void options_data_ui_init()
     options_options_line_square_picker_slider_list[1] = &options_line_square_green_slider;
     options_options_line_square_picker_slider_list[2] = &options_line_square_blue_slider;
 
-    UI_Element_set_fields(&options_line_square_picker.rect, 700, 150, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_line_square_picker.rect, 700, 150, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     picker_set_fields(&options_line_square_picker, &options_line_square_color_rect, options_options_line_square_picker_label_list, options_options_line_square_picker_slider_list, true);
     picker_init(&options_line_square_picker, SCALE_X, SCALE_Y);
 
 
 
-    UI_Element_set_fields(&options_empty_square_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_color_rect.rect, 0, 0, 50, 50, outlines[2], inlines[0], 1.0, TOP_LEFT);
     rect_set_fields(&options_empty_square_color_rect, &theme.game_colors.empty_square_color);
     
-    UI_Element_set_fields(&options_empty_square_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_slider_title_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_slider_title_label, "Background color", 30, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_empty_square_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_red_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_red_slider_description_label, "Red", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_empty_square_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_green_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_green_slider_description_label, "Green", 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_empty_square_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_blue_slider_description_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_blue_slider_description_label, "Blue", 20, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_empty_square_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_red_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_red_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_empty_square_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_red_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_empty_square_red_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_empty_square_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_red_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_empty_square_red_slider, &theme.game_colors.empty_square_color.r, 0, 255, 1, &options_empty_square_red_slider_label, &options_empty_square_red_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_empty_square_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_green_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_green_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_empty_square_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_green_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_empty_square_green_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_empty_square_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_green_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_empty_square_green_slider, &theme.game_colors.empty_square_color.g, 0, 255, 1, &options_empty_square_green_slider_label, &options_empty_square_green_slider_cursor, &slider_style, true);
 
-    UI_Element_set_fields(&options_empty_square_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_empty_square_blue_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_empty_square_blue_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_empty_square_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_blue_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_empty_square_blue_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_empty_square_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_blue_slider.rect, 0, 0, 256, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_empty_square_blue_slider, &theme.game_colors.empty_square_color.b, 0, 255, 1, &options_empty_square_blue_slider_label, &options_empty_square_blue_slider_cursor, &slider_style, true);
 
     options_empty_square_picker_label_list[0] = &options_empty_square_slider_title_label;
@@ -497,7 +497,7 @@ void options_data_ui_init()
     options_empty_square_picker_slider_list[1] = &options_empty_square_green_slider;
     options_empty_square_picker_slider_list[2] = &options_empty_square_blue_slider;
 
-    UI_Element_set_fields(&options_empty_square_picker.rect, 20, 400, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_empty_square_picker.rect, 20, 400, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     picker_set_fields(&options_empty_square_picker, &options_empty_square_color_rect, options_empty_square_picker_label_list, options_empty_square_picker_slider_list, true);
     picker_init(&options_empty_square_picker, SCALE_X, SCALE_Y);
 
@@ -512,16 +512,16 @@ void options_data_ui_init()
 
     //Video panel ------------------------------------------
 
-    UI_Element_set_fields(&options_fullscreen_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_fullscreen_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_fullscreen_toggle_label, "Fullscreen", 30, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_floating_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_floating_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_floating_toggle_label, "Floating", 30, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_fullscreen_toggle.rect, 20, 150, 0, 0, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_fullscreen_toggle.rect, 20, 150, 0, 0, outlines[1], inlines[0], 1.0, TOP_LEFT);
     toggle_set_fields(&options_fullscreen_toggle, NORMAL, &options_fullscreen_toggle_label, &toggle_style, &option_window_fullscreen, true);
     toggle_init(&options_fullscreen_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_floating_toggle.rect, 20, 200, 0, 0, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_floating_toggle.rect, 20, 200, 0, 0, outlines[1], inlines[0], 1.0, TOP_LEFT);
     toggle_set_fields(&options_floating_toggle, NORMAL, &options_floating_toggle_label, &toggle_style, &option_window_floating, true);
     toggle_init(&options_floating_toggle, SCALE_X, SCALE_Y);
 
@@ -529,15 +529,15 @@ void options_data_ui_init()
     options_window_state_toggle_list[1] = &options_fullscreen_toggle;
     group_set_fields(&options_window_state_group, options_window_state_toggle_list, 2, 0, true);
 
-    UI_Element_set_fields(&options_max_fps_slider_description_label.rect, 20, 350, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_max_fps_slider_description_label.rect, 20, 350, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_max_fps_slider_description_label, "Max FPS", 20, DARK, false, 1.0, true);
     label_init(&options_max_fps_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_max_fps_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_max_fps_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_max_fps_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_max_fps_slider_cursor.rect,0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_max_fps_slider_cursor.rect,0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_max_fps_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_max_fps_slider.rect, 20, options_max_fps_slider_description_label.rect.y + options_max_fps_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_max_fps_slider.rect, 20, options_max_fps_slider_description_label.rect.y + options_max_fps_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_max_fps_slider, &MAX_FPS, 60, 240, 1, &options_max_fps_slider_label, &options_max_fps_slider_cursor, &slider_style, true);
     slider_init(&options_max_fps_slider, SCALE_X, SCALE_Y);
 
@@ -549,39 +549,39 @@ void options_data_ui_init()
 
     //Audio panel
 
-    UI_Element_set_fields(&options_master_audio_slider_description_label.rect, 20, 150, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_master_audio_slider_description_label.rect, 20, 150, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_master_audio_slider_description_label, "Master volume", 20, DARK, false, 1.0, true);
     label_init(&options_master_audio_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_master_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_master_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_master_audio_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_master_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_master_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_master_audio_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_master_audio_slider.rect, 20, options_master_audio_slider_description_label.rect.y + options_master_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_master_audio_slider.rect, 20, options_master_audio_slider_description_label.rect.y + options_master_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_master_audio_slider, NULL, 0, 200, 1, &options_master_audio_slider_label, &options_master_audio_slider_cursor, &slider_style, true);
     slider_init(&options_master_audio_slider, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_music_audio_slider_description_label.rect, 20, 225, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_music_audio_slider_description_label.rect, 20, 225, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_music_audio_slider_description_label, "Music volume", 20, DARK, false, 1.0, true);
     label_init(&options_music_audio_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_music_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_music_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_music_audio_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_music_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_music_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_music_audio_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_music_audio_slider.rect, 20, options_music_audio_slider_description_label.rect.y + options_music_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_music_audio_slider.rect, 20, options_music_audio_slider_description_label.rect.y + options_music_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_music_audio_slider, NULL, 0, 200, 1, &options_music_audio_slider_label, &options_music_audio_slider_cursor, &slider_style, true);
     slider_init(&options_music_audio_slider, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_effects_audio_slider_description_label.rect, 20, 300, 0, 0, outlines[0], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_effects_audio_slider_description_label.rect, 20, 300, 0, 0, outlines[0], inlines[0], 1.0, TOP_LEFT);
     label_set_fields(&options_effects_audio_slider_description_label, "Effects volume", 20, DARK, false, 1.0, true);
     label_init(&options_effects_audio_slider_description_label, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_effects_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], NONE);
+    UI_Element_set_fields(&options_effects_audio_slider_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_effects_audio_slider_label, NULL, 20, DARK, false, 1.0, true);
-    UI_Element_set_fields(&options_effects_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_effects_audio_slider_cursor.rect, 0, 0, 20, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_cursor_set_fields(&options_effects_audio_slider_cursor, NORMAL, &slider_cursor_style);
-    UI_Element_set_fields(&options_effects_audio_slider.rect, 20, options_effects_audio_slider_description_label.rect.y + options_effects_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], TOP_LEFT);
+    UI_Element_set_fields(&options_effects_audio_slider.rect, 20, options_effects_audio_slider_description_label.rect.y + options_effects_audio_slider_description_label.rect.height/SCALE_Y, 200, 20, outlines[1], inlines[0], 1.0, TOP_LEFT);
     slider_set_fields(&options_effects_audio_slider, NULL, 0, 200, 1, &options_effects_audio_slider_label, &options_effects_audio_slider_cursor, &slider_style, true);
     slider_init(&options_effects_audio_slider, SCALE_X, SCALE_Y);
 
