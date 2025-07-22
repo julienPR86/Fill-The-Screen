@@ -19,7 +19,7 @@ void float_animation_update(FloatAnimation *animation)
     if (NULL == animation || NULL == animation->value || !animation->active || animation->frame_counter > animation->frame_time)
         return;
     
-    *animation->value = LERP(animation->cache_value, animation->goal_value, (animation->frame_counter/animation->frame_time));
+    *animation->value = LERP(animation->cache_value, animation->goal_value, (animation->frame_counter/(float)animation->frame_time));
     animation->frame_counter++;
     if (animation->frame_counter > animation->frame_time)
     {
