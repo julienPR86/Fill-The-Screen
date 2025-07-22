@@ -18,6 +18,9 @@ typedef struct FloatAnimation
     int active;
 } FloatAnimation;
 
+void float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active);
+
+void float_animation_update(FloatAnimation *animation);
 
 
 #endif
