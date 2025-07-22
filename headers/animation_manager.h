@@ -6,6 +6,7 @@
 typedef struct AnimationManager
 {
     FloatAnimation **float_animations;
+    int float_animation_count;
 } AnimationManager;
 
 void animation_manager_update(AnimationManager *manager);
