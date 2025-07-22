@@ -19,7 +19,7 @@ void animation_manager_update(AnimationManager *manager)
 int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimation *animation)
 {
     if (NULL == manager || NULL == animation)
-        return;
+        return 1;
 
     manager->float_animation_count++;
     manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
@@ -29,13 +29,13 @@ int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimat
         return 1;
     }
     manager->float_animations[manager->float_animation_count-1] = animation;
-    return;
+    return 0;
 }
 
 int animation_manager_remove_float_animation(AnimationManager *manager, FloatAnimation *animation)
 {
     if (NULL == manager || NULL == manager->float_animations || 0 >= manager->float_animation_count || NULL == animation)
-        return;
+        return 1;
     
     int index;
     for (index = 0; index < manager->float_animation_count; index++) //get the index of animation in array
@@ -63,5 +63,5 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
         fprintf(stderr, "Memory allocation error : failed ot remove animation to manager\n");
         return 1;
     }
-    return;
+    return 0;
 }
