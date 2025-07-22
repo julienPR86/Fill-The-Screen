@@ -1,5 +1,5 @@
 #ifndef _ANIMATIONS_H_
-#define _ANIMATION_H_
+#define _ANIMATIONS_H_
 
 //Modify a float value through a constant value change
 typedef struct FloatAnimation
