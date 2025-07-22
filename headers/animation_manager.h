@@ -8,4 +8,6 @@ typedef struct AnimationManager
     FloatAnimation **float_animations;
 } AnimationManager;
 
+void animation_manager_update(AnimationManager *manager);
+
 #endif
