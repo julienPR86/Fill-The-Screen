@@ -144,6 +144,8 @@ int game_loop()
                 break;
         }
 
+        animation_manager_update(&animation_manager);
+
         label_update(&FPS_label, SCALE_X, SCALE_Y);
         label_render(&FPS_label, SCALE_X, SCALE_Y);
 
