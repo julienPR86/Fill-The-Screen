@@ -9,6 +9,8 @@ typedef struct AnimationManager
     int float_animation_count;
 } AnimationManager;
 
+extern AnimationManager animation_manager;
+
 void animation_manager_update(AnimationManager *manager);
 
 int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimation *animation);
