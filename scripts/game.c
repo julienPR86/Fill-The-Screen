@@ -8,8 +8,6 @@ int game_loop()
 
     game_state = GAME_STATE_MAIN_MENU;
 
-    int Y_OFFSET, X_OFFSET;
-
     //background color
     Color background = theme.main_colors.menu_background;
 
@@ -118,9 +116,9 @@ int game_loop()
 
             case GAME_STATE_GAME:
                 player_move(player);
-                map_set_offset(&X_OFFSET, &Y_OFFSET);
+                map_set_offset();
                 map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
-                map_display(map, X_OFFSET, Y_OFFSET);
+                map_display(map);
 
                 if (!player->can_move && map_is_filled(map))
                 {

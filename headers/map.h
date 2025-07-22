@@ -29,6 +29,9 @@ typedef struct Map
     int **map;
     //save the map array a his creation
     int **start_map;
+    
+    int x_offset;
+    int y_offset;
 } Map;
 
 //The map
@@ -47,7 +50,7 @@ Map *map_random(Map *map, int value);
 //display the map in the console
 void map_print(Map *map);
 //display the map on the screen with a offset if necessary
-void map_display(Map *map, int offset_x, int offset_y);
+void map_display(Map *map);
 //return the necessary map square size based on the screen and map size
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height);
 //return the number of type square in the map array
@@ -55,6 +58,6 @@ int map_get_squares_number(Map *map, int type);
 //check if there is no more empty square in the map
 int map_is_filled(Map *map);
 //Set the offset for the map rendering based on the HEIGHT, WIDTH, and map size
-void map_set_offset(int *offset_x, int *offset_y);
+void map_set_offset();
 
 #endif

@@ -101,11 +101,11 @@ void map_print(Map *map)
     return;
 }
 
-void map_display(Map *map, int offset_x, int offset_y)
+void map_display(Map *map)
 {
     Color color = theme.game_colors.empty_square_color;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_FRect rect = {offset_x, offset_y, map->square_size * map->width, map->square_size * map->height};
+    SDL_FRect rect = {map->x_offset, map->y_offset, map->square_size * map->width, map->square_size * map->height};
     SDL_RenderFillRect(renderer, &rect);
 
     for (int y = 0; y < map->height; y++)
@@ -133,7 +133,7 @@ void map_display(Map *map, int offset_x, int offset_y)
                     break;
             }
             SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-            SDL_FRect rect = {x*map->square_size+offset_x, y*map->square_size+offset_y, map->square_size, map->square_size};
+            SDL_FRect rect = {x * map->square_size + map->x_offset, y * map->square_size + map->y_offset, map->square_size, map->square_size};
             SDL_RenderFillRect(renderer, &rect);
         }
     }
@@ -178,10 +178,10 @@ int map_is_filled(Map *map)
     return true;
 }
 
-void map_set_offset(int *offset_x, int *offset_y)
+void map_set_offset()
 {
-    *offset_y = CENTERED(HEIGHT, (map->height * map->square_size));
-    *offset_x = CENTERED(WIDTH, (map->width * map->square_size));
+    map->y_offset = CENTERED(HEIGHT, (map->height * map->square_size));
+    map->x_offset = CENTERED(WIDTH, (map->width * map->square_size));
     return;
 }
 
