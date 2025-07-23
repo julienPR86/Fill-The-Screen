@@ -20,9 +20,9 @@ typedef struct FloatAnimation
 
 FloatAnimation *float_animation_create();
 
-void float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active);
+int float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active);
 
-void float_animation_update(FloatAnimation *animation);
+int float_animation_update(FloatAnimation *animation);
 
 int float_animation_destroy(FloatAnimation *animation);
 #endif

@@ -12,10 +12,10 @@ FloatAnimation *float_animation_create()
     return animation;
 }
 
-void float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active)
+int float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active)
 {
     if (NULL == animation || NULL == animation->value)
-        return;
+        return -1;
     
     animation->value = value;
     animation->cache_value = *value;
@@ -23,13 +23,13 @@ void float_animation_set_fields(FloatAnimation *animation, float *value, float g
     animation->frame_time = frame_time;
     animation->frame_counter = 0;
     animation->active = active;
-    return;
+    return 0;
 }
 
-void float_animation_update(FloatAnimation *animation)
+int float_animation_update(FloatAnimation *animation)
 {
     if (NULL == animation || NULL == animation->value || !animation->active || animation->frame_counter > animation->frame_time)
-        return;
+        return -1;
     
     *animation->value = LERP(animation->cache_value, animation->goal_value, (animation->frame_counter/(float)animation->frame_time));
     animation->frame_counter++;
@@ -38,7 +38,7 @@ void float_animation_update(FloatAnimation *animation)
         animation->active = false;
         animation->frame_counter = 0;
     }
-    return;
+    return 0;
 }
 
 int float_animation_destroy(FloatAnimation *animation)
