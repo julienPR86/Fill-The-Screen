@@ -40,3 +40,12 @@ void float_animation_update(FloatAnimation *animation)
     }
     return;
 }
+
+int float_animation_destroy(FloatAnimation *animation)
+{
+    if (NULL == animation)
+        return -1;
+    
+    free(animation);
+    return 0;
+}

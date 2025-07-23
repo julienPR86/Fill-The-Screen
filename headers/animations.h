@@ -24,5 +24,5 @@ void float_animation_set_fields(FloatAnimation *animation, float *value, float g
 
 void float_animation_update(FloatAnimation *animation);
 
-
+int float_animation_destroy(FloatAnimation *animation);
 #endif
