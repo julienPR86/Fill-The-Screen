@@ -79,3 +79,19 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     }
     return 0;
 }
+
+int animation_manager_destroy(AnimationManager *manager)
+{
+    if (NULL == manager)
+        return -1;
+
+    if (NULL != manager->float_animations)
+    {
+        for (int i = 0; i < manager->float_animation_count; i++)
+        {
+            float_animation_destroy(manager->float_animations[i]);
+        }
+        free(manager->float_animations);
+    }
+    return 0;
+}

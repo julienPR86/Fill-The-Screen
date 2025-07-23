@@ -14,6 +14,9 @@ extern AnimationManager animation_manager;
 void animation_manager_update(AnimationManager *manager);
 
 int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimation *animation);
+
 int animation_manager_remove_float_animation(AnimationManager *manager, FloatAnimation *animation);
+
+int animation_manager_destroy(AnimationManager *manager);
 
 #endif
