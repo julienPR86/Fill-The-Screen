@@ -10,19 +10,22 @@ typedef struct FloatAnimation
     float cache_value;
     //the value to reach
     float goal_value;
-    //the number of frame to do the animation
-    int frame_time;
-    //frame counter to do the animation
-    int frame_counter;
+    //the duration of the animation in seconds
+    float time;
+    //timer to stop the animation when it should end
+    float timer;
+    //end boolean to tells if the animations as finished
+    int ended;
     //active boolean to activate or des-activate the animation
     int active;
 } FloatAnimation;
 
 FloatAnimation *float_animation_create();
 
-int float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active);
+int float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active);
 
 int float_animation_update(FloatAnimation *animation);
 
 int float_animation_destroy(FloatAnimation *animation);
+
 #endif
