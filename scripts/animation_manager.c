@@ -60,6 +60,8 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     manager->float_animations[last] = manager->float_animations[index];
     manager->float_animations[index] = save;
 
+    float_animation_destroy(animation);
+
     manager->float_animation_count--;
     manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
     if (NULL == manager->float_animations)
