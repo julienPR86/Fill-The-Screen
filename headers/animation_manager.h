@@ -1,7 +1,7 @@
 #ifndef _ANIMATION_MANAGER_H_
 #define _ANIMATION_MANAGER_H_
 
-#include "animations.h"
+#include "animations/animations.h"
 
 typedef struct AnimationManager
 {
