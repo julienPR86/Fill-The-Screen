@@ -11,7 +11,6 @@
 #include <SDL3/SDL_ttf.h>
 
 //locals headers includes
-#include "headers/animations/animations.h"
 #include "headers/animation_manager.h"
 #include "headers/buttons_functions.h"
 #include "headers/game.h"
@@ -24,6 +23,9 @@
 #include "headers/UI/ui.h"
 #include "headers/utils.h"
 #include "headers/variables.h"
+
+//Animations
+#include "headers/animations/float_animation.h"
 
 //UI data
 #include "data/UI/headers/data_ui_main_menu.h"

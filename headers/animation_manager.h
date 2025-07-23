@@ -1,7 +1,7 @@
 #ifndef _ANIMATION_MANAGER_H_
 #define _ANIMATION_MANAGER_H_
 
-#include "animations/animations.h"
+#include "animations/float_animation.h"
 
 typedef struct AnimationManager
 {
