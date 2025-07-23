@@ -11,6 +11,10 @@ void animation_manager_update(AnimationManager *manager)
         for (i = 0; i < manager->float_animation_count; i++)
         {
             float_animation_update(manager->float_animations[i]);
+            if (manager->float_animations[i]->ended)
+            {
+                animation_manager_remove_float_animation(manager, manager->float_animations[i]);
+            }
         }
     }
     return;
