@@ -6,7 +6,8 @@ TMP = tmp/
 
 OBJ = 	$(TMP)main.o $(TMP)init.o $(TMP)game.o \
 		$(TMP)UI_Element.o $(TMP)color_picker.o $(TMP)panel.o $(TMP)rect.o $(TMP)slider.o $(TMP)slider_cursor.o $(TMP)toggle_group.o $(TMP)toggle.o $(TMP)button.o $(TMP)label.o \
-		$(TMP)animation_manager.o $(TMP)animations.o $(TMP)exit.o $(TMP)map.o $(TMP)player.o $(TMP)utils.o $(TMP)buttons_functions.o\
+		$(TMP)animation_manager.o $(TMP)exit.o $(TMP)map.o $(TMP)player.o $(TMP)utils.o $(TMP)buttons_functions.o \
+		$(TMP)animations.o \
 		$(TMP)data_ui_main_menu.o $(TMP)data_ui_mode_selection.o $(TMP)data_ui_game_stats.o $(TMP)data_ui_pause_menu.o $(TMP)data_ui_options.o
 
 all : $(EXEC)
@@ -26,5 +27,8 @@ $(TMP)%.o : scripts/%.c
 $(TMP)%.o : scripts/UI/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+$(TMP)%.o : scripts/animations/%.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
 clean:
-	rm -f $(TMP)*.o *.exe build/*.exe
+	rm -f $(TMP)*.o *.exe
