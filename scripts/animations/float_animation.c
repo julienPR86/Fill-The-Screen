@@ -12,10 +12,10 @@ FloatAnimation *float_animation_create()
     return animation;
 }
 
-int float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active)
+FloatAnimation *float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active)
 {
     if (NULL == animation || NULL == animation->value)
-        return -1;
+        return NULL;
     
     animation->value = value;
     animation->cache_value = *value;
@@ -24,7 +24,7 @@ int float_animation_set_fields(FloatAnimation *animation, float *value, float go
     animation->timer = 0;
     animation->ended = false;
     animation->active = active;
-    return 0;
+    return animation;
 }
 
 int float_animation_update(FloatAnimation *animation)
