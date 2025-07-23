@@ -63,11 +63,19 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     float_animation_destroy(animation);
 
     manager->float_animation_count--;
-    manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
-    if (NULL == manager->float_animations)
+    if (manager->float_animation_count <= 0)
     {
-        fprintf(stderr, "Memory allocation error : failed ot remove animation to manager\n");
-        return -1;
+        free(manager->float_animations);
+        manager->float_animations = NULL;
+    }
+    else
+    {
+        manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
+        if (NULL == manager->float_animations)
+        {
+            fprintf(stderr, "Memory allocation error : failed ot remove animation to manager\n");
+            return -1;
+        }
     }
     return 0;
 }
