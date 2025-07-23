@@ -22,7 +22,7 @@ typedef struct FloatAnimation
 
 FloatAnimation *float_animation_create();
 
-int float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active);
+FloatAnimation *float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active);
 
 int float_animation_update(FloatAnimation *animation);
 
