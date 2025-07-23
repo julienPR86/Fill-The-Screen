@@ -1,5 +1,17 @@
 #include "../main.h"
 
+FloatAnimation *float_animation_create()
+{
+    FloatAnimation *animation;
+    animation = (FloatAnimation *)malloc(sizeof(FloatAnimation));
+    if (NULL == animation)
+    {
+        fprintf(stderr, "Memory allocation error : Failed to create float animation\n");
+        return NULL;
+    }
+    return animation;
+}
+
 void float_animation_set_fields(FloatAnimation *animation, float *value, float goal, int frame_time, int active)
 {
     if (NULL == animation || NULL == animation->value)
