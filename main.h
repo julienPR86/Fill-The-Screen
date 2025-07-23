@@ -11,7 +11,7 @@
 #include <SDL3/SDL_ttf.h>
 
 //locals headers includes
-#include "headers/animations.h"
+#include "headers/animations/animations.h"
 #include "headers/animation_manager.h"
 #include "headers/buttons_functions.h"
 #include "headers/game.h"
