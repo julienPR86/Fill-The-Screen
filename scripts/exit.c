@@ -2,6 +2,8 @@
 
 void exit_full_game()
 {
+    animation_manager_destroy(&animation_manager);
+
     free_FPS_label();
 
     //free the outlines and inlines list
