@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-FloatAnimation *float_animation_create()
+FloatAnimation *float_animation_create(float *value, float goal, float time, int active)
 {
     FloatAnimation *animation;
     animation = (FloatAnimation *)malloc(sizeof(FloatAnimation));
@@ -9,6 +9,7 @@ FloatAnimation *float_animation_create()
         fprintf(stderr, "Memory allocation error : Failed to create float animation\n");
         return NULL;
     }
+    float_animation_set_fields(animation, value, goal, time, active);
     return animation;
 }
 
