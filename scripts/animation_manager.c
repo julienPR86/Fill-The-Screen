@@ -20,6 +20,22 @@ void animation_manager_update(AnimationManager *manager)
     return;
 }
 
+int animation_manager_destroy(AnimationManager *manager)
+{
+    if (NULL == manager)
+        return -1;
+
+    if (NULL != manager->float_animations)
+    {
+        for (int i = 0; i < manager->float_animation_count; i++)
+        {
+            float_animation_destroy(manager->float_animations[i]);
+        }
+        free(manager->float_animations);
+    }
+    return 0;
+}
+
 int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimation *animation)
 {
     if (NULL == manager || NULL == animation)
@@ -80,18 +96,18 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     return 0;
 }
 
-int animation_manager_destroy(AnimationManager *manager)
+int animation_manager_check_float_animation(AnimationManager *manager, FloatAnimation *animation)
 {
-    if (NULL == manager)
+    if (NULL == manager || NULL == animation || NULL == manager->float_animations)
         return -1;
-
-    if (NULL != manager->float_animations)
+    
+    for (int i = 0; i < manager->float_animation_count; i++)
     {
-        for (int i = 0; i < manager->float_animation_count; i++)
-        {
-            float_animation_destroy(manager->float_animations[i]);
-        }
-        free(manager->float_animations);
+        if (animation == manager->float_animations[i])
+            return 1;
+            
+        else if (animation->value == manager->float_animations[i]->value)
+            return 1;
     }
     return 0;
 }
