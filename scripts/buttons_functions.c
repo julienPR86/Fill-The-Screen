@@ -7,9 +7,13 @@ int game_state_main_menu()
         case GAME_STATE_OPTIONS:
             break;
         case GAME_STATE_GAME:
-            game_state_exit_game();    
+            game_state_exit_game();
             break;
         case GAME_STATE_PAUSE_MENU:
+            game_state_exit_game();
+            break;
+        case GAME_STATE_GAME_STATS:
+            game_state_exit_game();
             break;
         case GAME_STATE_MODE_SELECTION:
             break;
@@ -75,7 +79,6 @@ int game_state_exit_game()
 
 int game_state_pause_menu()
 {
-    pause_menu_data_ui_init();
     game_state = GAME_STATE_PAUSE_MENU;
     return 0;
 }
