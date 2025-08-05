@@ -60,4 +60,7 @@ void update_scale();
 int get_number_digits(int number);
 //round a double to n number after the comma
 double round_to(double number, int n);
+
+//Debug function
+void debug_log(char *log);
 #endif

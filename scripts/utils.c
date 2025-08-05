@@ -123,3 +123,13 @@ double round_to(double number, int n)
     double factor = pow(10.0, n);
     return round(number * factor) / factor;
 }
+
+void debug_log(char *log)
+{
+    #ifdef _DEBUGING_
+        printf("%s\n", log);
+    #else
+        (void)log;
+    #endif
+    return;
+}
