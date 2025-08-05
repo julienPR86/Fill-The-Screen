@@ -5,24 +5,24 @@
 typedef struct FloatAnimation
 {
     //the value to animate
-    float *value;
+    double *value;
     //a copy of the first value of value
-    float cache_value;
+    double cache_value;
     //the value to reach
-    float goal_value;
+    double goal_value;
     //the duration of the animation in seconds
-    float time;
+    double time;
     //timer to stop the animation when it should end
-    float timer;
+    double timer;
     //end boolean to tells if the animations as finished
     int ended;
     //active boolean to activate or des-activate the animation
     int active;
 } FloatAnimation;
 
-FloatAnimation *float_animation_create(float *value, float goal, float time, int active);
+FloatAnimation *float_animation_create(double *value, double goal, double time, int active);
 
-FloatAnimation *float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active);
+FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *value, double goal, double time, int active);
 
 int float_animation_update(FloatAnimation *animation);
 
