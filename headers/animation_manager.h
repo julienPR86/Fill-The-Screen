@@ -19,6 +19,6 @@ int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimat
 
 int animation_manager_remove_float_animation(AnimationManager *manager, FloatAnimation *animation);
 
-int animation_manager_check_float_animation(AnimationManager *manager, FloatAnimation *animation);
+int animation_manager_check_float_animation(AnimationManager *manager, double *value);
 
 #endif
