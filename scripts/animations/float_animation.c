@@ -1,7 +1,11 @@
 #include "../../main.h"
 
-FloatAnimation *float_animation_create(float *value, float goal, float time, int active)
+FloatAnimation *float_animation_create(double *value, double goal, double time, int active)
 {
+    if (NULL == value)
+        return NULL;
+
+
     FloatAnimation *animation;
     animation = (FloatAnimation *)malloc(sizeof(FloatAnimation));
     if (NULL == animation)
@@ -13,7 +17,7 @@ FloatAnimation *float_animation_create(float *value, float goal, float time, int
     return animation;
 }
 
-FloatAnimation *float_animation_set_fields(FloatAnimation *animation, float *value, float goal, float time, int active)
+FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *value, double goal, double time, int active)
 {
     if (NULL == animation || NULL == animation->value)
         return NULL;
@@ -30,12 +34,12 @@ FloatAnimation *float_animation_set_fields(FloatAnimation *animation, float *val
 
 int float_animation_update(FloatAnimation *animation)
 {
-    if (NULL == animation || NULL == animation->value || !animation->active || animation->timer > animation->time)
+    if (NULL == animation || NULL == animation->value || !animation->active || *animation->value == animation->goal_value)
         return -1;
     
-    *animation->value = LERP(animation->cache_value, animation->goal_value, (animation->timer/(float)animation->time));
+    *animation->value = round_to(LERP(animation->cache_value, animation->goal_value, (animation->timer/animation->time)), 2);
     animation->timer += 1 * delta_time;
-    if (animation->timer > animation->time)
+    if (*animation->value == animation->goal_value)
     {
         animation->ended = true;
         animation->active = false;
