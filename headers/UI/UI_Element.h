@@ -20,7 +20,7 @@ typedef struct UI_Element
     //element inline
     Inline inline_;
     //element local scale
-    float scale;
+    double scale;
     //define the element anchor
     int anchor;
 } UI_Element;
