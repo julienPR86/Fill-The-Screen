@@ -5,6 +5,10 @@ FloatAnimation *float_animation_create(double *value, double goal, double time, 
     if (NULL == value)
         return NULL;
 
+    if ((0 != animation_manager_check_float_animation(&animation_manager, value) && NULL != animation_manager.float_animations) || *value == goal)
+    {
+        return NULL;
+    }
 
     FloatAnimation *animation;
     animation = (FloatAnimation *)malloc(sizeof(FloatAnimation));
