@@ -40,10 +40,7 @@ int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimat
 {
     if (NULL == manager || NULL == animation)
         return -1;
-    
-    if (animation_manager_check_float_animation(manager, animation))
-        return -1;
-
+        
     manager->float_animation_count++;
     manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
     if (NULL == manager->float_animations)
@@ -52,7 +49,6 @@ int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimat
         return -1;
     }
     manager->float_animations[manager->float_animation_count-1] = animation;
-    printf("animation added to manager\n");
     return 0;
 }
 
@@ -100,17 +96,14 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     return 0;
 }
 
-int animation_manager_check_float_animation(AnimationManager *manager, FloatAnimation *animation)
+int animation_manager_check_float_animation(AnimationManager *manager, double *value)
 {
-    if (NULL == manager || NULL == animation || NULL == manager->float_animations)
+    if (NULL == manager || NULL == value || NULL == manager->float_animations)
         return -1;
     
     for (int i = 0; i < manager->float_animation_count; i++)
     {
-        if (animation == manager->float_animations[i])
-            return 1;
-            
-        else if (animation->value == manager->float_animations[i]->value)
+        if (value == manager->float_animations[i]->value)
             return 1;
     }
     return 0;
