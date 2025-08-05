@@ -58,5 +58,6 @@ void update_scale();
 
 //return the number of digits in number
 int get_number_digits(int number);
-
+//round a double to n number after the comma
+double round_to(double number, int n);
 #endif

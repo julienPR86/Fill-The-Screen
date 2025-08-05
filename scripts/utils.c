@@ -117,3 +117,9 @@ int get_number_digits(int number)
 {
     return (number == 0) ? 1 : ((int)log10(number)+1);
 }
+
+double round_to(double number, int n)
+{
+    double factor = pow(10.0, n);
+    return round(number * factor) / factor;
+}
