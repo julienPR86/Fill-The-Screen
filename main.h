@@ -38,6 +38,9 @@
 #define true 1
 #define false 0
 
+//Debug mode definition, used if you want logs messages
+//#define _DEBUGING_
+
 //Macros definition 
 //Get the center between a and b
 #define CENTERED(a, b) ((a - b) / 2)
