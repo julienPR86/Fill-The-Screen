@@ -121,7 +121,7 @@ int get_number_digits(int number)
 
 double lerpf(double a, double b, double factor)
 {
-    double value = a + (a - b) * factor;
+    double value = a + (a + b) * factor;
     return value;
 }
 
