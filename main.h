@@ -50,8 +50,6 @@
 //Get min value between a and b
 #define MIN(a, b) ((a < b) ? a : b)
 
-#define LERP(a, b, c) (a + (b - a) * c)
-
 //The game main loop
 int game_loop();
 
