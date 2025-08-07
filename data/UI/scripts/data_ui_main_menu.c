@@ -45,6 +45,6 @@ void main_menu_data_ui_init()
     main_menu_buttons[0] = &main_menu_play_button;
     main_menu_buttons[1] = &main_menu_options_button;
     main_menu_buttons[2] = &main_menu_exit_button;
-
+    debug_log("Main menu data initialised\n");
     return;
 }

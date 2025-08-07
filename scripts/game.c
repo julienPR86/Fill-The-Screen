@@ -5,6 +5,7 @@ int game_loop()
     main_menu_data_ui_init();
     options_data_ui_init();
     game_mode_data_ui_init();
+    pause_menu_data_ui_init();
 
     game_state = GAME_STATE_MAIN_MENU;
 
@@ -172,6 +173,7 @@ int game_restart()
     }
     map->map[0][0] = PLAYER_SQUARE;
     player_reset(player);
+    debug_log("Game restarted\n");
     return 0;
 }
 
@@ -182,5 +184,6 @@ int game_quit()
     map_free(map);
     free(map);
     map = NULL;
+    debug_log("Quit current game\n");
     return 0;
 }

@@ -104,5 +104,6 @@ void game_stats_data_ui_init()
     game_stats_buttons[1] = &game_stats_restart_button;
     game_stats_buttons[2] = &game_stats_main_menu_button;
 
+    debug_log("Game stats data initialised\n");
     return;
 }

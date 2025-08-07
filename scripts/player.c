@@ -52,6 +52,7 @@ void player_move(Player *player)
         player->y += player->direction_y * delta_time;
         map->map[(int)player->y][(int)player->x] = PLAYER_SQUARE;
     }
+    debug_log("Player moved\n");
     return;
 }
 
@@ -73,4 +74,5 @@ void player_reset(Player *player)
     player->moves = 0;
     player->can_move = false;
     player->frame_move = 0;
+    debug_log("Player has been reset\n");
 }

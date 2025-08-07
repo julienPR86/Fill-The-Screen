@@ -71,12 +71,14 @@ int init()
         SDL_Quit();
         return -1;
     }
+    debug_log("SDL initialised\n");
     if (true != TTF_Init())
     {
         fprintf(stderr, "Could not initialize TTF : %s\n", SDL_GetError());
         TTF_Quit();
         SDL_Quit();
         return -1;
+    debug_log("TTF initialised\n");
     }
     window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, (SDL_WINDOW_RESIZABLE));
     if (NULL == window)
@@ -86,6 +88,7 @@ int init()
         SDL_Quit();
         return -1;
     }
+    debug_log("Window created\n");
     renderer = SDL_CreateRenderer(window, "software");
     if (NULL == renderer)
     {
@@ -95,6 +98,7 @@ int init()
         SDL_Quit();
         return -1;
     }
+    debug_log("Renderer created\n");
 
     outlines = (Outline *)malloc(max_outline_size * sizeof(Outline));
     if (NULL == outlines)
@@ -110,6 +114,7 @@ int init()
         outlines[i].size = i;
         outlines[i].color = DARK;
     }
+    debug_log("Created outlines list\n");
 
     inlines = (Inline *)malloc(max_inline_size * sizeof(Inline));
     if (NULL == inlines)
@@ -126,6 +131,7 @@ int init()
         inlines[i].size = i;
         inlines[i].color = WHITE;
     }
+    debug_log("Created inlines list\n");
 
     roboto_regular_fonts = (TTF_Font **)malloc(max_font_size * sizeof(TTF_Font *));
     if (NULL == roboto_regular_fonts)
@@ -156,6 +162,7 @@ int init()
             }
         }
     }
+    debug_log("Created fonts list\n");
     update_scale();
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
@@ -175,6 +182,7 @@ int init()
         FPS_label.rect.outline = outlines[0];
         FPS_label.rect.inline_ = inlines[0];
         label_init(&FPS_label, SCALE_X, SCALE_Y);
+        debug_log("FPS label created\n");
     }
     
     return 0;
@@ -214,6 +222,7 @@ int map_init()
             break;
     }
     map->map[0][0] = PLAYER_SQUARE; //basic player position
+    debug_log("Map initialised\n");
     return 0;
 }
 
@@ -226,5 +235,6 @@ int player_init()
         return -1;
     }
     player_reset(player);
+    debug_log("Player initialised\n");
     return 0;
 }

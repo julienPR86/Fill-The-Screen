@@ -22,6 +22,7 @@ int game_state_main_menu()
     }
     game_mode = NO_ACTIVE_MODE;
     game_state = GAME_STATE_MAIN_MENU;
+    debug_log("Opened main menu\n");
     return 0;
 }
 
@@ -34,12 +35,14 @@ int game_state_exit_main_menu()
 int game_state_options()
 {
     game_state = GAME_STATE_OPTIONS;
+    debug_log("Opened options\n");
     return 0;
 }
 
 int game_state_mode_selection()
 {
     game_state = GAME_STATE_MODE_SELECTION;
+    debug_log("Opened mode selection\n");
     return 0;
 }
 
@@ -67,6 +70,7 @@ int game_state_game()
             break;
     }
     game_state = GAME_STATE_GAME;
+    debug_log("Started a game\n");
     return 0;
 }
 
@@ -80,6 +84,7 @@ int game_state_exit_game()
 int game_state_pause_menu()
 {
     game_state = GAME_STATE_PAUSE_MENU;
+    debug_log("Opened pause menu\n");
     return 0;
 }
 
@@ -87,6 +92,7 @@ int game_state_game_stats()
 {
     game_stats_data_ui_init();
     game_state = GAME_STATE_GAME_STATS;
+    debug_log("Opened game stats\n");
     return 0;
 }
 
@@ -94,6 +100,7 @@ int restart_game()
 {
     game_state_exit_game();
     game_state_game();
+    debug_log("Restarted game\n");
     return 0;
 }
 
@@ -168,6 +175,7 @@ int option_window_fullscreen()
         fprintf(stderr, "Failed to set window to fullscreen : %s\n", SDL_GetError());
         return -1;
     }
+    debug_log("Windows set to fullscreen mode\n");
     SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
     update_scale();
     return 0;
@@ -180,6 +188,7 @@ int option_window_floating()
         fprintf(stderr, "Failed to set window to floating : %s\n", SDL_GetError());
         return -1;
     }
+    debug_log("Windows set to floating mode\n");
     SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
     update_scale();
     return 0;

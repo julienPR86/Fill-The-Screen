@@ -32,6 +32,7 @@ Map *map_creation(Map *map)
             return NULL;
         }
     }
+    debug_log("Map created\n");
     return map;
 }
 
@@ -59,6 +60,7 @@ Map *map_reset(Map *map, int value)
             map->start_map[y][x] = value;
         }
     }
+    debug_log("Map has been reset\n");
     return map;
 }
 
@@ -175,6 +177,7 @@ int map_is_filled(Map *map)
                 return false;
         }
     }
+    debug_log("Map is filled\n");
     return true;
 }
 

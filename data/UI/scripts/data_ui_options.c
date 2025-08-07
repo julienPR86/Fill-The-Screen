@@ -603,5 +603,6 @@ void options_data_ui_init()
     options_panels[2] = &options_video_panel;
     options_panels[3] = &options_audio_panel;
 
+    debug_log("Options data initialised\n");
     return;
 }

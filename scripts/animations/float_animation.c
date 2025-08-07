@@ -18,6 +18,7 @@ FloatAnimation *float_animation_create(double *value, double goal, double time, 
         return NULL;
     }
     float_animation_set_fields(animation, value, goal, time, active);
+    debug_log("Float animation created\n");
     return animation;
 }
 
@@ -58,5 +59,6 @@ int float_animation_destroy(FloatAnimation *animation)
         return -1;
     
     free(animation);
+    debug_log("Float animation destroyed\n");
     return 0;
 }

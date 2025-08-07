@@ -45,5 +45,6 @@ void pause_menu_data_ui_init()
     pause_menu_buttons[1] = &pause_menu_restart_button;
     pause_menu_buttons[2] = &pause_menu_main_menu_button;
 
+    debug_log("Pause menu data initialised\n");
     return;
 }

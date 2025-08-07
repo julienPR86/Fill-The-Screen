@@ -32,6 +32,11 @@ int animation_manager_destroy(AnimationManager *manager)
             float_animation_destroy(manager->float_animations[i]);
         }
         free(manager->float_animations);
+        debug_log("Destroyed manager's float animation list\n");
+    }
+    else
+    {
+        debug_log("Manager's float animation list is empty\n");
     }
     return 0;
 }
@@ -49,6 +54,7 @@ int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimat
         return -1;
     }
     manager->float_animations[manager->float_animation_count-1] = animation;
+    debug_log("Added float animation to manager\n");
     return 0;
 }
 
@@ -83,6 +89,8 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     {
         free(manager->float_animations);
         manager->float_animations = NULL;
+        debug_log("Manager's float animation list is now empty\n");
+        return 0;
     }
     else
     {
@@ -93,6 +101,7 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
             return -1;
         }
     }
+    debug_log("Removed float animation from manager\n");
     return 0;
 }
 
