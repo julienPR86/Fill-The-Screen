@@ -29,6 +29,15 @@ int game_loop()
         {
             if (SDL_EVENT_QUIT == event.type)
             {
+                switch (game_state)
+                {
+                    case GAME_STATE_GAME:
+                        game_quit();
+                        break;
+                    
+                    default:
+                        break;
+                }
                 game_state = GAME_STATE_EXIT_GAME;
                 break;
             }
