@@ -52,7 +52,6 @@ void player_move(Player *player)
         player->y += player->direction_y * delta_time;
         map->map[(int)player->y][(int)player->x] = PLAYER_SQUARE;
     }
-    debug_log("Player moved\n");
     return;
 }
 

@@ -43,6 +43,7 @@ int game_loop()
             }
             if (SDL_EVENT_KEY_DOWN == event.type)
             {
+                debug_log("Pressed a key\n");
                 switch (event.key.key)
                 {
                     case SDLK_ESCAPE:

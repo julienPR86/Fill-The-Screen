@@ -107,6 +107,7 @@ int restart_game()
 int fill_mode()
 {
     game_mode = FILL_MODE;
+    debug_log("Game mode set to fill mode\n");
     game_state_game();
     return 0;
 }
@@ -114,6 +115,7 @@ int fill_mode()
 int discovery_mode()
 {
     game_mode = DISCOVERY_MODE;
+    debug_log("Game mode set to discovery mode\n");
     game_state_game();
     return 0;
 }
@@ -121,6 +123,7 @@ int discovery_mode()
 int constraint_mode()
 {
     game_mode = CONSTRAINT_MODE;
+    debug_log("Game mode set to constraint mode\n");
     game_state_game();
     return 0;
 }
@@ -128,6 +131,7 @@ int constraint_mode()
 int free_mode()
 {
     game_mode = FREE_MODE;
+    debug_log("Game mode set to free mode\n");
     game_state_game();
     return 0;
 }
@@ -138,6 +142,7 @@ int option_open_panel_gameplay()
     options_colors_panel.active = false;
     options_video_panel.active = false;
     options_audio_panel.active = false;
+    debug_log("Switched to gameplay panel\n");
     return 0;
 }
 
@@ -147,6 +152,7 @@ int option_open_panel_color()
     options_colors_panel.active = true;
     options_video_panel.active = false;
     options_audio_panel.active = false;
+    debug_log("Switched to color panel\n");
     return 0;
 }
 
@@ -156,6 +162,7 @@ int option_open_panel_video()
     options_colors_panel.active = false;
     options_video_panel.active = true;
     options_audio_panel.active = false;
+    debug_log("Switched to video panel\n");
     return 0;
 }
 
@@ -165,6 +172,7 @@ int option_open_panel_audio()
     options_colors_panel.active = false;
     options_video_panel.active = false;
     options_audio_panel.active = true;
+    debug_log("Switched to audio panel\n");
     return 0;
 }
 

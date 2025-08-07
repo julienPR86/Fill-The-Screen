@@ -36,7 +36,7 @@ int animation_manager_destroy(AnimationManager *manager)
     }
     else
     {
-        debug_log("Manager's float animation list is empty\n");
+        debug_log("Manager's float animation list is empty, did not removed any float animations\n");
     }
     return 0;
 }
