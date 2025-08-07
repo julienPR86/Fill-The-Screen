@@ -58,6 +58,8 @@ void update_scale();
 
 //return the number of digits in number
 int get_number_digits(int number);
+//do a linear interpolation between a and b based on the factor passed in
+double lerpf(double a, double b, double factor);
 //round a double to n number after the comma
 double round_to(double number, int n);
 
