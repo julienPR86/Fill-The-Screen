@@ -110,6 +110,7 @@ void update_scale()
 {
     SCALE_X = (float)WIDTH / 1080;
     SCALE_Y = (float)HEIGHT / 720;
+    debug_log("Scale updated\n");
     return;
 }
 
@@ -127,7 +128,7 @@ double round_to(double number, int n)
 void debug_log(char *log)
 {
     #ifdef _DEBUGING_
-        printf("%s\n", log);
+        printf("%s", log);
     #else
         (void)log;
     #endif
