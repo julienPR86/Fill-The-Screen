@@ -39,13 +39,14 @@ FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *va
 
 int float_animation_update(FloatAnimation *animation)
 {
-    if (NULL == animation || NULL == animation->value || !animation->active || *animation->value == animation->goal_value)
+    if (NULL == animation || NULL == animation->value || !animation->active || animation->timer > animation->time)
         return -1;
-    
-    *animation->value = round_to(LERP(animation->cache_value, animation->goal_value, (animation->timer/animation->time)), 2);
-    animation->timer += 1 * delta_time;
-    if (*animation->value == animation->goal_value)
+
+    animation->timer += delta_time;
+    *animation->value = lerpf(animation->cache_value, animation->goal_value, (animation->timer/animation->time));
+    if (animation->timer > animation->time)
     {
+        *animation->value = animation->goal_value;
         animation->ended = true;
         animation->active = false;
         animation->timer = 0;
