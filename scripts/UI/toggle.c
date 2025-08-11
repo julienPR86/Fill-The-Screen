@@ -36,6 +36,7 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
     int out = 0; // returns 0 if the toggle isn't clicked
     if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, scale_x, scale_y))
     {
+        animation_manager_add_float_animation(&animation_manager, float_animation_create(&toggle->rect.scale, 1.05, 0.02, true));
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && mouse_state.frame_input)
         {
             switch (toggle->state)
@@ -64,6 +65,7 @@ int toggle_update(Toggle *toggle, float scale_x, float scale_y)
         {
             toggle->state = NORMAL;
         }
+        animation_manager_add_float_animation(&animation_manager, float_animation_create(&toggle->rect.scale, 1, 0.02, true));
     }
     if (NULL != toggle->label)
     {
@@ -86,7 +88,7 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
     }
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x, anchored_rect.height * scale_y};
+    SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, anchored_rect.width * scale_x * anchored_rect.scale, anchored_rect.height * scale_y * anchored_rect.scale};
 
     switch (toggle->state)
     {
