@@ -50,7 +50,7 @@ void UI_Element_set_position(UI_Element *element, int x, int y, float x_position
     {
         case CENTER:
             element->x = x * x_position_factor - (element->width / 2 + element->outline.size) * scale_x * element->scale;
-            element->y = y * y_position_factor - (element->height / 2 + element->outline.size) * scale_y;
+            element->y = y * y_position_factor - (element->height / 2 + element->outline.size) * scale_y * element->scale;
             break;
 
         case TOP_CENTER:
