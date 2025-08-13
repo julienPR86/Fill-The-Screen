@@ -5,6 +5,7 @@ int game_state_main_menu()
     switch (game_state)
     {
         case GAME_STATE_OPTIONS:
+            theme.game_colors.fake_square_color = theme.game_colors.empty_square_color;
             break;
         case GAME_STATE_GAME:
             game_state_exit_game();
