@@ -79,11 +79,13 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         else if (mouse_state.button_pressed == MOUSE_STATE_NONE)
         {
             slider->cursor->state = HOVERED;
+            animation_manager_add_float_animation(&animation_manager, float_animation_create(&slider->cursor->rect.scale, 1.1, 0.02, 1));
         }
     }
     else
     {
         slider->cursor->state = NORMAL;
+        animation_manager_add_float_animation(&animation_manager, float_animation_create(&slider->cursor->rect.scale, 1, 0.02, 1));
     }
 
     if (slider->cache_value != *slider->value) // Update the slider if the value has changed elsewhere
