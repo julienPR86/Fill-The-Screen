@@ -109,11 +109,13 @@ int game_loop()
         switch (game_state)
         {
             case GAME_STATE_MAIN_MENU:
+                background = theme.main_colors.menu_background;
                 button_list_update_and_render(main_menu_buttons, 3);
                 label_list_update_and_render(main_menu_labels, 1);
                 break;
 
             case GAME_STATE_OPTIONS:
+                background = theme.main_colors.options_background;
                 label_list_update_and_render(options_labels, 1);
                 group_update(&options_group, SCALE_X, SCALE_Y);
                 group_render(&options_group);
@@ -121,11 +123,13 @@ int game_loop()
                 break;
 
             case GAME_STATE_MODE_SELECTION:
+                background = theme.main_colors.game_mode_background;
                 button_list_update_and_render(mode_selection_buttons, 4);
                 label_list_update_and_render(mode_selection_labels, 2);
                 break;
 
             case GAME_STATE_GAME:
+                background = theme.main_colors.game_background;
                 player_move(player);
                 map_set_offset();
                 map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
@@ -138,11 +142,13 @@ int game_loop()
                 break;
 
             case GAME_STATE_PAUSE_MENU:
+                background = theme.main_colors.pause_menu_background;
                 button_list_update_and_render(pause_menu_buttons, 3);
                 label_list_update_and_render(pause_menu_labels, 1);
                 break;
 
             case GAME_STATE_GAME_STATS:
+                background = theme.main_colors.game_stats_background;
                 button_list_update_and_render(game_stats_buttons, 3);
                 label_list_update_and_render(game_stats_labels, 4);
                 break;
