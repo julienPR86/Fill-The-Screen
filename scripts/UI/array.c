@@ -16,6 +16,6 @@ Array *array_init(Array *array)
 {
     if (NULL == array)
         return NULL;
-        
+    
     return array;
 }
