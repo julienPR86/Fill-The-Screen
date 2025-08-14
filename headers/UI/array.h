@@ -5,6 +5,8 @@
 
 typedef struct Array
 {
+    int x;
+    int y;
     UI_Element **elements;
     int element_count;
     int max_row_number;
