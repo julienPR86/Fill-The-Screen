@@ -14,7 +14,7 @@ typedef struct Array
     int padding;
 } Array;
 
-int array_set_fields(Array *array, UI_Element **elements, int element_count, int max_row_number, int max_column_number, int padding);
+int array_set_fields(Array *array, int x, int y, UI_Element **elements, int element_count, int max_row_number, int max_column_number, int padding);
 Array *array_init(Array *array);
 
 #endif
