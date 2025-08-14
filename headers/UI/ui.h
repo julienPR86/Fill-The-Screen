@@ -1,6 +1,7 @@
 #ifndef _UI_H_
 #define _UI_H_
 
+#include "array.h"
 #include "button.h"
 #include "color_picker.h"
 #include "inline.h"
