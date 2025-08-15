@@ -19,3 +19,13 @@ Array *array_init(Array *array)
     
     return array;
 }
+
+int array_get_width(Array *array)
+{
+    return 0;
+}
+
+int array_get_height(Array *array)
+{
+    return 0;
+}

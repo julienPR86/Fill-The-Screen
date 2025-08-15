@@ -15,5 +15,7 @@ typedef struct Array
 
 int array_set_fields(Array *array, UI_Element **elements, int element_count, int max_row_number, int max_column_number, int padding);
 Array *array_init(Array *array);
+int array_get_width(Array *array);
+int array_get_height(Array *array);
 
 #endif
