@@ -1,12 +1,10 @@
 #include "../../main.h"
 
-int array_set_fields(Array *array, int x, int y, UI_Element **elements, int element_count, int max_row_number, int max_column_number, int padding)
+int array_set_fields(Array *array, UI_Element **elements, int element_count, int max_row_number, int max_column_number, int padding)
 {
     if (NULL == array || NULL == elements || 0 == element_count)
         return -1;
 
-    array->x = x;
-    array->y = y;
     array->elements = elements;
     array->element_count = element_count;
     array->max_row_number = max_row_number;
