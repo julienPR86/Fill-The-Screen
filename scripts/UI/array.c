@@ -20,12 +20,14 @@ Array *array_init(Array *array)
     return array;
 }
 
-int array_get_width(Array *array)
+int array_get_width(Array *array, float scale_x)
 {
-    return 0;
+    int width = 0;
+    
+    return width;
 }
 
-int array_get_height(Array *array)
+int array_get_height(Array *array, float scale_y)
 {
     return 0;
 }
