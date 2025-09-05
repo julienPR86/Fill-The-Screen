@@ -23,11 +23,21 @@ Array *array_init(Array *array)
 int array_get_width(Array *array, float scale_x)
 {
     int width = 0;
-    
+    for (int i = 0; i < MIN(array->element_count, array->max_row_number); i++)
+    {
+        width += UI_Element_get_width(array->elements[i], scale_x);
+    }
+    width += (array->element_count-1) * array->padding;
     return width;
 }
 
 int array_get_height(Array *array, float scale_y)
 {
-    return 0;
+    int height = 0;
+    for (int i = 0; i < array->element_count;  i++)
+    {
+        
+    }
+    height += (array->element_count-1) * array->padding;
+    return height;
 }
