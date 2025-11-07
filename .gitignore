@@ -1,5 +1,6 @@
 #ignore executable file
 *.exe
+*.out
 #ignore the build folder
 build
 #ignore obj files
