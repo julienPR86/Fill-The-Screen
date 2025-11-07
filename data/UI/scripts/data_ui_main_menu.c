@@ -9,6 +9,8 @@ Button main_menu_play_button;
 Button main_menu_options_button;
 Button main_menu_exit_button;
 
+Array main_menu_buttons_array;
+
 Label *main_menu_labels[1];
 Button *main_menu_buttons[3];
 
@@ -28,17 +30,22 @@ void main_menu_data_ui_init()
     label_set_fields(&main_menu_exit_button_label, "Quit", 30, DARK, 0, 1.0, 1);
 
 
-    UI_Element_set_fields(&main_menu_play_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 150, 50, outlines[2], inlines[1], 1.0, CENTER);
+    UI_Element_set_fields(&main_menu_play_button.rect, 0, 0, 150, 50, outlines[2], inlines[1], 1.0, NONE);
     button_set_fields(&main_menu_play_button, NORMAL, &main_menu_play_button_label, &button_style, &game_state_mode_selection, true);
     button_init(&main_menu_play_button, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&main_menu_options_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 100, 150, 50, outlines[2], inlines[1], 1.0, CENTER);
+    UI_Element_set_fields(&main_menu_options_button.rect, 0, 0, 150, 50, outlines[2], inlines[1], 1.0, NONE);
     button_set_fields(&main_menu_options_button, NORMAL, &main_menu_options_button_label, &button_style, &game_state_options, true);
     button_init(&main_menu_options_button, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&main_menu_exit_button.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 200, 150, 50, outlines[2], inlines[1], 1.0, CENTER);
+    UI_Element_set_fields(&main_menu_exit_button.rect, 0, 0, 150, 50, outlines[2], inlines[1], 1.0, NONE);
     button_set_fields(&main_menu_exit_button, NORMAL, &main_menu_exit_button_label, &button_style, &game_state_exit_main_menu, true);
     button_init(&main_menu_exit_button, SCALE_X, SCALE_Y);
+
+    UI_Element *button_elements_list[3] = {&main_menu_play_button.rect, &main_menu_options_button.rect, &main_menu_exit_button.rect};
+    UI_Element_set_fields(&main_menu_buttons_array.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 0, 0, outlines[1], inlines[0], 1, CENTER);
+    array_set_fields(&main_menu_buttons_array, button_elements_list, 3, 1, 10, CENTER);
+    array_init(&main_menu_buttons_array);
 
     main_menu_labels[0] = &main_menu_title_label;
     

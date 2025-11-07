@@ -9,6 +9,8 @@ extern Button main_menu_play_button;
 extern Button main_menu_options_button;
 extern Button main_menu_exit_button;
 
+extern Array main_menu_buttons_array;
+
 extern Label *main_menu_labels[1];
 extern Button *main_menu_buttons[3];
 

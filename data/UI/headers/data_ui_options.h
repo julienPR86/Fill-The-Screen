@@ -12,6 +12,8 @@ extern Toggle options_colors_toggle;
 extern Toggle options_video_toggle;
 extern Toggle options_audio_toggle;
 
+extern Array options_toggles_array;
+
 extern Toggle *options_toggle_list[4];
 extern ToggleGroup options_group;
 

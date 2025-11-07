@@ -12,6 +12,8 @@ Toggle options_colors_toggle;
 Toggle options_video_toggle;
 Toggle options_audio_toggle;
 
+Array options_toggles_array;
+
 Toggle *options_toggle_list[4];
 ToggleGroup options_group;
 
@@ -214,21 +216,26 @@ void options_data_ui_init()
     UI_Element_set_fields(&options_audio_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
     label_set_fields(&options_audio_toggle_label, "Audio", 40, DARK, false, 1.0, true);
 
-    UI_Element_set_fields(&options_gameplay_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
+    UI_Element_set_fields(&options_gameplay_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, NONE);
     toggle_set_fields(&options_gameplay_toggle, NORMAL, &options_gameplay_toggle_label, &toggle_style, &option_open_panel_gameplay, true);
     toggle_init(&options_gameplay_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_colors_toggle.rect, UI_Element_get_width(&options_gameplay_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
+    UI_Element_set_fields(&options_colors_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, NONE);
     toggle_set_fields(&options_colors_toggle, NORMAL, &options_colors_toggle_label, &toggle_style, &option_open_panel_color, true);
     toggle_init(&options_colors_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_video_toggle.rect, options_colors_toggle.rect.x + UI_Element_get_width(&options_colors_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
+    UI_Element_set_fields(&options_video_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, NONE);
     toggle_set_fields(&options_video_toggle, NORMAL, &options_video_toggle_label, &toggle_style, &option_open_panel_video, true);
     toggle_init(&options_video_toggle, SCALE_X, SCALE_Y);
 
-    UI_Element_set_fields(&options_audio_toggle.rect, options_video_toggle.rect.x + UI_Element_get_width(&options_video_toggle.rect, 1.0), 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, TOP_LEFT);
+    UI_Element_set_fields(&options_audio_toggle.rect, 0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/10, outlines[0], inlines[1], 1.0, NONE);
     toggle_set_fields(&options_audio_toggle, NORMAL, &options_audio_toggle_label, &toggle_style, &option_open_panel_audio, true);
     toggle_init(&options_audio_toggle, SCALE_X, SCALE_Y);
+
+    UI_Element *toggles_elements_list[4] = {&options_gameplay_toggle.rect, &options_colors_toggle.rect, &options_video_toggle.rect, &options_audio_toggle.rect};
+    UI_Element_set_fields(&options_toggles_array.rect, 0, 0, 0, 0, outlines[1], inlines[0], 1, TOP_LEFT);
+    array_set_fields(&options_toggles_array, toggles_elements_list, 4, 4, 10, CENTER);
+    array_init(&options_toggles_array);
 
     options_toggle_list[0] = &options_gameplay_toggle;
     options_toggle_list[1] = &options_colors_toggle;

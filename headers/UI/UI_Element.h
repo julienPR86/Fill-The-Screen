@@ -35,7 +35,7 @@ void UI_Element_match_size(UI_Element *element, UI_Element *frame, float scale_x
 
 //return true if (x, y) is in element, false otherwise
 int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
-//return 1 if (x,y) is in element, 0 otherwise
+//Positions the element at (x, y) based on the anchor and the scales
 void UI_Element_set_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor);
 
 //Draw the element inline

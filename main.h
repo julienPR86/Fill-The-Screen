@@ -8,7 +8,7 @@
 #include <math.h>
 #include <time.h>
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_ttf.h>
+#include <SDL3_ttf/SDL_ttf.h>
 
 //locals headers includes
 #include "headers/animation_manager.h"
@@ -39,7 +39,7 @@
 #define false 0
 
 //Debug mode definition, used if you want logs messages
-#define _DEBUGING_
+//#define _DEBUGING_
 
 //Macros definition 
 //Get the center between a and b
