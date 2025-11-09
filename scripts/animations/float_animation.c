@@ -24,7 +24,7 @@ FloatAnimation *float_animation_create(double *value, double goal, double time, 
 
 FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *value, double goal, double time, int active)
 {
-    if (NULL == animation || NULL == animation->value)
+    if (NULL == animation || NULL == value)
         return NULL;
     
     animation->value = value;
