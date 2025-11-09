@@ -78,6 +78,7 @@ int game_state_game()
 int game_state_exit_game()
 {
     game_quit();
+	game_stats_data_ui_free();
     game_state = GAME_STATE_MODE_SELECTION;
     return 0;
 }
