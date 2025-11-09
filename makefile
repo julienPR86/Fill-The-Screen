@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 LIBRARIES = -lSDL3 -lSDL3_ttf -lm
 EXEC = main.out
 TMP = tmp/
