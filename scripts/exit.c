@@ -4,6 +4,11 @@ void exit_full_game()
 {
     animation_manager_destroy(&animation_manager);
 
+	main_menu_data_ui_free();
+	options_data_ui_free();
+	game_mode_data_ui_free();
+	pause_menu_data_ui_free();
+
     free_FPS_label();
 
     //free the outlines and inlines list
