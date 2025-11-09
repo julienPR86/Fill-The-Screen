@@ -15,3 +15,4 @@ extern Label *main_menu_labels[1];
 extern Button *main_menu_buttons[3];
 
 void main_menu_data_ui_init();
+void main_menu_data_ui_free();

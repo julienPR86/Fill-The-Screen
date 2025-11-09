@@ -13,3 +13,4 @@ extern Label *pause_menu_labels[1];
 extern Button *pause_menu_buttons[3];
 
 void pause_menu_data_ui_init();
+void pause_menu_data_ui_free();

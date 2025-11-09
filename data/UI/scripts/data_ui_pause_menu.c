@@ -48,3 +48,11 @@ void pause_menu_data_ui_init()
     debug_log("Pause menu data initialised\n");
     return;
 }
+
+void pause_menu_data_ui_free()
+{
+	button_list_free(pause_menu_buttons, 3);
+	label_free(&pause_menu_title_label);
+	debug_log("pause menu data freed\n");
+	return;
+}

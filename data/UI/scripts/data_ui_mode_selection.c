@@ -64,3 +64,12 @@ void game_mode_data_ui_init()
 
     return;
 }
+
+void game_mode_data_ui_free()
+{
+	button_list_free(mode_selection_buttons, 4);
+	label_free(&mode_selection_back_label);
+	label_free(&mode_selection_title_label);
+	debug_log("game mode data freed\n");
+	return;
+}

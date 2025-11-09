@@ -55,3 +55,11 @@ void main_menu_data_ui_init()
     debug_log("Main menu data initialised\n");
     return;
 }
+
+void main_menu_data_ui_free()
+{
+	button_list_free(main_menu_buttons, 3);
+	label_free(&main_menu_title_label);
+	debug_log("Main menu data freed\n");
+	return;
+}

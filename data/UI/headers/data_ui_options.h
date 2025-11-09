@@ -198,3 +198,4 @@ extern Label *options_labels[1];
 extern Panel *options_panels[4];
 
 void options_data_ui_init();
+void options_data_ui_free();

@@ -613,3 +613,12 @@ void options_data_ui_init()
     debug_log("Options data initialised\n");
     return;
 }
+
+void options_data_ui_free()
+{
+	panel_list_free(options_panels, 4);
+	toggle_list_free(options_toggle_list, 4);
+	label_free(&options_back_label);
+	debug_log("options data freed\n");
+	return;
+}

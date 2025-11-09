@@ -92,9 +92,15 @@ void game_stats_data_ui_init()
     button_init(&game_stats_main_menu_button, SCALE_X, SCALE_Y);
 
     if (percent >= 100.0)
+	{
         game_stats_labels[0] = &game_stats_congrats_label;
+		label_free(&game_stats_title_label);
+	}
     else
+	{
         game_stats_labels[0] = &game_stats_title_label;
+		label_free(&game_stats_congrats_label);
+	}
 
     game_stats_labels[1] = &game_stats_percent_label;
     game_stats_labels[2] = &game_stats_moves_label;
@@ -106,4 +112,12 @@ void game_stats_data_ui_init()
 
     debug_log("Game stats data initialised\n");
     return;
+}
+
+void game_stats_data_ui_free()
+{
+	button_list_free(game_stats_buttons, 3);
+	label_list_free(game_stats_labels, 4);
+	debug_log("game stats data ui freed\n");
+	return;
 }

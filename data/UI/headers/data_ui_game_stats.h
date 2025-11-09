@@ -17,3 +17,4 @@ extern Label *game_stats_labels[4];
 extern Button *game_stats_buttons[3];
 
 void game_stats_data_ui_init();
+void game_stats_data_ui_free();
