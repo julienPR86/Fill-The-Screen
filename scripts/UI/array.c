@@ -42,7 +42,7 @@ Array *array_set_elements_position(Array *array)
             x_pos = 0;
             y_pos += array->padding + UI_Element_get_height(array->elements[i - 1], SCALE_Y);
         }
-        UI_Element_set_position(array->elements[i], array->rect.x + x_pos, array->rect.y + y_pos, 1, 1, 1, 1, NONE);
+        UI_Element_set_position(array->elements[i], array->rect.x + x_pos, array->rect.y + y_pos, SCALE_X, SCALE_Y, -SCALE_X, -SCALE_Y, array->elements_anchor);
         x_pos += array->padding + UI_Element_get_width(array->elements[i], SCALE_X);
     }
     return array;
