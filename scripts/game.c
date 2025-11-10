@@ -112,7 +112,6 @@ int game_loop()
                 background = theme.main_colors.menu_background;
                 button_list_update_and_render(main_menu_buttons, 3);
                 label_list_update_and_render(main_menu_labels, 1);
-                UI_Element_render_outline(&main_menu_buttons_array.rect, 1, 1);
                 break;
 
             case GAME_STATE_OPTIONS:
@@ -121,7 +120,6 @@ int game_loop()
                 group_update(&options_group, SCALE_X, SCALE_Y);
                 group_render(&options_group);
                 panel_list_update_and_render(options_panels, 4);
-                UI_Element_render_outline(&options_toggles_array.rect, 1, 1);
                 break;
 
             case GAME_STATE_MODE_SELECTION:
@@ -168,8 +166,8 @@ int game_loop()
         label_update(&FPS_label, SCALE_X, SCALE_Y);
         label_render(&FPS_label, SCALE_X, SCALE_Y);
 
-        SDL_RenderLine(renderer, 0, HEIGHT/2, WIDTH, HEIGHT/2);
-        SDL_RenderLine(renderer, WIDTH/2, 0, WIDTH/2, HEIGHT);
+        // SDL_RenderLine(renderer, 0, HEIGHT/2, WIDTH, HEIGHT/2);
+        // SDL_RenderLine(renderer, WIDTH/2, 0, WIDTH/2, HEIGHT);
 
         SDL_RenderPresent(renderer);
         cap_fps(start_time);
