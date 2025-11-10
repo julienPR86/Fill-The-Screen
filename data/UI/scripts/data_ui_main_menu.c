@@ -43,7 +43,7 @@ void main_menu_data_ui_init()
     button_init(&main_menu_exit_button, SCALE_X, SCALE_Y);
 
     UI_Element *button_elements_list[3] = {&main_menu_play_button.rect, &main_menu_options_button.rect, &main_menu_exit_button.rect};
-    UI_Element_set_fields(&main_menu_buttons_array.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 0, 0, outlines[1], inlines[0], 1, CENTER);
+    UI_Element_set_fields(&main_menu_buttons_array.rect, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 0, 0, outlines[1], inlines[0], 1, TOP_CENTER);
     array_set_fields(&main_menu_buttons_array, button_elements_list, 3, 1, 10, CENTER);
     array_init(&main_menu_buttons_array);
 
