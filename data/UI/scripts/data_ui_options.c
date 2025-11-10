@@ -234,7 +234,7 @@ void options_data_ui_init()
 
     UI_Element *toggles_elements_list[4] = {&options_gameplay_toggle.rect, &options_colors_toggle.rect, &options_video_toggle.rect, &options_audio_toggle.rect};
     UI_Element_set_fields(&options_toggles_array.rect, 0, 0, 0, 0, outlines[1], inlines[0], 1, TOP_LEFT);
-    array_set_fields(&options_toggles_array, toggles_elements_list, 4, 4, 10, CENTER);
+    array_set_fields(&options_toggles_array, toggles_elements_list, 4, 4, 0, CENTER);
     array_init(&options_toggles_array);
 
     options_toggle_list[0] = &options_gameplay_toggle;
