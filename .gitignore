@@ -5,8 +5,7 @@ build
 #ignore obj files
 *.o
 tmp/*.o
-#vscode extensions
-*.vs
-*.vscode
+#vscode files
+vscode/
 #ignore texts files
 *.txt
