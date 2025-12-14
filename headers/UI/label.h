@@ -1,5 +1,5 @@
-#ifndef _LABEL_H_
-#define _LABEL_H_
+#ifndef LABEL_H
+#define LABEL_H
 
 #include "../color.h"
 #include "SDL3/SDL.h"
@@ -7,41 +7,41 @@
 //label structure
 typedef struct Label
 {
-    //The element rect, contains the x, y, width and height values
+    //The label rect, contains the position and the dimensions
     UI_Element rect;
-    //label text
+    //The label text
     char *text;
-    //label font
+    //The label font size
     int font_size;
-    //text color
+    //The text color
     Color text_color;
-    //label surface, needs to be null at declaration, will update in label_init
+    //Label surface, needs to be null at declaration, will be updated at initialisation
     SDL_Surface *surface;
-    //label texture, needs to be null at declaration, will update in label_init
+    //Label texture, needs to be null at declaration, will be updated at initialisation
     SDL_Texture *texture;
-    //tells if the surface and textures needs to be updated, if the text changed for example
-    int update;
-    //a local scale which tells to update the label if SCALE has changed
+    //Tells if the label surface and texture need to be updated
+    t_uint8 update;
+    //A local scale used to updated the label if the global scale has changed
     float local_scale;
-    //is active parameter
-    int active;
+    //Tells if the label is active or not
+    t_uint8 active;
 } Label;
 
 //Set the label fields based on te values passed in
-Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, int update, float local_scale, int active);
-//label init, needs to be called before all label functions
+Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, t_uint8 update, float local_scale, t_uint8 active);
+//label init, needs to be called before all label functions, except for label_set_fields()
 Label *label_init(Label *label, float scale_x, float scale_y);
-//update label
+//Updates the label passed in
 void label_update(Label *label, float scale_x, float scale_y);
-//render label
+//Render the label passed in
 void label_render(Label *label, float scale_x, float scale_y);
-//free a label
+//Frees allocated ressources of the label passed in
 void label_free(Label *label);
-//free a label list
+//Frees an array of labels
 void label_list_free(Label *labels[], int size);
 //Center the label inside the rect passed in
 void label_center(Label *label, UI_Element *rect, float scale_x, float scale_y);
-
+//Updates and renders an array of labels
 int label_list_update_and_render(Label *labels[], int count);
 
 #endif
