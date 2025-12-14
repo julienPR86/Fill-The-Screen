@@ -1,41 +1,40 @@
-#ifndef _BUTTON_H_
-#define _BUTTON_H_
+#ifndef BUTTON_H
+#define BUTTON_H
 
 #include "../color.h"
 #include "UI_Element.h"
 #include "label.h"
 
-//button structure
+//Structure that represent a button, which can be pressed and execute an action
 typedef struct Button
 {
-    //The element rect, contains the x, y, width and height values
+    //The button rect, contains its position and its dimensions
     UI_Element rect;
-    //button state
-    int state;
-    //button label
+    //The state in which the button is, see ButtonStates enum
+    t_uint8 state;
+    //The button label, contains some text which is display on top of the button
     Label *label;
-    //button style
+    //The button style, contains the background, foreground and hover colors
     ButtonStyle *style;
-    //button command, is called when the button is clicked
+    //The command that is called when the button is pressed
     int (*command)();
-    //is active parameter
-    int active;
+    //Tells if the button is active or not
+    t_uint8 active;
 } Button;
 
 //Set the fields of button based on the values passed in
-Button *button_set_fields(Button *button, int state, Label *label, ButtonStyle *style, int (*command)(), int active);
-//button init, needs to be called before all button functions
+Button *button_set_fields(Button *button, t_uint8 state, Label *label, ButtonStyle *style, int (*command)(), t_uint8 active);
+//Initialised the button passed in, needs to be called before all button functions except button_set_fields()
 Button *button_init(Button *button, float scale_x, float scale_y);
-//update a button
+//Updates the button passed in
 int button_update(Button *button, float scale_x, float scale_y);
-//render a button
+//Displays the button passed in on screen
 void button_render(Button *button, float scale_x, float scale_y);
-//free the button's label
+//Frees the allocated ressources for the button passed in
 void button_free(Button *button);
-//free a button's list
+//Frees a list of buttons
 void button_list_free(Button *buttons[], int size);
-
-//Update and render a list of buttons
+//Updates and renders an array of buttons
 int button_list_update_and_render(Button *buttons[], int count);
 
 #endif
