@@ -1,9 +1,9 @@
-#ifndef _OUTLINE_H_
-#define _OUTLINE_H_
+#ifndef OUTLINE_H
+#define OUTLINE_H
 
 #include "../color.h"
 
-//Outline structure
+//Structure that represent the outline rect of an UI_Element
 typedef struct Outline
 {
     //Outline thickness
