@@ -14,6 +14,8 @@ extern int game_speed;
 extern int probability;
 extern int game_mode;
 
+//The game main loop
+int game_loop();
 //restart a game
 int game_restart();
 //quit your current game

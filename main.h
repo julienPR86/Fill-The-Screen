@@ -38,7 +38,7 @@
 #define true 1
 #define false 0
 
-//Debug mode definition, used if you want logs messages
+//Debug mode definition, use it if you want logs messages
 //#define _DEBUGING_
 
 //Macros definition 
@@ -49,8 +49,5 @@
 #define MAX(a, b) ((a > b) ? a : b)
 //Get min value between a and b
 #define MIN(a, b) ((a < b) ? a : b)
-
-//The game main loop
-int game_loop();
 
 #endif
