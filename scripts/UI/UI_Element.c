@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-UI_Element *UI_Element_set_fields(UI_Element *element, float x, float y, int width, int height, Outline outline, Inline inline_, float scale, int anchor)
+UI_Element *UI_Element_set_fields(UI_Element *element, float x, float y, int width, int height, Outline outline, Inline inline_, float scale, t_uint8 anchor)
 {
     element->x = x;
     element->y = y;
