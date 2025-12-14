@@ -52,13 +52,13 @@ int button_update(Button *button, float scale_x, float scale_y)
         else
         {
             button->state = HOVERED;
-            animation_manager_add_float_animation(&animation_manager, float_animation_create(&button->rect.scale, 1.05, 0.02, true));
+            animation_manager_add_constant_animation(&animation_manager, constant_animation_create(&button->rect.scale, 1.05, 0.02, true));
         }
     }
     else
     {
         button->state = NORMAL;
-        animation_manager_add_float_animation(&animation_manager, float_animation_create(&button->rect.scale, 1, 0.02, true));
+        animation_manager_add_constant_animation(&animation_manager, constant_animation_create(&button->rect.scale, 1, 0.02, true));
     }
     if (NULL != button->label)
     {
