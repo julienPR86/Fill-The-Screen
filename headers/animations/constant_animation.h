@@ -1,7 +1,7 @@
 #ifndef CONSTANT_ANIMATIONS_H
 #define CONSTANT_ANIMATIONS_H
 
-#include "types.h"
+#include "../types.h"
 
 //Modify a floating point value through a constant change
 typedef struct ConstantAnimation
