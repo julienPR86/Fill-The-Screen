@@ -1,40 +1,40 @@
-#ifndef _TOGGLE_H_
-#define _TOGGLE_H_
+#ifndef TOGGLE_H
+#define TOGGLE_H
 
 #include "../color.h"
 #include "UI_Element.h"
 #include "label.h"
 
-//toggle structure
+//Structure that represent a toggle, that can be on or off
 typedef struct Toggle
 {
-    //The element rect, contains the x, y, width and height values
+    //The toggle rect, contains its position and its dimensions
     UI_Element rect;
-    //toggle state
-    int state;
-    //toggle label
+    //The toggle state, see ButtonStates enum
+    t_uint8 state;
+    //The toggle label, contains some text which is displayed on top of the toggle
     Label *label;
-    //toggle style
+    //The toggle style, contains the background, foreground and hover colors
     ButtonStyle *style;
-    //toggle command, is called when the toggle is clicked
+    //The function to call when the toggle is on
     int (*command)();
-    //is active parameter
-    int active;
+    //Tells if the toggle is active or not
+    t_uint8 active;
 } Toggle;
 
 //Set the fields of toggle based on the values passed in
-Toggle *toggle_set_fields(Toggle *toggle, int state, Label *label, ButtonStyle *style, int (*command)(), int active);
-//toggle init, needs to be called before all toggle functions
+Toggle *toggle_set_fields(Toggle *toggle, t_uint8 state, Label *label, ButtonStyle *style, int (*command)(), t_uint8 active);
+//Toggle initialisation, needs to be called before all toggle functions, except for toggle_set_fields()
 Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y);
-//update a toggle
+//Updates the toggle passed in
 int toggle_update(Toggle *toggle, float scale_x, float scale_y);
-//render a toggle
+//Renders the toggle passed in
 void toggle_render(Toggle *toggle, float scale_x, float scale_y);
-//free the toggle's label
+//Frees the allocated ressources of the toggle passed in
 void toggle_free(Toggle *toggle);
-//free a toggle's list
+//Frees an array of toggles
 void toggle_list_free(Toggle *toggle[], int size);
-
+//Updates and renders an array of toggles
 int toggle_list_update_and_render(Toggle **toggles, int count);
 
 #endif
