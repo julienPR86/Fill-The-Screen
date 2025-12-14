@@ -1,28 +1,28 @@
 #include "../../main.h"
 
-FloatAnimation *float_animation_create(double *value, double goal, double time, int active)
+ConstantAnimation *constant_animation_create(double *value, double goal, double time, t_uint8 active)
 {
     if (NULL == value)
         return NULL;
 
-    if ((0 != animation_manager_check_float_animation(&animation_manager, value) && NULL != animation_manager.float_animations) || *value == goal)
+    if ((0 != animation_manager_check_constant_animation(&animation_manager, value) && NULL != animation_manager.constant_animations) || *value == goal)
     {
         return NULL;
     }
 
-    FloatAnimation *animation;
-    animation = (FloatAnimation *)malloc(sizeof(FloatAnimation));
+    ConstantAnimation *animation;
+    animation = (ConstantAnimation *)malloc(sizeof(ConstantAnimation));
     if (NULL == animation)
     {
-        fprintf(stderr, "Memory allocation error : Failed to create float animation\n");
+        fprintf(stderr, "Memory allocation error : Failed to create constant animation\n");
         return NULL;
     }
-    float_animation_set_fields(animation, value, goal, time, active);
-    debug_log("Float animation created\n");
+    constant_animation_set_fields(animation, value, goal, time, active);
+    debug_log("Constant animation created\n");
     return animation;
 }
 
-FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *value, double goal, double time, int active)
+ConstantAnimation *constant_animation_set_fields(ConstantAnimation *animation, double *value, double goal, double time, t_uint8 active)
 {
     if (NULL == animation || NULL == value)
         return NULL;
@@ -37,7 +37,7 @@ FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *va
     return animation;
 }
 
-int float_animation_update(FloatAnimation *animation)
+int constant_animation_update(ConstantAnimation *animation)
 {
     if (NULL == animation || NULL == animation->value || !animation->active || animation->timer > animation->time)
         return -1;
@@ -54,7 +54,7 @@ int float_animation_update(FloatAnimation *animation)
     return 0;
 }
 
-int float_animation_destroy(FloatAnimation *animation)
+int constant_animation_destroy(ConstantAnimation *animation)
 {
     if (NULL == animation)
         return -1;
