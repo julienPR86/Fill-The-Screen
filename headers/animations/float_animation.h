@@ -1,31 +1,34 @@
-#ifndef _ANIMATIONS_H_
-#define _ANIMATIONS_H_
+#ifndef CONSTANT_ANIMATIONS_H
+#define CONSTANT_ANIMATIONS_H
 
-//Modify a float value through a constant value change
-typedef struct FloatAnimation
+#include "types.h"
+
+//Modify a floating point value through a constant change
+typedef struct ConstantAnimation
 {
-    //the value to animate
+    //A pointer to the value to change
     double *value;
-    //a copy of the first value of value
+    //A copy of the initial value
     double cache_value;
-    //the value to reach
+    //The goal value to reach at the end of the animation
     double goal_value;
-    //the duration of the animation in seconds
+    //The duration of the animation in seconds
     double time;
-    //timer to stop the animation when it should end
+    //Private timer that increments through the animations updates
     double timer;
-    //end boolean to tells if the animations as finished
-    int ended;
-    //active boolean to activate or des-activate the animation
-    int active;
-} FloatAnimation;
+    //End boolean to tells if the animations has finished or not
+    t_uint8 ended;
+    //active boolean to activate or not the animation
+    t_uint8 active;
+} ConstantAnimation;
 
-FloatAnimation *float_animation_create(double *value, double goal, double time, int active);
-
-FloatAnimation *float_animation_set_fields(FloatAnimation *animation, double *value, double goal, double time, int active);
-
-int float_animation_update(FloatAnimation *animation);
-
-int float_animation_destroy(FloatAnimation *animation);
+//Returns a constant animation structure based on the arguments passed in
+ConstantAnimation *constant_animation_create(double *value, double goal, double time, t_uint8 active);
+//Set the fields of a constant animation with the arguments passed in
+ConstantAnimation *constant_animation_set_fields(ConstantAnimation *animation, double *value, double goal, double time, t_uint8 active);
+//Updates the constant animation if its active
+int constant_animation_update(ConstantAnimation *animation);
+//Destroy and frees allocated ressources of the constant animation passed in
+int constant_animation_destroy(ConstantAnimation *animation);
 
 #endif
