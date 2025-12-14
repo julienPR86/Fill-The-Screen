@@ -15,20 +15,23 @@ all : $(EXEC)
 $(EXEC) : $(OBJ)
 	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS) $(LIBRARIES)
 
-$(TMP)main.o : main.c
+$(TMP)main.o : main.c | $(TMP)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(TMP)%.o : data/UI/scripts/%.c
+$(TMP)%.o : data/UI/scripts/%.c | $(TMP)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(TMP)%.o : scripts/%.c
+$(TMP)%.o : scripts/%.c | $(TMP)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(TMP)%.o : scripts/UI/%.c
+$(TMP)%.o : scripts/UI/%.c | $(TMP)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(TMP)%.o : scripts/animations/%.c
+$(TMP)%.o : scripts/animations/%.c | $(TMP)
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(TMP) :
+	mkdir -p tmp
 
 clean:
 	rm -f $(OBJ)
