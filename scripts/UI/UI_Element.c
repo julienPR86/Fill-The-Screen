@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, float scale, int anchor)
+UI_Element *UI_Element_set_fields(UI_Element *element, float x, float y, int width, int height, Outline outline, Inline inline_, float scale, int anchor)
 {
     element->x = x;
     element->y = y;
@@ -29,7 +29,7 @@ void UI_Element_match_size(UI_Element *element, UI_Element *frame, float scale_x
     return;
 }
 
-int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y)
+int UI_element_collision(UI_Element *element, float x, float y, float scale_x, float scale_y)
 {
     UI_Element new_element = *element;
     UI_Element_set_position(&new_element, element->x, element->y, scale_x, scale_y, scale_x, scale_y, element->anchor);
@@ -41,7 +41,7 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float
     return false;
 }
 
-void UI_Element_set_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
+void UI_Element_set_position(UI_Element *element, float x, float y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
 {
     element->x = x * x_position_factor;
     element->y = y * y_position_factor;
