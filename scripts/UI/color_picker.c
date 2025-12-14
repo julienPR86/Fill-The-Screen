@@ -139,7 +139,7 @@ void picker_set_positions(ColorPicker *picker, float scale_x, float scale_y)
         UI_Element_set_position(&picker->color_rect->rect, picker->labels[0]->rect.x + picker->labels[0]->rect.width/scale_x + pad_x, picker->rect.y, 1, 1, 1, 1, TOP_LEFT); 
     }
     
-    int y_position = MAX(picker->labels[0]->rect.y + picker->labels[0]->rect.height/scale_y, picker->color_rect->rect.y + UI_Element_get_height(&picker->color_rect->rect, 1));
+    float y_position = MAX(picker->labels[0]->rect.y + picker->labels[0]->rect.height/scale_y, picker->color_rect->rect.y + UI_Element_get_height(&picker->color_rect->rect, 1));
 
     //Positions the second label under the color rect OR the title
     UI_Element_set_position(&picker->labels[1]->rect, picker->rect.x + pad_x, y_position, 1, 1, 1, 1, TOP_LEFT);

@@ -33,8 +33,8 @@ Array *array_set_elements_position(Array *array)
     if (NULL == array)
         return NULL;
 
-    int x_pos = 0;
-    int y_pos = 0;
+    float x_pos = 0;
+    float y_pos = 0;
     for (int i = 0; i < array->element_count; i++)
     {
         if (i && i % array->max_per_line == 0)
