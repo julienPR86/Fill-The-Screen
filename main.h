@@ -20,12 +20,13 @@
 #include "headers/options.h"
 #include "headers/player.h"
 #include "headers/color.h"
+#include "headers/types.h"
 #include "headers/UI/ui.h"
 #include "headers/utils.h"
 #include "headers/variables.h"
 
 //Animations
-#include "headers/animations/float_animation.h"
+#include "headers/animations/constant_animation.h"
 
 //UI data
 #include "data/UI/headers/data_ui_main_menu.h"
