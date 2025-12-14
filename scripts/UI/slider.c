@@ -67,7 +67,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && slider->cursor->state == CLICKED)
         {
-            slider->cursor->rect.x += roundf(mouse_state.delta_x / scale_x);
+            slider->cursor->rect.x += mouse_state.delta_x / scale_x;
             update = 1;
         }
         else if (mouse_state.wheel_value != 0)
