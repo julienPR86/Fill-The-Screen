@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, int active)
+Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, t_uint8 active)
 {
     slider->value = value;
     if (NULL != value)
@@ -214,7 +214,7 @@ void slider_set_cursor_position(Slider *slider)
     return;
 }
 
-int slider_check_cursor_position(Slider *slider)
+t_uint8 slider_check_cursor_position(Slider *slider)
 {
     if (NULL == slider)
         return 0;
