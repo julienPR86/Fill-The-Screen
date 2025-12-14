@@ -67,13 +67,13 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         
         if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && slider->cursor->state == CLICKED)
         {
-            slider->cursor->rect.x += mouse_state.delta_x;
+            slider->cursor->rect.x += roundf(mouse_state.delta_x / scale_x);
             update = 1;
         }
         else if (mouse_state.wheel_value != 0)
         {
             slider->cursor->state = CLICKED;
-            *slider->value += mouse_state.wheel_value * -1;
+            *slider->value -= mouse_state.wheel_value;
             update = 1;
         }
         else if (mouse_state.button_pressed == MOUSE_STATE_NONE)
@@ -109,7 +109,7 @@ int slider_update(Slider *slider, float scale_x, float scale_y)
         return 0;
     }
 
-    if (mouse_state.wheel_value == 0) // Check if we change the slider value with the mouse
+    if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK) // Check if we change the slider value with the mouse buttons
     {
         *slider->value = slider_get_value(slider);
         slider->cache_value = *slider->value;
