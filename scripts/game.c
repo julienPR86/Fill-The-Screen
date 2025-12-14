@@ -136,9 +136,7 @@ int game_loop()
                 map_display(map);
 
                 if (!player->can_move && map_is_filled(map))
-                {
-                    game_state = GAME_STATE_GAME_STATS;
-                }
+					game_state_game_stats();
                 break;
 
             case GAME_STATE_PAUSE_MENU:
