@@ -1,5 +1,5 @@
-#ifndef _PANEL_H_
-#define _PANEL_H_
+#ifndef PANEL_H
+#define PANEL_H
 
 #include "button.h"
 #include "color_picker.h"
@@ -9,54 +9,54 @@
 #include "toggle_group.h"
 #include "toggle.h"
 
-//panel structure
+//Structure that represent a panel that contains all sort of UI objects
 typedef struct Panel
 {
-    //buttons
+    //The buttons list
     Button **buttons;
-    //buttons count
+    //The number of buttons in the button list
     int button_count;
-    //toggles
+    //The toggles list
     Toggle **toggles;
-    //toggles count
+    //The number of toggles in the button list
     int toggle_count;
-    //sliders
+    //The sliders list
     Slider **sliders;
-    //sliders count
+    //The number of sliders in the button list
     int slider_count;
-    //color pickers
+	//The color picker list
     ColorPicker **pickers;
-    //Color picker count
+    //The number of color picker in the button list
     int picker_count;
-    //toggle group
+    //The toggle groups list
     ToggleGroup **groups;
-    //toggles group count
+    //The number of toggle groups in the button list
     int groups_count;
-    // labels
+    //The labels list
     Label **labels;
-    //labels count
+    //The number of labels in the button list
     int label_count;
-    //rects
+    //The rects list
     Rect **rects;
-    //rects count
+    //The number of rects in the button list
     int rect_count;
-    //is active parameter
-    int active;
+    //Tells if the panel is active or not
+    t_uint8 active;
 } Panel;
 
-//Set the fields of the panel passed in
-Panel *panel_set_fields(Panel* panel, Button **buttons, int button_count, Toggle **toggles, int toggle_count, Slider **sliders, int slider_count, ColorPicker **pickers, int picker_count, ToggleGroup **groups, int group_count, Label **labels, int label_count, Rect **rects, int rect_count, int active);
-//panel init, needs to be called before all panel functions
+//Set the fields of the panel with the values passed in
+Panel *panel_set_fields(Panel* panel, Button **buttons, int button_count, Toggle **toggles, int toggle_count, Slider **sliders, int slider_count, ColorPicker **pickers, int picker_count, ToggleGroup **groups, int group_count, Label **labels, int label_count, Rect **rects, int rect_count, t_uint8 active);
+//Initialise the panel passed in, needs to be called before all panel functions, except for panel_set_fields()
 Panel *panel_init(Panel *panel);
-//update panel
+//Updates the panel passed in
 int panel_update(Panel *panel);
-//render panel
+//Renders the panel passed in
 void panel_render(Panel *panel);
-//free a panel
+//Frees allocated ressources of the panel passed in
 void panel_free(Panel *panel);
-//free a panel list
+//Frees an array of panels
 void panel_list_free(Panel *panels[], int count);
-
+//Updates and renders an array of panels
 int panel_list_update_and_render(Panel *panels[], int count);
 
 #endif
