@@ -1,9 +1,9 @@
-#ifndef _INLINE_H_
-#define _INLINE_H_
+#ifndef INLINE_H
+#define INLINE_H
 
 #include "../color.h"
 
-//Inline structure
+//Structure that represent the inline rect of an UI_Element
 typedef struct Inline
 {
     //Inline thickness
