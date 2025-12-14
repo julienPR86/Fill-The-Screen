@@ -32,9 +32,9 @@ int game_loop()
                 switch (game_state)
                 {
                     case GAME_STATE_GAME:
-                        game_quit();
-                        break;
-                    
+					case GAME_STATE_GAME_STATS:
+						game_state_exit_game();
+						break;
                     default:
                         break;
                 }
