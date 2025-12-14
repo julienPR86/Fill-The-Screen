@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-ToggleGroup *group_set_fields(ToggleGroup *group, Toggle *toggles[], int count, int selected, int active)
+ToggleGroup *group_set_fields(ToggleGroup *group, Toggle *toggles[], int count, int selected, t_uint8 active)
 {
     group->toggles = toggles;
     group->count = count;
