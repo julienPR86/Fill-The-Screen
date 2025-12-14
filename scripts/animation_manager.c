@@ -6,14 +6,14 @@ void animation_manager_update(AnimationManager *manager)
         return;
     
     int i;
-    if (NULL != manager->float_animations)
+    if (NULL != manager->constant_animations)
     {
-        for (i = 0; i < manager->float_animation_count; i++)
+        for (i = 0; i < manager->constant_animation_count; i++)
         {
-            float_animation_update(manager->float_animations[i]);
-            if (manager->float_animations[i]->ended)
+            constant_animation_update(manager->constant_animations[i]);
+            if (manager->constant_animations[i]->ended)
             {
-                animation_manager_remove_float_animation(manager, manager->float_animations[i]);
+                animation_manager_remove_constant_animation(manager, manager->constant_animations[i]);
             }
         }
     }
@@ -25,13 +25,13 @@ int animation_manager_destroy(AnimationManager *manager)
     if (NULL == manager)
         return -1;
 
-    if (NULL != manager->float_animations)
+    if (NULL != manager->constant_animations)
     {
-        for (int i = 0; i < manager->float_animation_count; i++)
+        for (int i = 0; i < manager->constant_animation_count; i++)
         {
-            float_animation_destroy(manager->float_animations[i]);
+            constant_animation_destroy(manager->constant_animations[i]);
         }
-        free(manager->float_animations);
+        free(manager->constant_animations);
         debug_log("Destroyed manager's float animation list\n");
     }
     else
@@ -41,61 +41,61 @@ int animation_manager_destroy(AnimationManager *manager)
     return 0;
 }
 
-int animation_manager_add_float_animation(AnimationManager *manager, FloatAnimation *animation)
+int animation_manager_add_constant_animation(AnimationManager *manager, ConstantAnimation *animation)
 {
     if (NULL == manager || NULL == animation)
         return -1;
         
-    manager->float_animation_count++;
-    manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
-    if (NULL == manager->float_animations)
+    manager->constant_animation_count++;
+    manager->constant_animations = (ConstantAnimation **)realloc(manager->constant_animations, (manager->constant_animation_count) * sizeof(ConstantAnimation *));
+    if (NULL == manager->constant_animations)
     {
         fprintf(stderr, "Memory allocation error : failed ot add animation to manager\n");
         return -1;
     }
-    manager->float_animations[manager->float_animation_count-1] = animation;
+    manager->constant_animations[manager->constant_animation_count-1] = animation;
     debug_log("Added float animation to manager\n");
     return 0;
 }
 
-int animation_manager_remove_float_animation(AnimationManager *manager, FloatAnimation *animation)
+int animation_manager_remove_constant_animation(AnimationManager *manager, ConstantAnimation *animation)
 {
-    if (NULL == manager || NULL == manager->float_animations || 0 >= manager->float_animation_count || NULL == animation)
+    if (NULL == manager || NULL == manager->constant_animations || 0 >= manager->constant_animation_count || NULL == animation)
         return -1;
     
     int index;
-    for (index = 0; index < manager->float_animation_count; index++) //get the index of animation in array
+    for (index = 0; index < manager->constant_animation_count; index++) //get the index of animation in array
     {
-        if (manager->float_animations[index] == animation)
+        if (manager->constant_animations[index] == animation)
             break;
     }
 
-    if (index >= manager->float_animation_count)//check if index is in array
+    if (index >= manager->constant_animation_count)//check if index is in array
     {
         fprintf(stderr, "Animation not in array\n");
         return -1;
     }
 
-    int last = manager->float_animation_count-1;
+    int last = manager->constant_animation_count-1;
 
-    FloatAnimation *save = manager->float_animations[last];
-    manager->float_animations[last] = manager->float_animations[index];
-    manager->float_animations[index] = save;
+    ConstantAnimation *save = manager->constant_animations[last];
+    manager->constant_animations[last] = manager->constant_animations[index];
+    manager->constant_animations[index] = save;
 
-    float_animation_destroy(animation);
+    constant_animation_destroy(animation);
 
-    manager->float_animation_count--;
-    if (manager->float_animation_count <= 0)
+    manager->constant_animation_count--;
+    if (manager->constant_animation_count <= 0)
     {
-        free(manager->float_animations);
-        manager->float_animations = NULL;
+        free(manager->constant_animations);
+        manager->constant_animations = NULL;
         debug_log("Manager's float animation list is now empty\n");
         return 0;
     }
     else
     {
-        manager->float_animations = (FloatAnimation **)realloc(manager->float_animations, (manager->float_animation_count) * sizeof(FloatAnimation *));
-        if (NULL == manager->float_animations)
+        manager->constant_animations = (ConstantAnimation **)realloc(manager->constant_animations, (manager->constant_animation_count) * sizeof(ConstantAnimation *));
+        if (NULL == manager->constant_animations)
         {
             fprintf(stderr, "Memory allocation error : failed ot remove animation to manager\n");
             return -1;
@@ -105,14 +105,14 @@ int animation_manager_remove_float_animation(AnimationManager *manager, FloatAni
     return 0;
 }
 
-int animation_manager_check_float_animation(AnimationManager *manager, double *value)
+int animation_manager_check_constant_animation(AnimationManager *manager, double *value)
 {
-    if (NULL == manager || NULL == value || NULL == manager->float_animations)
+    if (NULL == manager || NULL == value || NULL == manager->constant_animations)
         return -1;
     
-    for (int i = 0; i < manager->float_animation_count; i++)
+    for (int i = 0; i < manager->constant_animation_count; i++)
     {
-        if (value == manager->float_animations[i]->value)
+        if (value == manager->constant_animations[i]->value)
             return 1;
     }
     return 0;
