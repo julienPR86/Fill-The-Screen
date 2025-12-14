@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-SliderCursor *slider_cursor_set_fields(SliderCursor *cursor, int state, SliderCursorStyle *style)
+SliderCursor *slider_cursor_set_fields(SliderCursor *cursor, t_uint8 state, SliderCursorStyle *style)
 {
     cursor->state = state;
     cursor->style = style;
