@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 LIBRARIES = -lSDL3 -lSDL3_ttf -lm
-EXEC = main.out
+EXEC = FillTheScreen
 TMP = tmp/
 
 OBJ = 	$(TMP)main.o $(TMP)init.o $(TMP)game.o \

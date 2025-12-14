@@ -1,6 +1,5 @@
 #ignore executable file
-*.exe
-*.out
+FillTheScreen
 #ignore the build folder
 build
 #ignore obj files
