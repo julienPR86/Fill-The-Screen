@@ -51,8 +51,8 @@ int game_state_game()
 {
     switch (game_state)
     {
-        case GAME_STATE_MODE_SELECTION:
-            if (map_init())
+		case GAME_STATE_NEW_GAME:
+			if (map_init())
             {
                 fprintf(stderr, "Could not initialised the map\n");
                 return -1;
@@ -65,10 +65,9 @@ int game_state_game()
                 map = NULL;
                 return -1;
             }
-            break;
-        
+			break;
         default:
-            break;
+        	break;
     }
     game_state = GAME_STATE_GAME;
     debug_log("Started a game\n");
@@ -79,7 +78,7 @@ int game_state_exit_game()
 {
     game_quit();
 	game_stats_data_ui_free();
-    game_state = GAME_STATE_MODE_SELECTION;
+    game_state = GAME_STATE_MAIN_MENU;
     return 0;
 }
 
@@ -101,6 +100,7 @@ int game_state_game_stats()
 int restart_game()
 {
     game_state_exit_game();
+	game_state = GAME_STATE_NEW_GAME;
     game_state_game();
     debug_log("Restarted game\n");
     return 0;
@@ -109,6 +109,7 @@ int restart_game()
 int fill_mode()
 {
     game_mode = FILL_MODE;
+	game_state = GAME_STATE_NEW_GAME;
     debug_log("Game mode set to fill mode\n");
     game_state_game();
     return 0;
@@ -117,6 +118,7 @@ int fill_mode()
 int discovery_mode()
 {
     game_mode = DISCOVERY_MODE;
+	game_state = GAME_STATE_NEW_GAME;
     debug_log("Game mode set to discovery mode\n");
     game_state_game();
     return 0;
@@ -125,6 +127,7 @@ int discovery_mode()
 int constraint_mode()
 {
     game_mode = CONSTRAINT_MODE;
+	game_state = GAME_STATE_NEW_GAME;
     debug_log("Game mode set to constraint mode\n");
     game_state_game();
     return 0;
@@ -133,6 +136,7 @@ int constraint_mode()
 int free_mode()
 {
     game_mode = FREE_MODE;
+	game_state = GAME_STATE_NEW_GAME;
     debug_log("Game mode set to free mode\n");
     game_state_game();
     return 0;
