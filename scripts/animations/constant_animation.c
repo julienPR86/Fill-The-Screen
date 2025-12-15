@@ -43,7 +43,7 @@ int constant_animation_update(ConstantAnimation *animation)
         return -1;
 
     animation->timer += delta_time;
-    *animation->value = lerpf(animation->cache_value, animation->goal_value, (animation->timer/animation->time));
+    *animation->value = lerp(animation->cache_value, animation->goal_value, (animation->timer/animation->time));
     if (animation->timer > animation->time)
     {
         *animation->value = animation->goal_value;
