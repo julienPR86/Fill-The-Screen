@@ -14,6 +14,8 @@ extern int game_speed;
 extern int probability;
 extern int game_mode;
 
+//Initialise the player and the map for the new game
+int	new_game(void);
 //The game main loop
 int game_loop();
 //Destroys allocated ressources used for a game
