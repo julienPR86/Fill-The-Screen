@@ -94,7 +94,7 @@ int game_loop()
                             player_set_move_direction(0, 1);
                             break;
                         case SDLK_R:
-                            game_restart();
+                            restart_game();
                             break;
                         case SDLK_E:
                             game_state_game_stats();
@@ -173,26 +173,6 @@ int game_loop()
         cap_fps(start_time);
         mouse_event_update();
     }
-    return 0;
-}
-
-int game_restart()
-{
-    map_reset(map, EMPTY_SQUARE);
-    switch (game_mode)
-    {
-        case DISCOVERY_MODE:
-            map_random(map, FAKE_SQUARE);
-            break;
-        case CONSTRAINT_MODE:
-            map_random(map, COLLISION_SQUARE);
-            break;
-        default:
-            break;
-    }
-    map->map[0][0] = PLAYER_SQUARE;
-    player_reset(player);
-    debug_log("Game restarted.");
     return 0;
 }
 
