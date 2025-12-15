@@ -137,6 +137,7 @@ void	debug_log(char *log, ...)
 
 	#ifdef DEBUG_LOGS
 		va_start(args, log);
+		printf("Log : ");
 		vfprintf(stdout, log, args);
 		printf("\n");
 		va_end(args);
@@ -153,6 +154,7 @@ void	error_log(char *msg, ...)
 
 	#ifdef ERROR_LOGS
 		va_start(args, msg);
+		printf("Error : ");
 		vfprintf(stderr, msg, args);
 		printf("\n");
 		va_end(args);
