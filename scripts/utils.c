@@ -131,20 +131,28 @@ double round_to(double number, int n)
     return round(number * factor) / factor;
 }
 
-void debug_log(char *log)
+void	debug_log(char *log, ...)
 {
-    #ifdef DEBUG_LOGS
-        printf("%s", log);
-    #else
-        (void)log;
-    #endif
-    return;
+	va_list	args;
+
+	#ifdef DEBUG_LOGS
+		va_start(args, log);
+		vfprintf(stdout, log, args);
+		va_end(args);
+	#else
+		(void)log;
+	#endif
+	return ;
 }
 
-void	error_log(char *msg)
+void	error_log(char *msg, ...)
 {
+	va_list	args;
+
 	#ifdef ERROR_LOGS
-		fprintf(stderr, "Error : %s\n", msg);
+		va_start(args, msg);
+		vfprintf(stderr, msg, args);
+		va_end(args);
 	#else
 		(void)msg;
 	#endif

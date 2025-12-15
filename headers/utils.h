@@ -63,9 +63,9 @@ double lerpf(double a, double b, double factor);
 //round a double to n number after the comma
 double round_to(double number, int n);
 
-//Debug function
-void debug_log(char *log);
-//Prints the error message passed in
-void	error_log(char *msg);
+//Prints a debug log in the stdout if DEBUG_LOGS is defined
+void	debug_log(char *log, ...);
+//Prints an error message in the stderr if ERROR_LOGS is defined
+void	error_log(char *msg, ...);
 
 #endif
