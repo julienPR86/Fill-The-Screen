@@ -65,12 +65,12 @@ int game_state_game()
                 map = NULL;
                 return -1;
             }
+			debug_log("New game started.");
 			break;
         default:
         	break;
     }
     game_state = GAME_STATE_GAME;
-    debug_log("New game started.");
     return 0;
 }
 
@@ -99,10 +99,10 @@ int game_state_game_stats()
 
 int restart_game()
 {
+    debug_log("Restart game.");
     game_state_exit_game();
 	game_state = GAME_STATE_NEW_GAME;
     game_state_game();
-    debug_log("Restarted game.");
     return 0;
 }
 
