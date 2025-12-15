@@ -12,7 +12,7 @@ int	new_game(void)
 	if (player_init(default_player))
 	{
 		error_log("Could not initialised the player.");
-		map_free(default_map);
+		map_destroy(default_map);
 		return (-1);
 	}
 	debug_log("New game created.");
