@@ -65,4 +65,7 @@ double round_to(double number, int n);
 
 //Debug function
 void debug_log(char *log);
+//Prints the error message passed in
+void	error_log(char *msg);
+
 #endif
