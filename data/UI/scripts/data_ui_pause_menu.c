@@ -45,7 +45,7 @@ void pause_menu_data_ui_init()
     pause_menu_buttons[1] = &pause_menu_restart_button;
     pause_menu_buttons[2] = &pause_menu_main_menu_button;
 
-    debug_log("Pause menu data initialised\n");
+    debug_log("Pause menu data initialised.");
     return;
 }
 
@@ -53,6 +53,6 @@ void pause_menu_data_ui_free()
 {
 	button_list_free(pause_menu_buttons, 3);
 	label_free(&pause_menu_title_label);
-	debug_log("pause menu data freed\n");
+	debug_log("pause menu data freed.");
 	return;
 }

@@ -110,7 +110,7 @@ void game_stats_data_ui_init()
     game_stats_buttons[1] = &game_stats_restart_button;
     game_stats_buttons[2] = &game_stats_main_menu_button;
 
-    debug_log("Game stats data initialised\n");
+    debug_log("Game stats data initialised.");
     return;
 }
 
@@ -118,6 +118,6 @@ void game_stats_data_ui_free()
 {
 	button_list_free(game_stats_buttons, 3);
 	label_list_free(game_stats_labels, 4);
-	debug_log("game stats data ui freed\n");
+	debug_log("game stats data ui freed.");
 	return;
 }

@@ -610,7 +610,7 @@ void options_data_ui_init()
     options_panels[2] = &options_video_panel;
     options_panels[3] = &options_audio_panel;
 
-    debug_log("Options data initialised\n");
+    debug_log("Options data initialised.");
     return;
 }
 
@@ -619,6 +619,6 @@ void options_data_ui_free()
 	panel_list_free(options_panels, 4);
 	toggle_list_free(options_toggle_list, 4);
 	label_free(&options_back_label);
-	debug_log("options data freed\n");
+	debug_log("options data freed.");
 	return;
 }

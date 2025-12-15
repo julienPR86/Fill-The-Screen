@@ -60,7 +60,7 @@ void game_mode_data_ui_init()
     mode_selection_buttons[1] = &mode_selection_discovery_mode_button;
     mode_selection_buttons[2] = &mode_selection_constraint_mode_button;
     mode_selection_buttons[3] = &mode_selection_free_mode_button;
-    debug_log("Mode selection data initialised\n");
+    debug_log("Mode selection data initialised.");
 
     return;
 }
@@ -70,6 +70,6 @@ void game_mode_data_ui_free()
 	button_list_free(mode_selection_buttons, 4);
 	label_free(&mode_selection_back_label);
 	label_free(&mode_selection_title_label);
-	debug_log("game mode data freed\n");
+	debug_log("game mode data freed.");
 	return;
 }

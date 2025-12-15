@@ -88,7 +88,7 @@ int set_window_size(SDL_Window *window, int w, int h)
 
     if (!SDL_SetWindowSize(window, w, h))
     {
-        fprintf(stderr, "Window resize error : %s\n", SDL_GetError());
+        error_log("Window resize error : %s.", SDL_GetError());
         return 0;
     }
     return 1;
@@ -100,7 +100,7 @@ void update_window_size(SDL_Event event, SDL_Window *window)
     {
         if (true != SDL_GetWindowSize(window, &WIDTH, &HEIGHT))
         {
-            fprintf(stderr, "Failed to get window size : %s\n", SDL_GetError());
+            error_log("Failed to get window size : %s.", SDL_GetError());
         }
         update_scale();
     }
@@ -110,7 +110,7 @@ void update_scale()
 {
     SCALE_X = (float)WIDTH / 1080;
     SCALE_Y = (float)HEIGHT / 720;
-    debug_log("Scale updated\n");
+    debug_log("Scale updated.");
     return;
 }
 

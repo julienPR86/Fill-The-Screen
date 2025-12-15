@@ -14,11 +14,11 @@ ConstantAnimation *constant_animation_create(double *value, double goal, double 
     animation = (ConstantAnimation *)malloc(sizeof(ConstantAnimation));
     if (NULL == animation)
     {
-        fprintf(stderr, "Memory allocation error : Failed to create constant animation\n");
+        error_log("Memory allocation error : failed to create constant animation.");
         return NULL;
     }
     constant_animation_set_fields(animation, value, goal, time, active);
-    debug_log("Constant animation created\n");
+    debug_log("Constant animation created.");
     return animation;
 }
 
@@ -60,6 +60,7 @@ int constant_animation_destroy(ConstantAnimation *animation)
         return -1;
     
     free(animation);
-    debug_log("Float animation destroyed\n");
+	animation = NULL;
+    debug_log("Constant animation destroyed.");
     return 0;
 }
