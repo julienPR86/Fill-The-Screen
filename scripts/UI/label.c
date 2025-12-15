@@ -23,7 +23,7 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 
     if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * label->local_scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
     {
-        fprintf(stderr, "Size text error : %s\n", SDL_GetError());
+        error_log("Failed to retrieve string size : %s.", SDL_GetError());
         return NULL;
     }
 
@@ -32,14 +32,14 @@ Label *label_init(Label *label, float scale_x, float scale_y)
     label->surface = TTF_RenderText_Blended(roboto_regular_fonts[(int)(label->font_size * label->local_scale)-1], label->text, strlen(label->text), color);
     if (NULL == label->surface)
     {
-        fprintf(stderr, "Surface allocation error : %s\n", SDL_GetError());
+        error_log("Failed render label surface : %s.", SDL_GetError());
         return NULL;
     }
 
     label->texture = SDL_CreateTextureFromSurface(renderer, label->surface);
     if (NULL == label->texture)
     {
-        fprintf(stderr, "Texture allocation error : %s\n", SDL_GetError());
+        error_log("Failed to create label texture from label surface : %s.", SDL_GetError());
         SDL_DestroySurface(label->surface);
         label->surface = NULL;
         return NULL;
@@ -47,7 +47,7 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 
     if (true != SDL_SetTextureBlendMode(label->texture, SDL_BLENDMODE_BLEND))
     {
-        fprintf(stderr, "Cannot set texture blend mode : %s\n", SDL_GetError());
+        error_log("Failed to set label texture mode to blend : %s.", SDL_GetError());
         SDL_DestroyTexture(label->texture);
         label->texture = NULL;
         SDL_DestroySurface(label->surface);
@@ -86,7 +86,7 @@ void label_render(Label *label, float scale_x, float scale_y)
 
     if (true != SDL_RenderTexture(renderer, label->texture, NULL, &label_rect))
     {
-        fprintf(stderr, "Render copy error : %s\n", SDL_GetError());
+        error_log("Failed to render label texture : %s.", SDL_GetError());
     }
     return;
 }

@@ -251,7 +251,7 @@ Slider *slider_label_text_update(Slider *slider)
     slider->label->text = (char *)malloc(digits * sizeof(char));
     if (NULL == slider->label->text)
     {
-        fprintf(stderr, "slider label text : Memory allocation error");
+        error_log("Memory allocation error : failed to allocate slider label text.");
         return NULL;
     }
     snprintf(slider->label->text, digits, "%d", *slider->value);

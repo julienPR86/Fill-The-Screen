@@ -19,7 +19,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
     {
         if (NULL == picker->labels[i])
         {
-            fprintf(stderr, "Gap in picker's labels list\n");
+            error_log("Element at index %d is NULL in color picker labels array.", i);
             return NULL;
         }
     }
@@ -27,7 +27,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
     {
         if (NULL == picker->sliders[i])
         {
-            fprintf(stderr, "Gap in picker's sliders list\n");
+            error_log("Element at index %d is NULL in color picker sliders array.", i);
             return NULL;
         }
     }
