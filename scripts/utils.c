@@ -140,6 +140,7 @@ void	debug_log(char *log, ...)
 		vfprintf(stdout, log, args);
 		va_end(args);
 	#else
+		(void)args;
 		(void)log;
 	#endif
 	return ;
@@ -154,6 +155,7 @@ void	error_log(char *msg, ...)
 		vfprintf(stderr, msg, args);
 		va_end(args);
 	#else
+		(void)args;
 		(void)msg;
 	#endif
 	return ;
