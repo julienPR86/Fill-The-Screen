@@ -54,12 +54,12 @@ int game_state_game()
 		case GAME_STATE_NEW_GAME:
 			if (map_init())
             {
-                fprintf(stderr, "Could not initialised the map\n");
+                error_log("Could not initialised the map.");
                 return -1;
             }
             if (player_init())
             {
-                fprintf(stderr, "Could not initialised the player\n");
+                error_log("Could not initialised the player.");
                 map_free(map);
                 free(map);
                 map = NULL;
@@ -186,7 +186,8 @@ int option_window_fullscreen()
 {
     if (true != SDL_SetWindowFullscreen(window, true))
     {
-        fprintf(stderr, "Failed to set window to fullscreen : %s\n", SDL_GetError());
+        error_log("Failed to set window to fullscreen mode.");
+		error_log((char *)SDL_GetError());
         return -1;
     }
     debug_log("Windows set to fullscreen mode\n");
@@ -199,7 +200,8 @@ int option_window_floating()
 {
     if (true != SDL_SetWindowFullscreen(window, false))
     {
-        fprintf(stderr, "Failed to set window to floating : %s\n", SDL_GetError());
+        error_log("Failed to set window to floating mode.");
+		error_log((char *)SDL_GetError());
         return -1;
     }
     debug_log("Windows set to floating mode\n");
