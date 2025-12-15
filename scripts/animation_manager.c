@@ -50,7 +50,7 @@ int animation_manager_add_constant_animation(AnimationManager *manager, Constant
     manager->constant_animations = (ConstantAnimation **)realloc(manager->constant_animations, (manager->constant_animation_count) * sizeof(ConstantAnimation *));
     if (NULL == manager->constant_animations)
     {
-        fprintf(stderr, "Memory allocation error : failed ot add animation to manager\n");
+        erro_log("Memory allocation error : failed ot add constant animation to manager.");
         return -1;
     }
     manager->constant_animations[manager->constant_animation_count-1] = animation;
@@ -72,7 +72,7 @@ int animation_manager_remove_constant_animation(AnimationManager *manager, Const
 
     if (index >= manager->constant_animation_count)//check if index is in array
     {
-        fprintf(stderr, "Animation not in array\n");
+        error_log("Could not remove constant animation : constant animation not in array.");
         return -1;
     }
 
@@ -97,7 +97,7 @@ int animation_manager_remove_constant_animation(AnimationManager *manager, Const
         manager->constant_animations = (ConstantAnimation **)realloc(manager->constant_animations, (manager->constant_animation_count) * sizeof(ConstantAnimation *));
         if (NULL == manager->constant_animations)
         {
-            fprintf(stderr, "Memory allocation error : failed ot remove animation to manager\n");
+        	error_log("Memory allocation error : failed to remove constant animation to manager.");
             return -1;
         }
     }
