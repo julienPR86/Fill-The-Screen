@@ -6,7 +6,7 @@ int get_fps()
     static int fps = 0;
     static int counter = 0;
     static Uint64 last_time = 0;
-    static float total_time = 0;
+    static double total_time = 0;
 
     Uint64 current_time = SDL_GetTicks();
     delta_time = (current_time - last_time) * 0.001f;
@@ -119,7 +119,7 @@ int get_number_digits(int number)
     return (number == 0) ? 1 : ((int)log10(number)+1);
 }
 
-double lerpf(double a, double b, double factor)
+double lerp(double a, double b, double factor)
 {
     double value = a + (b - a) * factor;
     return value;

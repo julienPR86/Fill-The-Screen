@@ -52,12 +52,12 @@ int game_state_game()
     switch (game_state)
     {
 		case GAME_STATE_NEW_GAME:
-			if (map_init())
+			if (map_init(map))
             {
                 error_log("Could not initialised the map.");
                 return -1;
             }
-            if (player_init())
+            if (player_init(player))
             {
                 error_log("Could not initialised the player.");
                 map_free(map);

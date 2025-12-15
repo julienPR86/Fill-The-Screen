@@ -188,7 +188,7 @@ int init()
     return 0;
 }
 
-int map_init()
+int map_init(Map *map)
 {
     if (0 == map_height || 0 == map_width)
         return -1;
@@ -226,7 +226,7 @@ int map_init()
     return 0;
 }
 
-int player_init()
+int player_init(Player *player)
 {
     player = (Player *)malloc(sizeof(Player));
     if (NULL == player)

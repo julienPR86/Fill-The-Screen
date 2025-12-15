@@ -133,7 +133,7 @@ int game_loop()
             case GAME_STATE_GAME:
                 background = theme.main_colors.game_background;
                 player_move(player);
-                map_set_offset();
+                map_set_offset(map);
                 map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
                 map_display(map);
 

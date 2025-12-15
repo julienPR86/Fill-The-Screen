@@ -2,13 +2,13 @@
 
 Map *map_creation(Map *map)
 {
-    map->map = (int **)malloc(map->height * sizeof(int *));
+    map->map = (t_uint8 **)malloc(map->height * sizeof(t_uint8 *));
     if (NULL == map->map)
     {
         error_log("Memory allocation error : failed to allocate map.");
         return NULL;
     }
-    map->start_map = (int **)malloc(map->height * sizeof(int *));
+    map->start_map = (t_uint8 **)malloc(map->height * sizeof(t_uint8 *));
     if (NULL == map->start_map)
     {
         free(map->map);
@@ -17,8 +17,8 @@ Map *map_creation(Map *map)
     }
     for (int i = 0; i < map->height; i++)
     {
-        map->map[i] = (int *)malloc(map->width * sizeof(int));
-        map->start_map[i] = (int *)malloc(map->width * sizeof(int));
+        map->map[i] = (t_uint8 *)malloc(map->width * sizeof(int));
+        map->start_map[i] = (t_uint8 *)malloc(map->width * sizeof(int));
         if (NULL == map->map[i] || NULL == map->start_map[i])
         {
             for (int j = 0; j < i; j++)
@@ -50,7 +50,7 @@ Map *map_free(Map *map)
     return map;
 }
 
-Map *map_reset(Map *map, int value)
+Map *map_reset(Map *map, t_uint8 value)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -64,7 +64,7 @@ Map *map_reset(Map *map, int value)
     return map;
 }
 
-Map *map_random(Map *map, int value)
+Map *map_random(Map *map, t_uint8 value)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -167,7 +167,7 @@ int map_get_squares_number(Map *map, int type)
     return count;
 }
 
-int map_is_filled(Map *map)
+t_uint8 map_is_filled(Map *map)
 {
     for (int y = 0; y < map->height; y++)
     {
@@ -181,7 +181,7 @@ int map_is_filled(Map *map)
     return true;
 }
 
-void map_set_offset()
+void map_set_offset(Map *map)
 {
     map->y_offset = CENTERED(HEIGHT, (map->height * map->square_size));
     map->x_offset = CENTERED(WIDTH, (map->width * map->square_size));
