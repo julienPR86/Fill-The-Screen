@@ -67,14 +67,16 @@ int init()
     
     if (true != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
     {
-        fprintf(stderr, "Could not initialize SDL : %s\n", SDL_GetError());
+        error_log("Could not initialize SDL.");
+		error_log((char *)SDL_GetError());
         SDL_Quit();
         return -1;
     }
     debug_log("SDL initialised\n");
     if (true != TTF_Init())
     {
-        fprintf(stderr, "Could not initialize TTF : %s\n", SDL_GetError());
+        error_log("Could not initialize TTF.");
+		error_log((char *)SDL_GetError());
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -83,7 +85,8 @@ int init()
     window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, (SDL_WINDOW_RESIZABLE));
     if (NULL == window)
     {
-        fprintf(stderr, "Could not create the window : %s\n", SDL_GetError());
+        error_log("Could not create the window.");
+		error_log((char *)SDL_GetError());
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -92,7 +95,8 @@ int init()
     renderer = SDL_CreateRenderer(window, "software");
     if (NULL == renderer)
     {
-        fprintf(stderr, "Could not create the renderer : %s\n", SDL_GetError());
+        error_log("Could not create the renderer");
+		error_log((char *)SDL_GetError());
         SDL_DestroyWindow(window);
         TTF_Quit();
         SDL_Quit();
@@ -103,7 +107,7 @@ int init()
     outlines = (Outline *)malloc(max_outline_size * sizeof(Outline));
     if (NULL == outlines)
     {
-        fprintf(stderr, "Memory alocation error : Outlines array");
+        error_log("Memory alocation error : outlines array.");
         destroy_window_and_renderer();
         TTF_Quit();
         SDL_Quit();
@@ -119,7 +123,7 @@ int init()
     inlines = (Inline *)malloc(max_inline_size * sizeof(Inline));
     if (NULL == inlines)
     {
-        fprintf(stderr, "Memory alocation error : Outlines array");
+        error_log("Memory alocation error : inlines array.");
         free(outlines);
         destroy_window_and_renderer();
         TTF_Quit();
@@ -136,7 +140,7 @@ int init()
     roboto_regular_fonts = (TTF_Font **)malloc(max_font_size * sizeof(TTF_Font *));
     if (NULL == roboto_regular_fonts)
     {
-        fprintf(stderr, "memory allocation error : Could not allocate font array");
+        error_log("memory allocation error : could not allocate font array.");
         free(inlines);
         free(outlines);
         destroy_window_and_renderer();
@@ -151,7 +155,8 @@ int init()
             roboto_regular_fonts[i] = TTF_OpenFont("data/fonts/Roboto-Regular.ttf", i+1);
             if (NULL == roboto_regular_fonts[i])
             {
-                fprintf(stderr, "Could not initialised the font; size : %d; %s\n", i, SDL_GetError());
+                error_log("Could not initialised the font");
+				error_log((char *)SDL_GetError());
                 free(inlines);
                 free(outlines);
                 close_font_list(roboto_regular_fonts, i);
@@ -172,7 +177,7 @@ int init()
     FPS_text = (char *)malloc(8 * sizeof(char));
     if (NULL == FPS_text)
     {
-        fprintf(stderr, "Memory allocation error\n");
+        error_log("Memory allocation error : failed to allocate FPS text.");
     }
     else
     {
@@ -196,7 +201,7 @@ int map_init()
     map = malloc(sizeof(Map));
     if (NULL == map)
     {
-        fprintf(stderr, "Memory allocation error\n");
+        error_log("Memory allocation error : Could not allocate the map struture.");
         return -1;
     }
     map->height = map_height;
@@ -231,7 +236,7 @@ int player_init()
     player = (Player *)malloc(sizeof(Player));
     if (NULL == player)
     {
-        fprintf(stderr, "Memory allocation error\n");
+        error_log("Memory allocation error : could not allocate the player structure.");
         return -1;
     }
     player_reset(player);
