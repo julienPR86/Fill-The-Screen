@@ -1,12 +1,12 @@
-#ifndef _MAP_H_
-#define _MAP_H_
+#ifndef MAP_H
+#define MAP_H
 
-//map width
+//The initial map width
 extern int map_width;
-//map height
+//The initial map height
 extern int map_height;
 
-//Enum the different tiles that can be on the map
+//Enum that represent the different tiles that can be on the map
 enum SquareStates
 {
     COLLISION_SQUARE,
@@ -16,48 +16,49 @@ enum SquareStates
     FAKE_SQUARE,
 };
 
-//map structure
+//Structure that represent a map
 typedef struct Map
 {
-    //map height
+    //Map height
     int height;
-    //map width
+    //Map width
     int width;
-    //the size a each map's square
+    //The size of each map's square
     int square_size;
-    //the map array
-    int **map;
-    //save the map array a his creation
-    int **start_map;
-    
+    //The map array
+    t_uint8 **map;
+    //Keeps a copy of map at its creation
+    t_uint8 **start_map;
+    //The map offset on the x axis
     int x_offset;
+    //The map offset on the y axis
     int y_offset;
 } Map;
 
-//The map
+//The game map
 extern Map *map;
 
-//need to be called befor using any map function
-int map_init();
-//allocate the map arrays
+//Need to be called befor using any map function
+int map_init(Map *map);
+//Creates a map
 Map *map_creation(Map *map);
-//free the map arrays
+//Free the allocated ressources for the map
 Map *map_free(Map *map);
-//reset all the map values
-Map *map_reset(Map *map, int value);
-//set random value for each array square
-Map *map_random(Map *map, int value);
-//display the map in the console
+//Reset the map arrays with value
+Map *map_reset(Map *map, t_uint8 value);
+//Sets randomly squares of the map arrays with value
+Map *map_random(Map *map, t_uint8 value);
+//Display the map arrays in the terminal
 void map_print(Map *map);
-//display the map on the screen with a offset if necessary
+//Display the map on screen
 void map_display(Map *map);
-//return the necessary map square size based on the screen and map size
+//Returns the map arrays square size based on the screen and the map dimensions
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height);
-//return the number of type square in the map array
+//Return the squares number of a certain type in the map array
 int map_get_squares_number(Map *map, int type);
-//check if there is no more empty square in the map
-int map_is_filled(Map *map);
-//Set the offset for the map rendering based on the HEIGHT, WIDTH, and map size
-void map_set_offset();
+//Returns true if the map is filled, false otherwise
+t_uint8 map_is_filled(Map *map);
+//Set the offset for the map based on the HEIGHT, WIDTH, and map size
+void map_set_offset(Map *map);
 
 #endif

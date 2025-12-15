@@ -1,5 +1,5 @@
-#ifndef _VARIABLES_H_
-#define _VARIABLES_H_
+#ifndef VARIABLES_H
+#define VARIABLES_H
 
 enum GameState
 {
@@ -14,28 +14,28 @@ enum GameState
     GAME_STATE_EXIT_GAME,
 };
 
-//Basic window width, 1080
+//Initial window width, 1080
 extern const int WINDOW_WIDTH;
-//Basic window height, 720
+//Initial window height, 720
 extern const int WINDOW_HEIGHT;
 
-//window width
+//Current window width
 extern int WIDTH;
-//window height
+//Current window height
 extern int HEIGHT;
 
-//Scale on X axis
+//Global scale on X axis
 extern float SCALE_X;
-//Scale on y axis
+//Global scale on y axis
 extern float SCALE_Y;
 
 extern MouseState mouse_state;
 
-//contains the current fps number
+//Contains the current fps number
 extern int FPS;
-//contains the max fps value
+//Contains the max fps value
 extern int MAX_FPS;
-//contains the current delta time
+//Contains the delta time
 extern double delta_time;
 
 //SDL window
@@ -45,11 +45,12 @@ extern SDL_Renderer *renderer;
 //SDL event container
 extern SDL_Event event;
 
+//The game state, used to changes dynamicly menus
 extern int game_state;
 
-//contains the fps value in string
+//Contains the fps label text
 extern char *FPS_text;
-//fps label to display fps value
+//The fps label used to display current fps
 extern Label FPS_label;
 
 #endif

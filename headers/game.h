@@ -1,5 +1,5 @@
-#ifndef _GAME_H_
-#define _GAME_H_
+#ifndef GAME_H
+#define GAME_H
 
 enum GameMods
 {
@@ -16,7 +16,7 @@ extern int game_mode;
 
 //The game main loop
 int game_loop();
-//quit your current game
+//Destroys allocated ressources used for a game
 int game_quit();
 
 #endif

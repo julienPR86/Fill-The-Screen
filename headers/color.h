@@ -1,7 +1,7 @@
-#ifndef _COLOR_H_
-#define _COLOR_H_
+#ifndef COLOR_H
+#define COLOR_H
 
-//Color struct which use int, because of slider which uses ints, not int_8
+//Structure that represents a color with (r, g, b, a) fields
 typedef struct Color
 {
     int r;
@@ -10,68 +10,68 @@ typedef struct Color
     int a;
 } Color;
 
-//button style structure
+//Structure that represents a button style, contains the background, foreground and hover colors
 typedef struct ButtonStyle
 {
-    //background color
+    //Background color
     Color background;
-    //foreground color
+    //Foreground color
     Color foreground;
-    //hover color
+    //Hover color
     Color hover_color;
 } ButtonStyle;
 
-//Slider cursor structure
+//Structure that represents a slider cursor style, contains the background, foreground and hover colors
 typedef struct SliderCursorStyle
 {
-    //background color
+    //Background color
     Color bg;
-    //background foreground
+    //Background foreground
     Color fg;
-    //hover color
+    //Hover color
     Color hover_color;
 } SliderCursorStyle;
 
-//Slider style
+//Structure that represents a slider style, contains the background color
 typedef struct SliderStyle
 {
-    //background color
+    //Background color
     Color background;
 } SliderStyle;
 
-//Squares color
+//Structure that represents the different squares colors
 typedef struct GameColors
 {
-    //collision square color
+    //Collision square color
     Color collision_square_color;
-    //empty square color
+    //Empty square color
     Color empty_square_color;
-    //line square color
+    //Line square color
     Color line_square_color;
-    //player square color
+    //Player square color
     Color player_square_color;
-    //fake square color
+    //Fake square color
     Color fake_square_color;
 } GameColors;
 
-//Menus color
+//Structure that represent the colors of each game menus
 typedef struct MainColors
 {
-    //main menu color
+    //Main menu color
     Color menu_background;
-    //option menu color
+    //Options menu color
     Color options_background;
-    //game mode menu color
+    //Game mode menu color
     Color game_mode_background;
-    //game menu color
+    //Game background color
     Color game_background;
-    //pause menu color
+    //Pause menu color
     Color pause_menu_background;
-    //game stats menu color
+    //Game stats menu color
     Color game_stats_background;
 } MainColors;
 
-//color structure
+//Structure that represent a theme, which is used to color the entire game
 typedef struct Theme
 {
     //menus colors
@@ -80,16 +80,16 @@ typedef struct Theme
     GameColors game_colors;
 } Theme;
 
-//The color
+//The default color theme
 extern Theme theme;
 
-//the button style
+//The default button style
 extern ButtonStyle button_style;
-//the toggle style
+//The default toggle style
 extern ButtonStyle toggle_style;
-//the slider style
+//The default slider style
 extern SliderStyle slider_style;
-//the slider cursor style
+//The default slider cursor style
 extern SliderCursorStyle slider_cursor_style;
 
 extern const Color DARK;
@@ -101,9 +101,9 @@ extern const Color GREEN;
 extern const Color BLUE;
 extern const Color PURPLE;
 
-//Roboto_regular font array
+//Fonts list
 extern TTF_Font **roboto_regular_fonts;
-//Roboto_regular array size
+//The max font size used to create the fonts list
 extern int max_font_size;
 
 #endif

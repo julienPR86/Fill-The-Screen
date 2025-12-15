@@ -1,46 +1,46 @@
-#ifndef _BUTTONS_FUNCS_H_
-#define _BUTTONS_FUNCS_H_
+#ifndef BUTTONS_FUNCS_H
+#define BUTTONS_FUNCS_H
 
-//go to main menu
+//Exits current menu and open the main menu
 int game_state_main_menu();
-//exit the main menu, equals to exit the full game
+//Exit the main menu, means to quit the game
 int game_state_exit_main_menu();
-//go to mode selection menu
+//Open game mode selection
 int game_state_mode_selection();
-//go to options menu
+//Open game options
 int game_state_options();
-//go to gameplay menu
+//Open gameplay menu
 int game_state_game();
-//exit the current game
+//Exit the game menu
 int game_state_exit_game();
-//go to pause menu
+//Open the pause menu
 int game_state_pause_menu();
-//go to game stats menu
+//Open the stats menu
 int game_state_game_stats();
 
-//function to restart the current game
+//Restart a new game
 int restart_game();
 
-//button function which tells to launch a game in fill mode
+//Starts a new game in fill mode
 int fill_mode();
-//button function which tells to launch a game in constraint mode
+//Starts a new game in constraint mode
 int constraint_mode();
-//button function which tells to launch a game in discovery mode
+//Starts a new game in discovery mode
 int discovery_mode();
-//button function which tells to launch a game in free mode
+//Starts a new game in free mode
 int free_mode();
 
-//button function which tells to active the gameplay panel in the options
+//Switches to the gameplay panel in options
 int option_open_panel_gameplay();
-//button function which tells to active the color panel in the options
+//Switches to the color panel in options
 int option_open_panel_color();
-//button function which tells to active the video panel in the options
+//Switches to the video panel in options
 int option_open_panel_video();
-//button function which tells to active the audio panel in the options
+//Switches to the audio panel in options
 int option_open_panel_audio();
-//toggle function to set the window to fullscreen mode
+//Sets the window to fullscreen mode
 int option_window_fullscreen();
-//toggle function to set the window to floating mode
+//Sets the window to floating mode
 int option_window_floating();
 
 #endif

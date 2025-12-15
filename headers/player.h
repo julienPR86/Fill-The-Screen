@@ -1,35 +1,35 @@
-#ifndef _PLAYER_H_
-#define _PLAYER_H_
+#ifndef PLAYER_H
+#define PLAYER_H
 
-//player structure
+//Structure that represent a player
 typedef struct Player
 {
-    //x position
+    //X position
     double x;
-    //y position
+    //Y position
     double y;
-    //boolean for the x direction
-    int direction_x;
-    //boolean for the y direction
-    int direction_y;
-    //number of moves
+    //Boolean for the x direction
+    t_uint8 direction_x;
+    //Boolean for the y direction
+    t_uint8 direction_y;
+    //The number of times the player moved
     int moves;
-    //tells if the player can move
-    int can_move;
-    //set to 1 for the frame when the player moves, 0 after
-    int frame_move;
+    //Tells if the player can move
+    t_uint8 can_move;
+    //Is set to 1 if the player moved the same frame as the input
+    t_uint8 frame_move;
 } Player;
 
-//The player
+//The default player
 extern Player *player;
 
-//need to be called before all player functions 
-int player_init();
-//move the player towards x and y direction
+//Needs to be called before all player functions 
+int player_init(Player *player);
+//Move the player towards its x or y direction
 void player_move(Player *player);
-//Set the move direction of player and set all the moves boolean
+//Prepare the player to move in a x or y direction
 void player_set_move_direction(int direction_x, int direction_y);
-//reset all player fields
+//Resets the player passed in
 void player_reset(Player *player);
 
 #endif

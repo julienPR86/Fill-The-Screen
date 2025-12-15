@@ -1,7 +1,7 @@
-#ifndef _INIT_H_
-#define _INIT_H_
+#ifndef INIT_H
+#define INIT_H
 
-//The first function the need to be called to init SDL, the window, the renderer, etc
+//The first function that needs to be called to initialise the game window, renderer, and all necessary things for the game to work
 int init();
 
 #endif

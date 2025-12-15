@@ -1,66 +1,60 @@
-#ifndef _UTILS_H_
-#define _UTILS_H_
-
-enum WindowState
-{
-    FULLSCREEN,
-    FULLSCREEN_BORDERLESS,
-    BORDERLESS,
-};
+#ifndef UTILS_H
+#define UTILS_H
 
 enum MouseButtonState
 {
-    //no buttons are pressed
+    //No mouse buttons are pressed
     MOUSE_STATE_NONE,
-    //left mouse button pressed
+    //Left mouse button is pressed
     MOUSE_STATE_LEFT_CLICK,
-    //right mouse button pressed
+    //Right mouse button is pressed
     MOUSE_STATE_RIGHT_CLICK,
 };
 
+//Structure that represent the mouse state
 typedef struct MouseState
 {
-    //contains the x mouse position
+    //Contains the x mouse position
     float x;
-    //contains the y mouse position
+    //Contains the y mouse position
     float y;
-    //contains the x mouse delta position since the last frame
+    //Contains the x mouse delta position since last frame
     float delta_x;
-    //contains the y mouse delta position since the last frame
+    //Contains the y mouse delta position since last frame
     float delta_y;
     //contains a value which tells which mouse button is pressed
-    int button_pressed;
+    t_uint8 button_pressed;
     //contains the last button pressed
-    int previous_button_pressed;
+    t_uint8 previous_button_pressed;
     //equals 1 if a different button has been pressed, 0 otherwise
-    int frame_input;
-    //contains a value between -1 and 1 that tells the wheel rotation value
+    t_uint8 frame_input;
+    //Contains the mouse wheel input value
     int wheel_value;
 } MouseState;
 
-//return the current fps value
+//Returns the current fps value
 int get_fps();
-//cap the fps to max_fps
+//Cap the fps to max_fps
 void cap_fps(Uint64 start_time);
 
-//do the mouse events
+//Updates the mouse event
 void mouse_event(SDL_Event event);
-//reset mouse events
+//Reset the mouse state fields that needs to be reset
 void mouse_event_update();
-//return the mouse x and y delta
+//Returns the mouse x and y delta since last frame
 void get_mouse_delta(float *x, float *y);
-//Set the size of the window passed in
+//Sets the size of the window with the width and height passed in
 int set_window_size(SDL_Window *window, int w, int h);
-//Update the size of the window passed in, if the window is being resized
+//Updates the size of the window passed in, if the window is being resized
 void update_window_size(SDL_Event event, SDL_Window *window);
-//Update the SCALE on X and Y axis, return the min value between them
+//Updates the SCALE on X and Y axis, return the min value between them
 void update_scale();
 
-//return the number of digits in number
+//Returns the number of digits in a number
 int get_number_digits(int number);
-//do a linear interpolation between a and b based on the factor passed in
-double lerpf(double a, double b, double factor);
-//round a double to n number after the comma
+//Do a linear interpolation between a and b based on factor
+double lerp(double a, double b, double factor);
+//Round a floating point number with a precision of n
 double round_to(double number, int n);
 
 //Prints a debug log in the stdout if DEBUG_LOGS is defined
