@@ -1,5 +1,24 @@
 #include "../main.h"
 
+int	new_game(void)
+{
+	default_map = map_create();
+	if (map_init(default_map))
+	{
+		error_log("Could not initialised the map.");
+		return (-1);
+	}
+	default_player = player_create();
+	if (player_init(default_player))
+	{
+		error_log("Could not initialised the player.");
+		map_free(default_map);
+		return (-1);
+	}
+	debug_log("New game created.");
+	return (0);
+}
+
 int game_loop()
 {
     main_menu_data_ui_init();
@@ -73,25 +92,25 @@ int game_loop()
                     default:
                         break;
                 }
-                if (GAME_STATE_GAME == game_state && (!player->can_move || FREE_MODE == game_mode))
+                if (GAME_STATE_GAME == game_state && (!default_player->can_move || FREE_MODE == game_mode))
                 {
                     switch (event.key.key)
                     {
                         case SDLK_RIGHT:
                         case SDLK_D:
-                            player_set_move_direction(1, 0);
+                            player_set_move_direction(default_player, 1, 0);
                             break;
                         case SDLK_LEFT:
                         case SDLK_Q:
-                            player_set_move_direction(-1, 0);
+                            player_set_move_direction(default_player, -1, 0);
                             break;
                         case SDLK_UP:
                         case SDLK_Z:
-                            player_set_move_direction(0, -1);
+                            player_set_move_direction(default_player, 0, -1);
                             break;
                         case SDLK_DOWN:
                         case SDLK_S:
-                            player_set_move_direction(0, 1);
+                            player_set_move_direction(default_player, 0, 1);
                             break;
                         case SDLK_R:
                             restart_game();
@@ -132,12 +151,12 @@ int game_loop()
 
             case GAME_STATE_GAME:
                 background = theme.main_colors.game_background;
-                player_move(player);
-                map_set_offset(map);
-                map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
-                map_display(map);
+                player_move(default_player);
+                map_set_offset(default_map);
+                default_map->square_size = map_get_square_size(WIDTH, HEIGHT, default_map->width, default_map->height);
+                map_display(default_map);
 
-                if (!player->can_move && map_is_filled(map))
+                if (!default_player->can_move && map_is_filled(default_map))
 					game_state_game_stats();
                 break;
 
@@ -178,11 +197,8 @@ int game_loop()
 
 int game_quit()
 {
-    free(player);
-    player = NULL;
-    map_free(map);
-    free(map);
-    map = NULL;
+    map_destroy(default_map);
+	player_destroy(default_player);
     debug_log("Quit current game.");
     return 0;
 }
