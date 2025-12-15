@@ -133,7 +133,7 @@ double round_to(double number, int n)
 
 void debug_log(char *log)
 {
-    #ifdef _DEBUGING_
+    #ifdef DEBUG_LOGS
         printf("%s", log);
     #else
         (void)log;
