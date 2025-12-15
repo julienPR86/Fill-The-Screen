@@ -140,3 +140,13 @@ void debug_log(char *log)
     #endif
     return;
 }
+
+void	error_log(char *msg)
+{
+	#ifdef ERROR_LOGS
+		fprintf(stderr, "Error : %s\n", msg);
+	#else
+		(void)msg;
+	#endif
+	return ;
+}
