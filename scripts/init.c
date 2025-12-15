@@ -234,7 +234,7 @@ int player_init(Player *player)
         error_log("Memory allocation error : could not allocate the player structure.");
         return -1;
     }
-    player_reset(player);
     debug_log("Player initialised.");
+    player_reset(player);
     return 0;
 }
