@@ -23,7 +23,7 @@ int game_state_main_menu()
     }
     game_mode = NO_ACTIVE_MODE;
     game_state = GAME_STATE_MAIN_MENU;
-    debug_log("Opened main menu\n");
+    debug_log("Main menu opened.");
     return 0;
 }
 
@@ -36,14 +36,14 @@ int game_state_exit_main_menu()
 int game_state_options()
 {
     game_state = GAME_STATE_OPTIONS;
-    debug_log("Opened options\n");
+    debug_log("Options menu opened.");
     return 0;
 }
 
 int game_state_mode_selection()
 {
     game_state = GAME_STATE_MODE_SELECTION;
-    debug_log("Opened mode selection\n");
+    debug_log("Mode selection menu opened.");
     return 0;
 }
 
@@ -70,7 +70,7 @@ int game_state_game()
         	break;
     }
     game_state = GAME_STATE_GAME;
-    debug_log("Started a game\n");
+    debug_log("New game started.");
     return 0;
 }
 
@@ -85,7 +85,7 @@ int game_state_exit_game()
 int game_state_pause_menu()
 {
     game_state = GAME_STATE_PAUSE_MENU;
-    debug_log("Opened pause menu\n");
+    debug_log("Pause menu opened.");
     return 0;
 }
 
@@ -93,7 +93,7 @@ int game_state_game_stats()
 {
     game_stats_data_ui_init();
     game_state = GAME_STATE_GAME_STATS;
-    debug_log("Opened game stats\n");
+    debug_log("Game stats menu opened.");
     return 0;
 }
 
@@ -102,7 +102,7 @@ int restart_game()
     game_state_exit_game();
 	game_state = GAME_STATE_NEW_GAME;
     game_state_game();
-    debug_log("Restarted game\n");
+    debug_log("Restarted game.");
     return 0;
 }
 
@@ -110,7 +110,7 @@ int fill_mode()
 {
     game_mode = FILL_MODE;
 	game_state = GAME_STATE_NEW_GAME;
-    debug_log("Game mode set to fill mode\n");
+    debug_log("Game mode set to fill mode.");
     game_state_game();
     return 0;
 }
@@ -119,7 +119,7 @@ int discovery_mode()
 {
     game_mode = DISCOVERY_MODE;
 	game_state = GAME_STATE_NEW_GAME;
-    debug_log("Game mode set to discovery mode\n");
+    debug_log("Game mode set to discovery mode.");
     game_state_game();
     return 0;
 }
@@ -128,7 +128,7 @@ int constraint_mode()
 {
     game_mode = CONSTRAINT_MODE;
 	game_state = GAME_STATE_NEW_GAME;
-    debug_log("Game mode set to constraint mode\n");
+    debug_log("Game mode set to constraint mode.");
     game_state_game();
     return 0;
 }
@@ -137,7 +137,7 @@ int free_mode()
 {
     game_mode = FREE_MODE;
 	game_state = GAME_STATE_NEW_GAME;
-    debug_log("Game mode set to free mode\n");
+    debug_log("Game mode set to free mode.");
     game_state_game();
     return 0;
 }
@@ -148,7 +148,7 @@ int option_open_panel_gameplay()
     options_colors_panel.active = false;
     options_video_panel.active = false;
     options_audio_panel.active = false;
-    debug_log("Switched to gameplay panel\n");
+    debug_log("Switched to gameplay panel.");
     return 0;
 }
 
@@ -158,7 +158,7 @@ int option_open_panel_color()
     options_colors_panel.active = true;
     options_video_panel.active = false;
     options_audio_panel.active = false;
-    debug_log("Switched to color panel\n");
+    debug_log("Switched to color panel.");
     return 0;
 }
 
@@ -168,7 +168,7 @@ int option_open_panel_video()
     options_colors_panel.active = false;
     options_video_panel.active = true;
     options_audio_panel.active = false;
-    debug_log("Switched to video panel\n");
+    debug_log("Switched to video panel.");
     return 0;
 }
 
@@ -178,7 +178,7 @@ int option_open_panel_audio()
     options_colors_panel.active = false;
     options_video_panel.active = false;
     options_audio_panel.active = true;
-    debug_log("Switched to audio panel\n");
+    debug_log("Switched to audio panel.");
     return 0;
 }
 
@@ -189,7 +189,7 @@ int option_window_fullscreen()
         error_log("Failed to set window to fullscreen mode : %s.", SDL_GetError());
         return -1;
     }
-    debug_log("Windows set to fullscreen mode\n");
+    debug_log("Windows set to fullscreen mode.");
     SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
     update_scale();
     return 0;
@@ -202,7 +202,7 @@ int option_window_floating()
         error_log("Failed to set window to floating mode : %s.", SDL_GetError());
         return -1;
     }
-    debug_log("Windows set to floating mode\n");
+    debug_log("Windows set to floating mode.");
     SDL_GetWindowSize(window, &WIDTH, &HEIGHT);
     update_scale();
     return 0;

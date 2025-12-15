@@ -73,5 +73,5 @@ void player_reset(Player *player)
     player->moves = 0;
     player->can_move = false;
     player->frame_move = 0;
-    debug_log("Player has been reset\n");
+    debug_log("Player reset.");
 }

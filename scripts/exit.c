@@ -40,6 +40,7 @@ void close_font_list(TTF_Font **list, int count)
         TTF_CloseFont(list[i]);
     }
     free(list);
+	debug_log("Fonts list closed.");
     return;
 }
 
@@ -49,5 +50,6 @@ void destroy_window_and_renderer()
     renderer = NULL;
     SDL_DestroyWindow(window);
     window = NULL;
+	debug_log("Windows and renderer destroyed.");
     return;
 }

@@ -14,6 +14,6 @@ int main()
     }
 
     exit_full_game();
-    debug_log("Exit game successfully");
+    debug_log("Game exited successfully.");
     return 0;
 }

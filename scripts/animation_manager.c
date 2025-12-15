@@ -32,11 +32,11 @@ int animation_manager_destroy(AnimationManager *manager)
             constant_animation_destroy(manager->constant_animations[i]);
         }
         free(manager->constant_animations);
-        debug_log("Destroyed manager's float animation list\n");
+        debug_log("Destroyed manager's constant animation list.");
     }
     else
     {
-        debug_log("Manager's float animation list is empty, did not removed any float animations\n");
+        debug_log("Manager's constant animation list is empty, did not removed any constant animations.");
     }
     return 0;
 }
@@ -54,7 +54,7 @@ int animation_manager_add_constant_animation(AnimationManager *manager, Constant
         return -1;
     }
     manager->constant_animations[manager->constant_animation_count-1] = animation;
-    debug_log("Added float animation to manager\n");
+    debug_log("Constant animation added to manager constant animations list.");
     return 0;
 }
 
@@ -89,7 +89,7 @@ int animation_manager_remove_constant_animation(AnimationManager *manager, Const
     {
         free(manager->constant_animations);
         manager->constant_animations = NULL;
-        debug_log("Manager's float animation list is now empty\n");
+        debug_log("Manager's constant animation list is now empty.");
         return 0;
     }
     else
@@ -101,7 +101,7 @@ int animation_manager_remove_constant_animation(AnimationManager *manager, Const
             return -1;
         }
     }
-    debug_log("Removed float animation from manager\n");
+    debug_log("Constant animation removed from manager.");
     return 0;
 }
 

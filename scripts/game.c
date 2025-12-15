@@ -43,7 +43,7 @@ int game_loop()
             }
             if (SDL_EVENT_KEY_DOWN == event.type)
             {
-                debug_log("Pressed a key\n");
+                debug_log("Key %ld pressed.", event.key.key);
                 switch (event.key.key)
                 {
                     case SDLK_ESCAPE:
@@ -190,7 +190,7 @@ int game_restart()
     }
     map->map[0][0] = PLAYER_SQUARE;
     player_reset(player);
-    debug_log("Game restarted\n");
+    debug_log("Game restarted.");
     return 0;
 }
 
@@ -201,6 +201,6 @@ int game_quit()
     map_free(map);
     free(map);
     map = NULL;
-    debug_log("Quit current game\n");
+    debug_log("Quit current game.");
     return 0;
 }
