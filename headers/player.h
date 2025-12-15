@@ -33,5 +33,7 @@ void player_move(Player *player);
 void player_set_move_direction(Player *player, t_int8 direction_x, t_int8 direction_y);
 //Resets the player passed in
 void player_reset(Player *player);
+//Frees allocated ressources of the player passed in
+void	player_destroy(Player *player);
 
 #endif
