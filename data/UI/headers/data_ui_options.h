@@ -1,3 +1,6 @@
+#ifndef DATA_UI_OPTIONS
+#define DATA_UI_OPTIONS
+
 #include "../../../headers/UI/ui.h"
 
 extern Label options_back_label;
@@ -199,3 +202,5 @@ extern Panel *options_panels[4];
 
 void options_data_ui_init();
 void options_data_ui_free();
+
+#endif

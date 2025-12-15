@@ -1,3 +1,6 @@
+#ifndef DATA_UI_PAUSE_MENU
+#define DATA_UI_PAUSE_MENU
+
 #include "../../../headers/UI/ui.h"
 
 extern Label pause_menu_title_label;
@@ -14,3 +17,5 @@ extern Button *pause_menu_buttons[3];
 
 void pause_menu_data_ui_init();
 void pause_menu_data_ui_free();
+
+#endif

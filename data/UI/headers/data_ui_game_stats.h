@@ -1,3 +1,6 @@
+#ifndef DATA_UI_GAME_STATS
+#define DATA_UI_GAME_STATS
+
 #include "../../../headers/UI/ui.h"
 
 extern Label game_stats_title_label;
@@ -18,3 +21,5 @@ extern Button *game_stats_buttons[3];
 
 void game_stats_data_ui_init();
 void game_stats_data_ui_free();
+
+#endif

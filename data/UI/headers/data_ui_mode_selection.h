@@ -1,3 +1,6 @@
+#ifndef DATA_UI_MODE_SELECTION
+#define DATA_UI_MODE_SELECTION
+
 #include "../../../headers/UI/ui.h"
 
 extern Label mode_selection_title_label;
@@ -17,3 +20,5 @@ extern Button *mode_selection_buttons[4];
 
 void game_mode_data_ui_init();
 void game_mode_data_ui_free();
+
+#endif

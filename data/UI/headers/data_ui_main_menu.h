@@ -1,3 +1,6 @@
+#ifndef DATA_UI_MAIN_MENU
+#define DATA_UI_MAIN_MENU
+
 #include "../../../headers/UI/ui.h"
 
 extern Label main_menu_title_label;
@@ -16,3 +19,5 @@ extern Button *main_menu_buttons[3];
 
 void main_menu_data_ui_init();
 void main_menu_data_ui_free();
+
+#endif
