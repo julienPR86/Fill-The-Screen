@@ -93,7 +93,9 @@ int game_loop()
                         case SDLK_S:
                             player_set_move_direction(0, 1);
                             break;
-                        
+                        case SDLK_R:
+                            game_restart();
+                            break;
                         case SDLK_E:
                             game_state_game_stats();
                             break;
