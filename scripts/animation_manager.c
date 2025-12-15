@@ -50,7 +50,7 @@ int animation_manager_add_constant_animation(AnimationManager *manager, Constant
     manager->constant_animations = (ConstantAnimation **)realloc(manager->constant_animations, (manager->constant_animation_count) * sizeof(ConstantAnimation *));
     if (NULL == manager->constant_animations)
     {
-        erro_log("Memory allocation error : failed ot add constant animation to manager.");
+        error_log("Memory allocation error : failed ot add constant animation to manager.");
         return -1;
     }
     manager->constant_animations[manager->constant_animation_count-1] = animation;
