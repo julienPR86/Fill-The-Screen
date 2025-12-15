@@ -5,14 +5,14 @@ Map *map_creation(Map *map)
     map->map = (int **)malloc(map->height * sizeof(int *));
     if (NULL == map->map)
     {
-        fprintf(stderr, "Memory allocation error\n");
+        error_log("Memory allocation error : failed to allocated map.");
         return NULL;
     }
     map->start_map = (int **)malloc(map->height * sizeof(int *));
     if (NULL == map->start_map)
     {
         free(map->map);
-        fprintf(stderr, "Memory allocation error\n");
+        error_log("Memory allocation error : failed to allocated start map.");
         return NULL;
     }
     for (int i = 0; i < map->height; i++)
@@ -28,7 +28,7 @@ Map *map_creation(Map *map)
             }
             free(map->map);
             free(map->start_map);
-            fprintf(stderr, "Memory allocation error\n");
+            error_log("Memory allocation error : failed to allocate maps.");
             return NULL;
         }
     }
