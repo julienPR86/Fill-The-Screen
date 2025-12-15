@@ -9,9 +9,9 @@ typedef struct Player
     //Y position
     double y;
     //Boolean for the x direction
-    t_uint8 direction_x;
+    t_int8 direction_x;
     //Boolean for the y direction
-    t_uint8 direction_y;
+    t_int8 direction_y;
     //The number of times the player moved
     int moves;
     //Tells if the player can move
@@ -21,14 +21,16 @@ typedef struct Player
 } Player;
 
 //The default player
-extern Player *player;
+extern Player	*default_player;
 
+//Returns an allocated player structure
+Player	*player_create(void);
 //Needs to be called before all player functions 
 int player_init(Player *player);
 //Move the player towards its x or y direction
 void player_move(Player *player);
 //Prepare the player to move in a x or y direction
-void player_set_move_direction(int direction_x, int direction_y);
+void player_set_move_direction(Player *player, t_int8 direction_x, t_int8 direction_y);
 //Resets the player passed in
 void player_reset(Player *player);
 
