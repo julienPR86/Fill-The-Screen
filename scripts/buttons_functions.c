@@ -99,7 +99,7 @@ int game_state_game_stats()
 
 int restart_game()
 {
-    debug_log("Restart game.");
+    debug_log("Restarted a new game.");
     game_state_exit_game();
 	game_state = GAME_STATE_NEW_GAME;
     game_state_game();
