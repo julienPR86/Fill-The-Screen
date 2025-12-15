@@ -1,5 +1,48 @@
 #include "../main.h"
 
+Map	*map_create(void)
+{
+	Map	*map;
+
+	map = (Map *)malloc(sizeof(Map));
+	if (NULL == map)
+	{
+		error_log("Memory allocation error : failed to allocate new map.");
+		return (NULL);
+	}
+	return (map);
+}
+
+int map_init(Map *map)
+{
+    if (NULL == map || 0 == map_height || 0 == map_width)
+        return (-1);
+
+    map->height = map_height;
+    map->width = map_width;
+    map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
+    map->map = NULL;
+    if (NULL == map_creation(map))
+    {
+        return (-1);
+    }
+    map_reset(map, EMPTY_SQUARE);
+    switch (game_mode)
+    {
+        case DISCOVERY_MODE:
+            map_random(map, FAKE_SQUARE);
+            break;
+        case CONSTRAINT_MODE:
+            map_random(map, COLLISION_SQUARE);
+            break;
+        default:
+            break;
+    }
+    map->map[0][0] = PLAYER_SQUARE; //basic player position
+    debug_log("Map initialised.");
+    return 0;
+}
+
 Map *map_creation(Map *map)
 {
     map->map = (t_uint8 **)malloc(map->height * sizeof(t_uint8 *));
@@ -36,8 +79,10 @@ Map *map_creation(Map *map)
     return map;
 }
 
-Map *map_free(Map *map)
+void	map_destroy(Map *map)
 {
+	if (NULL == map)
+		return ;
     for (int i = 0; i < map->height; i++)
     {
         free(map->map[i]);
@@ -47,7 +92,9 @@ Map *map_free(Map *map)
     map->map = NULL;
     free(map->start_map);
     map->start_map = NULL;
-    return map;
+	free(map);
+	map = NULL;
+    return ;
 }
 
 Map *map_reset(Map *map, t_uint8 value)
