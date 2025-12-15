@@ -18,28 +18,28 @@ Button *game_stats_buttons[3];
 
 void game_stats_data_ui_init()
 {
-    int moves = player->moves;
-    float percent = 1.0/(map->height*map->width) * 100;
+    int moves = default_player->moves;
+    float percent = 1.0/(default_map->height * default_map->width) * 100;
     float square_ratio = 0;
     if (moves)
     {
         if (CONSTRAINT_MODE == game_mode)
         {
-            int count = map_get_squares_number(map, EMPTY_SQUARE) + map_get_squares_number(map, COLLISION_SQUARE);
-            percent = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
-            square_ratio = (float)(map->height*map->width-(map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, COLLISION_SQUARE)))/moves;
+            int count = map_get_squares_number(default_map, EMPTY_SQUARE) + map_get_squares_number(default_map, COLLISION_SQUARE);
+            percent = (float)(default_map->height*default_map->width - count)/(default_map->height*default_map->width) * 100;
+            square_ratio = (float)(default_map->height*default_map->width-(map_get_squares_number(default_map, EMPTY_SQUARE)+map_get_squares_number(default_map, COLLISION_SQUARE)))/moves;
         }
         else if (DISCOVERY_MODE == game_mode)
         {
-            int count = map_get_squares_number(map, EMPTY_SQUARE) + map_get_squares_number(map, FAKE_SQUARE);
-            percent = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
-            square_ratio = (float)(map->height*map->width-(map_get_squares_number(map, EMPTY_SQUARE)+map_get_squares_number(map, FAKE_SQUARE)))/moves;
+            int count = map_get_squares_number(default_map, EMPTY_SQUARE) + map_get_squares_number(default_map, FAKE_SQUARE);
+            percent = (float)(default_map->height*default_map->width - count)/(default_map->height*default_map->width) * 100;
+            square_ratio = (float)(default_map->height*default_map->width-(map_get_squares_number(default_map, EMPTY_SQUARE)+map_get_squares_number(default_map, FAKE_SQUARE)))/moves;
         }
         else
         {
-            int count = map_get_squares_number(map, EMPTY_SQUARE);
-            percent = (float)(map->height*map->width - count)/(map->height*map->width) * 100;
-            square_ratio = (float)(map->height*map->width-map_get_squares_number(map, EMPTY_SQUARE))/moves;
+            int count = map_get_squares_number(default_map, EMPTY_SQUARE);
+            percent = (float)(default_map->height*default_map->width - count)/(default_map->height*default_map->width) * 100;
+            square_ratio = (float)(default_map->height*default_map->width-map_get_squares_number(default_map, EMPTY_SQUARE))/moves;
         }
     }
 
