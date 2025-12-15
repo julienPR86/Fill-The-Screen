@@ -21,8 +21,8 @@ SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
 
-Player *player = NULL;
-Map *map = NULL;
+Player	*default_player;
+Map	*default_map;
 
 AnimationManager animation_manager = {NULL, 0};
 
@@ -185,56 +185,5 @@ int init()
         debug_log("FPS label created.");
     }
     
-    return 0;
-}
-
-int map_init(Map *map)
-{
-    if (0 == map_height || 0 == map_width)
-        return -1;
-        
-    map = malloc(sizeof(Map));
-    if (NULL == map)
-    {
-        error_log("Memory allocation error : could not allocate the map struture.");
-        return -1;
-    }
-    map->height = map_height;
-    map->width = map_width;
-    map->square_size = map_get_square_size(WIDTH, HEIGHT, map->width, map->height);
-    map->map = NULL;
-    if (NULL == map_creation(map))
-    {
-        free(map);
-        map = NULL;
-        return -1;
-    }
-    map_reset(map, EMPTY_SQUARE);
-    switch (game_mode)
-    {
-        case DISCOVERY_MODE:
-            map_random(map, FAKE_SQUARE);
-            break;
-        case CONSTRAINT_MODE:
-            map_random(map, COLLISION_SQUARE);
-            break;
-        default:
-            break;
-    }
-    map->map[0][0] = PLAYER_SQUARE; //basic player position
-    debug_log("Map initialised.");
-    return 0;
-}
-
-int player_init(Player *player)
-{
-    player = (Player *)malloc(sizeof(Player));
-    if (NULL == player)
-    {
-        error_log("Memory allocation error : could not allocate the player structure.");
-        return -1;
-    }
-    debug_log("Player initialised.");
-    player_reset(player);
     return 0;
 }
