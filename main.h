@@ -39,8 +39,8 @@
 #define true 1
 #define false 0
 
-//Debug mode definition, use it if you want logs messages
-//#define _DEBUGING_
+//If defined, DEBUG_LOG will tells the program to print in the stdout logs messages
+//#define DEBUG_LOGS
 
 //If defined, ERROR_LOGS will tells the program to print in the stderr error messages
 #define ERROR_LOGS
