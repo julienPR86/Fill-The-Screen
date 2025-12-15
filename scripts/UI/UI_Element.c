@@ -94,40 +94,34 @@ void UI_Element_set_position(UI_Element *element, float x, float y, float x_posi
 
 void UI_Element_render_outline(UI_Element *element, float scale_x, float scale_y)
 {
-    if (NULL == element || element->width <= 0 || element->height <= 0 || element->outline.size <= 0)
-        return;
+	if (NULL == element || element->width <= 0 || element->height <= 0 || element->outline.size <= 0)
+		return;
 
-    SDL_FRect outline_rect;
-    
-    SDL_SetRenderDrawColor(renderer, element->outline.color.r, element->outline.color.g, element->outline.color.b, element->outline.color.a);
-    for (int i = 1; i <= element->outline.size * MIN(scale_x, scale_y); i++)
-    {
-        outline_rect.x = element->x - i;
-        outline_rect.y = element->y - i;
-        outline_rect.w = ceilf(element->width * element->scale * scale_x) + i * 2;
-        outline_rect.h = ceilf(element->height * element->scale * scale_y) + i * 2;
-        SDL_RenderRect(renderer, &outline_rect);
-    }
-    return;
+	SDL_FRect outline_rect = {
+		element->x - element->outline.size * scale_x * element->scale,
+		element->y - element->outline.size * scale_y * element->scale,
+		element->width * element->scale * scale_x + element->outline.size * scale_x * element->scale * 2,
+		element->height * element->scale * scale_y + element->outline.size * scale_y * element->scale * 2
+	};
+	SDL_SetRenderDrawColor(renderer, element->outline.color.r, element->outline.color.g, element->outline.color.b, element->outline.color.a);
+	SDL_RenderFillRect(renderer, &outline_rect);
+	return;
 }
 
 void UI_Element_render_inline(UI_Element *element, float scale_x, float scale_y)
 {
-    if (NULL == element || element->width <= 0 || element->height <= 0 || element->inline_.size <= 0)
-        return;
+	if (NULL == element || element->width <= 0 || element->height <= 0 || element->inline_.size <= 0)
+		return;
 
-    SDL_FRect inline_rect;
-    
-    SDL_SetRenderDrawColor(renderer, element->inline_.color.r, element->inline_.color.g, element->inline_.color.b, element->inline_.color.a);
-    for (int i = 0; i < element->inline_.size * MIN(scale_x, scale_y); i++)
-    {
-        inline_rect.x = element->x + i;
-        inline_rect.y = element->y + i;
-        inline_rect.w = ceilf(element->width * element->scale * scale_x) - i * 2;
-        inline_rect.h = ceilf(element->height * element->scale * scale_y) - i * 2;
-        SDL_RenderRect(renderer, &inline_rect);
-    }
-    return;
+	SDL_FRect inline_rect = {
+		element->x,
+		element->y,
+		element->width * element->scale * scale_x,
+		element->height * element->scale * scale_y
+	};
+	SDL_SetRenderDrawColor(renderer, element->inline_.color.r, element->inline_.color.g, element->inline_.color.b, element->inline_.color.a);
+	SDL_RenderFillRect(renderer, &inline_rect);
+	return;
 }
 
 int UI_Element_get_height(UI_Element *element, float scale_y)
