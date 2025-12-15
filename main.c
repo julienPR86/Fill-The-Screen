@@ -4,13 +4,13 @@ int main()
 {
     if (-1 == init())
     {
-        fprintf(stderr, "Could not initialised the game\n");
+        error_log("Could not initialise the game.");
         return -1;
     }
 
     if (-1 == game_loop())
     {
-        fprintf(stderr, "Failed to start game loop\n");
+        error_log("Failed to start game loop.");
     }
 
     exit_full_game();
