@@ -186,8 +186,7 @@ int option_window_fullscreen()
 {
     if (true != SDL_SetWindowFullscreen(window, true))
     {
-        error_log("Failed to set window to fullscreen mode.");
-		error_log((char *)SDL_GetError());
+        error_log("Failed to set window to fullscreen mode : %s.", SDL_GetError());
         return -1;
     }
     debug_log("Windows set to fullscreen mode\n");
@@ -200,8 +199,7 @@ int option_window_floating()
 {
     if (true != SDL_SetWindowFullscreen(window, false))
     {
-        error_log("Failed to set window to floating mode.");
-		error_log((char *)SDL_GetError());
+        error_log("Failed to set window to floating mode : %s.", SDL_GetError());
         return -1;
     }
     debug_log("Windows set to floating mode\n");

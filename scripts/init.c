@@ -67,16 +67,14 @@ int init()
     
     if (true != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
     {
-        error_log("Could not initialize SDL.");
-		error_log((char *)SDL_GetError());
+        error_log("Could not initialize SDL : %s.", SDL_GetError());
         SDL_Quit();
         return -1;
     }
     debug_log("SDL initialised\n");
     if (true != TTF_Init())
     {
-        error_log("Could not initialize TTF.");
-		error_log((char *)SDL_GetError());
+        error_log("Could not initialize TTF : %s.", SDL_GetError());
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -85,8 +83,7 @@ int init()
     window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, (SDL_WINDOW_RESIZABLE));
     if (NULL == window)
     {
-        error_log("Could not create the window.");
-		error_log((char *)SDL_GetError());
+        error_log("Could not create the window : %s.", SDL_GetError());
         TTF_Quit();
         SDL_Quit();
         return -1;
@@ -95,8 +92,7 @@ int init()
     renderer = SDL_CreateRenderer(window, "software");
     if (NULL == renderer)
     {
-        error_log("Could not create the renderer");
-		error_log((char *)SDL_GetError());
+        error_log("Could not create the renderer : %s.", SDL_GetError());
         SDL_DestroyWindow(window);
         TTF_Quit();
         SDL_Quit();
@@ -140,7 +136,7 @@ int init()
     roboto_regular_fonts = (TTF_Font **)malloc(max_font_size * sizeof(TTF_Font *));
     if (NULL == roboto_regular_fonts)
     {
-        error_log("memory allocation error : could not allocate font array.");
+        error_log("Memory allocation error : could not allocate font array.");
         free(inlines);
         free(outlines);
         destroy_window_and_renderer();
@@ -155,8 +151,7 @@ int init()
             roboto_regular_fonts[i] = TTF_OpenFont("data/fonts/Roboto-Regular.ttf", i+1);
             if (NULL == roboto_regular_fonts[i])
             {
-                error_log("Could not initialised the font");
-				error_log((char *)SDL_GetError());
+                error_log("Could not initialised the font for size %d : %s.", i+1, SDL_GetError());
                 free(inlines);
                 free(outlines);
                 close_font_list(roboto_regular_fonts, i);
@@ -177,7 +172,7 @@ int init()
     FPS_text = (char *)malloc(8 * sizeof(char));
     if (NULL == FPS_text)
     {
-        error_log("Memory allocation error : failed to allocate FPS text.");
+        error_log("Memory allocation error : failed to allocate fps string.");
     }
     else
     {
@@ -201,7 +196,7 @@ int map_init()
     map = malloc(sizeof(Map));
     if (NULL == map)
     {
-        error_log("Memory allocation error : Could not allocate the map struture.");
+        error_log("Memory allocation error : could not allocate the map struture.");
         return -1;
     }
     map->height = map_height;
