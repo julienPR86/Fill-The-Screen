@@ -44,8 +44,8 @@ Map	*map_create(void);
 int map_init(Map *map);
 //Creates a map
 Map *map_creation(Map *map);
-//Free the allocated ressources for the map
-Map *map_free(Map *map);
+//Free allocated ressources of the map passed in
+void	map_destroy(Map *map);
 //Reset the map arrays with value
 Map *map_reset(Map *map, t_uint8 value);
 //Sets randomly squares of the map arrays with value
