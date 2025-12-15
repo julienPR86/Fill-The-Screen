@@ -36,8 +36,10 @@ typedef struct Map
 } Map;
 
 //The game map
-extern Map *map;
+extern Map	*default_map;
 
+//Returns an allocated map structure
+Map	*map_create(void);
 //Need to be called befor using any map function
 int map_init(Map *map);
 //Creates a map
