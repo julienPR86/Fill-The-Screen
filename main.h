@@ -42,6 +42,9 @@
 //Debug mode definition, use it if you want logs messages
 //#define _DEBUGING_
 
+//If defined, ERROR_LOGS will tells the program to print in the stderr error messages
+#define ERROR_LOGS
+
 //Macros definition 
 //Get the center between a and b
 #define CENTERED(a, b) ((a - b) / 2)
