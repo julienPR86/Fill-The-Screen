@@ -1,5 +1,5 @@
-#ifndef _UI_H_
-#define _UI_H_
+#ifndef UI_H
+#define UI_H
 
 #include "array.h"
 #include "button.h"
@@ -40,10 +40,10 @@ enum Anchors
     BOTTOM_RIGHT,
 };
 
-//Outlines
+//The global outline list that contains outlines with different sizes
 extern Outline *outlines;
 
-//inlines
+//The global inline list that contains inlines with different sizes
 extern Inline *inlines;
 
 #endif
