@@ -18,6 +18,6 @@ void rect_set_fields(Rect *rect, Color *color);
 //Renders the rectangle passed in
 void rect_render(Rect *element, float scale_x, float scale_y);
 //Updates and renders an array of rectangles
-int rect_list_update_and_render(Rect *rects[], int count);
+int rect_list_update_and_render(Rect *rects[], t_uint count);
 
 #endif

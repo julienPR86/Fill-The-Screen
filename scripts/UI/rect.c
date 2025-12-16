@@ -23,12 +23,11 @@ void rect_render(Rect *rect, float scale_x, float scale_y)
     return;
 }
 
-int rect_list_update_and_render(Rect *rects[], int count)
+int rect_list_update_and_render(Rect *rects[], t_uint count)
 {
-    int out = 0;
-    for (int i = 0; i < count; i++)
+    for (t_uint i = 0; i < count; i++)
     {
         rect_render(rects[i], SCALE_X, SCALE_Y);
     }
-    return out;
+    return (0);
 }
