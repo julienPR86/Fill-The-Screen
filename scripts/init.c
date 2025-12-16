@@ -52,7 +52,7 @@ int game_state = GAME_STATE_NONE;
 int game_mode = NO_ACTIVE_MODE;
 
 TTF_Font **roboto_regular_fonts;
-int max_font_size = 300;
+t_uint max_font_size = 300;
 
 
 char *FPS_text;
@@ -146,7 +146,7 @@ int init()
     }
     else
     {
-        for (int i = 0; i < max_font_size; i++)
+        for (t_uint i = 0; i < max_font_size; i++)
         {
             roboto_regular_fonts[i] = TTF_OpenFont("data/fonts/Roboto-Regular.ttf", i+1);
             if (NULL == roboto_regular_fonts[i])

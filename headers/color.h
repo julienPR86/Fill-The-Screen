@@ -104,6 +104,6 @@ extern const Color PURPLE;
 //Fonts list
 extern TTF_Font **roboto_regular_fonts;
 //The max font size used to create the fonts list
-extern int max_font_size;
+extern t_uint max_font_size;
 
 #endif
