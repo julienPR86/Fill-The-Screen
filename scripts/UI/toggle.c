@@ -88,7 +88,12 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
     }
         
     Color toggle_color;
-    SDL_FRect toggle_rect = {anchored_rect.x, anchored_rect.y, (anchored_rect.width * scale_x * anchored_rect.scale), (anchored_rect.height * scale_y * anchored_rect.scale)};
+    SDL_FRect toggle_rect = {
+		anchored_rect.x + anchored_rect.inline_.size,
+		anchored_rect.y + anchored_rect.inline_.size,
+		(int)(anchored_rect.width * scale_x * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_x * anchored_rect.scale) * 2,
+		(int)(anchored_rect.height * scale_y * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_y * anchored_rect.scale) * 2
+	};
 
     switch (toggle->state)
     {
@@ -105,12 +110,12 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y)
             break;
     }
 
+	UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
+	UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
+
     SDL_SetRenderDrawColor(renderer, toggle_color.r, toggle_color.g, toggle_color.b, toggle_color.a);
     SDL_RenderFillRect(renderer, &toggle_rect);
 
-    UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
-    UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
-    
     label_center(toggle->label, &anchored_rect, scale_x, scale_y);
     label_render(toggle->label, 1, 1);
     return;
