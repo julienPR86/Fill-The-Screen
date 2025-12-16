@@ -118,12 +118,12 @@ void button_free(Button *button)
     return;
 }
 
-void button_list_free(Button *buttons[], int size)
+void button_list_free(Button *buttons[], t_uint size)
 {
     if (NULL == buttons)
         return;
 
-    for (int i = 0; i < size; i++)
+    for (t_uint i = 0; i < size; i++)
     {   
         if (NULL == buttons[i])
             continue;
@@ -133,10 +133,10 @@ void button_list_free(Button *buttons[], int size)
     return;
 }
 
-int button_list_update_and_render(Button *buttons[], int count)
+int button_list_update_and_render(Button *buttons[], t_uint count)
 {
     int out = 0;
-    for (int i = 0; i < count; i++)
+    for (t_uint i = 0; i < count; i++)
     {
         out = button_update(buttons[i], SCALE_X, SCALE_Y);
         button_render(buttons[i], SCALE_X, SCALE_Y);

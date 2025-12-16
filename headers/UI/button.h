@@ -33,8 +33,8 @@ void button_render(Button *button, float scale_x, float scale_y);
 //Frees the allocated ressources for the button passed in
 void button_free(Button *button);
 //Frees a list of buttons
-void button_list_free(Button *buttons[], int size);
+void button_list_free(Button *buttons[], t_uint size);
 //Updates and renders an array of buttons
-int button_list_update_and_render(Button *buttons[], int count);
+int button_list_update_and_render(Button *buttons[], t_uint count);
 
 #endif
