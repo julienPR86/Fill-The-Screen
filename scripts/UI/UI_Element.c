@@ -43,45 +43,45 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float
 
 void UI_Element_set_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
 {
-    element->x = x * x_position_factor;
-    element->y = y * y_position_factor;
+    element->x = (int)(x * x_position_factor);
+    element->y = (int)(y * y_position_factor);
     
     switch (anchor)
     {
         case CENTER:
-            element->x = x * x_position_factor - ((element->width >> 1) + element->outline.size) * scale_x * element->scale;
-            element->y = y * y_position_factor - ((element->height >> 1) + element->outline.size) * scale_y * element->scale;
+            element->x = (int)(x * x_position_factor - (element->width >> 1) * scale_x * element->scale);
+            element->y = (int)(y * y_position_factor - (element->height >> 1) * scale_y * element->scale);
             break;
 
         case TOP_CENTER:
-            element->x = x * x_position_factor - ((element->width >> 1) + element->outline.size) * scale_x * element->scale;
+            element->x = (int)(x * x_position_factor) - (int)((element->width >> 1) * scale_x * element->scale);
             break;
 
         case TOP_RIGHT:
-            element->x = x * x_position_factor - (element->width + element->outline.size) * scale_x * element->scale;
+            element->x = (int)(x * x_position_factor) - (int)((element->width) * scale_x * element->scale);
             break;
 
         case MID_LEFT:
-            element->y = y * y_position_factor - ((element->height >> 1) + element->outline.size) * scale_y * element->scale;
+            element->y = (int)(y * y_position_factor) - (int)((element->height >> 1) * scale_y * element->scale);
             break;
 
         case MID_RIGHT:
-            element->x = x * x_position_factor - (element->width + element->outline.size) * scale_x * element->scale;
-            element->y = y * y_position_factor - ((element->height >> 1) + element->outline.size) * scale_y * element->scale;
+            element->x = (int)(x * x_position_factor) - (int)((element->width) * scale_x * element->scale);
+            element->y = (int)(y * y_position_factor) - (int)((element->height >> 1) * scale_y * element->scale);
             break;
 
         case BOTTOM_LEFT:
-            element->y = y * y_position_factor - (element->height + element->outline.size) * scale_y * element->scale;
+            element->y = (int)(y * y_position_factor) - (int)((element->height) * scale_y * element->scale);
             break;
 
         case BOTTOM_CENTER:
-            element->x = x * x_position_factor - ((element->width >> 1) + element->outline.size) * scale_x * element->scale;
-            element->y = y * y_position_factor - (element->height + element->outline.size) * scale_y * element->scale;
+            element->x = (int)(x * x_position_factor) - (int)((element->width >> 1) * scale_x * element->scale);
+            element->y = (int)(y * y_position_factor) - (int)((element->height) * scale_y * element->scale);
             break;
 
         case BOTTOM_RIGHT:
-            element->x = x * x_position_factor - (element->width + element->outline.size) * scale_x * element->scale;
-            element->y = y * y_position_factor - (element->height + element->outline.size) * scale_y * element->scale;
+            element->x = (int)(x * x_position_factor) - (int)((element->width) * scale_x * element->scale);
+            element->y = (int)(y * y_position_factor) - (int)((element->height) * scale_y * element->scale);
             break;
 
         case NONE:
@@ -98,13 +98,13 @@ void UI_Element_render_outline(UI_Element *element, float scale_x, float scale_y
 		return;
 
 	SDL_FRect outline_rect = {
-		element->x - element->outline.size * scale_x * element->scale,
-		element->y - element->outline.size * scale_y * element->scale,
-		element->width * element->scale * scale_x + element->outline.size * scale_x * element->scale * 2,
-		element->height * element->scale * scale_y + element->outline.size * scale_y * element->scale * 2
+		element->x - (int)(element->outline.size * scale_x * element->scale),
+		element->y - (int)(element->outline.size * scale_y * element->scale),
+		(int)(element->width * scale_x * element->scale) + (int)(element->outline.size * scale_x * element->scale) * 2,
+		(int)(element->height * scale_y * element->scale) + (int)(element->outline.size * scale_y * element->scale) * 2
 	};
 	SDL_SetRenderDrawColor(renderer, element->outline.color.r, element->outline.color.g, element->outline.color.b, element->outline.color.a);
-	SDL_RenderRect(renderer, &outline_rect);
+	SDL_RenderFillRect(renderer, &outline_rect);
 	return;
 }
 
@@ -116,11 +116,11 @@ void UI_Element_render_inline(UI_Element *element, float scale_x, float scale_y)
 	SDL_FRect inline_rect = {
 		element->x,
 		element->y,
-		element->width * element->scale * scale_x,
-		element->height * element->scale * scale_y
+		(int)(element->width * element->scale * scale_x),
+		(int)(element->height * element->scale * scale_y)
 	};
 	SDL_SetRenderDrawColor(renderer, element->inline_.color.r, element->inline_.color.g, element->inline_.color.b, element->inline_.color.a);
-	SDL_RenderRect(renderer, &inline_rect);
+	SDL_RenderFillRect(renderer, &inline_rect);
 	return;
 }
 
