@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-Panel *panel_set_fields(Panel* panel, Button **buttons, int button_count, Toggle **toggles, int toggle_count, Slider **sliders, int slider_count, ColorPicker **pickers, int picker_count, ToggleGroup **groups, int group_count, Label **labels, int label_count, Rect **rects, int rect_count, t_uint8 active)
+Panel *panel_set_fields(Panel* panel, Button **buttons, t_uint button_count, Toggle **toggles, t_uint toggle_count, Slider **sliders, t_uint slider_count, ColorPicker **pickers, t_uint picker_count, ToggleGroup **groups, t_uint group_count, Label **labels, t_uint label_count, Rect **rects, t_uint rect_count, t_uint8 active)
 {
     panel->buttons = buttons;
     panel->button_count = button_count;
@@ -57,42 +57,42 @@ int panel_update(Panel *panel)
     int out = 0;
     if (NULL != panel->buttons && 0 == out)
     {
-        for (int i = 0; i < panel->button_count; i++)
+        for (t_uint i = 0; i < panel->button_count; i++)
         {
             out = button_update(panel->buttons[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->toggles && 0 == out)
     {
-        for (int i = 0; i < panel->toggle_count; i++)
+        for (t_uint i = 0; i < panel->toggle_count; i++)
         {
             out = toggle_update(panel->toggles[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->sliders && 0 == out)
     {
-        for (int i = 0; i < panel->slider_count; i++)
+        for (t_uint i = 0; i < panel->slider_count; i++)
         {
             out = slider_update(panel->sliders[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->pickers && 0 == out)
     {
-        for (int i = 0; i < panel->picker_count; i++)
+        for (t_uint i = 0; i < panel->picker_count; i++)
         {
             out = picker_update(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->groups && 0 == out)
     {
-        for (int i = 0; i < panel->groups_count; i++)
+        for (t_uint i = 0; i < panel->groups_count; i++)
         {
             out = group_update(panel->groups[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->labels)
     {
-        for (int i = 0; i < panel->label_count; i++)
+        for (t_uint i = 0; i < panel->label_count; i++)
         {
             label_update(panel->labels[i], SCALE_X, SCALE_Y);
         }
@@ -107,49 +107,49 @@ void panel_render(Panel *panel)
 
     if (NULL != panel->rects)
     {
-        for (int i = 0; i < panel->rect_count; i++)
+        for (t_uint i = 0; i < panel->rect_count; i++)
         {
             rect_render(panel->rects[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->buttons)
     {
-        for (int i = 0; i < panel->button_count; i++)
+        for (t_uint i = 0; i < panel->button_count; i++)
         {
             button_render(panel->buttons[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->toggles)
     {
-        for (int i = 0; i < panel->toggle_count; i++)
+        for (t_uint i = 0; i < panel->toggle_count; i++)
         {
             toggle_render(panel->toggles[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->sliders)
     {
-        for (int i = 0; i < panel->slider_count; i++)
+        for (t_uint i = 0; i < panel->slider_count; i++)
         {
             slider_render(panel->sliders[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->pickers)
     {
-        for (int i = 0; i < panel->picker_count; i++)
+        for (t_uint i = 0; i < panel->picker_count; i++)
         {
             picker_render(panel->pickers[i], SCALE_X, SCALE_Y);
         }
     }
     if (NULL != panel->groups)
     {
-        for (int i = 0; i < panel->groups_count; i++)
+        for (t_uint i = 0; i < panel->groups_count; i++)
         {
             group_render(panel->groups[i]);
         }
     }
     if (NULL != panel->labels)
     {
-        for (int i = 0; i < panel->label_count; i++)
+        for (t_uint i = 0; i < panel->label_count; i++)
         {
             label_render(panel->labels[i], SCALE_X, SCALE_Y);
         }
@@ -189,12 +189,12 @@ void panel_free(Panel *panel)
     return;
 }
 
-void panel_list_free(Panel *panels[], int count)
+void panel_list_free(Panel *panels[], t_uint count)
 {
     if (NULL == panels)
         return;
 
-    for (int i = 0; i < count; i++)
+    for (t_uint i = 0; i < count; i++)
     {
         if (NULL == panels[i])
             continue;
@@ -204,10 +204,10 @@ void panel_list_free(Panel *panels[], int count)
     return;
 }
 
-int panel_list_update_and_render(Panel *panels[], int count)
+int panel_list_update_and_render(Panel *panels[], t_uint count)
 {
     int out = 0;
-    for (int i = 0; i < count; i++)
+    for (t_uint i = 0; i < count; i++)
     {
         out = panel_update(panels[i]);
         panel_render(panels[i]);
