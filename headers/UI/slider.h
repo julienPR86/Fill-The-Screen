@@ -42,7 +42,7 @@ void slider_render(Slider *slider, float scale_x, float scale_y);
 //Fress the allocated ressources of the slider passed in
 void slider_free(Slider *slider);
 //Frees an array of sliders
-void slider_list_free(Slider *sliders[], int size);
+void slider_list_free(Slider *sliders[], t_uint size);
 //Clamp the value of the cursor based on the min and max value
 void slider_clamp_value(Slider *slider);
 //Updates the slider's cursor position
@@ -62,6 +62,6 @@ int slider_get_height(Slider *slider, float scale_y);
 //Returns the slider width 
 int slider_get_width(Slider *slider, float scale_x);
 //Updates and renders an array of sliders
-int slider_list_update_and_render(Slider *sliders[], int count);
+int slider_list_update_and_render(Slider *sliders[], t_uint count);
 
 #endif
