@@ -41,7 +41,7 @@ int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float
     return false;
 }
 
-void UI_Element_set_position(UI_Element *element, int x, int y, int x_position_factor, int y_position_factor, float scale_x, float scale_y, int anchor)
+void UI_Element_set_position(UI_Element *element, int x, int y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor)
 {
     element->x = x * x_position_factor;
     element->y = y * y_position_factor;
