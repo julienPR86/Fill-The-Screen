@@ -9,13 +9,13 @@
 typedef struct UI_Element
 {
     //The x position of the element
-    float x;
+    int	x;
     //The y position of the element
-    float y;
+    int	y;
     //The element width
-    int width;
+    int	width;
     //The element height
-    int height;
+    int	height;
     //The element outline
     Outline outline;
     //the elements inline
@@ -27,15 +27,15 @@ typedef struct UI_Element
 } UI_Element;
 
 //Set the fields of element to the values passed in
-UI_Element *UI_Element_set_fields(UI_Element *element, float x, float y, int width, int height, Outline outline, Inline inline_, float scale, t_uint8 anchor);
+UI_Element *UI_Element_set_fields(UI_Element *element, int x, int y, int width, int height, Outline outline, Inline inline_, double scale, t_uint8 anchor);
 //Set the size of element to the size of frame if it's smaller
 //!! Do not put a label rect for element, only for frame if necessary !!
 //!! Set scale_x and scale_y to 1 except if frame is a label !!
 void UI_Element_match_size(UI_Element *element, UI_Element *frame, float scale_x, float scale_y);
 //Returns true if (x, y) is in element, false otherwise
-int UI_element_collision(UI_Element *element, float x, float y, float scale_x, float scale_y);
+int UI_element_collision(UI_Element *element, int x, int y, float scale_x, float scale_y);
 //Positions the element at (x, y) based on the anchor and the scales
-void UI_Element_set_position(UI_Element *element, float x, float y, float x_position_factor, float y_position_factor, float scale_x, float scale_y, int anchor);
+void UI_Element_set_position(UI_Element *element, int x, int y, int x_position_factor, int y_position_factor, float scale_x, float scale_y, int anchor);
 //Draws the element inline
 void UI_Element_render_inline(UI_Element *element, float scale_x, float scale_y);
 //Draws the element outline
