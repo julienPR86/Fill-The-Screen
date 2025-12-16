@@ -139,7 +139,7 @@ void slider_render(Slider *slider, float scale_x, float scale_y)
     UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
     
     Color color;
-    SDL_FRect slider_rect = {anchored_rect.x, anchored_rect.y, ceilf(anchored_rect.width * scale_x), ceilf(anchored_rect.height * scale_y)};
+    SDL_FRect slider_rect = {anchored_rect.x, anchored_rect.y, (anchored_rect.width * scale_x), (anchored_rect.height * scale_y)};
 
     color = slider->style->background;
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);

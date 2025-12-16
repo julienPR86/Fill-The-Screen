@@ -32,7 +32,7 @@ void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
     UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
 
     Color color;
-    SDL_FRect cursor_rect = {anchored_rect.x, anchored_rect.y, ceilf(anchored_rect.width * scale_x * anchored_rect.scale), ceilf(anchored_rect.height * scale_y * anchored_rect.scale)};
+    SDL_FRect cursor_rect = {anchored_rect.x, anchored_rect.y, (anchored_rect.width * scale_x * anchored_rect.scale), (anchored_rect.height * scale_y * anchored_rect.scale)};
 
     switch (cursor->state)
     {
