@@ -1,6 +1,6 @@
 #include "../../main.h"
 
-Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, t_uint8 update, float local_scale, t_uint8 active)
+Label *label_set_fields(Label *label, char text[], t_uint font_size, Color text_color, t_uint8 update, double local_scale, t_uint8 active)
 {
     label->text = text;
     label->font_size = font_size;
@@ -15,7 +15,7 @@ Label *label_set_fields(Label *label, char text[], int font_size, Color text_col
 
 Label *label_init(Label *label, float scale_x, float scale_y)
 {
-    if (NULL == label || NULL == label->text || 0 >= label->font_size || label->font_size > max_font_size)
+    if (NULL == label || NULL == label->text || label->font_size > max_font_size)
         return NULL;
 
     label->update = false;

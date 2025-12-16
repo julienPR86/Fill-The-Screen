@@ -12,7 +12,7 @@ typedef struct Label
     //The label text
     char *text;
     //The label font size
-    int font_size;
+    t_uint font_size;
     //The text color
     Color text_color;
     //Label surface, needs to be null at declaration, will be updated at initialisation
@@ -22,13 +22,13 @@ typedef struct Label
     //Tells if the label surface and texture need to be updated
     t_uint8 update;
     //A local scale used to updated the label if the global scale has changed
-    float local_scale;
+    double local_scale;
     //Tells if the label is active or not
     t_uint8 active;
 } Label;
 
 //Set the label fields based on te values passed in
-Label *label_set_fields(Label *label, char text[], int font_size, Color text_color, t_uint8 update, float local_scale, t_uint8 active);
+Label *label_set_fields(Label *label, char text[], t_uint font_size, Color text_color, t_uint8 update, double local_scale, t_uint8 active);
 //label init, needs to be called before all label functions, except for label_set_fields()
 Label *label_init(Label *label, float scale_x, float scale_y);
 //Updates the label passed in
