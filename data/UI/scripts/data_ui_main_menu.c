@@ -30,7 +30,7 @@ void main_menu_data_ui_init()
     label_set_fields(&main_menu_exit_button_label, "Quit", 30, DARK, 0, 1.0, 1);
 
 
-    UI_Element_set_fields(&main_menu_play_button.rect, 0, 0, 150, 50, outlines[0], inlines[0], 1.0, NONE);
+    UI_Element_set_fields(&main_menu_play_button.rect, 0, 0, 150, 50, outlines[2], inlines[1], 1.0, NONE);
     button_set_fields(&main_menu_play_button, NORMAL, &main_menu_play_button_label, &button_style, &game_state_mode_selection, true);
     button_init(&main_menu_play_button, SCALE_X, SCALE_Y);
 
