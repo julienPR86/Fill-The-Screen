@@ -74,14 +74,19 @@ void button_render(Button *button, float scale_x, float scale_y)
 
     UI_Element anchored_rect = button->rect;
     UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
-    
+
     if (NULL != button->label)
     {
         UI_Element_match_size(&anchored_rect, &button->label->rect, scale_x, scale_y);
     }
         
     Color button_color;
-    SDL_FRect button_rect = {anchored_rect.x, anchored_rect.y, (anchored_rect.width * scale_x * anchored_rect.scale), (anchored_rect.height * scale_y * anchored_rect.scale)};
+    SDL_FRect button_rect = {
+		anchored_rect.x + anchored_rect.inline_.size,
+		anchored_rect.y + anchored_rect.inline_.size,
+		(int)(anchored_rect.width * scale_x * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_x * anchored_rect.scale) * 2,
+		(int)(anchored_rect.height * scale_y * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_x * anchored_rect.scale) * 2
+	};
     
     switch (button->state)
     {
@@ -98,11 +103,11 @@ void button_render(Button *button, float scale_x, float scale_y)
             break;
     }
 
+	UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
+	UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
+
     SDL_SetRenderDrawColor(renderer, button_color.r, button_color.g, button_color.b, button_color.a);
     SDL_RenderFillRect(renderer, &button_rect);
-
-    UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
-    UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
 
     label_center(button->label, &anchored_rect, scale_x, scale_y);
     label_render(button->label, 1.0, 1.0);
