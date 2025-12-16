@@ -33,8 +33,8 @@ void toggle_render(Toggle *toggle, float scale_x, float scale_y);
 //Frees the allocated ressources of the toggle passed in
 void toggle_free(Toggle *toggle);
 //Frees an array of toggles
-void toggle_list_free(Toggle *toggle[], int size);
+void toggle_list_free(Toggle *toggle[], t_uint size);
 //Updates and renders an array of toggles
-int toggle_list_update_and_render(Toggle **toggles, int count);
+int toggle_list_update_and_render(Toggle **toggles, t_uint count);
 
 #endif

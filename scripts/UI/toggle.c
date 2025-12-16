@@ -125,12 +125,12 @@ void toggle_free(Toggle *toggle)
     return;
 }
 
-void toggle_list_free(Toggle *toggles[], int size)
+void toggle_list_free(Toggle *toggles[], t_uint size)
 {
     if (NULL == toggles)
         return;
 
-    for (int i = 0; i < size; i++)
+    for (t_uint i = 0; i < size; i++)
     {
         if (NULL == toggles[i])
             continue;
@@ -140,10 +140,10 @@ void toggle_list_free(Toggle *toggles[], int size)
     return;
 }
 
-int toggle_list_update_and_render(Toggle **toggles, int count)
+int toggle_list_update_and_render(Toggle **toggles, t_uint count)
 {
     int out = 0;
-    for (int i = 0; i < count; i++)
+    for (t_uint i = 0; i < count; i++)
     {
         out = toggle_update(toggles[i], SCALE_X, SCALE_Y);
         toggle_render(toggles[i], SCALE_X, SCALE_Y);
