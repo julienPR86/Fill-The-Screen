@@ -129,7 +129,8 @@ void	player_stats_update(Player *player, Map *map)
 			unfilled_square_count = map_get_squares_number(map, EMPTY_SQUARE);
 			break;
 	}
-	unfilled_square_count -= 1; //Because we count the player as a filled square
+	if (unfilled_square_count)
+		unfilled_square_count -= 1; //Because we count the player as a filled square
 	player->stats.filled_squares = map->width * map->height - unfilled_square_count;
 	player->stats.fill_percent = (map->height * map->width - unfilled_square_count) / (float)(default_map->height * default_map->width) * 100.0;
 	player->stats.filled_square_ratio = (map->width * map->height - unfilled_square_count) / (float)player->stats.moves;
