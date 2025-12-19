@@ -18,37 +18,12 @@ Button *game_stats_buttons[3];
 
 void game_stats_data_ui_init()
 {
-    int moves = default_player->moves;
-    float percent = 1.0/(default_map->height * default_map->width) * 100;
-    float square_ratio = 0;
-    if (moves)
-    {
-        if (CONSTRAINT_MODE == game_mode)
-        {
-            int count = map_get_squares_number(default_map, EMPTY_SQUARE) + map_get_squares_number(default_map, COLLISION_SQUARE);
-            percent = (float)(default_map->height*default_map->width - count)/(default_map->height*default_map->width) * 100;
-            square_ratio = (float)(default_map->height*default_map->width-(map_get_squares_number(default_map, EMPTY_SQUARE)+map_get_squares_number(default_map, COLLISION_SQUARE)))/moves;
-        }
-        else if (DISCOVERY_MODE == game_mode)
-        {
-            int count = map_get_squares_number(default_map, EMPTY_SQUARE) + map_get_squares_number(default_map, FAKE_SQUARE);
-            percent = (float)(default_map->height*default_map->width - count)/(default_map->height*default_map->width) * 100;
-            square_ratio = (float)(default_map->height*default_map->width-(map_get_squares_number(default_map, EMPTY_SQUARE)+map_get_squares_number(default_map, FAKE_SQUARE)))/moves;
-        }
-        else
-        {
-            int count = map_get_squares_number(default_map, EMPTY_SQUARE);
-            percent = (float)(default_map->height*default_map->width - count)/(default_map->height*default_map->width) * 100;
-            square_ratio = (float)(default_map->height*default_map->width-map_get_squares_number(default_map, EMPTY_SQUARE))/moves;
-        }
-    }
-
-    char percent_text[50];
-    snprintf(percent_text, sizeof(percent_text), "You filled %.2f%% of the map", percent);
-    char moves_text[50];
-    snprintf(moves_text, sizeof(moves_text), "You made %d moves", moves);
-    char square_ratio_text[50];
-    snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per move is %.2f", square_ratio);
+    char percent_text[32];
+    snprintf(percent_text, sizeof(percent_text), "You filled %.2f%% of the map !", default_player->stats.fill_percent);
+    char moves_text[18 + get_number_digits(default_player->stats.moves)];
+    snprintf(moves_text, sizeof(moves_text), "You made %u moves", default_player->stats.moves);
+    char square_ratio_text[43 + MAX(default_map->width, default_map->height)];
+    snprintf(square_ratio_text, sizeof(square_ratio_text), "Your average filled squares per moves is %.2f !", default_player->stats.filled_square_ratio);
 
     UI_Element_set_fields(&game_stats_title_label.rect, WINDOW_WIDTH/2, 0, 0, 0, outlines[0], inlines[0], 1.0, TOP_CENTER);
     label_set_fields(&game_stats_title_label, "Game over", 100, RED, false, 1.0, true);
@@ -91,7 +66,7 @@ void game_stats_data_ui_init()
     button_set_fields(&game_stats_main_menu_button, NORMAL, &game_stats_main_menu_button_label, &button_style, &game_state_main_menu, true);
     button_init(&game_stats_main_menu_button, SCALE_X, SCALE_Y);
 
-    if (percent >= 100.0)
+    if (default_player->stats.fill_percent >= 100.0)
 	{
         game_stats_labels[0] = &game_stats_congrats_label;
 		label_free(&game_stats_title_label);
