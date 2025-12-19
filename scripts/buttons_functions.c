@@ -79,6 +79,7 @@ int game_state_pause_menu()
 
 int game_state_game_stats()
 {
+	player_stats_update(default_player, default_map);
     game_stats_data_ui_init();
     game_state = GAME_STATE_GAME_STATS;
     debug_log("Game stats menu opened.");
