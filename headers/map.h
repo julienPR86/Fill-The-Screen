@@ -57,7 +57,7 @@ void map_display(Map *map);
 //Returns the map arrays square size based on the screen and the map dimensions
 int map_get_square_size(int screen_width, int screen_height, int map_width, int map_height);
 //Return the squares number of a certain type in the map array
-int map_get_squares_number(Map *map, int type);
+t_uint map_get_squares_number(Map *map, int type);
 //Returns true if the map is filled, false otherwise
 t_uint8 map_is_filled(Map *map);
 //Set the offset for the map based on the HEIGHT, WIDTH, and map size

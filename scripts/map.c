@@ -200,9 +200,9 @@ int map_get_square_size(int screen_width, int screen_height, int map_width, int 
     return 0;
 }
 
-int map_get_squares_number(Map *map, int type)
+t_uint map_get_squares_number(Map *map, int type)
 {
-    int count = 0;
+    t_uint count = 0;
     for (int y = 0; y < map->height; y++)
     {
         for (int x = 0; x < map->width; x++)
