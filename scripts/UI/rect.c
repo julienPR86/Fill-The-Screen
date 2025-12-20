@@ -15,8 +15,8 @@ void rect_render(Rect *rect, float scale_x, float scale_y)
     UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
 
     SDL_FRect _rect = {
-		anchored_rect.x + anchored_rect.inline_.size,
-		anchored_rect.y + anchored_rect.inline_.size,
+		anchored_rect.x + anchored_rect.inline_.size * scale_x * anchored_rect.scale,
+		anchored_rect.y + anchored_rect.inline_.size * scale_y * anchored_rect.scale,
 		(int)(anchored_rect.width * scale_x * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_x * anchored_rect.scale) * 2,
 		(int)(anchored_rect.height * scale_y * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_y * anchored_rect.scale) * 2
 	};

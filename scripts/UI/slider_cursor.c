@@ -33,8 +33,8 @@ void slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
 
     Color color;
     SDL_FRect cursor_rect = {
-		anchored_rect.x + anchored_rect.inline_.size,
-		anchored_rect.y + anchored_rect.inline_.size,
+		anchored_rect.x + anchored_rect.inline_.size * scale_x * anchored_rect.scale,
+		anchored_rect.y + anchored_rect.inline_.size * scale_y * anchored_rect.scale,
 		(int)(anchored_rect.width * scale_x * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_x * anchored_rect.scale) * 2,
 		(int)(anchored_rect.height * scale_y * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_y * anchored_rect.scale) * 2
 	};
