@@ -6,7 +6,7 @@ build
 *.o
 tmp/*.o
 #vscode files
-vscode/
+.vscode/
 #ignore texts files
 *.txt
 #valgrind cores because my program segfaults, skill issue
