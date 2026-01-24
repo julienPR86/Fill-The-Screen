@@ -2,14 +2,14 @@
 #define VARIABLES_H
 
 //Initial window width, 1080
-extern const int WINDOW_WIDTH;
+extern const int	WINDOW_WIDTH;
 //Initial window height, 720
-extern const int WINDOW_HEIGHT;
+extern const int	WINDOW_HEIGHT;
 
 //Current window width
-extern int WIDTH;
+extern int	WIDTH;
 //Current window height
-extern int HEIGHT;
+extern int	HEIGHT;
 
 //Global scale on X axis
 extern float SCALE_X;
@@ -19,9 +19,9 @@ extern float SCALE_Y;
 extern MouseState mouse_state;
 
 //Contains the current fps number
-extern int FPS;
+extern int	FPS;
 //Contains the max fps value
-extern int MAX_FPS;
+extern int	MAX_FPS;
 //Contains the delta time
 extern double delta_time;
 
@@ -33,7 +33,7 @@ extern SDL_Renderer *renderer;
 extern SDL_Event event;
 
 //The game state, used to changes dynamicly menus
-extern int game_state;
+extern int	game_state;
 
 //Contains the fps label text
 extern char *FPS_text;

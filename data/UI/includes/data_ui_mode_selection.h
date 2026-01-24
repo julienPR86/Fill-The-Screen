@@ -18,7 +18,7 @@ extern Button mode_selection_free_mode_button;
 extern Label *mode_selection_labels[2];
 extern Button *mode_selection_buttons[4];
 
-void game_mode_data_ui_init();
-void game_mode_data_ui_free();
+void	game_mode_data_ui_init(void);
+void	game_mode_data_ui_free(void);
 
 #endif

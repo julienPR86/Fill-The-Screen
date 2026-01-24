@@ -19,7 +19,7 @@ extern Button game_stats_main_menu_button;
 extern Label *game_stats_labels[4];
 extern Button *game_stats_buttons[3];
 
-void game_stats_data_ui_init();
-void game_stats_data_ui_free();
+void	game_stats_data_ui_init(void);
+void	game_stats_data_ui_free(void);
 
 #endif

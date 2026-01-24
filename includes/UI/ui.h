@@ -18,26 +18,26 @@
 //Buttons state
 enum ButtonStates
 {
-    //normal, isn't clicked
-    NORMAL,
-    //the button is clicked
-    CLICKED,
-    //the button is hovered
-    HOVERED,
+	//normal, isn't clicked
+	NORMAL,
+	//the button is clicked
+	CLICKED,
+	//the button is hovered
+	HOVERED,
 };
 
 enum Anchors
 {
-    NONE,
-    CENTER,
-    TOP_LEFT,
-    TOP_CENTER,
-    TOP_RIGHT,
-    MID_LEFT,
-    MID_RIGHT,
-    BOTTOM_LEFT,
-    BOTTOM_CENTER,
-    BOTTOM_RIGHT,
+	NONE,
+	CENTER,
+	TOP_LEFT,
+	TOP_CENTER,
+	TOP_RIGHT,
+	MID_LEFT,
+	MID_RIGHT,
+	BOTTOM_LEFT,
+	BOTTOM_CENTER,
+	BOTTOM_RIGHT,
 };
 
 //The global outline list that contains outlines with different sizes

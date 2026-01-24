@@ -124,7 +124,7 @@ extern ColorPicker options_line_square_picker;
 
 
 extern Rect options_empty_square_color_rect;
-    
+	
 extern Label options_empty_square_slider_title_label;
 extern Label options_empty_square_red_slider_description_label;
 extern Label options_empty_square_green_slider_description_label;
@@ -200,7 +200,7 @@ extern Panel options_audio_panel;
 extern Label *options_labels[1];
 extern Panel *options_panels[4];
 
-void options_data_ui_init();
-void options_data_ui_free();
+void	options_data_ui_init(void);
+void	options_data_ui_free(void);
 
 #endif

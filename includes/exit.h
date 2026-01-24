@@ -2,15 +2,15 @@
 #define EXIT_H
 
 //Destroys all allocated ressources
-void exit_full_game();
+void	exit_full_game(void);
 
 //Destroys the renderer and the window
-void destroy_window_and_renderer();
+void	destroy_window_and_renderer(void);
 
 //Close all the opened fonts in list and frees the list itself
-void close_font_list(TTF_Font **list, int count);
+void	close_font_list(TTF_Font **list, int	count);
 
 //Frees FPS label and FPS text
-void free_FPS_label();
+void	free_FPS_label(void);
 
 #endif

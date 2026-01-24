@@ -1,145 +1,145 @@
 #include "../../includes/main.h"
 
-Slider *slider_set_fields(Slider *slider, int *value, int min, int max, int step, Label *label, SliderCursor *cursor, SliderStyle *style, t_uint8 active)
+Slider *slider_set_fields(Slider *slider, int	*value, int	min, int	max, int	step, Label *label, SliderCursor *cursor, SliderStyle *style, t_uint8	active)
 {
-    slider->value = value;
-    if (NULL != value)
-        slider->cache_value = *value;
-    slider->min = min;
-    slider->max = max;
-    slider->step = step;
-    slider->label = label;
-    slider->cursor = cursor;
-    slider->style = style;
-    slider->active = active;
-    return slider;
+	slider->value = value;
+	if (NULL != value)
+		slider->cache_value = *value;
+	slider->min = min;
+	slider->max = max;
+	slider->step = step;
+	slider->label = label;
+	slider->cursor = cursor;
+	slider->style = style;
+	slider->active = active;
+	return slider;
 }
 
 Slider *slider_init(Slider *slider, float scale_x, float scale_y)
 {
-    if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style || slider->min == slider->max)
-        return NULL;
+	if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style || slider->min == slider->max)
+		return NULL;
 
-    if (NULL == slider->value)
-    {
-        slider->cursor->rect.x = slider->rect.x;
-        slider->cursor->rect.y = slider->rect.y;
-        slider->cursor->rect.width = 0;
-        slider->cursor->rect.height = 0;
-        return slider;
-    }
+	if (NULL == slider->value)
+	{
+		slider->cursor->rect.x = slider->rect.x;
+		slider->cursor->rect.y = slider->rect.y;
+		slider->cursor->rect.width = 0;
+		slider->cursor->rect.height = 0;
+		return slider;
+	}
 
-    slider->step = MIN(MAX(1, slider->step), slider->max);
+	slider->step = MIN(MAX(1, slider->step), slider->max);
 
-    slider_clamp_value(slider);
-    slider_set_cursor_position(slider);
+	slider_clamp_value(slider);
+	slider_set_cursor_position(slider);
 
-    slider->cache_value = *slider->value;
+	slider->cache_value = *slider->value;
 
-    if (NULL != slider->label)
-    {
-        slider->label->rect.anchor = NONE;
+	if (NULL != slider->label)
+	{
+		slider->label->rect.anchor = NONE;
 
-        if (NULL == slider_label_text_update(slider))
-        {
-            slider->label = NULL;
-            return slider;
-        }
-        label_init(slider->label, scale_x, scale_y);
-        slider_set_label_position(slider, scale_x, scale_y);
-    }
-    return slider;
+		if (NULL == slider_label_text_update(slider))
+		{
+			slider->label = NULL;
+			return slider;
+		}
+		label_init(slider->label, scale_x, scale_y);
+		slider_set_label_position(slider, scale_x, scale_y);
+	}
+	return slider;
 }
 
-int slider_update(Slider *slider, float scale_x, float scale_y)
+int	slider_update(Slider *slider, float scale_x, float scale_y)
 {
-    if (NULL == slider || NULL == slider->cursor || !slider->active || NULL == slider->value)
-        return 0;
+	if (NULL == slider || NULL == slider->cursor || !slider->active || NULL == slider->value)
+		return (0);
 
-    int update = 0; // returns 0 if the slider isn't clicked / updated
-    
-    if (UI_element_collision(&slider->rect, mouse_state.x, mouse_state.y, scale_x, scale_y) || UI_element_collision(&slider->cursor->rect, mouse_state.x, mouse_state.y, scale_x, scale_y) || slider->cursor->state == CLICKED)
-    {
-        if (mouse_state.frame_input)
-        {
-            slider->cursor->state = CLICKED;
-        }
-        
-        if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && slider->cursor->state == CLICKED)
-        {
-            slider->cursor->rect.x += mouse_state.delta_x / scale_x;
-            update = 1;
-        }
-        else if (mouse_state.wheel_value != 0)
-        {
-            slider->cursor->state = CLICKED;
-            *slider->value -= mouse_state.wheel_value;
-            update = 1;
-        }
-        else if (mouse_state.button_pressed == MOUSE_STATE_NONE)
-        {
-            slider->cursor->state = HOVERED;
-            animation_manager_add_constant_animation(&animation_manager, constant_animation_create(&slider->cursor->rect.scale, 1.1, 0.02, 1));
-        }
-    }
-    else
-    {
-        slider->cursor->state = NORMAL;
-        animation_manager_add_constant_animation(&animation_manager, constant_animation_create(&slider->cursor->rect.scale, 1, 0.02, 1));
-    }
+	int	update = 0; // returns 0 if the slider isn't clicked / updated
+	
+	if (UI_element_collision(&slider->rect, mouse_state.x, mouse_state.y, scale_x, scale_y) || UI_element_collision(&slider->cursor->rect, mouse_state.x, mouse_state.y, scale_x, scale_y) || slider->cursor->state == CLICKED)
+	{
+		if (mouse_state.frame_input)
+		{
+			slider->cursor->state = CLICKED;
+		}
+		
+		if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK && slider->cursor->state == CLICKED)
+		{
+			slider->cursor->rect.x += mouse_state.delta_x / scale_x;
+			update = 1;
+		}
+		else if (mouse_state.wheel_value != 0)
+		{
+			slider->cursor->state = CLICKED;
+			*slider->value -= mouse_state.wheel_value;
+			update = 1;
+		}
+		else if (mouse_state.button_pressed == MOUSE_STATE_NONE)
+		{
+			slider->cursor->state = HOVERED;
+			animation_manager_add_constant_animation(&animation_manager, constant_animation_create(&slider->cursor->rect.scale, 1.1, 0.02, 1));
+		}
+	}
+	else
+	{
+		slider->cursor->state = NORMAL;
+		animation_manager_add_constant_animation(&animation_manager, constant_animation_create(&slider->cursor->rect.scale, 1, 0.02, 1));
+	}
 
-    if (slider->cache_value != *slider->value) // Update the slider if the value has changed elsewhere
-    {
-        slider_set_cursor_position(slider);
+	if (slider->cache_value != *slider->value) // Update the slider if the value has changed elsewhere
+	{
+		slider_set_cursor_position(slider);
 
-        slider_label_text_update(slider);
-        label_update(slider->label, scale_x, scale_y);
+		slider_label_text_update(slider);
+		label_update(slider->label, scale_x, scale_y);
 
-        slider->cache_value = *slider->value;
-    }
-    
-    slider_clamp_value(slider);
-    slider_clamp_cursor_position(slider);
-    slider_set_label_position(slider, scale_x, scale_y);
-    label_update(slider->label, scale_x, scale_y);
-    
-    if (0 == update)// Exit the function if the slider isn't being clicked / updated
-    {
-        slider_set_cursor_position(slider);
-        return 0;
-    }
+		slider->cache_value = *slider->value;
+	}
+	
+	slider_clamp_value(slider);
+	slider_clamp_cursor_position(slider);
+	slider_set_label_position(slider, scale_x, scale_y);
+	label_update(slider->label, scale_x, scale_y);
+	
+	if (0 == update)// Exit the function if the slider isn't being clicked / updated
+	{
+		slider_set_cursor_position(slider);
+		return (0);
+	}
 
-    if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK) // Check if we change the slider value with the mouse buttons
-    {
-        *slider->value = slider_get_value(slider);
-        slider->cache_value = *slider->value;
-    }
-    else
-    {
-        slider_set_cursor_position(slider);
-        slider_clamp_cursor_position(slider);
-    }
+	if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK) // Check if we change the slider value with the mouse buttons
+	{
+		*slider->value = slider_get_value(slider);
+		slider->cache_value = *slider->value;
+	}
+	else
+	{
+		slider_set_cursor_position(slider);
+		slider_clamp_cursor_position(slider);
+	}
 
-    //update the slider label text
-    if (NULL != slider->label->text)
-    {
-        free(slider->label->text);
-        slider->label->text = NULL;
-    } 
-    slider_label_text_update(slider);
-    return update;
+	//update the slider label text
+	if (NULL != slider->label->text)
+	{
+		free(slider->label->text);
+		slider->label->text = NULL;
+	} 
+	slider_label_text_update(slider);
+	return update;
 }
 
-void slider_render(Slider *slider, float scale_x, float scale_y)
+void	slider_render(Slider *slider, float scale_x, float scale_y)
 {
-    if (NULL == slider || NULL == slider->style || !slider->active)
-        return;
+	if (NULL == slider || NULL == slider->style || !slider->active)
+		return ;
 
-    UI_Element anchored_rect = slider->rect;
-    UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
-    
-    Color color;
-    SDL_FRect slider_rect = {
+	UI_Element anchored_rect = slider->rect;
+	UI_Element_set_position(&anchored_rect, anchored_rect.x, anchored_rect.y, scale_x, scale_y, scale_x, scale_y, anchored_rect.anchor);
+	
+	Color color;
+	SDL_FRect slider_rect = {
 		anchored_rect.x + anchored_rect.inline_.size * scale_x * anchored_rect.scale,
 		anchored_rect.y + anchored_rect.inline_.size * scale_y * anchored_rect.scale, 
 		(int)(anchored_rect.width * scale_x * anchored_rect.scale) - (int)(anchored_rect.inline_.size * scale_x * anchored_rect.scale) * 2,
@@ -149,165 +149,165 @@ void slider_render(Slider *slider, float scale_x, float scale_y)
 	UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
 	UI_Element_render_inline(&anchored_rect, scale_x, scale_y);
 
-    color = slider->style->background;
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderFillRect(renderer, &slider_rect);
+	color = slider->style->background;
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderFillRect(renderer, &slider_rect);
 
-    slider_cursor_render(slider->cursor, scale_x, scale_y);
+	slider_cursor_render(slider->cursor, scale_x, scale_y);
 
-    if (NULL != slider->label)
-    {
-        label_render(slider->label, 1.0, scale_y);
-    }
-    return;
+	if (NULL != slider->label)
+	{
+		label_render(slider->label, 1.0, scale_y);
+	}
+	return ;
 }
 
-void slider_free(Slider *slider)
+void	slider_free(Slider *slider)
 {
-    if (NULL == slider || NULL == slider->label)
-        return;
-    
-    if (NULL != slider->label->text)
-    {
-        free(slider->label->text);
-        slider->label->text = NULL;
-    }
+	if (NULL == slider || NULL == slider->label)
+		return ;
+	
+	if (NULL != slider->label->text)
+	{
+		free(slider->label->text);
+		slider->label->text = NULL;
+	}
 
-    label_free(slider->label);
-    return;
+	label_free(slider->label);
+	return ;
 }
 
-void slider_list_free(Slider *sliders[], t_uint size)
+void	slider_list_free(Slider *sliders[], t_uint	size)
 {
-    if (NULL == sliders)
-        return;
-    
-    for (t_uint i = 0; i < size; i++)
-    {
-        if (NULL == sliders[i])
-            continue;
+	if (NULL == sliders)
+		return ;
+	
+	for (t_uint	i = 0; i < size; i++)
+	{
+		if (NULL == sliders[i])
+			continue;
 
-        slider_free(sliders[i]);
-    }
-    return;
+		slider_free(sliders[i]);
+	}
+	return ;
 }
 
-void slider_clamp_value(Slider *slider)
+void	slider_clamp_value(Slider *slider)
 {
-    if (NULL == slider)
-        return;
+	if (NULL == slider)
+		return ;
 
-    if (*slider->value < slider->min)
-    {
-        *slider->value = slider->min;
-    }
+	if (*slider->value < slider->min)
+	{
+		*slider->value = slider->min;
+	}
 
-    if (*slider->value > slider->max)
-    {
-        *slider->value = slider->max;
-    }
-    return;
+	if (*slider->value > slider->max)
+	{
+		*slider->value = slider->max;
+	}
+	return ;
 }
 
-void slider_set_cursor_position(Slider *slider)
+void	slider_set_cursor_position(Slider *slider)
 {
-    if (NULL == slider || NULL == slider->cursor || NULL == slider->value)
-        return;
+	if (NULL == slider || NULL == slider->cursor || NULL == slider->value)
+		return ;
 
-    slider->cursor->rect.x = roundf(slider->rect.x + ((slider->rect.width) * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (slider->cursor->rect.width / 2.0f));
-    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height);
-    return;
+	slider->cursor->rect.x = roundf(slider->rect.x + ((slider->rect.width) * ((float)(*slider->value - slider->min) / (slider->max - slider->min))) - (slider->cursor->rect.width / 2.0f));
+	slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height);
+	return ;
 }
 
-t_uint8 slider_check_cursor_position(Slider *slider)
+t_uint8	slider_check_cursor_position(Slider *slider)
 {
-    if (NULL == slider)
-        return 0;
+	if (NULL == slider)
+		return (0);
 
-    if (*slider->value != slider_get_value(slider))
-        return false;
+	if (*slider->value != slider_get_value(slider))
+		return false;
 
-    return true;
+	return true;
 }
 
-void slider_clamp_cursor_position(Slider *slider)
+void	slider_clamp_cursor_position(Slider *slider)
 {
-    if (NULL == slider || NULL == slider->cursor)
-        return;
+	if (NULL == slider || NULL == slider->cursor)
+		return ;
 
-    if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) < slider->rect.x)
-    {
-        slider->cursor->rect.x = slider->rect.x - (slider->cursor->rect.width / 2);
-    }
+	if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) < slider->rect.x)
+	{
+		slider->cursor->rect.x = slider->rect.x - (slider->cursor->rect.width / 2);
+	}
 
-    else if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) > slider->rect.x + slider->rect.width)
-    {
-        slider->cursor->rect.x = slider->rect.x + slider->rect.width - (slider->cursor->rect.width / 2);
-    }
-    
-    slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height);
-    return;
+	else if (slider->cursor->rect.x + (slider->cursor->rect.width / 2) > slider->rect.x + slider->rect.width)
+	{
+		slider->cursor->rect.x = slider->rect.x + slider->rect.width - (slider->cursor->rect.width / 2);
+	}
+	
+	slider->cursor->rect.y = slider->rect.y + CENTERED(slider->rect.height, slider->cursor->rect.height);
+	return ;
 }
 
 Slider *slider_label_text_update(Slider *slider)
 {
-    int digits = get_number_digits(slider->max)+1;
+	int	digits = get_number_digits(slider->max)+1;
 
-    slider->label->text = (char *)malloc(digits * sizeof(char));
-    if (NULL == slider->label->text)
-    {
-        error_log("Memory allocation error : failed to allocate slider label text.");
-        return NULL;
-    }
-    snprintf(slider->label->text, digits, "%d", *slider->value);
-    slider->label->update = true;
+	slider->label->text = (char *)malloc(digits * sizeof(char));
+	if (NULL == slider->label->text)
+	{
+		error_log("Memory allocation error : failed to allocate slider label text.");
+		return NULL;
+	}
+	snprintf(slider->label->text, digits, "%d", *slider->value);
+	slider->label->update = true;
 
-    return slider;
+	return slider;
 }
 
-void slider_set_label_position(Slider *slider, float scale_x, float scale_y)
+void	slider_set_label_position(Slider *slider, float scale_x, float scale_y)
 {
-    if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
-        return;
+	if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
+		return ;
 
-    slider->label->rect.x = slider->rect.x * scale_x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale_x;
-    slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale_y, slider->label->rect.height);
-    return;
+	slider->label->rect.x = slider->rect.x * scale_x + (slider->rect.width + slider->cursor->rect.width / 2 + 5) * scale_x;
+	slider->label->rect.y = slider->rect.y + CENTERED(slider->rect.height * scale_y, slider->label->rect.height);
+	return ;
 }
 
-int slider_get_value(Slider *slider)
+int	slider_get_value(Slider *slider)
 {
-    if (NULL == slider || NULL == slider->cursor)
-        return 0;
+	if (NULL == slider || NULL == slider->cursor)
+		return (0);
 
-    float ratio = ((slider->cursor->rect.x + (slider->cursor->rect.width / 2.0f)) - slider->rect.x) / slider->rect.width;
-    int value = roundf(ratio * (slider->max - slider->min)) + slider->min;
-    return value;
+	float ratio = ((slider->cursor->rect.x + (slider->cursor->rect.width / 2.0f)) - slider->rect.x) / slider->rect.width;
+	int	value = roundf(ratio * (slider->max - slider->min)) + slider->min;
+	return value;
 }
 
-int slider_get_height(Slider *slider, float scale_y)
+int	slider_get_height(Slider *slider, float scale_y)
 {
-    if (NULL == slider)
-        return 0;
+	if (NULL == slider)
+		return (0);
 
-    return MAX(UI_Element_get_height(&slider->rect, scale_y), UI_Element_get_height(&slider->cursor->rect, scale_y));
+	return MAX(UI_Element_get_height(&slider->rect, scale_y), UI_Element_get_height(&slider->cursor->rect, scale_y));
 }
 
-int slider_get_width(Slider *slider, float scale_x)
+int	slider_get_width(Slider *slider, float scale_x)
 {
-    if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
-        return 0;
+	if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
+		return (0);
 
-    return UI_Element_get_width(&slider->rect, scale_x) + UI_Element_get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
+	return UI_Element_get_width(&slider->rect, scale_x) + UI_Element_get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
 }
 
-int slider_list_update_and_render(Slider *sliders[], t_uint count)
+int	slider_list_update_and_render(Slider *sliders[], t_uint	count)
 {
-    int out = 0;
-    for (t_uint i = 0; i < count; i++)
-    {
-        out = slider_update(sliders[i], SCALE_X, SCALE_Y);
-        slider_render(sliders[i], SCALE_X, SCALE_Y);
-    }
-    return out;
+	int	out = 0;
+	for (t_uint	i = 0; i < count; i++)
+	{
+		out = slider_update(sliders[i], SCALE_X, SCALE_Y);
+		slider_render(sliders[i], SCALE_X, SCALE_Y);
+	}
+	return out;
 }
