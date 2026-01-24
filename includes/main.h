@@ -21,7 +21,7 @@
 #include "options.h"
 #include "player.h"
 #include "color.h"
-#include "types.h"
+#include "definitions.h"
 #include "UI/ui.h"
 #include "utils.h"
 #include "variables.h"
