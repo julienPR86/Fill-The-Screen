@@ -31,7 +31,7 @@ int	game_loop(void)
 	//background color
 	Color background = theme.main_colors.menu_background;
 
-	int	running = true;
+	t_uint8	running = true;
 	Uint64 start_time;
 	while (running)
 	{

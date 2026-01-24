@@ -10,9 +10,9 @@ enum GameMods
 	FREE_MODE,
 };
 
-extern int	game_speed;
-extern int	probability;
-extern int	game_mode;
+extern int		game_speed;
+extern int		probability;
+extern t_uint8	game_mode;
 
 //Initialise the player and the map for the new game
 int	new_game(void);

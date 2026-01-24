@@ -33,7 +33,7 @@ extern SDL_Renderer *renderer;
 extern SDL_Event event;
 
 //The game state, used to changes dynamicly menus
-extern int	game_state;
+extern t_uint8	game_state;
 
 //Contains the fps label text
 extern char *FPS_text;

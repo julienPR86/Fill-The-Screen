@@ -48,8 +48,8 @@ int	max_outline_size = 10;
 Inline *inlines;
 int	max_inline_size = 5;
 
-int	game_state = GAME_STATE_NONE;
-int	game_mode = NO_ACTIVE_MODE;
+t_uint8	game_state = GAME_STATE_NONE;
+t_uint8	game_mode = NO_ACTIVE_MODE;
 
 TTF_Font **roboto_regular_fonts;
 t_uint	max_font_size = 300;
