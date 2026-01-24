@@ -1,19 +1,6 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-enum GameState
-{
-    GAME_STATE_NONE,
-    GAME_STATE_MAIN_MENU,
-    GAME_STATE_OPTIONS,
-    GAME_STATE_MODE_SELECTION,
-    GAME_STATE_GAME,
-	GAME_STATE_NEW_GAME,
-    GAME_STATE_PAUSE_MENU,
-    GAME_STATE_GAME_STATS,
-    GAME_STATE_EXIT_GAME,
-};
-
 //Initial window width, 1080
 extern const int WINDOW_WIDTH;
 //Initial window height, 720
