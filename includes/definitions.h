@@ -4,6 +4,12 @@
 typedef unsigned int	t_uint;
 typedef unsigned char	t_uint8;
 
+typedef enum e_ReturnStatus
+{
+	SUCCESS,
+	FAILURE,
+}	t_status;
+
 typedef enum e_GameState
 {
     GAME_STATE_NONE,
