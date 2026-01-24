@@ -1,4 +1,4 @@
-#include "../../../main.h"
+#include "../../../includes/main.h"
 
 Label pause_menu_title_label;
 Label pause_menu_back_button_label;

@@ -1,4 +1,4 @@
-#include "../../../main.h"
+#include "../../../includes/main.h"
 
 Label main_menu_title_label;
 Label main_menu_play_button_label;

@@ -1,4 +1,4 @@
-#include "../../../main.h"
+#include "../../../includes/main.h"
 
 Label mode_selection_title_label;
 Label mode_selection_back_label;

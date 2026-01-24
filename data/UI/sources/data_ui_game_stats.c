@@ -1,4 +1,4 @@
-#include "../../../main.h"
+#include "../../../includes/main.h"
 
 Label game_stats_title_label;
 Label game_stats_congrats_label;
