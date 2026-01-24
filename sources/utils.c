@@ -1,6 +1,6 @@
 #include "../includes/main.h"
 
-int	get_fps()
+int	get_fps(void)
 {
 	const int	update = 20;
 	static int	fps = 0;
@@ -30,7 +30,7 @@ int	get_fps()
 		}
 		FPS_label.update = true;
 	}
-	return fps;
+	return (fps);
 }
 
 void	cap_fps(Uint64 start_time)
@@ -64,7 +64,7 @@ void	mouse_event(SDL_Event event)
 	return ;
 }
 
-void	mouse_event_update()
+void	mouse_event_update(void)
 {
 	mouse_state.wheel_value = 0;
 	mouse_state.frame_input = (mouse_state.previous_button_pressed != mouse_state.button_pressed);
@@ -84,14 +84,14 @@ void	get_mouse_delta(float *_x, float *_y)
 int	set_window_size(SDL_Window *window, int	w, int	h)
 {
 	if (NULL == window || w <= 0 || h <= 0)
-		return (0);
+		return (FAILURE);
 
 	if (!SDL_SetWindowSize(window, w, h))
 	{
 		error_log("Window resize error : %s.", SDL_GetError());
-		return (0);
+		return (FAILURE);
 	}
-	return 1;
+	return (SUCCESS);
 }
 
 void	update_window_size(SDL_Event event, SDL_Window *window)
@@ -104,9 +104,10 @@ void	update_window_size(SDL_Event event, SDL_Window *window)
 		}
 		update_scale();
 	}
+	return ;
 }
 
-void	update_scale()
+void	update_scale(void)
 {
 	SCALE_X = (float)WIDTH / 1080;
 	SCALE_Y = (float)HEIGHT / 720;
@@ -114,21 +115,21 @@ void	update_scale()
 	return ;
 }
 
-int	get_number_digits(int	number)
+int	get_number_digits(int number)
 {
 	return (number == 0) ? 1 : ((int)log10(number)+1);
 }
 
-double lerp(double a, double b, double factor)
+double	lerp(double a, double b, double factor)
 {
 	double value = a + (b - a) * factor;
-	return value;
+	return (value);
 }
 
-double round_to(double number, int	n)
+double	round_to(double number, int	n)
 {
-	double factor = pow(10.0, n);
-	return round(number * factor) / factor;
+	double	factor = pow(10.0, n);
+	return (round(number * factor) / factor);
 }
 
 void	debug_log(char *log, ...)

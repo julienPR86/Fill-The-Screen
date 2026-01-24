@@ -2,14 +2,14 @@
 
 int	main(void)
 {
-	if (-1 == init())
+	if (SUCCESS != init())
 	{
 		error_log("Could not initialise the game.");
-		return (-1);
+		return (FAILURE);
 	}
-	if (-1 == game_loop())
+	if (SUCCESS != game_loop())
 		error_log("Failed to start game loop.");
 	exit_full_game();
 	debug_log("Game exited successfully.");
-	return (0);
+	return (SUCCESS);
 }

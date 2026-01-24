@@ -33,9 +33,9 @@ void	free_FPS_label(void)
 	return ;
 }
 
-void	close_font_list(TTF_Font **list, int	count)
+void	close_font_list(TTF_Font **list, int count)
 {
-	for (int	i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		TTF_CloseFont(list[i]);
 	}

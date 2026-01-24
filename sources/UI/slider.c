@@ -12,13 +12,13 @@ Slider *slider_set_fields(Slider *slider, int	*value, int	min, int	max, int	step
 	slider->cursor = cursor;
 	slider->style = style;
 	slider->active = active;
-	return slider;
+	return (slider);
 }
 
 Slider *slider_init(Slider *slider, float scale_x, float scale_y)
 {
 	if (NULL == slider || NULL == slider_cursor_init(slider->cursor) || NULL == slider->style || slider->min == slider->max)
-		return NULL;
+		return (NULL);
 
 	if (NULL == slider->value)
 	{
@@ -26,7 +26,7 @@ Slider *slider_init(Slider *slider, float scale_x, float scale_y)
 		slider->cursor->rect.y = slider->rect.y;
 		slider->cursor->rect.width = 0;
 		slider->cursor->rect.height = 0;
-		return slider;
+		return (slider);
 	}
 
 	slider->step = MIN(MAX(1, slider->step), slider->max);
@@ -43,18 +43,18 @@ Slider *slider_init(Slider *slider, float scale_x, float scale_y)
 		if (NULL == slider_label_text_update(slider))
 		{
 			slider->label = NULL;
-			return slider;
+			return (slider);
 		}
 		label_init(slider->label, scale_x, scale_y);
 		slider_set_label_position(slider, scale_x, scale_y);
 	}
-	return slider;
+	return (slider);
 }
 
 int	slider_update(Slider *slider, float scale_x, float scale_y)
 {
 	if (NULL == slider || NULL == slider->cursor || !slider->active || NULL == slider->value)
-		return (0);
+		return (SUCCESS);
 
 	int	update = 0; // returns 0 if the slider isn't clicked / updated
 	
@@ -106,7 +106,7 @@ int	slider_update(Slider *slider, float scale_x, float scale_y)
 	if (0 == update)// Exit the function if the slider isn't being clicked / updated
 	{
 		slider_set_cursor_position(slider);
-		return (0);
+		return (SUCCESS);
 	}
 
 	if (mouse_state.button_pressed == MOUSE_STATE_LEFT_CLICK) // Check if we change the slider value with the mouse buttons
@@ -127,7 +127,7 @@ int	slider_update(Slider *slider, float scale_x, float scale_y)
 		slider->label->text = NULL;
 	} 
 	slider_label_text_update(slider);
-	return update;
+	return (update);
 }
 
 void	slider_render(Slider *slider, float scale_x, float scale_y)
@@ -222,7 +222,7 @@ void	slider_set_cursor_position(Slider *slider)
 t_uint8	slider_check_cursor_position(Slider *slider)
 {
 	if (NULL == slider)
-		return (0);
+		return (SUCCESS);
 
 	if (*slider->value != slider_get_value(slider))
 		return false;
@@ -257,12 +257,12 @@ Slider *slider_label_text_update(Slider *slider)
 	if (NULL == slider->label->text)
 	{
 		error_log("Memory allocation error : failed to allocate slider label text.");
-		return NULL;
+		return (NULL);
 	}
 	snprintf(slider->label->text, digits, "%d", *slider->value);
 	slider->label->update = true;
 
-	return slider;
+	return (slider);
 }
 
 void	slider_set_label_position(Slider *slider, float scale_x, float scale_y)
@@ -278,7 +278,7 @@ void	slider_set_label_position(Slider *slider, float scale_x, float scale_y)
 int	slider_get_value(Slider *slider)
 {
 	if (NULL == slider || NULL == slider->cursor)
-		return (0);
+		return (SUCCESS);
 
 	float ratio = ((slider->cursor->rect.x + (slider->cursor->rect.width / 2.0f)) - slider->rect.x) / slider->rect.width;
 	int	value = roundf(ratio * (slider->max - slider->min)) + slider->min;
@@ -288,7 +288,7 @@ int	slider_get_value(Slider *slider)
 int	slider_get_height(Slider *slider, float scale_y)
 {
 	if (NULL == slider)
-		return (0);
+		return (SUCCESS);
 
 	return MAX(UI_Element_get_height(&slider->rect, scale_y), UI_Element_get_height(&slider->cursor->rect, scale_y));
 }
@@ -296,7 +296,7 @@ int	slider_get_height(Slider *slider, float scale_y)
 int	slider_get_width(Slider *slider, float scale_x)
 {
 	if (NULL == slider || NULL == slider->label || NULL == slider->cursor)
-		return (0);
+		return (SUCCESS);
 
 	return UI_Element_get_width(&slider->rect, scale_x) + UI_Element_get_width(&slider->cursor->rect, scale_x) + slider->label->rect.width + 5 * scale_x;
 }

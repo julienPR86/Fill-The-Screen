@@ -16,10 +16,10 @@ Player	*player_create(void)
 int	player_init(Player *player)
 {
 	if (NULL == player)
-		return (-1);
+		return (FAILURE);
 	player_reset(player);
 	debug_log("Player initialised.");
-	return (0);
+	return (SUCCESS);
 }
 
 void	player_move(Player *player)
@@ -37,7 +37,7 @@ void	player_move(Player *player)
 	if (player->frame_move)
 		player->frame_move = 0;
 
-	for (int	i = 0; i < game_speed; i++)
+	for (int i = 0; i < game_speed; i++)
 	{
 		if (player->x + player->direction_x < 0 || player->y + player->direction_y < 0 || player->x + player->direction_x > default_map->width || player->y + player->direction_y > default_map->height ||
 			COLLISION_SQUARE == default_map->map[(int)player->y][(int)player->x + player->direction_x] || COLLISION_SQUARE == default_map->map[(int)player->y + player->direction_y][(int)player->x])
@@ -53,22 +53,22 @@ void	player_move(Player *player)
 					default_map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
 				else
 					default_map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
-				break;
+				break ;
 			
 			case DISCOVERY_MODE:
 				if (FAKE_SQUARE == default_map->start_map[(int)player->y][(int)player->x])
 					default_map->map[(int)player->y][(int)player->x] = COLLISION_SQUARE;
 				else
 					default_map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
-				break;
+				break ;
 			
 			case CONSTRAINT_MODE:
 				default_map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
-				break;
+				break ;
 			
-			default:
+			default :
 				default_map->map[(int)player->y][(int)player->x] = LINE_SQUARE;
-				break;
+				break ;
 		}
 		player->x += player->direction_x * delta_time;
 		player->y += player->direction_y * delta_time;
@@ -121,13 +121,13 @@ void	player_stats_update(Player *player, Map *map)
 	{
 		case CONSTRAINT_MODE:
 			unfilled_square_count = map_get_squares_number(map, EMPTY_SQUARE) + map_get_squares_number(map, COLLISION_SQUARE);
-			break;
+			break ;
 		case DISCOVERY_MODE:
 			unfilled_square_count = map_get_squares_number(map, EMPTY_SQUARE) + map_get_squares_number(default_map, FAKE_SQUARE);
-			break;
-		default:
+			break ;
+		default :
 			unfilled_square_count = map_get_squares_number(map, EMPTY_SQUARE);
-			break;
+			break ;
 	}
 	if (unfilled_square_count)
 		unfilled_square_count -= 1; //Because we count the player as a filled square

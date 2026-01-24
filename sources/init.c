@@ -69,7 +69,7 @@ int	init(void)
 	{
 		error_log("Could not initialize SDL : %s.", SDL_GetError());
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
 	debug_log("SDL initialised.");
 	if (true != TTF_Init())
@@ -77,7 +77,7 @@ int	init(void)
 		error_log("Could not initialize TTF : %s.", SDL_GetError());
 		TTF_Quit();
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
 	debug_log("TTF initialised.");
 	window = SDL_CreateWindow("Fill The Screen", WIDTH, HEIGHT, (SDL_WINDOW_RESIZABLE));
@@ -86,7 +86,7 @@ int	init(void)
 		error_log("Could not create the window : %s.", SDL_GetError());
 		TTF_Quit();
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
 	debug_log("Window created.");
 	renderer = SDL_CreateRenderer(window, "software");
@@ -96,7 +96,7 @@ int	init(void)
 		SDL_DestroyWindow(window);
 		TTF_Quit();
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
 	debug_log("Renderer created.");
 
@@ -107,9 +107,9 @@ int	init(void)
 		destroy_window_and_renderer();
 		TTF_Quit();
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
-	for (int	i = 0; i < max_outline_size; i++)
+	for (int i = 0; i < max_outline_size; i++)
 	{
 		outlines[i].size = i;
 		outlines[i].color = DARK;
@@ -124,9 +124,9 @@ int	init(void)
 		destroy_window_and_renderer();
 		TTF_Quit();
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
-	for (int	i = 0; i < max_inline_size; i++)
+	for (int i = 0; i < max_inline_size; i++)
 	{
 		inlines[i].size = i;
 		inlines[i].color = WHITE;
@@ -142,7 +142,7 @@ int	init(void)
 		destroy_window_and_renderer();
 		TTF_Quit();
 		SDL_Quit();
-		return (-1);
+		return (FAILURE);
 	}
 	else
 	{
@@ -158,7 +158,7 @@ int	init(void)
 				destroy_window_and_renderer();
 				TTF_Quit();
 				SDL_Quit();
-				return (-1);
+				return (FAILURE);
 			}
 		}
 	}
@@ -184,5 +184,5 @@ int	init(void)
 		label_init(&FPS_label, SCALE_X, SCALE_Y);
 		debug_log("FPS label created.");
 	}
-	return (0);
+	return (SUCCESS);
 }

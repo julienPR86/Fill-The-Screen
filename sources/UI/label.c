@@ -10,13 +10,13 @@ Label *label_set_fields(Label *label, char text[], t_uint	font_size, Color text_
 	label->update = update;
 	label->local_scale = local_scale;
 	label->active = active;
-	return label;
+	return (label);
 }
 
 Label *label_init(Label *label, float scale_x, float scale_y)
 {
 	if (NULL == label || NULL == label->text || label->font_size > max_font_size)
-		return NULL;
+		return (NULL);
 
 	label->update = false;
 	label->local_scale = MIN(scale_x, scale_y);
@@ -24,7 +24,7 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 	if (true != TTF_GetStringSize(roboto_regular_fonts[(int)(label->font_size * label->local_scale)-1], label->text, strlen(label->text), &label->rect.width, &label->rect.height))
 	{
 		error_log("Failed to retrieve string size : %s.", SDL_GetError());
-		return NULL;
+		return (NULL);
 	}
 
 	SDL_Color color = {label->text_color.r, label->text_color.g, label->text_color.b, label->text_color.a};
@@ -33,7 +33,7 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 	if (NULL == label->surface)
 	{
 		error_log("Failed render label surface : %s.", SDL_GetError());
-		return NULL;
+		return (NULL);
 	}
 
 	label->texture = SDL_CreateTextureFromSurface(renderer, label->surface);
@@ -42,7 +42,7 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 		error_log("Failed to create label texture from label surface : %s.", SDL_GetError());
 		SDL_DestroySurface(label->surface);
 		label->surface = NULL;
-		return NULL;
+		return (NULL);
 	}
 
 	if (true != SDL_SetTextureBlendMode(label->texture, SDL_BLENDMODE_BLEND))
@@ -52,9 +52,9 @@ Label *label_init(Label *label, float scale_x, float scale_y)
 		label->texture = NULL;
 		SDL_DestroySurface(label->surface);
 		label->surface = NULL;
-		return NULL;
+		return (NULL);
 	}
-	return label;
+	return (label);
 }
 
 void	label_update(Label *label, float scale_x, float scale_y)
@@ -109,12 +109,12 @@ void	label_free(Label *label)
 	return ;
 }
 
-void	label_list_free(Label *labels[], int	size)
+void	label_list_free(Label *labels[], int size)
 {
 	if (NULL == labels)
 		return ;
 		
-	for (int	i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		if (labels[i] == &FPS_label)
 			continue;
@@ -134,12 +134,14 @@ void	label_center(Label *label, UI_Element *rect, float scale_x, float scale_y)
 	return ;
 }
 
-int	label_list_update_and_render(Label *labels[], int	count)
+int	label_list_update_and_render(Label *labels[], int count)
 {
-	for (int	i = 0; i < count; i++)
+	if (NULL == labels)
+		return (FAILURE);
+	for (int i = 0; i < count; i++)
 	{
 		label_update(labels[i], SCALE_X, SCALE_Y);
 		label_render(labels[i], SCALE_X, SCALE_Y);
 	}
-	return (0);
+	return (SUCCESS);
 }

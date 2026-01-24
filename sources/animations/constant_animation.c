@@ -3,11 +3,11 @@
 ConstantAnimation *constant_animation_create(double *value, double goal, double time, t_uint8	active)
 {
 	if (NULL == value)
-		return NULL;
+		return (NULL);
 
 	if ((0 != animation_manager_check_constant_animation(&animation_manager, value) && NULL != animation_manager.constant_animations) || *value == goal)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	ConstantAnimation *animation;
@@ -15,7 +15,7 @@ ConstantAnimation *constant_animation_create(double *value, double goal, double 
 	if (NULL == animation)
 	{
 		error_log("Memory allocation error : failed to create constant animation.");
-		return NULL;
+		return (NULL);
 	}
 	constant_animation_set_fields(animation, value, goal, time, active);
 	debug_log("Constant animation created.");
@@ -25,7 +25,7 @@ ConstantAnimation *constant_animation_create(double *value, double goal, double 
 ConstantAnimation *constant_animation_set_fields(ConstantAnimation *animation, double *value, double goal, double time, t_uint8	active)
 {
 	if (NULL == animation || NULL == value)
-		return NULL;
+		return (NULL);
 	
 	animation->value = value;
 	animation->cache_value = *value;
@@ -40,7 +40,7 @@ ConstantAnimation *constant_animation_set_fields(ConstantAnimation *animation, d
 int	constant_animation_update(ConstantAnimation *animation)
 {
 	if (NULL == animation || NULL == animation->value || !animation->active || animation->timer > animation->time)
-		return (-1);
+		return (FAILURE);
 
 	animation->timer += delta_time;
 	*animation->value = lerp(animation->cache_value, animation->goal_value, (animation->timer/animation->time));
@@ -51,16 +51,16 @@ int	constant_animation_update(ConstantAnimation *animation)
 		animation->active = false;
 		animation->timer = 0;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	constant_animation_destroy(ConstantAnimation *animation)
 {
 	if (NULL == animation)
-		return (-1);
+		return (FAILURE);
 	
 	free(animation);
 	animation = NULL;
 	debug_log("Constant animation destroyed.");
-	return (0);
+	return (SUCCESS);
 }

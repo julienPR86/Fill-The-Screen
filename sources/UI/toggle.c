@@ -7,13 +7,13 @@ Toggle *toggle_set_fields(Toggle *toggle, t_uint8	state, Label *label, ButtonSty
 	toggle->style = style;
 	toggle->command = command;
 	toggle->active = active;
-	return toggle;
+	return (toggle);
 }
 
 Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
 {
 	if (NULL == toggle)
-		return NULL;
+		return (NULL);
 
 	toggle->label = label_init(toggle->label, scale_x, scale_y);
 
@@ -25,13 +25,13 @@ Toggle *toggle_init(Toggle *toggle, float scale_x, float scale_y)
 
 		label_center(toggle->label, &toggle->rect, scale_x, scale_y);
 	}
-	return toggle;
+	return (toggle);
 }
 
 int	toggle_update(Toggle *toggle, float scale_x, float scale_y)
 {
 	if (NULL == toggle || !toggle->active)
-		return (0);
+		return (SUCCESS);
 	
 	int	out = 0; // returns 0 if the toggle isn't clicked
 	if (UI_element_collision(&toggle->rect, mouse_state.x, mouse_state.y, scale_x, scale_y))
@@ -46,12 +46,12 @@ int	toggle_update(Toggle *toggle, float scale_x, float scale_y)
 					toggle->state = CLICKED;
 					if (NULL != toggle->command)
 						out = toggle->command();
-					break;
+					break ;
 				case CLICKED:
 					toggle->state = HOVERED;
-					break;
-				default:
-					break;
+					break ;
+				default :
+					break ;
 			}
 		}
 		else if (mouse_state.button_pressed == MOUSE_STATE_NONE && toggle->state != CLICKED)
@@ -71,7 +71,7 @@ int	toggle_update(Toggle *toggle, float scale_x, float scale_y)
 	{
 		label_update(toggle->label, scale_x, scale_y);
 	}
-	return out;
+	return (out);
 }
 
 void	toggle_render(Toggle *toggle, float scale_x, float scale_y)
@@ -99,15 +99,15 @@ void	toggle_render(Toggle *toggle, float scale_x, float scale_y)
 	{
 		case NORMAL:
 			toggle_color = toggle->style->background;
-			break;
+			break ;
 		case CLICKED:
 			toggle_color = toggle->style->foreground;
-			break;
+			break ;
 		case HOVERED:
 			toggle_color = toggle->style->hover_color;
-			break;
-		default:
-			break;
+			break ;
+		default :
+			break ;
 	}
 
 	UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
@@ -153,5 +153,5 @@ int	toggle_list_update_and_render(Toggle **toggles, t_uint	count)
 		out = toggle_update(toggles[i], SCALE_X, SCALE_Y);
 		toggle_render(toggles[i], SCALE_X, SCALE_Y);
 	}
-	return out;
+	return (out);
 }

@@ -16,7 +16,7 @@ Map	*map_create(void)
 int	map_init(Map *map)
 {
 	if (NULL == map || 0 == map_height || 0 == map_width)
-		return (-1);
+		return (FAILURE);
 
 	map->height = map_height;
 	map->width = map_width;
@@ -24,23 +24,23 @@ int	map_init(Map *map)
 	map->map = NULL;
 	if (NULL == map_creation(map))
 	{
-		return (-1);
+		return (FAILURE);
 	}
 	map_reset(map, EMPTY_SQUARE);
 	switch (game_mode)
 	{
 		case DISCOVERY_MODE:
 			map_random(map, FAKE_SQUARE);
-			break;
+			break ;
 		case CONSTRAINT_MODE:
 			map_random(map, COLLISION_SQUARE);
-			break;
-		default:
-			break;
+			break ;
+		default :
+			break ;
 	}
 	map->map[0][0] = PLAYER_SQUARE; //basic player position
 	debug_log("Map initialised.");
-	return (0);
+	return (SUCCESS);
 }
 
 Map *map_creation(Map *map)
@@ -49,22 +49,22 @@ Map *map_creation(Map *map)
 	if (NULL == map->map)
 	{
 		error_log("Memory allocation error : failed to allocate map.");
-		return NULL;
+		return (NULL);
 	}
 	map->start_map = (t_uint8	**)malloc(map->height * sizeof(t_uint8	*));
 	if (NULL == map->start_map)
 	{
 		free(map->map);
 		error_log("Memory allocation error : failed to allocate start map.");
-		return NULL;
+		return (NULL);
 	}
-	for (int	i = 0; i < map->height; i++)
+	for (int i = 0; i < map->height; i++)
 	{
 		map->map[i] = (t_uint8	*)malloc(map->width * sizeof(int));
 		map->start_map[i] = (t_uint8	*)malloc(map->width * sizeof(int));
 		if (NULL == map->map[i] || NULL == map->start_map[i])
 		{
-			for (int	j = 0; j < i; j++)
+			for (int j = 0; j < i; j++)
 			{
 				free(map->map[j]);
 				free(map->start_map[j]);
@@ -72,7 +72,7 @@ Map *map_creation(Map *map)
 			free(map->map);
 			free(map->start_map);
 			error_log("Memory allocation error : failed to allocate maps.");
-			return NULL;
+			return (NULL);
 		}
 	}
 	debug_log("Map created.");
@@ -83,7 +83,7 @@ void	map_destroy(Map *map)
 {
 	if (NULL == map)
 		return ;
-	for (int	i = 0; i < map->height; i++)
+	for (int i = 0; i < map->height; i++)
 	{
 		free(map->map[i]);
 		free(map->start_map[i]);
@@ -99,23 +99,23 @@ void	map_destroy(Map *map)
 
 Map *map_reset(Map *map, t_uint8	value)
 {
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 			map->map[y][x] = value;
 			map->start_map[y][x] = value;
 		}
 	}
 	debug_log("Map reset to %d.", value);
-	return map;
+	return (map);
 }
 
 Map *map_random(Map *map, t_uint8	value)
 {
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 			if (!(rand() % probability))
 			{
@@ -124,24 +124,24 @@ Map *map_random(Map *map, t_uint8	value)
 			}
 		}
 	}
-	return map;
+	return (map);
 }
 
 void	map_print(Map *map)
 {
 	printf("map :\n");
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 		   printf("%d ", map->map[y][x]);
 		}
 		printf("\n");
 	}
 	printf("\nstart map :\n");
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 		   printf("%d ", map->start_map[y][x]);
 		}
@@ -157,29 +157,29 @@ void	map_display(Map *map)
 	SDL_FRect rect = {map->x_offset, map->y_offset, map->square_size * map->width, map->square_size * map->height};
 	SDL_RenderFillRect(renderer, &rect);
 
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 			switch (map->map[y][x])
 			{
 				case COLLISION_SQUARE:
 					color = theme.game_colors.collision_square_color;
-					break;
+					break ;
 				case EMPTY_SQUARE:
 					continue;
-					break;
+					break ;
 				case LINE_SQUARE:
 					color = theme.game_colors.line_square_color;
-					break;
+					break ;
 				case PLAYER_SQUARE:
 					color = theme.game_colors.player_square_color;
-					break;
+					break ;
 				case FAKE_SQUARE:
 					color = theme.game_colors.fake_square_color;
-					break;
-				default:
-					break;
+					break ;
+				default :
+					break ;
 			}
 			SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 			SDL_FRect rect = {x * map->square_size + map->x_offset, y * map->square_size + map->y_offset, map->square_size, map->square_size};
@@ -191,21 +191,18 @@ void	map_display(Map *map)
 
 int	map_get_square_size(int	screen_width, int	screen_height, int	map_width, int	map_height)
 {
-	if (screen_width/map_width < screen_height/map_height)
-		return screen_width/map_width;
-
+	if (screen_width / map_width < screen_height / map_height)
+		return (screen_width / map_width);
 	else
-		return screen_height/map_height;
-
-	return (0);
+		return (screen_height / map_height);
 }
 
 t_uint	map_get_squares_number(Map *map, int	type)
 {
 	t_uint	count = 0;
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 			if (map->map[y][x] == type)
 				count++;
@@ -216,9 +213,9 @@ t_uint	map_get_squares_number(Map *map, int	type)
 
 t_uint8	map_is_filled(Map *map)
 {
-	for (int	y = 0; y < map->height; y++)
+	for (int y = 0; y < map->height; y++)
 	{
-		for (int	x = 0; x < map->width; x++)
+		for (int x = 0; x < map->width; x++)
 		{
 			if (map->map[y][x] == EMPTY_SQUARE)
 				return false;

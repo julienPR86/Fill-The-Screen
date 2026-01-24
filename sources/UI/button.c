@@ -7,13 +7,13 @@ Button *button_set_fields(Button *button, t_uint8	state, Label *label, ButtonSty
 	button->style = style;
 	button->command = command;
 	button->active = active;
-	return button;
+	return (button);
 }
 
 Button *button_init(Button *button, float scale_x, float scale_y)
 {
 	if (NULL == button)
-		return NULL;
+		return (NULL);
 
 	button->label = label_init(button->label, scale_x, scale_y);
 
@@ -25,7 +25,7 @@ Button *button_init(Button *button, float scale_x, float scale_y)
 
 		label_center(button->label, &button->rect, scale_x, scale_y);
 	}
-	return button;
+	return (button);
 }
 
 int	button_update(Button *button, float scale_x, float scale_y)
@@ -64,7 +64,7 @@ int	button_update(Button *button, float scale_x, float scale_y)
 	{
 		label_update(button->label, scale_x, scale_y);
 	}
-	return out;
+	return (out);
 }
 
 void	button_render(Button *button, float scale_x, float scale_y)
@@ -92,15 +92,15 @@ void	button_render(Button *button, float scale_x, float scale_y)
 	{
 		case NORMAL:
 			button_color = button->style->background;
-			break;
+			break ;
 		case CLICKED:
 			button_color = button->style->foreground;
-			break;
+			break ;
 		case HOVERED:
 			button_color = button->style->hover_color;
-			break;
-		default:
-			break;
+			break ;
+		default :
+			break ;
 	}
 
 	UI_Element_render_outline(&anchored_rect, scale_x, scale_y);
@@ -123,7 +123,7 @@ void	button_free(Button *button)
 	return ;
 }
 
-void	button_list_free(Button *buttons[], t_uint	size)
+void	button_list_free(Button *buttons[], t_uint size)
 {
 	if (NULL == buttons)
 		return ;
@@ -138,7 +138,7 @@ void	button_list_free(Button *buttons[], t_uint	size)
 	return ;
 }
 
-int	button_list_update_and_render(Button *buttons[], t_uint	count)
+int	button_list_update_and_render(Button *buttons[], t_uint count)
 {
 	int	out = 0;
 	for (t_uint	i = 0; i < count; i++)

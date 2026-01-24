@@ -23,11 +23,11 @@ void	animation_manager_update(AnimationManager *manager)
 int	animation_manager_destroy(AnimationManager *manager)
 {
 	if (NULL == manager)
-		return (-1);
+		return (FAILURE);
 
 	if (NULL != manager->constant_animations)
 	{
-		for (int	i = 0; i < manager->constant_animation_count; i++)
+		for (int i = 0; i < manager->constant_animation_count; i++)
 		{
 			constant_animation_destroy(manager->constant_animations[i]);
 		}
@@ -38,42 +38,42 @@ int	animation_manager_destroy(AnimationManager *manager)
 	{
 		debug_log("Manager's constant animation list is empty, did not removed any constant animations.");
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	animation_manager_add_constant_animation(AnimationManager *manager, ConstantAnimation *animation)
 {
 	if (NULL == manager || NULL == animation)
-		return (-1);
+		return (FAILURE);
 		
 	manager->constant_animation_count++;
 	manager->constant_animations = (ConstantAnimation **)realloc(manager->constant_animations, (manager->constant_animation_count) * sizeof(ConstantAnimation *));
 	if (NULL == manager->constant_animations)
 	{
 		error_log("Memory allocation error : failed to add constant animation to manager.");
-		return (-1);
+		return (FAILURE);
 	}
 	manager->constant_animations[manager->constant_animation_count-1] = animation;
 	debug_log("Constant animation added to manager constant animations list.");
-	return (0);
+	return (SUCCESS);
 }
 
 int	animation_manager_remove_constant_animation(AnimationManager *manager, ConstantAnimation *animation)
 {
 	if (NULL == manager || NULL == manager->constant_animations || 0 >= manager->constant_animation_count || NULL == animation)
-		return (-1);
+		return (FAILURE);
 	
 	int	index;
 	for (index = 0; index < manager->constant_animation_count; index++) //get the index of animation in array
 	{
 		if (manager->constant_animations[index] == animation)
-			break;
+			break ;
 	}
 
 	if (index >= manager->constant_animation_count)//check if index is in array
 	{
 		error_log("Could not remove constant animation : constant animation not in array.");
-		return (-1);
+		return (FAILURE);
 	}
 
 	int	last = manager->constant_animation_count-1;
@@ -90,7 +90,7 @@ int	animation_manager_remove_constant_animation(AnimationManager *manager, Const
 		free(manager->constant_animations);
 		manager->constant_animations = NULL;
 		debug_log("Manager's constant animation list is now empty.");
-		return (0);
+		return (SUCCESS);
 	}
 	else
 	{
@@ -98,22 +98,22 @@ int	animation_manager_remove_constant_animation(AnimationManager *manager, Const
 		if (NULL == manager->constant_animations)
 		{
 			error_log("Memory allocation error : failed to remove constant animation from manager.");
-			return (-1);
+			return (FAILURE);
 		}
 	}
 	debug_log("Constant animation removed from manager.");
-	return (0);
+	return (SUCCESS);
 }
 
 int	animation_manager_check_constant_animation(AnimationManager *manager, double *value)
 {
 	if (NULL == manager || NULL == value || NULL == manager->constant_animations)
-		return (-1);
+		return (FAILURE);
 	
-	for (int	i = 0; i < manager->constant_animation_count; i++)
+	for (int i = 0; i < manager->constant_animation_count; i++)
 	{
 		if (value == manager->constant_animations[i]->value)
 			return 1;
 	}
-	return (0);
+	return (SUCCESS);
 }

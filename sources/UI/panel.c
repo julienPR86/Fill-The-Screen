@@ -17,13 +17,13 @@ Panel *panel_set_fields(Panel* panel, Button **buttons, t_uint	button_count, Tog
 	panel->rects = rects;
 	panel->rect_count = rect_count;
 	panel->active = active;
-	return panel;
+	return (panel);
 }
 
 Panel *panel_init(Panel *panel)
 {
 	if (NULL == panel)
-		return NULL;
+		return (NULL);
 	
 	if (NULL == panel->buttons && panel->button_count != 0)
 		panel->button_count = 0;
@@ -46,13 +46,13 @@ Panel *panel_init(Panel *panel)
 	if (NULL == panel->rects && panel->rect_count != 0)
 		panel->label_count = 0;
 	
-	return panel;
+	return (panel);
 }
 
 int	panel_update(Panel *panel)
 {
 	if (NULL == panel || !panel->active)
-		return (0);
+		return (SUCCESS);
 
 	int	out = 0;
 	if (NULL != panel->buttons && 0 == out)
@@ -97,7 +97,7 @@ int	panel_update(Panel *panel)
 			label_update(panel->labels[i], SCALE_X, SCALE_Y);
 		}
 	}
-	return out;
+	return (out);
 }
 
 void	panel_render(Panel *panel)
@@ -212,5 +212,5 @@ int	panel_list_update_and_render(Panel *panels[], t_uint	count)
 		out = panel_update(panels[i]);
 		panel_render(panels[i]);
 	}
-	return out;
+	return (out);
 }

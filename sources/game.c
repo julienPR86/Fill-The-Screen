@@ -6,17 +6,17 @@ int	new_game(void)
 	if (map_init(default_map))
 	{
 		error_log("Could not initialised the map.");
-		return (-1);
+		return (FAILURE);
 	}
 	default_player = player_create();
 	if (player_init(default_player))
 	{
 		error_log("Could not initialised the player.");
 		map_destroy(default_map);
-		return (-1);
+		return (FAILURE);
 	}
 	debug_log("New game created.");
-	return (0);
+	return (SUCCESS);
 }
 
 int	game_loop(void)
@@ -53,12 +53,12 @@ int	game_loop(void)
 					case GAME_STATE_GAME:
 					case GAME_STATE_GAME_STATS:
 						game_state_exit_game();
-						break;
-					default:
-						break;
+						break ;
+					default :
+						break ;
 				}
 				game_state = GAME_STATE_EXIT_GAME;
-				break;
+				break ;
 			}
 			if (SDL_EVENT_KEY_DOWN == event.type)
 			{
@@ -70,27 +70,27 @@ int	game_loop(void)
 						{
 							case GAME_STATE_OPTIONS:
 								game_state_main_menu();
-								break;
+								break ;
 
 							case GAME_STATE_MODE_SELECTION:
 								game_state_main_menu();
-								break;
+								break ;
 							
 							case GAME_STATE_PAUSE_MENU:
 							case GAME_STATE_GAME_STATS:
 								game_state_game();
-								break;
+								break ;
 
 							case GAME_STATE_GAME:
 								game_state_pause_menu();
-								break;
+								break ;
 
-							default:
-								break;
+							default :
+								break ;
 						}
-						break;
-					default:
-						break;
+						break ;
+					default :
+						break ;
 				}
 				if (GAME_STATE_GAME == game_state && (!default_player->can_move || FREE_MODE == game_mode))
 				{
@@ -99,27 +99,27 @@ int	game_loop(void)
 						case SDLK_RIGHT:
 						case SDLK_D:
 							player_set_move_direction(default_player, 1, 0);
-							break;
+							break ;
 						case SDLK_LEFT:
 						case SDLK_Q:
 							player_set_move_direction(default_player, -1, 0);
-							break;
+							break ;
 						case SDLK_UP:
 						case SDLK_Z:
 							player_set_move_direction(default_player, 0, -1);
-							break;
+							break ;
 						case SDLK_DOWN:
 						case SDLK_S:
 							player_set_move_direction(default_player, 0, 1);
-							break;
+							break ;
 						case SDLK_R:
 							restart_game();
-							break;
+							break ;
 						case SDLK_E:
 							game_state_game_stats();
-							break;
-						default:
-							break;
+							break ;
+						default :
+							break ;
 					}
 				}
 			}
@@ -133,7 +133,7 @@ int	game_loop(void)
 				background = theme.main_colors.menu_background;
 				button_list_update_and_render(main_menu_buttons, 3);
 				label_list_update_and_render(main_menu_labels, 1);
-				break;
+				break ;
 
 			case GAME_STATE_OPTIONS:
 				background = theme.main_colors.options_background;
@@ -141,13 +141,13 @@ int	game_loop(void)
 				group_update(&options_group, SCALE_X, SCALE_Y);
 				group_render(&options_group);
 				panel_list_update_and_render(options_panels, 4);
-				break;
+				break ;
 
 			case GAME_STATE_MODE_SELECTION:
 				background = theme.main_colors.game_mode_background;
 				button_list_update_and_render(mode_selection_buttons, 4);
 				label_list_update_and_render(mode_selection_labels, 2);
-				break;
+				break ;
 
 			case GAME_STATE_GAME:
 				background = theme.main_colors.game_background;
@@ -158,26 +158,26 @@ int	game_loop(void)
 
 				if (!default_player->can_move && map_is_filled(default_map))
 					game_state_game_stats();
-				break;
+				break ;
 
 			case GAME_STATE_PAUSE_MENU:
 				background = theme.main_colors.pause_menu_background;
 				button_list_update_and_render(pause_menu_buttons, 3);
 				label_list_update_and_render(pause_menu_labels, 1);
-				break;
+				break ;
 
 			case GAME_STATE_GAME_STATS:
 				background = theme.main_colors.game_stats_background;
 				button_list_update_and_render(game_stats_buttons, 3);
 				label_list_update_and_render(game_stats_labels, 4);
-				break;
+				break ;
 
 			case GAME_STATE_EXIT_GAME:
 				running = false;
-				break;
+				break ;
 
-			default:
-				break;
+			default :
+				break ;
 		}
 
 		animation_manager_update(&animation_manager);
@@ -192,7 +192,7 @@ int	game_loop(void)
 		cap_fps(start_time);
 		mouse_event_update();
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	game_quit(void)
@@ -200,5 +200,5 @@ int	game_quit(void)
 	map_destroy(default_map);
 	player_destroy(default_player);
 	debug_log("Quit current game.");
-	return (0);
+	return (SUCCESS);
 }

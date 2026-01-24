@@ -6,25 +6,25 @@ ToggleGroup *group_set_fields(ToggleGroup *group, Toggle *toggles[], t_uint	coun
 	group->count = count;
 	group->selected = selected;
 	group->active = active;
-	return group;
+	return (group);
 }
 
 ToggleGroup *group_init(ToggleGroup *group)
 {
 	if (NULL == group || 0 == group->count)
-		return NULL;
+		return (NULL);
 
 	if (NULL == group->toggles && group->count != 0)
 		group->count = 0;
 
 	group->selected = 0;
-	return group;
+	return (group);
 }
 
 int	group_update(ToggleGroup *group, float scale_x, float scale_y)
 {
 	if (NULL == group || NULL == group->toggles)
-		return (0);
+		return (SUCCESS);
 
 	int	out = 0;
 	for (t_uint	i = 0; i < group->count; i++)
@@ -39,7 +39,7 @@ int	group_update(ToggleGroup *group, float scale_x, float scale_y)
 		if ((NORMAL == group->toggles[i]->state || HOVERED == group->toggles[i]->state) && i == group->selected)
 			group->toggles[i]->state = CLICKED;
 	}
-	return out;
+	return (out);
 }
 
 void	group_render(ToggleGroup *group)
@@ -99,5 +99,5 @@ int	group_list_update_and_render(ToggleGroup *groups[], t_uint	count)
 		out = group_update(groups[i], SCALE_X, SCALE_Y);
 		group_render(groups[i]);
 	}
-	return out;
+	return (out);
 }

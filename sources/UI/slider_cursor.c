@@ -4,23 +4,23 @@ SliderCursor *slider_cursor_set_fields(SliderCursor *cursor, t_uint8	state, Slid
 {
 	cursor->state = state;
 	cursor->style = style;
-	return cursor;
+	return (cursor);
 }
 
 SliderCursor *slider_cursor_init(SliderCursor *cursor)
 {
 	if (NULL == cursor || NULL == cursor->style)
-		return NULL;
+		return (NULL);
 
-	return cursor;
+	return (cursor);
 }
 
 int	slider_cursor_update(SliderCursor *cursor)
 {
 	if (NULL == cursor)
-		return (0);
+		return (SUCCESS);
 	
-	return (0);
+	return (SUCCESS);
 }
 
 void	slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
@@ -43,15 +43,15 @@ void	slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
 	{
 		case NORMAL:
 			color = cursor->style->bg;
-			break;
+			break ;
 		case HOVERED:
 			color = cursor->style->hover_color;
-			break;
+			break ;
 		case CLICKED:
 			color = cursor->style->fg;
-			break;
-		default:
-			break;
+			break ;
+		default :
+			break ;
 	}
 
 	UI_Element_render_outline(&anchored_rect, scale_x, scale_y);

@@ -6,13 +6,13 @@ ColorPicker *picker_set_fields(ColorPicker *picker, Rect *color_rect, Label **la
 	picker->labels = labels;
 	picker->sliders = sliders;
 	picker->active = active;
-	return picker;
+	return (picker);
 }
 
 ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
 {
 	if (NULL == picker || NULL == picker->color_rect)
-		return NULL;
+		return (NULL);
 	
 	int	i;
 	for (i = 0; i < 4; i++)
@@ -20,7 +20,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
 		if (NULL == picker->labels[i])
 		{
 			error_log("Element at index %d is NULL in color picker labels array.", i);
-			return NULL;
+			return (NULL);
 		}
 	}
 	for (i = 0; i < 3; i++)
@@ -28,7 +28,7 @@ ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
 		if (NULL == picker->sliders[i])
 		{
 			error_log("Element at index %d is NULL in color picker sliders array.", i);
-			return NULL;
+			return (NULL);
 		}
 	}
 
@@ -46,13 +46,13 @@ ColorPicker *picker_init(ColorPicker *picker, float scale_x, float scale_y)
 	picker->rect.width = picker_get_width(picker, scale_x);
 	picker->rect.height = picker_get_height(picker, scale_y);
 
-	return picker;
+	return (picker);
 }
 
 int	picker_update(ColorPicker *picker, float scale_x, float scale_y)
 {
 	if (NULL == picker || !picker->active)
-		return (0);
+		return (SUCCESS);
 		
 	int	out = 0, i;
 	for (i = 0; i < 4; i++)
@@ -64,7 +64,7 @@ int	picker_update(ColorPicker *picker, float scale_x, float scale_y)
 	{
 		out = slider_update(picker->sliders[i], scale_x, scale_y);
 	}
-	return out;
+	return (out);
 }
 
 void	picker_render(ColorPicker *picker, float scale_x, float scale_y)
@@ -106,7 +106,7 @@ void	picker_list_free(ColorPicker *pickers[], int	size)
 	if (NULL == pickers)
 		return ;
 
-	for (int	i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		picker_free(pickers[i]);
 	}
@@ -162,7 +162,7 @@ void	picker_set_positions(ColorPicker *picker, float scale_x, float scale_y)
 int	picker_get_height(ColorPicker *picker, float scale_y)
 {
 	if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
-		return (0);
+		return (SUCCESS);
 
 	int	height = 0, i;
 
@@ -177,26 +177,26 @@ int	picker_get_height(ColorPicker *picker, float scale_y)
 		height += slider_get_height(picker->sliders[i], 1);
 	}
 
-	return height;
+	return (height);
 }
 
 int	picker_get_width(ColorPicker *picker, float scale_x)
 {
 	if (NULL == picker || NULL == picker->sliders || NULL == picker->labels)
-		return (0);
+		return (SUCCESS);
 
 	scale_x = 1;
 
-	return MAX(picker->labels[0]->rect.width * 1.1 + UI_Element_get_width(&picker->color_rect->rect, scale_x), slider_get_width(picker->sliders[0], scale_x));
+	return (MAX(picker->labels[0]->rect.width * 1.1 + UI_Element_get_width(&picker->color_rect->rect, scale_x), slider_get_width(picker->sliders[0], scale_x)));
 }
 
 int	picker_list_update_and_render(ColorPicker *pickers[], int	count)
 {
 	int	out = 0;
-	for (int	i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		out = picker_update(pickers[i], SCALE_X, SCALE_Y);
 		picker_render(pickers[i], SCALE_X, SCALE_Y);
 	}
-	return out;
+	return (out);
 }
