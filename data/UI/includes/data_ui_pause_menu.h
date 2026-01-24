@@ -1,7 +1,7 @@
 #ifndef DATA_UI_PAUSE_MENU
 #define DATA_UI_PAUSE_MENU
 
-#include "../../../headers/UI/ui.h"
+#include "../../../includes/UI/ui.h"
 
 extern Label pause_menu_title_label;
 extern Label pause_menu_back_button_label;

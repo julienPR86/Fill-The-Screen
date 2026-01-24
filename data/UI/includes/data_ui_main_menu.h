@@ -1,7 +1,7 @@
 #ifndef DATA_UI_MAIN_MENU
 #define DATA_UI_MAIN_MENU
 
-#include "../../../headers/UI/ui.h"
+#include "../../../includes/UI/ui.h"
 
 extern Label main_menu_title_label;
 extern Label main_menu_play_button_label;

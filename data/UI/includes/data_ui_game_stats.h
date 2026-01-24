@@ -1,7 +1,7 @@
 #ifndef DATA_UI_GAME_STATS
 #define DATA_UI_GAME_STATS
 
-#include "../../../headers/UI/ui.h"
+#include "../../../includes/UI/ui.h"
 
 extern Label game_stats_title_label;
 extern Label game_stats_congrats_label;

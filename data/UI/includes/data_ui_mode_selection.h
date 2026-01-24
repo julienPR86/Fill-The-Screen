@@ -1,7 +1,7 @@
 #ifndef DATA_UI_MODE_SELECTION
 #define DATA_UI_MODE_SELECTION
 
-#include "../../../headers/UI/ui.h"
+#include "../../../includes/UI/ui.h"
 
 extern Label mode_selection_title_label;
 extern Label mode_selection_back_label;
