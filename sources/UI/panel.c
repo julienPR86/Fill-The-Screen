@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../includes/main.h"
 
 Panel *panel_set_fields(Panel* panel, Button **buttons, t_uint button_count, Toggle **toggles, t_uint toggle_count, Slider **sliders, t_uint slider_count, ColorPicker **pickers, t_uint picker_count, ToggleGroup **groups, t_uint group_count, Label **labels, t_uint label_count, Rect **rects, t_uint rect_count, t_uint8 active)
 {

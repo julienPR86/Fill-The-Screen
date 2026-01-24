@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../includes/main.h"
 
 int array_set_fields(Array *array, UI_Element **elements, int element_count, int max_per_line, int padding, int elements_anchor)
 {

@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../includes/main.h"
 
 int game_state_main_menu()
 {

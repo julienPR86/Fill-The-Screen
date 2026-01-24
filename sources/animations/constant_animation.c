@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../includes/main.h"
 
 ConstantAnimation *constant_animation_create(double *value, double goal, double time, t_uint8 active)
 {

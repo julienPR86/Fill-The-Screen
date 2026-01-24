@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../includes/main.h"
 
 Map	*map_create(void)
 {

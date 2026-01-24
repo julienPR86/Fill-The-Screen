@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../includes/main.h"
 
 const int WINDOW_WIDTH = 1080;
 const int WINDOW_HEIGHT = 720;

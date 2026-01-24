@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../includes/main.h"
 
 void animation_manager_update(AnimationManager *manager)
 {

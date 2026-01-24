@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../includes/main.h"
 
 void exit_full_game()
 {

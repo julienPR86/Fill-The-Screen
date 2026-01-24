@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../includes/main.h"
 
 Toggle *toggle_set_fields(Toggle *toggle, t_uint8 state, Label *label, ButtonStyle *style, int (*command)(), t_uint8 active)
 {

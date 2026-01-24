@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../includes/main.h"
 
 void rect_set_fields(Rect *rect, Color *color)
 {

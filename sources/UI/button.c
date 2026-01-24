@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../includes/main.h"
 
 Button *button_set_fields(Button *button, t_uint8 state, Label *label, ButtonStyle *style, int (*command)(), t_uint8 active)
 {

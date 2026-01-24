@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../includes/main.h"
 
 Player	*player_create(void)
 {
