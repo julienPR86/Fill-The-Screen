@@ -1,42 +1,35 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 LIBRARIES = -lSDL3 -lSDL3_ttf -lm
-EXEC = FillTheScreen
-TMP = tmp/
 
-OBJ = 	$(TMP)main.o $(TMP)init.o $(TMP)game.o \
-		$(TMP)array.o $(TMP)UI_Element.o $(TMP)color_picker.o $(TMP)panel.o $(TMP)rect.o $(TMP)slider.o $(TMP)slider_cursor.o $(TMP)toggle_group.o $(TMP)toggle.o $(TMP)button.o $(TMP)label.o \
-		$(TMP)animation_manager.o $(TMP)exit.o $(TMP)map.o $(TMP)player.o $(TMP)utils.o $(TMP)buttons_functions.o \
-		$(TMP)constant_animation.o \
-		$(TMP)data_ui_main_menu.o $(TMP)data_ui_mode_selection.o $(TMP)data_ui_game_stats.o $(TMP)data_ui_pause_menu.o $(TMP)data_ui_options.o
+VPATH = sources:sources/UI:sources/animations:data/UI/sources
+OBJDIR = objs/
 
-all : $(EXEC)
+OBJ = 	$(OBJDIR)main.o $(OBJDIR)init.o $(OBJDIR)game.o \
+		$(OBJDIR)array.o $(OBJDIR)UI_Element.o $(OBJDIR)color_picker.o $(OBJDIR)panel.o $(OBJDIR)rect.o $(OBJDIR)slider.o $(OBJDIR)slider_cursor.o $(OBJDIR)toggle_group.o $(OBJDIR)toggle.o $(OBJDIR)button.o $(OBJDIR)label.o \
+		$(OBJDIR)animation_manager.o $(OBJDIR)exit.o $(OBJDIR)map.o $(OBJDIR)player.o $(OBJDIR)utils.o $(OBJDIR)buttons_functions.o \
+		$(OBJDIR)constant_animation.o \
+		$(OBJDIR)data_ui_main_menu.o $(OBJDIR)data_ui_mode_selection.o $(OBJDIR)data_ui_game_stats.o $(OBJDIR)data_ui_pause_menu.o $(OBJDIR)data_ui_options.o
 
-$(EXEC) : $(OBJ)
-	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS) $(LIBRARIES)
+NAME = FillTheScreen
 
-$(TMP)main.o : main.c | $(TMP)
+all : $(NAME)
+
+$(NAME) : $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBRARIES)
+
+$(OBJDIR)%.o : %.c | $(OBJDIR)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(TMP)%.o : data/UI/scripts/%.c | $(TMP)
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-$(TMP)%.o : scripts/%.c | $(TMP)
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-$(TMP)%.o : scripts/UI/%.c | $(TMP)
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-$(TMP)%.o : scripts/animations/%.c | $(TMP)
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-$(TMP) :
-	mkdir -p tmp
+$(OBJDIR) :
+	mkdir -p $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -f $(EXEC)
+	rm -f $(NAME)
 
 re : fclean all
+
+.PHONY : all clean fclean re
