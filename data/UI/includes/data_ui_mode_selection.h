@@ -1,5 +1,5 @@
-#ifndef DATA_UI_MODE_SELECTION
-#define DATA_UI_MODE_SELECTION
+#ifndef DATA_UI_MODE_SELECTION_H
+#define DATA_UI_MODE_SELECTION_H
 
 #include "../../../includes/UI/ui.h"
 

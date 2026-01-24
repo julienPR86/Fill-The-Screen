@@ -1,5 +1,5 @@
-#ifndef DATA_UI_OPTIONS
-#define DATA_UI_OPTIONS
+#ifndef DATA_UI_OPTIONS_H
+#define DATA_UI_OPTIONS_H
 
 #include "../../../includes/UI/ui.h"
 

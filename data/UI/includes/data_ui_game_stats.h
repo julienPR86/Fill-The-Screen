@@ -1,5 +1,5 @@
-#ifndef DATA_UI_GAME_STATS
-#define DATA_UI_GAME_STATS
+#ifndef DATA_UI_GAME_STATS_H
+#define DATA_UI_GAME_STATS_H
 
 #include "../../../includes/UI/ui.h"
 

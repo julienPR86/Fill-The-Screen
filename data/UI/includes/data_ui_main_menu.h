@@ -1,5 +1,5 @@
-#ifndef DATA_UI_MAIN_MENU
-#define DATA_UI_MAIN_MENU
+#ifndef DATA_UI_MAIN_MENU_H
+#define DATA_UI_MAIN_MENU_H
 
 #include "../../../includes/UI/ui.h"
 

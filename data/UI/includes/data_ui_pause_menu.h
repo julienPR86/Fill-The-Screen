@@ -1,5 +1,5 @@
-#ifndef DATA_UI_PAUSE_MENU
-#define DATA_UI_PAUSE_MENU
+#ifndef DATA_UI_PAUSE_MENU_H
+#define DATA_UI_PAUSE_MENU_H
 
 #include "../../../includes/UI/ui.h"
 
