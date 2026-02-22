@@ -36,27 +36,21 @@
 #include "../data/UI/includes/data_ui_pause_menu.h"
 #include "../data/UI/includes/data_ui_options.h"
 
-//booleans definitions
-#define true 1
-#define false 0
-
 //If defined, DEBUG_LOG will tells the program to print in the stdout logs messages
 // #ifndef DEBUG_LOGS
 // # define DEBUG_LOGS
 // #endif
 
-//If defined, ERROR_LOGS will tells the program to print in the stderr error messages
 #ifndef ERROR_LOGS
+//Actives error message's printing on the standard error.
 # define ERROR_LOGS
 #endif
 
-//Macros definition 
-//Get the center between a and b
 #define CENTERED(a, b) ((a - b) / 2)
 
-//Get max value between a and b
+//Returns max value between a and b
 #define MAX(a, b) ((a > b) ? a : b)
-//Get min value between a and b
+//Returns min value between a and b
 #define MIN(a, b) ((a < b) ? a : b)
 
 #endif
