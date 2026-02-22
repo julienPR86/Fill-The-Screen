@@ -41,10 +41,14 @@
 #define false 0
 
 //If defined, DEBUG_LOG will tells the program to print in the stdout logs messages
-#define DEBUG_LOGS
+// #ifndef DEBUG_LOGS
+// # define DEBUG_LOGS
+// #endif
 
 //If defined, ERROR_LOGS will tells the program to print in the stderr error messages
-#define ERROR_LOGS
+#ifndef ERROR_LOGS
+# define ERROR_LOGS
+#endif
 
 //Macros definition 
 //Get the center between a and b
