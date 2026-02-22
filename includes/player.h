@@ -37,16 +37,33 @@ typedef struct Player
 //The default player
 extern Player	*default_player;
 
-//Returns an allocated player structure
+/**
+ * @brief Creates an allocated player.
+ * @return The created player on success, NULL on failure.
+ */
 Player	*player_create(void);
-//Needs to be called before all player functions 
+
+/**
+ * @brief Initialises player by reseting it.
+ * @param map The newly created player.
+ * @return 0 on success, 1 on failure.
+ */
 int	player_init(Player *player);
-//Move the player towards its x or y direction
+
+/**
+ * @brief Moves a player based on its direction.
+ * @param player The player to move.
+ */
 void	player_move(Player *player);
-//Prepare the player to move in a x or y direction
+
+/**
+ * @brief Sets the movement directions of player based on the sign of directions given.
+ */
 void	player_set_move_direction(Player *player, t_int8 direction_x, t_int8 direction_y);
-//Resets the player passed in
+
+//Resets player's fields to default value
 void	player_reset(Player *player);
+
 //Frees allocated ressources of the player passed in
 void	player_destroy(Player *player);
 
