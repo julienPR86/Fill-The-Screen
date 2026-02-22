@@ -100,6 +100,10 @@ void	button_render(Button *button, float scale_x, float scale_y)
 			button_color = button->style->hover_color;
 			break ;
 		default :
+			button_color.r = 0;
+			button_color.g = 0;
+			button_color.b = 0;
+			button_color.a = 0;
 			break ;
 	}
 

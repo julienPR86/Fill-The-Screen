@@ -107,6 +107,10 @@ void	toggle_render(Toggle *toggle, float scale_x, float scale_y)
 			toggle_color = toggle->style->hover_color;
 			break ;
 		default :
+			toggle_color.r = 0;
+			toggle_color.g = 0;
+			toggle_color.b = 0;
+			toggle_color.a = 0;
 			break ;
 	}
 

@@ -51,6 +51,10 @@ void	slider_cursor_render(SliderCursor *cursor, float scale_x, float scale_y)
 			color = cursor->style->fg;
 			break ;
 		default :
+			color.r = 0;
+			color.g = 0;
+			color.b = 0;
+			color.a = 0;
 			break ;
 	}
 
