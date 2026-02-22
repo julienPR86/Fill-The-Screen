@@ -9,9 +9,9 @@
 typedef struct UI_Element
 {
 	//The x position of the element
-	int	x;
+	float	x;
 	//The y position of the element
-	int	y;
+	float	y;
 	//The element width
 	int	width;
 	//The element height
