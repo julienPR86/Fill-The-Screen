@@ -38,29 +38,67 @@ typedef struct Map
 //The game map
 extern Map	*default_map;
 
-//Returns an allocated map structure
+/**
+ * @brief Creates an allocated Map.
+ * @return The created map on success, NULL on failure.
+ */
 Map	*map_create(void);
-//Need to be called befor using any map function
+
+/**
+ * @brief Initialises map by setting all values to default.
+ * @param map The newly created map.
+ * @return 0 on success, 1 on failure.
+ */
 int	map_init(Map *map);
-//Creates a map
+
+/**
+ * @brief Initialises the map and start_map fields in map.
+ * @param map An initialised map.
+ * @return The updated map on success, NULL on failure.
+ */
 Map *map_creation(Map *map);
-//Free allocated ressources of the map passed in
+
+//Destroys allocated map's fields and map itself.
 void	map_destroy(Map *map);
-//Reset the map arrays with value
-Map *map_reset(Map *map, t_uint8	value);
-//Sets randomly squares of the map arrays with value
-Map *map_random(Map *map, t_uint8	value);
-//Display the map arrays in the terminal
+
+/**
+ * @brief Resets map's map and start_map fields to value.
+ * @param map The map where to reset map and start_map fields.
+ * @param value The value that will replace all values in map and start_map fields.
+ * @return Always returns map.
+ */
+Map *map_reset(Map *map, t_uint8 value);
+
+//Randomly replaces squares value in map's map and start_map fields with a new value.
+Map *map_random(Map *map, t_uint8 value);
+
+//Prints the maps on the terminal.
 void	map_print(Map *map);
-//Display the map on screen
+
+//Display the map's map and start_map arrays in the terminal.
 void	map_display(Map *map);
-//Returns the map arrays square size based on the screen and the map dimensions
-int	map_get_square_size(int	screen_width, int	screen_height, int	map_width, int	map_height);
-//Return the squares number of a certain type in the map array
-t_uint	map_get_squares_number(Map *map, int	type);
-//Returns true if the map is filled, false otherwise
+
+/**
+ * @brief Calculate the ideal square size for the map based on the screen dimensions.
+ * @return The size of a map square.
+ */
+int	map_get_square_size(int	screen_width, int screen_height, int map_width, int map_height);
+
+/**
+ * @brief Counts the number of type squares in map's map.
+ * @return The right number.
+ */
+t_uint	map_get_squares_number(Map *map, int type);
+
+/**
+ * @brief Checks if map is filled.
+ * @return true or false.
+ */
 t_uint8	map_is_filled(Map *map);
-//Set the offset for the map based on the HEIGHT, WIDTH, and map size
+
+/**
+ * @brief Centers correctly the map based on the screen size, map size and squares size.
+ */
 void	map_set_offset(Map *map);
 
 #endif
