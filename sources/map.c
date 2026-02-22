@@ -189,12 +189,9 @@ void	map_display(Map *map)
 	return ;
 }
 
-int	map_get_square_size(int	screen_width, int	screen_height, int	map_width, int	map_height)
+int	map_get_square_size(int	screen_width, int screen_height, int map_width, int map_height)
 {
-	if (screen_width / map_width < screen_height / map_height)
-		return (screen_width / map_width);
-	else
-		return (screen_height / map_height);
+	return (MIN(screen_width / map_width, screen_height / map_height));
 }
 
 t_uint	map_get_squares_number(Map *map, int	type)
