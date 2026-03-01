@@ -524,11 +524,11 @@ void	options_data_ui_init()
 	UI_Element_set_fields(&options_floating_toggle_label.rect, 0, 0, 0, 0, outlines[0], inlines[0], 1.0, NONE);
 	label_set_fields(&options_floating_toggle_label, "Floating", 30, DARK, false, 1.0, true);
 
-	UI_Element_set_fields(&options_fullscreen_toggle.rect, 20, 150, 0, 0, outlines[1], inlines[0], 1.0, TOP_LEFT);
+	UI_Element_set_fields(&options_fullscreen_toggle.rect, 20, 200, 0, 0, outlines[1], inlines[0], 1.0, MID_LEFT);
 	toggle_set_fields(&options_fullscreen_toggle, NORMAL, &options_fullscreen_toggle_label, &toggle_style, &option_window_fullscreen, true);
 	toggle_init(&options_fullscreen_toggle, SCALE_X, SCALE_Y);
 
-	UI_Element_set_fields(&options_floating_toggle.rect, 20, 200, 0, 0, outlines[1], inlines[0], 1.0, TOP_LEFT);
+	UI_Element_set_fields(&options_floating_toggle.rect, 20, 250, 0, 0, outlines[1], inlines[0], 1.0, MID_LEFT);
 	toggle_set_fields(&options_floating_toggle, NORMAL, &options_floating_toggle_label, &toggle_style, &option_window_floating, true);
 	toggle_init(&options_floating_toggle, SCALE_X, SCALE_Y);
 
