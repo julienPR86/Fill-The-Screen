@@ -25,7 +25,7 @@ NAME = FillTheScreen
 all : $(NAME)
 
 debug : CFLAGS += $(DEBUG_FLAGS)
-debug : $(NAME)
+debug : re
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBRARIES)
